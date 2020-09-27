@@ -25,8 +25,6 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
 	stack u8[SABER_SEEDBYTES] seed;
 	stack u8[SABER_SCALEBYTES_KEM] msk_c;
-	stack u8[SABER_POLYVECCOMPRESSEDBYTES] tcipher;
-	stack u8[SABER_POLYVECCOMPRESSEDBYTES] tpk;
 
 	stack u16[SABER_KKN] a;
 	stack u16[SABER_KN] pkcl;
@@ -45,46 +43,28 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
 	skpv1 = GenSecret(skpv1, noiseseed);
 
-	for i = 0 to SABER_K {
-		for j = 0 to SABER_N {
-			res[i * SABER_N + j] = 0;
-		}
+	for i = 0 to SABER_KN {
+		res[i] = 0;
 	}
 
 	res = MatrixVectorMul(a, skpv1, res, 0);
 
-	for i = 0 to SABER_K {
-		for j = 0 to SABER_N {
-			res[i * SABER_N + j] += h1;
-			res[i * SABER_N + j] &= (SABER_Q - 1);
-			res[i * SABER_N + j] >>= (SABER_EQ - SABER_EP);
-		}
+	for i = 0 to SABER_KN {
+		res[i] += h1;
+		res[i] &= (SABER_Q - 1);
+		res[i] >>= (SABER_EQ - SABER_EP);
 	}
 
-	tcipher = POLVECp2BS(tcipher, res);
+	ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], res);
 
-	// copy values of tcipher to ciphertext
-	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-		t8 = tcipher[i];
-		ciphertext[i] = t8;
-	}
-
-	// copy values of pk to tpk
-	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-		t8 = pk[i];
-		tpk[i] = t8;
-	}
-
-	pkcl = BS2POLVECp(tpk, pkcl);
+	pkcl = BS2POLVECp(pk[0:SABER_POLYVECCOMPRESSEDBYTES], pkcl);
 
 	for i = 0 to SABER_N {
 		vprime[i] = 0;
 	}
 
-	for i = 0 to SABER_K {
-		for j = 0 to SABER_N {
-			skpv1[i * SABER_N + j] &= (SABER_P - 1);
-		}
+	for i = 0 to SABER_KN {
+		skpv1[i] &= (SABER_P - 1);
 	}
 
 	vprime = InnerProd(pkcl, skpv1, vprime);
