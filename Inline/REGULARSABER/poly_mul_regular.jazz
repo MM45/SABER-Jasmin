@@ -1,0 +1,139 @@
+/*** poly_mul_regular.jazz: File containing the Jasmin wrappers of the functions in the poly_mul_regular*.jahh files, only used for unit testing ***/
+
+#include "SABER_params.jahh"
+#include "poly_mul_regular_karatsuba_simple.jahh"
+#include "poly_mul_regular_toom_cook_4way.jahh"
+//#include "poly_mul_regular_toom_cook_4way_debug.jahh"
+#include "poly_mul_regular_pol_mul.jahh"
+
+
+export fn karatsuba_simple_jazz(reg u64 ap, reg u64 bp, reg u64 result_finalp)
+{
+	inline int i;
+
+	reg u16 t;
+
+	stack u16[N_SB] a_1;
+	stack u16[N_SB] b_1;
+	stack u16[N_SB_RES] result_final;
+
+	for i = 0 to N_SB {
+		t = (u16) [ap + 2 * i];
+		a_1[i] = t;
+	}
+
+	for i = 0 to N_SB {
+		t = (u16) [bp + 2 * i];
+		b_1[i] = t;
+	}
+
+	// TODO: Technically not necessary to copy, as result_final contains no relevant content on input, is only used as a result array
+	for i = 0 to N_SB_RES {
+		t = (u16) [result_finalp + 2 * i];
+		result_final[i] = t;
+	}
+
+	result_final = karatsuba_simple(a_1, b_1, result_final);
+
+	for i = 0 to N_SB_RES {
+		t = result_final[i];
+		(u16) [result_finalp + 2 * i] = t;
+	}
+	
+}
+
+export fn toom_cook_4way_jazz(reg u64 ap, reg u64 bp, reg u64 resultp) {
+	inline int i;
+
+	reg u16 t;
+
+	stack u16[SABER_N] a1;
+	stack u16[SABER_N] b1;
+	stack u16[512] result;
+
+	for i = 0 to SABER_N {
+		t = (u16) [ap + 2 * i];
+		a1[i] = t;
+	}
+
+	for i = 0 to SABER_N {
+		t = (u16) [bp + 2 * i];
+		b1[i] = t;
+	}
+
+	for i = 0 to 512 {
+		t = (u16) [resultp + 2 * i];
+		result[i] = t;
+	}
+
+	result = toom_cook_4way(a1, b1, result);
+
+	for i = 0 to 512 {
+		t = result[i];
+		(u16) [resultp + 2 * i] = t;
+	}
+}
+
+export fn pol_mul_jazz(reg u64 ap, reg u64 bp, reg u64 resp, reg u16 p)
+{
+	inline int i;
+
+	reg u16 t;
+
+	stack u16[SABER_N] a;
+	stack u16[SABER_N] b;
+	stack u16[SABER_N] res;
+
+	for i = 0 to SABER_N {
+		t = (u16) [ap + 2 * i];
+		a[i] = t;
+	}
+
+	for i = 0 to SABER_N {
+		t = (u16) [bp + 2 * i];
+		b[i] = t;
+	}
+
+	// TODO: Technically not necessary to copy, as res contains no relevant content on input, is only used as a result array
+	for i = 0 to SABER_N {
+		t = (u16) [resp + 2 * i];
+		res[i] = t;
+	}
+
+	res = pol_mul(a, b, res, p);
+
+	for i = 0 to SABER_N {
+		t = res[i];
+		(u16) [resp + 2 * i] = t;
+	}	
+
+}
+
+/*
+export fn toom_cook_4way_debug_jazz(reg u64 ap, reg u64 bp, reg u64 rp) {
+	inline int i;
+
+	reg u16 t;
+
+	stack u16[SABER_N] a1;
+	stack u16[SABER_N] b1;
+	stack u16[14] r;
+
+	for i = 0 to SABER_N {
+		t = (u16) [ap + 2 * i];
+		a1[i] = t;
+	}
+
+	for i = 0 to SABER_N {
+		t = (u16) [bp + 2 * i];
+		b1[i] = t;
+	}
+
+	r = toom_cook_4way_debug(a1, b1);
+
+	for i = 0 to 14 {
+		t = r[i];
+		(u16) [rp + 2 * i] = t;
+	}
+}
+*/

@@ -1,0 +1,115 @@
+/*** SABER_indcpa_regular_MatrixVectorMul.jahh: File containing the Jasmin implementation of the MatrixVectorMul function from SABER_indcpa.c, with (regular) SABER parameters ***/
+
+#ifndef MATRIXVECTORMUL_HH
+#define MATRIXVECTORMUL_HH
+
+#include "SABER_params.jahh"
+#include "poly_mul_regular_pol_mul.jahh"
+
+inline fn MatrixVectorMul(stack u16[SABER_KKN] a, stack u16[SABER_KN] skpv, stack u16[SABER_KN] res, reg u16 transpose) -> stack u16[SABER_KN]
+{
+	inline int k;
+
+	reg u16 t;
+
+	reg u64 i;
+	reg u64 j;
+	reg u64 address;
+	reg u64 taddress;
+
+	stack u16[SABER_N] acc;
+
+	stack u16[SABER_N] ta;
+	stack u16[SABER_N] tb;
+
+	i = 0;
+	if (transpose == 1) {
+		while (i < SABER_K)  {
+			j = 0;
+			while (j < SABER_K) {
+
+				// copy values to argument
+				for k = 0 to SABER_N {
+					// address =  j * SABER_KN + i * SABER_N + k
+					address = j * SABER_KN;
+					taddress = i * SABER_N;
+					address += taddress;
+					address += k;
+
+					t = a[(int) address];
+					ta[k] = t;
+
+					// address = j * SABER_N + k;
+					address =  j * SABER_N;
+					address += k;
+
+					t = skpv[(int) address];
+					tb[k] = t;
+				}
+				
+				acc = pol_mul(ta, tb, acc, SABER_Q);
+
+				for k = 0 to SABER_N {
+					t = acc[k];
+
+					// address = i * SABER_N + k
+					address = i * SABER_N;
+					address += k;
+
+					res[(int) address] += t;
+					res[(int) address] &= (SABER_Q - 1);
+
+					acc[k] = 0;
+				}
+				j += 1;
+			}
+			i += 1;
+		}
+	} else {
+		while (i < SABER_K) {
+			j = 0;
+			while (j < SABER_K) {
+
+				// copy values to argument
+				for k = 0 to SABER_N {
+					// address = i * SABER_KN + j * SABER_N + k;
+					address = i * SABER_KN;
+					taddress = j * SABER_N;
+					address += taddress;
+					address += k;
+
+					t = a[(int) address];
+					ta[k] = t;
+
+					// address = j * SABER_N + k
+					address = j * SABER_N;
+					address += k;
+
+					t = skpv[(int) address];
+					tb[k] = t;
+				}
+				
+				acc = pol_mul(ta, tb, acc, SABER_Q);
+
+				for k = 0 to SABER_N {
+					t = acc[k];
+
+					// address = i * SABER_N + k
+					address = i * SABER_N;
+					address += k;
+
+					res[(int) address] += t;
+					res[(int) address] &= (SABER_Q - 1);
+
+					acc[k] = 0;
+				}
+				j += 1;
+			}
+			i += 1;
+		}
+	}
+
+	return res;
+}
+
+#endif

@@ -1,0 +1,53 @@
+/*** kem_regular_crypto_kem_keypair_randominc.jahh: File containing the Jasmin implementation of the crypto_kem_keypair_randominc function from kem.c, with (regular) SABER parameters ***/
+
+#ifndef CRYPTO_KEM_KEYPAIR_RANDOMINC_HH
+#define CRYPTO_KEM_KEYPAIR_RANDOMINC_HH
+
+#include "SABER_params.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_keypair_randominc.jahh"
+#include "fips202_regular_sha3_256_PUBKEYBYTES.jahh"
+
+inline fn crypto_kem_keypair_randominc(stack u8[SABER_PUBLICKEYBYTES] pk, stack u8[SABER_SECRETKEYBYTES] sk, stack u8[SABER_KEYBYTES] random_bytes_crypto, stack u8[SABER_SEEDBYTES] indcpa_seed, stack u8[SABER_COINBYTES] indcpa_noiseseed) -> stack u8[SABER_PUBLICKEYBYTES], stack u8[SABER_SECRETKEYBYTES]
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SABER_INDCPA_PUBLICKEYBYTES] tpk;
+	stack u8[SABER_INDCPA_SECRETKEYBYTES] tsk;
+	stack u8[SABER_HASHBYTES] tsha3256hash;
+
+	tpk, tsk = indcpa_kem_keypair_randominc(tpk, tsk, indcpa_seed, indcpa_noiseseed);
+
+	// copy result back to pk and sk
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		t8 = tpk[i];
+		pk[i] = t8;
+	}
+
+	for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
+		t8 = tsk[i];
+		sk[i] = t8;
+	}
+
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		t8 = pk[i];
+		sk[i + SABER_INDCPA_SECRETKEYBYTES] = t8;
+	}
+
+	tsha3256hash = sha3_256_PUBKEYBYTES(tsha3256hash, pk);
+
+	for i = 0 to SABER_HASHBYTES {
+		t8 = tsha3256hash[i];
+		sk[SABER_SECRETKEYBYTES - 64 + i] = t8;
+	}
+
+	for i = 0 to SABER_KEYBYTES {
+		t8 = random_bytes_crypto[i];
+		sk[SABER_SECRETKEYBYTES - SABER_KEYBYTES + i] = t8;
+	}
+
+	return pk, sk;
+}
+
+#endif

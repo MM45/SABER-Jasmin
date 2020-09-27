@@ -1,0 +1,35 @@
+/*** join_mdarray_kn_regular.jahh: File containing an auxilliary Jasmin function for joining separate u16 arrays into a "multidimensional" array, with (regular) SABER parameters ***/
+
+#ifndef JOIN_MDARRAY_KN_HH
+#define JOIN_MDARRAY_KN_HH
+
+#include "SABER_params.jahh"
+
+inline fn join_mdarray_kn(stack u16[SABER_N] d0, stack u16[SABER_N] d1, stack u16[SABER_N] d2) -> stack u16[SABER_KN]
+{
+	inline int i;
+
+	reg u16 t;
+
+	stack u16[SABER_KN] data;
+
+	// TODO: Might combine in single for loop
+	for i = 0 to SABER_N {
+		t = d0[i];
+		data[i] = t;
+	}
+
+	for i = SABER_N to (2 * SABER_N) {
+		t = d1[i - SABER_N];
+		data[i] = t;
+	}
+
+	for i = (2 * SABER_N) to (3 * SABER_N) {
+		t = d2[i - (2 * SABER_N)];
+		data[i] = t;
+	}
+
+	return data;
+}
+
+#endif

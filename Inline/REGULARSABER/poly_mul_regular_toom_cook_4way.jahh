@@ -1,0 +1,289 @@
+/*** poly_mul_regular_toom_cook_4way.jahh: File containing the Jasmin implementation of toom_cook_4way function from poly_mul.c, with (regular) SABER parameters ***/
+
+#ifndef TOOM_COOK_4WAY_HH
+#define TOOM_COOK_4WAY_HH
+
+#include "SABER_params.jahh"
+#include "poly_mul_regular_karatsuba_simple.jahh"
+
+inline fn toom_cook_4way(stack u16[SABER_N] a1, stack u16[SABER_N] b1, stack u16[512] result) -> stack u16[512]
+{
+	inline int i;
+	inline int j;
+
+	inline int AB0;
+	inline int AB1;
+	inline int AB2;
+	inline int AB3;
+
+	reg u16 r0; 
+	reg u16 r1; 
+	reg u16 r2; 
+	reg u16 r3; 
+	reg u16 r4; 
+	reg u16 r5; 
+	reg u16 r6; 
+	reg u16 r7;
+	
+	reg u16 t1;
+	reg u16 t2;
+
+	reg u32 p1;
+	reg u32 p2;
+
+	stack u16[N_SB] aw1;
+	stack u16[N_SB] aw2;
+	stack u16[N_SB] aw3;
+	stack u16[N_SB] aw4;
+	stack u16[N_SB] aw5;
+	stack u16[N_SB] aw6;
+	stack u16[N_SB] aw7;
+
+	stack u16[N_SB] bw1;
+	stack u16[N_SB] bw2;
+	stack u16[N_SB] bw3;
+	stack u16[N_SB] bw4;
+	stack u16[N_SB] bw5;
+	stack u16[N_SB] bw6;
+	stack u16[N_SB] bw7;
+
+	stack u16[N_SB_RES] w1;
+	stack u16[N_SB_RES] w2;
+	stack u16[N_SB_RES] w3;
+	stack u16[N_SB_RES] w4;
+	stack u16[N_SB_RES] w5;
+	stack u16[N_SB_RES] w6;
+	stack u16[N_SB_RES] w7;
+
+	AB0 = 0;
+	AB1 = N_SB;
+	AB2 = 2 * N_SB;
+	AB3 = 3 * N_SB;
+
+	for i = 0 to N_SB_RES {
+		w1[i] = 0;
+		w2[i] = 0;
+		w3[i] = 0;
+		w4[i] = 0;
+		w5[i] = 0;
+		w6[i] = 0;
+		w7[i] = 0;
+	}
+
+	for j = 0 to N_SB {
+		r0 = a1[AB0 + j];
+		r1 = a1[AB1 + j];
+		r2 = a1[AB2 + j];
+		r3 = a1[AB3 + j];
+		r4 = r0 + r2;
+		r5 = r1 + r3;
+		r6 = r4 + r5;
+		r7 = r4;
+		r7 -= r5;
+
+		aw3[j] = r6;
+		aw4[j] = r7;
+
+		// r4 = ((r0 << 2)+r2) << 1;
+		t1 = r0;
+		t1 <<= 2;
+		t1 += r2;
+		t1 <<= 1;
+		r4 = t1;
+
+		// r5 = (r1 << 2) + r3;
+		t1 = r1;
+		t1 <<= 2;
+		t1 += r3;
+		r5 = t1;
+
+		r6 = r4 + r5;
+		r7 = r4;
+		r7 -= r5;
+
+		aw5[j] = r6;
+		aw6[j] = r7;
+
+		// r4 = (r3 << 3) + (r2 << 2) + (r1 << 1) + r0;
+		t1 = r3;
+		t1 <<= 3;
+		t2 = r2;
+		t2 <<= 2;
+		t1 += t2;
+		t2 = r1;
+		t2 <<= 1;
+		t1 += t2;
+		t1 += r0;
+		r4 = t1;
+
+		aw2[j] = r4;
+		aw7[j] = r0;
+		aw1[j] = r3;
+	}
+
+	for j = 0 to N_SB {
+		r0 = b1[AB0 + j];
+		r1 = b1[AB1 + j];
+		r2 = b1[AB2 + j];
+		r3 = b1[AB3 + j];
+		r4 = r0 + r2;
+		r5 = r1 + r3;
+		r6 = r4 + r5;
+		r7 = r4;
+		r7 -= r5;
+
+		bw3[j] = r6;
+		bw4[j] = r7;
+
+		// r4 = ((r0 << 2)+r2) << 1;
+		t1 = r0;
+		t1 <<= 2;
+		t1 += r2;
+		t1 <<= 1;
+		r4 = t1;
+
+		// r5 = (r1 << 2) + r3;
+		t1 = r1;
+		t1 <<= 2;
+		t1 += r3;
+		r5 = t1;
+
+		r6 = r4 + r5;
+		r7 = r4;
+		r7 -= r5;
+
+		bw5[j] = r6;
+		bw6[j] = r7;
+
+		// r4 = (r3 << 3) + (r2 << 2) + (r1 << 1) + r0;
+		t1 = r3;
+		t1 <<= 3;
+		t2 = r2;
+		t2 <<= 2;
+		t1 += t2;
+		t2 = r1;
+		t2 <<= 1;
+		t1 += t2;
+		t1 += r0;
+		r4 = t1;
+
+		bw2[j] = r4;
+		bw7[j] = r0;
+		bw1[j] = r3;
+	}
+
+	w1 = karatsuba_simple(aw1, bw1, w1);
+	w2 = karatsuba_simple(aw2, bw2, w2);
+	w3 = karatsuba_simple(aw3, bw3, w3);
+	w4 = karatsuba_simple(aw4, bw4, w4);
+	w5 = karatsuba_simple(aw5, bw5, w5);
+	w6 = karatsuba_simple(aw6, bw6, w6);
+	w7 = karatsuba_simple(aw7, bw7, w7);
+
+	for i = 0 to N_SB_RES {
+		r0 = w1[i];
+		r1 = w2[i];
+		r2 = w3[i];
+		r3 = w4[i];
+		r4 = w5[i];
+		r5 = w6[i];
+		r6 = w7[i];
+
+		r1 += r4;
+		r5 -= r4;
+
+		// r3 = ((r3-r2) >> 1);
+		p1 = (32u) r3;
+		p1 = (32s) p1;
+		p2 = (32u) r2;
+		p2 = (32s) p2;
+		p1 -= p2;
+		p1 >>= 1;
+		r3 = (16u) p1;
+		
+		r4 -= r0;
+
+		// r4 = r4 - (r6 << 6);
+		t1 = r6;
+		t1 <<= 6;
+		r4 -= t1;
+
+		// r4 = (r4 << 1) + r5;
+	 	r4 <<= 1;
+	 	r4 += r5;
+
+	 	r2 += r3;
+
+	 	// r1 = r1 - (r2 << 6) - r2;
+	 	t1 = r2;
+	 	t1 <<= 6;
+	 	r1 -= t1;
+	 	r1 -= r2;
+
+	 	r2 -= r6;
+	 	r2 -= r0;
+
+	 	// r1 = r1 + 45*r2;
+	 	t1 = 45 * r2;
+	 	r1 += t1;
+
+	 	// r4 = ( ( ( r4 - ( r2 << 3 ) ) * inv3 ) >> 3 );
+	 	p1 = (32u) r2;
+	 	p1 = (32s) p1;
+	 	p1 <<= 3;
+	 	p2 = (32u) r4;
+	 	p2 = (32s) p2;
+	 	p2 -= p1;
+	 	p2 *= 43691;
+	 	p2 >>= 3;
+	 	r4 = (16u) p2;
+	 	
+	 	r5 += r1;
+
+	 	// r1 = ( ( ( r1 + ( r3 << 4 ) ) * inv9 ) >> 1 );
+	 	p1 = (32u) r3;
+	 	p1 = (32s) p1;
+	 	p1 <<= 4;
+	 	p2 = (32u) r1;
+	 	p2 = (32s) p2;
+	 	p2 += p1;
+	 	p2 *= 36409;
+	 	p2 >>= 1;
+	 	r1 = (16u) p2;
+
+	 	// r3 = -(r3 + r1);
+	 	p1 = (32u) r3;
+	 	p1 = (32s) p1;
+	 	p2 = (32u) r1;
+	 	p2 = (32s) r1;
+	 	p1 += p2;
+	 	p1 *= -1;
+	 	r3 = (16u) p1;
+
+	 	// r5 = ( ( ( 30 * r1 - r5 ) * inv15 ) >> 2 );
+	 	p1 = (32u) r1;
+	 	p1 = (32s) p1;
+	 	p1 *= 30;
+	 	p2 = (32u) r5;
+	 	p2 = (32s) p2;
+	 	p1 -= p2;
+	 	p1 *= 61167;
+	 	p1 >>= 2;
+	 	r5 = (16u) p1;
+
+	 	r2 -= r4;
+	 	r1 -= r5;
+
+	 	result[i] += r6;
+	 	result[i + 64] += r5; 
+	 	result[i + 128] += r4;
+	 	result[i + 192] += r3; 
+	 	result[i + 256] += r2; 
+	 	result[i + 320] += r1; 
+	 	result[i + 384] += r0; 
+	}
+
+	return result;
+}
+
+#endif

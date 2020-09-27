@@ -1,0 +1,54 @@
+/*** cbd_regular.jazz: File containing the Jasmin wrappers of the functions in the cbd_regular_*.jahh files, only used for unit testing ***/
+
+#include "SABER_params.jahh"
+#include "cbd_regular_load_littleendian.jahh"
+#include "cbd_regular_cbd.jahh"
+
+export fn load_littleendian_jazz(reg u64 xp) -> reg u32
+{
+	inline int i;
+
+	reg u8 tx;
+	reg u32 r;
+
+	stack u8[4] x;
+
+	for i = 0 to 4 {
+		tx = (u8) [xp + i];
+		x[i] = tx;
+	}
+
+	r = load_littleendian(x);
+
+	return r;
+}
+
+
+export fn cbd_jazz(reg u64 rp, reg u64 bufp)
+{
+	inline int i;
+
+	reg u8 tbuf;
+	reg u16 tr;
+	
+	stack u8[SABER_N] buf;
+	stack u16[SABER_N] r;
+	
+	for i = 0 to SABER_N {
+		tbuf = (u8) [bufp + i];
+		buf[i] = tbuf;
+	}
+
+	// TODO: Technically not necessary to copy, as bytes contains no relevant content on input, is only used as a result array
+	for i = 0 to SABER_N {
+		tr = (u16) [rp + 2 * i];
+		r[i] = tr;
+	}
+
+	r = cbd(r, buf);
+
+	for i = 0 to SABER_N {
+		tr = r[i];
+		(u16) [rp + 2 * i] = tr;
+	}
+}

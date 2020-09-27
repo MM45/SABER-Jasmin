@@ -1,0 +1,71 @@
+/*** SABER_params.jahh: File containing all (regular) SABER parameters in Jasmin ***/
+
+#ifndef SABER_PARAMS_HH
+#define SABER_PARAMS_HH
+
+/* Translation from SABER_params.h (and api.h) */
+
+param int CRYPTO_SECRETKEYBYTES = 2304;
+param int CRYPTO_PUBLICKEYBYTES = (3 * 320 + 32);
+param int CRYPTO_BYTES = 32;
+param int CRYPTO_CIPHERTEXTBYTES = 1088;
+param int Saber_type = 2;
+
+param int SABER_K = 3;
+param int SABER_MU = 8;
+param int SABER_ET = 4;
+
+param int SABER_EQ = 13; 
+param int SABER_EP = 10;
+
+param int SABER_N = 256;
+param int SABER_Q = 8192; 
+param int SABER_P = 1024;
+
+param int SABER_SEEDBYTES      = 32;
+param int SABER_NOISESEEDBYTES = 32;
+param int SABER_COINBYTES      = 32;
+param int SABER_KEYBYTES       = 32;
+
+param int SABER_HASHBYTES      = 32;
+
+param int SABER_POLYBYTES      = 416;
+
+param int SABER_POLYVECBYTES   = (SABER_K * SABER_POLYBYTES); 
+
+param int SABER_POLYVECCOMPRESSEDBYTES = (SABER_K * 320);
+
+param int SABER_CIPHERTEXTBYTES = (SABER_POLYVECCOMPRESSEDBYTES);
+
+// param int SABER_SCALEBYTES = (SABER_DELTA * SABER_N / 8);
+
+param int SABER_SCALEBYTES_KEM = (SABER_ET * SABER_N / 8);
+
+param int SABER_INDCPA_PUBLICKEYBYTES = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SEEDBYTES);
+param int SABER_INDCPA_SECRETKEYBYTES = (SABER_POLYVECBYTES);
+
+param int SABER_PUBLICKEYBYTES = (SABER_INDCPA_PUBLICKEYBYTES);
+
+param int SABER_SECRETKEYBYTES = (SABER_INDCPA_SECRETKEYBYTES +  SABER_INDCPA_PUBLICKEYBYTES + SABER_HASHBYTES + SABER_KEYBYTES);
+
+param int SABER_BYTES_CCA_DEC = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SCALEBYTES_KEM);
+
+/* Additional parameters */
+
+param int SABER_KN = (SABER_K * SABER_N);
+param int SABER_KKN = (SABER_K * SABER_K * SABER_N);
+param int N_SB = (SABER_N / 4);
+param int N_SB_RES = (2 * N_SB - 1);
+
+param int SHAKE128_RATE = 168;
+param int SHAKE256_RATE = 136;
+param int SHA3_256_RATE = 136;
+param int SHA3_512_RATE = 72;
+
+param int KK13N8 = (SABER_K * SABER_K * (13 * SABER_N / 8));
+param int MUNK8 = (SABER_MU * SABER_N * SABER_K / 8);
+
+param int h1 = 4; // (SABER_EQ - SABER_EP - 1) * (SABER_EQ - SABER_EP - 1)
+param int h2 = 228; //( (1<<(SABER_EP-2)) - (1<<(SABER_EP-SABER_ET-1)) + (1<<(SABER_EQ-SABER_EP-1)) )
+
+#endif

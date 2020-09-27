@@ -1,0 +1,97 @@
+/*** SABER_indcpa_regular_MatrixVectorMul.jahh: File containing the Jasmin implementation of the MatrixVectorMul function from SABER_indcpa.c, with (regular) SABER parameters ***/
+
+#ifndef MATRIXVECTORMUL_HH
+#define MATRIXVECTORMUL_HH
+
+#include "SABER_params.jahh"
+#include "poly_mul_regular_pol_mul_q.jahh"
+
+inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, reg ptr u16[SABER_KN] res, reg u16 transpose) -> reg ptr u16[SABER_KN]
+{
+	inline int i;
+	inline int j;
+	inline int k;
+
+	reg u16 t;
+
+
+	stack u16[SABER_N] acc;
+
+	stack u16[SABER_N] ta;
+	stack u16[SABER_N] tb;
+
+	stack ptr u16[SABER_KKN] sa;
+	stack ptr u16[SABER_KN] sskpv;
+	stack ptr u16[SABER_KN] sres;
+
+	if (transpose == 1) {
+		for i = 0 to SABER_K {
+			for j = 0 to SABER_K {
+				// copy values to argument
+				for k = 0 to SABER_N {
+					t = a[j * SABER_KN + i * SABER_N + k];
+					ta[k] = t;
+
+					t = skpv[j * SABER_N + k];
+					tb[k] = t;
+				}
+				
+				sa = a;
+				sskpv = skpv;
+				sres = res;
+
+				acc = pol_mul_q(ta, tb, acc);
+
+				a = sa;
+				skpv = sskpv;
+				res = sres;
+
+				for k = 0 to SABER_N {
+					t = acc[k];
+
+					res[i * SABER_N + k] += t;
+					res[i * SABER_N + k] &= (SABER_Q - 1);
+
+					acc[k] = 0;
+				}
+			}
+		}
+	} else {
+		for i = 0 to SABER_K {
+			for j = 0 to SABER_K {
+				// copy values to argument
+				for k = 0 to SABER_N {
+					t = a[i * SABER_KN + j * SABER_N + k];
+					ta[k] = t;
+
+
+					t = skpv[j * SABER_N + k];
+					tb[k] = t;
+				}
+				
+				sa = a;
+				sskpv = skpv;
+				sres = res;
+
+				acc = pol_mul_q(ta, tb, acc);
+
+				a = sa;
+				skpv = sskpv;
+				res = sres;
+
+				for k = 0 to SABER_N {
+					t = acc[k];
+
+					res[i * SABER_N + k] += t;
+					res[i * SABER_N + k] &= (SABER_Q - 1);
+
+					acc[k] = 0;
+				}
+			}
+		}
+	}
+
+	return res;
+}
+
+#endif

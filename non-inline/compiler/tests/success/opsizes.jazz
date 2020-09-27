@@ -1,0 +1,92 @@
+export
+fn parsing_test(reg u64 s, reg u64 v) -> reg u64 {
+reg u64 x, u;
+x = s;
+u = v;
+x = x + s;
+x = x + 64;
+x = x + 64s s;
+x = x >> u;
+x = x >>s 64;
+x = x >>64s u;
+return x;
+}
+
+export
+fn reg32_test(reg u32 x) -> reg u32 {
+reg u32 y;
+y = x;
+y += x;
+return y;
+}
+
+export
+fn dead_code(reg u32 x) -> reg u32 {
+reg u32 y, z;
+
+/* Should one of these moves be eliminated? */
+y = x;
+z = y;
+
+return z;
+}
+
+inline
+fn move(reg u32 x) -> reg u32 {
+reg u32 y;
+y = x;
+return y;
+}
+
+export
+fn test_inline(reg u32 a) -> reg u32 {
+reg u32 b;
+b = move(a);
+return b;
+}
+
+export
+fn primop_test(reg u64 x) -> reg u8 {
+reg u8 a;
+reg u16 b;
+reg u32 c;
+reg u64 d;
+d = x;
+c = #MOV_32(d);
+b = #MOV_16(c);
+a = #ADD_8(b, b);
+
+return a;
+}
+
+export
+fn pluseq(reg u64 x) -> reg u8 {
+reg u8 a;
+reg u16 b;
+reg u32 c;
+
+c = 0;
+c *= x;
+b = 0;
+a = 0;
+b -= c;  // b is not initialized 
+a += b;  // a is not initialized
+
+return a;
+}
+
+export
+fn test_shift(reg u32 x) -> reg u32 {
+reg u32 y;
+
+y = x;
+y <<= 1;
+return y;
+}
+
+export
+fn test_immediate() -> reg u32 {
+  reg u32 r;
+  r = 42 & 10;
+  return r;
+}

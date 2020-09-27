@@ -1,0 +1,808 @@
+/*** fips202_regular.jazz: File containing the Jasmin wrappers of the functions in the fips202_regular*.jahh files, only used for unit testing ***/
+
+#include "SABER_params.jahh"
+#include "fips202_regular_keccak_absorb_128_32.jahh"
+#include "fips202_regular_keccak_absorb_256_32.jahh"
+#include "fips202_regular_keccak_absorb_256_64.jahh"
+#include "fips202_regular_keccak_absorb_512_64.jahh"
+#include "fips202_regular_keccak_absorb_256_PUBKEYBYTES.jahh"
+#include "fips202_regular_keccak_absorb_256_CCADEC.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+#include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
+#include "fips202_regular_shake128_32_32.jahh"
+#include "fips202_regular_keccak_squeezeblocks_128_KK13N8.jahh"
+#include "fips202_regular_shake128_KK13N8_32.jahh"
+#include "fips202_regular_keccak_squeezeblocks_128_MUNK8.jahh"
+#include "fips202_regular_shake128_MUNK8_32.jahh"
+#include "fips202_regular_keccak_squeezeblocks_256_256.jahh"
+#include "fips202_regular_sha3_256_32.jahh"
+#include "fips202_regular_sha3_256_64.jahh"
+#include "fips202_regular_sha3_256_PUBKEYBYTES.jahh"
+#include "fips202_regular_sha3_256_CCADEC.jahh"
+#include "fips202_regular_keccak_squeezeblocks_512_512.jahh"
+#include "fips202_regular_sha3_512_64.jahh"
+
+/*
+#include "fips202_regular_load64.jahh"
+#include "fips202_regular_store64.jahh"
+*/
+
+// INLEN: SABER_BYTES_CCA_DEC
+export fn sha3_256_CCADEC_jazz(reg u64 outputp, reg u64 inputp) 
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[32] output;
+	stack u8[SABER_BYTES_CCA_DEC] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to 32 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to SABER_BYTES_CCA_DEC {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = sha3_256_CCADEC(output, input);
+
+	outputp = soutputp;
+	
+	for i = 0 to 32 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}	
+}
+
+// INLEN: SABER_INDCPA_PUBLICKEYBYTES
+export fn sha3_256_PUBKEYBYTES_jazz(reg u64 outputp, reg u64 inputp) 
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[32] output;
+	stack u8[SABER_INDCPA_PUBLICKEYBYTES] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to 32 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = sha3_256_PUBKEYBYTES(output, input);
+
+	outputp = soutputp;
+
+	for i = 0 to 32 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}	
+}
+
+// INLEN: 64
+export fn sha3_256_64_jazz(reg u64 outputp, reg u64 inputp) 
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[32] output;
+	stack u8[64] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to 32 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to 64 {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = sha3_256_64(output, input);
+
+	outputp = soutputp;
+
+	for i = 0 to 32 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}	
+}
+
+
+// RATE: SHA3256; OUTLEN: SHA3256
+export fn keccak_squeezeblocks_256_256_jazz(reg u64 hp, reg u64 sp)
+{
+	inline int i;
+
+	reg u8 th;
+
+	reg u64 ts;
+
+	stack u8[SHA3_256_RATE] h;
+
+	stack u64[25] s;
+
+	stack u64 shp;
+	stack u64 ssp;
+
+	// TODO: Technically not necessary to copy, as h is only used as output
+	for i = 0 to SHA3_256_RATE {
+		th = (u8) [hp + i];
+		h[i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	shp = hp;
+	ssp = sp;
+
+	h, s = keccak_squeezeblocks_256_256(h, s);
+
+	hp = shp;
+	sp = ssp;
+
+	for i = 0 to SHA3_256_RATE {
+		th = h[i];
+		(u8) [hp + i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+
+}
+
+// RATE: SHAKE128; OUTLEN: SABER_MU*SABER_N*SABER_K/8
+export fn keccak_squeezeblocks_128_MUNK8_jazz(reg u64 hp, reg u64 sp)
+{
+	inline int i;
+
+	reg u8 th;
+
+	reg u64 ts;
+
+	stack u8[MUNK8] h;
+
+	stack u64[25] s;
+
+	stack u64 shp;
+	stack u64 ssp;
+
+	// TODO: Technically not necessary to copy, as h is only used as output
+	for i = 0 to MUNK8 {
+		th = (u8) [hp + i];
+		h[i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	shp = hp;
+	ssp = sp;
+
+	h, s = keccak_squeezeblocks_128_MUNK8(h, s);
+
+	hp = shp;
+	sp = ssp;
+
+	for i = 0 to MUNK8 {
+		th = h[i];
+		(u8) [hp + i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+
+}
+
+// OUTLEN: KK13N8; INLEN: 32
+export fn shake128_KK13N8_32_jazz(reg u64 outputp, reg u64 inputp) 
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[KK13N8] output;
+	stack u8[32] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to KK13N8 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to 32 {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = shake128_KK13N8_32(output, input);
+
+	outputp = soutputp;
+
+	for i = 0 to KK13N8 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}
+}
+
+// RATE: SHAKE128; OUTLEN: SABER_K * SABER_K * (13 * SABER_N / 8)
+export fn keccak_squeezeblocks_128_KK13N8_jazz(reg u64 hp, reg u64 sp)
+{
+	inline int i;
+
+	reg u8 th;
+
+	reg u64 ts;
+
+	stack u8[KK13N8] h;
+
+	stack u64[25] s;
+
+	stack u64 shp;
+	stack u64 ssp;
+
+	// TODO: Technically not necessary to copy, as h is only used as output
+	for i = 0 to KK13N8 {
+		th = (u8) [hp + i];
+		h[i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	shp = hp;
+	ssp = sp;
+
+	h, s = keccak_squeezeblocks_128_KK13N8(h, s);
+	
+	hp = shp;
+	sp = ssp;
+	
+	for i = 0 to KK13N8 {
+		th = h[i];
+		(u8) [hp + i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// OUTLEN: 32; INLEN: 32
+export fn shake128_32_32_jazz(reg u64 outputp, reg u64 inputp) 
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[32] output;
+	stack u8[32] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to 32 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to 32 {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = shake128_32_32(output, input);
+
+	outputp = soutputp;
+
+	for i = 0 to 32 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}
+}
+
+// RATE: SHAKE128; OUTLEN: SHAKE128
+export fn keccak_squeezeblocks_128_128_jazz(reg u64 hp, reg u64 sp)
+{
+	inline int i;
+
+	reg u8 th;
+
+	reg u64 ts;
+
+	stack u8[SHAKE128_RATE] h;
+
+	stack u64[25] s;
+
+	stack u64 shp;
+	stack u64 ssp;
+
+
+	// TODO: Technically not necessary to copy, as h is only used as output
+	for i = 0 to SHAKE128_RATE {
+		th = (u8) [hp + i];
+		h[i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	shp = hp;
+	ssp = sp;
+
+	h, s = keccak_squeezeblocks_128_128(h, s);
+
+	hp = shp;
+	sp = ssp;
+
+	for i = 0 to SHAKE128_RATE {
+		th = h[i];
+		(u8) [hp + i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// OUTLEN: MUNK8; INLEN: 32
+export fn shake128_MUNK8_32_jazz(reg u64 outputp, reg u64 inputp) 
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[MUNK8] output;
+	stack u8[32] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to MUNK8 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to 32 {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = shake128_MUNK8_32(output, input);
+
+	outputp = soutputp;
+
+	for i = 0 to MUNK8 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}
+}
+
+// RATE: SHA3_256; MLEN: SABER_BYTES_CCA_DEC (1088)
+export fn keccak_absorb_256_CCADEC_jazz(reg u64 sp, reg u64 mp) 
+{
+	inline int i;
+
+	reg u8 tm;
+
+	reg u64 ts;
+
+	stack u8[SABER_BYTES_CCA_DEC] m;
+
+	stack u64[25] s;
+
+	stack u64 ssp;
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	for i = 0 to SABER_BYTES_CCA_DEC {
+		tm = (u8) [mp + i];
+		m[i] = tm;
+	}
+
+	ssp = sp;
+
+	s = keccak_absorb_256_CCADEC(s, m);
+
+	sp = ssp;
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// RATE: SHA3512; OUTLEN: SHA3512
+export fn keccak_squeezeblocks_512_512_jazz(reg u64 hp, reg u64 sp)
+{
+	inline int i;
+
+	reg u8 th;
+
+	reg u64 ts;
+
+	stack u8[SHA3_512_RATE] h;
+
+	stack u64[25] s;
+
+	stack u64 shp;
+	stack u64 ssp;
+
+	// TODO: Technically not necessary to copy, as h is only used as output
+	for i = 0 to SHA3_512_RATE {
+		th = (u8) [hp + i];
+		h[i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	shp = hp;
+	ssp = sp;
+
+	h, s = keccak_squeezeblocks_512_512(h, s);
+
+	hp = shp;
+	sp = ssp;
+	
+	for i = 0 to SHA3_512_RATE {
+		th = h[i];
+		(u8) [hp + i] = th;
+	}
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// RATE: SHA3_512; MLEN: 64
+export fn keccak_absorb_512_64_jazz(reg u64 sp, reg u64 mp) 
+{
+	inline int i;
+
+	reg u8 tm;
+
+	reg u64 ts;
+
+	stack u8[64] m;
+
+	stack u64[25] s;
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	for i = 0 to 64 {
+		tm = (u8) [mp + i];
+		m[i] = tm;
+	}
+
+	s = keccak_absorb_512_64(s, m);
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// RATE: SHA3_256; MLEN: 64
+export fn keccak_absorb_256_64_jazz(reg u64 sp, reg u64 mp) 
+{
+	inline int i;
+
+	reg u8 tm;
+
+	reg u64 ts;
+
+	stack u8[64] m;
+
+	stack u64[25] s;
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	for i = 0 to 64 {
+		tm = (u8) [mp + i];
+		m[i] = tm;
+	}
+
+	s = keccak_absorb_256_64(s, m);
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// RATE: SHA3_256; MLEN: 32
+export fn keccak_absorb_256_32_jazz(reg u64 sp, reg u64 mp) 
+{
+	inline int i;
+
+	reg u8 tm;
+
+	reg u64 ts;
+
+	stack u8[32] m;
+
+	stack u64[25] s;
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	for i = 0 to 32 {
+		tm = (u8) [mp + i];
+		m[i] = tm;
+	}
+
+	s = keccak_absorb_256_32(s, m);
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// RATE: SHAKE128; MLEN: 32
+export fn keccak_absorb_128_32_jazz(reg u64 sp, reg u64 mp) 
+{
+	inline int i;
+
+	reg u8 tm;
+
+	reg u64 ts;
+
+	stack u8[32] m;
+
+	stack u64[25] s;
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	for i = 0 to 32 {
+		tm = (u8) [mp + i];
+		m[i] = tm;
+	}
+
+	s = keccak_absorb_128_32(s, m);
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
+{
+	inline int i;
+	
+	reg u64 t;
+
+	stack u64[25] state;
+
+	for i = 0 to 25 {
+		t = (u64) [statep + 8 * i];
+		state[i] = t;
+	}
+
+	state = KeccakF1600_StatePermute(state);
+
+	for i = 0 to 25 {
+		t = state[i];
+		(u64) [statep + 8 * i] = t;
+	}
+}
+
+
+// RATE: SHA3_256; MLEN: SABER_INDCPA_PUBLICKEYBYTES (992)
+export fn keccak_absorb_256_PUBKEYBYTES_jazz(reg u64 sp, reg u64 mp) 
+{
+	inline int i;
+
+	reg u8 tm;
+
+	reg u64 ts;
+
+	stack u8[SABER_INDCPA_PUBLICKEYBYTES] m;
+
+	stack u64[25] s;
+
+	stack u64 ssp;
+
+	for i = 0 to 25 {
+		ts = (u64) [sp + 8 * i];
+		s[i] = ts;
+	}
+
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		tm = (u8) [mp + i];
+		m[i] = tm;
+	}
+
+	ssp = sp;
+
+	s = keccak_absorb_256_PUBKEYBYTES(s, m);
+
+	sp = ssp;
+
+	for i = 0 to 25 {
+		ts = s[i];
+		(u64) [sp + 8 * i] = ts;
+	}
+}
+
+// INLEN: 32
+export fn sha3_256_32_jazz(reg u64 outputp, reg u64 inputp) 
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[32] output;
+	stack u8[32] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to 32 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to 32 {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = sha3_256_32(output, input);
+
+	outputp = soutputp;
+
+	for i = 0 to 32 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}	
+
+}
+
+export fn sha3_512_64_jazz(reg u64 outputp, reg u64 inputp)
+{
+	
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[64] output;
+	stack u8[64] input;
+
+	stack u64 soutputp;
+
+	// TODO: Technically not necessary to copy, as output is only used as output
+	for i = 0 to 64 {
+		t = (u8) [outputp + i];
+		output[i] = t;
+	}
+
+	for i = 0 to 64 {
+		t = (u8) [inputp + i];
+		input[i] = t;
+	}
+
+	soutputp = outputp;
+
+	output = sha3_512_64(output, input);
+
+	outputp = soutputp;
+	
+	for i = 0 to 64 {
+		t = output[i];
+		(u8) [outputp + i] = t;
+	}	
+}
+
+
+/*
+export fn load64_jazz(reg u64 xp) -> reg u64
+{
+	inline int i;
+
+	reg u8 t;
+
+	reg u64 r;
+
+	stack u8[8] x;
+
+	for i = 0 to 8 {
+		t = (u8) [xp + i];
+		x[i] = t;
+	}
+
+	r = load64(x);
+
+	return r;
+}
+
+export fn store64_jazz(reg u64 xp, reg u64 u)
+{
+	inline int i;
+
+	reg u8 t;
+
+	stack u8[8] x;
+
+	// TODO: technically not necessary, as x is only used as an output array
+	for i = 0 to 8 {
+		t = (u8) [xp + i];
+		x[i] = t;
+	}
+
+	x = store64(x, u);
+
+	for i = 0 to 8 {
+		t = x[i];
+		(u8) [xp + i] = t;
+	}
+}
+*/

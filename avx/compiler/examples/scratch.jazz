@@ -1,0 +1,73 @@
+export
+fn f(reg u64 a, reg u64 b) -> reg u64 {
+reg u64 x;
+reg u64 r;
+reg bool c;
+(c, x) = a + b;
+r = x;
+return r;
+}
+
+export
+fn g(reg u64 x, reg u64 y) -> reg u64 {
+reg bool b;
+reg bool c;
+reg u64 r;
+r = 42;
+b, r += x;
+c, r += y + b;
+return r;
+}
+
+export
+fn h(reg u64 x) -> reg u64 {
+reg u64 r;
+r = x;
+r += 1;
+r += x;
+return r;
+}
+
+export
+fn i(reg u64 x) -> reg u64 {
+reg bool c;
+reg u64 r;
+reg u64 z;
+r = x;
+_, x = x + x;
+c, _ = x + x;
+z = 0;
+_, r += z + c;
+return r;
+}
+
+export
+fn j(reg u64 x) -> reg u64 {
+reg u64 r;
+reg u64 y;
+reg bool b;
+y = x << 2;
+x = y >> 1;
+y = x >>s 1;
+b, y = y + 1;
+r = y;
+return r;
+}
+
+export
+fn k(reg u64 x) -> reg u64 {
+reg u64 a;
+reg u64 b;
+reg u64 c;
+reg u64 d;
+reg u64 e;
+a = 0;
+b = 1;
+c = 2;
+d = 3;
+e = a;
+e += b;
+e += c;
+e += d;
+return e;
+}

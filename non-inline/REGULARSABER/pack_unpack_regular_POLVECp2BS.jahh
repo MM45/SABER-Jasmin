@@ -1,0 +1,64 @@
+/*** pack_unpack_regular_POLVECp2BS.jahh: File containing the Jasmin implementation of the POLVECp2BS function from pack_unpack.c, with (regular) SABER parameters ***/
+
+#ifndef POLVECP2BS_HH
+#define POLVECP2BS_HH
+
+#include "SABER_params.jahh"
+
+fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES]
+{	
+	inline int i;
+	inline int j;
+
+	reg u16 d1;
+	reg u16 d2;
+
+	for i = 0 to SABER_K {
+		for j = 0 to (SABER_N / 4) {
+			// bytes[offset_byte + 0]= ( data[i][ offset_data + 0 ] & (0xff));
+			d1 = data[i * SABER_N + 4 * j];
+			d1 &= 0xff;
+			bytes[i * (SABER_N * 10) / 8 + 5 * j] = (8u) d1;
+
+			// bytes[offset_byte + 1]= ( (data[i][ offset_data + 0 ] >>8) & 0x03 ) | ((data[i][ offset_data + 1 ] & 0x3f) << 2);
+			d1 = data[i * SABER_N + 4 * j];
+			d1 >>= 8;
+			d1 &= 0x03;
+			d2 = data[i * SABER_N + 4 * j + 1];
+			d2 &= 0x3f;
+			d2 <<= 2;
+			d1 |= d2;
+			bytes[i * (SABER_N * 10) / 8 + 5 * j + 1] = (8u) d1;
+
+			// bytes[offset_byte + 2]= ( (data[i][ offset_data + 1 ] >>6) & 0x0f ) | ( (data[i][ offset_data + 2 ] &0x0f) << 4);
+			d1 = data[i * SABER_N + 4 * j + 1];
+			d1 >>= 6;
+			d1 &= 0x0f;
+			d2 = data[i * SABER_N + 4 * j + 2];
+			d2 &= 0x0f;
+			d2 <<= 4;
+			d1 |= d2;
+			bytes[i * (SABER_N * 10) / 8 + 5 * j + 2] = (8u) d1;
+
+			// bytes[offset_byte + 3]= ( (data[i][ offset_data + 2 ] >>4) & 0x3f ) | ((data[i][ offset_data + 3 ] & 0x03) << 6);
+			d1 = data[i * SABER_N + 4 * j + 2];
+			d1 >>= 4;
+			d1 &= 0x3f;
+			d2 = data[i * SABER_N + 4 * j + 3];
+			d2 &= 0x03;
+			d2 <<= 6;
+			d1 |= d2;
+			bytes[i * (SABER_N * 10) / 8 + 5 * j + 3] = (8u) d1;
+
+			// bytes[offset_byte + 4]= ( (data[i][ offset_data + 3 ] >>2) & 0xff );
+			d1 = data[i * SABER_N + 4 * j + 3];
+			d1 >>= 2;
+			d1 &= 0xff;
+			bytes[i * (SABER_N * 10) / 8 + 5 * j + 4] = (8u) d1;
+		}
+	}
+
+	return bytes;
+}
+
+#endif

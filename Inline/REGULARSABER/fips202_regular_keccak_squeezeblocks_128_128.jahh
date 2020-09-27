@@ -1,0 +1,45 @@
+/*** fips202_regular_keccak_squeezeblocks_128_128.jahh: File containing the Jasmin implementation of keccak_squeezeblocks function from fips202.c, where rate == SHAKE128, outlen == SHAKE128 and with (regular) SABER parameters ***/
+
+#ifndef KECCAK_SQUEEZEBLOCKS_128_128_HH
+#define KECCAK_SQUEEZEBLOCKS_128_128_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+
+inline fn keccak_squeezeblocks_128_128(stack u8[SHAKE128_RATE] h, stack u64[25] s) -> stack u8[SHAKE128_RATE], stack u64[25]
+{
+	inline int i;
+	inline int j;
+
+	reg u64 u;
+	reg u64 hp;
+	reg u64 address;
+	reg u64 nblocks;
+
+	nblocks = 1;
+	hp = 0;
+
+	//TODO: nblocks always 1, so simply unroll one iteration of while loop and remove nblocks
+	while (nblocks > 0) {
+		s = KeccakF1600_StatePermute(s);
+
+		for i = 0 to (SHAKE128_RATE / 8) {
+			
+			// store64(h + 8 * i, s[i])
+			u = s[(int) i];
+			for j = 0 to 8 {
+				address = 8  * i;
+				address += hp;
+				address += j;
+				h[(int) address] = (8u) u;
+				u >>= 8;
+			}
+		}
+		hp += SHAKE128_RATE;
+		nblocks -= 1;
+	}
+
+	return h, s;
+}
+
+#endif
