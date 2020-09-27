@@ -14,11 +14,7 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 
 	reg u16 t;
 
-
 	stack u16[SABER_N] acc;
-
-	stack u16[SABER_N] ta;
-	stack u16[SABER_N] tb;
 
 	stack ptr u16[SABER_KKN] sa;
 	stack ptr u16[SABER_KN] sskpv;
@@ -27,20 +23,11 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 	if (transpose == 1) {
 		for i = 0 to SABER_K {
 			for j = 0 to SABER_K {
-				// copy values to argument
-				for k = 0 to SABER_N {
-					t = a[j * SABER_KN + i * SABER_N + k];
-					ta[k] = t;
-
-					t = skpv[j * SABER_N + k];
-					tb[k] = t;
-				}
-				
 				sa = a;
 				sskpv = skpv;
 				sres = res;
 
-				acc = pol_mul_q(ta, tb, acc);
+				acc = pol_mul_q(a[j * SABER_KN + i * SABER_N:SABER_N], skpv[j * SABER_N:SABER_N], acc);
 
 				a = sa;
 				skpv = sskpv;
@@ -59,21 +46,11 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 	} else {
 		for i = 0 to SABER_K {
 			for j = 0 to SABER_K {
-				// copy values to argument
-				for k = 0 to SABER_N {
-					t = a[i * SABER_KN + j * SABER_N + k];
-					ta[k] = t;
-
-
-					t = skpv[j * SABER_N + k];
-					tb[k] = t;
-				}
-				
 				sa = a;
 				sskpv = skpv;
 				sres = res;
 
-				acc = pol_mul_q(ta, tb, acc);
+				acc = pol_mul_q(a[i * SABER_KN + j * SABER_N:SABER_N], skpv[j * SABER_N:SABER_N], acc);
 
 				a = sa;
 				skpv = sskpv;

@@ -19,7 +19,6 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 	reg u16 t16;
 
 	stack u8[KK13N8] buf;
-	stack u8[SABER_POLYBYTES] tbuf;
 
 	stack u16[SABER_N] temp_ar;
 
@@ -35,13 +34,7 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_K {
-			// fill tbuf to pass to BS2POL
-			for k = 0 to SABER_POLYBYTES {
-				t8 = buf[(i * SABER_K + j) * one_vector + k];
-				tbuf[k] = t8;
-			}
-
-			temp_ar = BS2POL(tbuf, temp_ar);
+			temp_ar = BS2POL(buf[(i * SABER_K + j) * one_vector:SABER_POLYBYTES], temp_ar);
 				
 			for k = 0 to SABER_N {
 				t16 = temp_ar[k];

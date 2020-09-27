@@ -18,8 +18,6 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 
 	reg u8 t8;
 
-	stack u8[SABER_POLYVECCOMPRESSEDBYTES] tpk;
-
 	stack u16[SABER_KKN] a;
 	stack u16[SABER_KN] skpv;
 	stack u16[SABER_KN] res;
@@ -31,31 +29,21 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 
 	skpv = GenSecret(skpv, noiseseed);
 
-	for i = 0 to SABER_K {
-		for j = 0 to SABER_N {
-			res[i * SABER_N + j] = 0;
-		}
+	for i = 0 to SABER_KN {
+		res[i] = 0;
 	}
 
 	res = MatrixVectorMul(a, skpv, res, 1);
 
-	for i = 0 to SABER_K {
-		for j = 0 to SABER_N {
-			res[i * SABER_N + j] += h1;
-			res[i * SABER_N + j] &= (SABER_Q - 1);
-			res[i * SABER_N + j] >>= (SABER_EQ - SABER_EP);
-		}
+	for i = 0 to SABER_KN {
+		res[i] += h1;
+		res[i] &= (SABER_Q - 1);
+		res[i] >>= (SABER_EQ - SABER_EP);
 	}
 
 	sk = POLVECq2BS(sk, skpv);
 
-	tpk = POLVECp2BS(tpk, res);
-
-	// copy values of tpk to pk
-	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-		t8 = tpk[i];
-		pk[i] = t8;
-	}
+	pk[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(pk[0:SABER_POLYVECCOMPRESSEDBYTES], res);
 
 	for i = 0 to SABER_SEEDBYTES {
 		t8 = seed[i];

@@ -17,8 +17,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 	reg u32 d;
 	reg u32 tt;
 
-	stack u8[4] bufarg;
-
 	stack u32[4] a;
 	stack u32[4] b;
 
