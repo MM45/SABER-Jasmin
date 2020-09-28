@@ -8,7 +8,6 @@
 
 inline fn keccak_squeezeblocks_512_512(reg ptr u8[SHA3_512_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHA3_512_RATE], reg ptr u64[25]
 {
-
 	inline int i;
 	inline int j;
 

@@ -19,60 +19,21 @@ inline fn crypto_kem_enc_randominc(stack u8[SABER_BYTES_CCA_DEC] c, stack u8[SAB
 
 	stack u8[64] kr;
 	stack u8[64] buf;
-	stack u8[32] tbuf;
-	stack u8[32] tkr;
-
 
 	for i = 0 to 32 {
 		t8 = random_bytes_crypto[i];
 		buf[i] = t8;
 	}
 
-	// copy values from buf to tbuf for sha3 call
-	for i = 0 to 32 {
-		t8 = buf[i];
-		tbuf[i] = t8;
-	}
+	buf[0:32] = sha3_256_32(buf[0:32], buf[0:32]);
 
-	tbuf = sha3_256_32(tbuf, tbuf);
+	buf[32:32] = sha3_256_PUBKEYBYTES(buf[32:32], pk);
 
-	// copy result back to buf
-	for i = 0 to 32 {
-		t8 = tbuf[i];
-		buf[i] = t8;
-	}
-
-	tbuf = sha3_256_PUBKEYBYTES(tbuf, pk);
-
-	// copy result to buf
-	for i = 0 to 32 {
-		t8 = tbuf[i];
-		buf[32 + i] = t8;
-	}
-	
 	kr = sha3_512_64(kr, buf);
 
-	// copy values from buf to tbuf for call to indcpa
-	for i = 0 to 32 {
-		t8 = buf[i];
-		tbuf[i] = t8;
-	}
+	c = indcpa_kem_enc(buf[0:32], kr[32:32], pk, c);
 
-	// copy values from kr to tkr for call to indcpa
-	for i = 0 to 32 {
-		t8 = kr[32 + i];
-		tkr[i] = t8;
-	}
-
-	c = indcpa_kem_enc(tbuf, tkr, pk, c);
-
-	tkr = sha3_256_CCADEC(tkr, c);
-
-	// copy result to kr
-	for i = 0 to 32 {
-		t8 = tkr[i];
-		kr[32 + i] = t8;
-	}
+	kr[32:32] = sha3_256_CCADEC(kr[32:32], c);
 
 	k = sha3_256_64(k, kr);
 

@@ -21,8 +21,6 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
 	stack u64[25] s;
 
-	stack ptr u8[MUNK8] soutput;
-
 	nblocks = MUNK8 / SHAKE128_RATE;
 	handled = nblocks * SHAKE128_RATE;
 	remainder = MUNK8 - handled;

@@ -603,13 +603,7 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
  for i = 0 to SABER_K {
   for j = 0 to SABER_K {
-
-   for k = 0 to SABER_POLYBYTES {
-    t8 = buf[(i * SABER_K + j) * one_vector + k];
-    tbuf[k] = t8;
-   }
-
-   temp_ar = BS2POL(tbuf, temp_ar);
+   temp_ar = BS2POL(buf[(i * SABER_K + j) * one_vector:SABER_POLYBYTES], temp_ar);
 
    for k = 0 to SABER_N {
     t16 = temp_ar[k];
@@ -1155,11 +1149,7 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 
  reg u16 t;
 
-
  stack u16[SABER_N] acc;
-
- stack u16[SABER_N] ta;
- stack u16[SABER_N] tb;
 
  stack ptr u16[SABER_KKN] sa;
  stack ptr u16[SABER_KN] sskpv;
@@ -1168,20 +1158,11 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
  if (transpose == 1) {
   for i = 0 to SABER_K {
    for j = 0 to SABER_K {
-
-    for k = 0 to SABER_N {
-     t = a[j * SABER_KN + i * SABER_N + k];
-     ta[k] = t;
-
-     t = skpv[j * SABER_N + k];
-     tb[k] = t;
-    }
-
     sa = a;
     sskpv = skpv;
     sres = res;
 
-    acc = pol_mul_q(ta, tb, acc);
+    acc = pol_mul_q(a[j * SABER_KN + i * SABER_N:SABER_N], skpv[j * SABER_N:SABER_N], acc);
 
     a = sa;
     skpv = sskpv;
@@ -1200,21 +1181,11 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
  } else {
   for i = 0 to SABER_K {
    for j = 0 to SABER_K {
-
-    for k = 0 to SABER_N {
-     t = a[i * SABER_KN + j * SABER_N + k];
-     ta[k] = t;
-
-
-     t = skpv[j * SABER_N + k];
-     tb[k] = t;
-    }
-
     sa = a;
     sskpv = skpv;
     sres = res;
 
-    acc = pol_mul_q(ta, tb, acc);
+    acc = pol_mul_q(a[i * SABER_KN + j * SABER_N:SABER_N], skpv[j * SABER_N:SABER_N], acc);
 
     a = sa;
     skpv = sskpv;
@@ -1307,8 +1278,6 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
  stack u64[25] s;
 
- stack ptr u8[MUNK8] soutput;
-
  nblocks = MUNK8 / SHAKE128_RATE;
  handled = nblocks * SHAKE128_RATE;
  remainder = MUNK8 - handled;
@@ -1350,8 +1319,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
  reg u32 t32;
  reg u32 d;
  reg u32 tt;
-
- stack u8[4] bufarg;
 
  stack u32[4] a;
  stack u32[4] b;
@@ -1712,8 +1679,6 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 
  reg u8 t8;
 
- stack u8[SABER_POLYVECCOMPRESSEDBYTES] tpk;
-
  stack u16[SABER_KKN] a;
  stack u16[SABER_KN] skpv;
  stack u16[SABER_KN] res;
@@ -1725,31 +1690,21 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 
  skpv = GenSecret(skpv, noiseseed);
 
- for i = 0 to SABER_K {
-  for j = 0 to SABER_N {
-   res[i * SABER_N + j] = 0;
-  }
+ for i = 0 to SABER_KN {
+  res[i] = 0;
  }
 
  res = MatrixVectorMul(a, skpv, res, 1);
 
- for i = 0 to SABER_K {
-  for j = 0 to SABER_N {
-   res[i * SABER_N + j] += h1;
-   res[i * SABER_N + j] &= (SABER_Q - 1);
-   res[i * SABER_N + j] >>= (SABER_EQ - SABER_EP);
-  }
+ for i = 0 to SABER_KN {
+  res[i] += h1;
+  res[i] &= (SABER_Q - 1);
+  res[i] >>= (SABER_EQ - SABER_EP);
  }
 
  sk = POLVECq2BS(sk, skpv);
 
- tpk = POLVECp2BS(tpk, res);
-
-
- for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-  t8 = tpk[i];
-  pk[i] = t8;
- }
+ pk[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(pk[0:SABER_POLYVECCOMPRESSEDBYTES], res);
 
  for i = 0 to SABER_SEEDBYTES {
   t8 = seed[i];
@@ -1924,34 +1879,14 @@ inline fn crypto_kem_keypair_randominc(stack u8[SABER_PUBLICKEYBYTES] pk, stack 
 
  reg u8 t8;
 
- stack u8[SABER_INDCPA_PUBLICKEYBYTES] tpk;
- stack u8[SABER_INDCPA_SECRETKEYBYTES] tsk;
- stack u8[SABER_HASHBYTES] tsha3256hash;
-
- tpk, tsk = indcpa_kem_keypair_randominc(tpk, tsk, indcpa_seed, indcpa_noiseseed);
-
-
- for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
-  t8 = tpk[i];
-  pk[i] = t8;
- }
-
- for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
-  t8 = tsk[i];
-  sk[i] = t8;
- }
+ pk, sk[0:SABER_INDCPA_SECRETKEYBYTES] = indcpa_kem_keypair_randominc(pk, sk[0:SABER_INDCPA_SECRETKEYBYTES], indcpa_seed, indcpa_noiseseed);
 
  for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
   t8 = pk[i];
   sk[i + SABER_INDCPA_SECRETKEYBYTES] = t8;
  }
 
- tsha3256hash = sha3_256_PUBKEYBYTES(tsha3256hash, pk);
-
- for i = 0 to SABER_HASHBYTES {
-  t8 = tsha3256hash[i];
-  sk[SABER_SECRETKEYBYTES - 64 + i] = t8;
- }
+ sk[SABER_SECRETKEYBYTES - 64:SABER_HASHBYTES] = sha3_256_PUBKEYBYTES(sk[SABER_SECRETKEYBYTES - 64:SABER_HASHBYTES], pk);
 
  for i = 0 to SABER_KEYBYTES {
   t8 = random_bytes_crypto[i];
@@ -2381,7 +2316,6 @@ inline fn keccak_absorb_512_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u
 }
 inline fn keccak_squeezeblocks_512_512(reg ptr u8[SHA3_512_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHA3_512_RATE], reg ptr u64[25]
 {
-
  inline int i;
  inline int j;
 
@@ -2564,28 +2498,16 @@ inline fn InnerProd(reg ptr u16[SABER_KN] pkcl, reg ptr u16[SABER_KN] skpv, reg 
 
  stack u16[SABER_N] acc;
 
- stack u16[SABER_N] ta;
- stack u16[SABER_N] tb;
-
  stack ptr u16[SABER_KN] spkcl;
  stack ptr u16[SABER_KN] sskpv;
  stack ptr u16[SABER_N] sres;
 
  for j = 0 to SABER_K {
-
-  for k = 0 to SABER_N {
-   t = pkcl[j * SABER_N + k];
-   ta[k] = t;
-
-   t = skpv[j * SABER_N + k];
-   tb[k] = t;
-  }
-
   spkcl = pkcl;
   sskpv = skpv;
   sres = res;
 
-  acc = pol_mul_p(ta, tb, acc);
+  acc = pol_mul_p(pkcl[j * SABER_N:SABER_N], skpv[j * SABER_N:SABER_N], acc);
 
   pkcl = spkcl;
   skpv = sskpv;
@@ -2593,8 +2515,10 @@ inline fn InnerProd(reg ptr u16[SABER_KN] pkcl, reg ptr u16[SABER_KN] skpv, reg 
 
   for k = 0 to SABER_N {
    t = acc[k];
+
    res[k] += t;
    res[k] &= (SABER_P - 1);
+
    acc[k] = 0;
   }
  }
@@ -2615,8 +2539,6 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
  stack u8[SABER_SEEDBYTES] seed;
  stack u8[SABER_SCALEBYTES_KEM] msk_c;
- stack u8[SABER_POLYVECCOMPRESSEDBYTES] tcipher;
- stack u8[SABER_POLYVECCOMPRESSEDBYTES] tpk;
 
  stack u16[SABER_KKN] a;
  stack u16[SABER_KN] pkcl;
@@ -2635,46 +2557,28 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
  skpv1 = GenSecret(skpv1, noiseseed);
 
- for i = 0 to SABER_K {
-  for j = 0 to SABER_N {
-   res[i * SABER_N + j] = 0;
-  }
+ for i = 0 to SABER_KN {
+  res[i] = 0;
  }
 
  res = MatrixVectorMul(a, skpv1, res, 0);
 
- for i = 0 to SABER_K {
-  for j = 0 to SABER_N {
-   res[i * SABER_N + j] += h1;
-   res[i * SABER_N + j] &= (SABER_Q - 1);
-   res[i * SABER_N + j] >>= (SABER_EQ - SABER_EP);
-  }
+ for i = 0 to SABER_KN {
+  res[i] += h1;
+  res[i] &= (SABER_Q - 1);
+  res[i] >>= (SABER_EQ - SABER_EP);
  }
 
- tcipher = POLVECp2BS(tcipher, res);
+ ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], res);
 
-
- for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-  t8 = tcipher[i];
-  ciphertext[i] = t8;
- }
-
-
- for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-  t8 = pk[i];
-  tpk[i] = t8;
- }
-
- pkcl = BS2POLVECp(tpk, pkcl);
+ pkcl = BS2POLVECp(pk[0:SABER_POLYVECCOMPRESSEDBYTES], pkcl);
 
  for i = 0 to SABER_N {
   vprime[i] = 0;
  }
 
- for i = 0 to SABER_K {
-  for j = 0 to SABER_N {
-   skpv1[i * SABER_N + j] &= (SABER_P - 1);
-  }
+ for i = 0 to SABER_KN {
+  skpv1[i] &= (SABER_P - 1);
  }
 
  vprime = InnerProd(pkcl, skpv1, vprime);
@@ -2725,60 +2629,21 @@ inline fn crypto_kem_enc_randominc(stack u8[SABER_BYTES_CCA_DEC] c, stack u8[SAB
 
  stack u8[64] kr;
  stack u8[64] buf;
- stack u8[32] tbuf;
- stack u8[32] tkr;
-
 
  for i = 0 to 32 {
   t8 = random_bytes_crypto[i];
   buf[i] = t8;
  }
 
+ buf[0:32] = sha3_256_32(buf[0:32], buf[0:32]);
 
- for i = 0 to 32 {
-  t8 = buf[i];
-  tbuf[i] = t8;
- }
-
- tbuf = sha3_256_32(tbuf, tbuf);
-
-
- for i = 0 to 32 {
-  t8 = tbuf[i];
-  buf[i] = t8;
- }
-
- tbuf = sha3_256_PUBKEYBYTES(tbuf, pk);
-
-
- for i = 0 to 32 {
-  t8 = tbuf[i];
-  buf[32 + i] = t8;
- }
+ buf[32:32] = sha3_256_PUBKEYBYTES(buf[32:32], pk);
 
  kr = sha3_512_64(kr, buf);
 
+ c = indcpa_kem_enc(buf[0:32], kr[32:32], pk, c);
 
- for i = 0 to 32 {
-  t8 = buf[i];
-  tbuf[i] = t8;
- }
-
-
- for i = 0 to 32 {
-  t8 = kr[32 + i];
-  tkr[i] = t8;
- }
-
- c = indcpa_kem_enc(tbuf, tkr, pk, c);
-
- tkr = sha3_256_CCADEC(tkr, c);
-
-
- for i = 0 to 32 {
-  t8 = tkr[i];
-  kr[32 + i] = t8;
- }
+ kr[32:32] = sha3_256_CCADEC(kr[32:32], c);
 
  k = sha3_256_64(k, kr);
 
@@ -2986,32 +2851,22 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 
  reg u16 t16;
 
- stack u8[SABER_POLYVECCOMPRESSEDBYTES] tciphertext;
  stack u8[SABER_SCALEBYTES_KEM] scale_ar;
 
  stack u16[SABER_KN] sksv;
  stack u16[SABER_KN] pksv;
  stack u16[SABER_N] v;
  stack u16[SABER_N] op;
-
-
- for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-  t8 = ciphertext[i];
-  tciphertext[i] = t8;
- }
-
  sksv = BS2POLVECq(sk, sksv);
 
- pksv = BS2POLVECp(tciphertext, pksv);
+ pksv = BS2POLVECp(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], pksv);
 
  for i = 0 to SABER_N {
   v[i] = 0;
  }
 
- for i = 0 to SABER_K {
-  for j = 0 to SABER_N {
-   sksv[i * SABER_N + j] &= (SABER_P - 1);
-  }
+ for i = 0 to SABER_KN {
+  sksv[i] &= (SABER_P - 1);
  }
 
  v = InnerProd(pksv, sksv, v);
@@ -3114,31 +2969,8 @@ inline fn crypto_kem_dec(stack u8[SABER_HASHBYTES] k, stack u8[SABER_BYTES_CCA_D
  stack u8[SABER_BYTES_CCA_DEC] cmp;
  stack u8[64] buf;
  stack u8[64] kr;
- stack u8[SABER_KEYBYTES] tbuf;
- stack u8[32] tkr;
- stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk;
- stack u8[SABER_KEYBYTES] tsk;
- stack u8[SABER_INDCPA_SECRETKEYBYTES] realsk;
 
-
- for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
-  t8 = sk[i];
-  realsk[i] = t8;
- }
-
-
- for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
-  t8 = sk[SABER_INDCPA_SECRETKEYBYTES + i];
-  pk[i] = t8;
- }
-
- tbuf = indcpa_kem_dec(realsk, c, tbuf);
-
-
- for i = 0 to SABER_KEYBYTES {
-  t8 = tbuf[i];
-  buf[i] = t8;
- }
+ buf[0:SABER_KEYBYTES] = indcpa_kem_dec(sk[0:SABER_INDCPA_SECRETKEYBYTES], c, buf[0:SABER_KEYBYTES]);
 
  for i = 0 to 32 {
   t8 = sk[SABER_SECRETKEYBYTES - 64 + i];
@@ -3147,51 +2979,15 @@ inline fn crypto_kem_dec(stack u8[SABER_HASHBYTES] k, stack u8[SABER_BYTES_CCA_D
 
  kr = sha3_512_64(kr, buf);
 
-
- for i = 0 to SABER_KEYBYTES {
-  t8 = buf[i];
-  tbuf[i] = t8;
- }
-
-
- for i = 0 to 32 {
-  t8 = kr[32 + i];
-  tkr[i] = t8;
- }
-
- cmp = indcpa_kem_enc(tbuf, tkr, pk, cmp);
+ cmp = indcpa_kem_enc(buf[0:SABER_KEYBYTES], kr[32:32], sk[SABER_INDCPA_SECRETKEYBYTES:SABER_INDCPA_PUBLICKEYBYTES], cmp);
 
  fail = verify(c, cmp);
 
- tkr = sha3_256_CCADEC(tkr, c);
-
-
- for i = 0 to 32 {
-  t8 = tkr[i];
-  kr[32 + i] = t8;
- }
-
-
- for i = 0 to SABER_KEYBYTES {
-  t8 = kr[i];
-  tkr[i] = t8;
- }
-
-
- for i = 0 to SABER_KEYBYTES {
-  t8 = sk[(SABER_SECRETKEYBYTES - SABER_KEYBYTES) + i];
-  tsk[i] = t8;
- }
+ kr[32:32] = sha3_256_CCADEC(kr[32:32], c);
 
  t8 = (8u) fail;
 
- tkr = cmov(tkr, tsk, t8);
-
-
- for i = 0 to 32 {
-  t8 = tkr[i];
-  kr[i] = t8;
- }
+ kr[0:SABER_KEYBYTES] = cmov(kr[0:SABER_KEYBYTES], sk[(SABER_SECRETKEYBYTES - SABER_KEYBYTES):SABER_KEYBYTES], t8);
 
  k = sha3_256_64(k, kr);
 
