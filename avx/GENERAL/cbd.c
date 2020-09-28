@@ -6,11 +6,11 @@ by : Joppe Bos, Leo Ducas, Eike Kiltz, Tancrede Lepoint,
 Vadim Lyubashevsky, John M. Schanck, Peter Schwabe & Damien stehle
 ----------------------------------------------------------------------*/
 
-#include <stdint.h>
+#include "api.h"
+#include<stdint.h>
 #include "SABER_params.h"
 
-// TODO: Removed static modifier for unit test purposes  
-uint64_t load_littleendian(const unsigned char *x, int bytes)
+static uint64_t load_littleendian(const unsigned char *x, int bytes)
 {
   int i;
   uint64_t r = x[0];

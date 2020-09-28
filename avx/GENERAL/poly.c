@@ -5,26 +5,39 @@ of "CRYSTALS – Kyber: a CCA-secure module-lattice-based KEM"
 by : Joppe Bos, Leo Ducas, Eike Kiltz, Tancrede Lepoint, 
 Vadim Lyubashevsky, John M. Schanck, Peter Schwabe & Damien stehle
 ----------------------------------------------------------------------*/
+
 #include <stdio.h>
 #include "poly.h"
 #include "cbd.h"
 #include "fips202.h"
+#include "fips202x4.h"
+#include "crypto_stream.h"
 
+void poly_getnoise(uint16_t *r,const unsigned char *seed, unsigned char nonce)
+{
+  unsigned char buf[SABER_N];
 
+  cshake128_simple(buf,SABER_N,nonce,seed,SABER_NOISESEEDBYTES);
 
-void GenSecret(uint16_t r[SABER_K][SABER_N],const unsigned char *seed){
-
-
-		uint32_t i;
-
-		int32_t buf_size= SABER_MU*SABER_N*SABER_K/8;
-
-		uint8_t buf[buf_size];
-
-		shake128(buf, buf_size, seed,SABER_NOISESEEDBYTES);
-
-		for(i=0;i<SABER_K;i++)
-		{
-			cbd(r[i],buf+i*SABER_MU*SABER_N/8);
-		}
+  cbd( r, buf);
 }
+
+
+void poly_getnoise4x(uint16_t *r0, uint16_t *r1, uint16_t *r2, const unsigned char *seed, unsigned char nonce0, unsigned char nonce1, unsigned char nonce2, unsigned char nonce3)
+{
+  uint16_t nblocks=2;
+  unsigned char buf0[SHAKE128_RATE*nblocks];
+  unsigned char buf1[SHAKE128_RATE*nblocks];
+  unsigned char buf2[SHAKE128_RATE*nblocks];
+  unsigned char buf3[SHAKE128_RATE*nblocks];
+
+  cshake128_simple4x(buf0,buf1,buf2,buf3,SHAKE128_RATE*nblocks,nonce0,nonce1,nonce2,nonce3,seed,SABER_NOISESEEDBYTES);
+
+  	
+  cbd( r0, buf0);
+  cbd( r1, buf1);
+  cbd( r2, buf2);
+}
+
+
+

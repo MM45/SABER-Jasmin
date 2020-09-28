@@ -12,6 +12,12 @@ Vadim Lyubashevsky, John M. Schanck, Peter Schwabe & Damien stehle
 #include <stdint.h>
 #include "SABER_params.h"
 
+uint64_t clock_mul, clock_matrix, clock_secret, count_mul;
+
+uint64_t clock_mv_vv_mul;
+
+uint64_t count_enc;
+
 typedef struct
 {
   uint16_t coeffs[SABER_N];
@@ -21,8 +27,9 @@ typedef struct{
   poly vec[SABER_K];
 } polyvec;
 
-void GenSecret(uint16_t r[SABER_K][SABER_N],const unsigned char *seed);
+void poly_getnoise(uint16_t *r,const unsigned char *seed, unsigned char nonce);
 
-void GenSecret_jazz(uint16_t r[SABER_K][SABER_N],const unsigned char *seed);
+void poly_getnoise4x(uint16_t *r0, uint16_t *r1, uint16_t *r2, const unsigned char *seed, unsigned char nonce0, unsigned char nonce1, unsigned char nonce2, unsigned char nonce3);
+
 
 #endif

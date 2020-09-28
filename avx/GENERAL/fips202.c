@@ -12,8 +12,7 @@
 #define NROUNDS 24
 #define ROL(a, offset) ((a << offset) ^ (a >> (64-offset)))
 
-// TODO: removed static modifier for unit test purposes
-uint64_t load64(const unsigned char *x)
+static uint64_t load64(const unsigned char *x)
 {
   unsigned long long r = 0, i;
 
@@ -23,8 +22,7 @@ uint64_t load64(const unsigned char *x)
   return r;
 }
 
-// TODO: removed static modifier for unit test purposes
-void store64(uint8_t *x, uint64_t u)
+static void store64(uint8_t *x, uint64_t u)
 {
   unsigned int i;
 
@@ -333,8 +331,7 @@ void KeccakF1600_StatePermute(uint64_t * state)
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 
-// TODO: removed static modifier for unit test purposes
-void keccak_absorb(uint64_t *s,
+static void keccak_absorb(uint64_t *s,
                           unsigned int r,
                           const unsigned char *m, unsigned long long int mlen,
                           unsigned char p)
@@ -364,8 +361,8 @@ void keccak_absorb(uint64_t *s,
     s[i] ^= load64(t + 8 * i);
 }
 
-// TODO: removed static modifier for unit test purposes
-void keccak_squeezeblocks(unsigned char *h, unsigned long long int nblocks,
+
+static void keccak_squeezeblocks(unsigned char *h, unsigned long long int nblocks,
                                  uint64_t *s, 
                                  unsigned int r)
 {
