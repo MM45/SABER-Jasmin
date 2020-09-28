@@ -1,9 +1,0 @@
-u64 __38 = 38;
-
-export
-fn main(reg u64 x) -> reg u64 {
-reg u64 r;
-r = x;
-r *= __38;
-return r;
-}

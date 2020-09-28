@@ -1,6 +1,0 @@
-export
-fn identity(reg u64 x) -> reg u64 {
-	reg u64 r;
-	r = x;
-	return r;
-}

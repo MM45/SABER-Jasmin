@@ -1,6 +1,0 @@
-export
-fn zero() -> reg u64 {
-reg u64 z;
-z = 0;
-return z;
-}
