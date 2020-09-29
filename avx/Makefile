@@ -1,5 +1,5 @@
 CC = /usr/bin/gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -g -mavx2
 LDFLAGS = -lssl -lcrypto
 JASMIN = ../compiler/jasminc
 JFLAGS = -lea -pasm ${JADDFLAGS}
@@ -31,7 +31,6 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp \
 				${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECq \
 				${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POL \
-				${REGULARDIRECTORY}/test/test_cbd_regular_load_littleendian \
 				${REGULARDIRECTORY}/test/test_cbd_regular_cbd \
 				${REGULARDIRECTORY}/test/test_poly_mul_regular_karatsuba_simple \
 				${REGULARDIRECTORY}/test/test_poly_mul_regular_toom_cook_4way \
@@ -40,8 +39,6 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_MatrixVectorMul \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_InnerProd \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG \
-				${REGULARDIRECTORY}/test/test_fips202_regular_load64 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_store64 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_KeccakF1600_StatePermute \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_128_32 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_32 \
@@ -65,6 +62,8 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64 \
 				${REGULARDIRECTORY}/test/test_poly_regular_GenSecret \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix \
+				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret \
+				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_BS2POLq \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_keypair_randominc \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_enc \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_dec \
@@ -218,7 +217,6 @@ clean:
 	-rm	${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECq 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POL
-	-rm ${REGULARDIRECTORY}/test/test_cbd_regular_load_littleendian
 	-rm ${REGULARDIRECTORY}/test/test_cbd_regular_cbd
 	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_karatsuba_simple 
 	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_toom_cook_4way 
@@ -248,10 +246,10 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_PUBKEYBYTES 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_CCADEC 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_load64
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_store64
 	-rm ${REGULARDIRECTORY}/test/test_poly_regular_GenSecret 
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix
+	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret
+	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_BS2POLq
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_keypair_randominc
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_enc
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_dec

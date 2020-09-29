@@ -5,7 +5,7 @@
 
 #include "SABER_params.jahh"
 #include "fips202_regular_shake128_KK13N8_32.jahh"
-#include "pack_unpack_regular_BS2POL.jahh"
+#include "SABER_indcpa_regular_BS2POLq.jahh"
 
 fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
@@ -34,7 +34,7 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_K {
-			temp_ar = BS2POL(buf[(i * SABER_K + j) * one_vector:SABER_POLYBYTES], temp_ar);
+			temp_ar = BS2POLq(buf[(i * SABER_K + j) * one_vector:SABER_POLYBYTES], temp_ar);
 				
 			for k = 0 to SABER_N {
 				t16 = temp_ar[k];

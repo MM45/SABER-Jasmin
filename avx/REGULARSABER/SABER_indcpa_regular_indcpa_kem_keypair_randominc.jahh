@@ -6,44 +6,108 @@
 #include "SABER_params.jahh"
 #include "fips202_regular_shake128_32_32.jahh"
 #include "SABER_indcpa_regular_GenMatrix.jahh"
-#include "SABER_indcpa_regular_MatrixVectorMul.jahh"
-#include "poly_regular_GenSecret.jahh"
+#include "SABER_indcpa_regular_GenSecret.jahh"
 #include "pack_unpack_regular_POLVECq2BS.jahh"
 #include "pack_unpack_regular_POLVECp2BS.jahh"
+
+inline fn load_256(reg u256 r, stack u16[16] buf) -> reg u256
+{
+	inline int i;
+
+	reg u256 t256;
+
+	r = (256u) buf[0];
+	for i = 1 to 16 {
+		t256 = (256u) buf[i];
+		t256 <<= 16 * i;
+		r |= t256;
+	}
+
+	return r;
+}
+
+inline fn store_256(reg u256 r, stack u16[16] buf) -> stack u16[16]
+{
+	inline int i;
+
+	for i = 0 to 16 {
+		buf[i] = (16u) r;
+		r >>= 16;
+	}
+
+	return r;
+}
 
 inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_SEEDBYTES] seed, stack u8[SABER_COINBYTES] noiseseed) -> stack u8[SABER_INDCPA_PUBLICKEYBYTES], stack u8[SABER_INDCPA_SECRETKEYBYTES]
 {
 	inline int i;
 	inline int j;
+	inline int k;
 
 	reg u8 t8;
 
+	reg u256 mod;
+	reg u256 mask_load;
+	reg u256 H1_avx;
+	reg u256 H2_avx;
+	reg u256 floor_round;
+	reg u256 t256;
+
 	stack u16[SABER_KKN] a;
-	stack u16[SABER_KN] skpv;
-	stack u16[SABER_KN] res;
+	stack u16[SABER_KN] skpv1;
+
+	stack u256[SABER_KKN / 16] a_avx;
+	stack u256[SABER_KN / 16] sk_avx;
+	stack u256[SABER_KN / 16] res_avx;
+	stack u256[SABER_K * 64] b_bucket;
+
+	mask_load = #VPBROADCAST_4u64(0xFFFFFFFF);
+
+	mod = #VPBROADCAST_16u16(SABER_Q - 1);
+	floor_round = #VPBROADCAST_16u16(4);
+	H1_avx = #VPBROADCAST_16u16(h1);
 
 
 	seed = shake128_32_32(seed, seed);
 
 	a = GenMatrix(a, seed);
 
-	skpv = GenSecret(skpv, noiseseed);
+	skpv1 = GenSecret(skpv1, noiseseed);
 
-	for i = 0 to SABER_KN {
-		res[i] = 0;
+	for i = 0 to SABER_K {
+		for j = 0 to SABER_N / 16 {
+			t256 = load_256(t256, skpv1[i * SABER_N + j * 16:16]);
+			sk_avx[i * SABER_N + j] = t256;
+		}
 	}
 
-	res = MatrixVectorMul(a, skpv, res, 1);
-
-	for i = 0 to SABER_KN {
-		res[i] += h1;
-		res[i] &= (SABER_Q - 1);
-		res[i] >>= (SABER_EQ - SABER_EP);
+	for i = 0 to SABER_K {
+		for j = 0 to SABER_K {
+			for k = 0 to SABER_N / 16 {
+				t256 = load_256(t256, a[i * SABER_KN + j * SABER_N + k * 16:16]);
+				a_avx[i * SABER_KN + j * SABER_N + k] = t256;
+			}
+		}
 	}
 
-	sk = POLVECq2BS(sk, skpv);
+	//res = MatrixVectorMul(a, skpv, res, 1);
 
-	pk[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(pk[0:SABER_POLYVECCOMPRESSEDBYTES], res);
+	for i = 0 to SABER_KN / 16 {
+		res_avx[i] +16u16= H1_avx;
+		res_avx[i] &16u16= (SABER_Q - 1);
+		res_avx[i] >>16u16= (SABER_EQ - SABER_EP);
+	}
+
+	sk = POLVECq2BS(sk, skpv1);
+
+	for i = 0 to SABER_K {
+		for j = 0 to SABER_N / 16 {
+			t256 = res_avx[i * SABER_N  + j];
+			skpv1[i * SABER_N + j * 16:16] = store_256(t256, skpv1[i * SABER_N + j * 16:16])
+		}
+	}
+
+	pk[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(pk[0:SABER_POLYVECCOMPRESSEDBYTES], skpv1);
 
 	for i = 0 to SABER_SEEDBYTES {
 		t8 = seed[i];

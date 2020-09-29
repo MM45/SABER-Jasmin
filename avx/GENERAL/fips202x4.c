@@ -1,6 +1,7 @@
 #include <immintrin.h>
 #include <stdint.h>
 #include <assert.h>
+#include "keccak4x/KeccakP-1600-times4-SnP.h"
 #include "fips202.h"
 
 #define NROUNDS 24
@@ -27,7 +28,7 @@ static void store64(uint8_t *x, uint64_t u)
 }
 
 /* Use implementation from the Keccak Code Package */
-extern void KeccakP1600times4_PermuteAll_24rounds(__m256i *s);
+//extern void KeccakP1600times4_PermuteAll_24rounds(__m256i *s);
 #define KeccakF1600_StatePermute4x KeccakP1600times4_PermuteAll_24rounds
 
 

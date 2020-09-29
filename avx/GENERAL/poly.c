@@ -11,7 +11,6 @@ Vadim Lyubashevsky, John M. Schanck, Peter Schwabe & Damien stehle
 #include "cbd.h"
 #include "fips202.h"
 #include "fips202x4.h"
-#include "crypto_stream.h"
 
 void poly_getnoise(uint16_t *r,const unsigned char *seed, unsigned char nonce)
 {

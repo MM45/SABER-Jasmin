@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #include "SABER_params.h"
-#include "../../GENERAL/poly.h"
+#include "../../GENERAL/SABER_indcpa.h"
 #include "randomtestdata.h"
 
 int main()

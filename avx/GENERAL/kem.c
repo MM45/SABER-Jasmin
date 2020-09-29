@@ -12,15 +12,15 @@
 
 int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
 {
-  uint64_t CLOCK1, CLOCK2;
+  //uint64_t CLOCK1, CLOCK2;
   int i;
 
-  CLOCK1=cpucycles(); 
+  //CLOCK1=cpucycles(); 
   indcpa_kem_keypair(pk, sk);					      // sk[0:SABER_INDCPA_SECRETKEYBYTES-1] <-- sk
-  CLOCK2=cpucycles(); 
-  clock_kp_kex= clock_kp_kex + (CLOCK2-CLOCK1);
+  //CLOCK2=cpucycles(); 
+  //clock_kp_kex= clock_kp_kex + (CLOCK2-CLOCK1);
 
-  CLOCK1=cpucycles(); 
+  //CLOCK1=cpucycles(); 
   for(i=0;i<SABER_INDCPA_PUBLICKEYBYTES;i++)
     sk[i+SABER_INDCPA_SECRETKEYBYTES] = pk[i];			      // sk[SABER_INDCPA_SECRETKEYBYTES:SABER_INDCPA_SECRETKEYBYTES+SABER_INDCPA_SECRETKEYBYTES-1] <-- pk	
   //memcpy(sk+SABER_INDCPA_SECRETKEYBYTES, pk, SABER_INDCPA_PUBLICKEYBYTES);
@@ -28,15 +28,15 @@ int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
 
   randombytes(sk+SABER_SECRETKEYBYTES-SABER_KEYBYTES , SABER_KEYBYTES );    // Remaining part of sk contains a pseudo-random number. 
 								      	    // This is output when check in crypto_kem_dec() fails. 
-  CLOCK2=cpucycles(); 
-  clock_kp_temp= clock_kp_temp + (CLOCK2-CLOCK1);
+  //CLOCK2=cpucycles(); 
+  //clock_kp_temp= clock_kp_temp + (CLOCK2-CLOCK1);
 
   return(0);	
 }
 
 int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
 {
-  uint64_t CLOCK1, CLOCK2;
+  //uint64_t CLOCK1, CLOCK2;
   unsigned char kr[64];                             	  // Will contain key, coins
   unsigned char buf[64];                          
 
@@ -49,10 +49,10 @@ int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
   sha3_512(kr, buf, 64);				// kr[0:63] <-- Hash(buf[0:63]);  	
 							  								// K^ <-- kr[0:31]
 							  								// noiseseed (r) <-- kr[32:63];	
-  CLOCK1=cpucycles();
+  //CLOCK1=cpucycles();
   indcpa_kem_enc(buf, kr+32, pk,  c);	// buf[0:31] contains message; kr[32:63] contains randomness r;
-  CLOCK2=cpucycles();
-  clock_enc_kex= clock_enc_kex + (CLOCK2-CLOCK1);
+  //CLOCK2=cpucycles();
+  //clock_enc_kex= clock_enc_kex + (CLOCK2-CLOCK1);
 
   sha3_256(kr+32, c, SABER_BYTES_CCA_DEC);              
 
