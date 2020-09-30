@@ -429,7 +429,7 @@ void indcpa_kem_enc(unsigned char *message_received, unsigned char *noiseseed, c
 		seed[i]=pk[ SABER_POLYVECCOMPRESSEDBYTES + i]; 
 	}
 
-	count_enc++;
+	//count_enc++;
 	//CLOCK1=cpucycles();
 	GenMatrix(a, seed);
 	//CLOCK2=cpucycles();
