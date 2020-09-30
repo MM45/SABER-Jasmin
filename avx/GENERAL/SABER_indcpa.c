@@ -501,9 +501,9 @@ void indcpa_kem_enc(unsigned char *message_received, unsigned char *noiseseed, c
 	}
 
 	// InnerProduct
-	//for(k=0;k<SABER_N/16;k++){
-	//	vprime_avx[k]=_mm256_xor_si256(vprime_avx[k],vprime_avx[k]);
-	//}
+	for(k=0;k<SABER_N/16;k++){
+		vprime_avx[k]=_mm256_xor_si256(vprime_avx[k],vprime_avx[k]);
+	}
 
 	// vector-vector scalar multiplication with mod p
 	/*

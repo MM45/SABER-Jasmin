@@ -6,8 +6,8 @@
 //#include "SABER_indcpa_regular_POL2MSG.jahh"
 //#include "SABER_indcpa_regular_GenMatrix.jahh"
 #include "SABER_indcpa_regular_indcpa_kem_keypair_randominc.jahh"
-//#include "SABER_indcpa_regular_indcpa_kem_enc.jahh"
-//#include "SABER_indcpa_regular_indcpa_kem_dec.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_enc.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_dec.jahh"
 //#include "SABER_indcpa_regular_GenSecret.jahh"
 //#include "SABER_indcpa_regular_BS2POLq.jahh"
 
@@ -291,7 +291,7 @@ export fn indcpa_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 se
 }
 
 
-/*
+
 export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg u64 pkp, reg u64 ciphertextp)
 {
 	inline int i;
@@ -337,8 +337,8 @@ export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg
 	}
 }
 
-*/
-/*
+
+
 export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_decp)
 {
 	inline int i;
@@ -377,4 +377,4 @@ export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_
 		(u8) [message_decp + i] = t8;
 	}
 }
-*/
+

@@ -27,14 +27,6 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 	stack u16[SABER_N] v;	
 	stack u16[SABER_N] op;
 
-/*
-	// copy values from ciphertext to tciphertext for call to BS2POLVECq
-	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-		t8 = ciphertext[i];
-		tciphertext[i] = t8;
-	}
-*/
-
 	sksv = BS2POLVECq(sk, sksv);
 
 	pksv = BS2POLVECp(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], pksv);

@@ -139,6 +139,9 @@ ${REGULARDIRECTORY}/test/test_poly_regular_%: ${REGULARDIRECTORY}/test/test_poly
 ${REGULARDIRECTORY}/test/test_kem_regular_%: ${REGULARDIRECTORY}/test/test_kem_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s
 	${CC} ${CFLAGS} -iquote ${REGULARDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
 
+${REGULARDIRECTORY}/test/test_auxilliary_%: ${REGULARDIRECTORY}/test/test_auxilliary_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jauxilliary.s
+	${CC} ${CFLAGS} -iquote ${REGULARDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jauxilliary.s $< ${LDFLAGS}
+
 
 ${REGULARDIRECTORY}/speed/speed_kem_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s
 	${CC} ${CFLAGS} -iquote ${REGULARDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
@@ -166,6 +169,9 @@ ${REGULARDIRECTORY}/poly_regular.japp: ${REGULARDIRECTORY}/poly_regular.jazz ${J
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
 ${REGULARDIRECTORY}/kem_regular.japp: ${REGULARDIRECTORY}/kem_regular.jazz ${JHEADERSREGULAR}
+	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
+
+${REGULARDIRECTORY}/auxilliary.japp: ${REGULARDIRECTORY}/auxilliary.jazz ${JHEADERSREGULAR}
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
 

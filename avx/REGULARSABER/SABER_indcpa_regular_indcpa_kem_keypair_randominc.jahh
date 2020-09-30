@@ -9,35 +9,8 @@
 #include "SABER_indcpa_regular_GenSecret.jahh"
 #include "pack_unpack_regular_POLVECq2BS.jahh"
 #include "pack_unpack_regular_POLVECp2BS.jahh"
-
-inline fn load_16u16(reg u256 r, stack u16[16] buf) -> reg u256
-{
-	inline int i;
-
-	reg u256 t256;
-
-	t256 = (256u) buf[0];
-	t256 <<= 16 * 15;
-	r = t256;
-	for i = 1 to 16 {
-		t256 = (256u) buf[i];
-		t256 <<= 16 * (15 - i);
-		r |= t256;
-	}
-
-	return r;
-}
-
-inline fn store_16u16(reg u256 r, stack u16[16] buf) -> stack u16[16]
-{
-	inline int i;
-
-	for i = 0 to 16 {
-		buf[i] = #VPEXTR_16(r, i);
-	}
-
-	return buf;
-}
+#include "auxilliary_load_16u16.jahh"
+#include "auxilliary_store_16u16.jahh"
 
 inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_SEEDBYTES] seed, stack u8[SABER_COINBYTES] noiseseed) -> stack u8[SABER_INDCPA_PUBLICKEYBYTES], stack u8[SABER_INDCPA_SECRETKEYBYTES]
 {

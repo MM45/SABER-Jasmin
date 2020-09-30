@@ -1,0 +1,44 @@
+/*** auxilliary.jazz: File containing the Jasmin wrappers of the functions in the auxilliary_*.jahh files, only used for unit testing ***/
+
+#include "auxilliary_load_16u16.jahh"
+#include "auxilliary_store_16u16.jahh"
+
+export fn load_16u16_jazz(reg u64 bufp) -> reg u256
+{
+	inline int i;
+
+	reg u16 t16;
+
+	reg u256 r;
+
+	stack u16[16] buf;
+
+	for i = 0 to 16 {
+		t16 = (u16) [bufp + 2 * i];
+		buf[i] = t16;
+	}
+
+	r = load_16u16(r, buf);
+
+	return r;
+}
+
+export fn store_16u16_jazz(reg u64 rp, reg u64 bufp)
+{
+	inline int i;
+
+	reg u16 t16;
+
+	reg u256 r;
+
+	stack u16[16] buf;
+	
+	r = (u256) [rp]; 
+
+	buf = store_16u16(r, buf);
+
+	for i = 0 to 16 {
+		t16 = buf[i];
+		(u16) [bufp + 2 * i] = t16;
+	}
+}

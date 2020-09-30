@@ -1,0 +1,172 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+param int CRYPTO_SECRETKEYBYTES = 2304;
+param int CRYPTO_PUBLICKEYBYTES = (3 * 320 + 32);
+param int CRYPTO_BYTES = 32;
+param int CRYPTO_CIPHERTEXTBYTES = 1088;
+param int Saber_type = 2;
+
+param int SABER_K = 3;
+param int SABER_MU = 8;
+param int SABER_ET = 4;
+
+param int SABER_EQ = 13;
+param int SABER_EP = 10;
+
+param int SABER_N = 256;
+param int SABER_Q = 8192;
+param int SABER_P = 1024;
+
+param int SABER_SEEDBYTES = 32;
+param int SABER_NOISESEEDBYTES = 32;
+param int SABER_COINBYTES = 32;
+param int SABER_KEYBYTES = 32;
+
+param int SABER_HASHBYTES = 32;
+
+param int SABER_POLYBYTES = 416;
+
+param int SABER_POLYVECBYTES = (SABER_K * SABER_POLYBYTES);
+
+param int SABER_POLYVECCOMPRESSEDBYTES = (SABER_K * 320);
+
+param int SABER_CIPHERTEXTBYTES = (SABER_POLYVECCOMPRESSEDBYTES);
+
+
+
+param int SABER_SCALEBYTES_KEM = (SABER_ET * SABER_N / 8);
+
+param int SABER_INDCPA_PUBLICKEYBYTES = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SEEDBYTES);
+param int SABER_INDCPA_SECRETKEYBYTES = (SABER_POLYVECBYTES);
+
+param int SABER_PUBLICKEYBYTES = (SABER_INDCPA_PUBLICKEYBYTES);
+
+param int SABER_SECRETKEYBYTES = (SABER_INDCPA_SECRETKEYBYTES + SABER_INDCPA_PUBLICKEYBYTES + SABER_HASHBYTES + SABER_KEYBYTES);
+
+param int SABER_BYTES_CCA_DEC = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SCALEBYTES_KEM);
+
+
+
+param int SABER_KN = (SABER_K * SABER_N);
+param int SABER_KKN = (SABER_K * SABER_K * SABER_N);
+param int N_SB = (SABER_N / 4);
+param int N_SB_RES = (2 * N_SB - 1);
+
+param int SHAKE128_RATE = 168;
+param int SHAKE256_RATE = 136;
+param int SHA3_256_RATE = 136;
+param int SHA3_512_RATE = 72;
+
+param int KK13N8 = (SABER_K * SABER_K * (13 * SABER_N / 8));
+param int MUNK8 = (SABER_MU * SABER_N * SABER_K / 8);
+
+param int h1 = 4;
+param int h2 = 228;
+
+
+
+
+u16 h1_u16 = h1;
+u16 h2_u16 = h2;
+u16 modp_u16 = SABER_P - 1;
+u16 modq_u16 = SABER_Q - 1;
+
+u128 zero_u128 = 0;
+u256 zero_u256 = 0;
+
+inline fn load_16u16(reg u256 r, stack u16[16] buf) -> reg u256
+{
+ inline int i;
+
+ reg u128 x;
+ reg u128 y;
+
+ reg u256 t256;
+
+ x = zero_u128;
+ y = zero_u128;
+ r = zero_u256;
+
+ for i = 0 to 8 {
+  x = #VPINSR_8u16(x, buf[i], i);
+  y = #VPINSR_8u16(y, buf[8 + i], 8 + i);
+ }
+
+ r = #VINSERTI128(r, x, 0);
+ r = #VINSERTI128(r, y, 1);
+ return r;
+}
+
+
+
+
+
+inline fn store_16u16(reg u256 r, stack u16[16] buf) -> stack u16[16]
+{
+ inline int i;
+
+ reg u128 x;
+ reg u128 y;
+
+ x = #VEXTRACTI128(r, 0);
+ y = #VEXTRACTI128(r, 1);
+
+ buf[0] = #VPEXTR_16(x, 0);
+ buf[4] = #VPEXTR_16(x, 1);
+ buf[8] = #VPEXTR_16(y, 0);
+ buf[12] = #VPEXTR_16(y, 1);
+
+ return buf;
+}
+
+export fn load_16u16_jazz(reg u64 bufp) -> reg u256
+{
+ inline int i;
+
+ reg u16 t16;
+
+ reg u256 r;
+
+ stack u16[16] buf;
+
+ for i = 0 to 16 {
+  t16 = (u16) [bufp + 2 * i];
+  buf[i] = t16;
+ }
+
+ r = load_16u16(r, buf);
+
+ return r;
+}
+
+export fn store_16u16_jazz(reg u64 rp, reg u64 bufp)
+{
+ inline int i;
+
+ reg u16 t16;
+
+ reg u256 r;
+
+ stack u16[16] buf;
+
+ r = (u256) [rp];
+
+ buf = store_16u16(r, buf);
+
+ for i = 0 to 16 {
+  t16 = buf[i];
+  (u16) [bufp + 2 * i] = t16;
+ }
+}

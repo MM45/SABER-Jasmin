@@ -73,9 +73,10 @@ param int h2 = 228; //( (1<<(SABER_EP-2)) - (1<<(SABER_EP-SABER_ET-1)) + (1<<(SA
 
 u16 h1_u16 = h1;
 u16 h2_u16 = h2;
-u16 modp_u16 = SABER_Q - 1;
+u16 modp_u16 = SABER_P - 1;
 u16 modq_u16 = SABER_Q - 1;
 
+u128 zero_u128 = 0;
 u256 zero_u256 = 0;
 
 #endif
