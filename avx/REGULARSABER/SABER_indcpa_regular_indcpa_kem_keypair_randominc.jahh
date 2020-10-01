@@ -44,7 +44,7 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_N / 16 {
-			t256 = load_16u16(t256, skpv1[i * SABER_N + j * 16:16]);
+			t256 = load_16u16(skpv1[i * SABER_N + j * 16:16]);
 			sk_avx[i * SABER_N / 16 + j] = t256;
 		}
 	}
@@ -52,7 +52,7 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_K {
 			for k = 0 to SABER_N / 16 {
-				t256 = load_16u16(t256, a[i * SABER_KN + j * SABER_N + k * 16:16]);
+				t256 = load_16u16(a[i * SABER_KN + j * SABER_N + k * 16:16]);
 				a_avx[i * SABER_KN / 16 + j * SABER_N / 16 + k] = t256;
 			}
 		}

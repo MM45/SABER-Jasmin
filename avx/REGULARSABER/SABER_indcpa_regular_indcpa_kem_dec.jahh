@@ -9,7 +9,8 @@
 #include "pack_unpack_regular_SABER_un_pack4bit.jahh"
 //#include "SABER_indcpa_regular_InnerProd.jahh"
 #include "SABER_indcpa_regular_POL2MSG.jahh"
-
+#include "auxilliary_load_16u16.jahh"
+#include "auxilliary_store_16u16.jahh"
 
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
@@ -42,9 +43,9 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_N / 16 {
-			t256 = load_16u16(t256, sksv[i * SABER_N + j * 16:16]);
+			t256 = load_16u16(sksv[i * SABER_N + j * 16:16]);
 			sksv_avx[i * SABER_N / 16 + j] = t256;
-			t256 = load_16u16(t256, pksv[i * SABER_N + j * 16:16]);
+			t256 = load_16u16(pksv[i * SABER_N + j * 16:16]);
 			pksv_avx[i * SABER_N / 16 + j] = t256;
 		}
 	}

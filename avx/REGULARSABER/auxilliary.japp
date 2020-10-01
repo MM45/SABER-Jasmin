@@ -86,14 +86,14 @@ u16 modq_u16 = SABER_Q - 1;
 u128 zero_u128 = 0;
 u256 zero_u256 = 0;
 
-inline fn load_16u16(reg u256 r, stack u16[16] buf) -> reg u256
+inline fn load_16u16(stack u16[16] buf) -> reg u256
 {
  inline int i;
 
  reg u128 x;
  reg u128 y;
 
- reg u256 t256;
+ reg u256 r;
 
  x = zero_u128;
  y = zero_u128;
@@ -101,11 +101,42 @@ inline fn load_16u16(reg u256 r, stack u16[16] buf) -> reg u256
 
  for i = 0 to 8 {
   x = #VPINSR_8u16(x, buf[i], i);
-  y = #VPINSR_8u16(y, buf[8 + i], 8 + i);
+  y = #VPINSR_8u16(y, buf[8 + i], i);
  }
 
  r = #VINSERTI128(r, x, 0);
  r = #VINSERTI128(r, y, 1);
+
+ return r;
+}
+
+
+
+
+
+
+
+inline fn load_4u64(stack u64[4] buf) -> reg u256
+{
+ inline int i;
+
+ reg u128 x;
+ reg u128 y;
+
+ reg u256 r;
+
+ x = zero_u128;
+ y = zero_u128;
+ r = zero_u256;
+
+ for i = 0 to 2 {
+  x = #VPINSR_2u64(x, buf[i], i);
+  y = #VPINSR_2u64(y, buf[2 + i], i);
+ }
+
+ r = #VINSERTI128(r, x, 0);
+ r = #VINSERTI128(r, y, 1);
+
  return r;
 }
 
@@ -131,6 +162,21 @@ inline fn store_16u16(reg u256 r, stack u16[16] buf) -> stack u16[16]
  return buf;
 }
 
+
+
+
+
+
+
+inline fn andnot_256(reg u256 a, reg u256 b) -> reg u256
+{
+ reg u256 r;
+
+ r = #VPANDN_256(a, b);
+
+ return r;
+}
+
 export fn load_16u16_jazz(reg u64 bufp) -> reg u256
 {
  inline int i;
@@ -146,7 +192,7 @@ export fn load_16u16_jazz(reg u64 bufp) -> reg u256
   buf[i] = t16;
  }
 
- r = load_16u16(r, buf);
+ r = load_16u16(buf);
 
  return r;
 }
@@ -169,4 +215,42 @@ export fn store_16u16_jazz(reg u64 rp, reg u64 bufp)
   t16 = buf[i];
   (u16) [bufp + 2 * i] = t16;
  }
+}
+
+export fn andnot_256_jazz(reg u64 ap, reg u64 bp) -> reg u256
+{
+ inline int i;
+
+ reg u16 t16;
+
+ reg u256 a;
+ reg u256 b;
+ reg u256 r;
+
+ a = (u256) [ap];
+ b = (u256) [bp];
+
+ r = andnot_256(a, b);
+
+ return r;
+}
+
+export fn load_4u64_jazz(reg u64 bufp) -> reg u256
+{
+ inline int i;
+
+ reg u64 t64;
+
+ reg u256 r;
+
+ stack u64[4] buf;
+
+ for i = 0 to 4 {
+  t64 = (u64) [bufp + 8 * i];
+  buf[i] = t64;
+ }
+
+ r = load_4u64(buf);
+
+ return r;
 }

@@ -1,0 +1,32 @@
+/*** auxilliary_load_4u64.jahh: File containing an auxilliary Jasmin function, used to load 4 u64 values into a u256 register ***/
+
+#ifndef LOAD_4U64_HH
+#define LOAD_4U64_HH
+
+#include "SABER_params.jahh"
+
+inline fn load_4u64(stack u64[4] buf) -> reg u256
+{
+	inline int i;
+
+	reg u128 x;
+	reg u128 y;
+
+	reg u256 r;
+
+	x = zero_u128;
+	y = zero_u128;
+	r = zero_u256;
+
+	for i = 0 to 2 {
+		x = #VPINSR_2u64(x, buf[i], i);
+		y = #VPINSR_2u64(y, buf[2 + i], i);
+	}
+
+	r = #VINSERTI128(r, x, 0);
+	r = #VINSERTI128(r, y, 1);
+
+	return r;
+}
+
+#endif
