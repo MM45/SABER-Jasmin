@@ -1,13 +1,16 @@
 /*** fips202_regular.jazz: File containing the Jasmin wrappers of the functions in the fips202_regular*.jahh files, only used for unit testing ***/
 
 #include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute_debug.jahh"
+/*
 #include "fips202_regular_keccak_absorb_128_32.jahh"
 #include "fips202_regular_keccak_absorb_256_32.jahh"
 #include "fips202_regular_keccak_absorb_256_64.jahh"
 #include "fips202_regular_keccak_absorb_512_64.jahh"
 #include "fips202_regular_keccak_absorb_256_PUBKEYBYTES.jahh"
 #include "fips202_regular_keccak_absorb_256_CCADEC.jahh"
-#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+
 #include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
 #include "fips202_regular_shake128_32_32.jahh"
 #include "fips202_regular_keccak_squeezeblocks_128_KK13N8.jahh"
@@ -21,12 +24,56 @@
 #include "fips202_regular_sha3_256_CCADEC.jahh"
 #include "fips202_regular_keccak_squeezeblocks_512_512.jahh"
 #include "fips202_regular_sha3_512_64.jahh"
-
+*/
 /*
 #include "fips202_regular_load64.jahh"
 #include "fips202_regular_store64.jahh"
 */
 
+
+export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
+{
+	inline int i;
+	
+	reg u256 t;
+
+	stack u256[7] state;
+
+	for i = 0 to 7 {
+		t = (u256) [statep + 32 * i];
+		state[i] = t;
+	}
+
+	state = KeccakF1600_StatePermute(state);
+
+	for i = 0 to 7 {
+		t = state[i];
+		(u256) [statep + 32 * i] = t;
+	}
+}
+
+export fn KeccakF1600_StatePermute_debug_jazz(reg u64 statep)
+{
+	inline int i;
+	
+	reg u256 t;
+
+	stack u256[7] state;
+
+	for i = 0 to 7 {
+		t = (u256) [statep + 32 * i];
+		state[i] = t;
+	}
+
+	state = KeccakF1600_StatePermute_debug(state);
+
+	for i = 0 to 7 {
+		t = state[i];
+		(u256) [statep + 32 * i] = t;
+	}
+}
+
+/*
 // INLEN: SABER_BYTES_CCA_DEC
 export fn sha3_256_CCADEC_jazz(reg u64 outputp, reg u64 inputp) 
 {
@@ -632,26 +679,6 @@ export fn keccak_absorb_128_32_jazz(reg u64 sp, reg u64 mp)
 	}
 }
 
-export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
-{
-	inline int i;
-	
-	reg u64 t;
-
-	stack u64[25] state;
-
-	for i = 0 to 25 {
-		t = (u64) [statep + 8 * i];
-		state[i] = t;
-	}
-
-	state = KeccakF1600_StatePermute(state);
-
-	for i = 0 to 25 {
-		t = state[i];
-		(u64) [statep + 8 * i] = t;
-	}
-}
 
 
 // RATE: SHA3_256; MLEN: SABER_INDCPA_PUBLICKEYBYTES (992)
@@ -761,7 +788,7 @@ export fn sha3_512_64_jazz(reg u64 outputp, reg u64 inputp)
 		(u8) [outputp + i] = t;
 	}	
 }
-
+*/
 
 /*
 export fn load64_jazz(reg u64 xp) -> reg u64

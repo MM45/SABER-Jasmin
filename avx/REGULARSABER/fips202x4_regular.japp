@@ -1,0 +1,355 @@
+
+
+
+
+
+
+
+
+
+param int CRYPTO_SECRETKEYBYTES = 2304;
+param int CRYPTO_PUBLICKEYBYTES = (3 * 320 + 32);
+param int CRYPTO_BYTES = 32;
+param int CRYPTO_CIPHERTEXTBYTES = 1088;
+param int Saber_type = 2;
+
+param int SABER_K = 3;
+param int SABER_MU = 8;
+param int SABER_ET = 4;
+
+param int SABER_EQ = 13;
+param int SABER_EP = 10;
+
+param int SABER_N = 256;
+param int SABER_Q = 8192;
+param int SABER_P = 1024;
+
+param int SABER_SEEDBYTES = 32;
+param int SABER_NOISESEEDBYTES = 32;
+param int SABER_COINBYTES = 32;
+param int SABER_KEYBYTES = 32;
+
+param int SABER_HASHBYTES = 32;
+
+param int SABER_POLYBYTES = 416;
+
+param int SABER_POLYVECBYTES = (SABER_K * SABER_POLYBYTES);
+
+param int SABER_POLYVECCOMPRESSEDBYTES = (SABER_K * 320);
+
+param int SABER_CIPHERTEXTBYTES = (SABER_POLYVECCOMPRESSEDBYTES);
+
+
+
+param int SABER_SCALEBYTES_KEM = (SABER_ET * SABER_N / 8);
+
+param int SABER_INDCPA_PUBLICKEYBYTES = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SEEDBYTES);
+param int SABER_INDCPA_SECRETKEYBYTES = (SABER_POLYVECBYTES);
+
+param int SABER_PUBLICKEYBYTES = (SABER_INDCPA_PUBLICKEYBYTES);
+
+param int SABER_SECRETKEYBYTES = (SABER_INDCPA_SECRETKEYBYTES + SABER_INDCPA_PUBLICKEYBYTES + SABER_HASHBYTES + SABER_KEYBYTES);
+
+param int SABER_BYTES_CCA_DEC = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SCALEBYTES_KEM);
+
+
+
+param int SABER_KN = (SABER_K * SABER_N);
+param int SABER_KKN = (SABER_K * SABER_K * SABER_N);
+param int N_SB = (SABER_N / 4);
+param int N_SB_RES = (2 * N_SB - 1);
+
+param int SHAKE128_RATE = 168;
+param int SHAKE256_RATE = 136;
+param int SHA3_256_RATE = 136;
+param int SHA3_512_RATE = 72;
+
+param int KK13N8 = (SABER_K * SABER_K * (13 * SABER_N / 8));
+param int MUNK8 = (SABER_MU * SABER_N * SABER_K / 8);
+
+param int h1 = 4;
+param int h2 = 228;
+
+
+
+
+u16 h1_u16 = h1;
+u16 h2_u16 = h2;
+u16 modp_u16 = SABER_P - 1;
+u16 modq_u16 = SABER_Q - 1;
+
+u128 zero_u128 = 0;
+u256 zero_u256 = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+inline fn rol_4u64(reg u256 a, inline int o) -> reg u256
+{
+ reg u256 r;
+ reg u256 t256;
+
+ r = #VPSLL_4u64(a, o);
+ t256 = #VPSRL_4u64(a, 64 - o);
+
+ r |= t256;
+
+ return r;
+}
+
+
+
+
+
+
+
+u256 rho8 = 0x1E1D1C1B1A19181F16151413121110170E0D0C0B0A09080F0605040302010007;
+
+inline fn rol_4u64_rho8(reg u256 a) -> reg u256
+{
+ reg u256 r;
+
+ r = #VPSHUFB_256(a, rho8);
+
+ return r;
+}
+
+
+
+
+
+
+
+u256 rho56 = 0x181F1E1D1C1B1A191017161514131211080F0E0D0C0B0A090007060504030201;
+
+inline fn rol_4u64_rho56(reg u256 a) -> reg u256
+{
+ reg u256 r;
+
+ r = #VPSHUFB_256(a, rho56);
+
+ return r;
+}
+u256[24] KeccakF1600RoundConstants = {
+  0x0000000000000001000000000000000100000000000000010000000000000001,
+    0x0000000000008082000000000000808200000000000080820000000000008082,
+    0x800000000000808a800000000000808a800000000000808a800000000000808a,
+    0x8000000080008000800000008000800080000000800080008000000080008000,
+    0x000000000000808b000000000000808b000000000000808b000000000000808b,
+    0x0000000080000001000000008000000100000000800000010000000080000001,
+    0x8000000080008081800000008000808180000000800080818000000080008081,
+    0x8000000000008009800000000000800980000000000080098000000000008009,
+    0x000000000000008a000000000000008a000000000000008a000000000000008a,
+    0x0000000000000088000000000000008800000000000000880000000000000088,
+    0x0000000080008009000000008000800900000000800080090000000080008009,
+    0x000000008000000a000000008000000a000000008000000a000000008000000a,
+    0x000000008000808b000000008000808b000000008000808b000000008000808b,
+    0x800000000000008b800000000000008b800000000000008b800000000000008b,
+    0x8000000000008089800000000000808980000000000080898000000000008089,
+    0x8000000000008003800000000000800380000000000080038000000000008003,
+    0x8000000000008002800000000000800280000000000080028000000000008002,
+    0x8000000000000080800000000000008080000000000000808000000000000080,
+    0x000000000000800a000000000000800a000000000000800a000000000000800a,
+    0x800000008000000a800000008000000a800000008000000a800000008000000a,
+    0x8000000080008081800000008000808180000000800080818000000080008081,
+    0x8000000000008080800000000000808080000000000080808000000000008080,
+    0x0000000080000001000000008000000100000000800000010000000080000001,
+    0x8000000080008008800000008000800880000000800080088000000080008008
+    };
+
+inline fn prepare_theta(reg ptr u256[25] A_4x) -> reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Ca, Ce, Ci, Co, Cu;
+
+
+    Ca = A_4x[15] ^ A_4x[20];
+    Ca ^= A_4x[10];
+    Ca ^= A_4x[5];
+    Ca ^= A_4x[0];
+
+
+    Ce = A_4x[21] ^ A_4x[16];
+    Ce ^= A_4x[11];
+    Ce ^= A_4x[6];
+    Ce ^= A_4x[1];
+
+
+    Ci = A_4x[17] ^ A_4x[22];
+    Ci ^= A_4x[12];
+    Ci ^= A_4x[7];
+    Ci ^= A_4x[2];
+
+
+    Co = A_4x[18] ^ A_4x[23];
+    Co ^= A_4x[13];
+    Co ^= A_4x[8];
+    Co ^= A_4x[3];
+
+
+    Cu = A_4x[19] ^ A_4x[24];
+    Cu ^= A_4x[14];
+    Cu ^= A_4x[9];
+    Cu ^= A_4x[4];
+
+    return Ca, Ce, Ci, Co, Cu;
+}
+
+inline fn theta_rho_pi_chi_iota_prepare_theta(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x, inline int index,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu)
+-> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Ca1, Ce1, Ci1, Co1, Cu1;
+    reg u256 Da, De, Di, Do, Du;
+    reg u256 t256;
+
+    stack u256[25] B_4x;
+
+
+    Ce1 = rol_4u64(Ce, 1);
+    Da = Cu ^ Ce1;
+
+    Ci1 = rol_4u64(Ci, 1);
+    De = Ca ^ Ci1;
+
+    Co1 = rol_4u64(Co, 1);
+    Di = Ce ^ Co1;
+
+    Cu1 = rol_4u64(Cu, 1);
+    Do = Ci ^ Cu1;
+
+    Ca1 = rol_4u64(Ca, 1);
+    Du = Co ^ Ca1;
+
+
+    A_4x[0] ^= Da;
+    B_4x[0] = A_4x[0];
+
+    A_4x[6] ^= De;
+    B_4x[1] = rol_4u64(A_4x[6], 44);
+
+    A_4x[12] ^= Di;
+    B_4x[2] = rol_4u64(A_4x[12], 43);
+
+
+    t256 = #VPANDN_256(B_4x[1], B_4x[2]);
+    E_4x[0] = B_4x[0] ^ t256;
+
+    E_4x[0] ^= KeccakF1600RoundConstants[index];
+
+    Ca = E_4x[0];
+
+    A_4x[18] ^= Do;
+    B_4x[3] = rol_4u64(A_4x[18], 21);
+
+
+    t256 = #VPANDN_256(B_4x[2], B_4x[3]);
+    E_4x[1] = B_4x[1] ^ t256;
+
+    Ce = E_4x[1];
+
+    A_4x[24] ^= Du;
+    B_4x[4] = rol_4u64(A_4x[24], 14);
+
+
+    t256 = #VPANDN_256(B_4x[3], B_4x[4]);
+    E_4x[2] = B_4x[2] ^ t256;
+
+    Ci = E_4x[2];
+
+
+
+    E_4x[3] = B_4x[3] ^ t256;
+
+    Co = E_4x[3];
+
+
+
+    E_4x[4] = B_4x[4] ^ t256;
+
+    Cu = E_4x[4];
+
+
+    A_4x[3] ^= Do;
+    B_4x[5] = rol_4u64(A_4x[3], 28);
+
+    A_4x[9] ^= Du;
+    B_4x[6] = rol_4u64(A_4x[9], 20);
+
+    A_4x[10] ^= Da;
+    B_4x[7] = rol_4u64(A_4x[10], 3);
+
+
+    t256 = #VPANDN_256(B_4x[6], B_4x[7]);
+    E_4x[5] = B_4x[5] ^ t256;
+
+    Ca ^= E_4x[5];
+
+    A_4x[16] ^= De;
+    B_4x[8] = rol_4u64(A_4x[16], 45);
+
+
+    t256 = #VPANDN_256(B_4x[7], B_4x[8]);
+    E_4x[6] = B_4x[6] ^ t256;
+
+    Ce ^= E_4x[6];
+
+    A_4x[22] ^= Di;
+    B_4x[9] = rol_4u64(A_4x[22], 61);
+
+
+    t256 = #VPANDN_256(B_4x[8], B_4x[9]);
+    E_4x[7] = B_4x[7] ^ t256;
+
+    Ci ^= E_4x[7];
+
+
+
+
+    return A_4x, E_4x, Ca, Ce, Ci, Co, Cu;
+}
+
+fn KeccakF1600_StatePermute4x(reg ptr u256[25] A_4x) -> reg ptr u256[25]
+{
+    reg u256 Ca, Ce, Ci, Co, Cu;
+
+    reg ptr u256[25] E_4x;
+
+
+
+
+
+
+
+    return A_4x;
+
+}
+
+export fn KeccakF1600_StatePermute4x_jazz(reg u64 statep)
+{
+ inline int i;
+
+ reg u256 t;
+
+ stack u256[25] state;
+
+ for i = 0 to 25 {
+  t = (u256) [statep + 32 * i];
+  state[i] = t;
+ }
+
+ state = KeccakF1600_StatePermute4x(state);
+
+ for i = 0 to 25 {
+  t = state[i];
+  (u256) [statep + 32 * i] = t;
+ }
+}

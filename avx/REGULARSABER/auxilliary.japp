@@ -177,6 +177,59 @@ inline fn andnot_256(reg u256 a, reg u256 b) -> reg u256
  return r;
 }
 
+
+
+
+
+
+
+inline fn rol_4u64(reg u256 a, inline int o) -> reg u256
+{
+ reg u256 r;
+ reg u256 t256;
+
+ r = #VPSLL_4u64(a, o);
+ t256 = #VPSRL_4u64(a, 64 - o);
+
+ r |= t256;
+
+ return r;
+}
+
+
+
+
+
+
+
+u256 rho8 = 0x1E1D1C1B1A19181F16151413121110170E0D0C0B0A09080F0605040302010007;
+
+inline fn rol_4u64_rho8(reg u256 a) -> reg u256
+{
+ reg u256 r;
+
+ r = #VPSHUFB_256(a, rho8);
+
+ return r;
+}
+
+
+
+
+
+
+
+u256 rho56 = 0x181F1E1D1C1B1A191017161514131211080F0E0D0C0B0A090007060504030201;
+
+inline fn rol_4u64_rho56(reg u256 a) -> reg u256
+{
+ reg u256 r;
+
+ r = #VPSHUFB_256(a, rho56);
+
+ return r;
+}
+
 export fn load_16u16_jazz(reg u64 bufp) -> reg u256
 {
  inline int i;
@@ -251,6 +304,46 @@ export fn load_4u64_jazz(reg u64 bufp) -> reg u256
  }
 
  r = load_4u64(buf);
+
+ return r;
+}
+
+export fn rol_4u64_jazz(reg u64 ap) -> reg u256
+{
+ inline int o;
+
+ reg u256 a;
+ reg u256 r;
+
+ a = (u256) [ap];
+
+ o = 31;
+
+ r = rol_4u64(a, o);
+
+ return r;
+}
+
+export fn rol_4u64_rho8_jazz(reg u64 ap) -> reg u256
+{
+ reg u256 a;
+ reg u256 r;
+
+ a = (u256) [ap];
+
+ r = rol_4u64_rho8(a);
+
+ return r;
+}
+
+export fn rol_4u64_rho56_jazz(reg u64 ap) -> reg u256
+{
+ reg u256 a;
+ reg u256 r;
+
+ a = (u256) [ap];
+
+ r = rol_4u64_rho56(a);
 
  return r;
 }

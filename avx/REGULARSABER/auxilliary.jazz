@@ -4,6 +4,9 @@
 #include "auxilliary_load_4u64.jahh"
 #include "auxilliary_store_16u16.jahh"
 #include "auxilliary_andnot_256.jahh"
+#include "auxilliary_rol_4u64.jahh"
+#include "auxilliary_rol_4u64_rho8.jahh"
+#include "auxilliary_rol_4u64_rho56.jahh"
 
 export fn load_16u16_jazz(reg u64 bufp) -> reg u256
 {
@@ -79,6 +82,46 @@ export fn load_4u64_jazz(reg u64 bufp) -> reg u256
 	}
 
 	r = load_4u64(buf);
+
+	return r;
+}
+
+export fn rol_4u64_jazz(reg u64 ap) -> reg u256
+{
+	inline int o;
+
+	reg u256 a;
+	reg u256 r;
+
+	a = (u256) [ap];
+	
+	o = 31;
+
+	r = rol_4u64(a, o);
+
+	return r;
+}
+
+export fn rol_4u64_rho8_jazz(reg u64 ap) -> reg u256
+{
+	reg u256 a;
+	reg u256 r;
+
+	a = (u256) [ap];
+
+	r = rol_4u64_rho8(a);
+
+	return r;
+}
+
+export fn rol_4u64_rho56_jazz(reg u64 ap) -> reg u256
+{
+	reg u256 a;
+	reg u256 r;
+
+	a = (u256) [ap];
+
+	r = rol_4u64_rho56(a);
 
 	return r;
 }

@@ -1,0 +1,19 @@
+/*** auxilliary_rol_4u64_rho56.jahh: File containing an auxilliary Jasmin function, used to rotate 4 packed 64 bit values in a u256 register; rotation determined by a constant ***/
+
+#ifndef ROL_4U64_RHO56_HH
+#define ROL_4U64_RHO56_HH
+
+#include "SABER_params.jahh"
+
+u256 rho56 = 0x181F1E1D1C1B1A191017161514131211080F0E0D0C0B0A090007060504030201;
+
+inline fn rol_4u64_rho56(reg u256 a) -> reg u256
+{
+	reg u256 r;
+
+	r = #VPSHUFB_256(a, rho56);
+
+	return r; 
+}
+
+#endif

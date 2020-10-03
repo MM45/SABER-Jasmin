@@ -11,7 +11,7 @@ REGULARDIRECTORY = REGULARSABER
 FIREDIRECTORY = FIRESABER
 
 
-.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jpoly_mul_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s
+.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jpoly_mul_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jfips202x4_regular.s
 
 default: test_all speed_all
 
@@ -142,6 +142,9 @@ ${REGULARDIRECTORY}/test/test_kem_regular_%: ${REGULARDIRECTORY}/test/test_kem_r
 ${REGULARDIRECTORY}/test/test_auxilliary_%: ${REGULARDIRECTORY}/test/test_auxilliary_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jauxilliary.s
 	${CC} ${CFLAGS} -iquote ${REGULARDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jauxilliary.s $< ${LDFLAGS}
 
+${REGULARDIRECTORY}/test/test_fips202x4_regular_%: ${REGULARDIRECTORY}/test/test_fips202x4_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jfips202x4_regular.s
+	${CC} ${CFLAGS} -iquote ${REGULARDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jfips202x4_regular.s $< ${LDFLAGS}
+
 
 ${REGULARDIRECTORY}/speed/speed_kem_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s
 	${CC} ${CFLAGS} -iquote ${REGULARDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
@@ -172,6 +175,9 @@ ${REGULARDIRECTORY}/kem_regular.japp: ${REGULARDIRECTORY}/kem_regular.jazz ${JHE
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
 ${REGULARDIRECTORY}/auxilliary.japp: ${REGULARDIRECTORY}/auxilliary.jazz ${JHEADERSREGULAR}
+	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
+
+${REGULARDIRECTORY}/fips202x4_regular.japp: ${REGULARDIRECTORY}/fips202x4_regular.jazz ${JHEADERSREGULAR}
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
 

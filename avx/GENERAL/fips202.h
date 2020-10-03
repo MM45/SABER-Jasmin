@@ -2,11 +2,16 @@
 #define FIPS202_H
 
 #include <stdint.h>
+#include <immintrin.h>
 
 #define SHAKE128_RATE 168
 #define SHAKE256_RATE 136
 #define SHA3_256_RATE 136
 #define SHA3_512_RATE 72
+
+void KeccakF1600_StatePermute(uint64_t* state);
+void KeccakF1600_StatePermute_jazz(__m256i* state);
+void KeccakF1600_StatePermute_debug_jazz(__m256i* state);
 
 void shake128(unsigned char *output, unsigned long long outlen, const unsigned char *input,  unsigned long long inlen);
 

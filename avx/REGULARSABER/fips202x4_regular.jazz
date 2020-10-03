@@ -1,0 +1,26 @@
+/*** fips202x4_regular.jazz: File containing the Jasmin wrappers of the functions in the fips202x4_regular*.jahh files, only used for unit testing ***/
+
+#include "SABER_params.jahh"
+
+#include "fips202x4_regular_KeccakF1600_StatePermute4x.jahh"
+
+export fn KeccakF1600_StatePermute4x_jazz(reg u64 statep)
+{
+	inline int i;
+	
+	reg u256 t;
+
+	stack u256[25] state;
+
+	for i = 0 to 25 {
+		t = (u256) [statep + 32 * i];
+		state[i] = t;
+	}
+
+	state = KeccakF1600_StatePermute4x(state);
+
+	for i = 0 to 25 {
+		t = state[i];
+		(u256) [statep + 32 * i] = t;
+	}
+}

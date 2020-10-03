@@ -1,8 +1,9 @@
 #include <immintrin.h>
 #include <stdint.h>
 #include <assert.h>
-#include "keccak4x/KeccakP-1600-times4-SnP.h"
+
 #include "fips202.h"
+#include "fips202x4.h"
 
 #define NROUNDS 24
 #define ROL(a, offset) ((a << offset) ^ (a >> (64-offset)))
@@ -29,7 +30,7 @@ static void store64(uint8_t *x, uint64_t u)
 
 /* Use implementation from the Keccak Code Package */
 //extern void KeccakP1600times4_PermuteAll_24rounds(__m256i *s);
-#define KeccakF1600_StatePermute4x KeccakP1600times4_PermuteAll_24rounds
+//#define KeccakF1600_StatePermute4x KeccakP1600times4_PermuteAll_24rounds
 
 
 static void keccak_absorb4x(__m256i *s,
