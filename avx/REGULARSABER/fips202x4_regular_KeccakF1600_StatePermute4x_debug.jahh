@@ -1,7 +1,7 @@
-/*** fips202x4_regular_KeccakF1600_StatePermute4x.jahh: File containing the Jasmin implementation of KeccakF1600_StatePermute4x function from fips202x4.c, with (regular) SABER parameters ***/
+/*** fips202x4_regular_KeccakF1600_StatePermute4x_debug.jahh: File containing the Jasmin implementation of KeccakF1600_StatePermute4x function from fips202x4.c, with (regular) SABER parameters, used for debugging ***/
 
-#ifndef KECCAKF1600_STATEPERMUTE4X_HH
-#define KECCAKF1600_STATEPERMUTE4X_HH
+#ifndef KECCAKF1600_STATEPERMUTE4X_DEBUG_HH
+#define KECCAKF1600_STATEPERMUTE4X_DEBUG_HH
 
 #include "auxilliary_rol_4u64.jahh"
 #include "auxilliary_rol_4u64_rho8.jahh"
@@ -889,8 +889,15 @@ fn KeccakF1600_StatePermute4x(reg ptr u256[25] A_4x, reg ptr u256[25] E_4x) -> r
     /** Round24 **/
     Ca, Ce, Ci, Co, Cu = prepare_theta(A_4x);
     A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(A_4x, E_4x, 0, Ca, Ce, Ci, Co, Cu);
-    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(E_4x, A_4x, 1, Ca, Ce, Ci, Co, Cu);
-    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(A_4x, E_4x, 2, Ca, Ce, Ci, Co, Cu);
+    A_4x[0] = Ca;
+    A_4x[1] = Ce;
+    A_4x[2] = Ci;
+    A_4x[3] = Co;
+    A_4x[4] = Cu;
+
+//    E_4x, A_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(E_4x, A_4x, 1, Ca, Ce, Ci, Co, Cu);
+/*
+    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(A_4x, E_4x, 2, Ca, Ce, Ci, Co, Cu); 
     A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(E_4x, A_4x, 3, Ca, Ce, Ci, Co, Cu);
     A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(A_4x, E_4x, 4, Ca, Ce, Ci, Co, Cu);
     A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(E_4x, A_4x, 5, Ca, Ce, Ci, Co, Cu);
@@ -912,7 +919,7 @@ fn KeccakF1600_StatePermute4x(reg ptr u256[25] A_4x, reg ptr u256[25] E_4x) -> r
     A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(E_4x, A_4x, 21, Ca, Ce, Ci, Co, Cu);
     A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(A_4x, E_4x, 22, Ca, Ce, Ci, Co, Cu);
     A_4x, E_4x = theta_rho_pi_chi_iota(E_4x, A_4x, 23, Ca, Ce, Ci, Co, Cu);
-
+*/
     return A_4x, E_4x;
 
 }

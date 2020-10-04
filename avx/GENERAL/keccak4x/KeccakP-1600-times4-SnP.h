@@ -40,6 +40,7 @@ void KeccakP1600times4_OverwriteLanesAll(void *states, const unsigned char *data
 void KeccakP1600times4_OverwriteWithZeroes(void *states, unsigned int instanceIndex, unsigned int byteCount);
 void KeccakP1600times4_PermuteAll_12rounds(void *states);
 void KeccakP1600times4_PermuteAll_24rounds(void *states);
+void KeccakP1600times4_PermuteAll_24rounds_debug(void *states); // TODO: Added for debug purposes
 void KeccakP1600times4_ExtractBytes(const void *states, unsigned int instanceIndex, unsigned char *data, unsigned int offset, unsigned int length);
 void KeccakP1600times4_ExtractLanesAll(const void *states, unsigned char *data, unsigned int laneCount, unsigned int laneOffset);
 void KeccakP1600times4_ExtractAndAddBytes(const void *states, unsigned int instanceIndex,  const unsigned char *input, unsigned char *output, unsigned int offset, unsigned int length);

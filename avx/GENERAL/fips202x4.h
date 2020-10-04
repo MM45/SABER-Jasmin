@@ -4,6 +4,7 @@
 #include <immintrin.h>
 #include "keccak4x/KeccakP-1600-times4-SnP.h"
 #define KeccakF1600_StatePermute4x KeccakP1600times4_PermuteAll_24rounds
+#define KeccakF1600_StatePermute4x_debug KeccakP1600times4_PermuteAll_24rounds_debug
 
 void cshake128_simple_absorb4x(__m256i *s,
                         uint16_t cstm0, 
@@ -31,5 +32,6 @@ void cshake128_simple4x(unsigned char *output0,
                         const unsigned char *in, unsigned long long inlen);
 
 void KeccakF1600_StatePermute4x_jazz(__m256i* s);
+void KeccakF1600_StatePermute4x_debug_jazz(__m256i* s);
 
 #endif

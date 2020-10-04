@@ -92,6 +92,7 @@ u256 zero_u256 = 0;
 
 
 
+
 inline fn rol_4u64(reg u256 a, inline int o) -> reg u256
 {
  reg u256 r;
@@ -170,31 +171,36 @@ inline fn prepare_theta(reg ptr u256[25] A_4x) -> reg u256, reg u256, reg u256, 
     reg u256 Ca, Ce, Ci, Co, Cu;
 
 
-    Ca = A_4x[15] ^ A_4x[20];
+    Ca = A_4x[20];
+    Ca ^= A_4x[15];
     Ca ^= A_4x[10];
     Ca ^= A_4x[5];
     Ca ^= A_4x[0];
 
 
-    Ce = A_4x[21] ^ A_4x[16];
+    Ce = A_4x[21];
+    Ce ^= A_4x[16];
     Ce ^= A_4x[11];
     Ce ^= A_4x[6];
     Ce ^= A_4x[1];
 
 
-    Ci = A_4x[17] ^ A_4x[22];
+    Ci = A_4x[22];
+    Ci ^= A_4x[17];
     Ci ^= A_4x[12];
     Ci ^= A_4x[7];
     Ci ^= A_4x[2];
 
 
-    Co = A_4x[18] ^ A_4x[23];
+    Co = A_4x[23];
+    Co ^= A_4x[18];
     Co ^= A_4x[13];
     Co ^= A_4x[8];
     Co ^= A_4x[3];
 
 
-    Cu = A_4x[19] ^ A_4x[24];
+    Cu = A_4x[24];
+    Cu ^= A_4x[19];
     Cu ^= A_4x[14];
     Cu ^= A_4x[9];
     Cu ^= A_4x[4];
@@ -202,16 +208,11 @@ inline fn prepare_theta(reg ptr u256[25] A_4x) -> reg u256, reg u256, reg u256, 
     return Ca, Ce, Ci, Co, Cu;
 }
 
-inline fn theta_rho_pi_chi_iota_prepare_theta(
-reg ptr u256[25] A_4x, reg ptr u256[25] E_4x, inline int index,
-reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu)
--> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+inline fn first(reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu) -> reg u256, reg u256, reg u256, reg u256, reg u256
 {
-    reg u256 Ca1, Ce1, Ci1, Co1, Cu1;
     reg u256 Da, De, Di, Do, Du;
-    reg u256 t256;
+    reg u256 Ca1, Ce1, Ci1, Co1, Cu1;
 
-    stack u256[25] B_4x;
 
 
     Ce1 = rol_4u64(Ce, 1);
@@ -228,125 +229,787 @@ reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu)
 
     Ca1 = rol_4u64(Ca, 1);
     Du = Co ^ Ca1;
+    return Da, De, Di, Do, Du;
+}
 
 
-    A_4x[0] ^= Da;
-    B_4x[0] = A_4x[0];
+inline fn second(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x, inline int index,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Bba, Bbe, Bbi, Bbo, Bbu;
+    reg u256 t256;
 
-    A_4x[6] ^= De;
-    B_4x[1] = rol_4u64(A_4x[6], 44);
+    t256 = A_4x[0];
+    t256 ^= Da;
+    A_4x[0] = t256;
+    Bba = t256;
 
-    A_4x[12] ^= Di;
-    B_4x[2] = rol_4u64(A_4x[12], 43);
+    t256 = A_4x[6];
+    t256 ^= De;
+    A_4x[6] = t256;
+    Bbe = rol_4u64(t256, 44);
+
+    t256 = A_4x[12];
+    t256 ^= Di;
+    A_4x[12] = t256;
+    Bbi = rol_4u64(t256, 43);
 
 
-    t256 = #VPANDN_256(B_4x[1], B_4x[2]);
-    E_4x[0] = B_4x[0] ^ t256;
-
-    E_4x[0] ^= KeccakF1600RoundConstants[index];
+    t256 = #VPANDN_256(Bbe, Bbi);
+    t256 ^= Bba;
+    t256 ^= KeccakF1600RoundConstants[index];
+    E_4x[0] = t256;
 
     Ca = E_4x[0];
 
-    A_4x[18] ^= Do;
-    B_4x[3] = rol_4u64(A_4x[18], 21);
+    t256 = A_4x[18];
+    t256 ^= Do;
+    A_4x[18] = t256;
+    Bbo = rol_4u64(t256, 21);
 
 
-    t256 = #VPANDN_256(B_4x[2], B_4x[3]);
-    E_4x[1] = B_4x[1] ^ t256;
+    t256 = #VPANDN_256(Bbi, Bbo);
+    t256 ^= Bbe;
+    E_4x[1] = t256;
 
     Ce = E_4x[1];
 
-    A_4x[24] ^= Du;
-    B_4x[4] = rol_4u64(A_4x[24], 14);
+    t256 = A_4x[24];
+    t256 ^= Du;
+    A_4x[24] = t256;
+    Bbu = rol_4u64(t256, 14);
 
 
-    t256 = #VPANDN_256(B_4x[3], B_4x[4]);
-    E_4x[2] = B_4x[2] ^ t256;
+    t256 = #VPANDN_256(Bbo, Bbu);
+    t256 ^= Bbi;
+    E_4x[2] = t256;
 
     Ci = E_4x[2];
 
 
 
-    E_4x[3] = B_4x[3] ^ t256;
+    t256 ^= Bbo;
+    E_4x[3] = t256;
 
     Co = E_4x[3];
 
 
 
-    E_4x[4] = B_4x[4] ^ t256;
+    t256 ^= Bbu;
+    E_4x[4] = t256;
 
     Cu = E_4x[4];
-
-
-    A_4x[3] ^= Do;
-    B_4x[5] = rol_4u64(A_4x[3], 28);
-
-    A_4x[9] ^= Du;
-    B_4x[6] = rol_4u64(A_4x[9], 20);
-
-    A_4x[10] ^= Da;
-    B_4x[7] = rol_4u64(A_4x[10], 3);
-
-
-    t256 = #VPANDN_256(B_4x[6], B_4x[7]);
-    E_4x[5] = B_4x[5] ^ t256;
-
-    Ca ^= E_4x[5];
-
-    A_4x[16] ^= De;
-    B_4x[8] = rol_4u64(A_4x[16], 45);
-
-
-    t256 = #VPANDN_256(B_4x[7], B_4x[8]);
-    E_4x[6] = B_4x[6] ^ t256;
-
-    Ce ^= E_4x[6];
-
-    A_4x[22] ^= Di;
-    B_4x[9] = rol_4u64(A_4x[22], 61);
-
-
-    t256 = #VPANDN_256(B_4x[8], B_4x[9]);
-    E_4x[7] = B_4x[7] ^ t256;
-
-    Ci ^= E_4x[7];
-
-
-
 
     return A_4x, E_4x, Ca, Ce, Ci, Co, Cu;
 }
 
-fn KeccakF1600_StatePermute4x(reg ptr u256[25] A_4x) -> reg ptr u256[25]
+inline fn third(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Bga, Bge, Bgi, Bgo, Bgu;
+    reg u256 t256;
+
+    t256 = A_4x[3];
+    t256 ^= Do;
+    A_4x[3] = t256;
+    Bga = rol_4u64(t256, 28);
+
+    t256 = A_4x[9];
+    t256 ^= Du;
+    A_4x[9] = t256;
+    Bge = rol_4u64(t256, 20);
+
+    t256 = A_4x[10];
+    t256 ^= Da;
+    A_4x[10] = t256;
+    Bgi = rol_4u64(t256, 3);
+
+
+    t256 = #VPANDN_256(Bge, Bgi);
+    t256 ^= Bga;
+    E_4x[5] = t256;
+
+    Ca ^= E_4x[5];
+
+    t256 = A_4x[16];
+    t256 ^= De;
+    A_4x[16] = t256;
+    Bgo = rol_4u64(t256, 45);
+
+
+    t256 = #VPANDN_256(Bgi, Bgo);
+    t256 ^= Bge;
+    E_4x[6] = t256;
+
+    Ce ^= E_4x[6];
+
+    t256 = A_4x[22];
+    t256 ^= Di;
+    A_4x[22] = t256;
+    Bgu = rol_4u64(t256, 61);
+
+
+    t256 = #VPANDN_256(Bgo, Bgu);
+    t256 ^= Bgi;
+    E_4x[7] = t256;
+
+    Ci ^= E_4x[7];
+
+
+    t256 = #VPANDN_256(Bgu, Bga);
+    t256 ^= Bgo;
+    E_4x[8] = t256;
+
+    Co ^= E_4x[8];
+
+
+    t256 = #VPANDN_256(Bga, Bge);
+    t256 ^= Bgu;
+    E_4x[9] = t256;
+
+    Cu ^= E_4x[9];
+
+    return A_4x, E_4x, Ca, Ce, Ci, Co, Cu;
+}
+
+inline fn fourth(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Bka, Bke, Bki, Bko, Bku;
+    reg u256 t256;
+
+    t256 = A_4x[1];
+    t256 ^= De;
+    A_4x[1] = t256;
+    Bka = rol_4u64(t256, 1);
+
+    t256 = A_4x[7];
+    t256 ^= Di;
+    A_4x[7] = t256;
+    Bke = rol_4u64(t256, 6);
+
+    t256 = A_4x[13];
+    t256 ^= Do;
+    A_4x[13] = t256;
+    Bki = rol_4u64(t256, 25);
+
+
+    t256 = #VPANDN_256(Bke, Bki);
+    t256 ^= Bka;
+    E_4x[10] = t256;
+
+    Ca ^= E_4x[10];
+
+    t256 = A_4x[19];
+    t256 ^= Du;
+    A_4x[19] = t256;
+    Bko = rol_4u64_rho8(t256);
+
+
+    t256 = #VPANDN_256(Bki, Bko);
+    t256 ^= Bke;
+    E_4x[11] = t256;
+
+    Ce ^= E_4x[11];
+
+    t256 = A_4x[20];
+    t256 ^= Da;
+    A_4x[20] = t256;
+    Bku = rol_4u64(t256, 18);
+
+
+    t256 = #VPANDN_256(Bko, Bku);
+    t256 ^= Bki;
+    E_4x[12] = t256;
+
+    Ci ^= E_4x[12];
+
+
+    t256 = #VPANDN_256(Bku, Bka);
+    t256 ^= Bko;
+    E_4x[13] = t256;
+
+    Co ^= E_4x[13];
+
+
+    t256 = #VPANDN_256(Bka, Bke);
+    t256 ^= Bku;
+    E_4x[14] = t256;
+
+    Cu ^= E_4x[14];
+
+    return A_4x, E_4x, Ca, Ce, Ci, Co, Cu;
+}
+
+inline fn fifth(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Bm1, Bm2, Bm3;
+    stack u256 Bma, Bme, Bmi, Bmo, Bmu;
+    reg u256 t256;
+
+    t256 = A_4x[4];
+    t256 ^= Du;
+    A_4x[4] = t256;
+    Bm3 = rol_4u64(t256, 27);
+    Bma = Bm3;
+
+    t256 = A_4x[5];
+    t256 ^= Da;
+    A_4x[5] = t256;
+    Bm3 = rol_4u64(t256, 36);
+    Bme = Bm3;
+
+    t256 = A_4x[11];
+    t256 ^= De;
+    A_4x[11] = t256;
+    Bm3 = rol_4u64(t256, 10);
+    Bmi = Bm3;
+
+
+    Bm1 = Bme;
+    Bm2 = Bmi;
+    t256 = #VPANDN_256(Bm1, Bm2);
+    t256 ^= Bma;
+    E_4x[15] = t256;
+
+    Ca ^= E_4x[15];
+
+    t256 = A_4x[17];
+    t256 ^= Di;
+    A_4x[17] = t256;
+    Bm3 = rol_4u64(t256, 15);
+    Bmo = Bm3;
+
+
+    Bm1 = Bmo;
+    t256 = #VPANDN_256(Bm2, Bm1);
+    t256 ^= Bme;
+    E_4x[16] = t256;
+
+    Ce ^= E_4x[16];
+
+    t256 = A_4x[23];
+    t256 ^= Do;
+    A_4x[23] = t256;
+    Bm3 = rol_4u64_rho56(t256);
+    Bmu = Bm3;
+
+
+    Bm2 = Bmu;
+    t256 = #VPANDN_256(Bm1, Bm2);
+    t256 ^= Bmi;
+    E_4x[17] = t256;
+
+    Ci ^= E_4x[17];
+
+
+    Bm1 = Bma;
+    t256 = #VPANDN_256(Bm2, Bm1);
+    t256 ^= Bmo;
+    E_4x[18] = t256;
+
+    Co ^= E_4x[18];
+
+
+    Bm2 = Bme;
+    t256 = #VPANDN_256(Bm1, Bm2);
+    t256 ^= Bmu;
+    E_4x[19] = t256;
+
+    Cu ^= E_4x[19];
+
+    return A_4x, E_4x, Ca, Ce, Ci, Co, Cu;
+}
+
+inline fn sixth(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Bsa, Bse, Bsi, Bso, Bsu;
+    reg u256 t256;
+
+    t256 = A_4x[2];
+    t256 ^= Di;
+    A_4x[2] = t256;
+    Bsa = rol_4u64(t256, 62);
+
+    t256 = A_4x[8];
+    t256 ^= Do;
+    A_4x[8] = t256;
+    Bse = rol_4u64(t256, 55);
+
+    t256 = A_4x[14];
+    t256 ^= Du;
+    A_4x[14] = t256;
+    Bsi = rol_4u64(t256, 39);
+
+
+    t256 = #VPANDN_256(Bse, Bsi);
+    t256 ^= Bsa;
+    E_4x[20] = t256;
+
+    Ca ^= E_4x[20];
+
+    t256 = A_4x[15];
+    t256 ^= Da;
+    A_4x[15] = t256;
+    Bso = rol_4u64(t256, 41);
+
+
+    t256 = #VPANDN_256(Bsi, Bso);
+    t256 ^= Bse;
+    E_4x[21] = t256;
+
+    Ce ^= E_4x[21];
+
+    t256 = A_4x[21];
+    t256 ^= De;
+    A_4x[21] = t256;
+    Bsu = rol_4u64(t256, 2);
+
+
+    t256 = #VPANDN_256(Bso, Bsu);
+    t256 ^= Bsi;
+    E_4x[22] = t256;
+
+    Ci ^= E_4x[22];
+
+
+    t256 = #VPANDN_256(Bsu, Bsa);
+    t256 ^= Bso;
+    E_4x[23] = t256;
+
+    Co ^= E_4x[23];
+
+
+    t256 = #VPANDN_256(Bsa, Bse);
+    t256 ^= Bsu;
+    E_4x[24] = t256;
+
+    Cu ^= E_4x[24];
+
+    return A_4x, E_4x, Ca, Ce, Ci, Co, Cu;
+}
+
+inline fn second_last(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x, inline int index,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25]
+{
+    reg u256 Bba, Bbe, Bbi, Bbo, Bbu;
+    reg u256 t256;
+
+    t256 = A_4x[0];
+    t256 ^= Da;
+    A_4x[0] = t256;
+    Bba = t256;
+
+    t256 = A_4x[6];
+    t256 ^= De;
+    A_4x[6] = t256;
+    Bbe = rol_4u64(t256, 44);
+
+    t256 = A_4x[12];
+    t256 ^= Di;
+    A_4x[12] = t256;
+    Bbi = rol_4u64(t256, 43);
+
+
+    t256 = #VPANDN_256(Bbe, Bbi);
+    t256 ^= Bba;
+    t256 ^= KeccakF1600RoundConstants[index];
+    E_4x[0] = t256;
+
+    t256 = A_4x[18];
+    t256 ^= Do;
+    A_4x[18] = t256;
+    Bbo = rol_4u64(t256, 21);
+
+
+    t256 = #VPANDN_256(Bbi, Bbo);
+    t256 ^= Bbe;
+    E_4x[1] = t256;
+
+    t256 = A_4x[24];
+    t256 ^= Du;
+    A_4x[24] = t256;
+    Bbu = rol_4u64(t256, 14);
+
+
+    t256 = #VPANDN_256(Bbo, Bbu);
+    t256 ^= Bbi;
+    E_4x[2] = t256;
+
+
+
+    t256 ^= Bbo;
+    E_4x[3] = t256;
+
+
+
+    t256 ^= Bbu;
+    E_4x[4] = t256;
+
+    return A_4x, E_4x;
+}
+
+inline fn third_last(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25]
+{
+    reg u256 Bga, Bge, Bgi, Bgo, Bgu;
+    reg u256 t256;
+
+    t256 = A_4x[3];
+    t256 ^= Do;
+    A_4x[3] = t256;
+    Bga = rol_4u64(t256, 28);
+
+    t256 = A_4x[9];
+    t256 ^= Du;
+    A_4x[9] = t256;
+    Bge = rol_4u64(t256, 20);
+
+    t256 = A_4x[10];
+    t256 ^= Da;
+    A_4x[10] = t256;
+    Bgi = rol_4u64(t256, 3);
+
+
+    t256 = #VPANDN_256(Bge, Bgi);
+    t256 ^= Bga;
+    E_4x[5] = t256;
+
+    t256 = A_4x[16];
+    t256 ^= De;
+    A_4x[16] = t256;
+    Bgo = rol_4u64(t256, 45);
+
+
+    t256 = #VPANDN_256(Bgi, Bgo);
+    t256 ^= Bge;
+    E_4x[6] = t256;
+
+    t256 = A_4x[22];
+    t256 ^= Di;
+    A_4x[22] = t256;
+    Bgu = rol_4u64(t256, 61);
+
+
+    t256 = #VPANDN_256(Bgo, Bgu);
+    t256 ^= Bgi;
+    E_4x[7] = t256;
+
+
+    t256 = #VPANDN_256(Bgu, Bga);
+    t256 ^= Bgo;
+    E_4x[8] = t256;
+
+
+    t256 = #VPANDN_256(Bga, Bge);
+    t256 ^= Bgu;
+    E_4x[9] = t256;
+
+    return A_4x, E_4x;
+}
+
+inline fn fourth_last(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25]
+{
+    reg u256 Bka, Bke, Bki, Bko, Bku;
+    reg u256 t256;
+
+    t256 = A_4x[1];
+    t256 ^= De;
+    A_4x[1] = t256;
+    Bka = rol_4u64(t256, 1);
+
+    t256 = A_4x[7];
+    t256 ^= Di;
+    A_4x[7] = t256;
+    Bke = rol_4u64(t256, 6);
+
+    t256 = A_4x[13];
+    t256 ^= Do;
+    A_4x[13] = t256;
+    Bki = rol_4u64(t256, 25);
+
+
+    t256 = #VPANDN_256(Bke, Bki);
+    t256 ^= Bka;
+    E_4x[10] = t256;
+
+    t256 = A_4x[19];
+    t256 ^= Du;
+    A_4x[19] = t256;
+    Bko = rol_4u64_rho8(t256);
+
+
+    t256 = #VPANDN_256(Bki, Bko);
+    t256 ^= Bke;
+    E_4x[11] = t256;
+
+    t256 = A_4x[20];
+    t256 ^= Da;
+    A_4x[20] = t256;
+    Bku = rol_4u64(t256, 18);
+
+
+    t256 = #VPANDN_256(Bko, Bku);
+    t256 ^= Bki;
+    E_4x[12] = t256;
+
+
+    t256 = #VPANDN_256(Bku, Bka);
+    t256 ^= Bko;
+    E_4x[13] = t256;
+
+
+    t256 = #VPANDN_256(Bka, Bke);
+    t256 ^= Bku;
+    E_4x[14] = t256;
+
+    return A_4x, E_4x;
+}
+
+inline fn fifth_last(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25]
+{
+    reg u256 Bm1, Bm2, Bm3;
+    stack u256 Bma, Bme, Bmi, Bmo, Bmu;
+    reg u256 t256;
+
+    t256 = A_4x[4];
+    t256 ^= Du;
+    A_4x[4] = t256;
+    Bm3 = rol_4u64(t256, 27);
+    Bma = Bm3;
+
+    t256 = A_4x[5];
+    t256 ^= Da;
+    A_4x[5] = t256;
+    Bm3 = rol_4u64(t256, 36);
+    Bme = Bm3;
+
+    t256 = A_4x[11];
+    t256 ^= De;
+    A_4x[11] = t256;
+    Bm3 = rol_4u64(t256, 10);
+    Bmi = Bm3;
+
+
+    Bm1 = Bme;
+    Bm2 = Bmi;
+    t256 = #VPANDN_256(Bm1, Bm2);
+    t256 ^= Bma;
+    E_4x[15] = t256;
+
+    t256 = A_4x[17];
+    t256 ^= Di;
+    A_4x[17] = t256;
+    Bm3 = rol_4u64(t256, 15);
+    Bmo = Bm3;
+
+
+    Bm1 = Bmo;
+    t256 = #VPANDN_256(Bm2, Bm1);
+    t256 ^= Bme;
+    E_4x[16] = t256;
+
+    t256 = A_4x[23];
+    t256 ^= Do;
+    A_4x[23] = t256;
+    Bm3 = rol_4u64_rho56(t256);
+    Bmu = Bm3;
+
+
+    Bm2 = Bmu;
+    t256 = #VPANDN_256(Bm1, Bm2);
+    t256 ^= Bmi;
+    E_4x[17] = t256;
+
+
+    Bm1 = Bma;
+    t256 = #VPANDN_256(Bm2, Bm1);
+    t256 ^= Bmo;
+    E_4x[18] = t256;
+
+
+    Bm2 = Bme;
+    t256 = #VPANDN_256(Bm1, Bm2);
+    t256 ^= Bmu;
+    E_4x[19] = t256;
+
+    return A_4x, E_4x;
+}
+
+inline fn sixth_last(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x,
+reg u256 Da, reg u256 De, reg u256 Di, reg u256 Do, reg u256 Du)
+-> reg ptr u256[25], reg ptr u256[25]
+{
+    reg u256 Bsa, Bse, Bsi, Bso, Bsu;
+    reg u256 t256;
+
+    t256 = A_4x[2];
+    t256 ^= Di;
+    A_4x[2] = t256;
+    Bsa = rol_4u64(t256, 62);
+
+    t256 = A_4x[8];
+    t256 ^= Do;
+    A_4x[8] = t256;
+    Bse = rol_4u64(t256, 55);
+
+    t256 = A_4x[14];
+    t256 ^= Du;
+    A_4x[14] = t256;
+    Bsi = rol_4u64(t256, 39);
+
+
+    t256 = #VPANDN_256(Bse, Bsi);
+    t256 ^= Bsa;
+    E_4x[20] = t256;
+
+    t256 = A_4x[15];
+    t256 ^= Da;
+    A_4x[15] = t256;
+    Bso = rol_4u64(t256, 41);
+
+
+    t256 = #VPANDN_256(Bsi, Bso);
+    t256 ^= Bse;
+    E_4x[21] = t256;
+
+    t256 = A_4x[21];
+    t256 ^= De;
+    A_4x[21] = t256;
+    Bsu = rol_4u64(t256, 2);
+
+
+    t256 = #VPANDN_256(Bso, Bsu);
+    t256 ^= Bsi;
+    E_4x[22] = t256;
+
+
+    t256 = #VPANDN_256(Bsu, Bsa);
+    t256 ^= Bso;
+    E_4x[23] = t256;
+
+
+    t256 = #VPANDN_256(Bsa, Bse);
+    t256 ^= Bsu;
+    E_4x[24] = t256;
+
+    return A_4x, E_4x;
+}
+
+inline fn theta_rho_pi_chi_iota_prepare_theta(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x, inline int index,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu)
+-> reg ptr u256[25], reg ptr u256[25], reg u256, reg u256, reg u256, reg u256, reg u256
+{
+    reg u256 Da, De, Di, Do, Du;
+
+
+    Da, De, Di, Do, Du = first(Ca, Ce, Ci, Co, Cu);
+
+
+    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = second(A_4x, E_4x, index, Ca, Ce, Ci, Co, Cu, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = third(A_4x, E_4x, Ca, Ce, Ci, Co, Cu, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = fourth(A_4x, E_4x, Ca, Ce, Ci, Co, Cu, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = fifth(A_4x, E_4x, Ca, Ce, Ci, Co, Cu, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = sixth(A_4x, E_4x, Ca, Ce, Ci, Co, Cu, Da, De, Di, Do, Du);
+
+    return A_4x, E_4x, Ca, Ce, Ci, Co, Cu;
+}
+
+inline fn theta_rho_pi_chi_iota(
+reg ptr u256[25] A_4x, reg ptr u256[25] E_4x, inline int index,
+reg u256 Ca, reg u256 Ce, reg u256 Ci, reg u256 Co, reg u256 Cu)
+-> reg ptr u256[25], reg ptr u256[25]
+{
+    reg u256 Da, De, Di, Do, Du;
+
+
+    Da, De, Di, Do, Du = first(Ca, Ce, Ci, Co, Cu);
+
+
+    A_4x, E_4x = second_last(A_4x, E_4x, index, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x = third_last(A_4x, E_4x, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x = fourth_last(A_4x, E_4x, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x = fifth_last(A_4x, E_4x, Da, De, Di, Do, Du);
+
+
+    A_4x, E_4x = sixth_last(A_4x, E_4x, Da, De, Di, Do, Du);
+
+    return A_4x, E_4x;
+}
+
+fn KeccakF1600_StatePermute4x(reg ptr u256[25] A_4x, reg ptr u256[25] E_4x) -> reg ptr u256[25], reg ptr u256[25]
 {
     reg u256 Ca, Ce, Ci, Co, Cu;
 
-    reg ptr u256[25] E_4x;
 
-
-
-
-
-
-
-    return A_4x;
+    Ca, Ce, Ci, Co, Cu = prepare_theta(A_4x);
+    A_4x, E_4x, Ca, Ce, Ci, Co, Cu = theta_rho_pi_chi_iota_prepare_theta(A_4x, E_4x, 0, Ca, Ce, Ci, Co, Cu);
+    A_4x[0] = Ca;
+    A_4x[1] = Ce;
+    A_4x[2] = Ci;
+    A_4x[3] = Co;
+    A_4x[4] = Cu;
+    return A_4x, E_4x;
 
 }
-
-export fn KeccakF1600_StatePermute4x_jazz(reg u64 statep)
+export fn KeccakF1600_StatePermute4x_debug_jazz(reg u64 statep)
 {
  inline int i;
 
  reg u256 t;
 
  stack u256[25] state;
+ stack u256[25] temp;
 
  for i = 0 to 25 {
   t = (u256) [statep + 32 * i];
   state[i] = t;
  }
 
- state = KeccakF1600_StatePermute4x(state);
+ state, temp = KeccakF1600_StatePermute4x(state, temp);
 
  for i = 0 to 25 {
   t = state[i];

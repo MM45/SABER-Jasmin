@@ -2,8 +2,10 @@
 
 #include "SABER_params.jahh"
 
-#include "fips202x4_regular_KeccakF1600_StatePermute4x.jahh"
+//#include "fips202x4_regular_KeccakF1600_StatePermute4x.jahh"
+#include "fips202x4_regular_KeccakF1600_StatePermute4x_debug.jahh"
 
+/*
 export fn KeccakF1600_StatePermute4x_jazz(reg u64 statep)
 {
 	inline int i;
@@ -11,13 +13,37 @@ export fn KeccakF1600_StatePermute4x_jazz(reg u64 statep)
 	reg u256 t;
 
 	stack u256[25] state;
+	stack u256[25] temp;
 
 	for i = 0 to 25 {
 		t = (u256) [statep + 32 * i];
 		state[i] = t;
 	}
 
-	state = KeccakF1600_StatePermute4x(state);
+	state, temp = KeccakF1600_StatePermute4x(state, temp);
+
+	for i = 0 to 25 {
+		t = state[i];
+		(u256) [statep + 32 * i] = t;
+	}
+}
+*/
+
+export fn KeccakF1600_StatePermute4x_debug_jazz(reg u64 statep)
+{
+	inline int i;
+	
+	reg u256 t;
+
+	stack u256[25] state;
+	stack u256[25] temp;
+
+	for i = 0 to 25 {
+		t = (u256) [statep + 32 * i];
+		state[i] = t;
+	}
+
+	state, temp = KeccakF1600_StatePermute4x(state, temp);
 
 	for i = 0 to 25 {
 		t = state[i];
