@@ -32,15 +32,15 @@ static void store64(uint8_t *x, uint64_t u)
 //extern void KeccakP1600times4_PermuteAll_24rounds(__m256i *s);
 //#define KeccakF1600_StatePermute4x KeccakP1600times4_PermuteAll_24rounds
 
-
-static void keccak_absorb4x(__m256i *s,
-                          unsigned int r,
-                          const unsigned char *m0, 
-                          const unsigned char *m1, 
-                          const unsigned char *m2, 
-                          const unsigned char *m3, 
-                          unsigned long long int mlen,
-                          unsigned char p)
+// TODO: removed static modifier for unit test purposes
+void keccak_absorb4x(__m256i *s,
+                        unsigned int r,
+                        const unsigned char *m0, 
+                        const unsigned char *m1, 
+                        const unsigned char *m2, 
+                        const unsigned char *m3, 
+                        unsigned long long int mlen,
+                        unsigned char p)
 {
   unsigned long long i;
   unsigned char t0[200];
@@ -103,14 +103,14 @@ static void keccak_absorb4x(__m256i *s,
   }
 }
 
-
-static void keccak_squeezeblocks4x(unsigned char *h0, 
-                                   unsigned char *h1, 
-                                   unsigned char *h2, 
-                                   unsigned char *h3, 
-                                   unsigned long long int nblocks,
-                                   __m256i *s, 
-                                   unsigned int r)
+// TODO: removed static modifier for unit test purposes
+void keccak_squeezeblocks4x(unsigned char *h0, 
+                                 unsigned char *h1, 
+                                 unsigned char *h2, 
+                                 unsigned char *h3, 
+                                 unsigned long long int nblocks,
+                                 __m256i *s, 
+                                 unsigned int r)
 {
   unsigned int i;
 

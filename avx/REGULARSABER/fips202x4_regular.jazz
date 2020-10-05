@@ -3,6 +3,10 @@
 #include "SABER_params.jahh"
 
 #include "fips202x4_regular_KeccakF1600_StatePermute4x.jahh"
+#include "fips202x4_regular_keccak_absorb4x_128_32.jahh"
+#include "fips202x4_regular_keccak_absorb4x_256_32.jahh"
+#include "fips202x4_regular_keccak_absorb4x_256_64.jahh"
+#include "fips202x4_regular_keccak_absorb4x_256_CCADEC.jahh"
 //#include "fips202x4_regular_KeccakF1600_StatePermute4x_debug.jahh"
 
 
@@ -13,18 +17,169 @@ export fn KeccakF1600_StatePermute4x_jazz(reg u64 statep)
 	reg u256 t;
 
 	stack u256[25] state;
-	stack u256[25] temp;
 
 	for i = 0 to 25 {
 		t = (u256) [statep + 32 * i];
 		state[i] = t;
 	}
 
-	state, temp = KeccakF1600_StatePermute4x(state, temp);
+	state = KeccakF1600_StatePermute4x(state);
 
 	for i = 0 to 25 {
 		t = state[i];
 		(u256) [statep + 32 * i] = t;
+	}
+}
+
+export fn keccak_absorb4x_128_32_jazz(reg u64 statep, reg u64 m0p, reg u64 m1p, reg u64 m2p, reg u64 m3p)
+{
+	inline int i;
+	
+	reg u8 t8;
+	reg u256 t256;
+
+	stack u8[32] m0;
+	stack u8[32] m1;
+	stack u8[32] m2;
+	stack u8[32] m3;
+
+	stack u256[25] state;
+
+	for i = 0 to 25 {
+		t256 = (u256) [statep + 32 * i];
+		state[i] = t256;
+	}
+
+	for i = 0 to 32 {
+		t8 = (u8) [m0p + i];
+		m0[i] = t8;
+		t8 = (u8) [m1p + i];
+		m1[i] = t8;
+		t8 = (u8) [m2p + i];
+		m2[i] = t8;
+		t8 = (u8) [m3p + i];
+		m3[i] = t8;
+	}
+
+	state = keccak_absorb4x_128_32(state, m0, m1, m2, m3);
+
+	for i = 0 to 25 {
+		t256 = state[i];
+		(u256) [statep + 32 * i] = t256;
+	}
+}
+
+export fn keccak_absorb4x_256_32_jazz(reg u64 statep, reg u64 m0p, reg u64 m1p, reg u64 m2p, reg u64 m3p)
+{
+	inline int i;
+	
+	reg u8 t8;
+	reg u256 t256;
+
+	stack u8[32] m0;
+	stack u8[32] m1;
+	stack u8[32] m2;
+	stack u8[32] m3;
+
+	stack u256[25] state;
+
+	for i = 0 to 25 {
+		t256 = (u256) [statep + 32 * i];
+		state[i] = t256;
+	}
+
+	for i = 0 to 32 {
+		t8 = (u8) [m0p + i];
+		m0[i] = t8;
+		t8 = (u8) [m1p + i];
+		m1[i] = t8;
+		t8 = (u8) [m2p + i];
+		m2[i] = t8;
+		t8 = (u8) [m3p + i];
+		m3[i] = t8;
+	}
+
+	state = keccak_absorb4x_256_32(state, m0, m1, m2, m3);
+
+	for i = 0 to 25 {
+		t256 = state[i];
+		(u256) [statep + 32 * i] = t256;
+	}
+}
+
+export fn keccak_absorb4x_256_64_jazz(reg u64 statep, reg u64 m0p, reg u64 m1p, reg u64 m2p, reg u64 m3p)
+{
+	inline int i;
+	
+	reg u8 t8;
+	reg u256 t256;
+
+	stack u8[64] m0;
+	stack u8[64] m1;
+	stack u8[64] m2;
+	stack u8[64] m3;
+
+	stack u256[25] state;
+
+	for i = 0 to 25 {
+		t256 = (u256) [statep + 32 * i];
+		state[i] = t256;
+	}
+
+	for i = 0 to 64 {
+		t8 = (u8) [m0p + i];
+		m0[i] = t8;
+		t8 = (u8) [m1p + i];
+		m1[i] = t8;
+		t8 = (u8) [m2p + i];
+		m2[i] = t8;
+		t8 = (u8) [m3p + i];
+		m3[i] = t8;
+	}
+
+	state = keccak_absorb4x_256_64(state, m0, m1, m2, m3);
+
+	for i = 0 to 25 {
+		t256 = state[i];
+		(u256) [statep + 32 * i] = t256;
+	}
+}
+
+export fn keccak_absorb4x_256_CCADEC_jazz(reg u64 statep, reg u64 m0p, reg u64 m1p, reg u64 m2p, reg u64 m3p)
+{
+	inline int i;
+	
+	reg u8 t8;
+	reg u256 t256;
+
+	stack u8[SABER_BYTES_CCA_DEC] m0;
+	stack u8[SABER_BYTES_CCA_DEC] m1;
+	stack u8[SABER_BYTES_CCA_DEC] m2;
+	stack u8[SABER_BYTES_CCA_DEC] m3;
+
+	stack u256[25] state;
+
+	for i = 0 to 25 {
+		t256 = (u256) [statep + 32 * i];
+		state[i] = t256;
+	}
+
+	for i = 0 to SABER_BYTES_CCA_DEC {
+		t8 = (u8) [m0p + i];
+		m0[i] = t8;
+		t8 = (u8) [m1p + i];
+		m1[i] = t8;
+		t8 = (u8) [m2p + i];
+		m2[i] = t8;
+		t8 = (u8) [m3p + i];
+		m3[i] = t8;
+	}
+
+	state = keccak_absorb4x_256_CCADEC(state, m0, m1, m2, m3);
+
+	for i = 0 to 25 {
+		t256 = state[i];
+		(u256) [statep + 32 * i] = t256;
 	}
 }
 
