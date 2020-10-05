@@ -1,4 +1,4 @@
-/*** test_fips202x4_regular_keccak_absorb4x_256_CCADEC.c: File containing the unit test for the keccak_absorb4x_256_64 function, with (regular) SABER parameters ***/
+/*** test_fips202x4_regular_keccak_absorb4x_256_CCADEC.c: File containing the unit test for the keccak_absorb4x_256_CCADEC function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 #include <stdint.h>

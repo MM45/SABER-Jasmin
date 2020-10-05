@@ -1684,6 +1684,181 @@ inline fn keccak_absorb4x_256_CCADEC(reg ptr u256[25] s, reg ptr u8[SABER_BYTES_
 
  return s;
 }
+inline fn keccak_absorb4x_256_PUBKEYBYTES(reg ptr u256[25] s, reg ptr u8[SABER_INDCPA_PUBLICKEYBYTES] m0, reg ptr u8[SABER_INDCPA_PUBLICKEYBYTES] m1, reg ptr u8[SABER_INDCPA_PUBLICKEYBYTES] m2, reg ptr u8[SABER_INDCPA_PUBLICKEYBYTES] m3) -> reg ptr u256[25]
+{
+ inline int i;
+ inline int j;
+ inline int iterations;
+ inline int handled;
+ inline int remainder;
+
+ reg u8 t8;
+
+ reg u64 t64;
+
+ stack u8[200] t0;
+ stack u8[200] t1;
+ stack u8[200] t2;
+ stack u8[200] t3;
+
+ iterations = SABER_INDCPA_PUBLICKEYBYTES / SHA3_256_RATE;
+ handled = iterations * SHA3_256_RATE;
+ remainder = SABER_INDCPA_PUBLICKEYBYTES - handled;
+
+ for j = 0 to iterations {
+  for i = 0 to (SHA3_256_RATE / 8) {
+
+   t64 = load64(m0[j * SHA3_256_RATE + 8 * i:8]);
+   s[u64 4 * i] ^= t64;
+   t64 = load64(m1[j * SHA3_256_RATE + 8 * i:8]);
+   s[u64 4 * i + 1] ^= t64;
+   t64 = load64(m2[j * SHA3_256_RATE + 8 * i:8]);
+   s[u64 4 * i + 2] ^= t64;
+   t64 = load64(m3[j * SHA3_256_RATE + 8 * i:8]);
+   s[u64 4 * i + 3] ^= t64;
+  }
+
+  s = KeccakF1600_StatePermute4x(s);
+ }
+
+ for i = 0 to SHA3_256_RATE {
+  t0[i] = 0;
+  t1[i] = 0;
+  t2[i] = 0;
+  t3[i] = 0;
+ }
+
+ for i = 0 to remainder {
+  t8 = m0[handled + i];
+  t0[i] = t8;
+  t8 = m1[handled + i];
+  t1[i] = t8;
+  t8 = m2[handled + i];
+  t2[i] = t8;
+  t8 = m3[handled + i];
+  t3[i] = t8;
+ }
+
+ t0[remainder] = 0x06;
+ t1[remainder] = 0x06;
+ t2[remainder] = 0x06;
+ t3[remainder] = 0x06;
+
+ t0[SHA3_256_RATE - 1] |= 128;
+ t1[SHA3_256_RATE - 1] |= 128;
+ t2[SHA3_256_RATE - 1] |= 128;
+ t3[SHA3_256_RATE - 1] |= 128;
+
+ for i = 0 to (SHA3_256_RATE / 8) {
+  t64 = load64(t0[8 * i:8]);
+  s[u64 4 * i] ^= t64;
+  t64 = load64(t1[8 * i:8]);
+  s[u64 4 * i + 1] ^= t64;
+  t64 = load64(t2[8 * i:8]);
+  s[u64 4 * i + 2] ^= t64;
+  t64 = load64(t3[8 * i:8]);
+  s[u64 4 * i + 3] ^= t64;
+ }
+
+ return s;
+}
+inline fn keccak_absorb4x_512_64(reg ptr u256[25] s, reg ptr u8[64] m0, reg ptr u8[64] m1, reg ptr u8[64] m2, reg ptr u8[64] m3) -> reg ptr u256[25]
+{
+ inline int i;
+
+ reg u8 t8;
+
+ reg u64 t64;
+
+ stack u8[200] t0;
+ stack u8[200] t1;
+ stack u8[200] t2;
+ stack u8[200] t3;
+
+ for i = 0 to SHA3_512_RATE {
+  t0[i] = 0;
+  t1[i] = 0;
+  t2[i] = 0;
+  t3[i] = 0;
+ }
+
+ for i = 0 to 64 {
+  t8 = m0[i];
+  t0[i] = t8;
+
+  t8 = m1[i];
+  t1[i] = t8;
+
+  t8 = m2[i];
+  t2[i] = t8;
+
+  t8 = m3[i];
+  t3[i] = t8;
+ }
+
+ t0[64] = 0x06;
+ t1[64] = 0x06;
+ t2[64] = 0x06;
+ t3[64] = 0x06;
+
+ t0[SHA3_512_RATE - 1] |= 128;
+ t1[SHA3_512_RATE - 1] |= 128;
+ t2[SHA3_512_RATE - 1] |= 128;
+ t3[SHA3_512_RATE - 1] |= 128;
+
+ for i = 0 to (SHA3_512_RATE / 8) {
+  t64 = load64(t0[8 * i:8]);
+  s[u64 4 * i] ^= t64;
+  t64 = load64(t1[8 * i:8]);
+  s[u64 4 * i + 1] ^= t64;
+  t64 = load64(t2[8 * i:8]);
+  s[u64 4 * i + 2] ^= t64;
+  t64 = load64(t3[8 * i:8]);
+  s[u64 4 * i + 3] ^= t64;
+ }
+
+ return s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+inline fn store64(stack u8[8] x, reg u64 u) -> stack u8[8]
+{
+ inline int i;
+
+ for i = 0 to 8 {
+  x[i] = u;
+  u >>= 8;
+ }
+
+ return x;
+}
+
+inline fn keccak_squeezeblocks4x_128_128(reg ptr u8[SHAKE128_RATE] h0, reg ptr u8[SHAKE128_RATE] h1, reg ptr u8[SHAKE128_RATE] h2, reg ptr u8[SHAKE128_RATE] h3, reg ptr u256[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u8[SHAKE128_RATE], reg ptr u8[SHAKE128_RATE], reg ptr u8[SHAKE128_RATE], reg ptr u256[25]
+{
+ inline int i;
+
+ s = KeccakF1600_StatePermute4x(s);
+
+ for i = 0 to (SHAKE128_RATE / 8) {
+  h0[8 * i:8] = store64(h0[8 * i:8], s[u64 4 * i]);
+  h1[8 * i:8] = store64(h1[8 * i:8], s[u64 4 * i + 1]);
+  h2[8 * i:8] = store64(h2[8 * i:8], s[u64 4 * i + 2]);
+  h3[8 * i:8] = store64(h3[8 * i:8], s[u64 4 * i + 3]);
+ }
+
+ return h0, h1, h2, h3, s;
+}
 
 
 
@@ -1857,5 +2032,133 @@ export fn keccak_absorb4x_256_CCADEC_jazz(reg u64 statep, reg u64 m0p, reg u64 m
  for i = 0 to 25 {
   t256 = state[i];
   (u256) [statep + 32 * i] = t256;
+ }
+}
+
+export fn keccak_absorb4x_256_PUBKEYBYTES_jazz(reg u64 statep, reg u64 m0p, reg u64 m1p, reg u64 m2p, reg u64 m3p)
+{
+ inline int i;
+
+ reg u8 t8;
+ reg u256 t256;
+
+ stack u8[SABER_INDCPA_PUBLICKEYBYTES] m0;
+ stack u8[SABER_INDCPA_PUBLICKEYBYTES] m1;
+ stack u8[SABER_INDCPA_PUBLICKEYBYTES] m2;
+ stack u8[SABER_INDCPA_PUBLICKEYBYTES] m3;
+
+ stack u256[25] state;
+
+ for i = 0 to 25 {
+  t256 = (u256) [statep + 32 * i];
+  state[i] = t256;
+ }
+
+ for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+  t8 = (u8) [m0p + i];
+  m0[i] = t8;
+  t8 = (u8) [m1p + i];
+  m1[i] = t8;
+  t8 = (u8) [m2p + i];
+  m2[i] = t8;
+  t8 = (u8) [m3p + i];
+  m3[i] = t8;
+ }
+
+ state = keccak_absorb4x_256_PUBKEYBYTES(state, m0, m1, m2, m3);
+
+ for i = 0 to 25 {
+  t256 = state[i];
+  (u256) [statep + 32 * i] = t256;
+ }
+}
+
+export fn keccak_absorb4x_512_64_jazz(reg u64 statep, reg u64 m0p, reg u64 m1p, reg u64 m2p, reg u64 m3p)
+{
+ inline int i;
+
+ reg u8 t8;
+ reg u256 t256;
+
+ stack u8[64] m0;
+ stack u8[64] m1;
+ stack u8[64] m2;
+ stack u8[64] m3;
+
+ stack u256[25] state;
+
+ for i = 0 to 25 {
+  t256 = (u256) [statep + 32 * i];
+  state[i] = t256;
+ }
+
+ for i = 0 to 64 {
+  t8 = (u8) [m0p + i];
+  m0[i] = t8;
+  t8 = (u8) [m1p + i];
+  m1[i] = t8;
+  t8 = (u8) [m2p + i];
+  m2[i] = t8;
+  t8 = (u8) [m3p + i];
+  m3[i] = t8;
+ }
+
+ state = keccak_absorb4x_512_64(state, m0, m1, m2, m3);
+
+ for i = 0 to 25 {
+  t256 = state[i];
+  (u256) [statep + 32 * i] = t256;
+ }
+}
+
+export fn keccak_squeezeblocks4x_128_128_jazz(reg u64 h0p, reg u64 h1p, reg u64 h2p, reg u64 h3p, reg u64 sp)
+{
+ inline int i;
+
+ reg u8 th;
+
+ reg u256 ts;
+
+ stack u8[SHAKE128_RATE] h0;
+ stack u8[SHAKE128_RATE] h1;
+ stack u8[SHAKE128_RATE] h2;
+ stack u8[SHAKE128_RATE] h3;
+
+ stack u256[25] s;
+
+
+
+ for i = 0 to SHAKE128_RATE {
+  th = (u8) [h0p + i];
+  h0[i] = th;
+  th = (u8) [h1p + i];
+  h1[i] = th;
+  th = (u8) [h2p + i];
+  h2[i] = th;
+  th = (u8) [h3p + i];
+  h3[i] = th;
+ }
+
+ for i = 0 to 25 {
+  ts = (u256) [sp + 32 * i];
+  s[i] = ts;
+ }
+
+ h0, h1, h2, h3, s = keccak_squeezeblocks4x_128_128(h0, h1, h2, h3, s);
+
+ for i = 0 to SHAKE128_RATE {
+  th = h0[i];
+  (u8) [h0p + i] = th;
+  th = h1[i];
+  (u8) [h1p + i] = th;
+  th = h2[i];
+  (u8) [h2p + i] = th;
+  th = h3[i];
+  (u8) [h3p + i] = th;
+ }
+
+ for i = 0 to 25 {
+  ts = s[i];
+  (u256) [sp + 32 * i] = ts;
  }
 }

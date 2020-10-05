@@ -84,4 +84,22 @@ void keccak_absorb4x_256_CCADEC_jazz(__m256i *s,
                         const unsigned char *m2, 
                         const unsigned char *m3);
 
+void keccak_absorb4x_256_PUBKEYBYTES_jazz(__m256i *s,
+                        const unsigned char *m0, 
+                        const unsigned char *m1, 
+                        const unsigned char *m2, 
+                        const unsigned char *m3);
+
+void keccak_absorb4x_512_64_jazz(__m256i *s,
+                        const unsigned char *m0, 
+                        const unsigned char *m1, 
+                        const unsigned char *m2, 
+                        const unsigned char *m3);
+
+void keccak_squeezeblocks4x_128_128_jazz(unsigned char *h0, 
+                               unsigned char *h1, 
+                               unsigned char *h2, 
+                               unsigned char *h3, 
+                               __m256i *s);
+
 #endif

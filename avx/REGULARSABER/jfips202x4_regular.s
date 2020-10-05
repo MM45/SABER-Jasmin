@@ -1,5 +1,11 @@
 	.text
 	.p2align	5
+	.globl	_keccak_squeezeblocks4x_128_128_jazz
+	.globl	keccak_squeezeblocks4x_128_128_jazz
+	.globl	_keccak_absorb4x_512_64_jazz
+	.globl	keccak_absorb4x_512_64_jazz
+	.globl	_keccak_absorb4x_256_PUBKEYBYTES_jazz
+	.globl	keccak_absorb4x_256_PUBKEYBYTES_jazz
 	.globl	_keccak_absorb4x_256_CCADEC_jazz
 	.globl	keccak_absorb4x_256_CCADEC_jazz
 	.globl	_keccak_absorb4x_256_64_jazz
@@ -10,11 +16,27886 @@
 	.globl	keccak_absorb4x_128_32_jazz
 	.globl	_KeccakF1600_StatePermute4x_jazz
 	.globl	KeccakF1600_StatePermute4x_jazz
+_keccak_squeezeblocks4x_128_128_jazz:
+keccak_squeezeblocks4x_128_128_jazz:
+	movq	%rsp, %rax
+	leaq	-1480(%rsp), %rsp
+	andq	$-32, %rsp
+	movq	%rax, 1472(%rsp)
+	movb	(%rdi), %al
+	movb	%al, 1304(%rsp)
+	movb	(%rsi), %al
+	movb	%al, 1136(%rsp)
+	movb	(%rdx), %al
+	movb	%al, 968(%rsp)
+	movb	(%rcx), %al
+	movb	%al, 800(%rsp)
+	movb	1(%rdi), %al
+	movb	%al, 1305(%rsp)
+	movb	1(%rsi), %al
+	movb	%al, 1137(%rsp)
+	movb	1(%rdx), %al
+	movb	%al, 969(%rsp)
+	movb	1(%rcx), %al
+	movb	%al, 801(%rsp)
+	movb	2(%rdi), %al
+	movb	%al, 1306(%rsp)
+	movb	2(%rsi), %al
+	movb	%al, 1138(%rsp)
+	movb	2(%rdx), %al
+	movb	%al, 970(%rsp)
+	movb	2(%rcx), %al
+	movb	%al, 802(%rsp)
+	movb	3(%rdi), %al
+	movb	%al, 1307(%rsp)
+	movb	3(%rsi), %al
+	movb	%al, 1139(%rsp)
+	movb	3(%rdx), %al
+	movb	%al, 971(%rsp)
+	movb	3(%rcx), %al
+	movb	%al, 803(%rsp)
+	movb	4(%rdi), %al
+	movb	%al, 1308(%rsp)
+	movb	4(%rsi), %al
+	movb	%al, 1140(%rsp)
+	movb	4(%rdx), %al
+	movb	%al, 972(%rsp)
+	movb	4(%rcx), %al
+	movb	%al, 804(%rsp)
+	movb	5(%rdi), %al
+	movb	%al, 1309(%rsp)
+	movb	5(%rsi), %al
+	movb	%al, 1141(%rsp)
+	movb	5(%rdx), %al
+	movb	%al, 973(%rsp)
+	movb	5(%rcx), %al
+	movb	%al, 805(%rsp)
+	movb	6(%rdi), %al
+	movb	%al, 1310(%rsp)
+	movb	6(%rsi), %al
+	movb	%al, 1142(%rsp)
+	movb	6(%rdx), %al
+	movb	%al, 974(%rsp)
+	movb	6(%rcx), %al
+	movb	%al, 806(%rsp)
+	movb	7(%rdi), %al
+	movb	%al, 1311(%rsp)
+	movb	7(%rsi), %al
+	movb	%al, 1143(%rsp)
+	movb	7(%rdx), %al
+	movb	%al, 975(%rsp)
+	movb	7(%rcx), %al
+	movb	%al, 807(%rsp)
+	movb	8(%rdi), %al
+	movb	%al, 1312(%rsp)
+	movb	8(%rsi), %al
+	movb	%al, 1144(%rsp)
+	movb	8(%rdx), %al
+	movb	%al, 976(%rsp)
+	movb	8(%rcx), %al
+	movb	%al, 808(%rsp)
+	movb	9(%rdi), %al
+	movb	%al, 1313(%rsp)
+	movb	9(%rsi), %al
+	movb	%al, 1145(%rsp)
+	movb	9(%rdx), %al
+	movb	%al, 977(%rsp)
+	movb	9(%rcx), %al
+	movb	%al, 809(%rsp)
+	movb	10(%rdi), %al
+	movb	%al, 1314(%rsp)
+	movb	10(%rsi), %al
+	movb	%al, 1146(%rsp)
+	movb	10(%rdx), %al
+	movb	%al, 978(%rsp)
+	movb	10(%rcx), %al
+	movb	%al, 810(%rsp)
+	movb	11(%rdi), %al
+	movb	%al, 1315(%rsp)
+	movb	11(%rsi), %al
+	movb	%al, 1147(%rsp)
+	movb	11(%rdx), %al
+	movb	%al, 979(%rsp)
+	movb	11(%rcx), %al
+	movb	%al, 811(%rsp)
+	movb	12(%rdi), %al
+	movb	%al, 1316(%rsp)
+	movb	12(%rsi), %al
+	movb	%al, 1148(%rsp)
+	movb	12(%rdx), %al
+	movb	%al, 980(%rsp)
+	movb	12(%rcx), %al
+	movb	%al, 812(%rsp)
+	movb	13(%rdi), %al
+	movb	%al, 1317(%rsp)
+	movb	13(%rsi), %al
+	movb	%al, 1149(%rsp)
+	movb	13(%rdx), %al
+	movb	%al, 981(%rsp)
+	movb	13(%rcx), %al
+	movb	%al, 813(%rsp)
+	movb	14(%rdi), %al
+	movb	%al, 1318(%rsp)
+	movb	14(%rsi), %al
+	movb	%al, 1150(%rsp)
+	movb	14(%rdx), %al
+	movb	%al, 982(%rsp)
+	movb	14(%rcx), %al
+	movb	%al, 814(%rsp)
+	movb	15(%rdi), %al
+	movb	%al, 1319(%rsp)
+	movb	15(%rsi), %al
+	movb	%al, 1151(%rsp)
+	movb	15(%rdx), %al
+	movb	%al, 983(%rsp)
+	movb	15(%rcx), %al
+	movb	%al, 815(%rsp)
+	movb	16(%rdi), %al
+	movb	%al, 1320(%rsp)
+	movb	16(%rsi), %al
+	movb	%al, 1152(%rsp)
+	movb	16(%rdx), %al
+	movb	%al, 984(%rsp)
+	movb	16(%rcx), %al
+	movb	%al, 816(%rsp)
+	movb	17(%rdi), %al
+	movb	%al, 1321(%rsp)
+	movb	17(%rsi), %al
+	movb	%al, 1153(%rsp)
+	movb	17(%rdx), %al
+	movb	%al, 985(%rsp)
+	movb	17(%rcx), %al
+	movb	%al, 817(%rsp)
+	movb	18(%rdi), %al
+	movb	%al, 1322(%rsp)
+	movb	18(%rsi), %al
+	movb	%al, 1154(%rsp)
+	movb	18(%rdx), %al
+	movb	%al, 986(%rsp)
+	movb	18(%rcx), %al
+	movb	%al, 818(%rsp)
+	movb	19(%rdi), %al
+	movb	%al, 1323(%rsp)
+	movb	19(%rsi), %al
+	movb	%al, 1155(%rsp)
+	movb	19(%rdx), %al
+	movb	%al, 987(%rsp)
+	movb	19(%rcx), %al
+	movb	%al, 819(%rsp)
+	movb	20(%rdi), %al
+	movb	%al, 1324(%rsp)
+	movb	20(%rsi), %al
+	movb	%al, 1156(%rsp)
+	movb	20(%rdx), %al
+	movb	%al, 988(%rsp)
+	movb	20(%rcx), %al
+	movb	%al, 820(%rsp)
+	movb	21(%rdi), %al
+	movb	%al, 1325(%rsp)
+	movb	21(%rsi), %al
+	movb	%al, 1157(%rsp)
+	movb	21(%rdx), %al
+	movb	%al, 989(%rsp)
+	movb	21(%rcx), %al
+	movb	%al, 821(%rsp)
+	movb	22(%rdi), %al
+	movb	%al, 1326(%rsp)
+	movb	22(%rsi), %al
+	movb	%al, 1158(%rsp)
+	movb	22(%rdx), %al
+	movb	%al, 990(%rsp)
+	movb	22(%rcx), %al
+	movb	%al, 822(%rsp)
+	movb	23(%rdi), %al
+	movb	%al, 1327(%rsp)
+	movb	23(%rsi), %al
+	movb	%al, 1159(%rsp)
+	movb	23(%rdx), %al
+	movb	%al, 991(%rsp)
+	movb	23(%rcx), %al
+	movb	%al, 823(%rsp)
+	movb	24(%rdi), %al
+	movb	%al, 1328(%rsp)
+	movb	24(%rsi), %al
+	movb	%al, 1160(%rsp)
+	movb	24(%rdx), %al
+	movb	%al, 992(%rsp)
+	movb	24(%rcx), %al
+	movb	%al, 824(%rsp)
+	movb	25(%rdi), %al
+	movb	%al, 1329(%rsp)
+	movb	25(%rsi), %al
+	movb	%al, 1161(%rsp)
+	movb	25(%rdx), %al
+	movb	%al, 993(%rsp)
+	movb	25(%rcx), %al
+	movb	%al, 825(%rsp)
+	movb	26(%rdi), %al
+	movb	%al, 1330(%rsp)
+	movb	26(%rsi), %al
+	movb	%al, 1162(%rsp)
+	movb	26(%rdx), %al
+	movb	%al, 994(%rsp)
+	movb	26(%rcx), %al
+	movb	%al, 826(%rsp)
+	movb	27(%rdi), %al
+	movb	%al, 1331(%rsp)
+	movb	27(%rsi), %al
+	movb	%al, 1163(%rsp)
+	movb	27(%rdx), %al
+	movb	%al, 995(%rsp)
+	movb	27(%rcx), %al
+	movb	%al, 827(%rsp)
+	movb	28(%rdi), %al
+	movb	%al, 1332(%rsp)
+	movb	28(%rsi), %al
+	movb	%al, 1164(%rsp)
+	movb	28(%rdx), %al
+	movb	%al, 996(%rsp)
+	movb	28(%rcx), %al
+	movb	%al, 828(%rsp)
+	movb	29(%rdi), %al
+	movb	%al, 1333(%rsp)
+	movb	29(%rsi), %al
+	movb	%al, 1165(%rsp)
+	movb	29(%rdx), %al
+	movb	%al, 997(%rsp)
+	movb	29(%rcx), %al
+	movb	%al, 829(%rsp)
+	movb	30(%rdi), %al
+	movb	%al, 1334(%rsp)
+	movb	30(%rsi), %al
+	movb	%al, 1166(%rsp)
+	movb	30(%rdx), %al
+	movb	%al, 998(%rsp)
+	movb	30(%rcx), %al
+	movb	%al, 830(%rsp)
+	movb	31(%rdi), %al
+	movb	%al, 1335(%rsp)
+	movb	31(%rsi), %al
+	movb	%al, 1167(%rsp)
+	movb	31(%rdx), %al
+	movb	%al, 999(%rsp)
+	movb	31(%rcx), %al
+	movb	%al, 831(%rsp)
+	movb	32(%rdi), %al
+	movb	%al, 1336(%rsp)
+	movb	32(%rsi), %al
+	movb	%al, 1168(%rsp)
+	movb	32(%rdx), %al
+	movb	%al, 1000(%rsp)
+	movb	32(%rcx), %al
+	movb	%al, 832(%rsp)
+	movb	33(%rdi), %al
+	movb	%al, 1337(%rsp)
+	movb	33(%rsi), %al
+	movb	%al, 1169(%rsp)
+	movb	33(%rdx), %al
+	movb	%al, 1001(%rsp)
+	movb	33(%rcx), %al
+	movb	%al, 833(%rsp)
+	movb	34(%rdi), %al
+	movb	%al, 1338(%rsp)
+	movb	34(%rsi), %al
+	movb	%al, 1170(%rsp)
+	movb	34(%rdx), %al
+	movb	%al, 1002(%rsp)
+	movb	34(%rcx), %al
+	movb	%al, 834(%rsp)
+	movb	35(%rdi), %al
+	movb	%al, 1339(%rsp)
+	movb	35(%rsi), %al
+	movb	%al, 1171(%rsp)
+	movb	35(%rdx), %al
+	movb	%al, 1003(%rsp)
+	movb	35(%rcx), %al
+	movb	%al, 835(%rsp)
+	movb	36(%rdi), %al
+	movb	%al, 1340(%rsp)
+	movb	36(%rsi), %al
+	movb	%al, 1172(%rsp)
+	movb	36(%rdx), %al
+	movb	%al, 1004(%rsp)
+	movb	36(%rcx), %al
+	movb	%al, 836(%rsp)
+	movb	37(%rdi), %al
+	movb	%al, 1341(%rsp)
+	movb	37(%rsi), %al
+	movb	%al, 1173(%rsp)
+	movb	37(%rdx), %al
+	movb	%al, 1005(%rsp)
+	movb	37(%rcx), %al
+	movb	%al, 837(%rsp)
+	movb	38(%rdi), %al
+	movb	%al, 1342(%rsp)
+	movb	38(%rsi), %al
+	movb	%al, 1174(%rsp)
+	movb	38(%rdx), %al
+	movb	%al, 1006(%rsp)
+	movb	38(%rcx), %al
+	movb	%al, 838(%rsp)
+	movb	39(%rdi), %al
+	movb	%al, 1343(%rsp)
+	movb	39(%rsi), %al
+	movb	%al, 1175(%rsp)
+	movb	39(%rdx), %al
+	movb	%al, 1007(%rsp)
+	movb	39(%rcx), %al
+	movb	%al, 839(%rsp)
+	movb	40(%rdi), %al
+	movb	%al, 1344(%rsp)
+	movb	40(%rsi), %al
+	movb	%al, 1176(%rsp)
+	movb	40(%rdx), %al
+	movb	%al, 1008(%rsp)
+	movb	40(%rcx), %al
+	movb	%al, 840(%rsp)
+	movb	41(%rdi), %al
+	movb	%al, 1345(%rsp)
+	movb	41(%rsi), %al
+	movb	%al, 1177(%rsp)
+	movb	41(%rdx), %al
+	movb	%al, 1009(%rsp)
+	movb	41(%rcx), %al
+	movb	%al, 841(%rsp)
+	movb	42(%rdi), %al
+	movb	%al, 1346(%rsp)
+	movb	42(%rsi), %al
+	movb	%al, 1178(%rsp)
+	movb	42(%rdx), %al
+	movb	%al, 1010(%rsp)
+	movb	42(%rcx), %al
+	movb	%al, 842(%rsp)
+	movb	43(%rdi), %al
+	movb	%al, 1347(%rsp)
+	movb	43(%rsi), %al
+	movb	%al, 1179(%rsp)
+	movb	43(%rdx), %al
+	movb	%al, 1011(%rsp)
+	movb	43(%rcx), %al
+	movb	%al, 843(%rsp)
+	movb	44(%rdi), %al
+	movb	%al, 1348(%rsp)
+	movb	44(%rsi), %al
+	movb	%al, 1180(%rsp)
+	movb	44(%rdx), %al
+	movb	%al, 1012(%rsp)
+	movb	44(%rcx), %al
+	movb	%al, 844(%rsp)
+	movb	45(%rdi), %al
+	movb	%al, 1349(%rsp)
+	movb	45(%rsi), %al
+	movb	%al, 1181(%rsp)
+	movb	45(%rdx), %al
+	movb	%al, 1013(%rsp)
+	movb	45(%rcx), %al
+	movb	%al, 845(%rsp)
+	movb	46(%rdi), %al
+	movb	%al, 1350(%rsp)
+	movb	46(%rsi), %al
+	movb	%al, 1182(%rsp)
+	movb	46(%rdx), %al
+	movb	%al, 1014(%rsp)
+	movb	46(%rcx), %al
+	movb	%al, 846(%rsp)
+	movb	47(%rdi), %al
+	movb	%al, 1351(%rsp)
+	movb	47(%rsi), %al
+	movb	%al, 1183(%rsp)
+	movb	47(%rdx), %al
+	movb	%al, 1015(%rsp)
+	movb	47(%rcx), %al
+	movb	%al, 847(%rsp)
+	movb	48(%rdi), %al
+	movb	%al, 1352(%rsp)
+	movb	48(%rsi), %al
+	movb	%al, 1184(%rsp)
+	movb	48(%rdx), %al
+	movb	%al, 1016(%rsp)
+	movb	48(%rcx), %al
+	movb	%al, 848(%rsp)
+	movb	49(%rdi), %al
+	movb	%al, 1353(%rsp)
+	movb	49(%rsi), %al
+	movb	%al, 1185(%rsp)
+	movb	49(%rdx), %al
+	movb	%al, 1017(%rsp)
+	movb	49(%rcx), %al
+	movb	%al, 849(%rsp)
+	movb	50(%rdi), %al
+	movb	%al, 1354(%rsp)
+	movb	50(%rsi), %al
+	movb	%al, 1186(%rsp)
+	movb	50(%rdx), %al
+	movb	%al, 1018(%rsp)
+	movb	50(%rcx), %al
+	movb	%al, 850(%rsp)
+	movb	51(%rdi), %al
+	movb	%al, 1355(%rsp)
+	movb	51(%rsi), %al
+	movb	%al, 1187(%rsp)
+	movb	51(%rdx), %al
+	movb	%al, 1019(%rsp)
+	movb	51(%rcx), %al
+	movb	%al, 851(%rsp)
+	movb	52(%rdi), %al
+	movb	%al, 1356(%rsp)
+	movb	52(%rsi), %al
+	movb	%al, 1188(%rsp)
+	movb	52(%rdx), %al
+	movb	%al, 1020(%rsp)
+	movb	52(%rcx), %al
+	movb	%al, 852(%rsp)
+	movb	53(%rdi), %al
+	movb	%al, 1357(%rsp)
+	movb	53(%rsi), %al
+	movb	%al, 1189(%rsp)
+	movb	53(%rdx), %al
+	movb	%al, 1021(%rsp)
+	movb	53(%rcx), %al
+	movb	%al, 853(%rsp)
+	movb	54(%rdi), %al
+	movb	%al, 1358(%rsp)
+	movb	54(%rsi), %al
+	movb	%al, 1190(%rsp)
+	movb	54(%rdx), %al
+	movb	%al, 1022(%rsp)
+	movb	54(%rcx), %al
+	movb	%al, 854(%rsp)
+	movb	55(%rdi), %al
+	movb	%al, 1359(%rsp)
+	movb	55(%rsi), %al
+	movb	%al, 1191(%rsp)
+	movb	55(%rdx), %al
+	movb	%al, 1023(%rsp)
+	movb	55(%rcx), %al
+	movb	%al, 855(%rsp)
+	movb	56(%rdi), %al
+	movb	%al, 1360(%rsp)
+	movb	56(%rsi), %al
+	movb	%al, 1192(%rsp)
+	movb	56(%rdx), %al
+	movb	%al, 1024(%rsp)
+	movb	56(%rcx), %al
+	movb	%al, 856(%rsp)
+	movb	57(%rdi), %al
+	movb	%al, 1361(%rsp)
+	movb	57(%rsi), %al
+	movb	%al, 1193(%rsp)
+	movb	57(%rdx), %al
+	movb	%al, 1025(%rsp)
+	movb	57(%rcx), %al
+	movb	%al, 857(%rsp)
+	movb	58(%rdi), %al
+	movb	%al, 1362(%rsp)
+	movb	58(%rsi), %al
+	movb	%al, 1194(%rsp)
+	movb	58(%rdx), %al
+	movb	%al, 1026(%rsp)
+	movb	58(%rcx), %al
+	movb	%al, 858(%rsp)
+	movb	59(%rdi), %al
+	movb	%al, 1363(%rsp)
+	movb	59(%rsi), %al
+	movb	%al, 1195(%rsp)
+	movb	59(%rdx), %al
+	movb	%al, 1027(%rsp)
+	movb	59(%rcx), %al
+	movb	%al, 859(%rsp)
+	movb	60(%rdi), %al
+	movb	%al, 1364(%rsp)
+	movb	60(%rsi), %al
+	movb	%al, 1196(%rsp)
+	movb	60(%rdx), %al
+	movb	%al, 1028(%rsp)
+	movb	60(%rcx), %al
+	movb	%al, 860(%rsp)
+	movb	61(%rdi), %al
+	movb	%al, 1365(%rsp)
+	movb	61(%rsi), %al
+	movb	%al, 1197(%rsp)
+	movb	61(%rdx), %al
+	movb	%al, 1029(%rsp)
+	movb	61(%rcx), %al
+	movb	%al, 861(%rsp)
+	movb	62(%rdi), %al
+	movb	%al, 1366(%rsp)
+	movb	62(%rsi), %al
+	movb	%al, 1198(%rsp)
+	movb	62(%rdx), %al
+	movb	%al, 1030(%rsp)
+	movb	62(%rcx), %al
+	movb	%al, 862(%rsp)
+	movb	63(%rdi), %al
+	movb	%al, 1367(%rsp)
+	movb	63(%rsi), %al
+	movb	%al, 1199(%rsp)
+	movb	63(%rdx), %al
+	movb	%al, 1031(%rsp)
+	movb	63(%rcx), %al
+	movb	%al, 863(%rsp)
+	movb	64(%rdi), %al
+	movb	%al, 1368(%rsp)
+	movb	64(%rsi), %al
+	movb	%al, 1200(%rsp)
+	movb	64(%rdx), %al
+	movb	%al, 1032(%rsp)
+	movb	64(%rcx), %al
+	movb	%al, 864(%rsp)
+	movb	65(%rdi), %al
+	movb	%al, 1369(%rsp)
+	movb	65(%rsi), %al
+	movb	%al, 1201(%rsp)
+	movb	65(%rdx), %al
+	movb	%al, 1033(%rsp)
+	movb	65(%rcx), %al
+	movb	%al, 865(%rsp)
+	movb	66(%rdi), %al
+	movb	%al, 1370(%rsp)
+	movb	66(%rsi), %al
+	movb	%al, 1202(%rsp)
+	movb	66(%rdx), %al
+	movb	%al, 1034(%rsp)
+	movb	66(%rcx), %al
+	movb	%al, 866(%rsp)
+	movb	67(%rdi), %al
+	movb	%al, 1371(%rsp)
+	movb	67(%rsi), %al
+	movb	%al, 1203(%rsp)
+	movb	67(%rdx), %al
+	movb	%al, 1035(%rsp)
+	movb	67(%rcx), %al
+	movb	%al, 867(%rsp)
+	movb	68(%rdi), %al
+	movb	%al, 1372(%rsp)
+	movb	68(%rsi), %al
+	movb	%al, 1204(%rsp)
+	movb	68(%rdx), %al
+	movb	%al, 1036(%rsp)
+	movb	68(%rcx), %al
+	movb	%al, 868(%rsp)
+	movb	69(%rdi), %al
+	movb	%al, 1373(%rsp)
+	movb	69(%rsi), %al
+	movb	%al, 1205(%rsp)
+	movb	69(%rdx), %al
+	movb	%al, 1037(%rsp)
+	movb	69(%rcx), %al
+	movb	%al, 869(%rsp)
+	movb	70(%rdi), %al
+	movb	%al, 1374(%rsp)
+	movb	70(%rsi), %al
+	movb	%al, 1206(%rsp)
+	movb	70(%rdx), %al
+	movb	%al, 1038(%rsp)
+	movb	70(%rcx), %al
+	movb	%al, 870(%rsp)
+	movb	71(%rdi), %al
+	movb	%al, 1375(%rsp)
+	movb	71(%rsi), %al
+	movb	%al, 1207(%rsp)
+	movb	71(%rdx), %al
+	movb	%al, 1039(%rsp)
+	movb	71(%rcx), %al
+	movb	%al, 871(%rsp)
+	movb	72(%rdi), %al
+	movb	%al, 1376(%rsp)
+	movb	72(%rsi), %al
+	movb	%al, 1208(%rsp)
+	movb	72(%rdx), %al
+	movb	%al, 1040(%rsp)
+	movb	72(%rcx), %al
+	movb	%al, 872(%rsp)
+	movb	73(%rdi), %al
+	movb	%al, 1377(%rsp)
+	movb	73(%rsi), %al
+	movb	%al, 1209(%rsp)
+	movb	73(%rdx), %al
+	movb	%al, 1041(%rsp)
+	movb	73(%rcx), %al
+	movb	%al, 873(%rsp)
+	movb	74(%rdi), %al
+	movb	%al, 1378(%rsp)
+	movb	74(%rsi), %al
+	movb	%al, 1210(%rsp)
+	movb	74(%rdx), %al
+	movb	%al, 1042(%rsp)
+	movb	74(%rcx), %al
+	movb	%al, 874(%rsp)
+	movb	75(%rdi), %al
+	movb	%al, 1379(%rsp)
+	movb	75(%rsi), %al
+	movb	%al, 1211(%rsp)
+	movb	75(%rdx), %al
+	movb	%al, 1043(%rsp)
+	movb	75(%rcx), %al
+	movb	%al, 875(%rsp)
+	movb	76(%rdi), %al
+	movb	%al, 1380(%rsp)
+	movb	76(%rsi), %al
+	movb	%al, 1212(%rsp)
+	movb	76(%rdx), %al
+	movb	%al, 1044(%rsp)
+	movb	76(%rcx), %al
+	movb	%al, 876(%rsp)
+	movb	77(%rdi), %al
+	movb	%al, 1381(%rsp)
+	movb	77(%rsi), %al
+	movb	%al, 1213(%rsp)
+	movb	77(%rdx), %al
+	movb	%al, 1045(%rsp)
+	movb	77(%rcx), %al
+	movb	%al, 877(%rsp)
+	movb	78(%rdi), %al
+	movb	%al, 1382(%rsp)
+	movb	78(%rsi), %al
+	movb	%al, 1214(%rsp)
+	movb	78(%rdx), %al
+	movb	%al, 1046(%rsp)
+	movb	78(%rcx), %al
+	movb	%al, 878(%rsp)
+	movb	79(%rdi), %al
+	movb	%al, 1383(%rsp)
+	movb	79(%rsi), %al
+	movb	%al, 1215(%rsp)
+	movb	79(%rdx), %al
+	movb	%al, 1047(%rsp)
+	movb	79(%rcx), %al
+	movb	%al, 879(%rsp)
+	movb	80(%rdi), %al
+	movb	%al, 1384(%rsp)
+	movb	80(%rsi), %al
+	movb	%al, 1216(%rsp)
+	movb	80(%rdx), %al
+	movb	%al, 1048(%rsp)
+	movb	80(%rcx), %al
+	movb	%al, 880(%rsp)
+	movb	81(%rdi), %al
+	movb	%al, 1385(%rsp)
+	movb	81(%rsi), %al
+	movb	%al, 1217(%rsp)
+	movb	81(%rdx), %al
+	movb	%al, 1049(%rsp)
+	movb	81(%rcx), %al
+	movb	%al, 881(%rsp)
+	movb	82(%rdi), %al
+	movb	%al, 1386(%rsp)
+	movb	82(%rsi), %al
+	movb	%al, 1218(%rsp)
+	movb	82(%rdx), %al
+	movb	%al, 1050(%rsp)
+	movb	82(%rcx), %al
+	movb	%al, 882(%rsp)
+	movb	83(%rdi), %al
+	movb	%al, 1387(%rsp)
+	movb	83(%rsi), %al
+	movb	%al, 1219(%rsp)
+	movb	83(%rdx), %al
+	movb	%al, 1051(%rsp)
+	movb	83(%rcx), %al
+	movb	%al, 883(%rsp)
+	movb	84(%rdi), %al
+	movb	%al, 1388(%rsp)
+	movb	84(%rsi), %al
+	movb	%al, 1220(%rsp)
+	movb	84(%rdx), %al
+	movb	%al, 1052(%rsp)
+	movb	84(%rcx), %al
+	movb	%al, 884(%rsp)
+	movb	85(%rdi), %al
+	movb	%al, 1389(%rsp)
+	movb	85(%rsi), %al
+	movb	%al, 1221(%rsp)
+	movb	85(%rdx), %al
+	movb	%al, 1053(%rsp)
+	movb	85(%rcx), %al
+	movb	%al, 885(%rsp)
+	movb	86(%rdi), %al
+	movb	%al, 1390(%rsp)
+	movb	86(%rsi), %al
+	movb	%al, 1222(%rsp)
+	movb	86(%rdx), %al
+	movb	%al, 1054(%rsp)
+	movb	86(%rcx), %al
+	movb	%al, 886(%rsp)
+	movb	87(%rdi), %al
+	movb	%al, 1391(%rsp)
+	movb	87(%rsi), %al
+	movb	%al, 1223(%rsp)
+	movb	87(%rdx), %al
+	movb	%al, 1055(%rsp)
+	movb	87(%rcx), %al
+	movb	%al, 887(%rsp)
+	movb	88(%rdi), %al
+	movb	%al, 1392(%rsp)
+	movb	88(%rsi), %al
+	movb	%al, 1224(%rsp)
+	movb	88(%rdx), %al
+	movb	%al, 1056(%rsp)
+	movb	88(%rcx), %al
+	movb	%al, 888(%rsp)
+	movb	89(%rdi), %al
+	movb	%al, 1393(%rsp)
+	movb	89(%rsi), %al
+	movb	%al, 1225(%rsp)
+	movb	89(%rdx), %al
+	movb	%al, 1057(%rsp)
+	movb	89(%rcx), %al
+	movb	%al, 889(%rsp)
+	movb	90(%rdi), %al
+	movb	%al, 1394(%rsp)
+	movb	90(%rsi), %al
+	movb	%al, 1226(%rsp)
+	movb	90(%rdx), %al
+	movb	%al, 1058(%rsp)
+	movb	90(%rcx), %al
+	movb	%al, 890(%rsp)
+	movb	91(%rdi), %al
+	movb	%al, 1395(%rsp)
+	movb	91(%rsi), %al
+	movb	%al, 1227(%rsp)
+	movb	91(%rdx), %al
+	movb	%al, 1059(%rsp)
+	movb	91(%rcx), %al
+	movb	%al, 891(%rsp)
+	movb	92(%rdi), %al
+	movb	%al, 1396(%rsp)
+	movb	92(%rsi), %al
+	movb	%al, 1228(%rsp)
+	movb	92(%rdx), %al
+	movb	%al, 1060(%rsp)
+	movb	92(%rcx), %al
+	movb	%al, 892(%rsp)
+	movb	93(%rdi), %al
+	movb	%al, 1397(%rsp)
+	movb	93(%rsi), %al
+	movb	%al, 1229(%rsp)
+	movb	93(%rdx), %al
+	movb	%al, 1061(%rsp)
+	movb	93(%rcx), %al
+	movb	%al, 893(%rsp)
+	movb	94(%rdi), %al
+	movb	%al, 1398(%rsp)
+	movb	94(%rsi), %al
+	movb	%al, 1230(%rsp)
+	movb	94(%rdx), %al
+	movb	%al, 1062(%rsp)
+	movb	94(%rcx), %al
+	movb	%al, 894(%rsp)
+	movb	95(%rdi), %al
+	movb	%al, 1399(%rsp)
+	movb	95(%rsi), %al
+	movb	%al, 1231(%rsp)
+	movb	95(%rdx), %al
+	movb	%al, 1063(%rsp)
+	movb	95(%rcx), %al
+	movb	%al, 895(%rsp)
+	movb	96(%rdi), %al
+	movb	%al, 1400(%rsp)
+	movb	96(%rsi), %al
+	movb	%al, 1232(%rsp)
+	movb	96(%rdx), %al
+	movb	%al, 1064(%rsp)
+	movb	96(%rcx), %al
+	movb	%al, 896(%rsp)
+	movb	97(%rdi), %al
+	movb	%al, 1401(%rsp)
+	movb	97(%rsi), %al
+	movb	%al, 1233(%rsp)
+	movb	97(%rdx), %al
+	movb	%al, 1065(%rsp)
+	movb	97(%rcx), %al
+	movb	%al, 897(%rsp)
+	movb	98(%rdi), %al
+	movb	%al, 1402(%rsp)
+	movb	98(%rsi), %al
+	movb	%al, 1234(%rsp)
+	movb	98(%rdx), %al
+	movb	%al, 1066(%rsp)
+	movb	98(%rcx), %al
+	movb	%al, 898(%rsp)
+	movb	99(%rdi), %al
+	movb	%al, 1403(%rsp)
+	movb	99(%rsi), %al
+	movb	%al, 1235(%rsp)
+	movb	99(%rdx), %al
+	movb	%al, 1067(%rsp)
+	movb	99(%rcx), %al
+	movb	%al, 899(%rsp)
+	movb	100(%rdi), %al
+	movb	%al, 1404(%rsp)
+	movb	100(%rsi), %al
+	movb	%al, 1236(%rsp)
+	movb	100(%rdx), %al
+	movb	%al, 1068(%rsp)
+	movb	100(%rcx), %al
+	movb	%al, 900(%rsp)
+	movb	101(%rdi), %al
+	movb	%al, 1405(%rsp)
+	movb	101(%rsi), %al
+	movb	%al, 1237(%rsp)
+	movb	101(%rdx), %al
+	movb	%al, 1069(%rsp)
+	movb	101(%rcx), %al
+	movb	%al, 901(%rsp)
+	movb	102(%rdi), %al
+	movb	%al, 1406(%rsp)
+	movb	102(%rsi), %al
+	movb	%al, 1238(%rsp)
+	movb	102(%rdx), %al
+	movb	%al, 1070(%rsp)
+	movb	102(%rcx), %al
+	movb	%al, 902(%rsp)
+	movb	103(%rdi), %al
+	movb	%al, 1407(%rsp)
+	movb	103(%rsi), %al
+	movb	%al, 1239(%rsp)
+	movb	103(%rdx), %al
+	movb	%al, 1071(%rsp)
+	movb	103(%rcx), %al
+	movb	%al, 903(%rsp)
+	movb	104(%rdi), %al
+	movb	%al, 1408(%rsp)
+	movb	104(%rsi), %al
+	movb	%al, 1240(%rsp)
+	movb	104(%rdx), %al
+	movb	%al, 1072(%rsp)
+	movb	104(%rcx), %al
+	movb	%al, 904(%rsp)
+	movb	105(%rdi), %al
+	movb	%al, 1409(%rsp)
+	movb	105(%rsi), %al
+	movb	%al, 1241(%rsp)
+	movb	105(%rdx), %al
+	movb	%al, 1073(%rsp)
+	movb	105(%rcx), %al
+	movb	%al, 905(%rsp)
+	movb	106(%rdi), %al
+	movb	%al, 1410(%rsp)
+	movb	106(%rsi), %al
+	movb	%al, 1242(%rsp)
+	movb	106(%rdx), %al
+	movb	%al, 1074(%rsp)
+	movb	106(%rcx), %al
+	movb	%al, 906(%rsp)
+	movb	107(%rdi), %al
+	movb	%al, 1411(%rsp)
+	movb	107(%rsi), %al
+	movb	%al, 1243(%rsp)
+	movb	107(%rdx), %al
+	movb	%al, 1075(%rsp)
+	movb	107(%rcx), %al
+	movb	%al, 907(%rsp)
+	movb	108(%rdi), %al
+	movb	%al, 1412(%rsp)
+	movb	108(%rsi), %al
+	movb	%al, 1244(%rsp)
+	movb	108(%rdx), %al
+	movb	%al, 1076(%rsp)
+	movb	108(%rcx), %al
+	movb	%al, 908(%rsp)
+	movb	109(%rdi), %al
+	movb	%al, 1413(%rsp)
+	movb	109(%rsi), %al
+	movb	%al, 1245(%rsp)
+	movb	109(%rdx), %al
+	movb	%al, 1077(%rsp)
+	movb	109(%rcx), %al
+	movb	%al, 909(%rsp)
+	movb	110(%rdi), %al
+	movb	%al, 1414(%rsp)
+	movb	110(%rsi), %al
+	movb	%al, 1246(%rsp)
+	movb	110(%rdx), %al
+	movb	%al, 1078(%rsp)
+	movb	110(%rcx), %al
+	movb	%al, 910(%rsp)
+	movb	111(%rdi), %al
+	movb	%al, 1415(%rsp)
+	movb	111(%rsi), %al
+	movb	%al, 1247(%rsp)
+	movb	111(%rdx), %al
+	movb	%al, 1079(%rsp)
+	movb	111(%rcx), %al
+	movb	%al, 911(%rsp)
+	movb	112(%rdi), %al
+	movb	%al, 1416(%rsp)
+	movb	112(%rsi), %al
+	movb	%al, 1248(%rsp)
+	movb	112(%rdx), %al
+	movb	%al, 1080(%rsp)
+	movb	112(%rcx), %al
+	movb	%al, 912(%rsp)
+	movb	113(%rdi), %al
+	movb	%al, 1417(%rsp)
+	movb	113(%rsi), %al
+	movb	%al, 1249(%rsp)
+	movb	113(%rdx), %al
+	movb	%al, 1081(%rsp)
+	movb	113(%rcx), %al
+	movb	%al, 913(%rsp)
+	movb	114(%rdi), %al
+	movb	%al, 1418(%rsp)
+	movb	114(%rsi), %al
+	movb	%al, 1250(%rsp)
+	movb	114(%rdx), %al
+	movb	%al, 1082(%rsp)
+	movb	114(%rcx), %al
+	movb	%al, 914(%rsp)
+	movb	115(%rdi), %al
+	movb	%al, 1419(%rsp)
+	movb	115(%rsi), %al
+	movb	%al, 1251(%rsp)
+	movb	115(%rdx), %al
+	movb	%al, 1083(%rsp)
+	movb	115(%rcx), %al
+	movb	%al, 915(%rsp)
+	movb	116(%rdi), %al
+	movb	%al, 1420(%rsp)
+	movb	116(%rsi), %al
+	movb	%al, 1252(%rsp)
+	movb	116(%rdx), %al
+	movb	%al, 1084(%rsp)
+	movb	116(%rcx), %al
+	movb	%al, 916(%rsp)
+	movb	117(%rdi), %al
+	movb	%al, 1421(%rsp)
+	movb	117(%rsi), %al
+	movb	%al, 1253(%rsp)
+	movb	117(%rdx), %al
+	movb	%al, 1085(%rsp)
+	movb	117(%rcx), %al
+	movb	%al, 917(%rsp)
+	movb	118(%rdi), %al
+	movb	%al, 1422(%rsp)
+	movb	118(%rsi), %al
+	movb	%al, 1254(%rsp)
+	movb	118(%rdx), %al
+	movb	%al, 1086(%rsp)
+	movb	118(%rcx), %al
+	movb	%al, 918(%rsp)
+	movb	119(%rdi), %al
+	movb	%al, 1423(%rsp)
+	movb	119(%rsi), %al
+	movb	%al, 1255(%rsp)
+	movb	119(%rdx), %al
+	movb	%al, 1087(%rsp)
+	movb	119(%rcx), %al
+	movb	%al, 919(%rsp)
+	movb	120(%rdi), %al
+	movb	%al, 1424(%rsp)
+	movb	120(%rsi), %al
+	movb	%al, 1256(%rsp)
+	movb	120(%rdx), %al
+	movb	%al, 1088(%rsp)
+	movb	120(%rcx), %al
+	movb	%al, 920(%rsp)
+	movb	121(%rdi), %al
+	movb	%al, 1425(%rsp)
+	movb	121(%rsi), %al
+	movb	%al, 1257(%rsp)
+	movb	121(%rdx), %al
+	movb	%al, 1089(%rsp)
+	movb	121(%rcx), %al
+	movb	%al, 921(%rsp)
+	movb	122(%rdi), %al
+	movb	%al, 1426(%rsp)
+	movb	122(%rsi), %al
+	movb	%al, 1258(%rsp)
+	movb	122(%rdx), %al
+	movb	%al, 1090(%rsp)
+	movb	122(%rcx), %al
+	movb	%al, 922(%rsp)
+	movb	123(%rdi), %al
+	movb	%al, 1427(%rsp)
+	movb	123(%rsi), %al
+	movb	%al, 1259(%rsp)
+	movb	123(%rdx), %al
+	movb	%al, 1091(%rsp)
+	movb	123(%rcx), %al
+	movb	%al, 923(%rsp)
+	movb	124(%rdi), %al
+	movb	%al, 1428(%rsp)
+	movb	124(%rsi), %al
+	movb	%al, 1260(%rsp)
+	movb	124(%rdx), %al
+	movb	%al, 1092(%rsp)
+	movb	124(%rcx), %al
+	movb	%al, 924(%rsp)
+	movb	125(%rdi), %al
+	movb	%al, 1429(%rsp)
+	movb	125(%rsi), %al
+	movb	%al, 1261(%rsp)
+	movb	125(%rdx), %al
+	movb	%al, 1093(%rsp)
+	movb	125(%rcx), %al
+	movb	%al, 925(%rsp)
+	movb	126(%rdi), %al
+	movb	%al, 1430(%rsp)
+	movb	126(%rsi), %al
+	movb	%al, 1262(%rsp)
+	movb	126(%rdx), %al
+	movb	%al, 1094(%rsp)
+	movb	126(%rcx), %al
+	movb	%al, 926(%rsp)
+	movb	127(%rdi), %al
+	movb	%al, 1431(%rsp)
+	movb	127(%rsi), %al
+	movb	%al, 1263(%rsp)
+	movb	127(%rdx), %al
+	movb	%al, 1095(%rsp)
+	movb	127(%rcx), %al
+	movb	%al, 927(%rsp)
+	movb	128(%rdi), %al
+	movb	%al, 1432(%rsp)
+	movb	128(%rsi), %al
+	movb	%al, 1264(%rsp)
+	movb	128(%rdx), %al
+	movb	%al, 1096(%rsp)
+	movb	128(%rcx), %al
+	movb	%al, 928(%rsp)
+	movb	129(%rdi), %al
+	movb	%al, 1433(%rsp)
+	movb	129(%rsi), %al
+	movb	%al, 1265(%rsp)
+	movb	129(%rdx), %al
+	movb	%al, 1097(%rsp)
+	movb	129(%rcx), %al
+	movb	%al, 929(%rsp)
+	movb	130(%rdi), %al
+	movb	%al, 1434(%rsp)
+	movb	130(%rsi), %al
+	movb	%al, 1266(%rsp)
+	movb	130(%rdx), %al
+	movb	%al, 1098(%rsp)
+	movb	130(%rcx), %al
+	movb	%al, 930(%rsp)
+	movb	131(%rdi), %al
+	movb	%al, 1435(%rsp)
+	movb	131(%rsi), %al
+	movb	%al, 1267(%rsp)
+	movb	131(%rdx), %al
+	movb	%al, 1099(%rsp)
+	movb	131(%rcx), %al
+	movb	%al, 931(%rsp)
+	movb	132(%rdi), %al
+	movb	%al, 1436(%rsp)
+	movb	132(%rsi), %al
+	movb	%al, 1268(%rsp)
+	movb	132(%rdx), %al
+	movb	%al, 1100(%rsp)
+	movb	132(%rcx), %al
+	movb	%al, 932(%rsp)
+	movb	133(%rdi), %al
+	movb	%al, 1437(%rsp)
+	movb	133(%rsi), %al
+	movb	%al, 1269(%rsp)
+	movb	133(%rdx), %al
+	movb	%al, 1101(%rsp)
+	movb	133(%rcx), %al
+	movb	%al, 933(%rsp)
+	movb	134(%rdi), %al
+	movb	%al, 1438(%rsp)
+	movb	134(%rsi), %al
+	movb	%al, 1270(%rsp)
+	movb	134(%rdx), %al
+	movb	%al, 1102(%rsp)
+	movb	134(%rcx), %al
+	movb	%al, 934(%rsp)
+	movb	135(%rdi), %al
+	movb	%al, 1439(%rsp)
+	movb	135(%rsi), %al
+	movb	%al, 1271(%rsp)
+	movb	135(%rdx), %al
+	movb	%al, 1103(%rsp)
+	movb	135(%rcx), %al
+	movb	%al, 935(%rsp)
+	movb	136(%rdi), %al
+	movb	%al, 1440(%rsp)
+	movb	136(%rsi), %al
+	movb	%al, 1272(%rsp)
+	movb	136(%rdx), %al
+	movb	%al, 1104(%rsp)
+	movb	136(%rcx), %al
+	movb	%al, 936(%rsp)
+	movb	137(%rdi), %al
+	movb	%al, 1441(%rsp)
+	movb	137(%rsi), %al
+	movb	%al, 1273(%rsp)
+	movb	137(%rdx), %al
+	movb	%al, 1105(%rsp)
+	movb	137(%rcx), %al
+	movb	%al, 937(%rsp)
+	movb	138(%rdi), %al
+	movb	%al, 1442(%rsp)
+	movb	138(%rsi), %al
+	movb	%al, 1274(%rsp)
+	movb	138(%rdx), %al
+	movb	%al, 1106(%rsp)
+	movb	138(%rcx), %al
+	movb	%al, 938(%rsp)
+	movb	139(%rdi), %al
+	movb	%al, 1443(%rsp)
+	movb	139(%rsi), %al
+	movb	%al, 1275(%rsp)
+	movb	139(%rdx), %al
+	movb	%al, 1107(%rsp)
+	movb	139(%rcx), %al
+	movb	%al, 939(%rsp)
+	movb	140(%rdi), %al
+	movb	%al, 1444(%rsp)
+	movb	140(%rsi), %al
+	movb	%al, 1276(%rsp)
+	movb	140(%rdx), %al
+	movb	%al, 1108(%rsp)
+	movb	140(%rcx), %al
+	movb	%al, 940(%rsp)
+	movb	141(%rdi), %al
+	movb	%al, 1445(%rsp)
+	movb	141(%rsi), %al
+	movb	%al, 1277(%rsp)
+	movb	141(%rdx), %al
+	movb	%al, 1109(%rsp)
+	movb	141(%rcx), %al
+	movb	%al, 941(%rsp)
+	movb	142(%rdi), %al
+	movb	%al, 1446(%rsp)
+	movb	142(%rsi), %al
+	movb	%al, 1278(%rsp)
+	movb	142(%rdx), %al
+	movb	%al, 1110(%rsp)
+	movb	142(%rcx), %al
+	movb	%al, 942(%rsp)
+	movb	143(%rdi), %al
+	movb	%al, 1447(%rsp)
+	movb	143(%rsi), %al
+	movb	%al, 1279(%rsp)
+	movb	143(%rdx), %al
+	movb	%al, 1111(%rsp)
+	movb	143(%rcx), %al
+	movb	%al, 943(%rsp)
+	movb	144(%rdi), %al
+	movb	%al, 1448(%rsp)
+	movb	144(%rsi), %al
+	movb	%al, 1280(%rsp)
+	movb	144(%rdx), %al
+	movb	%al, 1112(%rsp)
+	movb	144(%rcx), %al
+	movb	%al, 944(%rsp)
+	movb	145(%rdi), %al
+	movb	%al, 1449(%rsp)
+	movb	145(%rsi), %al
+	movb	%al, 1281(%rsp)
+	movb	145(%rdx), %al
+	movb	%al, 1113(%rsp)
+	movb	145(%rcx), %al
+	movb	%al, 945(%rsp)
+	movb	146(%rdi), %al
+	movb	%al, 1450(%rsp)
+	movb	146(%rsi), %al
+	movb	%al, 1282(%rsp)
+	movb	146(%rdx), %al
+	movb	%al, 1114(%rsp)
+	movb	146(%rcx), %al
+	movb	%al, 946(%rsp)
+	movb	147(%rdi), %al
+	movb	%al, 1451(%rsp)
+	movb	147(%rsi), %al
+	movb	%al, 1283(%rsp)
+	movb	147(%rdx), %al
+	movb	%al, 1115(%rsp)
+	movb	147(%rcx), %al
+	movb	%al, 947(%rsp)
+	movb	148(%rdi), %al
+	movb	%al, 1452(%rsp)
+	movb	148(%rsi), %al
+	movb	%al, 1284(%rsp)
+	movb	148(%rdx), %al
+	movb	%al, 1116(%rsp)
+	movb	148(%rcx), %al
+	movb	%al, 948(%rsp)
+	movb	149(%rdi), %al
+	movb	%al, 1453(%rsp)
+	movb	149(%rsi), %al
+	movb	%al, 1285(%rsp)
+	movb	149(%rdx), %al
+	movb	%al, 1117(%rsp)
+	movb	149(%rcx), %al
+	movb	%al, 949(%rsp)
+	movb	150(%rdi), %al
+	movb	%al, 1454(%rsp)
+	movb	150(%rsi), %al
+	movb	%al, 1286(%rsp)
+	movb	150(%rdx), %al
+	movb	%al, 1118(%rsp)
+	movb	150(%rcx), %al
+	movb	%al, 950(%rsp)
+	movb	151(%rdi), %al
+	movb	%al, 1455(%rsp)
+	movb	151(%rsi), %al
+	movb	%al, 1287(%rsp)
+	movb	151(%rdx), %al
+	movb	%al, 1119(%rsp)
+	movb	151(%rcx), %al
+	movb	%al, 951(%rsp)
+	movb	152(%rdi), %al
+	movb	%al, 1456(%rsp)
+	movb	152(%rsi), %al
+	movb	%al, 1288(%rsp)
+	movb	152(%rdx), %al
+	movb	%al, 1120(%rsp)
+	movb	152(%rcx), %al
+	movb	%al, 952(%rsp)
+	movb	153(%rdi), %al
+	movb	%al, 1457(%rsp)
+	movb	153(%rsi), %al
+	movb	%al, 1289(%rsp)
+	movb	153(%rdx), %al
+	movb	%al, 1121(%rsp)
+	movb	153(%rcx), %al
+	movb	%al, 953(%rsp)
+	movb	154(%rdi), %al
+	movb	%al, 1458(%rsp)
+	movb	154(%rsi), %al
+	movb	%al, 1290(%rsp)
+	movb	154(%rdx), %al
+	movb	%al, 1122(%rsp)
+	movb	154(%rcx), %al
+	movb	%al, 954(%rsp)
+	movb	155(%rdi), %al
+	movb	%al, 1459(%rsp)
+	movb	155(%rsi), %al
+	movb	%al, 1291(%rsp)
+	movb	155(%rdx), %al
+	movb	%al, 1123(%rsp)
+	movb	155(%rcx), %al
+	movb	%al, 955(%rsp)
+	movb	156(%rdi), %al
+	movb	%al, 1460(%rsp)
+	movb	156(%rsi), %al
+	movb	%al, 1292(%rsp)
+	movb	156(%rdx), %al
+	movb	%al, 1124(%rsp)
+	movb	156(%rcx), %al
+	movb	%al, 956(%rsp)
+	movb	157(%rdi), %al
+	movb	%al, 1461(%rsp)
+	movb	157(%rsi), %al
+	movb	%al, 1293(%rsp)
+	movb	157(%rdx), %al
+	movb	%al, 1125(%rsp)
+	movb	157(%rcx), %al
+	movb	%al, 957(%rsp)
+	movb	158(%rdi), %al
+	movb	%al, 1462(%rsp)
+	movb	158(%rsi), %al
+	movb	%al, 1294(%rsp)
+	movb	158(%rdx), %al
+	movb	%al, 1126(%rsp)
+	movb	158(%rcx), %al
+	movb	%al, 958(%rsp)
+	movb	159(%rdi), %al
+	movb	%al, 1463(%rsp)
+	movb	159(%rsi), %al
+	movb	%al, 1295(%rsp)
+	movb	159(%rdx), %al
+	movb	%al, 1127(%rsp)
+	movb	159(%rcx), %al
+	movb	%al, 959(%rsp)
+	movb	160(%rdi), %al
+	movb	%al, 1464(%rsp)
+	movb	160(%rsi), %al
+	movb	%al, 1296(%rsp)
+	movb	160(%rdx), %al
+	movb	%al, 1128(%rsp)
+	movb	160(%rcx), %al
+	movb	%al, 960(%rsp)
+	movb	161(%rdi), %al
+	movb	%al, 1465(%rsp)
+	movb	161(%rsi), %al
+	movb	%al, 1297(%rsp)
+	movb	161(%rdx), %al
+	movb	%al, 1129(%rsp)
+	movb	161(%rcx), %al
+	movb	%al, 961(%rsp)
+	movb	162(%rdi), %al
+	movb	%al, 1466(%rsp)
+	movb	162(%rsi), %al
+	movb	%al, 1298(%rsp)
+	movb	162(%rdx), %al
+	movb	%al, 1130(%rsp)
+	movb	162(%rcx), %al
+	movb	%al, 962(%rsp)
+	movb	163(%rdi), %al
+	movb	%al, 1467(%rsp)
+	movb	163(%rsi), %al
+	movb	%al, 1299(%rsp)
+	movb	163(%rdx), %al
+	movb	%al, 1131(%rsp)
+	movb	163(%rcx), %al
+	movb	%al, 963(%rsp)
+	movb	164(%rdi), %al
+	movb	%al, 1468(%rsp)
+	movb	164(%rsi), %al
+	movb	%al, 1300(%rsp)
+	movb	164(%rdx), %al
+	movb	%al, 1132(%rsp)
+	movb	164(%rcx), %al
+	movb	%al, 964(%rsp)
+	movb	165(%rdi), %al
+	movb	%al, 1469(%rsp)
+	movb	165(%rsi), %al
+	movb	%al, 1301(%rsp)
+	movb	165(%rdx), %al
+	movb	%al, 1133(%rsp)
+	movb	165(%rcx), %al
+	movb	%al, 965(%rsp)
+	movb	166(%rdi), %al
+	movb	%al, 1470(%rsp)
+	movb	166(%rsi), %al
+	movb	%al, 1302(%rsp)
+	movb	166(%rdx), %al
+	movb	%al, 1134(%rsp)
+	movb	166(%rcx), %al
+	movb	%al, 966(%rsp)
+	movb	167(%rdi), %al
+	movb	%al, 1471(%rsp)
+	movb	167(%rsi), %al
+	movb	%al, 1303(%rsp)
+	movb	167(%rdx), %al
+	movb	%al, 1135(%rsp)
+	movb	167(%rcx), %al
+	movb	%al, 967(%rsp)
+	vmovdqu	(%r8), %ymm0
+	vmovdqu	%ymm0, (%rsp)
+	vmovdqu	32(%r8), %ymm0
+	vmovdqu	%ymm0, 32(%rsp)
+	vmovdqu	64(%r8), %ymm0
+	vmovdqu	%ymm0, 64(%rsp)
+	vmovdqu	96(%r8), %ymm0
+	vmovdqu	%ymm0, 96(%rsp)
+	vmovdqu	128(%r8), %ymm0
+	vmovdqu	%ymm0, 128(%rsp)
+	vmovdqu	160(%r8), %ymm0
+	vmovdqu	%ymm0, 160(%rsp)
+	vmovdqu	192(%r8), %ymm0
+	vmovdqu	%ymm0, 192(%rsp)
+	vmovdqu	224(%r8), %ymm0
+	vmovdqu	%ymm0, 224(%rsp)
+	vmovdqu	256(%r8), %ymm0
+	vmovdqu	%ymm0, 256(%rsp)
+	vmovdqu	288(%r8), %ymm0
+	vmovdqu	%ymm0, 288(%rsp)
+	vmovdqu	320(%r8), %ymm0
+	vmovdqu	%ymm0, 320(%rsp)
+	vmovdqu	352(%r8), %ymm0
+	vmovdqu	%ymm0, 352(%rsp)
+	vmovdqu	384(%r8), %ymm0
+	vmovdqu	%ymm0, 384(%rsp)
+	vmovdqu	416(%r8), %ymm0
+	vmovdqu	%ymm0, 416(%rsp)
+	vmovdqu	448(%r8), %ymm0
+	vmovdqu	%ymm0, 448(%rsp)
+	vmovdqu	480(%r8), %ymm0
+	vmovdqu	%ymm0, 480(%rsp)
+	vmovdqu	512(%r8), %ymm0
+	vmovdqu	%ymm0, 512(%rsp)
+	vmovdqu	544(%r8), %ymm0
+	vmovdqu	%ymm0, 544(%rsp)
+	vmovdqu	576(%r8), %ymm0
+	vmovdqu	%ymm0, 576(%rsp)
+	vmovdqu	608(%r8), %ymm0
+	vmovdqu	%ymm0, 608(%rsp)
+	vmovdqu	640(%r8), %ymm0
+	vmovdqu	%ymm0, 640(%rsp)
+	vmovdqu	672(%r8), %ymm0
+	vmovdqu	%ymm0, 672(%rsp)
+	vmovdqu	704(%r8), %ymm0
+	vmovdqu	%ymm0, 704(%rsp)
+	vmovdqu	736(%r8), %ymm0
+	vmovdqu	%ymm0, 736(%rsp)
+	vmovdqu	768(%r8), %ymm0
+	vmovdqu	%ymm0, 768(%rsp)
+	movq	%rsp, %r10
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_squeezeblocks4x_128_128_jazz$1(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_squeezeblocks4x_128_128_jazz$1:
+	leaq	960(%rsp), %rsp
+	movq	(%r10), %rax
+	movb	%al, 1304(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1305(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1306(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1307(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1308(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1309(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1310(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1311(%rsp)
+	movq	8(%r10), %rax
+	movb	%al, 1136(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1137(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1138(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1139(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1140(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1141(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1142(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1143(%rsp)
+	movq	16(%r10), %rax
+	movb	%al, 968(%rsp)
+	shrq	$8, %rax
+	movb	%al, 969(%rsp)
+	shrq	$8, %rax
+	movb	%al, 970(%rsp)
+	shrq	$8, %rax
+	movb	%al, 971(%rsp)
+	shrq	$8, %rax
+	movb	%al, 972(%rsp)
+	shrq	$8, %rax
+	movb	%al, 973(%rsp)
+	shrq	$8, %rax
+	movb	%al, 974(%rsp)
+	shrq	$8, %rax
+	movb	%al, 975(%rsp)
+	movq	24(%r10), %rax
+	movb	%al, 800(%rsp)
+	shrq	$8, %rax
+	movb	%al, 801(%rsp)
+	shrq	$8, %rax
+	movb	%al, 802(%rsp)
+	shrq	$8, %rax
+	movb	%al, 803(%rsp)
+	shrq	$8, %rax
+	movb	%al, 804(%rsp)
+	shrq	$8, %rax
+	movb	%al, 805(%rsp)
+	shrq	$8, %rax
+	movb	%al, 806(%rsp)
+	shrq	$8, %rax
+	movb	%al, 807(%rsp)
+	movq	32(%r10), %rax
+	movb	%al, 1312(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1313(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1314(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1315(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1316(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1317(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1318(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1319(%rsp)
+	movq	40(%r10), %rax
+	movb	%al, 1144(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1145(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1146(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1147(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1148(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1149(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1150(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1151(%rsp)
+	movq	48(%r10), %rax
+	movb	%al, 976(%rsp)
+	shrq	$8, %rax
+	movb	%al, 977(%rsp)
+	shrq	$8, %rax
+	movb	%al, 978(%rsp)
+	shrq	$8, %rax
+	movb	%al, 979(%rsp)
+	shrq	$8, %rax
+	movb	%al, 980(%rsp)
+	shrq	$8, %rax
+	movb	%al, 981(%rsp)
+	shrq	$8, %rax
+	movb	%al, 982(%rsp)
+	shrq	$8, %rax
+	movb	%al, 983(%rsp)
+	movq	56(%r10), %rax
+	movb	%al, 808(%rsp)
+	shrq	$8, %rax
+	movb	%al, 809(%rsp)
+	shrq	$8, %rax
+	movb	%al, 810(%rsp)
+	shrq	$8, %rax
+	movb	%al, 811(%rsp)
+	shrq	$8, %rax
+	movb	%al, 812(%rsp)
+	shrq	$8, %rax
+	movb	%al, 813(%rsp)
+	shrq	$8, %rax
+	movb	%al, 814(%rsp)
+	shrq	$8, %rax
+	movb	%al, 815(%rsp)
+	movq	64(%r10), %rax
+	movb	%al, 1320(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1321(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1322(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1323(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1324(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1325(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1326(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1327(%rsp)
+	movq	72(%r10), %rax
+	movb	%al, 1152(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1153(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1154(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1155(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1156(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1157(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1158(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1159(%rsp)
+	movq	80(%r10), %rax
+	movb	%al, 984(%rsp)
+	shrq	$8, %rax
+	movb	%al, 985(%rsp)
+	shrq	$8, %rax
+	movb	%al, 986(%rsp)
+	shrq	$8, %rax
+	movb	%al, 987(%rsp)
+	shrq	$8, %rax
+	movb	%al, 988(%rsp)
+	shrq	$8, %rax
+	movb	%al, 989(%rsp)
+	shrq	$8, %rax
+	movb	%al, 990(%rsp)
+	shrq	$8, %rax
+	movb	%al, 991(%rsp)
+	movq	88(%r10), %rax
+	movb	%al, 816(%rsp)
+	shrq	$8, %rax
+	movb	%al, 817(%rsp)
+	shrq	$8, %rax
+	movb	%al, 818(%rsp)
+	shrq	$8, %rax
+	movb	%al, 819(%rsp)
+	shrq	$8, %rax
+	movb	%al, 820(%rsp)
+	shrq	$8, %rax
+	movb	%al, 821(%rsp)
+	shrq	$8, %rax
+	movb	%al, 822(%rsp)
+	shrq	$8, %rax
+	movb	%al, 823(%rsp)
+	movq	96(%r10), %rax
+	movb	%al, 1328(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1329(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1330(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1331(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1332(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1333(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1334(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1335(%rsp)
+	movq	104(%r10), %rax
+	movb	%al, 1160(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1161(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1162(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1163(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1164(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1165(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1166(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1167(%rsp)
+	movq	112(%r10), %rax
+	movb	%al, 992(%rsp)
+	shrq	$8, %rax
+	movb	%al, 993(%rsp)
+	shrq	$8, %rax
+	movb	%al, 994(%rsp)
+	shrq	$8, %rax
+	movb	%al, 995(%rsp)
+	shrq	$8, %rax
+	movb	%al, 996(%rsp)
+	shrq	$8, %rax
+	movb	%al, 997(%rsp)
+	shrq	$8, %rax
+	movb	%al, 998(%rsp)
+	shrq	$8, %rax
+	movb	%al, 999(%rsp)
+	movq	120(%r10), %rax
+	movb	%al, 824(%rsp)
+	shrq	$8, %rax
+	movb	%al, 825(%rsp)
+	shrq	$8, %rax
+	movb	%al, 826(%rsp)
+	shrq	$8, %rax
+	movb	%al, 827(%rsp)
+	shrq	$8, %rax
+	movb	%al, 828(%rsp)
+	shrq	$8, %rax
+	movb	%al, 829(%rsp)
+	shrq	$8, %rax
+	movb	%al, 830(%rsp)
+	shrq	$8, %rax
+	movb	%al, 831(%rsp)
+	movq	128(%r10), %rax
+	movb	%al, 1336(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1337(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1338(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1339(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1340(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1341(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1342(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1343(%rsp)
+	movq	136(%r10), %rax
+	movb	%al, 1168(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1169(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1170(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1171(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1172(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1173(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1174(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1175(%rsp)
+	movq	144(%r10), %rax
+	movb	%al, 1000(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1001(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1002(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1003(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1004(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1005(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1006(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1007(%rsp)
+	movq	152(%r10), %rax
+	movb	%al, 832(%rsp)
+	shrq	$8, %rax
+	movb	%al, 833(%rsp)
+	shrq	$8, %rax
+	movb	%al, 834(%rsp)
+	shrq	$8, %rax
+	movb	%al, 835(%rsp)
+	shrq	$8, %rax
+	movb	%al, 836(%rsp)
+	shrq	$8, %rax
+	movb	%al, 837(%rsp)
+	shrq	$8, %rax
+	movb	%al, 838(%rsp)
+	shrq	$8, %rax
+	movb	%al, 839(%rsp)
+	movq	160(%r10), %rax
+	movb	%al, 1344(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1345(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1346(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1347(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1348(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1349(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1350(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1351(%rsp)
+	movq	168(%r10), %rax
+	movb	%al, 1176(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1177(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1178(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1179(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1180(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1181(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1182(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1183(%rsp)
+	movq	176(%r10), %rax
+	movb	%al, 1008(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1009(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1010(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1011(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1012(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1013(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1014(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1015(%rsp)
+	movq	184(%r10), %rax
+	movb	%al, 840(%rsp)
+	shrq	$8, %rax
+	movb	%al, 841(%rsp)
+	shrq	$8, %rax
+	movb	%al, 842(%rsp)
+	shrq	$8, %rax
+	movb	%al, 843(%rsp)
+	shrq	$8, %rax
+	movb	%al, 844(%rsp)
+	shrq	$8, %rax
+	movb	%al, 845(%rsp)
+	shrq	$8, %rax
+	movb	%al, 846(%rsp)
+	shrq	$8, %rax
+	movb	%al, 847(%rsp)
+	movq	192(%r10), %rax
+	movb	%al, 1352(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1353(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1354(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1355(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1356(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1357(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1358(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1359(%rsp)
+	movq	200(%r10), %rax
+	movb	%al, 1184(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1185(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1186(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1187(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1188(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1189(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1190(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1191(%rsp)
+	movq	208(%r10), %rax
+	movb	%al, 1016(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1017(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1018(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1019(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1020(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1021(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1022(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1023(%rsp)
+	movq	216(%r10), %rax
+	movb	%al, 848(%rsp)
+	shrq	$8, %rax
+	movb	%al, 849(%rsp)
+	shrq	$8, %rax
+	movb	%al, 850(%rsp)
+	shrq	$8, %rax
+	movb	%al, 851(%rsp)
+	shrq	$8, %rax
+	movb	%al, 852(%rsp)
+	shrq	$8, %rax
+	movb	%al, 853(%rsp)
+	shrq	$8, %rax
+	movb	%al, 854(%rsp)
+	shrq	$8, %rax
+	movb	%al, 855(%rsp)
+	movq	224(%r10), %rax
+	movb	%al, 1360(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1361(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1362(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1363(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1364(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1365(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1366(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1367(%rsp)
+	movq	232(%r10), %rax
+	movb	%al, 1192(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1193(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1194(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1195(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1196(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1197(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1198(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1199(%rsp)
+	movq	240(%r10), %rax
+	movb	%al, 1024(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1025(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1026(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1027(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1028(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1029(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1030(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1031(%rsp)
+	movq	248(%r10), %rax
+	movb	%al, 856(%rsp)
+	shrq	$8, %rax
+	movb	%al, 857(%rsp)
+	shrq	$8, %rax
+	movb	%al, 858(%rsp)
+	shrq	$8, %rax
+	movb	%al, 859(%rsp)
+	shrq	$8, %rax
+	movb	%al, 860(%rsp)
+	shrq	$8, %rax
+	movb	%al, 861(%rsp)
+	shrq	$8, %rax
+	movb	%al, 862(%rsp)
+	shrq	$8, %rax
+	movb	%al, 863(%rsp)
+	movq	256(%r10), %rax
+	movb	%al, 1368(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1369(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1370(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1371(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1372(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1373(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1374(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1375(%rsp)
+	movq	264(%r10), %rax
+	movb	%al, 1200(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1201(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1202(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1203(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1204(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1205(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1206(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1207(%rsp)
+	movq	272(%r10), %rax
+	movb	%al, 1032(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1033(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1034(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1035(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1036(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1037(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1038(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1039(%rsp)
+	movq	280(%r10), %rax
+	movb	%al, 864(%rsp)
+	shrq	$8, %rax
+	movb	%al, 865(%rsp)
+	shrq	$8, %rax
+	movb	%al, 866(%rsp)
+	shrq	$8, %rax
+	movb	%al, 867(%rsp)
+	shrq	$8, %rax
+	movb	%al, 868(%rsp)
+	shrq	$8, %rax
+	movb	%al, 869(%rsp)
+	shrq	$8, %rax
+	movb	%al, 870(%rsp)
+	shrq	$8, %rax
+	movb	%al, 871(%rsp)
+	movq	288(%r10), %rax
+	movb	%al, 1376(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1377(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1378(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1379(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1380(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1381(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1382(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1383(%rsp)
+	movq	296(%r10), %rax
+	movb	%al, 1208(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1209(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1210(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1211(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1212(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1213(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1214(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1215(%rsp)
+	movq	304(%r10), %rax
+	movb	%al, 1040(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1041(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1042(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1043(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1044(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1045(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1046(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1047(%rsp)
+	movq	312(%r10), %rax
+	movb	%al, 872(%rsp)
+	shrq	$8, %rax
+	movb	%al, 873(%rsp)
+	shrq	$8, %rax
+	movb	%al, 874(%rsp)
+	shrq	$8, %rax
+	movb	%al, 875(%rsp)
+	shrq	$8, %rax
+	movb	%al, 876(%rsp)
+	shrq	$8, %rax
+	movb	%al, 877(%rsp)
+	shrq	$8, %rax
+	movb	%al, 878(%rsp)
+	shrq	$8, %rax
+	movb	%al, 879(%rsp)
+	movq	320(%r10), %rax
+	movb	%al, 1384(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1385(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1386(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1387(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1388(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1389(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1390(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1391(%rsp)
+	movq	328(%r10), %rax
+	movb	%al, 1216(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1217(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1218(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1219(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1220(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1221(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1222(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1223(%rsp)
+	movq	336(%r10), %rax
+	movb	%al, 1048(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1049(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1050(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1051(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1052(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1053(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1054(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1055(%rsp)
+	movq	344(%r10), %rax
+	movb	%al, 880(%rsp)
+	shrq	$8, %rax
+	movb	%al, 881(%rsp)
+	shrq	$8, %rax
+	movb	%al, 882(%rsp)
+	shrq	$8, %rax
+	movb	%al, 883(%rsp)
+	shrq	$8, %rax
+	movb	%al, 884(%rsp)
+	shrq	$8, %rax
+	movb	%al, 885(%rsp)
+	shrq	$8, %rax
+	movb	%al, 886(%rsp)
+	shrq	$8, %rax
+	movb	%al, 887(%rsp)
+	movq	352(%r10), %rax
+	movb	%al, 1392(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1393(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1394(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1395(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1396(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1397(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1398(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1399(%rsp)
+	movq	360(%r10), %rax
+	movb	%al, 1224(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1225(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1226(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1227(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1228(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1229(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1230(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1231(%rsp)
+	movq	368(%r10), %rax
+	movb	%al, 1056(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1057(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1058(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1059(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1060(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1061(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1062(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1063(%rsp)
+	movq	376(%r10), %rax
+	movb	%al, 888(%rsp)
+	shrq	$8, %rax
+	movb	%al, 889(%rsp)
+	shrq	$8, %rax
+	movb	%al, 890(%rsp)
+	shrq	$8, %rax
+	movb	%al, 891(%rsp)
+	shrq	$8, %rax
+	movb	%al, 892(%rsp)
+	shrq	$8, %rax
+	movb	%al, 893(%rsp)
+	shrq	$8, %rax
+	movb	%al, 894(%rsp)
+	shrq	$8, %rax
+	movb	%al, 895(%rsp)
+	movq	384(%r10), %rax
+	movb	%al, 1400(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1401(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1402(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1403(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1404(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1405(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1406(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1407(%rsp)
+	movq	392(%r10), %rax
+	movb	%al, 1232(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1233(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1234(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1235(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1236(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1237(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1238(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1239(%rsp)
+	movq	400(%r10), %rax
+	movb	%al, 1064(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1065(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1066(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1067(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1068(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1069(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1070(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1071(%rsp)
+	movq	408(%r10), %rax
+	movb	%al, 896(%rsp)
+	shrq	$8, %rax
+	movb	%al, 897(%rsp)
+	shrq	$8, %rax
+	movb	%al, 898(%rsp)
+	shrq	$8, %rax
+	movb	%al, 899(%rsp)
+	shrq	$8, %rax
+	movb	%al, 900(%rsp)
+	shrq	$8, %rax
+	movb	%al, 901(%rsp)
+	shrq	$8, %rax
+	movb	%al, 902(%rsp)
+	shrq	$8, %rax
+	movb	%al, 903(%rsp)
+	movq	416(%r10), %rax
+	movb	%al, 1408(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1409(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1410(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1411(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1412(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1413(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1414(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1415(%rsp)
+	movq	424(%r10), %rax
+	movb	%al, 1240(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1241(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1242(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1243(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1244(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1245(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1246(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1247(%rsp)
+	movq	432(%r10), %rax
+	movb	%al, 1072(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1073(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1074(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1075(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1076(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1077(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1078(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1079(%rsp)
+	movq	440(%r10), %rax
+	movb	%al, 904(%rsp)
+	shrq	$8, %rax
+	movb	%al, 905(%rsp)
+	shrq	$8, %rax
+	movb	%al, 906(%rsp)
+	shrq	$8, %rax
+	movb	%al, 907(%rsp)
+	shrq	$8, %rax
+	movb	%al, 908(%rsp)
+	shrq	$8, %rax
+	movb	%al, 909(%rsp)
+	shrq	$8, %rax
+	movb	%al, 910(%rsp)
+	shrq	$8, %rax
+	movb	%al, 911(%rsp)
+	movq	448(%r10), %rax
+	movb	%al, 1416(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1417(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1418(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1419(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1420(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1421(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1422(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1423(%rsp)
+	movq	456(%r10), %rax
+	movb	%al, 1248(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1249(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1250(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1251(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1252(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1253(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1254(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1255(%rsp)
+	movq	464(%r10), %rax
+	movb	%al, 1080(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1081(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1082(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1083(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1084(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1085(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1086(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1087(%rsp)
+	movq	472(%r10), %rax
+	movb	%al, 912(%rsp)
+	shrq	$8, %rax
+	movb	%al, 913(%rsp)
+	shrq	$8, %rax
+	movb	%al, 914(%rsp)
+	shrq	$8, %rax
+	movb	%al, 915(%rsp)
+	shrq	$8, %rax
+	movb	%al, 916(%rsp)
+	shrq	$8, %rax
+	movb	%al, 917(%rsp)
+	shrq	$8, %rax
+	movb	%al, 918(%rsp)
+	shrq	$8, %rax
+	movb	%al, 919(%rsp)
+	movq	480(%r10), %rax
+	movb	%al, 1424(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1425(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1426(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1427(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1428(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1429(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1430(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1431(%rsp)
+	movq	488(%r10), %rax
+	movb	%al, 1256(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1257(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1258(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1259(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1260(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1261(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1262(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1263(%rsp)
+	movq	496(%r10), %rax
+	movb	%al, 1088(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1089(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1090(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1091(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1092(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1093(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1094(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1095(%rsp)
+	movq	504(%r10), %rax
+	movb	%al, 920(%rsp)
+	shrq	$8, %rax
+	movb	%al, 921(%rsp)
+	shrq	$8, %rax
+	movb	%al, 922(%rsp)
+	shrq	$8, %rax
+	movb	%al, 923(%rsp)
+	shrq	$8, %rax
+	movb	%al, 924(%rsp)
+	shrq	$8, %rax
+	movb	%al, 925(%rsp)
+	shrq	$8, %rax
+	movb	%al, 926(%rsp)
+	shrq	$8, %rax
+	movb	%al, 927(%rsp)
+	movq	512(%r10), %rax
+	movb	%al, 1432(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1433(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1434(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1435(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1436(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1437(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1438(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1439(%rsp)
+	movq	520(%r10), %rax
+	movb	%al, 1264(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1265(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1266(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1267(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1268(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1269(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1270(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1271(%rsp)
+	movq	528(%r10), %rax
+	movb	%al, 1096(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1097(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1098(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1099(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1100(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1101(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1102(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1103(%rsp)
+	movq	536(%r10), %rax
+	movb	%al, 928(%rsp)
+	shrq	$8, %rax
+	movb	%al, 929(%rsp)
+	shrq	$8, %rax
+	movb	%al, 930(%rsp)
+	shrq	$8, %rax
+	movb	%al, 931(%rsp)
+	shrq	$8, %rax
+	movb	%al, 932(%rsp)
+	shrq	$8, %rax
+	movb	%al, 933(%rsp)
+	shrq	$8, %rax
+	movb	%al, 934(%rsp)
+	shrq	$8, %rax
+	movb	%al, 935(%rsp)
+	movq	544(%r10), %rax
+	movb	%al, 1440(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1441(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1442(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1443(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1444(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1445(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1446(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1447(%rsp)
+	movq	552(%r10), %rax
+	movb	%al, 1272(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1273(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1274(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1275(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1276(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1277(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1278(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1279(%rsp)
+	movq	560(%r10), %rax
+	movb	%al, 1104(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1105(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1106(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1107(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1108(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1109(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1110(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1111(%rsp)
+	movq	568(%r10), %rax
+	movb	%al, 936(%rsp)
+	shrq	$8, %rax
+	movb	%al, 937(%rsp)
+	shrq	$8, %rax
+	movb	%al, 938(%rsp)
+	shrq	$8, %rax
+	movb	%al, 939(%rsp)
+	shrq	$8, %rax
+	movb	%al, 940(%rsp)
+	shrq	$8, %rax
+	movb	%al, 941(%rsp)
+	shrq	$8, %rax
+	movb	%al, 942(%rsp)
+	shrq	$8, %rax
+	movb	%al, 943(%rsp)
+	movq	576(%r10), %rax
+	movb	%al, 1448(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1449(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1450(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1451(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1452(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1453(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1454(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1455(%rsp)
+	movq	584(%r10), %rax
+	movb	%al, 1280(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1281(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1282(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1283(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1284(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1285(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1286(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1287(%rsp)
+	movq	592(%r10), %rax
+	movb	%al, 1112(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1113(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1114(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1115(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1116(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1117(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1118(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1119(%rsp)
+	movq	600(%r10), %rax
+	movb	%al, 944(%rsp)
+	shrq	$8, %rax
+	movb	%al, 945(%rsp)
+	shrq	$8, %rax
+	movb	%al, 946(%rsp)
+	shrq	$8, %rax
+	movb	%al, 947(%rsp)
+	shrq	$8, %rax
+	movb	%al, 948(%rsp)
+	shrq	$8, %rax
+	movb	%al, 949(%rsp)
+	shrq	$8, %rax
+	movb	%al, 950(%rsp)
+	shrq	$8, %rax
+	movb	%al, 951(%rsp)
+	movq	608(%r10), %rax
+	movb	%al, 1456(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1457(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1458(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1459(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1460(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1461(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1462(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1463(%rsp)
+	movq	616(%r10), %rax
+	movb	%al, 1288(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1289(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1290(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1291(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1292(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1293(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1294(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1295(%rsp)
+	movq	624(%r10), %rax
+	movb	%al, 1120(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1121(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1122(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1123(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1124(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1125(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1126(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1127(%rsp)
+	movq	632(%r10), %rax
+	movb	%al, 952(%rsp)
+	shrq	$8, %rax
+	movb	%al, 953(%rsp)
+	shrq	$8, %rax
+	movb	%al, 954(%rsp)
+	shrq	$8, %rax
+	movb	%al, 955(%rsp)
+	shrq	$8, %rax
+	movb	%al, 956(%rsp)
+	shrq	$8, %rax
+	movb	%al, 957(%rsp)
+	shrq	$8, %rax
+	movb	%al, 958(%rsp)
+	shrq	$8, %rax
+	movb	%al, 959(%rsp)
+	movq	640(%r10), %rax
+	movb	%al, 1464(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1465(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1466(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1467(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1468(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1469(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1470(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1471(%rsp)
+	movq	648(%r10), %rax
+	movb	%al, 1296(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1297(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1298(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1299(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1300(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1301(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1302(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1303(%rsp)
+	movq	656(%r10), %rax
+	movb	%al, 1128(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1129(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1130(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1131(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1132(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1133(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1134(%rsp)
+	shrq	$8, %rax
+	movb	%al, 1135(%rsp)
+	movq	664(%r10), %rax
+	movb	%al, 960(%rsp)
+	shrq	$8, %rax
+	movb	%al, 961(%rsp)
+	shrq	$8, %rax
+	movb	%al, 962(%rsp)
+	shrq	$8, %rax
+	movb	%al, 963(%rsp)
+	shrq	$8, %rax
+	movb	%al, 964(%rsp)
+	shrq	$8, %rax
+	movb	%al, 965(%rsp)
+	shrq	$8, %rax
+	movb	%al, 966(%rsp)
+	shrq	$8, %rax
+	movb	%al, 967(%rsp)
+	movb	1304(%rsp), %al
+	movb	%al, (%rdi)
+	movb	1136(%rsp), %al
+	movb	%al, (%rsi)
+	movb	968(%rsp), %al
+	movb	%al, (%rdx)
+	movb	800(%rsp), %al
+	movb	%al, (%rcx)
+	movb	1305(%rsp), %al
+	movb	%al, 1(%rdi)
+	movb	1137(%rsp), %al
+	movb	%al, 1(%rsi)
+	movb	969(%rsp), %al
+	movb	%al, 1(%rdx)
+	movb	801(%rsp), %al
+	movb	%al, 1(%rcx)
+	movb	1306(%rsp), %al
+	movb	%al, 2(%rdi)
+	movb	1138(%rsp), %al
+	movb	%al, 2(%rsi)
+	movb	970(%rsp), %al
+	movb	%al, 2(%rdx)
+	movb	802(%rsp), %al
+	movb	%al, 2(%rcx)
+	movb	1307(%rsp), %al
+	movb	%al, 3(%rdi)
+	movb	1139(%rsp), %al
+	movb	%al, 3(%rsi)
+	movb	971(%rsp), %al
+	movb	%al, 3(%rdx)
+	movb	803(%rsp), %al
+	movb	%al, 3(%rcx)
+	movb	1308(%rsp), %al
+	movb	%al, 4(%rdi)
+	movb	1140(%rsp), %al
+	movb	%al, 4(%rsi)
+	movb	972(%rsp), %al
+	movb	%al, 4(%rdx)
+	movb	804(%rsp), %al
+	movb	%al, 4(%rcx)
+	movb	1309(%rsp), %al
+	movb	%al, 5(%rdi)
+	movb	1141(%rsp), %al
+	movb	%al, 5(%rsi)
+	movb	973(%rsp), %al
+	movb	%al, 5(%rdx)
+	movb	805(%rsp), %al
+	movb	%al, 5(%rcx)
+	movb	1310(%rsp), %al
+	movb	%al, 6(%rdi)
+	movb	1142(%rsp), %al
+	movb	%al, 6(%rsi)
+	movb	974(%rsp), %al
+	movb	%al, 6(%rdx)
+	movb	806(%rsp), %al
+	movb	%al, 6(%rcx)
+	movb	1311(%rsp), %al
+	movb	%al, 7(%rdi)
+	movb	1143(%rsp), %al
+	movb	%al, 7(%rsi)
+	movb	975(%rsp), %al
+	movb	%al, 7(%rdx)
+	movb	807(%rsp), %al
+	movb	%al, 7(%rcx)
+	movb	1312(%rsp), %al
+	movb	%al, 8(%rdi)
+	movb	1144(%rsp), %al
+	movb	%al, 8(%rsi)
+	movb	976(%rsp), %al
+	movb	%al, 8(%rdx)
+	movb	808(%rsp), %al
+	movb	%al, 8(%rcx)
+	movb	1313(%rsp), %al
+	movb	%al, 9(%rdi)
+	movb	1145(%rsp), %al
+	movb	%al, 9(%rsi)
+	movb	977(%rsp), %al
+	movb	%al, 9(%rdx)
+	movb	809(%rsp), %al
+	movb	%al, 9(%rcx)
+	movb	1314(%rsp), %al
+	movb	%al, 10(%rdi)
+	movb	1146(%rsp), %al
+	movb	%al, 10(%rsi)
+	movb	978(%rsp), %al
+	movb	%al, 10(%rdx)
+	movb	810(%rsp), %al
+	movb	%al, 10(%rcx)
+	movb	1315(%rsp), %al
+	movb	%al, 11(%rdi)
+	movb	1147(%rsp), %al
+	movb	%al, 11(%rsi)
+	movb	979(%rsp), %al
+	movb	%al, 11(%rdx)
+	movb	811(%rsp), %al
+	movb	%al, 11(%rcx)
+	movb	1316(%rsp), %al
+	movb	%al, 12(%rdi)
+	movb	1148(%rsp), %al
+	movb	%al, 12(%rsi)
+	movb	980(%rsp), %al
+	movb	%al, 12(%rdx)
+	movb	812(%rsp), %al
+	movb	%al, 12(%rcx)
+	movb	1317(%rsp), %al
+	movb	%al, 13(%rdi)
+	movb	1149(%rsp), %al
+	movb	%al, 13(%rsi)
+	movb	981(%rsp), %al
+	movb	%al, 13(%rdx)
+	movb	813(%rsp), %al
+	movb	%al, 13(%rcx)
+	movb	1318(%rsp), %al
+	movb	%al, 14(%rdi)
+	movb	1150(%rsp), %al
+	movb	%al, 14(%rsi)
+	movb	982(%rsp), %al
+	movb	%al, 14(%rdx)
+	movb	814(%rsp), %al
+	movb	%al, 14(%rcx)
+	movb	1319(%rsp), %al
+	movb	%al, 15(%rdi)
+	movb	1151(%rsp), %al
+	movb	%al, 15(%rsi)
+	movb	983(%rsp), %al
+	movb	%al, 15(%rdx)
+	movb	815(%rsp), %al
+	movb	%al, 15(%rcx)
+	movb	1320(%rsp), %al
+	movb	%al, 16(%rdi)
+	movb	1152(%rsp), %al
+	movb	%al, 16(%rsi)
+	movb	984(%rsp), %al
+	movb	%al, 16(%rdx)
+	movb	816(%rsp), %al
+	movb	%al, 16(%rcx)
+	movb	1321(%rsp), %al
+	movb	%al, 17(%rdi)
+	movb	1153(%rsp), %al
+	movb	%al, 17(%rsi)
+	movb	985(%rsp), %al
+	movb	%al, 17(%rdx)
+	movb	817(%rsp), %al
+	movb	%al, 17(%rcx)
+	movb	1322(%rsp), %al
+	movb	%al, 18(%rdi)
+	movb	1154(%rsp), %al
+	movb	%al, 18(%rsi)
+	movb	986(%rsp), %al
+	movb	%al, 18(%rdx)
+	movb	818(%rsp), %al
+	movb	%al, 18(%rcx)
+	movb	1323(%rsp), %al
+	movb	%al, 19(%rdi)
+	movb	1155(%rsp), %al
+	movb	%al, 19(%rsi)
+	movb	987(%rsp), %al
+	movb	%al, 19(%rdx)
+	movb	819(%rsp), %al
+	movb	%al, 19(%rcx)
+	movb	1324(%rsp), %al
+	movb	%al, 20(%rdi)
+	movb	1156(%rsp), %al
+	movb	%al, 20(%rsi)
+	movb	988(%rsp), %al
+	movb	%al, 20(%rdx)
+	movb	820(%rsp), %al
+	movb	%al, 20(%rcx)
+	movb	1325(%rsp), %al
+	movb	%al, 21(%rdi)
+	movb	1157(%rsp), %al
+	movb	%al, 21(%rsi)
+	movb	989(%rsp), %al
+	movb	%al, 21(%rdx)
+	movb	821(%rsp), %al
+	movb	%al, 21(%rcx)
+	movb	1326(%rsp), %al
+	movb	%al, 22(%rdi)
+	movb	1158(%rsp), %al
+	movb	%al, 22(%rsi)
+	movb	990(%rsp), %al
+	movb	%al, 22(%rdx)
+	movb	822(%rsp), %al
+	movb	%al, 22(%rcx)
+	movb	1327(%rsp), %al
+	movb	%al, 23(%rdi)
+	movb	1159(%rsp), %al
+	movb	%al, 23(%rsi)
+	movb	991(%rsp), %al
+	movb	%al, 23(%rdx)
+	movb	823(%rsp), %al
+	movb	%al, 23(%rcx)
+	movb	1328(%rsp), %al
+	movb	%al, 24(%rdi)
+	movb	1160(%rsp), %al
+	movb	%al, 24(%rsi)
+	movb	992(%rsp), %al
+	movb	%al, 24(%rdx)
+	movb	824(%rsp), %al
+	movb	%al, 24(%rcx)
+	movb	1329(%rsp), %al
+	movb	%al, 25(%rdi)
+	movb	1161(%rsp), %al
+	movb	%al, 25(%rsi)
+	movb	993(%rsp), %al
+	movb	%al, 25(%rdx)
+	movb	825(%rsp), %al
+	movb	%al, 25(%rcx)
+	movb	1330(%rsp), %al
+	movb	%al, 26(%rdi)
+	movb	1162(%rsp), %al
+	movb	%al, 26(%rsi)
+	movb	994(%rsp), %al
+	movb	%al, 26(%rdx)
+	movb	826(%rsp), %al
+	movb	%al, 26(%rcx)
+	movb	1331(%rsp), %al
+	movb	%al, 27(%rdi)
+	movb	1163(%rsp), %al
+	movb	%al, 27(%rsi)
+	movb	995(%rsp), %al
+	movb	%al, 27(%rdx)
+	movb	827(%rsp), %al
+	movb	%al, 27(%rcx)
+	movb	1332(%rsp), %al
+	movb	%al, 28(%rdi)
+	movb	1164(%rsp), %al
+	movb	%al, 28(%rsi)
+	movb	996(%rsp), %al
+	movb	%al, 28(%rdx)
+	movb	828(%rsp), %al
+	movb	%al, 28(%rcx)
+	movb	1333(%rsp), %al
+	movb	%al, 29(%rdi)
+	movb	1165(%rsp), %al
+	movb	%al, 29(%rsi)
+	movb	997(%rsp), %al
+	movb	%al, 29(%rdx)
+	movb	829(%rsp), %al
+	movb	%al, 29(%rcx)
+	movb	1334(%rsp), %al
+	movb	%al, 30(%rdi)
+	movb	1166(%rsp), %al
+	movb	%al, 30(%rsi)
+	movb	998(%rsp), %al
+	movb	%al, 30(%rdx)
+	movb	830(%rsp), %al
+	movb	%al, 30(%rcx)
+	movb	1335(%rsp), %al
+	movb	%al, 31(%rdi)
+	movb	1167(%rsp), %al
+	movb	%al, 31(%rsi)
+	movb	999(%rsp), %al
+	movb	%al, 31(%rdx)
+	movb	831(%rsp), %al
+	movb	%al, 31(%rcx)
+	movb	1336(%rsp), %al
+	movb	%al, 32(%rdi)
+	movb	1168(%rsp), %al
+	movb	%al, 32(%rsi)
+	movb	1000(%rsp), %al
+	movb	%al, 32(%rdx)
+	movb	832(%rsp), %al
+	movb	%al, 32(%rcx)
+	movb	1337(%rsp), %al
+	movb	%al, 33(%rdi)
+	movb	1169(%rsp), %al
+	movb	%al, 33(%rsi)
+	movb	1001(%rsp), %al
+	movb	%al, 33(%rdx)
+	movb	833(%rsp), %al
+	movb	%al, 33(%rcx)
+	movb	1338(%rsp), %al
+	movb	%al, 34(%rdi)
+	movb	1170(%rsp), %al
+	movb	%al, 34(%rsi)
+	movb	1002(%rsp), %al
+	movb	%al, 34(%rdx)
+	movb	834(%rsp), %al
+	movb	%al, 34(%rcx)
+	movb	1339(%rsp), %al
+	movb	%al, 35(%rdi)
+	movb	1171(%rsp), %al
+	movb	%al, 35(%rsi)
+	movb	1003(%rsp), %al
+	movb	%al, 35(%rdx)
+	movb	835(%rsp), %al
+	movb	%al, 35(%rcx)
+	movb	1340(%rsp), %al
+	movb	%al, 36(%rdi)
+	movb	1172(%rsp), %al
+	movb	%al, 36(%rsi)
+	movb	1004(%rsp), %al
+	movb	%al, 36(%rdx)
+	movb	836(%rsp), %al
+	movb	%al, 36(%rcx)
+	movb	1341(%rsp), %al
+	movb	%al, 37(%rdi)
+	movb	1173(%rsp), %al
+	movb	%al, 37(%rsi)
+	movb	1005(%rsp), %al
+	movb	%al, 37(%rdx)
+	movb	837(%rsp), %al
+	movb	%al, 37(%rcx)
+	movb	1342(%rsp), %al
+	movb	%al, 38(%rdi)
+	movb	1174(%rsp), %al
+	movb	%al, 38(%rsi)
+	movb	1006(%rsp), %al
+	movb	%al, 38(%rdx)
+	movb	838(%rsp), %al
+	movb	%al, 38(%rcx)
+	movb	1343(%rsp), %al
+	movb	%al, 39(%rdi)
+	movb	1175(%rsp), %al
+	movb	%al, 39(%rsi)
+	movb	1007(%rsp), %al
+	movb	%al, 39(%rdx)
+	movb	839(%rsp), %al
+	movb	%al, 39(%rcx)
+	movb	1344(%rsp), %al
+	movb	%al, 40(%rdi)
+	movb	1176(%rsp), %al
+	movb	%al, 40(%rsi)
+	movb	1008(%rsp), %al
+	movb	%al, 40(%rdx)
+	movb	840(%rsp), %al
+	movb	%al, 40(%rcx)
+	movb	1345(%rsp), %al
+	movb	%al, 41(%rdi)
+	movb	1177(%rsp), %al
+	movb	%al, 41(%rsi)
+	movb	1009(%rsp), %al
+	movb	%al, 41(%rdx)
+	movb	841(%rsp), %al
+	movb	%al, 41(%rcx)
+	movb	1346(%rsp), %al
+	movb	%al, 42(%rdi)
+	movb	1178(%rsp), %al
+	movb	%al, 42(%rsi)
+	movb	1010(%rsp), %al
+	movb	%al, 42(%rdx)
+	movb	842(%rsp), %al
+	movb	%al, 42(%rcx)
+	movb	1347(%rsp), %al
+	movb	%al, 43(%rdi)
+	movb	1179(%rsp), %al
+	movb	%al, 43(%rsi)
+	movb	1011(%rsp), %al
+	movb	%al, 43(%rdx)
+	movb	843(%rsp), %al
+	movb	%al, 43(%rcx)
+	movb	1348(%rsp), %al
+	movb	%al, 44(%rdi)
+	movb	1180(%rsp), %al
+	movb	%al, 44(%rsi)
+	movb	1012(%rsp), %al
+	movb	%al, 44(%rdx)
+	movb	844(%rsp), %al
+	movb	%al, 44(%rcx)
+	movb	1349(%rsp), %al
+	movb	%al, 45(%rdi)
+	movb	1181(%rsp), %al
+	movb	%al, 45(%rsi)
+	movb	1013(%rsp), %al
+	movb	%al, 45(%rdx)
+	movb	845(%rsp), %al
+	movb	%al, 45(%rcx)
+	movb	1350(%rsp), %al
+	movb	%al, 46(%rdi)
+	movb	1182(%rsp), %al
+	movb	%al, 46(%rsi)
+	movb	1014(%rsp), %al
+	movb	%al, 46(%rdx)
+	movb	846(%rsp), %al
+	movb	%al, 46(%rcx)
+	movb	1351(%rsp), %al
+	movb	%al, 47(%rdi)
+	movb	1183(%rsp), %al
+	movb	%al, 47(%rsi)
+	movb	1015(%rsp), %al
+	movb	%al, 47(%rdx)
+	movb	847(%rsp), %al
+	movb	%al, 47(%rcx)
+	movb	1352(%rsp), %al
+	movb	%al, 48(%rdi)
+	movb	1184(%rsp), %al
+	movb	%al, 48(%rsi)
+	movb	1016(%rsp), %al
+	movb	%al, 48(%rdx)
+	movb	848(%rsp), %al
+	movb	%al, 48(%rcx)
+	movb	1353(%rsp), %al
+	movb	%al, 49(%rdi)
+	movb	1185(%rsp), %al
+	movb	%al, 49(%rsi)
+	movb	1017(%rsp), %al
+	movb	%al, 49(%rdx)
+	movb	849(%rsp), %al
+	movb	%al, 49(%rcx)
+	movb	1354(%rsp), %al
+	movb	%al, 50(%rdi)
+	movb	1186(%rsp), %al
+	movb	%al, 50(%rsi)
+	movb	1018(%rsp), %al
+	movb	%al, 50(%rdx)
+	movb	850(%rsp), %al
+	movb	%al, 50(%rcx)
+	movb	1355(%rsp), %al
+	movb	%al, 51(%rdi)
+	movb	1187(%rsp), %al
+	movb	%al, 51(%rsi)
+	movb	1019(%rsp), %al
+	movb	%al, 51(%rdx)
+	movb	851(%rsp), %al
+	movb	%al, 51(%rcx)
+	movb	1356(%rsp), %al
+	movb	%al, 52(%rdi)
+	movb	1188(%rsp), %al
+	movb	%al, 52(%rsi)
+	movb	1020(%rsp), %al
+	movb	%al, 52(%rdx)
+	movb	852(%rsp), %al
+	movb	%al, 52(%rcx)
+	movb	1357(%rsp), %al
+	movb	%al, 53(%rdi)
+	movb	1189(%rsp), %al
+	movb	%al, 53(%rsi)
+	movb	1021(%rsp), %al
+	movb	%al, 53(%rdx)
+	movb	853(%rsp), %al
+	movb	%al, 53(%rcx)
+	movb	1358(%rsp), %al
+	movb	%al, 54(%rdi)
+	movb	1190(%rsp), %al
+	movb	%al, 54(%rsi)
+	movb	1022(%rsp), %al
+	movb	%al, 54(%rdx)
+	movb	854(%rsp), %al
+	movb	%al, 54(%rcx)
+	movb	1359(%rsp), %al
+	movb	%al, 55(%rdi)
+	movb	1191(%rsp), %al
+	movb	%al, 55(%rsi)
+	movb	1023(%rsp), %al
+	movb	%al, 55(%rdx)
+	movb	855(%rsp), %al
+	movb	%al, 55(%rcx)
+	movb	1360(%rsp), %al
+	movb	%al, 56(%rdi)
+	movb	1192(%rsp), %al
+	movb	%al, 56(%rsi)
+	movb	1024(%rsp), %al
+	movb	%al, 56(%rdx)
+	movb	856(%rsp), %al
+	movb	%al, 56(%rcx)
+	movb	1361(%rsp), %al
+	movb	%al, 57(%rdi)
+	movb	1193(%rsp), %al
+	movb	%al, 57(%rsi)
+	movb	1025(%rsp), %al
+	movb	%al, 57(%rdx)
+	movb	857(%rsp), %al
+	movb	%al, 57(%rcx)
+	movb	1362(%rsp), %al
+	movb	%al, 58(%rdi)
+	movb	1194(%rsp), %al
+	movb	%al, 58(%rsi)
+	movb	1026(%rsp), %al
+	movb	%al, 58(%rdx)
+	movb	858(%rsp), %al
+	movb	%al, 58(%rcx)
+	movb	1363(%rsp), %al
+	movb	%al, 59(%rdi)
+	movb	1195(%rsp), %al
+	movb	%al, 59(%rsi)
+	movb	1027(%rsp), %al
+	movb	%al, 59(%rdx)
+	movb	859(%rsp), %al
+	movb	%al, 59(%rcx)
+	movb	1364(%rsp), %al
+	movb	%al, 60(%rdi)
+	movb	1196(%rsp), %al
+	movb	%al, 60(%rsi)
+	movb	1028(%rsp), %al
+	movb	%al, 60(%rdx)
+	movb	860(%rsp), %al
+	movb	%al, 60(%rcx)
+	movb	1365(%rsp), %al
+	movb	%al, 61(%rdi)
+	movb	1197(%rsp), %al
+	movb	%al, 61(%rsi)
+	movb	1029(%rsp), %al
+	movb	%al, 61(%rdx)
+	movb	861(%rsp), %al
+	movb	%al, 61(%rcx)
+	movb	1366(%rsp), %al
+	movb	%al, 62(%rdi)
+	movb	1198(%rsp), %al
+	movb	%al, 62(%rsi)
+	movb	1030(%rsp), %al
+	movb	%al, 62(%rdx)
+	movb	862(%rsp), %al
+	movb	%al, 62(%rcx)
+	movb	1367(%rsp), %al
+	movb	%al, 63(%rdi)
+	movb	1199(%rsp), %al
+	movb	%al, 63(%rsi)
+	movb	1031(%rsp), %al
+	movb	%al, 63(%rdx)
+	movb	863(%rsp), %al
+	movb	%al, 63(%rcx)
+	movb	1368(%rsp), %al
+	movb	%al, 64(%rdi)
+	movb	1200(%rsp), %al
+	movb	%al, 64(%rsi)
+	movb	1032(%rsp), %al
+	movb	%al, 64(%rdx)
+	movb	864(%rsp), %al
+	movb	%al, 64(%rcx)
+	movb	1369(%rsp), %al
+	movb	%al, 65(%rdi)
+	movb	1201(%rsp), %al
+	movb	%al, 65(%rsi)
+	movb	1033(%rsp), %al
+	movb	%al, 65(%rdx)
+	movb	865(%rsp), %al
+	movb	%al, 65(%rcx)
+	movb	1370(%rsp), %al
+	movb	%al, 66(%rdi)
+	movb	1202(%rsp), %al
+	movb	%al, 66(%rsi)
+	movb	1034(%rsp), %al
+	movb	%al, 66(%rdx)
+	movb	866(%rsp), %al
+	movb	%al, 66(%rcx)
+	movb	1371(%rsp), %al
+	movb	%al, 67(%rdi)
+	movb	1203(%rsp), %al
+	movb	%al, 67(%rsi)
+	movb	1035(%rsp), %al
+	movb	%al, 67(%rdx)
+	movb	867(%rsp), %al
+	movb	%al, 67(%rcx)
+	movb	1372(%rsp), %al
+	movb	%al, 68(%rdi)
+	movb	1204(%rsp), %al
+	movb	%al, 68(%rsi)
+	movb	1036(%rsp), %al
+	movb	%al, 68(%rdx)
+	movb	868(%rsp), %al
+	movb	%al, 68(%rcx)
+	movb	1373(%rsp), %al
+	movb	%al, 69(%rdi)
+	movb	1205(%rsp), %al
+	movb	%al, 69(%rsi)
+	movb	1037(%rsp), %al
+	movb	%al, 69(%rdx)
+	movb	869(%rsp), %al
+	movb	%al, 69(%rcx)
+	movb	1374(%rsp), %al
+	movb	%al, 70(%rdi)
+	movb	1206(%rsp), %al
+	movb	%al, 70(%rsi)
+	movb	1038(%rsp), %al
+	movb	%al, 70(%rdx)
+	movb	870(%rsp), %al
+	movb	%al, 70(%rcx)
+	movb	1375(%rsp), %al
+	movb	%al, 71(%rdi)
+	movb	1207(%rsp), %al
+	movb	%al, 71(%rsi)
+	movb	1039(%rsp), %al
+	movb	%al, 71(%rdx)
+	movb	871(%rsp), %al
+	movb	%al, 71(%rcx)
+	movb	1376(%rsp), %al
+	movb	%al, 72(%rdi)
+	movb	1208(%rsp), %al
+	movb	%al, 72(%rsi)
+	movb	1040(%rsp), %al
+	movb	%al, 72(%rdx)
+	movb	872(%rsp), %al
+	movb	%al, 72(%rcx)
+	movb	1377(%rsp), %al
+	movb	%al, 73(%rdi)
+	movb	1209(%rsp), %al
+	movb	%al, 73(%rsi)
+	movb	1041(%rsp), %al
+	movb	%al, 73(%rdx)
+	movb	873(%rsp), %al
+	movb	%al, 73(%rcx)
+	movb	1378(%rsp), %al
+	movb	%al, 74(%rdi)
+	movb	1210(%rsp), %al
+	movb	%al, 74(%rsi)
+	movb	1042(%rsp), %al
+	movb	%al, 74(%rdx)
+	movb	874(%rsp), %al
+	movb	%al, 74(%rcx)
+	movb	1379(%rsp), %al
+	movb	%al, 75(%rdi)
+	movb	1211(%rsp), %al
+	movb	%al, 75(%rsi)
+	movb	1043(%rsp), %al
+	movb	%al, 75(%rdx)
+	movb	875(%rsp), %al
+	movb	%al, 75(%rcx)
+	movb	1380(%rsp), %al
+	movb	%al, 76(%rdi)
+	movb	1212(%rsp), %al
+	movb	%al, 76(%rsi)
+	movb	1044(%rsp), %al
+	movb	%al, 76(%rdx)
+	movb	876(%rsp), %al
+	movb	%al, 76(%rcx)
+	movb	1381(%rsp), %al
+	movb	%al, 77(%rdi)
+	movb	1213(%rsp), %al
+	movb	%al, 77(%rsi)
+	movb	1045(%rsp), %al
+	movb	%al, 77(%rdx)
+	movb	877(%rsp), %al
+	movb	%al, 77(%rcx)
+	movb	1382(%rsp), %al
+	movb	%al, 78(%rdi)
+	movb	1214(%rsp), %al
+	movb	%al, 78(%rsi)
+	movb	1046(%rsp), %al
+	movb	%al, 78(%rdx)
+	movb	878(%rsp), %al
+	movb	%al, 78(%rcx)
+	movb	1383(%rsp), %al
+	movb	%al, 79(%rdi)
+	movb	1215(%rsp), %al
+	movb	%al, 79(%rsi)
+	movb	1047(%rsp), %al
+	movb	%al, 79(%rdx)
+	movb	879(%rsp), %al
+	movb	%al, 79(%rcx)
+	movb	1384(%rsp), %al
+	movb	%al, 80(%rdi)
+	movb	1216(%rsp), %al
+	movb	%al, 80(%rsi)
+	movb	1048(%rsp), %al
+	movb	%al, 80(%rdx)
+	movb	880(%rsp), %al
+	movb	%al, 80(%rcx)
+	movb	1385(%rsp), %al
+	movb	%al, 81(%rdi)
+	movb	1217(%rsp), %al
+	movb	%al, 81(%rsi)
+	movb	1049(%rsp), %al
+	movb	%al, 81(%rdx)
+	movb	881(%rsp), %al
+	movb	%al, 81(%rcx)
+	movb	1386(%rsp), %al
+	movb	%al, 82(%rdi)
+	movb	1218(%rsp), %al
+	movb	%al, 82(%rsi)
+	movb	1050(%rsp), %al
+	movb	%al, 82(%rdx)
+	movb	882(%rsp), %al
+	movb	%al, 82(%rcx)
+	movb	1387(%rsp), %al
+	movb	%al, 83(%rdi)
+	movb	1219(%rsp), %al
+	movb	%al, 83(%rsi)
+	movb	1051(%rsp), %al
+	movb	%al, 83(%rdx)
+	movb	883(%rsp), %al
+	movb	%al, 83(%rcx)
+	movb	1388(%rsp), %al
+	movb	%al, 84(%rdi)
+	movb	1220(%rsp), %al
+	movb	%al, 84(%rsi)
+	movb	1052(%rsp), %al
+	movb	%al, 84(%rdx)
+	movb	884(%rsp), %al
+	movb	%al, 84(%rcx)
+	movb	1389(%rsp), %al
+	movb	%al, 85(%rdi)
+	movb	1221(%rsp), %al
+	movb	%al, 85(%rsi)
+	movb	1053(%rsp), %al
+	movb	%al, 85(%rdx)
+	movb	885(%rsp), %al
+	movb	%al, 85(%rcx)
+	movb	1390(%rsp), %al
+	movb	%al, 86(%rdi)
+	movb	1222(%rsp), %al
+	movb	%al, 86(%rsi)
+	movb	1054(%rsp), %al
+	movb	%al, 86(%rdx)
+	movb	886(%rsp), %al
+	movb	%al, 86(%rcx)
+	movb	1391(%rsp), %al
+	movb	%al, 87(%rdi)
+	movb	1223(%rsp), %al
+	movb	%al, 87(%rsi)
+	movb	1055(%rsp), %al
+	movb	%al, 87(%rdx)
+	movb	887(%rsp), %al
+	movb	%al, 87(%rcx)
+	movb	1392(%rsp), %al
+	movb	%al, 88(%rdi)
+	movb	1224(%rsp), %al
+	movb	%al, 88(%rsi)
+	movb	1056(%rsp), %al
+	movb	%al, 88(%rdx)
+	movb	888(%rsp), %al
+	movb	%al, 88(%rcx)
+	movb	1393(%rsp), %al
+	movb	%al, 89(%rdi)
+	movb	1225(%rsp), %al
+	movb	%al, 89(%rsi)
+	movb	1057(%rsp), %al
+	movb	%al, 89(%rdx)
+	movb	889(%rsp), %al
+	movb	%al, 89(%rcx)
+	movb	1394(%rsp), %al
+	movb	%al, 90(%rdi)
+	movb	1226(%rsp), %al
+	movb	%al, 90(%rsi)
+	movb	1058(%rsp), %al
+	movb	%al, 90(%rdx)
+	movb	890(%rsp), %al
+	movb	%al, 90(%rcx)
+	movb	1395(%rsp), %al
+	movb	%al, 91(%rdi)
+	movb	1227(%rsp), %al
+	movb	%al, 91(%rsi)
+	movb	1059(%rsp), %al
+	movb	%al, 91(%rdx)
+	movb	891(%rsp), %al
+	movb	%al, 91(%rcx)
+	movb	1396(%rsp), %al
+	movb	%al, 92(%rdi)
+	movb	1228(%rsp), %al
+	movb	%al, 92(%rsi)
+	movb	1060(%rsp), %al
+	movb	%al, 92(%rdx)
+	movb	892(%rsp), %al
+	movb	%al, 92(%rcx)
+	movb	1397(%rsp), %al
+	movb	%al, 93(%rdi)
+	movb	1229(%rsp), %al
+	movb	%al, 93(%rsi)
+	movb	1061(%rsp), %al
+	movb	%al, 93(%rdx)
+	movb	893(%rsp), %al
+	movb	%al, 93(%rcx)
+	movb	1398(%rsp), %al
+	movb	%al, 94(%rdi)
+	movb	1230(%rsp), %al
+	movb	%al, 94(%rsi)
+	movb	1062(%rsp), %al
+	movb	%al, 94(%rdx)
+	movb	894(%rsp), %al
+	movb	%al, 94(%rcx)
+	movb	1399(%rsp), %al
+	movb	%al, 95(%rdi)
+	movb	1231(%rsp), %al
+	movb	%al, 95(%rsi)
+	movb	1063(%rsp), %al
+	movb	%al, 95(%rdx)
+	movb	895(%rsp), %al
+	movb	%al, 95(%rcx)
+	movb	1400(%rsp), %al
+	movb	%al, 96(%rdi)
+	movb	1232(%rsp), %al
+	movb	%al, 96(%rsi)
+	movb	1064(%rsp), %al
+	movb	%al, 96(%rdx)
+	movb	896(%rsp), %al
+	movb	%al, 96(%rcx)
+	movb	1401(%rsp), %al
+	movb	%al, 97(%rdi)
+	movb	1233(%rsp), %al
+	movb	%al, 97(%rsi)
+	movb	1065(%rsp), %al
+	movb	%al, 97(%rdx)
+	movb	897(%rsp), %al
+	movb	%al, 97(%rcx)
+	movb	1402(%rsp), %al
+	movb	%al, 98(%rdi)
+	movb	1234(%rsp), %al
+	movb	%al, 98(%rsi)
+	movb	1066(%rsp), %al
+	movb	%al, 98(%rdx)
+	movb	898(%rsp), %al
+	movb	%al, 98(%rcx)
+	movb	1403(%rsp), %al
+	movb	%al, 99(%rdi)
+	movb	1235(%rsp), %al
+	movb	%al, 99(%rsi)
+	movb	1067(%rsp), %al
+	movb	%al, 99(%rdx)
+	movb	899(%rsp), %al
+	movb	%al, 99(%rcx)
+	movb	1404(%rsp), %al
+	movb	%al, 100(%rdi)
+	movb	1236(%rsp), %al
+	movb	%al, 100(%rsi)
+	movb	1068(%rsp), %al
+	movb	%al, 100(%rdx)
+	movb	900(%rsp), %al
+	movb	%al, 100(%rcx)
+	movb	1405(%rsp), %al
+	movb	%al, 101(%rdi)
+	movb	1237(%rsp), %al
+	movb	%al, 101(%rsi)
+	movb	1069(%rsp), %al
+	movb	%al, 101(%rdx)
+	movb	901(%rsp), %al
+	movb	%al, 101(%rcx)
+	movb	1406(%rsp), %al
+	movb	%al, 102(%rdi)
+	movb	1238(%rsp), %al
+	movb	%al, 102(%rsi)
+	movb	1070(%rsp), %al
+	movb	%al, 102(%rdx)
+	movb	902(%rsp), %al
+	movb	%al, 102(%rcx)
+	movb	1407(%rsp), %al
+	movb	%al, 103(%rdi)
+	movb	1239(%rsp), %al
+	movb	%al, 103(%rsi)
+	movb	1071(%rsp), %al
+	movb	%al, 103(%rdx)
+	movb	903(%rsp), %al
+	movb	%al, 103(%rcx)
+	movb	1408(%rsp), %al
+	movb	%al, 104(%rdi)
+	movb	1240(%rsp), %al
+	movb	%al, 104(%rsi)
+	movb	1072(%rsp), %al
+	movb	%al, 104(%rdx)
+	movb	904(%rsp), %al
+	movb	%al, 104(%rcx)
+	movb	1409(%rsp), %al
+	movb	%al, 105(%rdi)
+	movb	1241(%rsp), %al
+	movb	%al, 105(%rsi)
+	movb	1073(%rsp), %al
+	movb	%al, 105(%rdx)
+	movb	905(%rsp), %al
+	movb	%al, 105(%rcx)
+	movb	1410(%rsp), %al
+	movb	%al, 106(%rdi)
+	movb	1242(%rsp), %al
+	movb	%al, 106(%rsi)
+	movb	1074(%rsp), %al
+	movb	%al, 106(%rdx)
+	movb	906(%rsp), %al
+	movb	%al, 106(%rcx)
+	movb	1411(%rsp), %al
+	movb	%al, 107(%rdi)
+	movb	1243(%rsp), %al
+	movb	%al, 107(%rsi)
+	movb	1075(%rsp), %al
+	movb	%al, 107(%rdx)
+	movb	907(%rsp), %al
+	movb	%al, 107(%rcx)
+	movb	1412(%rsp), %al
+	movb	%al, 108(%rdi)
+	movb	1244(%rsp), %al
+	movb	%al, 108(%rsi)
+	movb	1076(%rsp), %al
+	movb	%al, 108(%rdx)
+	movb	908(%rsp), %al
+	movb	%al, 108(%rcx)
+	movb	1413(%rsp), %al
+	movb	%al, 109(%rdi)
+	movb	1245(%rsp), %al
+	movb	%al, 109(%rsi)
+	movb	1077(%rsp), %al
+	movb	%al, 109(%rdx)
+	movb	909(%rsp), %al
+	movb	%al, 109(%rcx)
+	movb	1414(%rsp), %al
+	movb	%al, 110(%rdi)
+	movb	1246(%rsp), %al
+	movb	%al, 110(%rsi)
+	movb	1078(%rsp), %al
+	movb	%al, 110(%rdx)
+	movb	910(%rsp), %al
+	movb	%al, 110(%rcx)
+	movb	1415(%rsp), %al
+	movb	%al, 111(%rdi)
+	movb	1247(%rsp), %al
+	movb	%al, 111(%rsi)
+	movb	1079(%rsp), %al
+	movb	%al, 111(%rdx)
+	movb	911(%rsp), %al
+	movb	%al, 111(%rcx)
+	movb	1416(%rsp), %al
+	movb	%al, 112(%rdi)
+	movb	1248(%rsp), %al
+	movb	%al, 112(%rsi)
+	movb	1080(%rsp), %al
+	movb	%al, 112(%rdx)
+	movb	912(%rsp), %al
+	movb	%al, 112(%rcx)
+	movb	1417(%rsp), %al
+	movb	%al, 113(%rdi)
+	movb	1249(%rsp), %al
+	movb	%al, 113(%rsi)
+	movb	1081(%rsp), %al
+	movb	%al, 113(%rdx)
+	movb	913(%rsp), %al
+	movb	%al, 113(%rcx)
+	movb	1418(%rsp), %al
+	movb	%al, 114(%rdi)
+	movb	1250(%rsp), %al
+	movb	%al, 114(%rsi)
+	movb	1082(%rsp), %al
+	movb	%al, 114(%rdx)
+	movb	914(%rsp), %al
+	movb	%al, 114(%rcx)
+	movb	1419(%rsp), %al
+	movb	%al, 115(%rdi)
+	movb	1251(%rsp), %al
+	movb	%al, 115(%rsi)
+	movb	1083(%rsp), %al
+	movb	%al, 115(%rdx)
+	movb	915(%rsp), %al
+	movb	%al, 115(%rcx)
+	movb	1420(%rsp), %al
+	movb	%al, 116(%rdi)
+	movb	1252(%rsp), %al
+	movb	%al, 116(%rsi)
+	movb	1084(%rsp), %al
+	movb	%al, 116(%rdx)
+	movb	916(%rsp), %al
+	movb	%al, 116(%rcx)
+	movb	1421(%rsp), %al
+	movb	%al, 117(%rdi)
+	movb	1253(%rsp), %al
+	movb	%al, 117(%rsi)
+	movb	1085(%rsp), %al
+	movb	%al, 117(%rdx)
+	movb	917(%rsp), %al
+	movb	%al, 117(%rcx)
+	movb	1422(%rsp), %al
+	movb	%al, 118(%rdi)
+	movb	1254(%rsp), %al
+	movb	%al, 118(%rsi)
+	movb	1086(%rsp), %al
+	movb	%al, 118(%rdx)
+	movb	918(%rsp), %al
+	movb	%al, 118(%rcx)
+	movb	1423(%rsp), %al
+	movb	%al, 119(%rdi)
+	movb	1255(%rsp), %al
+	movb	%al, 119(%rsi)
+	movb	1087(%rsp), %al
+	movb	%al, 119(%rdx)
+	movb	919(%rsp), %al
+	movb	%al, 119(%rcx)
+	movb	1424(%rsp), %al
+	movb	%al, 120(%rdi)
+	movb	1256(%rsp), %al
+	movb	%al, 120(%rsi)
+	movb	1088(%rsp), %al
+	movb	%al, 120(%rdx)
+	movb	920(%rsp), %al
+	movb	%al, 120(%rcx)
+	movb	1425(%rsp), %al
+	movb	%al, 121(%rdi)
+	movb	1257(%rsp), %al
+	movb	%al, 121(%rsi)
+	movb	1089(%rsp), %al
+	movb	%al, 121(%rdx)
+	movb	921(%rsp), %al
+	movb	%al, 121(%rcx)
+	movb	1426(%rsp), %al
+	movb	%al, 122(%rdi)
+	movb	1258(%rsp), %al
+	movb	%al, 122(%rsi)
+	movb	1090(%rsp), %al
+	movb	%al, 122(%rdx)
+	movb	922(%rsp), %al
+	movb	%al, 122(%rcx)
+	movb	1427(%rsp), %al
+	movb	%al, 123(%rdi)
+	movb	1259(%rsp), %al
+	movb	%al, 123(%rsi)
+	movb	1091(%rsp), %al
+	movb	%al, 123(%rdx)
+	movb	923(%rsp), %al
+	movb	%al, 123(%rcx)
+	movb	1428(%rsp), %al
+	movb	%al, 124(%rdi)
+	movb	1260(%rsp), %al
+	movb	%al, 124(%rsi)
+	movb	1092(%rsp), %al
+	movb	%al, 124(%rdx)
+	movb	924(%rsp), %al
+	movb	%al, 124(%rcx)
+	movb	1429(%rsp), %al
+	movb	%al, 125(%rdi)
+	movb	1261(%rsp), %al
+	movb	%al, 125(%rsi)
+	movb	1093(%rsp), %al
+	movb	%al, 125(%rdx)
+	movb	925(%rsp), %al
+	movb	%al, 125(%rcx)
+	movb	1430(%rsp), %al
+	movb	%al, 126(%rdi)
+	movb	1262(%rsp), %al
+	movb	%al, 126(%rsi)
+	movb	1094(%rsp), %al
+	movb	%al, 126(%rdx)
+	movb	926(%rsp), %al
+	movb	%al, 126(%rcx)
+	movb	1431(%rsp), %al
+	movb	%al, 127(%rdi)
+	movb	1263(%rsp), %al
+	movb	%al, 127(%rsi)
+	movb	1095(%rsp), %al
+	movb	%al, 127(%rdx)
+	movb	927(%rsp), %al
+	movb	%al, 127(%rcx)
+	movb	1432(%rsp), %al
+	movb	%al, 128(%rdi)
+	movb	1264(%rsp), %al
+	movb	%al, 128(%rsi)
+	movb	1096(%rsp), %al
+	movb	%al, 128(%rdx)
+	movb	928(%rsp), %al
+	movb	%al, 128(%rcx)
+	movb	1433(%rsp), %al
+	movb	%al, 129(%rdi)
+	movb	1265(%rsp), %al
+	movb	%al, 129(%rsi)
+	movb	1097(%rsp), %al
+	movb	%al, 129(%rdx)
+	movb	929(%rsp), %al
+	movb	%al, 129(%rcx)
+	movb	1434(%rsp), %al
+	movb	%al, 130(%rdi)
+	movb	1266(%rsp), %al
+	movb	%al, 130(%rsi)
+	movb	1098(%rsp), %al
+	movb	%al, 130(%rdx)
+	movb	930(%rsp), %al
+	movb	%al, 130(%rcx)
+	movb	1435(%rsp), %al
+	movb	%al, 131(%rdi)
+	movb	1267(%rsp), %al
+	movb	%al, 131(%rsi)
+	movb	1099(%rsp), %al
+	movb	%al, 131(%rdx)
+	movb	931(%rsp), %al
+	movb	%al, 131(%rcx)
+	movb	1436(%rsp), %al
+	movb	%al, 132(%rdi)
+	movb	1268(%rsp), %al
+	movb	%al, 132(%rsi)
+	movb	1100(%rsp), %al
+	movb	%al, 132(%rdx)
+	movb	932(%rsp), %al
+	movb	%al, 132(%rcx)
+	movb	1437(%rsp), %al
+	movb	%al, 133(%rdi)
+	movb	1269(%rsp), %al
+	movb	%al, 133(%rsi)
+	movb	1101(%rsp), %al
+	movb	%al, 133(%rdx)
+	movb	933(%rsp), %al
+	movb	%al, 133(%rcx)
+	movb	1438(%rsp), %al
+	movb	%al, 134(%rdi)
+	movb	1270(%rsp), %al
+	movb	%al, 134(%rsi)
+	movb	1102(%rsp), %al
+	movb	%al, 134(%rdx)
+	movb	934(%rsp), %al
+	movb	%al, 134(%rcx)
+	movb	1439(%rsp), %al
+	movb	%al, 135(%rdi)
+	movb	1271(%rsp), %al
+	movb	%al, 135(%rsi)
+	movb	1103(%rsp), %al
+	movb	%al, 135(%rdx)
+	movb	935(%rsp), %al
+	movb	%al, 135(%rcx)
+	movb	1440(%rsp), %al
+	movb	%al, 136(%rdi)
+	movb	1272(%rsp), %al
+	movb	%al, 136(%rsi)
+	movb	1104(%rsp), %al
+	movb	%al, 136(%rdx)
+	movb	936(%rsp), %al
+	movb	%al, 136(%rcx)
+	movb	1441(%rsp), %al
+	movb	%al, 137(%rdi)
+	movb	1273(%rsp), %al
+	movb	%al, 137(%rsi)
+	movb	1105(%rsp), %al
+	movb	%al, 137(%rdx)
+	movb	937(%rsp), %al
+	movb	%al, 137(%rcx)
+	movb	1442(%rsp), %al
+	movb	%al, 138(%rdi)
+	movb	1274(%rsp), %al
+	movb	%al, 138(%rsi)
+	movb	1106(%rsp), %al
+	movb	%al, 138(%rdx)
+	movb	938(%rsp), %al
+	movb	%al, 138(%rcx)
+	movb	1443(%rsp), %al
+	movb	%al, 139(%rdi)
+	movb	1275(%rsp), %al
+	movb	%al, 139(%rsi)
+	movb	1107(%rsp), %al
+	movb	%al, 139(%rdx)
+	movb	939(%rsp), %al
+	movb	%al, 139(%rcx)
+	movb	1444(%rsp), %al
+	movb	%al, 140(%rdi)
+	movb	1276(%rsp), %al
+	movb	%al, 140(%rsi)
+	movb	1108(%rsp), %al
+	movb	%al, 140(%rdx)
+	movb	940(%rsp), %al
+	movb	%al, 140(%rcx)
+	movb	1445(%rsp), %al
+	movb	%al, 141(%rdi)
+	movb	1277(%rsp), %al
+	movb	%al, 141(%rsi)
+	movb	1109(%rsp), %al
+	movb	%al, 141(%rdx)
+	movb	941(%rsp), %al
+	movb	%al, 141(%rcx)
+	movb	1446(%rsp), %al
+	movb	%al, 142(%rdi)
+	movb	1278(%rsp), %al
+	movb	%al, 142(%rsi)
+	movb	1110(%rsp), %al
+	movb	%al, 142(%rdx)
+	movb	942(%rsp), %al
+	movb	%al, 142(%rcx)
+	movb	1447(%rsp), %al
+	movb	%al, 143(%rdi)
+	movb	1279(%rsp), %al
+	movb	%al, 143(%rsi)
+	movb	1111(%rsp), %al
+	movb	%al, 143(%rdx)
+	movb	943(%rsp), %al
+	movb	%al, 143(%rcx)
+	movb	1448(%rsp), %al
+	movb	%al, 144(%rdi)
+	movb	1280(%rsp), %al
+	movb	%al, 144(%rsi)
+	movb	1112(%rsp), %al
+	movb	%al, 144(%rdx)
+	movb	944(%rsp), %al
+	movb	%al, 144(%rcx)
+	movb	1449(%rsp), %al
+	movb	%al, 145(%rdi)
+	movb	1281(%rsp), %al
+	movb	%al, 145(%rsi)
+	movb	1113(%rsp), %al
+	movb	%al, 145(%rdx)
+	movb	945(%rsp), %al
+	movb	%al, 145(%rcx)
+	movb	1450(%rsp), %al
+	movb	%al, 146(%rdi)
+	movb	1282(%rsp), %al
+	movb	%al, 146(%rsi)
+	movb	1114(%rsp), %al
+	movb	%al, 146(%rdx)
+	movb	946(%rsp), %al
+	movb	%al, 146(%rcx)
+	movb	1451(%rsp), %al
+	movb	%al, 147(%rdi)
+	movb	1283(%rsp), %al
+	movb	%al, 147(%rsi)
+	movb	1115(%rsp), %al
+	movb	%al, 147(%rdx)
+	movb	947(%rsp), %al
+	movb	%al, 147(%rcx)
+	movb	1452(%rsp), %al
+	movb	%al, 148(%rdi)
+	movb	1284(%rsp), %al
+	movb	%al, 148(%rsi)
+	movb	1116(%rsp), %al
+	movb	%al, 148(%rdx)
+	movb	948(%rsp), %al
+	movb	%al, 148(%rcx)
+	movb	1453(%rsp), %al
+	movb	%al, 149(%rdi)
+	movb	1285(%rsp), %al
+	movb	%al, 149(%rsi)
+	movb	1117(%rsp), %al
+	movb	%al, 149(%rdx)
+	movb	949(%rsp), %al
+	movb	%al, 149(%rcx)
+	movb	1454(%rsp), %al
+	movb	%al, 150(%rdi)
+	movb	1286(%rsp), %al
+	movb	%al, 150(%rsi)
+	movb	1118(%rsp), %al
+	movb	%al, 150(%rdx)
+	movb	950(%rsp), %al
+	movb	%al, 150(%rcx)
+	movb	1455(%rsp), %al
+	movb	%al, 151(%rdi)
+	movb	1287(%rsp), %al
+	movb	%al, 151(%rsi)
+	movb	1119(%rsp), %al
+	movb	%al, 151(%rdx)
+	movb	951(%rsp), %al
+	movb	%al, 151(%rcx)
+	movb	1456(%rsp), %al
+	movb	%al, 152(%rdi)
+	movb	1288(%rsp), %al
+	movb	%al, 152(%rsi)
+	movb	1120(%rsp), %al
+	movb	%al, 152(%rdx)
+	movb	952(%rsp), %al
+	movb	%al, 152(%rcx)
+	movb	1457(%rsp), %al
+	movb	%al, 153(%rdi)
+	movb	1289(%rsp), %al
+	movb	%al, 153(%rsi)
+	movb	1121(%rsp), %al
+	movb	%al, 153(%rdx)
+	movb	953(%rsp), %al
+	movb	%al, 153(%rcx)
+	movb	1458(%rsp), %al
+	movb	%al, 154(%rdi)
+	movb	1290(%rsp), %al
+	movb	%al, 154(%rsi)
+	movb	1122(%rsp), %al
+	movb	%al, 154(%rdx)
+	movb	954(%rsp), %al
+	movb	%al, 154(%rcx)
+	movb	1459(%rsp), %al
+	movb	%al, 155(%rdi)
+	movb	1291(%rsp), %al
+	movb	%al, 155(%rsi)
+	movb	1123(%rsp), %al
+	movb	%al, 155(%rdx)
+	movb	955(%rsp), %al
+	movb	%al, 155(%rcx)
+	movb	1460(%rsp), %al
+	movb	%al, 156(%rdi)
+	movb	1292(%rsp), %al
+	movb	%al, 156(%rsi)
+	movb	1124(%rsp), %al
+	movb	%al, 156(%rdx)
+	movb	956(%rsp), %al
+	movb	%al, 156(%rcx)
+	movb	1461(%rsp), %al
+	movb	%al, 157(%rdi)
+	movb	1293(%rsp), %al
+	movb	%al, 157(%rsi)
+	movb	1125(%rsp), %al
+	movb	%al, 157(%rdx)
+	movb	957(%rsp), %al
+	movb	%al, 157(%rcx)
+	movb	1462(%rsp), %al
+	movb	%al, 158(%rdi)
+	movb	1294(%rsp), %al
+	movb	%al, 158(%rsi)
+	movb	1126(%rsp), %al
+	movb	%al, 158(%rdx)
+	movb	958(%rsp), %al
+	movb	%al, 158(%rcx)
+	movb	1463(%rsp), %al
+	movb	%al, 159(%rdi)
+	movb	1295(%rsp), %al
+	movb	%al, 159(%rsi)
+	movb	1127(%rsp), %al
+	movb	%al, 159(%rdx)
+	movb	959(%rsp), %al
+	movb	%al, 159(%rcx)
+	movb	1464(%rsp), %al
+	movb	%al, 160(%rdi)
+	movb	1296(%rsp), %al
+	movb	%al, 160(%rsi)
+	movb	1128(%rsp), %al
+	movb	%al, 160(%rdx)
+	movb	960(%rsp), %al
+	movb	%al, 160(%rcx)
+	movb	1465(%rsp), %al
+	movb	%al, 161(%rdi)
+	movb	1297(%rsp), %al
+	movb	%al, 161(%rsi)
+	movb	1129(%rsp), %al
+	movb	%al, 161(%rdx)
+	movb	961(%rsp), %al
+	movb	%al, 161(%rcx)
+	movb	1466(%rsp), %al
+	movb	%al, 162(%rdi)
+	movb	1298(%rsp), %al
+	movb	%al, 162(%rsi)
+	movb	1130(%rsp), %al
+	movb	%al, 162(%rdx)
+	movb	962(%rsp), %al
+	movb	%al, 162(%rcx)
+	movb	1467(%rsp), %al
+	movb	%al, 163(%rdi)
+	movb	1299(%rsp), %al
+	movb	%al, 163(%rsi)
+	movb	1131(%rsp), %al
+	movb	%al, 163(%rdx)
+	movb	963(%rsp), %al
+	movb	%al, 163(%rcx)
+	movb	1468(%rsp), %al
+	movb	%al, 164(%rdi)
+	movb	1300(%rsp), %al
+	movb	%al, 164(%rsi)
+	movb	1132(%rsp), %al
+	movb	%al, 164(%rdx)
+	movb	964(%rsp), %al
+	movb	%al, 164(%rcx)
+	movb	1469(%rsp), %al
+	movb	%al, 165(%rdi)
+	movb	1301(%rsp), %al
+	movb	%al, 165(%rsi)
+	movb	1133(%rsp), %al
+	movb	%al, 165(%rdx)
+	movb	965(%rsp), %al
+	movb	%al, 165(%rcx)
+	movb	1470(%rsp), %al
+	movb	%al, 166(%rdi)
+	movb	1302(%rsp), %al
+	movb	%al, 166(%rsi)
+	movb	1134(%rsp), %al
+	movb	%al, 166(%rdx)
+	movb	966(%rsp), %al
+	movb	%al, 166(%rcx)
+	movb	1471(%rsp), %al
+	movb	%al, 167(%rdi)
+	movb	1303(%rsp), %al
+	movb	%al, 167(%rsi)
+	movb	1135(%rsp), %al
+	movb	%al, 167(%rdx)
+	movb	967(%rsp), %al
+	movb	%al, 167(%rcx)
+	vmovdqu	(%rsp), %ymm0
+	vmovdqu	%ymm0, (%r8)
+	vmovdqu	32(%rsp), %ymm0
+	vmovdqu	%ymm0, 32(%r8)
+	vmovdqu	64(%rsp), %ymm0
+	vmovdqu	%ymm0, 64(%r8)
+	vmovdqu	96(%rsp), %ymm0
+	vmovdqu	%ymm0, 96(%r8)
+	vmovdqu	128(%rsp), %ymm0
+	vmovdqu	%ymm0, 128(%r8)
+	vmovdqu	160(%rsp), %ymm0
+	vmovdqu	%ymm0, 160(%r8)
+	vmovdqu	192(%rsp), %ymm0
+	vmovdqu	%ymm0, 192(%r8)
+	vmovdqu	224(%rsp), %ymm0
+	vmovdqu	%ymm0, 224(%r8)
+	vmovdqu	256(%rsp), %ymm0
+	vmovdqu	%ymm0, 256(%r8)
+	vmovdqu	288(%rsp), %ymm0
+	vmovdqu	%ymm0, 288(%r8)
+	vmovdqu	320(%rsp), %ymm0
+	vmovdqu	%ymm0, 320(%r8)
+	vmovdqu	352(%rsp), %ymm0
+	vmovdqu	%ymm0, 352(%r8)
+	vmovdqu	384(%rsp), %ymm0
+	vmovdqu	%ymm0, 384(%r8)
+	vmovdqu	416(%rsp), %ymm0
+	vmovdqu	%ymm0, 416(%r8)
+	vmovdqu	448(%rsp), %ymm0
+	vmovdqu	%ymm0, 448(%r8)
+	vmovdqu	480(%rsp), %ymm0
+	vmovdqu	%ymm0, 480(%r8)
+	vmovdqu	512(%rsp), %ymm0
+	vmovdqu	%ymm0, 512(%r8)
+	vmovdqu	544(%rsp), %ymm0
+	vmovdqu	%ymm0, 544(%r8)
+	vmovdqu	576(%rsp), %ymm0
+	vmovdqu	%ymm0, 576(%r8)
+	vmovdqu	608(%rsp), %ymm0
+	vmovdqu	%ymm0, 608(%r8)
+	vmovdqu	640(%rsp), %ymm0
+	vmovdqu	%ymm0, 640(%r8)
+	vmovdqu	672(%rsp), %ymm0
+	vmovdqu	%ymm0, 672(%r8)
+	vmovdqu	704(%rsp), %ymm0
+	vmovdqu	%ymm0, 704(%r8)
+	vmovdqu	736(%rsp), %ymm0
+	vmovdqu	%ymm0, 736(%r8)
+	vmovdqu	768(%rsp), %ymm0
+	vmovdqu	%ymm0, 768(%r8)
+	movq	1472(%rsp), %rsp
+	ret 
+_keccak_absorb4x_512_64_jazz:
+keccak_absorb4x_512_64_jazz:
+	movq	%rsp, %r11
+	leaq	-1856(%rsp), %rsp
+	andq	$-32, %rsp
+	vmovdqu	(%rdi), %ymm0
+	vmovdqu	%ymm0, (%rsp)
+	vmovdqu	32(%rdi), %ymm0
+	vmovdqu	%ymm0, 32(%rsp)
+	vmovdqu	64(%rdi), %ymm0
+	vmovdqu	%ymm0, 64(%rsp)
+	vmovdqu	96(%rdi), %ymm0
+	vmovdqu	%ymm0, 96(%rsp)
+	vmovdqu	128(%rdi), %ymm0
+	vmovdqu	%ymm0, 128(%rsp)
+	vmovdqu	160(%rdi), %ymm0
+	vmovdqu	%ymm0, 160(%rsp)
+	vmovdqu	192(%rdi), %ymm0
+	vmovdqu	%ymm0, 192(%rsp)
+	vmovdqu	224(%rdi), %ymm0
+	vmovdqu	%ymm0, 224(%rsp)
+	vmovdqu	256(%rdi), %ymm0
+	vmovdqu	%ymm0, 256(%rsp)
+	vmovdqu	288(%rdi), %ymm0
+	vmovdqu	%ymm0, 288(%rsp)
+	vmovdqu	320(%rdi), %ymm0
+	vmovdqu	%ymm0, 320(%rsp)
+	vmovdqu	352(%rdi), %ymm0
+	vmovdqu	%ymm0, 352(%rsp)
+	vmovdqu	384(%rdi), %ymm0
+	vmovdqu	%ymm0, 384(%rsp)
+	vmovdqu	416(%rdi), %ymm0
+	vmovdqu	%ymm0, 416(%rsp)
+	vmovdqu	448(%rdi), %ymm0
+	vmovdqu	%ymm0, 448(%rsp)
+	vmovdqu	480(%rdi), %ymm0
+	vmovdqu	%ymm0, 480(%rsp)
+	vmovdqu	512(%rdi), %ymm0
+	vmovdqu	%ymm0, 512(%rsp)
+	vmovdqu	544(%rdi), %ymm0
+	vmovdqu	%ymm0, 544(%rsp)
+	vmovdqu	576(%rdi), %ymm0
+	vmovdqu	%ymm0, 576(%rsp)
+	vmovdqu	608(%rdi), %ymm0
+	vmovdqu	%ymm0, 608(%rsp)
+	vmovdqu	640(%rdi), %ymm0
+	vmovdqu	%ymm0, 640(%rsp)
+	vmovdqu	672(%rdi), %ymm0
+	vmovdqu	%ymm0, 672(%rsp)
+	vmovdqu	704(%rdi), %ymm0
+	vmovdqu	%ymm0, 704(%rsp)
+	vmovdqu	736(%rdi), %ymm0
+	vmovdqu	%ymm0, 736(%rsp)
+	vmovdqu	768(%rdi), %ymm0
+	vmovdqu	%ymm0, 768(%rsp)
+	movb	(%rsi), %al
+	movb	%al, 992(%rsp)
+	movb	(%rdx), %al
+	movb	%al, 928(%rsp)
+	movb	(%rcx), %al
+	movb	%al, 864(%rsp)
+	movb	(%r8), %al
+	movb	%al, 800(%rsp)
+	movb	1(%rsi), %al
+	movb	%al, 993(%rsp)
+	movb	1(%rdx), %al
+	movb	%al, 929(%rsp)
+	movb	1(%rcx), %al
+	movb	%al, 865(%rsp)
+	movb	1(%r8), %al
+	movb	%al, 801(%rsp)
+	movb	2(%rsi), %al
+	movb	%al, 994(%rsp)
+	movb	2(%rdx), %al
+	movb	%al, 930(%rsp)
+	movb	2(%rcx), %al
+	movb	%al, 866(%rsp)
+	movb	2(%r8), %al
+	movb	%al, 802(%rsp)
+	movb	3(%rsi), %al
+	movb	%al, 995(%rsp)
+	movb	3(%rdx), %al
+	movb	%al, 931(%rsp)
+	movb	3(%rcx), %al
+	movb	%al, 867(%rsp)
+	movb	3(%r8), %al
+	movb	%al, 803(%rsp)
+	movb	4(%rsi), %al
+	movb	%al, 996(%rsp)
+	movb	4(%rdx), %al
+	movb	%al, 932(%rsp)
+	movb	4(%rcx), %al
+	movb	%al, 868(%rsp)
+	movb	4(%r8), %al
+	movb	%al, 804(%rsp)
+	movb	5(%rsi), %al
+	movb	%al, 997(%rsp)
+	movb	5(%rdx), %al
+	movb	%al, 933(%rsp)
+	movb	5(%rcx), %al
+	movb	%al, 869(%rsp)
+	movb	5(%r8), %al
+	movb	%al, 805(%rsp)
+	movb	6(%rsi), %al
+	movb	%al, 998(%rsp)
+	movb	6(%rdx), %al
+	movb	%al, 934(%rsp)
+	movb	6(%rcx), %al
+	movb	%al, 870(%rsp)
+	movb	6(%r8), %al
+	movb	%al, 806(%rsp)
+	movb	7(%rsi), %al
+	movb	%al, 999(%rsp)
+	movb	7(%rdx), %al
+	movb	%al, 935(%rsp)
+	movb	7(%rcx), %al
+	movb	%al, 871(%rsp)
+	movb	7(%r8), %al
+	movb	%al, 807(%rsp)
+	movb	8(%rsi), %al
+	movb	%al, 1000(%rsp)
+	movb	8(%rdx), %al
+	movb	%al, 936(%rsp)
+	movb	8(%rcx), %al
+	movb	%al, 872(%rsp)
+	movb	8(%r8), %al
+	movb	%al, 808(%rsp)
+	movb	9(%rsi), %al
+	movb	%al, 1001(%rsp)
+	movb	9(%rdx), %al
+	movb	%al, 937(%rsp)
+	movb	9(%rcx), %al
+	movb	%al, 873(%rsp)
+	movb	9(%r8), %al
+	movb	%al, 809(%rsp)
+	movb	10(%rsi), %al
+	movb	%al, 1002(%rsp)
+	movb	10(%rdx), %al
+	movb	%al, 938(%rsp)
+	movb	10(%rcx), %al
+	movb	%al, 874(%rsp)
+	movb	10(%r8), %al
+	movb	%al, 810(%rsp)
+	movb	11(%rsi), %al
+	movb	%al, 1003(%rsp)
+	movb	11(%rdx), %al
+	movb	%al, 939(%rsp)
+	movb	11(%rcx), %al
+	movb	%al, 875(%rsp)
+	movb	11(%r8), %al
+	movb	%al, 811(%rsp)
+	movb	12(%rsi), %al
+	movb	%al, 1004(%rsp)
+	movb	12(%rdx), %al
+	movb	%al, 940(%rsp)
+	movb	12(%rcx), %al
+	movb	%al, 876(%rsp)
+	movb	12(%r8), %al
+	movb	%al, 812(%rsp)
+	movb	13(%rsi), %al
+	movb	%al, 1005(%rsp)
+	movb	13(%rdx), %al
+	movb	%al, 941(%rsp)
+	movb	13(%rcx), %al
+	movb	%al, 877(%rsp)
+	movb	13(%r8), %al
+	movb	%al, 813(%rsp)
+	movb	14(%rsi), %al
+	movb	%al, 1006(%rsp)
+	movb	14(%rdx), %al
+	movb	%al, 942(%rsp)
+	movb	14(%rcx), %al
+	movb	%al, 878(%rsp)
+	movb	14(%r8), %al
+	movb	%al, 814(%rsp)
+	movb	15(%rsi), %al
+	movb	%al, 1007(%rsp)
+	movb	15(%rdx), %al
+	movb	%al, 943(%rsp)
+	movb	15(%rcx), %al
+	movb	%al, 879(%rsp)
+	movb	15(%r8), %al
+	movb	%al, 815(%rsp)
+	movb	16(%rsi), %al
+	movb	%al, 1008(%rsp)
+	movb	16(%rdx), %al
+	movb	%al, 944(%rsp)
+	movb	16(%rcx), %al
+	movb	%al, 880(%rsp)
+	movb	16(%r8), %al
+	movb	%al, 816(%rsp)
+	movb	17(%rsi), %al
+	movb	%al, 1009(%rsp)
+	movb	17(%rdx), %al
+	movb	%al, 945(%rsp)
+	movb	17(%rcx), %al
+	movb	%al, 881(%rsp)
+	movb	17(%r8), %al
+	movb	%al, 817(%rsp)
+	movb	18(%rsi), %al
+	movb	%al, 1010(%rsp)
+	movb	18(%rdx), %al
+	movb	%al, 946(%rsp)
+	movb	18(%rcx), %al
+	movb	%al, 882(%rsp)
+	movb	18(%r8), %al
+	movb	%al, 818(%rsp)
+	movb	19(%rsi), %al
+	movb	%al, 1011(%rsp)
+	movb	19(%rdx), %al
+	movb	%al, 947(%rsp)
+	movb	19(%rcx), %al
+	movb	%al, 883(%rsp)
+	movb	19(%r8), %al
+	movb	%al, 819(%rsp)
+	movb	20(%rsi), %al
+	movb	%al, 1012(%rsp)
+	movb	20(%rdx), %al
+	movb	%al, 948(%rsp)
+	movb	20(%rcx), %al
+	movb	%al, 884(%rsp)
+	movb	20(%r8), %al
+	movb	%al, 820(%rsp)
+	movb	21(%rsi), %al
+	movb	%al, 1013(%rsp)
+	movb	21(%rdx), %al
+	movb	%al, 949(%rsp)
+	movb	21(%rcx), %al
+	movb	%al, 885(%rsp)
+	movb	21(%r8), %al
+	movb	%al, 821(%rsp)
+	movb	22(%rsi), %al
+	movb	%al, 1014(%rsp)
+	movb	22(%rdx), %al
+	movb	%al, 950(%rsp)
+	movb	22(%rcx), %al
+	movb	%al, 886(%rsp)
+	movb	22(%r8), %al
+	movb	%al, 822(%rsp)
+	movb	23(%rsi), %al
+	movb	%al, 1015(%rsp)
+	movb	23(%rdx), %al
+	movb	%al, 951(%rsp)
+	movb	23(%rcx), %al
+	movb	%al, 887(%rsp)
+	movb	23(%r8), %al
+	movb	%al, 823(%rsp)
+	movb	24(%rsi), %al
+	movb	%al, 1016(%rsp)
+	movb	24(%rdx), %al
+	movb	%al, 952(%rsp)
+	movb	24(%rcx), %al
+	movb	%al, 888(%rsp)
+	movb	24(%r8), %al
+	movb	%al, 824(%rsp)
+	movb	25(%rsi), %al
+	movb	%al, 1017(%rsp)
+	movb	25(%rdx), %al
+	movb	%al, 953(%rsp)
+	movb	25(%rcx), %al
+	movb	%al, 889(%rsp)
+	movb	25(%r8), %al
+	movb	%al, 825(%rsp)
+	movb	26(%rsi), %al
+	movb	%al, 1018(%rsp)
+	movb	26(%rdx), %al
+	movb	%al, 954(%rsp)
+	movb	26(%rcx), %al
+	movb	%al, 890(%rsp)
+	movb	26(%r8), %al
+	movb	%al, 826(%rsp)
+	movb	27(%rsi), %al
+	movb	%al, 1019(%rsp)
+	movb	27(%rdx), %al
+	movb	%al, 955(%rsp)
+	movb	27(%rcx), %al
+	movb	%al, 891(%rsp)
+	movb	27(%r8), %al
+	movb	%al, 827(%rsp)
+	movb	28(%rsi), %al
+	movb	%al, 1020(%rsp)
+	movb	28(%rdx), %al
+	movb	%al, 956(%rsp)
+	movb	28(%rcx), %al
+	movb	%al, 892(%rsp)
+	movb	28(%r8), %al
+	movb	%al, 828(%rsp)
+	movb	29(%rsi), %al
+	movb	%al, 1021(%rsp)
+	movb	29(%rdx), %al
+	movb	%al, 957(%rsp)
+	movb	29(%rcx), %al
+	movb	%al, 893(%rsp)
+	movb	29(%r8), %al
+	movb	%al, 829(%rsp)
+	movb	30(%rsi), %al
+	movb	%al, 1022(%rsp)
+	movb	30(%rdx), %al
+	movb	%al, 958(%rsp)
+	movb	30(%rcx), %al
+	movb	%al, 894(%rsp)
+	movb	30(%r8), %al
+	movb	%al, 830(%rsp)
+	movb	31(%rsi), %al
+	movb	%al, 1023(%rsp)
+	movb	31(%rdx), %al
+	movb	%al, 959(%rsp)
+	movb	31(%rcx), %al
+	movb	%al, 895(%rsp)
+	movb	31(%r8), %al
+	movb	%al, 831(%rsp)
+	movb	32(%rsi), %al
+	movb	%al, 1024(%rsp)
+	movb	32(%rdx), %al
+	movb	%al, 960(%rsp)
+	movb	32(%rcx), %al
+	movb	%al, 896(%rsp)
+	movb	32(%r8), %al
+	movb	%al, 832(%rsp)
+	movb	33(%rsi), %al
+	movb	%al, 1025(%rsp)
+	movb	33(%rdx), %al
+	movb	%al, 961(%rsp)
+	movb	33(%rcx), %al
+	movb	%al, 897(%rsp)
+	movb	33(%r8), %al
+	movb	%al, 833(%rsp)
+	movb	34(%rsi), %al
+	movb	%al, 1026(%rsp)
+	movb	34(%rdx), %al
+	movb	%al, 962(%rsp)
+	movb	34(%rcx), %al
+	movb	%al, 898(%rsp)
+	movb	34(%r8), %al
+	movb	%al, 834(%rsp)
+	movb	35(%rsi), %al
+	movb	%al, 1027(%rsp)
+	movb	35(%rdx), %al
+	movb	%al, 963(%rsp)
+	movb	35(%rcx), %al
+	movb	%al, 899(%rsp)
+	movb	35(%r8), %al
+	movb	%al, 835(%rsp)
+	movb	36(%rsi), %al
+	movb	%al, 1028(%rsp)
+	movb	36(%rdx), %al
+	movb	%al, 964(%rsp)
+	movb	36(%rcx), %al
+	movb	%al, 900(%rsp)
+	movb	36(%r8), %al
+	movb	%al, 836(%rsp)
+	movb	37(%rsi), %al
+	movb	%al, 1029(%rsp)
+	movb	37(%rdx), %al
+	movb	%al, 965(%rsp)
+	movb	37(%rcx), %al
+	movb	%al, 901(%rsp)
+	movb	37(%r8), %al
+	movb	%al, 837(%rsp)
+	movb	38(%rsi), %al
+	movb	%al, 1030(%rsp)
+	movb	38(%rdx), %al
+	movb	%al, 966(%rsp)
+	movb	38(%rcx), %al
+	movb	%al, 902(%rsp)
+	movb	38(%r8), %al
+	movb	%al, 838(%rsp)
+	movb	39(%rsi), %al
+	movb	%al, 1031(%rsp)
+	movb	39(%rdx), %al
+	movb	%al, 967(%rsp)
+	movb	39(%rcx), %al
+	movb	%al, 903(%rsp)
+	movb	39(%r8), %al
+	movb	%al, 839(%rsp)
+	movb	40(%rsi), %al
+	movb	%al, 1032(%rsp)
+	movb	40(%rdx), %al
+	movb	%al, 968(%rsp)
+	movb	40(%rcx), %al
+	movb	%al, 904(%rsp)
+	movb	40(%r8), %al
+	movb	%al, 840(%rsp)
+	movb	41(%rsi), %al
+	movb	%al, 1033(%rsp)
+	movb	41(%rdx), %al
+	movb	%al, 969(%rsp)
+	movb	41(%rcx), %al
+	movb	%al, 905(%rsp)
+	movb	41(%r8), %al
+	movb	%al, 841(%rsp)
+	movb	42(%rsi), %al
+	movb	%al, 1034(%rsp)
+	movb	42(%rdx), %al
+	movb	%al, 970(%rsp)
+	movb	42(%rcx), %al
+	movb	%al, 906(%rsp)
+	movb	42(%r8), %al
+	movb	%al, 842(%rsp)
+	movb	43(%rsi), %al
+	movb	%al, 1035(%rsp)
+	movb	43(%rdx), %al
+	movb	%al, 971(%rsp)
+	movb	43(%rcx), %al
+	movb	%al, 907(%rsp)
+	movb	43(%r8), %al
+	movb	%al, 843(%rsp)
+	movb	44(%rsi), %al
+	movb	%al, 1036(%rsp)
+	movb	44(%rdx), %al
+	movb	%al, 972(%rsp)
+	movb	44(%rcx), %al
+	movb	%al, 908(%rsp)
+	movb	44(%r8), %al
+	movb	%al, 844(%rsp)
+	movb	45(%rsi), %al
+	movb	%al, 1037(%rsp)
+	movb	45(%rdx), %al
+	movb	%al, 973(%rsp)
+	movb	45(%rcx), %al
+	movb	%al, 909(%rsp)
+	movb	45(%r8), %al
+	movb	%al, 845(%rsp)
+	movb	46(%rsi), %al
+	movb	%al, 1038(%rsp)
+	movb	46(%rdx), %al
+	movb	%al, 974(%rsp)
+	movb	46(%rcx), %al
+	movb	%al, 910(%rsp)
+	movb	46(%r8), %al
+	movb	%al, 846(%rsp)
+	movb	47(%rsi), %al
+	movb	%al, 1039(%rsp)
+	movb	47(%rdx), %al
+	movb	%al, 975(%rsp)
+	movb	47(%rcx), %al
+	movb	%al, 911(%rsp)
+	movb	47(%r8), %al
+	movb	%al, 847(%rsp)
+	movb	48(%rsi), %al
+	movb	%al, 1040(%rsp)
+	movb	48(%rdx), %al
+	movb	%al, 976(%rsp)
+	movb	48(%rcx), %al
+	movb	%al, 912(%rsp)
+	movb	48(%r8), %al
+	movb	%al, 848(%rsp)
+	movb	49(%rsi), %al
+	movb	%al, 1041(%rsp)
+	movb	49(%rdx), %al
+	movb	%al, 977(%rsp)
+	movb	49(%rcx), %al
+	movb	%al, 913(%rsp)
+	movb	49(%r8), %al
+	movb	%al, 849(%rsp)
+	movb	50(%rsi), %al
+	movb	%al, 1042(%rsp)
+	movb	50(%rdx), %al
+	movb	%al, 978(%rsp)
+	movb	50(%rcx), %al
+	movb	%al, 914(%rsp)
+	movb	50(%r8), %al
+	movb	%al, 850(%rsp)
+	movb	51(%rsi), %al
+	movb	%al, 1043(%rsp)
+	movb	51(%rdx), %al
+	movb	%al, 979(%rsp)
+	movb	51(%rcx), %al
+	movb	%al, 915(%rsp)
+	movb	51(%r8), %al
+	movb	%al, 851(%rsp)
+	movb	52(%rsi), %al
+	movb	%al, 1044(%rsp)
+	movb	52(%rdx), %al
+	movb	%al, 980(%rsp)
+	movb	52(%rcx), %al
+	movb	%al, 916(%rsp)
+	movb	52(%r8), %al
+	movb	%al, 852(%rsp)
+	movb	53(%rsi), %al
+	movb	%al, 1045(%rsp)
+	movb	53(%rdx), %al
+	movb	%al, 981(%rsp)
+	movb	53(%rcx), %al
+	movb	%al, 917(%rsp)
+	movb	53(%r8), %al
+	movb	%al, 853(%rsp)
+	movb	54(%rsi), %al
+	movb	%al, 1046(%rsp)
+	movb	54(%rdx), %al
+	movb	%al, 982(%rsp)
+	movb	54(%rcx), %al
+	movb	%al, 918(%rsp)
+	movb	54(%r8), %al
+	movb	%al, 854(%rsp)
+	movb	55(%rsi), %al
+	movb	%al, 1047(%rsp)
+	movb	55(%rdx), %al
+	movb	%al, 983(%rsp)
+	movb	55(%rcx), %al
+	movb	%al, 919(%rsp)
+	movb	55(%r8), %al
+	movb	%al, 855(%rsp)
+	movb	56(%rsi), %al
+	movb	%al, 1048(%rsp)
+	movb	56(%rdx), %al
+	movb	%al, 984(%rsp)
+	movb	56(%rcx), %al
+	movb	%al, 920(%rsp)
+	movb	56(%r8), %al
+	movb	%al, 856(%rsp)
+	movb	57(%rsi), %al
+	movb	%al, 1049(%rsp)
+	movb	57(%rdx), %al
+	movb	%al, 985(%rsp)
+	movb	57(%rcx), %al
+	movb	%al, 921(%rsp)
+	movb	57(%r8), %al
+	movb	%al, 857(%rsp)
+	movb	58(%rsi), %al
+	movb	%al, 1050(%rsp)
+	movb	58(%rdx), %al
+	movb	%al, 986(%rsp)
+	movb	58(%rcx), %al
+	movb	%al, 922(%rsp)
+	movb	58(%r8), %al
+	movb	%al, 858(%rsp)
+	movb	59(%rsi), %al
+	movb	%al, 1051(%rsp)
+	movb	59(%rdx), %al
+	movb	%al, 987(%rsp)
+	movb	59(%rcx), %al
+	movb	%al, 923(%rsp)
+	movb	59(%r8), %al
+	movb	%al, 859(%rsp)
+	movb	60(%rsi), %al
+	movb	%al, 1052(%rsp)
+	movb	60(%rdx), %al
+	movb	%al, 988(%rsp)
+	movb	60(%rcx), %al
+	movb	%al, 924(%rsp)
+	movb	60(%r8), %al
+	movb	%al, 860(%rsp)
+	movb	61(%rsi), %al
+	movb	%al, 1053(%rsp)
+	movb	61(%rdx), %al
+	movb	%al, 989(%rsp)
+	movb	61(%rcx), %al
+	movb	%al, 925(%rsp)
+	movb	61(%r8), %al
+	movb	%al, 861(%rsp)
+	movb	62(%rsi), %al
+	movb	%al, 1054(%rsp)
+	movb	62(%rdx), %al
+	movb	%al, 990(%rsp)
+	movb	62(%rcx), %al
+	movb	%al, 926(%rsp)
+	movb	62(%r8), %al
+	movb	%al, 862(%rsp)
+	movb	63(%rsi), %al
+	movb	%al, 1055(%rsp)
+	movb	63(%rdx), %al
+	movb	%al, 991(%rsp)
+	movb	63(%rcx), %al
+	movb	%al, 927(%rsp)
+	movb	63(%r8), %al
+	movb	%al, 863(%rsp)
+	movq	%rsp, %rax
+	leaq	992(%rsp), %rcx
+	leaq	928(%rsp), %rdx
+	leaq	864(%rsp), %rsi
+	leaq	800(%rsp), %r8
+	movb	$0, 1656(%rsp)
+	movb	$0, 1456(%rsp)
+	movb	$0, 1256(%rsp)
+	movb	$0, 1056(%rsp)
+	movb	$0, 1657(%rsp)
+	movb	$0, 1457(%rsp)
+	movb	$0, 1257(%rsp)
+	movb	$0, 1057(%rsp)
+	movb	$0, 1658(%rsp)
+	movb	$0, 1458(%rsp)
+	movb	$0, 1258(%rsp)
+	movb	$0, 1058(%rsp)
+	movb	$0, 1659(%rsp)
+	movb	$0, 1459(%rsp)
+	movb	$0, 1259(%rsp)
+	movb	$0, 1059(%rsp)
+	movb	$0, 1660(%rsp)
+	movb	$0, 1460(%rsp)
+	movb	$0, 1260(%rsp)
+	movb	$0, 1060(%rsp)
+	movb	$0, 1661(%rsp)
+	movb	$0, 1461(%rsp)
+	movb	$0, 1261(%rsp)
+	movb	$0, 1061(%rsp)
+	movb	$0, 1662(%rsp)
+	movb	$0, 1462(%rsp)
+	movb	$0, 1262(%rsp)
+	movb	$0, 1062(%rsp)
+	movb	$0, 1663(%rsp)
+	movb	$0, 1463(%rsp)
+	movb	$0, 1263(%rsp)
+	movb	$0, 1063(%rsp)
+	movb	$0, 1664(%rsp)
+	movb	$0, 1464(%rsp)
+	movb	$0, 1264(%rsp)
+	movb	$0, 1064(%rsp)
+	movb	$0, 1665(%rsp)
+	movb	$0, 1465(%rsp)
+	movb	$0, 1265(%rsp)
+	movb	$0, 1065(%rsp)
+	movb	$0, 1666(%rsp)
+	movb	$0, 1466(%rsp)
+	movb	$0, 1266(%rsp)
+	movb	$0, 1066(%rsp)
+	movb	$0, 1667(%rsp)
+	movb	$0, 1467(%rsp)
+	movb	$0, 1267(%rsp)
+	movb	$0, 1067(%rsp)
+	movb	$0, 1668(%rsp)
+	movb	$0, 1468(%rsp)
+	movb	$0, 1268(%rsp)
+	movb	$0, 1068(%rsp)
+	movb	$0, 1669(%rsp)
+	movb	$0, 1469(%rsp)
+	movb	$0, 1269(%rsp)
+	movb	$0, 1069(%rsp)
+	movb	$0, 1670(%rsp)
+	movb	$0, 1470(%rsp)
+	movb	$0, 1270(%rsp)
+	movb	$0, 1070(%rsp)
+	movb	$0, 1671(%rsp)
+	movb	$0, 1471(%rsp)
+	movb	$0, 1271(%rsp)
+	movb	$0, 1071(%rsp)
+	movb	$0, 1672(%rsp)
+	movb	$0, 1472(%rsp)
+	movb	$0, 1272(%rsp)
+	movb	$0, 1072(%rsp)
+	movb	$0, 1673(%rsp)
+	movb	$0, 1473(%rsp)
+	movb	$0, 1273(%rsp)
+	movb	$0, 1073(%rsp)
+	movb	$0, 1674(%rsp)
+	movb	$0, 1474(%rsp)
+	movb	$0, 1274(%rsp)
+	movb	$0, 1074(%rsp)
+	movb	$0, 1675(%rsp)
+	movb	$0, 1475(%rsp)
+	movb	$0, 1275(%rsp)
+	movb	$0, 1075(%rsp)
+	movb	$0, 1676(%rsp)
+	movb	$0, 1476(%rsp)
+	movb	$0, 1276(%rsp)
+	movb	$0, 1076(%rsp)
+	movb	$0, 1677(%rsp)
+	movb	$0, 1477(%rsp)
+	movb	$0, 1277(%rsp)
+	movb	$0, 1077(%rsp)
+	movb	$0, 1678(%rsp)
+	movb	$0, 1478(%rsp)
+	movb	$0, 1278(%rsp)
+	movb	$0, 1078(%rsp)
+	movb	$0, 1679(%rsp)
+	movb	$0, 1479(%rsp)
+	movb	$0, 1279(%rsp)
+	movb	$0, 1079(%rsp)
+	movb	$0, 1680(%rsp)
+	movb	$0, 1480(%rsp)
+	movb	$0, 1280(%rsp)
+	movb	$0, 1080(%rsp)
+	movb	$0, 1681(%rsp)
+	movb	$0, 1481(%rsp)
+	movb	$0, 1281(%rsp)
+	movb	$0, 1081(%rsp)
+	movb	$0, 1682(%rsp)
+	movb	$0, 1482(%rsp)
+	movb	$0, 1282(%rsp)
+	movb	$0, 1082(%rsp)
+	movb	$0, 1683(%rsp)
+	movb	$0, 1483(%rsp)
+	movb	$0, 1283(%rsp)
+	movb	$0, 1083(%rsp)
+	movb	$0, 1684(%rsp)
+	movb	$0, 1484(%rsp)
+	movb	$0, 1284(%rsp)
+	movb	$0, 1084(%rsp)
+	movb	$0, 1685(%rsp)
+	movb	$0, 1485(%rsp)
+	movb	$0, 1285(%rsp)
+	movb	$0, 1085(%rsp)
+	movb	$0, 1686(%rsp)
+	movb	$0, 1486(%rsp)
+	movb	$0, 1286(%rsp)
+	movb	$0, 1086(%rsp)
+	movb	$0, 1687(%rsp)
+	movb	$0, 1487(%rsp)
+	movb	$0, 1287(%rsp)
+	movb	$0, 1087(%rsp)
+	movb	$0, 1688(%rsp)
+	movb	$0, 1488(%rsp)
+	movb	$0, 1288(%rsp)
+	movb	$0, 1088(%rsp)
+	movb	$0, 1689(%rsp)
+	movb	$0, 1489(%rsp)
+	movb	$0, 1289(%rsp)
+	movb	$0, 1089(%rsp)
+	movb	$0, 1690(%rsp)
+	movb	$0, 1490(%rsp)
+	movb	$0, 1290(%rsp)
+	movb	$0, 1090(%rsp)
+	movb	$0, 1691(%rsp)
+	movb	$0, 1491(%rsp)
+	movb	$0, 1291(%rsp)
+	movb	$0, 1091(%rsp)
+	movb	$0, 1692(%rsp)
+	movb	$0, 1492(%rsp)
+	movb	$0, 1292(%rsp)
+	movb	$0, 1092(%rsp)
+	movb	$0, 1693(%rsp)
+	movb	$0, 1493(%rsp)
+	movb	$0, 1293(%rsp)
+	movb	$0, 1093(%rsp)
+	movb	$0, 1694(%rsp)
+	movb	$0, 1494(%rsp)
+	movb	$0, 1294(%rsp)
+	movb	$0, 1094(%rsp)
+	movb	$0, 1695(%rsp)
+	movb	$0, 1495(%rsp)
+	movb	$0, 1295(%rsp)
+	movb	$0, 1095(%rsp)
+	movb	$0, 1696(%rsp)
+	movb	$0, 1496(%rsp)
+	movb	$0, 1296(%rsp)
+	movb	$0, 1096(%rsp)
+	movb	$0, 1697(%rsp)
+	movb	$0, 1497(%rsp)
+	movb	$0, 1297(%rsp)
+	movb	$0, 1097(%rsp)
+	movb	$0, 1698(%rsp)
+	movb	$0, 1498(%rsp)
+	movb	$0, 1298(%rsp)
+	movb	$0, 1098(%rsp)
+	movb	$0, 1699(%rsp)
+	movb	$0, 1499(%rsp)
+	movb	$0, 1299(%rsp)
+	movb	$0, 1099(%rsp)
+	movb	$0, 1700(%rsp)
+	movb	$0, 1500(%rsp)
+	movb	$0, 1300(%rsp)
+	movb	$0, 1100(%rsp)
+	movb	$0, 1701(%rsp)
+	movb	$0, 1501(%rsp)
+	movb	$0, 1301(%rsp)
+	movb	$0, 1101(%rsp)
+	movb	$0, 1702(%rsp)
+	movb	$0, 1502(%rsp)
+	movb	$0, 1302(%rsp)
+	movb	$0, 1102(%rsp)
+	movb	$0, 1703(%rsp)
+	movb	$0, 1503(%rsp)
+	movb	$0, 1303(%rsp)
+	movb	$0, 1103(%rsp)
+	movb	$0, 1704(%rsp)
+	movb	$0, 1504(%rsp)
+	movb	$0, 1304(%rsp)
+	movb	$0, 1104(%rsp)
+	movb	$0, 1705(%rsp)
+	movb	$0, 1505(%rsp)
+	movb	$0, 1305(%rsp)
+	movb	$0, 1105(%rsp)
+	movb	$0, 1706(%rsp)
+	movb	$0, 1506(%rsp)
+	movb	$0, 1306(%rsp)
+	movb	$0, 1106(%rsp)
+	movb	$0, 1707(%rsp)
+	movb	$0, 1507(%rsp)
+	movb	$0, 1307(%rsp)
+	movb	$0, 1107(%rsp)
+	movb	$0, 1708(%rsp)
+	movb	$0, 1508(%rsp)
+	movb	$0, 1308(%rsp)
+	movb	$0, 1108(%rsp)
+	movb	$0, 1709(%rsp)
+	movb	$0, 1509(%rsp)
+	movb	$0, 1309(%rsp)
+	movb	$0, 1109(%rsp)
+	movb	$0, 1710(%rsp)
+	movb	$0, 1510(%rsp)
+	movb	$0, 1310(%rsp)
+	movb	$0, 1110(%rsp)
+	movb	$0, 1711(%rsp)
+	movb	$0, 1511(%rsp)
+	movb	$0, 1311(%rsp)
+	movb	$0, 1111(%rsp)
+	movb	$0, 1712(%rsp)
+	movb	$0, 1512(%rsp)
+	movb	$0, 1312(%rsp)
+	movb	$0, 1112(%rsp)
+	movb	$0, 1713(%rsp)
+	movb	$0, 1513(%rsp)
+	movb	$0, 1313(%rsp)
+	movb	$0, 1113(%rsp)
+	movb	$0, 1714(%rsp)
+	movb	$0, 1514(%rsp)
+	movb	$0, 1314(%rsp)
+	movb	$0, 1114(%rsp)
+	movb	$0, 1715(%rsp)
+	movb	$0, 1515(%rsp)
+	movb	$0, 1315(%rsp)
+	movb	$0, 1115(%rsp)
+	movb	$0, 1716(%rsp)
+	movb	$0, 1516(%rsp)
+	movb	$0, 1316(%rsp)
+	movb	$0, 1116(%rsp)
+	movb	$0, 1717(%rsp)
+	movb	$0, 1517(%rsp)
+	movb	$0, 1317(%rsp)
+	movb	$0, 1117(%rsp)
+	movb	$0, 1718(%rsp)
+	movb	$0, 1518(%rsp)
+	movb	$0, 1318(%rsp)
+	movb	$0, 1118(%rsp)
+	movb	$0, 1719(%rsp)
+	movb	$0, 1519(%rsp)
+	movb	$0, 1319(%rsp)
+	movb	$0, 1119(%rsp)
+	movb	$0, 1720(%rsp)
+	movb	$0, 1520(%rsp)
+	movb	$0, 1320(%rsp)
+	movb	$0, 1120(%rsp)
+	movb	$0, 1721(%rsp)
+	movb	$0, 1521(%rsp)
+	movb	$0, 1321(%rsp)
+	movb	$0, 1121(%rsp)
+	movb	$0, 1722(%rsp)
+	movb	$0, 1522(%rsp)
+	movb	$0, 1322(%rsp)
+	movb	$0, 1122(%rsp)
+	movb	$0, 1723(%rsp)
+	movb	$0, 1523(%rsp)
+	movb	$0, 1323(%rsp)
+	movb	$0, 1123(%rsp)
+	movb	$0, 1724(%rsp)
+	movb	$0, 1524(%rsp)
+	movb	$0, 1324(%rsp)
+	movb	$0, 1124(%rsp)
+	movb	$0, 1725(%rsp)
+	movb	$0, 1525(%rsp)
+	movb	$0, 1325(%rsp)
+	movb	$0, 1125(%rsp)
+	movb	$0, 1726(%rsp)
+	movb	$0, 1526(%rsp)
+	movb	$0, 1326(%rsp)
+	movb	$0, 1126(%rsp)
+	movb	$0, 1727(%rsp)
+	movb	$0, 1527(%rsp)
+	movb	$0, 1327(%rsp)
+	movb	$0, 1127(%rsp)
+	movb	(%rcx), %r9b
+	movb	%r9b, 1656(%rsp)
+	movb	(%rdx), %r9b
+	movb	%r9b, 1456(%rsp)
+	movb	(%rsi), %r9b
+	movb	%r9b, 1256(%rsp)
+	movb	(%r8), %r9b
+	movb	%r9b, 1056(%rsp)
+	movb	1(%rcx), %r9b
+	movb	%r9b, 1657(%rsp)
+	movb	1(%rdx), %r9b
+	movb	%r9b, 1457(%rsp)
+	movb	1(%rsi), %r9b
+	movb	%r9b, 1257(%rsp)
+	movb	1(%r8), %r9b
+	movb	%r9b, 1057(%rsp)
+	movb	2(%rcx), %r9b
+	movb	%r9b, 1658(%rsp)
+	movb	2(%rdx), %r9b
+	movb	%r9b, 1458(%rsp)
+	movb	2(%rsi), %r9b
+	movb	%r9b, 1258(%rsp)
+	movb	2(%r8), %r9b
+	movb	%r9b, 1058(%rsp)
+	movb	3(%rcx), %r9b
+	movb	%r9b, 1659(%rsp)
+	movb	3(%rdx), %r9b
+	movb	%r9b, 1459(%rsp)
+	movb	3(%rsi), %r9b
+	movb	%r9b, 1259(%rsp)
+	movb	3(%r8), %r9b
+	movb	%r9b, 1059(%rsp)
+	movb	4(%rcx), %r9b
+	movb	%r9b, 1660(%rsp)
+	movb	4(%rdx), %r9b
+	movb	%r9b, 1460(%rsp)
+	movb	4(%rsi), %r9b
+	movb	%r9b, 1260(%rsp)
+	movb	4(%r8), %r9b
+	movb	%r9b, 1060(%rsp)
+	movb	5(%rcx), %r9b
+	movb	%r9b, 1661(%rsp)
+	movb	5(%rdx), %r9b
+	movb	%r9b, 1461(%rsp)
+	movb	5(%rsi), %r9b
+	movb	%r9b, 1261(%rsp)
+	movb	5(%r8), %r9b
+	movb	%r9b, 1061(%rsp)
+	movb	6(%rcx), %r9b
+	movb	%r9b, 1662(%rsp)
+	movb	6(%rdx), %r9b
+	movb	%r9b, 1462(%rsp)
+	movb	6(%rsi), %r9b
+	movb	%r9b, 1262(%rsp)
+	movb	6(%r8), %r9b
+	movb	%r9b, 1062(%rsp)
+	movb	7(%rcx), %r9b
+	movb	%r9b, 1663(%rsp)
+	movb	7(%rdx), %r9b
+	movb	%r9b, 1463(%rsp)
+	movb	7(%rsi), %r9b
+	movb	%r9b, 1263(%rsp)
+	movb	7(%r8), %r9b
+	movb	%r9b, 1063(%rsp)
+	movb	8(%rcx), %r9b
+	movb	%r9b, 1664(%rsp)
+	movb	8(%rdx), %r9b
+	movb	%r9b, 1464(%rsp)
+	movb	8(%rsi), %r9b
+	movb	%r9b, 1264(%rsp)
+	movb	8(%r8), %r9b
+	movb	%r9b, 1064(%rsp)
+	movb	9(%rcx), %r9b
+	movb	%r9b, 1665(%rsp)
+	movb	9(%rdx), %r9b
+	movb	%r9b, 1465(%rsp)
+	movb	9(%rsi), %r9b
+	movb	%r9b, 1265(%rsp)
+	movb	9(%r8), %r9b
+	movb	%r9b, 1065(%rsp)
+	movb	10(%rcx), %r9b
+	movb	%r9b, 1666(%rsp)
+	movb	10(%rdx), %r9b
+	movb	%r9b, 1466(%rsp)
+	movb	10(%rsi), %r9b
+	movb	%r9b, 1266(%rsp)
+	movb	10(%r8), %r9b
+	movb	%r9b, 1066(%rsp)
+	movb	11(%rcx), %r9b
+	movb	%r9b, 1667(%rsp)
+	movb	11(%rdx), %r9b
+	movb	%r9b, 1467(%rsp)
+	movb	11(%rsi), %r9b
+	movb	%r9b, 1267(%rsp)
+	movb	11(%r8), %r9b
+	movb	%r9b, 1067(%rsp)
+	movb	12(%rcx), %r9b
+	movb	%r9b, 1668(%rsp)
+	movb	12(%rdx), %r9b
+	movb	%r9b, 1468(%rsp)
+	movb	12(%rsi), %r9b
+	movb	%r9b, 1268(%rsp)
+	movb	12(%r8), %r9b
+	movb	%r9b, 1068(%rsp)
+	movb	13(%rcx), %r9b
+	movb	%r9b, 1669(%rsp)
+	movb	13(%rdx), %r9b
+	movb	%r9b, 1469(%rsp)
+	movb	13(%rsi), %r9b
+	movb	%r9b, 1269(%rsp)
+	movb	13(%r8), %r9b
+	movb	%r9b, 1069(%rsp)
+	movb	14(%rcx), %r9b
+	movb	%r9b, 1670(%rsp)
+	movb	14(%rdx), %r9b
+	movb	%r9b, 1470(%rsp)
+	movb	14(%rsi), %r9b
+	movb	%r9b, 1270(%rsp)
+	movb	14(%r8), %r9b
+	movb	%r9b, 1070(%rsp)
+	movb	15(%rcx), %r9b
+	movb	%r9b, 1671(%rsp)
+	movb	15(%rdx), %r9b
+	movb	%r9b, 1471(%rsp)
+	movb	15(%rsi), %r9b
+	movb	%r9b, 1271(%rsp)
+	movb	15(%r8), %r9b
+	movb	%r9b, 1071(%rsp)
+	movb	16(%rcx), %r9b
+	movb	%r9b, 1672(%rsp)
+	movb	16(%rdx), %r9b
+	movb	%r9b, 1472(%rsp)
+	movb	16(%rsi), %r9b
+	movb	%r9b, 1272(%rsp)
+	movb	16(%r8), %r9b
+	movb	%r9b, 1072(%rsp)
+	movb	17(%rcx), %r9b
+	movb	%r9b, 1673(%rsp)
+	movb	17(%rdx), %r9b
+	movb	%r9b, 1473(%rsp)
+	movb	17(%rsi), %r9b
+	movb	%r9b, 1273(%rsp)
+	movb	17(%r8), %r9b
+	movb	%r9b, 1073(%rsp)
+	movb	18(%rcx), %r9b
+	movb	%r9b, 1674(%rsp)
+	movb	18(%rdx), %r9b
+	movb	%r9b, 1474(%rsp)
+	movb	18(%rsi), %r9b
+	movb	%r9b, 1274(%rsp)
+	movb	18(%r8), %r9b
+	movb	%r9b, 1074(%rsp)
+	movb	19(%rcx), %r9b
+	movb	%r9b, 1675(%rsp)
+	movb	19(%rdx), %r9b
+	movb	%r9b, 1475(%rsp)
+	movb	19(%rsi), %r9b
+	movb	%r9b, 1275(%rsp)
+	movb	19(%r8), %r9b
+	movb	%r9b, 1075(%rsp)
+	movb	20(%rcx), %r9b
+	movb	%r9b, 1676(%rsp)
+	movb	20(%rdx), %r9b
+	movb	%r9b, 1476(%rsp)
+	movb	20(%rsi), %r9b
+	movb	%r9b, 1276(%rsp)
+	movb	20(%r8), %r9b
+	movb	%r9b, 1076(%rsp)
+	movb	21(%rcx), %r9b
+	movb	%r9b, 1677(%rsp)
+	movb	21(%rdx), %r9b
+	movb	%r9b, 1477(%rsp)
+	movb	21(%rsi), %r9b
+	movb	%r9b, 1277(%rsp)
+	movb	21(%r8), %r9b
+	movb	%r9b, 1077(%rsp)
+	movb	22(%rcx), %r9b
+	movb	%r9b, 1678(%rsp)
+	movb	22(%rdx), %r9b
+	movb	%r9b, 1478(%rsp)
+	movb	22(%rsi), %r9b
+	movb	%r9b, 1278(%rsp)
+	movb	22(%r8), %r9b
+	movb	%r9b, 1078(%rsp)
+	movb	23(%rcx), %r9b
+	movb	%r9b, 1679(%rsp)
+	movb	23(%rdx), %r9b
+	movb	%r9b, 1479(%rsp)
+	movb	23(%rsi), %r9b
+	movb	%r9b, 1279(%rsp)
+	movb	23(%r8), %r9b
+	movb	%r9b, 1079(%rsp)
+	movb	24(%rcx), %r9b
+	movb	%r9b, 1680(%rsp)
+	movb	24(%rdx), %r9b
+	movb	%r9b, 1480(%rsp)
+	movb	24(%rsi), %r9b
+	movb	%r9b, 1280(%rsp)
+	movb	24(%r8), %r9b
+	movb	%r9b, 1080(%rsp)
+	movb	25(%rcx), %r9b
+	movb	%r9b, 1681(%rsp)
+	movb	25(%rdx), %r9b
+	movb	%r9b, 1481(%rsp)
+	movb	25(%rsi), %r9b
+	movb	%r9b, 1281(%rsp)
+	movb	25(%r8), %r9b
+	movb	%r9b, 1081(%rsp)
+	movb	26(%rcx), %r9b
+	movb	%r9b, 1682(%rsp)
+	movb	26(%rdx), %r9b
+	movb	%r9b, 1482(%rsp)
+	movb	26(%rsi), %r9b
+	movb	%r9b, 1282(%rsp)
+	movb	26(%r8), %r9b
+	movb	%r9b, 1082(%rsp)
+	movb	27(%rcx), %r9b
+	movb	%r9b, 1683(%rsp)
+	movb	27(%rdx), %r9b
+	movb	%r9b, 1483(%rsp)
+	movb	27(%rsi), %r9b
+	movb	%r9b, 1283(%rsp)
+	movb	27(%r8), %r9b
+	movb	%r9b, 1083(%rsp)
+	movb	28(%rcx), %r9b
+	movb	%r9b, 1684(%rsp)
+	movb	28(%rdx), %r9b
+	movb	%r9b, 1484(%rsp)
+	movb	28(%rsi), %r9b
+	movb	%r9b, 1284(%rsp)
+	movb	28(%r8), %r9b
+	movb	%r9b, 1084(%rsp)
+	movb	29(%rcx), %r9b
+	movb	%r9b, 1685(%rsp)
+	movb	29(%rdx), %r9b
+	movb	%r9b, 1485(%rsp)
+	movb	29(%rsi), %r9b
+	movb	%r9b, 1285(%rsp)
+	movb	29(%r8), %r9b
+	movb	%r9b, 1085(%rsp)
+	movb	30(%rcx), %r9b
+	movb	%r9b, 1686(%rsp)
+	movb	30(%rdx), %r9b
+	movb	%r9b, 1486(%rsp)
+	movb	30(%rsi), %r9b
+	movb	%r9b, 1286(%rsp)
+	movb	30(%r8), %r9b
+	movb	%r9b, 1086(%rsp)
+	movb	31(%rcx), %r9b
+	movb	%r9b, 1687(%rsp)
+	movb	31(%rdx), %r9b
+	movb	%r9b, 1487(%rsp)
+	movb	31(%rsi), %r9b
+	movb	%r9b, 1287(%rsp)
+	movb	31(%r8), %r9b
+	movb	%r9b, 1087(%rsp)
+	movb	32(%rcx), %r9b
+	movb	%r9b, 1688(%rsp)
+	movb	32(%rdx), %r9b
+	movb	%r9b, 1488(%rsp)
+	movb	32(%rsi), %r9b
+	movb	%r9b, 1288(%rsp)
+	movb	32(%r8), %r9b
+	movb	%r9b, 1088(%rsp)
+	movb	33(%rcx), %r9b
+	movb	%r9b, 1689(%rsp)
+	movb	33(%rdx), %r9b
+	movb	%r9b, 1489(%rsp)
+	movb	33(%rsi), %r9b
+	movb	%r9b, 1289(%rsp)
+	movb	33(%r8), %r9b
+	movb	%r9b, 1089(%rsp)
+	movb	34(%rcx), %r9b
+	movb	%r9b, 1690(%rsp)
+	movb	34(%rdx), %r9b
+	movb	%r9b, 1490(%rsp)
+	movb	34(%rsi), %r9b
+	movb	%r9b, 1290(%rsp)
+	movb	34(%r8), %r9b
+	movb	%r9b, 1090(%rsp)
+	movb	35(%rcx), %r9b
+	movb	%r9b, 1691(%rsp)
+	movb	35(%rdx), %r9b
+	movb	%r9b, 1491(%rsp)
+	movb	35(%rsi), %r9b
+	movb	%r9b, 1291(%rsp)
+	movb	35(%r8), %r9b
+	movb	%r9b, 1091(%rsp)
+	movb	36(%rcx), %r9b
+	movb	%r9b, 1692(%rsp)
+	movb	36(%rdx), %r9b
+	movb	%r9b, 1492(%rsp)
+	movb	36(%rsi), %r9b
+	movb	%r9b, 1292(%rsp)
+	movb	36(%r8), %r9b
+	movb	%r9b, 1092(%rsp)
+	movb	37(%rcx), %r9b
+	movb	%r9b, 1693(%rsp)
+	movb	37(%rdx), %r9b
+	movb	%r9b, 1493(%rsp)
+	movb	37(%rsi), %r9b
+	movb	%r9b, 1293(%rsp)
+	movb	37(%r8), %r9b
+	movb	%r9b, 1093(%rsp)
+	movb	38(%rcx), %r9b
+	movb	%r9b, 1694(%rsp)
+	movb	38(%rdx), %r9b
+	movb	%r9b, 1494(%rsp)
+	movb	38(%rsi), %r9b
+	movb	%r9b, 1294(%rsp)
+	movb	38(%r8), %r9b
+	movb	%r9b, 1094(%rsp)
+	movb	39(%rcx), %r9b
+	movb	%r9b, 1695(%rsp)
+	movb	39(%rdx), %r9b
+	movb	%r9b, 1495(%rsp)
+	movb	39(%rsi), %r9b
+	movb	%r9b, 1295(%rsp)
+	movb	39(%r8), %r9b
+	movb	%r9b, 1095(%rsp)
+	movb	40(%rcx), %r9b
+	movb	%r9b, 1696(%rsp)
+	movb	40(%rdx), %r9b
+	movb	%r9b, 1496(%rsp)
+	movb	40(%rsi), %r9b
+	movb	%r9b, 1296(%rsp)
+	movb	40(%r8), %r9b
+	movb	%r9b, 1096(%rsp)
+	movb	41(%rcx), %r9b
+	movb	%r9b, 1697(%rsp)
+	movb	41(%rdx), %r9b
+	movb	%r9b, 1497(%rsp)
+	movb	41(%rsi), %r9b
+	movb	%r9b, 1297(%rsp)
+	movb	41(%r8), %r9b
+	movb	%r9b, 1097(%rsp)
+	movb	42(%rcx), %r9b
+	movb	%r9b, 1698(%rsp)
+	movb	42(%rdx), %r9b
+	movb	%r9b, 1498(%rsp)
+	movb	42(%rsi), %r9b
+	movb	%r9b, 1298(%rsp)
+	movb	42(%r8), %r9b
+	movb	%r9b, 1098(%rsp)
+	movb	43(%rcx), %r9b
+	movb	%r9b, 1699(%rsp)
+	movb	43(%rdx), %r9b
+	movb	%r9b, 1499(%rsp)
+	movb	43(%rsi), %r9b
+	movb	%r9b, 1299(%rsp)
+	movb	43(%r8), %r9b
+	movb	%r9b, 1099(%rsp)
+	movb	44(%rcx), %r9b
+	movb	%r9b, 1700(%rsp)
+	movb	44(%rdx), %r9b
+	movb	%r9b, 1500(%rsp)
+	movb	44(%rsi), %r9b
+	movb	%r9b, 1300(%rsp)
+	movb	44(%r8), %r9b
+	movb	%r9b, 1100(%rsp)
+	movb	45(%rcx), %r9b
+	movb	%r9b, 1701(%rsp)
+	movb	45(%rdx), %r9b
+	movb	%r9b, 1501(%rsp)
+	movb	45(%rsi), %r9b
+	movb	%r9b, 1301(%rsp)
+	movb	45(%r8), %r9b
+	movb	%r9b, 1101(%rsp)
+	movb	46(%rcx), %r9b
+	movb	%r9b, 1702(%rsp)
+	movb	46(%rdx), %r9b
+	movb	%r9b, 1502(%rsp)
+	movb	46(%rsi), %r9b
+	movb	%r9b, 1302(%rsp)
+	movb	46(%r8), %r9b
+	movb	%r9b, 1102(%rsp)
+	movb	47(%rcx), %r9b
+	movb	%r9b, 1703(%rsp)
+	movb	47(%rdx), %r9b
+	movb	%r9b, 1503(%rsp)
+	movb	47(%rsi), %r9b
+	movb	%r9b, 1303(%rsp)
+	movb	47(%r8), %r9b
+	movb	%r9b, 1103(%rsp)
+	movb	48(%rcx), %r9b
+	movb	%r9b, 1704(%rsp)
+	movb	48(%rdx), %r9b
+	movb	%r9b, 1504(%rsp)
+	movb	48(%rsi), %r9b
+	movb	%r9b, 1304(%rsp)
+	movb	48(%r8), %r9b
+	movb	%r9b, 1104(%rsp)
+	movb	49(%rcx), %r9b
+	movb	%r9b, 1705(%rsp)
+	movb	49(%rdx), %r9b
+	movb	%r9b, 1505(%rsp)
+	movb	49(%rsi), %r9b
+	movb	%r9b, 1305(%rsp)
+	movb	49(%r8), %r9b
+	movb	%r9b, 1105(%rsp)
+	movb	50(%rcx), %r9b
+	movb	%r9b, 1706(%rsp)
+	movb	50(%rdx), %r9b
+	movb	%r9b, 1506(%rsp)
+	movb	50(%rsi), %r9b
+	movb	%r9b, 1306(%rsp)
+	movb	50(%r8), %r9b
+	movb	%r9b, 1106(%rsp)
+	movb	51(%rcx), %r9b
+	movb	%r9b, 1707(%rsp)
+	movb	51(%rdx), %r9b
+	movb	%r9b, 1507(%rsp)
+	movb	51(%rsi), %r9b
+	movb	%r9b, 1307(%rsp)
+	movb	51(%r8), %r9b
+	movb	%r9b, 1107(%rsp)
+	movb	52(%rcx), %r9b
+	movb	%r9b, 1708(%rsp)
+	movb	52(%rdx), %r9b
+	movb	%r9b, 1508(%rsp)
+	movb	52(%rsi), %r9b
+	movb	%r9b, 1308(%rsp)
+	movb	52(%r8), %r9b
+	movb	%r9b, 1108(%rsp)
+	movb	53(%rcx), %r9b
+	movb	%r9b, 1709(%rsp)
+	movb	53(%rdx), %r9b
+	movb	%r9b, 1509(%rsp)
+	movb	53(%rsi), %r9b
+	movb	%r9b, 1309(%rsp)
+	movb	53(%r8), %r9b
+	movb	%r9b, 1109(%rsp)
+	movb	54(%rcx), %r9b
+	movb	%r9b, 1710(%rsp)
+	movb	54(%rdx), %r9b
+	movb	%r9b, 1510(%rsp)
+	movb	54(%rsi), %r9b
+	movb	%r9b, 1310(%rsp)
+	movb	54(%r8), %r9b
+	movb	%r9b, 1110(%rsp)
+	movb	55(%rcx), %r9b
+	movb	%r9b, 1711(%rsp)
+	movb	55(%rdx), %r9b
+	movb	%r9b, 1511(%rsp)
+	movb	55(%rsi), %r9b
+	movb	%r9b, 1311(%rsp)
+	movb	55(%r8), %r9b
+	movb	%r9b, 1111(%rsp)
+	movb	56(%rcx), %r9b
+	movb	%r9b, 1712(%rsp)
+	movb	56(%rdx), %r9b
+	movb	%r9b, 1512(%rsp)
+	movb	56(%rsi), %r9b
+	movb	%r9b, 1312(%rsp)
+	movb	56(%r8), %r9b
+	movb	%r9b, 1112(%rsp)
+	movb	57(%rcx), %r9b
+	movb	%r9b, 1713(%rsp)
+	movb	57(%rdx), %r9b
+	movb	%r9b, 1513(%rsp)
+	movb	57(%rsi), %r9b
+	movb	%r9b, 1313(%rsp)
+	movb	57(%r8), %r9b
+	movb	%r9b, 1113(%rsp)
+	movb	58(%rcx), %r9b
+	movb	%r9b, 1714(%rsp)
+	movb	58(%rdx), %r9b
+	movb	%r9b, 1514(%rsp)
+	movb	58(%rsi), %r9b
+	movb	%r9b, 1314(%rsp)
+	movb	58(%r8), %r9b
+	movb	%r9b, 1114(%rsp)
+	movb	59(%rcx), %r9b
+	movb	%r9b, 1715(%rsp)
+	movb	59(%rdx), %r9b
+	movb	%r9b, 1515(%rsp)
+	movb	59(%rsi), %r9b
+	movb	%r9b, 1315(%rsp)
+	movb	59(%r8), %r9b
+	movb	%r9b, 1115(%rsp)
+	movb	60(%rcx), %r9b
+	movb	%r9b, 1716(%rsp)
+	movb	60(%rdx), %r9b
+	movb	%r9b, 1516(%rsp)
+	movb	60(%rsi), %r9b
+	movb	%r9b, 1316(%rsp)
+	movb	60(%r8), %r9b
+	movb	%r9b, 1116(%rsp)
+	movb	61(%rcx), %r9b
+	movb	%r9b, 1717(%rsp)
+	movb	61(%rdx), %r9b
+	movb	%r9b, 1517(%rsp)
+	movb	61(%rsi), %r9b
+	movb	%r9b, 1317(%rsp)
+	movb	61(%r8), %r9b
+	movb	%r9b, 1117(%rsp)
+	movb	62(%rcx), %r9b
+	movb	%r9b, 1718(%rsp)
+	movb	62(%rdx), %r9b
+	movb	%r9b, 1518(%rsp)
+	movb	62(%rsi), %r9b
+	movb	%r9b, 1318(%rsp)
+	movb	62(%r8), %r9b
+	movb	%r9b, 1118(%rsp)
+	movb	63(%rcx), %cl
+	movb	%cl, 1719(%rsp)
+	movb	63(%rdx), %cl
+	movb	%cl, 1519(%rsp)
+	movb	63(%rsi), %cl
+	movb	%cl, 1319(%rsp)
+	movb	63(%r8), %cl
+	movb	%cl, 1119(%rsp)
+	movb	$6, 1720(%rsp)
+	movb	$6, 1520(%rsp)
+	movb	$6, 1320(%rsp)
+	movb	$6, 1120(%rsp)
+	orb 	$-128, 1727(%rsp)
+	orb 	$-128, 1527(%rsp)
+	orb 	$-128, 1327(%rsp)
+	orb 	$-128, 1127(%rsp)
+	movzbq	1656(%rsp), %rcx
+	movzbq	1657(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1658(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1659(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1660(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1661(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1662(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1663(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, (%rax)
+	movzbq	1456(%rsp), %rcx
+	movzbq	1457(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1458(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1459(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1460(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1461(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1462(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1463(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 8(%rax)
+	movzbq	1256(%rsp), %rcx
+	movzbq	1257(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1258(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1259(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1260(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1261(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1262(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1263(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 16(%rax)
+	movzbq	1056(%rsp), %rcx
+	movzbq	1057(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1058(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1059(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1060(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1061(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1062(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1063(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 24(%rax)
+	movzbq	1664(%rsp), %rcx
+	movzbq	1665(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1666(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1667(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1668(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1669(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1670(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1671(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 32(%rax)
+	movzbq	1464(%rsp), %rcx
+	movzbq	1465(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1466(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1467(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1468(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1469(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1470(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1471(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 40(%rax)
+	movzbq	1264(%rsp), %rcx
+	movzbq	1265(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1266(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1267(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1268(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1269(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1270(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1271(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 48(%rax)
+	movzbq	1064(%rsp), %rcx
+	movzbq	1065(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1066(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1067(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1068(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1069(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1070(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1071(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 56(%rax)
+	movzbq	1672(%rsp), %rcx
+	movzbq	1673(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1674(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1675(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1676(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1677(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1678(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1679(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 64(%rax)
+	movzbq	1472(%rsp), %rcx
+	movzbq	1473(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1474(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1475(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1476(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1477(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1478(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1479(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 72(%rax)
+	movzbq	1272(%rsp), %rcx
+	movzbq	1273(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1274(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1275(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1276(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1277(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1278(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1279(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 80(%rax)
+	movzbq	1072(%rsp), %rcx
+	movzbq	1073(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1074(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1075(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1076(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1077(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1078(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1079(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 88(%rax)
+	movzbq	1680(%rsp), %rcx
+	movzbq	1681(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1682(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1683(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1684(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1685(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1686(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1687(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 96(%rax)
+	movzbq	1480(%rsp), %rcx
+	movzbq	1481(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1482(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1483(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1484(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1485(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1486(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1487(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 104(%rax)
+	movzbq	1280(%rsp), %rcx
+	movzbq	1281(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1282(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1283(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1284(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1285(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1286(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1287(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 112(%rax)
+	movzbq	1080(%rsp), %rcx
+	movzbq	1081(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1082(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1083(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1084(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1085(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1086(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1087(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 120(%rax)
+	movzbq	1688(%rsp), %rcx
+	movzbq	1689(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1690(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1691(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1692(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1693(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1694(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1695(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 128(%rax)
+	movzbq	1488(%rsp), %rcx
+	movzbq	1489(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1490(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1491(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1492(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1493(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1494(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1495(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 136(%rax)
+	movzbq	1288(%rsp), %rcx
+	movzbq	1289(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1290(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1291(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1292(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1293(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1294(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1295(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 144(%rax)
+	movzbq	1088(%rsp), %rcx
+	movzbq	1089(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1090(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1091(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1092(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1093(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1094(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1095(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 152(%rax)
+	movzbq	1696(%rsp), %rcx
+	movzbq	1697(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1698(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1699(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1700(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1701(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1702(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1703(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 160(%rax)
+	movzbq	1496(%rsp), %rcx
+	movzbq	1497(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1498(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1499(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1500(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1501(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1502(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1503(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 168(%rax)
+	movzbq	1296(%rsp), %rcx
+	movzbq	1297(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1298(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1299(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1300(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1301(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1302(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1303(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 176(%rax)
+	movzbq	1096(%rsp), %rcx
+	movzbq	1097(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1098(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1099(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1100(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1101(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1102(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1103(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 184(%rax)
+	movzbq	1704(%rsp), %rcx
+	movzbq	1705(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1706(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1707(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1708(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1709(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1710(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1711(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 192(%rax)
+	movzbq	1504(%rsp), %rcx
+	movzbq	1505(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1506(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1507(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1508(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1509(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1510(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1511(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 200(%rax)
+	movzbq	1304(%rsp), %rcx
+	movzbq	1305(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1306(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1307(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1308(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1309(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1310(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1311(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 208(%rax)
+	movzbq	1104(%rsp), %rcx
+	movzbq	1105(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1106(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1107(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1108(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1109(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1110(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1111(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 216(%rax)
+	movzbq	1712(%rsp), %rcx
+	movzbq	1713(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1714(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1715(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1716(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1717(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1718(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1719(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 224(%rax)
+	movzbq	1512(%rsp), %rcx
+	movzbq	1513(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1514(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1515(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1516(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1517(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1518(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1519(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 232(%rax)
+	movzbq	1312(%rsp), %rcx
+	movzbq	1313(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1314(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1315(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1316(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1317(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1318(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1319(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 240(%rax)
+	movzbq	1112(%rsp), %rcx
+	movzbq	1113(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1114(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1115(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1116(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1117(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1118(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1119(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 248(%rax)
+	movzbq	1720(%rsp), %rcx
+	movzbq	1721(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1722(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1723(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1724(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1725(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1726(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1727(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 256(%rax)
+	movzbq	1520(%rsp), %rcx
+	movzbq	1521(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1522(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1523(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1524(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1525(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1526(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1527(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 264(%rax)
+	movzbq	1320(%rsp), %rcx
+	movzbq	1321(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1322(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1323(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1324(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1325(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1326(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1327(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 272(%rax)
+	movzbq	1120(%rsp), %rcx
+	movzbq	1121(%rsp), %rdx
+	shlq	$8, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1122(%rsp), %rdx
+	shlq	$16, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1123(%rsp), %rdx
+	shlq	$24, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1124(%rsp), %rdx
+	shlq	$32, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1125(%rsp), %rdx
+	shlq	$40, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1126(%rsp), %rdx
+	shlq	$48, %rdx
+	orq 	%rdx, %rcx
+	movzbq	1127(%rsp), %rdx
+	shlq	$56, %rdx
+	orq 	%rdx, %rcx
+	xorq	%rcx, 280(%rax)
+	vmovdqu	(%rsp), %ymm0
+	vmovdqu	%ymm0, (%rdi)
+	vmovdqu	32(%rsp), %ymm0
+	vmovdqu	%ymm0, 32(%rdi)
+	vmovdqu	64(%rsp), %ymm0
+	vmovdqu	%ymm0, 64(%rdi)
+	vmovdqu	96(%rsp), %ymm0
+	vmovdqu	%ymm0, 96(%rdi)
+	vmovdqu	128(%rsp), %ymm0
+	vmovdqu	%ymm0, 128(%rdi)
+	vmovdqu	160(%rsp), %ymm0
+	vmovdqu	%ymm0, 160(%rdi)
+	vmovdqu	192(%rsp), %ymm0
+	vmovdqu	%ymm0, 192(%rdi)
+	vmovdqu	224(%rsp), %ymm0
+	vmovdqu	%ymm0, 224(%rdi)
+	vmovdqu	256(%rsp), %ymm0
+	vmovdqu	%ymm0, 256(%rdi)
+	vmovdqu	288(%rsp), %ymm0
+	vmovdqu	%ymm0, 288(%rdi)
+	vmovdqu	320(%rsp), %ymm0
+	vmovdqu	%ymm0, 320(%rdi)
+	vmovdqu	352(%rsp), %ymm0
+	vmovdqu	%ymm0, 352(%rdi)
+	vmovdqu	384(%rsp), %ymm0
+	vmovdqu	%ymm0, 384(%rdi)
+	vmovdqu	416(%rsp), %ymm0
+	vmovdqu	%ymm0, 416(%rdi)
+	vmovdqu	448(%rsp), %ymm0
+	vmovdqu	%ymm0, 448(%rdi)
+	vmovdqu	480(%rsp), %ymm0
+	vmovdqu	%ymm0, 480(%rdi)
+	vmovdqu	512(%rsp), %ymm0
+	vmovdqu	%ymm0, 512(%rdi)
+	vmovdqu	544(%rsp), %ymm0
+	vmovdqu	%ymm0, 544(%rdi)
+	vmovdqu	576(%rsp), %ymm0
+	vmovdqu	%ymm0, 576(%rdi)
+	vmovdqu	608(%rsp), %ymm0
+	vmovdqu	%ymm0, 608(%rdi)
+	vmovdqu	640(%rsp), %ymm0
+	vmovdqu	%ymm0, 640(%rdi)
+	vmovdqu	672(%rsp), %ymm0
+	vmovdqu	%ymm0, 672(%rdi)
+	vmovdqu	704(%rsp), %ymm0
+	vmovdqu	%ymm0, 704(%rdi)
+	vmovdqu	736(%rsp), %ymm0
+	vmovdqu	%ymm0, 736(%rdi)
+	vmovdqu	768(%rsp), %ymm0
+	vmovdqu	%ymm0, 768(%rdi)
+	movq	%r11, %rsp
+	ret 
+_keccak_absorb4x_256_PUBKEYBYTES_jazz:
+keccak_absorb4x_256_PUBKEYBYTES_jazz:
+	movq	%rsp, %rax
+	leaq	-5576(%rsp), %rsp
+	andq	$-32, %rsp
+	movq	%rax, 5568(%rsp)
+	vmovdqu	(%rdi), %ymm0
+	vmovdqu	%ymm0, (%rsp)
+	vmovdqu	32(%rdi), %ymm0
+	vmovdqu	%ymm0, 32(%rsp)
+	vmovdqu	64(%rdi), %ymm0
+	vmovdqu	%ymm0, 64(%rsp)
+	vmovdqu	96(%rdi), %ymm0
+	vmovdqu	%ymm0, 96(%rsp)
+	vmovdqu	128(%rdi), %ymm0
+	vmovdqu	%ymm0, 128(%rsp)
+	vmovdqu	160(%rdi), %ymm0
+	vmovdqu	%ymm0, 160(%rsp)
+	vmovdqu	192(%rdi), %ymm0
+	vmovdqu	%ymm0, 192(%rsp)
+	vmovdqu	224(%rdi), %ymm0
+	vmovdqu	%ymm0, 224(%rsp)
+	vmovdqu	256(%rdi), %ymm0
+	vmovdqu	%ymm0, 256(%rsp)
+	vmovdqu	288(%rdi), %ymm0
+	vmovdqu	%ymm0, 288(%rsp)
+	vmovdqu	320(%rdi), %ymm0
+	vmovdqu	%ymm0, 320(%rsp)
+	vmovdqu	352(%rdi), %ymm0
+	vmovdqu	%ymm0, 352(%rsp)
+	vmovdqu	384(%rdi), %ymm0
+	vmovdqu	%ymm0, 384(%rsp)
+	vmovdqu	416(%rdi), %ymm0
+	vmovdqu	%ymm0, 416(%rsp)
+	vmovdqu	448(%rdi), %ymm0
+	vmovdqu	%ymm0, 448(%rsp)
+	vmovdqu	480(%rdi), %ymm0
+	vmovdqu	%ymm0, 480(%rsp)
+	vmovdqu	512(%rdi), %ymm0
+	vmovdqu	%ymm0, 512(%rsp)
+	vmovdqu	544(%rdi), %ymm0
+	vmovdqu	%ymm0, 544(%rsp)
+	vmovdqu	576(%rdi), %ymm0
+	vmovdqu	%ymm0, 576(%rsp)
+	vmovdqu	608(%rdi), %ymm0
+	vmovdqu	%ymm0, 608(%rsp)
+	vmovdqu	640(%rdi), %ymm0
+	vmovdqu	%ymm0, 640(%rsp)
+	vmovdqu	672(%rdi), %ymm0
+	vmovdqu	%ymm0, 672(%rsp)
+	vmovdqu	704(%rdi), %ymm0
+	vmovdqu	%ymm0, 704(%rsp)
+	vmovdqu	736(%rdi), %ymm0
+	vmovdqu	%ymm0, 736(%rsp)
+	vmovdqu	768(%rdi), %ymm0
+	vmovdqu	%ymm0, 768(%rsp)
+	movb	(%rsi), %al
+	movb	%al, 4576(%rsp)
+	movb	(%rdx), %al
+	movb	%al, 3584(%rsp)
+	movb	(%rcx), %al
+	movb	%al, 2592(%rsp)
+	movb	(%r8), %al
+	movb	%al, 1600(%rsp)
+	movb	1(%rsi), %al
+	movb	%al, 4577(%rsp)
+	movb	1(%rdx), %al
+	movb	%al, 3585(%rsp)
+	movb	1(%rcx), %al
+	movb	%al, 2593(%rsp)
+	movb	1(%r8), %al
+	movb	%al, 1601(%rsp)
+	movb	2(%rsi), %al
+	movb	%al, 4578(%rsp)
+	movb	2(%rdx), %al
+	movb	%al, 3586(%rsp)
+	movb	2(%rcx), %al
+	movb	%al, 2594(%rsp)
+	movb	2(%r8), %al
+	movb	%al, 1602(%rsp)
+	movb	3(%rsi), %al
+	movb	%al, 4579(%rsp)
+	movb	3(%rdx), %al
+	movb	%al, 3587(%rsp)
+	movb	3(%rcx), %al
+	movb	%al, 2595(%rsp)
+	movb	3(%r8), %al
+	movb	%al, 1603(%rsp)
+	movb	4(%rsi), %al
+	movb	%al, 4580(%rsp)
+	movb	4(%rdx), %al
+	movb	%al, 3588(%rsp)
+	movb	4(%rcx), %al
+	movb	%al, 2596(%rsp)
+	movb	4(%r8), %al
+	movb	%al, 1604(%rsp)
+	movb	5(%rsi), %al
+	movb	%al, 4581(%rsp)
+	movb	5(%rdx), %al
+	movb	%al, 3589(%rsp)
+	movb	5(%rcx), %al
+	movb	%al, 2597(%rsp)
+	movb	5(%r8), %al
+	movb	%al, 1605(%rsp)
+	movb	6(%rsi), %al
+	movb	%al, 4582(%rsp)
+	movb	6(%rdx), %al
+	movb	%al, 3590(%rsp)
+	movb	6(%rcx), %al
+	movb	%al, 2598(%rsp)
+	movb	6(%r8), %al
+	movb	%al, 1606(%rsp)
+	movb	7(%rsi), %al
+	movb	%al, 4583(%rsp)
+	movb	7(%rdx), %al
+	movb	%al, 3591(%rsp)
+	movb	7(%rcx), %al
+	movb	%al, 2599(%rsp)
+	movb	7(%r8), %al
+	movb	%al, 1607(%rsp)
+	movb	8(%rsi), %al
+	movb	%al, 4584(%rsp)
+	movb	8(%rdx), %al
+	movb	%al, 3592(%rsp)
+	movb	8(%rcx), %al
+	movb	%al, 2600(%rsp)
+	movb	8(%r8), %al
+	movb	%al, 1608(%rsp)
+	movb	9(%rsi), %al
+	movb	%al, 4585(%rsp)
+	movb	9(%rdx), %al
+	movb	%al, 3593(%rsp)
+	movb	9(%rcx), %al
+	movb	%al, 2601(%rsp)
+	movb	9(%r8), %al
+	movb	%al, 1609(%rsp)
+	movb	10(%rsi), %al
+	movb	%al, 4586(%rsp)
+	movb	10(%rdx), %al
+	movb	%al, 3594(%rsp)
+	movb	10(%rcx), %al
+	movb	%al, 2602(%rsp)
+	movb	10(%r8), %al
+	movb	%al, 1610(%rsp)
+	movb	11(%rsi), %al
+	movb	%al, 4587(%rsp)
+	movb	11(%rdx), %al
+	movb	%al, 3595(%rsp)
+	movb	11(%rcx), %al
+	movb	%al, 2603(%rsp)
+	movb	11(%r8), %al
+	movb	%al, 1611(%rsp)
+	movb	12(%rsi), %al
+	movb	%al, 4588(%rsp)
+	movb	12(%rdx), %al
+	movb	%al, 3596(%rsp)
+	movb	12(%rcx), %al
+	movb	%al, 2604(%rsp)
+	movb	12(%r8), %al
+	movb	%al, 1612(%rsp)
+	movb	13(%rsi), %al
+	movb	%al, 4589(%rsp)
+	movb	13(%rdx), %al
+	movb	%al, 3597(%rsp)
+	movb	13(%rcx), %al
+	movb	%al, 2605(%rsp)
+	movb	13(%r8), %al
+	movb	%al, 1613(%rsp)
+	movb	14(%rsi), %al
+	movb	%al, 4590(%rsp)
+	movb	14(%rdx), %al
+	movb	%al, 3598(%rsp)
+	movb	14(%rcx), %al
+	movb	%al, 2606(%rsp)
+	movb	14(%r8), %al
+	movb	%al, 1614(%rsp)
+	movb	15(%rsi), %al
+	movb	%al, 4591(%rsp)
+	movb	15(%rdx), %al
+	movb	%al, 3599(%rsp)
+	movb	15(%rcx), %al
+	movb	%al, 2607(%rsp)
+	movb	15(%r8), %al
+	movb	%al, 1615(%rsp)
+	movb	16(%rsi), %al
+	movb	%al, 4592(%rsp)
+	movb	16(%rdx), %al
+	movb	%al, 3600(%rsp)
+	movb	16(%rcx), %al
+	movb	%al, 2608(%rsp)
+	movb	16(%r8), %al
+	movb	%al, 1616(%rsp)
+	movb	17(%rsi), %al
+	movb	%al, 4593(%rsp)
+	movb	17(%rdx), %al
+	movb	%al, 3601(%rsp)
+	movb	17(%rcx), %al
+	movb	%al, 2609(%rsp)
+	movb	17(%r8), %al
+	movb	%al, 1617(%rsp)
+	movb	18(%rsi), %al
+	movb	%al, 4594(%rsp)
+	movb	18(%rdx), %al
+	movb	%al, 3602(%rsp)
+	movb	18(%rcx), %al
+	movb	%al, 2610(%rsp)
+	movb	18(%r8), %al
+	movb	%al, 1618(%rsp)
+	movb	19(%rsi), %al
+	movb	%al, 4595(%rsp)
+	movb	19(%rdx), %al
+	movb	%al, 3603(%rsp)
+	movb	19(%rcx), %al
+	movb	%al, 2611(%rsp)
+	movb	19(%r8), %al
+	movb	%al, 1619(%rsp)
+	movb	20(%rsi), %al
+	movb	%al, 4596(%rsp)
+	movb	20(%rdx), %al
+	movb	%al, 3604(%rsp)
+	movb	20(%rcx), %al
+	movb	%al, 2612(%rsp)
+	movb	20(%r8), %al
+	movb	%al, 1620(%rsp)
+	movb	21(%rsi), %al
+	movb	%al, 4597(%rsp)
+	movb	21(%rdx), %al
+	movb	%al, 3605(%rsp)
+	movb	21(%rcx), %al
+	movb	%al, 2613(%rsp)
+	movb	21(%r8), %al
+	movb	%al, 1621(%rsp)
+	movb	22(%rsi), %al
+	movb	%al, 4598(%rsp)
+	movb	22(%rdx), %al
+	movb	%al, 3606(%rsp)
+	movb	22(%rcx), %al
+	movb	%al, 2614(%rsp)
+	movb	22(%r8), %al
+	movb	%al, 1622(%rsp)
+	movb	23(%rsi), %al
+	movb	%al, 4599(%rsp)
+	movb	23(%rdx), %al
+	movb	%al, 3607(%rsp)
+	movb	23(%rcx), %al
+	movb	%al, 2615(%rsp)
+	movb	23(%r8), %al
+	movb	%al, 1623(%rsp)
+	movb	24(%rsi), %al
+	movb	%al, 4600(%rsp)
+	movb	24(%rdx), %al
+	movb	%al, 3608(%rsp)
+	movb	24(%rcx), %al
+	movb	%al, 2616(%rsp)
+	movb	24(%r8), %al
+	movb	%al, 1624(%rsp)
+	movb	25(%rsi), %al
+	movb	%al, 4601(%rsp)
+	movb	25(%rdx), %al
+	movb	%al, 3609(%rsp)
+	movb	25(%rcx), %al
+	movb	%al, 2617(%rsp)
+	movb	25(%r8), %al
+	movb	%al, 1625(%rsp)
+	movb	26(%rsi), %al
+	movb	%al, 4602(%rsp)
+	movb	26(%rdx), %al
+	movb	%al, 3610(%rsp)
+	movb	26(%rcx), %al
+	movb	%al, 2618(%rsp)
+	movb	26(%r8), %al
+	movb	%al, 1626(%rsp)
+	movb	27(%rsi), %al
+	movb	%al, 4603(%rsp)
+	movb	27(%rdx), %al
+	movb	%al, 3611(%rsp)
+	movb	27(%rcx), %al
+	movb	%al, 2619(%rsp)
+	movb	27(%r8), %al
+	movb	%al, 1627(%rsp)
+	movb	28(%rsi), %al
+	movb	%al, 4604(%rsp)
+	movb	28(%rdx), %al
+	movb	%al, 3612(%rsp)
+	movb	28(%rcx), %al
+	movb	%al, 2620(%rsp)
+	movb	28(%r8), %al
+	movb	%al, 1628(%rsp)
+	movb	29(%rsi), %al
+	movb	%al, 4605(%rsp)
+	movb	29(%rdx), %al
+	movb	%al, 3613(%rsp)
+	movb	29(%rcx), %al
+	movb	%al, 2621(%rsp)
+	movb	29(%r8), %al
+	movb	%al, 1629(%rsp)
+	movb	30(%rsi), %al
+	movb	%al, 4606(%rsp)
+	movb	30(%rdx), %al
+	movb	%al, 3614(%rsp)
+	movb	30(%rcx), %al
+	movb	%al, 2622(%rsp)
+	movb	30(%r8), %al
+	movb	%al, 1630(%rsp)
+	movb	31(%rsi), %al
+	movb	%al, 4607(%rsp)
+	movb	31(%rdx), %al
+	movb	%al, 3615(%rsp)
+	movb	31(%rcx), %al
+	movb	%al, 2623(%rsp)
+	movb	31(%r8), %al
+	movb	%al, 1631(%rsp)
+	movb	32(%rsi), %al
+	movb	%al, 4608(%rsp)
+	movb	32(%rdx), %al
+	movb	%al, 3616(%rsp)
+	movb	32(%rcx), %al
+	movb	%al, 2624(%rsp)
+	movb	32(%r8), %al
+	movb	%al, 1632(%rsp)
+	movb	33(%rsi), %al
+	movb	%al, 4609(%rsp)
+	movb	33(%rdx), %al
+	movb	%al, 3617(%rsp)
+	movb	33(%rcx), %al
+	movb	%al, 2625(%rsp)
+	movb	33(%r8), %al
+	movb	%al, 1633(%rsp)
+	movb	34(%rsi), %al
+	movb	%al, 4610(%rsp)
+	movb	34(%rdx), %al
+	movb	%al, 3618(%rsp)
+	movb	34(%rcx), %al
+	movb	%al, 2626(%rsp)
+	movb	34(%r8), %al
+	movb	%al, 1634(%rsp)
+	movb	35(%rsi), %al
+	movb	%al, 4611(%rsp)
+	movb	35(%rdx), %al
+	movb	%al, 3619(%rsp)
+	movb	35(%rcx), %al
+	movb	%al, 2627(%rsp)
+	movb	35(%r8), %al
+	movb	%al, 1635(%rsp)
+	movb	36(%rsi), %al
+	movb	%al, 4612(%rsp)
+	movb	36(%rdx), %al
+	movb	%al, 3620(%rsp)
+	movb	36(%rcx), %al
+	movb	%al, 2628(%rsp)
+	movb	36(%r8), %al
+	movb	%al, 1636(%rsp)
+	movb	37(%rsi), %al
+	movb	%al, 4613(%rsp)
+	movb	37(%rdx), %al
+	movb	%al, 3621(%rsp)
+	movb	37(%rcx), %al
+	movb	%al, 2629(%rsp)
+	movb	37(%r8), %al
+	movb	%al, 1637(%rsp)
+	movb	38(%rsi), %al
+	movb	%al, 4614(%rsp)
+	movb	38(%rdx), %al
+	movb	%al, 3622(%rsp)
+	movb	38(%rcx), %al
+	movb	%al, 2630(%rsp)
+	movb	38(%r8), %al
+	movb	%al, 1638(%rsp)
+	movb	39(%rsi), %al
+	movb	%al, 4615(%rsp)
+	movb	39(%rdx), %al
+	movb	%al, 3623(%rsp)
+	movb	39(%rcx), %al
+	movb	%al, 2631(%rsp)
+	movb	39(%r8), %al
+	movb	%al, 1639(%rsp)
+	movb	40(%rsi), %al
+	movb	%al, 4616(%rsp)
+	movb	40(%rdx), %al
+	movb	%al, 3624(%rsp)
+	movb	40(%rcx), %al
+	movb	%al, 2632(%rsp)
+	movb	40(%r8), %al
+	movb	%al, 1640(%rsp)
+	movb	41(%rsi), %al
+	movb	%al, 4617(%rsp)
+	movb	41(%rdx), %al
+	movb	%al, 3625(%rsp)
+	movb	41(%rcx), %al
+	movb	%al, 2633(%rsp)
+	movb	41(%r8), %al
+	movb	%al, 1641(%rsp)
+	movb	42(%rsi), %al
+	movb	%al, 4618(%rsp)
+	movb	42(%rdx), %al
+	movb	%al, 3626(%rsp)
+	movb	42(%rcx), %al
+	movb	%al, 2634(%rsp)
+	movb	42(%r8), %al
+	movb	%al, 1642(%rsp)
+	movb	43(%rsi), %al
+	movb	%al, 4619(%rsp)
+	movb	43(%rdx), %al
+	movb	%al, 3627(%rsp)
+	movb	43(%rcx), %al
+	movb	%al, 2635(%rsp)
+	movb	43(%r8), %al
+	movb	%al, 1643(%rsp)
+	movb	44(%rsi), %al
+	movb	%al, 4620(%rsp)
+	movb	44(%rdx), %al
+	movb	%al, 3628(%rsp)
+	movb	44(%rcx), %al
+	movb	%al, 2636(%rsp)
+	movb	44(%r8), %al
+	movb	%al, 1644(%rsp)
+	movb	45(%rsi), %al
+	movb	%al, 4621(%rsp)
+	movb	45(%rdx), %al
+	movb	%al, 3629(%rsp)
+	movb	45(%rcx), %al
+	movb	%al, 2637(%rsp)
+	movb	45(%r8), %al
+	movb	%al, 1645(%rsp)
+	movb	46(%rsi), %al
+	movb	%al, 4622(%rsp)
+	movb	46(%rdx), %al
+	movb	%al, 3630(%rsp)
+	movb	46(%rcx), %al
+	movb	%al, 2638(%rsp)
+	movb	46(%r8), %al
+	movb	%al, 1646(%rsp)
+	movb	47(%rsi), %al
+	movb	%al, 4623(%rsp)
+	movb	47(%rdx), %al
+	movb	%al, 3631(%rsp)
+	movb	47(%rcx), %al
+	movb	%al, 2639(%rsp)
+	movb	47(%r8), %al
+	movb	%al, 1647(%rsp)
+	movb	48(%rsi), %al
+	movb	%al, 4624(%rsp)
+	movb	48(%rdx), %al
+	movb	%al, 3632(%rsp)
+	movb	48(%rcx), %al
+	movb	%al, 2640(%rsp)
+	movb	48(%r8), %al
+	movb	%al, 1648(%rsp)
+	movb	49(%rsi), %al
+	movb	%al, 4625(%rsp)
+	movb	49(%rdx), %al
+	movb	%al, 3633(%rsp)
+	movb	49(%rcx), %al
+	movb	%al, 2641(%rsp)
+	movb	49(%r8), %al
+	movb	%al, 1649(%rsp)
+	movb	50(%rsi), %al
+	movb	%al, 4626(%rsp)
+	movb	50(%rdx), %al
+	movb	%al, 3634(%rsp)
+	movb	50(%rcx), %al
+	movb	%al, 2642(%rsp)
+	movb	50(%r8), %al
+	movb	%al, 1650(%rsp)
+	movb	51(%rsi), %al
+	movb	%al, 4627(%rsp)
+	movb	51(%rdx), %al
+	movb	%al, 3635(%rsp)
+	movb	51(%rcx), %al
+	movb	%al, 2643(%rsp)
+	movb	51(%r8), %al
+	movb	%al, 1651(%rsp)
+	movb	52(%rsi), %al
+	movb	%al, 4628(%rsp)
+	movb	52(%rdx), %al
+	movb	%al, 3636(%rsp)
+	movb	52(%rcx), %al
+	movb	%al, 2644(%rsp)
+	movb	52(%r8), %al
+	movb	%al, 1652(%rsp)
+	movb	53(%rsi), %al
+	movb	%al, 4629(%rsp)
+	movb	53(%rdx), %al
+	movb	%al, 3637(%rsp)
+	movb	53(%rcx), %al
+	movb	%al, 2645(%rsp)
+	movb	53(%r8), %al
+	movb	%al, 1653(%rsp)
+	movb	54(%rsi), %al
+	movb	%al, 4630(%rsp)
+	movb	54(%rdx), %al
+	movb	%al, 3638(%rsp)
+	movb	54(%rcx), %al
+	movb	%al, 2646(%rsp)
+	movb	54(%r8), %al
+	movb	%al, 1654(%rsp)
+	movb	55(%rsi), %al
+	movb	%al, 4631(%rsp)
+	movb	55(%rdx), %al
+	movb	%al, 3639(%rsp)
+	movb	55(%rcx), %al
+	movb	%al, 2647(%rsp)
+	movb	55(%r8), %al
+	movb	%al, 1655(%rsp)
+	movb	56(%rsi), %al
+	movb	%al, 4632(%rsp)
+	movb	56(%rdx), %al
+	movb	%al, 3640(%rsp)
+	movb	56(%rcx), %al
+	movb	%al, 2648(%rsp)
+	movb	56(%r8), %al
+	movb	%al, 1656(%rsp)
+	movb	57(%rsi), %al
+	movb	%al, 4633(%rsp)
+	movb	57(%rdx), %al
+	movb	%al, 3641(%rsp)
+	movb	57(%rcx), %al
+	movb	%al, 2649(%rsp)
+	movb	57(%r8), %al
+	movb	%al, 1657(%rsp)
+	movb	58(%rsi), %al
+	movb	%al, 4634(%rsp)
+	movb	58(%rdx), %al
+	movb	%al, 3642(%rsp)
+	movb	58(%rcx), %al
+	movb	%al, 2650(%rsp)
+	movb	58(%r8), %al
+	movb	%al, 1658(%rsp)
+	movb	59(%rsi), %al
+	movb	%al, 4635(%rsp)
+	movb	59(%rdx), %al
+	movb	%al, 3643(%rsp)
+	movb	59(%rcx), %al
+	movb	%al, 2651(%rsp)
+	movb	59(%r8), %al
+	movb	%al, 1659(%rsp)
+	movb	60(%rsi), %al
+	movb	%al, 4636(%rsp)
+	movb	60(%rdx), %al
+	movb	%al, 3644(%rsp)
+	movb	60(%rcx), %al
+	movb	%al, 2652(%rsp)
+	movb	60(%r8), %al
+	movb	%al, 1660(%rsp)
+	movb	61(%rsi), %al
+	movb	%al, 4637(%rsp)
+	movb	61(%rdx), %al
+	movb	%al, 3645(%rsp)
+	movb	61(%rcx), %al
+	movb	%al, 2653(%rsp)
+	movb	61(%r8), %al
+	movb	%al, 1661(%rsp)
+	movb	62(%rsi), %al
+	movb	%al, 4638(%rsp)
+	movb	62(%rdx), %al
+	movb	%al, 3646(%rsp)
+	movb	62(%rcx), %al
+	movb	%al, 2654(%rsp)
+	movb	62(%r8), %al
+	movb	%al, 1662(%rsp)
+	movb	63(%rsi), %al
+	movb	%al, 4639(%rsp)
+	movb	63(%rdx), %al
+	movb	%al, 3647(%rsp)
+	movb	63(%rcx), %al
+	movb	%al, 2655(%rsp)
+	movb	63(%r8), %al
+	movb	%al, 1663(%rsp)
+	movb	64(%rsi), %al
+	movb	%al, 4640(%rsp)
+	movb	64(%rdx), %al
+	movb	%al, 3648(%rsp)
+	movb	64(%rcx), %al
+	movb	%al, 2656(%rsp)
+	movb	64(%r8), %al
+	movb	%al, 1664(%rsp)
+	movb	65(%rsi), %al
+	movb	%al, 4641(%rsp)
+	movb	65(%rdx), %al
+	movb	%al, 3649(%rsp)
+	movb	65(%rcx), %al
+	movb	%al, 2657(%rsp)
+	movb	65(%r8), %al
+	movb	%al, 1665(%rsp)
+	movb	66(%rsi), %al
+	movb	%al, 4642(%rsp)
+	movb	66(%rdx), %al
+	movb	%al, 3650(%rsp)
+	movb	66(%rcx), %al
+	movb	%al, 2658(%rsp)
+	movb	66(%r8), %al
+	movb	%al, 1666(%rsp)
+	movb	67(%rsi), %al
+	movb	%al, 4643(%rsp)
+	movb	67(%rdx), %al
+	movb	%al, 3651(%rsp)
+	movb	67(%rcx), %al
+	movb	%al, 2659(%rsp)
+	movb	67(%r8), %al
+	movb	%al, 1667(%rsp)
+	movb	68(%rsi), %al
+	movb	%al, 4644(%rsp)
+	movb	68(%rdx), %al
+	movb	%al, 3652(%rsp)
+	movb	68(%rcx), %al
+	movb	%al, 2660(%rsp)
+	movb	68(%r8), %al
+	movb	%al, 1668(%rsp)
+	movb	69(%rsi), %al
+	movb	%al, 4645(%rsp)
+	movb	69(%rdx), %al
+	movb	%al, 3653(%rsp)
+	movb	69(%rcx), %al
+	movb	%al, 2661(%rsp)
+	movb	69(%r8), %al
+	movb	%al, 1669(%rsp)
+	movb	70(%rsi), %al
+	movb	%al, 4646(%rsp)
+	movb	70(%rdx), %al
+	movb	%al, 3654(%rsp)
+	movb	70(%rcx), %al
+	movb	%al, 2662(%rsp)
+	movb	70(%r8), %al
+	movb	%al, 1670(%rsp)
+	movb	71(%rsi), %al
+	movb	%al, 4647(%rsp)
+	movb	71(%rdx), %al
+	movb	%al, 3655(%rsp)
+	movb	71(%rcx), %al
+	movb	%al, 2663(%rsp)
+	movb	71(%r8), %al
+	movb	%al, 1671(%rsp)
+	movb	72(%rsi), %al
+	movb	%al, 4648(%rsp)
+	movb	72(%rdx), %al
+	movb	%al, 3656(%rsp)
+	movb	72(%rcx), %al
+	movb	%al, 2664(%rsp)
+	movb	72(%r8), %al
+	movb	%al, 1672(%rsp)
+	movb	73(%rsi), %al
+	movb	%al, 4649(%rsp)
+	movb	73(%rdx), %al
+	movb	%al, 3657(%rsp)
+	movb	73(%rcx), %al
+	movb	%al, 2665(%rsp)
+	movb	73(%r8), %al
+	movb	%al, 1673(%rsp)
+	movb	74(%rsi), %al
+	movb	%al, 4650(%rsp)
+	movb	74(%rdx), %al
+	movb	%al, 3658(%rsp)
+	movb	74(%rcx), %al
+	movb	%al, 2666(%rsp)
+	movb	74(%r8), %al
+	movb	%al, 1674(%rsp)
+	movb	75(%rsi), %al
+	movb	%al, 4651(%rsp)
+	movb	75(%rdx), %al
+	movb	%al, 3659(%rsp)
+	movb	75(%rcx), %al
+	movb	%al, 2667(%rsp)
+	movb	75(%r8), %al
+	movb	%al, 1675(%rsp)
+	movb	76(%rsi), %al
+	movb	%al, 4652(%rsp)
+	movb	76(%rdx), %al
+	movb	%al, 3660(%rsp)
+	movb	76(%rcx), %al
+	movb	%al, 2668(%rsp)
+	movb	76(%r8), %al
+	movb	%al, 1676(%rsp)
+	movb	77(%rsi), %al
+	movb	%al, 4653(%rsp)
+	movb	77(%rdx), %al
+	movb	%al, 3661(%rsp)
+	movb	77(%rcx), %al
+	movb	%al, 2669(%rsp)
+	movb	77(%r8), %al
+	movb	%al, 1677(%rsp)
+	movb	78(%rsi), %al
+	movb	%al, 4654(%rsp)
+	movb	78(%rdx), %al
+	movb	%al, 3662(%rsp)
+	movb	78(%rcx), %al
+	movb	%al, 2670(%rsp)
+	movb	78(%r8), %al
+	movb	%al, 1678(%rsp)
+	movb	79(%rsi), %al
+	movb	%al, 4655(%rsp)
+	movb	79(%rdx), %al
+	movb	%al, 3663(%rsp)
+	movb	79(%rcx), %al
+	movb	%al, 2671(%rsp)
+	movb	79(%r8), %al
+	movb	%al, 1679(%rsp)
+	movb	80(%rsi), %al
+	movb	%al, 4656(%rsp)
+	movb	80(%rdx), %al
+	movb	%al, 3664(%rsp)
+	movb	80(%rcx), %al
+	movb	%al, 2672(%rsp)
+	movb	80(%r8), %al
+	movb	%al, 1680(%rsp)
+	movb	81(%rsi), %al
+	movb	%al, 4657(%rsp)
+	movb	81(%rdx), %al
+	movb	%al, 3665(%rsp)
+	movb	81(%rcx), %al
+	movb	%al, 2673(%rsp)
+	movb	81(%r8), %al
+	movb	%al, 1681(%rsp)
+	movb	82(%rsi), %al
+	movb	%al, 4658(%rsp)
+	movb	82(%rdx), %al
+	movb	%al, 3666(%rsp)
+	movb	82(%rcx), %al
+	movb	%al, 2674(%rsp)
+	movb	82(%r8), %al
+	movb	%al, 1682(%rsp)
+	movb	83(%rsi), %al
+	movb	%al, 4659(%rsp)
+	movb	83(%rdx), %al
+	movb	%al, 3667(%rsp)
+	movb	83(%rcx), %al
+	movb	%al, 2675(%rsp)
+	movb	83(%r8), %al
+	movb	%al, 1683(%rsp)
+	movb	84(%rsi), %al
+	movb	%al, 4660(%rsp)
+	movb	84(%rdx), %al
+	movb	%al, 3668(%rsp)
+	movb	84(%rcx), %al
+	movb	%al, 2676(%rsp)
+	movb	84(%r8), %al
+	movb	%al, 1684(%rsp)
+	movb	85(%rsi), %al
+	movb	%al, 4661(%rsp)
+	movb	85(%rdx), %al
+	movb	%al, 3669(%rsp)
+	movb	85(%rcx), %al
+	movb	%al, 2677(%rsp)
+	movb	85(%r8), %al
+	movb	%al, 1685(%rsp)
+	movb	86(%rsi), %al
+	movb	%al, 4662(%rsp)
+	movb	86(%rdx), %al
+	movb	%al, 3670(%rsp)
+	movb	86(%rcx), %al
+	movb	%al, 2678(%rsp)
+	movb	86(%r8), %al
+	movb	%al, 1686(%rsp)
+	movb	87(%rsi), %al
+	movb	%al, 4663(%rsp)
+	movb	87(%rdx), %al
+	movb	%al, 3671(%rsp)
+	movb	87(%rcx), %al
+	movb	%al, 2679(%rsp)
+	movb	87(%r8), %al
+	movb	%al, 1687(%rsp)
+	movb	88(%rsi), %al
+	movb	%al, 4664(%rsp)
+	movb	88(%rdx), %al
+	movb	%al, 3672(%rsp)
+	movb	88(%rcx), %al
+	movb	%al, 2680(%rsp)
+	movb	88(%r8), %al
+	movb	%al, 1688(%rsp)
+	movb	89(%rsi), %al
+	movb	%al, 4665(%rsp)
+	movb	89(%rdx), %al
+	movb	%al, 3673(%rsp)
+	movb	89(%rcx), %al
+	movb	%al, 2681(%rsp)
+	movb	89(%r8), %al
+	movb	%al, 1689(%rsp)
+	movb	90(%rsi), %al
+	movb	%al, 4666(%rsp)
+	movb	90(%rdx), %al
+	movb	%al, 3674(%rsp)
+	movb	90(%rcx), %al
+	movb	%al, 2682(%rsp)
+	movb	90(%r8), %al
+	movb	%al, 1690(%rsp)
+	movb	91(%rsi), %al
+	movb	%al, 4667(%rsp)
+	movb	91(%rdx), %al
+	movb	%al, 3675(%rsp)
+	movb	91(%rcx), %al
+	movb	%al, 2683(%rsp)
+	movb	91(%r8), %al
+	movb	%al, 1691(%rsp)
+	movb	92(%rsi), %al
+	movb	%al, 4668(%rsp)
+	movb	92(%rdx), %al
+	movb	%al, 3676(%rsp)
+	movb	92(%rcx), %al
+	movb	%al, 2684(%rsp)
+	movb	92(%r8), %al
+	movb	%al, 1692(%rsp)
+	movb	93(%rsi), %al
+	movb	%al, 4669(%rsp)
+	movb	93(%rdx), %al
+	movb	%al, 3677(%rsp)
+	movb	93(%rcx), %al
+	movb	%al, 2685(%rsp)
+	movb	93(%r8), %al
+	movb	%al, 1693(%rsp)
+	movb	94(%rsi), %al
+	movb	%al, 4670(%rsp)
+	movb	94(%rdx), %al
+	movb	%al, 3678(%rsp)
+	movb	94(%rcx), %al
+	movb	%al, 2686(%rsp)
+	movb	94(%r8), %al
+	movb	%al, 1694(%rsp)
+	movb	95(%rsi), %al
+	movb	%al, 4671(%rsp)
+	movb	95(%rdx), %al
+	movb	%al, 3679(%rsp)
+	movb	95(%rcx), %al
+	movb	%al, 2687(%rsp)
+	movb	95(%r8), %al
+	movb	%al, 1695(%rsp)
+	movb	96(%rsi), %al
+	movb	%al, 4672(%rsp)
+	movb	96(%rdx), %al
+	movb	%al, 3680(%rsp)
+	movb	96(%rcx), %al
+	movb	%al, 2688(%rsp)
+	movb	96(%r8), %al
+	movb	%al, 1696(%rsp)
+	movb	97(%rsi), %al
+	movb	%al, 4673(%rsp)
+	movb	97(%rdx), %al
+	movb	%al, 3681(%rsp)
+	movb	97(%rcx), %al
+	movb	%al, 2689(%rsp)
+	movb	97(%r8), %al
+	movb	%al, 1697(%rsp)
+	movb	98(%rsi), %al
+	movb	%al, 4674(%rsp)
+	movb	98(%rdx), %al
+	movb	%al, 3682(%rsp)
+	movb	98(%rcx), %al
+	movb	%al, 2690(%rsp)
+	movb	98(%r8), %al
+	movb	%al, 1698(%rsp)
+	movb	99(%rsi), %al
+	movb	%al, 4675(%rsp)
+	movb	99(%rdx), %al
+	movb	%al, 3683(%rsp)
+	movb	99(%rcx), %al
+	movb	%al, 2691(%rsp)
+	movb	99(%r8), %al
+	movb	%al, 1699(%rsp)
+	movb	100(%rsi), %al
+	movb	%al, 4676(%rsp)
+	movb	100(%rdx), %al
+	movb	%al, 3684(%rsp)
+	movb	100(%rcx), %al
+	movb	%al, 2692(%rsp)
+	movb	100(%r8), %al
+	movb	%al, 1700(%rsp)
+	movb	101(%rsi), %al
+	movb	%al, 4677(%rsp)
+	movb	101(%rdx), %al
+	movb	%al, 3685(%rsp)
+	movb	101(%rcx), %al
+	movb	%al, 2693(%rsp)
+	movb	101(%r8), %al
+	movb	%al, 1701(%rsp)
+	movb	102(%rsi), %al
+	movb	%al, 4678(%rsp)
+	movb	102(%rdx), %al
+	movb	%al, 3686(%rsp)
+	movb	102(%rcx), %al
+	movb	%al, 2694(%rsp)
+	movb	102(%r8), %al
+	movb	%al, 1702(%rsp)
+	movb	103(%rsi), %al
+	movb	%al, 4679(%rsp)
+	movb	103(%rdx), %al
+	movb	%al, 3687(%rsp)
+	movb	103(%rcx), %al
+	movb	%al, 2695(%rsp)
+	movb	103(%r8), %al
+	movb	%al, 1703(%rsp)
+	movb	104(%rsi), %al
+	movb	%al, 4680(%rsp)
+	movb	104(%rdx), %al
+	movb	%al, 3688(%rsp)
+	movb	104(%rcx), %al
+	movb	%al, 2696(%rsp)
+	movb	104(%r8), %al
+	movb	%al, 1704(%rsp)
+	movb	105(%rsi), %al
+	movb	%al, 4681(%rsp)
+	movb	105(%rdx), %al
+	movb	%al, 3689(%rsp)
+	movb	105(%rcx), %al
+	movb	%al, 2697(%rsp)
+	movb	105(%r8), %al
+	movb	%al, 1705(%rsp)
+	movb	106(%rsi), %al
+	movb	%al, 4682(%rsp)
+	movb	106(%rdx), %al
+	movb	%al, 3690(%rsp)
+	movb	106(%rcx), %al
+	movb	%al, 2698(%rsp)
+	movb	106(%r8), %al
+	movb	%al, 1706(%rsp)
+	movb	107(%rsi), %al
+	movb	%al, 4683(%rsp)
+	movb	107(%rdx), %al
+	movb	%al, 3691(%rsp)
+	movb	107(%rcx), %al
+	movb	%al, 2699(%rsp)
+	movb	107(%r8), %al
+	movb	%al, 1707(%rsp)
+	movb	108(%rsi), %al
+	movb	%al, 4684(%rsp)
+	movb	108(%rdx), %al
+	movb	%al, 3692(%rsp)
+	movb	108(%rcx), %al
+	movb	%al, 2700(%rsp)
+	movb	108(%r8), %al
+	movb	%al, 1708(%rsp)
+	movb	109(%rsi), %al
+	movb	%al, 4685(%rsp)
+	movb	109(%rdx), %al
+	movb	%al, 3693(%rsp)
+	movb	109(%rcx), %al
+	movb	%al, 2701(%rsp)
+	movb	109(%r8), %al
+	movb	%al, 1709(%rsp)
+	movb	110(%rsi), %al
+	movb	%al, 4686(%rsp)
+	movb	110(%rdx), %al
+	movb	%al, 3694(%rsp)
+	movb	110(%rcx), %al
+	movb	%al, 2702(%rsp)
+	movb	110(%r8), %al
+	movb	%al, 1710(%rsp)
+	movb	111(%rsi), %al
+	movb	%al, 4687(%rsp)
+	movb	111(%rdx), %al
+	movb	%al, 3695(%rsp)
+	movb	111(%rcx), %al
+	movb	%al, 2703(%rsp)
+	movb	111(%r8), %al
+	movb	%al, 1711(%rsp)
+	movb	112(%rsi), %al
+	movb	%al, 4688(%rsp)
+	movb	112(%rdx), %al
+	movb	%al, 3696(%rsp)
+	movb	112(%rcx), %al
+	movb	%al, 2704(%rsp)
+	movb	112(%r8), %al
+	movb	%al, 1712(%rsp)
+	movb	113(%rsi), %al
+	movb	%al, 4689(%rsp)
+	movb	113(%rdx), %al
+	movb	%al, 3697(%rsp)
+	movb	113(%rcx), %al
+	movb	%al, 2705(%rsp)
+	movb	113(%r8), %al
+	movb	%al, 1713(%rsp)
+	movb	114(%rsi), %al
+	movb	%al, 4690(%rsp)
+	movb	114(%rdx), %al
+	movb	%al, 3698(%rsp)
+	movb	114(%rcx), %al
+	movb	%al, 2706(%rsp)
+	movb	114(%r8), %al
+	movb	%al, 1714(%rsp)
+	movb	115(%rsi), %al
+	movb	%al, 4691(%rsp)
+	movb	115(%rdx), %al
+	movb	%al, 3699(%rsp)
+	movb	115(%rcx), %al
+	movb	%al, 2707(%rsp)
+	movb	115(%r8), %al
+	movb	%al, 1715(%rsp)
+	movb	116(%rsi), %al
+	movb	%al, 4692(%rsp)
+	movb	116(%rdx), %al
+	movb	%al, 3700(%rsp)
+	movb	116(%rcx), %al
+	movb	%al, 2708(%rsp)
+	movb	116(%r8), %al
+	movb	%al, 1716(%rsp)
+	movb	117(%rsi), %al
+	movb	%al, 4693(%rsp)
+	movb	117(%rdx), %al
+	movb	%al, 3701(%rsp)
+	movb	117(%rcx), %al
+	movb	%al, 2709(%rsp)
+	movb	117(%r8), %al
+	movb	%al, 1717(%rsp)
+	movb	118(%rsi), %al
+	movb	%al, 4694(%rsp)
+	movb	118(%rdx), %al
+	movb	%al, 3702(%rsp)
+	movb	118(%rcx), %al
+	movb	%al, 2710(%rsp)
+	movb	118(%r8), %al
+	movb	%al, 1718(%rsp)
+	movb	119(%rsi), %al
+	movb	%al, 4695(%rsp)
+	movb	119(%rdx), %al
+	movb	%al, 3703(%rsp)
+	movb	119(%rcx), %al
+	movb	%al, 2711(%rsp)
+	movb	119(%r8), %al
+	movb	%al, 1719(%rsp)
+	movb	120(%rsi), %al
+	movb	%al, 4696(%rsp)
+	movb	120(%rdx), %al
+	movb	%al, 3704(%rsp)
+	movb	120(%rcx), %al
+	movb	%al, 2712(%rsp)
+	movb	120(%r8), %al
+	movb	%al, 1720(%rsp)
+	movb	121(%rsi), %al
+	movb	%al, 4697(%rsp)
+	movb	121(%rdx), %al
+	movb	%al, 3705(%rsp)
+	movb	121(%rcx), %al
+	movb	%al, 2713(%rsp)
+	movb	121(%r8), %al
+	movb	%al, 1721(%rsp)
+	movb	122(%rsi), %al
+	movb	%al, 4698(%rsp)
+	movb	122(%rdx), %al
+	movb	%al, 3706(%rsp)
+	movb	122(%rcx), %al
+	movb	%al, 2714(%rsp)
+	movb	122(%r8), %al
+	movb	%al, 1722(%rsp)
+	movb	123(%rsi), %al
+	movb	%al, 4699(%rsp)
+	movb	123(%rdx), %al
+	movb	%al, 3707(%rsp)
+	movb	123(%rcx), %al
+	movb	%al, 2715(%rsp)
+	movb	123(%r8), %al
+	movb	%al, 1723(%rsp)
+	movb	124(%rsi), %al
+	movb	%al, 4700(%rsp)
+	movb	124(%rdx), %al
+	movb	%al, 3708(%rsp)
+	movb	124(%rcx), %al
+	movb	%al, 2716(%rsp)
+	movb	124(%r8), %al
+	movb	%al, 1724(%rsp)
+	movb	125(%rsi), %al
+	movb	%al, 4701(%rsp)
+	movb	125(%rdx), %al
+	movb	%al, 3709(%rsp)
+	movb	125(%rcx), %al
+	movb	%al, 2717(%rsp)
+	movb	125(%r8), %al
+	movb	%al, 1725(%rsp)
+	movb	126(%rsi), %al
+	movb	%al, 4702(%rsp)
+	movb	126(%rdx), %al
+	movb	%al, 3710(%rsp)
+	movb	126(%rcx), %al
+	movb	%al, 2718(%rsp)
+	movb	126(%r8), %al
+	movb	%al, 1726(%rsp)
+	movb	127(%rsi), %al
+	movb	%al, 4703(%rsp)
+	movb	127(%rdx), %al
+	movb	%al, 3711(%rsp)
+	movb	127(%rcx), %al
+	movb	%al, 2719(%rsp)
+	movb	127(%r8), %al
+	movb	%al, 1727(%rsp)
+	movb	128(%rsi), %al
+	movb	%al, 4704(%rsp)
+	movb	128(%rdx), %al
+	movb	%al, 3712(%rsp)
+	movb	128(%rcx), %al
+	movb	%al, 2720(%rsp)
+	movb	128(%r8), %al
+	movb	%al, 1728(%rsp)
+	movb	129(%rsi), %al
+	movb	%al, 4705(%rsp)
+	movb	129(%rdx), %al
+	movb	%al, 3713(%rsp)
+	movb	129(%rcx), %al
+	movb	%al, 2721(%rsp)
+	movb	129(%r8), %al
+	movb	%al, 1729(%rsp)
+	movb	130(%rsi), %al
+	movb	%al, 4706(%rsp)
+	movb	130(%rdx), %al
+	movb	%al, 3714(%rsp)
+	movb	130(%rcx), %al
+	movb	%al, 2722(%rsp)
+	movb	130(%r8), %al
+	movb	%al, 1730(%rsp)
+	movb	131(%rsi), %al
+	movb	%al, 4707(%rsp)
+	movb	131(%rdx), %al
+	movb	%al, 3715(%rsp)
+	movb	131(%rcx), %al
+	movb	%al, 2723(%rsp)
+	movb	131(%r8), %al
+	movb	%al, 1731(%rsp)
+	movb	132(%rsi), %al
+	movb	%al, 4708(%rsp)
+	movb	132(%rdx), %al
+	movb	%al, 3716(%rsp)
+	movb	132(%rcx), %al
+	movb	%al, 2724(%rsp)
+	movb	132(%r8), %al
+	movb	%al, 1732(%rsp)
+	movb	133(%rsi), %al
+	movb	%al, 4709(%rsp)
+	movb	133(%rdx), %al
+	movb	%al, 3717(%rsp)
+	movb	133(%rcx), %al
+	movb	%al, 2725(%rsp)
+	movb	133(%r8), %al
+	movb	%al, 1733(%rsp)
+	movb	134(%rsi), %al
+	movb	%al, 4710(%rsp)
+	movb	134(%rdx), %al
+	movb	%al, 3718(%rsp)
+	movb	134(%rcx), %al
+	movb	%al, 2726(%rsp)
+	movb	134(%r8), %al
+	movb	%al, 1734(%rsp)
+	movb	135(%rsi), %al
+	movb	%al, 4711(%rsp)
+	movb	135(%rdx), %al
+	movb	%al, 3719(%rsp)
+	movb	135(%rcx), %al
+	movb	%al, 2727(%rsp)
+	movb	135(%r8), %al
+	movb	%al, 1735(%rsp)
+	movb	136(%rsi), %al
+	movb	%al, 4712(%rsp)
+	movb	136(%rdx), %al
+	movb	%al, 3720(%rsp)
+	movb	136(%rcx), %al
+	movb	%al, 2728(%rsp)
+	movb	136(%r8), %al
+	movb	%al, 1736(%rsp)
+	movb	137(%rsi), %al
+	movb	%al, 4713(%rsp)
+	movb	137(%rdx), %al
+	movb	%al, 3721(%rsp)
+	movb	137(%rcx), %al
+	movb	%al, 2729(%rsp)
+	movb	137(%r8), %al
+	movb	%al, 1737(%rsp)
+	movb	138(%rsi), %al
+	movb	%al, 4714(%rsp)
+	movb	138(%rdx), %al
+	movb	%al, 3722(%rsp)
+	movb	138(%rcx), %al
+	movb	%al, 2730(%rsp)
+	movb	138(%r8), %al
+	movb	%al, 1738(%rsp)
+	movb	139(%rsi), %al
+	movb	%al, 4715(%rsp)
+	movb	139(%rdx), %al
+	movb	%al, 3723(%rsp)
+	movb	139(%rcx), %al
+	movb	%al, 2731(%rsp)
+	movb	139(%r8), %al
+	movb	%al, 1739(%rsp)
+	movb	140(%rsi), %al
+	movb	%al, 4716(%rsp)
+	movb	140(%rdx), %al
+	movb	%al, 3724(%rsp)
+	movb	140(%rcx), %al
+	movb	%al, 2732(%rsp)
+	movb	140(%r8), %al
+	movb	%al, 1740(%rsp)
+	movb	141(%rsi), %al
+	movb	%al, 4717(%rsp)
+	movb	141(%rdx), %al
+	movb	%al, 3725(%rsp)
+	movb	141(%rcx), %al
+	movb	%al, 2733(%rsp)
+	movb	141(%r8), %al
+	movb	%al, 1741(%rsp)
+	movb	142(%rsi), %al
+	movb	%al, 4718(%rsp)
+	movb	142(%rdx), %al
+	movb	%al, 3726(%rsp)
+	movb	142(%rcx), %al
+	movb	%al, 2734(%rsp)
+	movb	142(%r8), %al
+	movb	%al, 1742(%rsp)
+	movb	143(%rsi), %al
+	movb	%al, 4719(%rsp)
+	movb	143(%rdx), %al
+	movb	%al, 3727(%rsp)
+	movb	143(%rcx), %al
+	movb	%al, 2735(%rsp)
+	movb	143(%r8), %al
+	movb	%al, 1743(%rsp)
+	movb	144(%rsi), %al
+	movb	%al, 4720(%rsp)
+	movb	144(%rdx), %al
+	movb	%al, 3728(%rsp)
+	movb	144(%rcx), %al
+	movb	%al, 2736(%rsp)
+	movb	144(%r8), %al
+	movb	%al, 1744(%rsp)
+	movb	145(%rsi), %al
+	movb	%al, 4721(%rsp)
+	movb	145(%rdx), %al
+	movb	%al, 3729(%rsp)
+	movb	145(%rcx), %al
+	movb	%al, 2737(%rsp)
+	movb	145(%r8), %al
+	movb	%al, 1745(%rsp)
+	movb	146(%rsi), %al
+	movb	%al, 4722(%rsp)
+	movb	146(%rdx), %al
+	movb	%al, 3730(%rsp)
+	movb	146(%rcx), %al
+	movb	%al, 2738(%rsp)
+	movb	146(%r8), %al
+	movb	%al, 1746(%rsp)
+	movb	147(%rsi), %al
+	movb	%al, 4723(%rsp)
+	movb	147(%rdx), %al
+	movb	%al, 3731(%rsp)
+	movb	147(%rcx), %al
+	movb	%al, 2739(%rsp)
+	movb	147(%r8), %al
+	movb	%al, 1747(%rsp)
+	movb	148(%rsi), %al
+	movb	%al, 4724(%rsp)
+	movb	148(%rdx), %al
+	movb	%al, 3732(%rsp)
+	movb	148(%rcx), %al
+	movb	%al, 2740(%rsp)
+	movb	148(%r8), %al
+	movb	%al, 1748(%rsp)
+	movb	149(%rsi), %al
+	movb	%al, 4725(%rsp)
+	movb	149(%rdx), %al
+	movb	%al, 3733(%rsp)
+	movb	149(%rcx), %al
+	movb	%al, 2741(%rsp)
+	movb	149(%r8), %al
+	movb	%al, 1749(%rsp)
+	movb	150(%rsi), %al
+	movb	%al, 4726(%rsp)
+	movb	150(%rdx), %al
+	movb	%al, 3734(%rsp)
+	movb	150(%rcx), %al
+	movb	%al, 2742(%rsp)
+	movb	150(%r8), %al
+	movb	%al, 1750(%rsp)
+	movb	151(%rsi), %al
+	movb	%al, 4727(%rsp)
+	movb	151(%rdx), %al
+	movb	%al, 3735(%rsp)
+	movb	151(%rcx), %al
+	movb	%al, 2743(%rsp)
+	movb	151(%r8), %al
+	movb	%al, 1751(%rsp)
+	movb	152(%rsi), %al
+	movb	%al, 4728(%rsp)
+	movb	152(%rdx), %al
+	movb	%al, 3736(%rsp)
+	movb	152(%rcx), %al
+	movb	%al, 2744(%rsp)
+	movb	152(%r8), %al
+	movb	%al, 1752(%rsp)
+	movb	153(%rsi), %al
+	movb	%al, 4729(%rsp)
+	movb	153(%rdx), %al
+	movb	%al, 3737(%rsp)
+	movb	153(%rcx), %al
+	movb	%al, 2745(%rsp)
+	movb	153(%r8), %al
+	movb	%al, 1753(%rsp)
+	movb	154(%rsi), %al
+	movb	%al, 4730(%rsp)
+	movb	154(%rdx), %al
+	movb	%al, 3738(%rsp)
+	movb	154(%rcx), %al
+	movb	%al, 2746(%rsp)
+	movb	154(%r8), %al
+	movb	%al, 1754(%rsp)
+	movb	155(%rsi), %al
+	movb	%al, 4731(%rsp)
+	movb	155(%rdx), %al
+	movb	%al, 3739(%rsp)
+	movb	155(%rcx), %al
+	movb	%al, 2747(%rsp)
+	movb	155(%r8), %al
+	movb	%al, 1755(%rsp)
+	movb	156(%rsi), %al
+	movb	%al, 4732(%rsp)
+	movb	156(%rdx), %al
+	movb	%al, 3740(%rsp)
+	movb	156(%rcx), %al
+	movb	%al, 2748(%rsp)
+	movb	156(%r8), %al
+	movb	%al, 1756(%rsp)
+	movb	157(%rsi), %al
+	movb	%al, 4733(%rsp)
+	movb	157(%rdx), %al
+	movb	%al, 3741(%rsp)
+	movb	157(%rcx), %al
+	movb	%al, 2749(%rsp)
+	movb	157(%r8), %al
+	movb	%al, 1757(%rsp)
+	movb	158(%rsi), %al
+	movb	%al, 4734(%rsp)
+	movb	158(%rdx), %al
+	movb	%al, 3742(%rsp)
+	movb	158(%rcx), %al
+	movb	%al, 2750(%rsp)
+	movb	158(%r8), %al
+	movb	%al, 1758(%rsp)
+	movb	159(%rsi), %al
+	movb	%al, 4735(%rsp)
+	movb	159(%rdx), %al
+	movb	%al, 3743(%rsp)
+	movb	159(%rcx), %al
+	movb	%al, 2751(%rsp)
+	movb	159(%r8), %al
+	movb	%al, 1759(%rsp)
+	movb	160(%rsi), %al
+	movb	%al, 4736(%rsp)
+	movb	160(%rdx), %al
+	movb	%al, 3744(%rsp)
+	movb	160(%rcx), %al
+	movb	%al, 2752(%rsp)
+	movb	160(%r8), %al
+	movb	%al, 1760(%rsp)
+	movb	161(%rsi), %al
+	movb	%al, 4737(%rsp)
+	movb	161(%rdx), %al
+	movb	%al, 3745(%rsp)
+	movb	161(%rcx), %al
+	movb	%al, 2753(%rsp)
+	movb	161(%r8), %al
+	movb	%al, 1761(%rsp)
+	movb	162(%rsi), %al
+	movb	%al, 4738(%rsp)
+	movb	162(%rdx), %al
+	movb	%al, 3746(%rsp)
+	movb	162(%rcx), %al
+	movb	%al, 2754(%rsp)
+	movb	162(%r8), %al
+	movb	%al, 1762(%rsp)
+	movb	163(%rsi), %al
+	movb	%al, 4739(%rsp)
+	movb	163(%rdx), %al
+	movb	%al, 3747(%rsp)
+	movb	163(%rcx), %al
+	movb	%al, 2755(%rsp)
+	movb	163(%r8), %al
+	movb	%al, 1763(%rsp)
+	movb	164(%rsi), %al
+	movb	%al, 4740(%rsp)
+	movb	164(%rdx), %al
+	movb	%al, 3748(%rsp)
+	movb	164(%rcx), %al
+	movb	%al, 2756(%rsp)
+	movb	164(%r8), %al
+	movb	%al, 1764(%rsp)
+	movb	165(%rsi), %al
+	movb	%al, 4741(%rsp)
+	movb	165(%rdx), %al
+	movb	%al, 3749(%rsp)
+	movb	165(%rcx), %al
+	movb	%al, 2757(%rsp)
+	movb	165(%r8), %al
+	movb	%al, 1765(%rsp)
+	movb	166(%rsi), %al
+	movb	%al, 4742(%rsp)
+	movb	166(%rdx), %al
+	movb	%al, 3750(%rsp)
+	movb	166(%rcx), %al
+	movb	%al, 2758(%rsp)
+	movb	166(%r8), %al
+	movb	%al, 1766(%rsp)
+	movb	167(%rsi), %al
+	movb	%al, 4743(%rsp)
+	movb	167(%rdx), %al
+	movb	%al, 3751(%rsp)
+	movb	167(%rcx), %al
+	movb	%al, 2759(%rsp)
+	movb	167(%r8), %al
+	movb	%al, 1767(%rsp)
+	movb	168(%rsi), %al
+	movb	%al, 4744(%rsp)
+	movb	168(%rdx), %al
+	movb	%al, 3752(%rsp)
+	movb	168(%rcx), %al
+	movb	%al, 2760(%rsp)
+	movb	168(%r8), %al
+	movb	%al, 1768(%rsp)
+	movb	169(%rsi), %al
+	movb	%al, 4745(%rsp)
+	movb	169(%rdx), %al
+	movb	%al, 3753(%rsp)
+	movb	169(%rcx), %al
+	movb	%al, 2761(%rsp)
+	movb	169(%r8), %al
+	movb	%al, 1769(%rsp)
+	movb	170(%rsi), %al
+	movb	%al, 4746(%rsp)
+	movb	170(%rdx), %al
+	movb	%al, 3754(%rsp)
+	movb	170(%rcx), %al
+	movb	%al, 2762(%rsp)
+	movb	170(%r8), %al
+	movb	%al, 1770(%rsp)
+	movb	171(%rsi), %al
+	movb	%al, 4747(%rsp)
+	movb	171(%rdx), %al
+	movb	%al, 3755(%rsp)
+	movb	171(%rcx), %al
+	movb	%al, 2763(%rsp)
+	movb	171(%r8), %al
+	movb	%al, 1771(%rsp)
+	movb	172(%rsi), %al
+	movb	%al, 4748(%rsp)
+	movb	172(%rdx), %al
+	movb	%al, 3756(%rsp)
+	movb	172(%rcx), %al
+	movb	%al, 2764(%rsp)
+	movb	172(%r8), %al
+	movb	%al, 1772(%rsp)
+	movb	173(%rsi), %al
+	movb	%al, 4749(%rsp)
+	movb	173(%rdx), %al
+	movb	%al, 3757(%rsp)
+	movb	173(%rcx), %al
+	movb	%al, 2765(%rsp)
+	movb	173(%r8), %al
+	movb	%al, 1773(%rsp)
+	movb	174(%rsi), %al
+	movb	%al, 4750(%rsp)
+	movb	174(%rdx), %al
+	movb	%al, 3758(%rsp)
+	movb	174(%rcx), %al
+	movb	%al, 2766(%rsp)
+	movb	174(%r8), %al
+	movb	%al, 1774(%rsp)
+	movb	175(%rsi), %al
+	movb	%al, 4751(%rsp)
+	movb	175(%rdx), %al
+	movb	%al, 3759(%rsp)
+	movb	175(%rcx), %al
+	movb	%al, 2767(%rsp)
+	movb	175(%r8), %al
+	movb	%al, 1775(%rsp)
+	movb	176(%rsi), %al
+	movb	%al, 4752(%rsp)
+	movb	176(%rdx), %al
+	movb	%al, 3760(%rsp)
+	movb	176(%rcx), %al
+	movb	%al, 2768(%rsp)
+	movb	176(%r8), %al
+	movb	%al, 1776(%rsp)
+	movb	177(%rsi), %al
+	movb	%al, 4753(%rsp)
+	movb	177(%rdx), %al
+	movb	%al, 3761(%rsp)
+	movb	177(%rcx), %al
+	movb	%al, 2769(%rsp)
+	movb	177(%r8), %al
+	movb	%al, 1777(%rsp)
+	movb	178(%rsi), %al
+	movb	%al, 4754(%rsp)
+	movb	178(%rdx), %al
+	movb	%al, 3762(%rsp)
+	movb	178(%rcx), %al
+	movb	%al, 2770(%rsp)
+	movb	178(%r8), %al
+	movb	%al, 1778(%rsp)
+	movb	179(%rsi), %al
+	movb	%al, 4755(%rsp)
+	movb	179(%rdx), %al
+	movb	%al, 3763(%rsp)
+	movb	179(%rcx), %al
+	movb	%al, 2771(%rsp)
+	movb	179(%r8), %al
+	movb	%al, 1779(%rsp)
+	movb	180(%rsi), %al
+	movb	%al, 4756(%rsp)
+	movb	180(%rdx), %al
+	movb	%al, 3764(%rsp)
+	movb	180(%rcx), %al
+	movb	%al, 2772(%rsp)
+	movb	180(%r8), %al
+	movb	%al, 1780(%rsp)
+	movb	181(%rsi), %al
+	movb	%al, 4757(%rsp)
+	movb	181(%rdx), %al
+	movb	%al, 3765(%rsp)
+	movb	181(%rcx), %al
+	movb	%al, 2773(%rsp)
+	movb	181(%r8), %al
+	movb	%al, 1781(%rsp)
+	movb	182(%rsi), %al
+	movb	%al, 4758(%rsp)
+	movb	182(%rdx), %al
+	movb	%al, 3766(%rsp)
+	movb	182(%rcx), %al
+	movb	%al, 2774(%rsp)
+	movb	182(%r8), %al
+	movb	%al, 1782(%rsp)
+	movb	183(%rsi), %al
+	movb	%al, 4759(%rsp)
+	movb	183(%rdx), %al
+	movb	%al, 3767(%rsp)
+	movb	183(%rcx), %al
+	movb	%al, 2775(%rsp)
+	movb	183(%r8), %al
+	movb	%al, 1783(%rsp)
+	movb	184(%rsi), %al
+	movb	%al, 4760(%rsp)
+	movb	184(%rdx), %al
+	movb	%al, 3768(%rsp)
+	movb	184(%rcx), %al
+	movb	%al, 2776(%rsp)
+	movb	184(%r8), %al
+	movb	%al, 1784(%rsp)
+	movb	185(%rsi), %al
+	movb	%al, 4761(%rsp)
+	movb	185(%rdx), %al
+	movb	%al, 3769(%rsp)
+	movb	185(%rcx), %al
+	movb	%al, 2777(%rsp)
+	movb	185(%r8), %al
+	movb	%al, 1785(%rsp)
+	movb	186(%rsi), %al
+	movb	%al, 4762(%rsp)
+	movb	186(%rdx), %al
+	movb	%al, 3770(%rsp)
+	movb	186(%rcx), %al
+	movb	%al, 2778(%rsp)
+	movb	186(%r8), %al
+	movb	%al, 1786(%rsp)
+	movb	187(%rsi), %al
+	movb	%al, 4763(%rsp)
+	movb	187(%rdx), %al
+	movb	%al, 3771(%rsp)
+	movb	187(%rcx), %al
+	movb	%al, 2779(%rsp)
+	movb	187(%r8), %al
+	movb	%al, 1787(%rsp)
+	movb	188(%rsi), %al
+	movb	%al, 4764(%rsp)
+	movb	188(%rdx), %al
+	movb	%al, 3772(%rsp)
+	movb	188(%rcx), %al
+	movb	%al, 2780(%rsp)
+	movb	188(%r8), %al
+	movb	%al, 1788(%rsp)
+	movb	189(%rsi), %al
+	movb	%al, 4765(%rsp)
+	movb	189(%rdx), %al
+	movb	%al, 3773(%rsp)
+	movb	189(%rcx), %al
+	movb	%al, 2781(%rsp)
+	movb	189(%r8), %al
+	movb	%al, 1789(%rsp)
+	movb	190(%rsi), %al
+	movb	%al, 4766(%rsp)
+	movb	190(%rdx), %al
+	movb	%al, 3774(%rsp)
+	movb	190(%rcx), %al
+	movb	%al, 2782(%rsp)
+	movb	190(%r8), %al
+	movb	%al, 1790(%rsp)
+	movb	191(%rsi), %al
+	movb	%al, 4767(%rsp)
+	movb	191(%rdx), %al
+	movb	%al, 3775(%rsp)
+	movb	191(%rcx), %al
+	movb	%al, 2783(%rsp)
+	movb	191(%r8), %al
+	movb	%al, 1791(%rsp)
+	movb	192(%rsi), %al
+	movb	%al, 4768(%rsp)
+	movb	192(%rdx), %al
+	movb	%al, 3776(%rsp)
+	movb	192(%rcx), %al
+	movb	%al, 2784(%rsp)
+	movb	192(%r8), %al
+	movb	%al, 1792(%rsp)
+	movb	193(%rsi), %al
+	movb	%al, 4769(%rsp)
+	movb	193(%rdx), %al
+	movb	%al, 3777(%rsp)
+	movb	193(%rcx), %al
+	movb	%al, 2785(%rsp)
+	movb	193(%r8), %al
+	movb	%al, 1793(%rsp)
+	movb	194(%rsi), %al
+	movb	%al, 4770(%rsp)
+	movb	194(%rdx), %al
+	movb	%al, 3778(%rsp)
+	movb	194(%rcx), %al
+	movb	%al, 2786(%rsp)
+	movb	194(%r8), %al
+	movb	%al, 1794(%rsp)
+	movb	195(%rsi), %al
+	movb	%al, 4771(%rsp)
+	movb	195(%rdx), %al
+	movb	%al, 3779(%rsp)
+	movb	195(%rcx), %al
+	movb	%al, 2787(%rsp)
+	movb	195(%r8), %al
+	movb	%al, 1795(%rsp)
+	movb	196(%rsi), %al
+	movb	%al, 4772(%rsp)
+	movb	196(%rdx), %al
+	movb	%al, 3780(%rsp)
+	movb	196(%rcx), %al
+	movb	%al, 2788(%rsp)
+	movb	196(%r8), %al
+	movb	%al, 1796(%rsp)
+	movb	197(%rsi), %al
+	movb	%al, 4773(%rsp)
+	movb	197(%rdx), %al
+	movb	%al, 3781(%rsp)
+	movb	197(%rcx), %al
+	movb	%al, 2789(%rsp)
+	movb	197(%r8), %al
+	movb	%al, 1797(%rsp)
+	movb	198(%rsi), %al
+	movb	%al, 4774(%rsp)
+	movb	198(%rdx), %al
+	movb	%al, 3782(%rsp)
+	movb	198(%rcx), %al
+	movb	%al, 2790(%rsp)
+	movb	198(%r8), %al
+	movb	%al, 1798(%rsp)
+	movb	199(%rsi), %al
+	movb	%al, 4775(%rsp)
+	movb	199(%rdx), %al
+	movb	%al, 3783(%rsp)
+	movb	199(%rcx), %al
+	movb	%al, 2791(%rsp)
+	movb	199(%r8), %al
+	movb	%al, 1799(%rsp)
+	movb	200(%rsi), %al
+	movb	%al, 4776(%rsp)
+	movb	200(%rdx), %al
+	movb	%al, 3784(%rsp)
+	movb	200(%rcx), %al
+	movb	%al, 2792(%rsp)
+	movb	200(%r8), %al
+	movb	%al, 1800(%rsp)
+	movb	201(%rsi), %al
+	movb	%al, 4777(%rsp)
+	movb	201(%rdx), %al
+	movb	%al, 3785(%rsp)
+	movb	201(%rcx), %al
+	movb	%al, 2793(%rsp)
+	movb	201(%r8), %al
+	movb	%al, 1801(%rsp)
+	movb	202(%rsi), %al
+	movb	%al, 4778(%rsp)
+	movb	202(%rdx), %al
+	movb	%al, 3786(%rsp)
+	movb	202(%rcx), %al
+	movb	%al, 2794(%rsp)
+	movb	202(%r8), %al
+	movb	%al, 1802(%rsp)
+	movb	203(%rsi), %al
+	movb	%al, 4779(%rsp)
+	movb	203(%rdx), %al
+	movb	%al, 3787(%rsp)
+	movb	203(%rcx), %al
+	movb	%al, 2795(%rsp)
+	movb	203(%r8), %al
+	movb	%al, 1803(%rsp)
+	movb	204(%rsi), %al
+	movb	%al, 4780(%rsp)
+	movb	204(%rdx), %al
+	movb	%al, 3788(%rsp)
+	movb	204(%rcx), %al
+	movb	%al, 2796(%rsp)
+	movb	204(%r8), %al
+	movb	%al, 1804(%rsp)
+	movb	205(%rsi), %al
+	movb	%al, 4781(%rsp)
+	movb	205(%rdx), %al
+	movb	%al, 3789(%rsp)
+	movb	205(%rcx), %al
+	movb	%al, 2797(%rsp)
+	movb	205(%r8), %al
+	movb	%al, 1805(%rsp)
+	movb	206(%rsi), %al
+	movb	%al, 4782(%rsp)
+	movb	206(%rdx), %al
+	movb	%al, 3790(%rsp)
+	movb	206(%rcx), %al
+	movb	%al, 2798(%rsp)
+	movb	206(%r8), %al
+	movb	%al, 1806(%rsp)
+	movb	207(%rsi), %al
+	movb	%al, 4783(%rsp)
+	movb	207(%rdx), %al
+	movb	%al, 3791(%rsp)
+	movb	207(%rcx), %al
+	movb	%al, 2799(%rsp)
+	movb	207(%r8), %al
+	movb	%al, 1807(%rsp)
+	movb	208(%rsi), %al
+	movb	%al, 4784(%rsp)
+	movb	208(%rdx), %al
+	movb	%al, 3792(%rsp)
+	movb	208(%rcx), %al
+	movb	%al, 2800(%rsp)
+	movb	208(%r8), %al
+	movb	%al, 1808(%rsp)
+	movb	209(%rsi), %al
+	movb	%al, 4785(%rsp)
+	movb	209(%rdx), %al
+	movb	%al, 3793(%rsp)
+	movb	209(%rcx), %al
+	movb	%al, 2801(%rsp)
+	movb	209(%r8), %al
+	movb	%al, 1809(%rsp)
+	movb	210(%rsi), %al
+	movb	%al, 4786(%rsp)
+	movb	210(%rdx), %al
+	movb	%al, 3794(%rsp)
+	movb	210(%rcx), %al
+	movb	%al, 2802(%rsp)
+	movb	210(%r8), %al
+	movb	%al, 1810(%rsp)
+	movb	211(%rsi), %al
+	movb	%al, 4787(%rsp)
+	movb	211(%rdx), %al
+	movb	%al, 3795(%rsp)
+	movb	211(%rcx), %al
+	movb	%al, 2803(%rsp)
+	movb	211(%r8), %al
+	movb	%al, 1811(%rsp)
+	movb	212(%rsi), %al
+	movb	%al, 4788(%rsp)
+	movb	212(%rdx), %al
+	movb	%al, 3796(%rsp)
+	movb	212(%rcx), %al
+	movb	%al, 2804(%rsp)
+	movb	212(%r8), %al
+	movb	%al, 1812(%rsp)
+	movb	213(%rsi), %al
+	movb	%al, 4789(%rsp)
+	movb	213(%rdx), %al
+	movb	%al, 3797(%rsp)
+	movb	213(%rcx), %al
+	movb	%al, 2805(%rsp)
+	movb	213(%r8), %al
+	movb	%al, 1813(%rsp)
+	movb	214(%rsi), %al
+	movb	%al, 4790(%rsp)
+	movb	214(%rdx), %al
+	movb	%al, 3798(%rsp)
+	movb	214(%rcx), %al
+	movb	%al, 2806(%rsp)
+	movb	214(%r8), %al
+	movb	%al, 1814(%rsp)
+	movb	215(%rsi), %al
+	movb	%al, 4791(%rsp)
+	movb	215(%rdx), %al
+	movb	%al, 3799(%rsp)
+	movb	215(%rcx), %al
+	movb	%al, 2807(%rsp)
+	movb	215(%r8), %al
+	movb	%al, 1815(%rsp)
+	movb	216(%rsi), %al
+	movb	%al, 4792(%rsp)
+	movb	216(%rdx), %al
+	movb	%al, 3800(%rsp)
+	movb	216(%rcx), %al
+	movb	%al, 2808(%rsp)
+	movb	216(%r8), %al
+	movb	%al, 1816(%rsp)
+	movb	217(%rsi), %al
+	movb	%al, 4793(%rsp)
+	movb	217(%rdx), %al
+	movb	%al, 3801(%rsp)
+	movb	217(%rcx), %al
+	movb	%al, 2809(%rsp)
+	movb	217(%r8), %al
+	movb	%al, 1817(%rsp)
+	movb	218(%rsi), %al
+	movb	%al, 4794(%rsp)
+	movb	218(%rdx), %al
+	movb	%al, 3802(%rsp)
+	movb	218(%rcx), %al
+	movb	%al, 2810(%rsp)
+	movb	218(%r8), %al
+	movb	%al, 1818(%rsp)
+	movb	219(%rsi), %al
+	movb	%al, 4795(%rsp)
+	movb	219(%rdx), %al
+	movb	%al, 3803(%rsp)
+	movb	219(%rcx), %al
+	movb	%al, 2811(%rsp)
+	movb	219(%r8), %al
+	movb	%al, 1819(%rsp)
+	movb	220(%rsi), %al
+	movb	%al, 4796(%rsp)
+	movb	220(%rdx), %al
+	movb	%al, 3804(%rsp)
+	movb	220(%rcx), %al
+	movb	%al, 2812(%rsp)
+	movb	220(%r8), %al
+	movb	%al, 1820(%rsp)
+	movb	221(%rsi), %al
+	movb	%al, 4797(%rsp)
+	movb	221(%rdx), %al
+	movb	%al, 3805(%rsp)
+	movb	221(%rcx), %al
+	movb	%al, 2813(%rsp)
+	movb	221(%r8), %al
+	movb	%al, 1821(%rsp)
+	movb	222(%rsi), %al
+	movb	%al, 4798(%rsp)
+	movb	222(%rdx), %al
+	movb	%al, 3806(%rsp)
+	movb	222(%rcx), %al
+	movb	%al, 2814(%rsp)
+	movb	222(%r8), %al
+	movb	%al, 1822(%rsp)
+	movb	223(%rsi), %al
+	movb	%al, 4799(%rsp)
+	movb	223(%rdx), %al
+	movb	%al, 3807(%rsp)
+	movb	223(%rcx), %al
+	movb	%al, 2815(%rsp)
+	movb	223(%r8), %al
+	movb	%al, 1823(%rsp)
+	movb	224(%rsi), %al
+	movb	%al, 4800(%rsp)
+	movb	224(%rdx), %al
+	movb	%al, 3808(%rsp)
+	movb	224(%rcx), %al
+	movb	%al, 2816(%rsp)
+	movb	224(%r8), %al
+	movb	%al, 1824(%rsp)
+	movb	225(%rsi), %al
+	movb	%al, 4801(%rsp)
+	movb	225(%rdx), %al
+	movb	%al, 3809(%rsp)
+	movb	225(%rcx), %al
+	movb	%al, 2817(%rsp)
+	movb	225(%r8), %al
+	movb	%al, 1825(%rsp)
+	movb	226(%rsi), %al
+	movb	%al, 4802(%rsp)
+	movb	226(%rdx), %al
+	movb	%al, 3810(%rsp)
+	movb	226(%rcx), %al
+	movb	%al, 2818(%rsp)
+	movb	226(%r8), %al
+	movb	%al, 1826(%rsp)
+	movb	227(%rsi), %al
+	movb	%al, 4803(%rsp)
+	movb	227(%rdx), %al
+	movb	%al, 3811(%rsp)
+	movb	227(%rcx), %al
+	movb	%al, 2819(%rsp)
+	movb	227(%r8), %al
+	movb	%al, 1827(%rsp)
+	movb	228(%rsi), %al
+	movb	%al, 4804(%rsp)
+	movb	228(%rdx), %al
+	movb	%al, 3812(%rsp)
+	movb	228(%rcx), %al
+	movb	%al, 2820(%rsp)
+	movb	228(%r8), %al
+	movb	%al, 1828(%rsp)
+	movb	229(%rsi), %al
+	movb	%al, 4805(%rsp)
+	movb	229(%rdx), %al
+	movb	%al, 3813(%rsp)
+	movb	229(%rcx), %al
+	movb	%al, 2821(%rsp)
+	movb	229(%r8), %al
+	movb	%al, 1829(%rsp)
+	movb	230(%rsi), %al
+	movb	%al, 4806(%rsp)
+	movb	230(%rdx), %al
+	movb	%al, 3814(%rsp)
+	movb	230(%rcx), %al
+	movb	%al, 2822(%rsp)
+	movb	230(%r8), %al
+	movb	%al, 1830(%rsp)
+	movb	231(%rsi), %al
+	movb	%al, 4807(%rsp)
+	movb	231(%rdx), %al
+	movb	%al, 3815(%rsp)
+	movb	231(%rcx), %al
+	movb	%al, 2823(%rsp)
+	movb	231(%r8), %al
+	movb	%al, 1831(%rsp)
+	movb	232(%rsi), %al
+	movb	%al, 4808(%rsp)
+	movb	232(%rdx), %al
+	movb	%al, 3816(%rsp)
+	movb	232(%rcx), %al
+	movb	%al, 2824(%rsp)
+	movb	232(%r8), %al
+	movb	%al, 1832(%rsp)
+	movb	233(%rsi), %al
+	movb	%al, 4809(%rsp)
+	movb	233(%rdx), %al
+	movb	%al, 3817(%rsp)
+	movb	233(%rcx), %al
+	movb	%al, 2825(%rsp)
+	movb	233(%r8), %al
+	movb	%al, 1833(%rsp)
+	movb	234(%rsi), %al
+	movb	%al, 4810(%rsp)
+	movb	234(%rdx), %al
+	movb	%al, 3818(%rsp)
+	movb	234(%rcx), %al
+	movb	%al, 2826(%rsp)
+	movb	234(%r8), %al
+	movb	%al, 1834(%rsp)
+	movb	235(%rsi), %al
+	movb	%al, 4811(%rsp)
+	movb	235(%rdx), %al
+	movb	%al, 3819(%rsp)
+	movb	235(%rcx), %al
+	movb	%al, 2827(%rsp)
+	movb	235(%r8), %al
+	movb	%al, 1835(%rsp)
+	movb	236(%rsi), %al
+	movb	%al, 4812(%rsp)
+	movb	236(%rdx), %al
+	movb	%al, 3820(%rsp)
+	movb	236(%rcx), %al
+	movb	%al, 2828(%rsp)
+	movb	236(%r8), %al
+	movb	%al, 1836(%rsp)
+	movb	237(%rsi), %al
+	movb	%al, 4813(%rsp)
+	movb	237(%rdx), %al
+	movb	%al, 3821(%rsp)
+	movb	237(%rcx), %al
+	movb	%al, 2829(%rsp)
+	movb	237(%r8), %al
+	movb	%al, 1837(%rsp)
+	movb	238(%rsi), %al
+	movb	%al, 4814(%rsp)
+	movb	238(%rdx), %al
+	movb	%al, 3822(%rsp)
+	movb	238(%rcx), %al
+	movb	%al, 2830(%rsp)
+	movb	238(%r8), %al
+	movb	%al, 1838(%rsp)
+	movb	239(%rsi), %al
+	movb	%al, 4815(%rsp)
+	movb	239(%rdx), %al
+	movb	%al, 3823(%rsp)
+	movb	239(%rcx), %al
+	movb	%al, 2831(%rsp)
+	movb	239(%r8), %al
+	movb	%al, 1839(%rsp)
+	movb	240(%rsi), %al
+	movb	%al, 4816(%rsp)
+	movb	240(%rdx), %al
+	movb	%al, 3824(%rsp)
+	movb	240(%rcx), %al
+	movb	%al, 2832(%rsp)
+	movb	240(%r8), %al
+	movb	%al, 1840(%rsp)
+	movb	241(%rsi), %al
+	movb	%al, 4817(%rsp)
+	movb	241(%rdx), %al
+	movb	%al, 3825(%rsp)
+	movb	241(%rcx), %al
+	movb	%al, 2833(%rsp)
+	movb	241(%r8), %al
+	movb	%al, 1841(%rsp)
+	movb	242(%rsi), %al
+	movb	%al, 4818(%rsp)
+	movb	242(%rdx), %al
+	movb	%al, 3826(%rsp)
+	movb	242(%rcx), %al
+	movb	%al, 2834(%rsp)
+	movb	242(%r8), %al
+	movb	%al, 1842(%rsp)
+	movb	243(%rsi), %al
+	movb	%al, 4819(%rsp)
+	movb	243(%rdx), %al
+	movb	%al, 3827(%rsp)
+	movb	243(%rcx), %al
+	movb	%al, 2835(%rsp)
+	movb	243(%r8), %al
+	movb	%al, 1843(%rsp)
+	movb	244(%rsi), %al
+	movb	%al, 4820(%rsp)
+	movb	244(%rdx), %al
+	movb	%al, 3828(%rsp)
+	movb	244(%rcx), %al
+	movb	%al, 2836(%rsp)
+	movb	244(%r8), %al
+	movb	%al, 1844(%rsp)
+	movb	245(%rsi), %al
+	movb	%al, 4821(%rsp)
+	movb	245(%rdx), %al
+	movb	%al, 3829(%rsp)
+	movb	245(%rcx), %al
+	movb	%al, 2837(%rsp)
+	movb	245(%r8), %al
+	movb	%al, 1845(%rsp)
+	movb	246(%rsi), %al
+	movb	%al, 4822(%rsp)
+	movb	246(%rdx), %al
+	movb	%al, 3830(%rsp)
+	movb	246(%rcx), %al
+	movb	%al, 2838(%rsp)
+	movb	246(%r8), %al
+	movb	%al, 1846(%rsp)
+	movb	247(%rsi), %al
+	movb	%al, 4823(%rsp)
+	movb	247(%rdx), %al
+	movb	%al, 3831(%rsp)
+	movb	247(%rcx), %al
+	movb	%al, 2839(%rsp)
+	movb	247(%r8), %al
+	movb	%al, 1847(%rsp)
+	movb	248(%rsi), %al
+	movb	%al, 4824(%rsp)
+	movb	248(%rdx), %al
+	movb	%al, 3832(%rsp)
+	movb	248(%rcx), %al
+	movb	%al, 2840(%rsp)
+	movb	248(%r8), %al
+	movb	%al, 1848(%rsp)
+	movb	249(%rsi), %al
+	movb	%al, 4825(%rsp)
+	movb	249(%rdx), %al
+	movb	%al, 3833(%rsp)
+	movb	249(%rcx), %al
+	movb	%al, 2841(%rsp)
+	movb	249(%r8), %al
+	movb	%al, 1849(%rsp)
+	movb	250(%rsi), %al
+	movb	%al, 4826(%rsp)
+	movb	250(%rdx), %al
+	movb	%al, 3834(%rsp)
+	movb	250(%rcx), %al
+	movb	%al, 2842(%rsp)
+	movb	250(%r8), %al
+	movb	%al, 1850(%rsp)
+	movb	251(%rsi), %al
+	movb	%al, 4827(%rsp)
+	movb	251(%rdx), %al
+	movb	%al, 3835(%rsp)
+	movb	251(%rcx), %al
+	movb	%al, 2843(%rsp)
+	movb	251(%r8), %al
+	movb	%al, 1851(%rsp)
+	movb	252(%rsi), %al
+	movb	%al, 4828(%rsp)
+	movb	252(%rdx), %al
+	movb	%al, 3836(%rsp)
+	movb	252(%rcx), %al
+	movb	%al, 2844(%rsp)
+	movb	252(%r8), %al
+	movb	%al, 1852(%rsp)
+	movb	253(%rsi), %al
+	movb	%al, 4829(%rsp)
+	movb	253(%rdx), %al
+	movb	%al, 3837(%rsp)
+	movb	253(%rcx), %al
+	movb	%al, 2845(%rsp)
+	movb	253(%r8), %al
+	movb	%al, 1853(%rsp)
+	movb	254(%rsi), %al
+	movb	%al, 4830(%rsp)
+	movb	254(%rdx), %al
+	movb	%al, 3838(%rsp)
+	movb	254(%rcx), %al
+	movb	%al, 2846(%rsp)
+	movb	254(%r8), %al
+	movb	%al, 1854(%rsp)
+	movb	255(%rsi), %al
+	movb	%al, 4831(%rsp)
+	movb	255(%rdx), %al
+	movb	%al, 3839(%rsp)
+	movb	255(%rcx), %al
+	movb	%al, 2847(%rsp)
+	movb	255(%r8), %al
+	movb	%al, 1855(%rsp)
+	movb	256(%rsi), %al
+	movb	%al, 4832(%rsp)
+	movb	256(%rdx), %al
+	movb	%al, 3840(%rsp)
+	movb	256(%rcx), %al
+	movb	%al, 2848(%rsp)
+	movb	256(%r8), %al
+	movb	%al, 1856(%rsp)
+	movb	257(%rsi), %al
+	movb	%al, 4833(%rsp)
+	movb	257(%rdx), %al
+	movb	%al, 3841(%rsp)
+	movb	257(%rcx), %al
+	movb	%al, 2849(%rsp)
+	movb	257(%r8), %al
+	movb	%al, 1857(%rsp)
+	movb	258(%rsi), %al
+	movb	%al, 4834(%rsp)
+	movb	258(%rdx), %al
+	movb	%al, 3842(%rsp)
+	movb	258(%rcx), %al
+	movb	%al, 2850(%rsp)
+	movb	258(%r8), %al
+	movb	%al, 1858(%rsp)
+	movb	259(%rsi), %al
+	movb	%al, 4835(%rsp)
+	movb	259(%rdx), %al
+	movb	%al, 3843(%rsp)
+	movb	259(%rcx), %al
+	movb	%al, 2851(%rsp)
+	movb	259(%r8), %al
+	movb	%al, 1859(%rsp)
+	movb	260(%rsi), %al
+	movb	%al, 4836(%rsp)
+	movb	260(%rdx), %al
+	movb	%al, 3844(%rsp)
+	movb	260(%rcx), %al
+	movb	%al, 2852(%rsp)
+	movb	260(%r8), %al
+	movb	%al, 1860(%rsp)
+	movb	261(%rsi), %al
+	movb	%al, 4837(%rsp)
+	movb	261(%rdx), %al
+	movb	%al, 3845(%rsp)
+	movb	261(%rcx), %al
+	movb	%al, 2853(%rsp)
+	movb	261(%r8), %al
+	movb	%al, 1861(%rsp)
+	movb	262(%rsi), %al
+	movb	%al, 4838(%rsp)
+	movb	262(%rdx), %al
+	movb	%al, 3846(%rsp)
+	movb	262(%rcx), %al
+	movb	%al, 2854(%rsp)
+	movb	262(%r8), %al
+	movb	%al, 1862(%rsp)
+	movb	263(%rsi), %al
+	movb	%al, 4839(%rsp)
+	movb	263(%rdx), %al
+	movb	%al, 3847(%rsp)
+	movb	263(%rcx), %al
+	movb	%al, 2855(%rsp)
+	movb	263(%r8), %al
+	movb	%al, 1863(%rsp)
+	movb	264(%rsi), %al
+	movb	%al, 4840(%rsp)
+	movb	264(%rdx), %al
+	movb	%al, 3848(%rsp)
+	movb	264(%rcx), %al
+	movb	%al, 2856(%rsp)
+	movb	264(%r8), %al
+	movb	%al, 1864(%rsp)
+	movb	265(%rsi), %al
+	movb	%al, 4841(%rsp)
+	movb	265(%rdx), %al
+	movb	%al, 3849(%rsp)
+	movb	265(%rcx), %al
+	movb	%al, 2857(%rsp)
+	movb	265(%r8), %al
+	movb	%al, 1865(%rsp)
+	movb	266(%rsi), %al
+	movb	%al, 4842(%rsp)
+	movb	266(%rdx), %al
+	movb	%al, 3850(%rsp)
+	movb	266(%rcx), %al
+	movb	%al, 2858(%rsp)
+	movb	266(%r8), %al
+	movb	%al, 1866(%rsp)
+	movb	267(%rsi), %al
+	movb	%al, 4843(%rsp)
+	movb	267(%rdx), %al
+	movb	%al, 3851(%rsp)
+	movb	267(%rcx), %al
+	movb	%al, 2859(%rsp)
+	movb	267(%r8), %al
+	movb	%al, 1867(%rsp)
+	movb	268(%rsi), %al
+	movb	%al, 4844(%rsp)
+	movb	268(%rdx), %al
+	movb	%al, 3852(%rsp)
+	movb	268(%rcx), %al
+	movb	%al, 2860(%rsp)
+	movb	268(%r8), %al
+	movb	%al, 1868(%rsp)
+	movb	269(%rsi), %al
+	movb	%al, 4845(%rsp)
+	movb	269(%rdx), %al
+	movb	%al, 3853(%rsp)
+	movb	269(%rcx), %al
+	movb	%al, 2861(%rsp)
+	movb	269(%r8), %al
+	movb	%al, 1869(%rsp)
+	movb	270(%rsi), %al
+	movb	%al, 4846(%rsp)
+	movb	270(%rdx), %al
+	movb	%al, 3854(%rsp)
+	movb	270(%rcx), %al
+	movb	%al, 2862(%rsp)
+	movb	270(%r8), %al
+	movb	%al, 1870(%rsp)
+	movb	271(%rsi), %al
+	movb	%al, 4847(%rsp)
+	movb	271(%rdx), %al
+	movb	%al, 3855(%rsp)
+	movb	271(%rcx), %al
+	movb	%al, 2863(%rsp)
+	movb	271(%r8), %al
+	movb	%al, 1871(%rsp)
+	movb	272(%rsi), %al
+	movb	%al, 4848(%rsp)
+	movb	272(%rdx), %al
+	movb	%al, 3856(%rsp)
+	movb	272(%rcx), %al
+	movb	%al, 2864(%rsp)
+	movb	272(%r8), %al
+	movb	%al, 1872(%rsp)
+	movb	273(%rsi), %al
+	movb	%al, 4849(%rsp)
+	movb	273(%rdx), %al
+	movb	%al, 3857(%rsp)
+	movb	273(%rcx), %al
+	movb	%al, 2865(%rsp)
+	movb	273(%r8), %al
+	movb	%al, 1873(%rsp)
+	movb	274(%rsi), %al
+	movb	%al, 4850(%rsp)
+	movb	274(%rdx), %al
+	movb	%al, 3858(%rsp)
+	movb	274(%rcx), %al
+	movb	%al, 2866(%rsp)
+	movb	274(%r8), %al
+	movb	%al, 1874(%rsp)
+	movb	275(%rsi), %al
+	movb	%al, 4851(%rsp)
+	movb	275(%rdx), %al
+	movb	%al, 3859(%rsp)
+	movb	275(%rcx), %al
+	movb	%al, 2867(%rsp)
+	movb	275(%r8), %al
+	movb	%al, 1875(%rsp)
+	movb	276(%rsi), %al
+	movb	%al, 4852(%rsp)
+	movb	276(%rdx), %al
+	movb	%al, 3860(%rsp)
+	movb	276(%rcx), %al
+	movb	%al, 2868(%rsp)
+	movb	276(%r8), %al
+	movb	%al, 1876(%rsp)
+	movb	277(%rsi), %al
+	movb	%al, 4853(%rsp)
+	movb	277(%rdx), %al
+	movb	%al, 3861(%rsp)
+	movb	277(%rcx), %al
+	movb	%al, 2869(%rsp)
+	movb	277(%r8), %al
+	movb	%al, 1877(%rsp)
+	movb	278(%rsi), %al
+	movb	%al, 4854(%rsp)
+	movb	278(%rdx), %al
+	movb	%al, 3862(%rsp)
+	movb	278(%rcx), %al
+	movb	%al, 2870(%rsp)
+	movb	278(%r8), %al
+	movb	%al, 1878(%rsp)
+	movb	279(%rsi), %al
+	movb	%al, 4855(%rsp)
+	movb	279(%rdx), %al
+	movb	%al, 3863(%rsp)
+	movb	279(%rcx), %al
+	movb	%al, 2871(%rsp)
+	movb	279(%r8), %al
+	movb	%al, 1879(%rsp)
+	movb	280(%rsi), %al
+	movb	%al, 4856(%rsp)
+	movb	280(%rdx), %al
+	movb	%al, 3864(%rsp)
+	movb	280(%rcx), %al
+	movb	%al, 2872(%rsp)
+	movb	280(%r8), %al
+	movb	%al, 1880(%rsp)
+	movb	281(%rsi), %al
+	movb	%al, 4857(%rsp)
+	movb	281(%rdx), %al
+	movb	%al, 3865(%rsp)
+	movb	281(%rcx), %al
+	movb	%al, 2873(%rsp)
+	movb	281(%r8), %al
+	movb	%al, 1881(%rsp)
+	movb	282(%rsi), %al
+	movb	%al, 4858(%rsp)
+	movb	282(%rdx), %al
+	movb	%al, 3866(%rsp)
+	movb	282(%rcx), %al
+	movb	%al, 2874(%rsp)
+	movb	282(%r8), %al
+	movb	%al, 1882(%rsp)
+	movb	283(%rsi), %al
+	movb	%al, 4859(%rsp)
+	movb	283(%rdx), %al
+	movb	%al, 3867(%rsp)
+	movb	283(%rcx), %al
+	movb	%al, 2875(%rsp)
+	movb	283(%r8), %al
+	movb	%al, 1883(%rsp)
+	movb	284(%rsi), %al
+	movb	%al, 4860(%rsp)
+	movb	284(%rdx), %al
+	movb	%al, 3868(%rsp)
+	movb	284(%rcx), %al
+	movb	%al, 2876(%rsp)
+	movb	284(%r8), %al
+	movb	%al, 1884(%rsp)
+	movb	285(%rsi), %al
+	movb	%al, 4861(%rsp)
+	movb	285(%rdx), %al
+	movb	%al, 3869(%rsp)
+	movb	285(%rcx), %al
+	movb	%al, 2877(%rsp)
+	movb	285(%r8), %al
+	movb	%al, 1885(%rsp)
+	movb	286(%rsi), %al
+	movb	%al, 4862(%rsp)
+	movb	286(%rdx), %al
+	movb	%al, 3870(%rsp)
+	movb	286(%rcx), %al
+	movb	%al, 2878(%rsp)
+	movb	286(%r8), %al
+	movb	%al, 1886(%rsp)
+	movb	287(%rsi), %al
+	movb	%al, 4863(%rsp)
+	movb	287(%rdx), %al
+	movb	%al, 3871(%rsp)
+	movb	287(%rcx), %al
+	movb	%al, 2879(%rsp)
+	movb	287(%r8), %al
+	movb	%al, 1887(%rsp)
+	movb	288(%rsi), %al
+	movb	%al, 4864(%rsp)
+	movb	288(%rdx), %al
+	movb	%al, 3872(%rsp)
+	movb	288(%rcx), %al
+	movb	%al, 2880(%rsp)
+	movb	288(%r8), %al
+	movb	%al, 1888(%rsp)
+	movb	289(%rsi), %al
+	movb	%al, 4865(%rsp)
+	movb	289(%rdx), %al
+	movb	%al, 3873(%rsp)
+	movb	289(%rcx), %al
+	movb	%al, 2881(%rsp)
+	movb	289(%r8), %al
+	movb	%al, 1889(%rsp)
+	movb	290(%rsi), %al
+	movb	%al, 4866(%rsp)
+	movb	290(%rdx), %al
+	movb	%al, 3874(%rsp)
+	movb	290(%rcx), %al
+	movb	%al, 2882(%rsp)
+	movb	290(%r8), %al
+	movb	%al, 1890(%rsp)
+	movb	291(%rsi), %al
+	movb	%al, 4867(%rsp)
+	movb	291(%rdx), %al
+	movb	%al, 3875(%rsp)
+	movb	291(%rcx), %al
+	movb	%al, 2883(%rsp)
+	movb	291(%r8), %al
+	movb	%al, 1891(%rsp)
+	movb	292(%rsi), %al
+	movb	%al, 4868(%rsp)
+	movb	292(%rdx), %al
+	movb	%al, 3876(%rsp)
+	movb	292(%rcx), %al
+	movb	%al, 2884(%rsp)
+	movb	292(%r8), %al
+	movb	%al, 1892(%rsp)
+	movb	293(%rsi), %al
+	movb	%al, 4869(%rsp)
+	movb	293(%rdx), %al
+	movb	%al, 3877(%rsp)
+	movb	293(%rcx), %al
+	movb	%al, 2885(%rsp)
+	movb	293(%r8), %al
+	movb	%al, 1893(%rsp)
+	movb	294(%rsi), %al
+	movb	%al, 4870(%rsp)
+	movb	294(%rdx), %al
+	movb	%al, 3878(%rsp)
+	movb	294(%rcx), %al
+	movb	%al, 2886(%rsp)
+	movb	294(%r8), %al
+	movb	%al, 1894(%rsp)
+	movb	295(%rsi), %al
+	movb	%al, 4871(%rsp)
+	movb	295(%rdx), %al
+	movb	%al, 3879(%rsp)
+	movb	295(%rcx), %al
+	movb	%al, 2887(%rsp)
+	movb	295(%r8), %al
+	movb	%al, 1895(%rsp)
+	movb	296(%rsi), %al
+	movb	%al, 4872(%rsp)
+	movb	296(%rdx), %al
+	movb	%al, 3880(%rsp)
+	movb	296(%rcx), %al
+	movb	%al, 2888(%rsp)
+	movb	296(%r8), %al
+	movb	%al, 1896(%rsp)
+	movb	297(%rsi), %al
+	movb	%al, 4873(%rsp)
+	movb	297(%rdx), %al
+	movb	%al, 3881(%rsp)
+	movb	297(%rcx), %al
+	movb	%al, 2889(%rsp)
+	movb	297(%r8), %al
+	movb	%al, 1897(%rsp)
+	movb	298(%rsi), %al
+	movb	%al, 4874(%rsp)
+	movb	298(%rdx), %al
+	movb	%al, 3882(%rsp)
+	movb	298(%rcx), %al
+	movb	%al, 2890(%rsp)
+	movb	298(%r8), %al
+	movb	%al, 1898(%rsp)
+	movb	299(%rsi), %al
+	movb	%al, 4875(%rsp)
+	movb	299(%rdx), %al
+	movb	%al, 3883(%rsp)
+	movb	299(%rcx), %al
+	movb	%al, 2891(%rsp)
+	movb	299(%r8), %al
+	movb	%al, 1899(%rsp)
+	movb	300(%rsi), %al
+	movb	%al, 4876(%rsp)
+	movb	300(%rdx), %al
+	movb	%al, 3884(%rsp)
+	movb	300(%rcx), %al
+	movb	%al, 2892(%rsp)
+	movb	300(%r8), %al
+	movb	%al, 1900(%rsp)
+	movb	301(%rsi), %al
+	movb	%al, 4877(%rsp)
+	movb	301(%rdx), %al
+	movb	%al, 3885(%rsp)
+	movb	301(%rcx), %al
+	movb	%al, 2893(%rsp)
+	movb	301(%r8), %al
+	movb	%al, 1901(%rsp)
+	movb	302(%rsi), %al
+	movb	%al, 4878(%rsp)
+	movb	302(%rdx), %al
+	movb	%al, 3886(%rsp)
+	movb	302(%rcx), %al
+	movb	%al, 2894(%rsp)
+	movb	302(%r8), %al
+	movb	%al, 1902(%rsp)
+	movb	303(%rsi), %al
+	movb	%al, 4879(%rsp)
+	movb	303(%rdx), %al
+	movb	%al, 3887(%rsp)
+	movb	303(%rcx), %al
+	movb	%al, 2895(%rsp)
+	movb	303(%r8), %al
+	movb	%al, 1903(%rsp)
+	movb	304(%rsi), %al
+	movb	%al, 4880(%rsp)
+	movb	304(%rdx), %al
+	movb	%al, 3888(%rsp)
+	movb	304(%rcx), %al
+	movb	%al, 2896(%rsp)
+	movb	304(%r8), %al
+	movb	%al, 1904(%rsp)
+	movb	305(%rsi), %al
+	movb	%al, 4881(%rsp)
+	movb	305(%rdx), %al
+	movb	%al, 3889(%rsp)
+	movb	305(%rcx), %al
+	movb	%al, 2897(%rsp)
+	movb	305(%r8), %al
+	movb	%al, 1905(%rsp)
+	movb	306(%rsi), %al
+	movb	%al, 4882(%rsp)
+	movb	306(%rdx), %al
+	movb	%al, 3890(%rsp)
+	movb	306(%rcx), %al
+	movb	%al, 2898(%rsp)
+	movb	306(%r8), %al
+	movb	%al, 1906(%rsp)
+	movb	307(%rsi), %al
+	movb	%al, 4883(%rsp)
+	movb	307(%rdx), %al
+	movb	%al, 3891(%rsp)
+	movb	307(%rcx), %al
+	movb	%al, 2899(%rsp)
+	movb	307(%r8), %al
+	movb	%al, 1907(%rsp)
+	movb	308(%rsi), %al
+	movb	%al, 4884(%rsp)
+	movb	308(%rdx), %al
+	movb	%al, 3892(%rsp)
+	movb	308(%rcx), %al
+	movb	%al, 2900(%rsp)
+	movb	308(%r8), %al
+	movb	%al, 1908(%rsp)
+	movb	309(%rsi), %al
+	movb	%al, 4885(%rsp)
+	movb	309(%rdx), %al
+	movb	%al, 3893(%rsp)
+	movb	309(%rcx), %al
+	movb	%al, 2901(%rsp)
+	movb	309(%r8), %al
+	movb	%al, 1909(%rsp)
+	movb	310(%rsi), %al
+	movb	%al, 4886(%rsp)
+	movb	310(%rdx), %al
+	movb	%al, 3894(%rsp)
+	movb	310(%rcx), %al
+	movb	%al, 2902(%rsp)
+	movb	310(%r8), %al
+	movb	%al, 1910(%rsp)
+	movb	311(%rsi), %al
+	movb	%al, 4887(%rsp)
+	movb	311(%rdx), %al
+	movb	%al, 3895(%rsp)
+	movb	311(%rcx), %al
+	movb	%al, 2903(%rsp)
+	movb	311(%r8), %al
+	movb	%al, 1911(%rsp)
+	movb	312(%rsi), %al
+	movb	%al, 4888(%rsp)
+	movb	312(%rdx), %al
+	movb	%al, 3896(%rsp)
+	movb	312(%rcx), %al
+	movb	%al, 2904(%rsp)
+	movb	312(%r8), %al
+	movb	%al, 1912(%rsp)
+	movb	313(%rsi), %al
+	movb	%al, 4889(%rsp)
+	movb	313(%rdx), %al
+	movb	%al, 3897(%rsp)
+	movb	313(%rcx), %al
+	movb	%al, 2905(%rsp)
+	movb	313(%r8), %al
+	movb	%al, 1913(%rsp)
+	movb	314(%rsi), %al
+	movb	%al, 4890(%rsp)
+	movb	314(%rdx), %al
+	movb	%al, 3898(%rsp)
+	movb	314(%rcx), %al
+	movb	%al, 2906(%rsp)
+	movb	314(%r8), %al
+	movb	%al, 1914(%rsp)
+	movb	315(%rsi), %al
+	movb	%al, 4891(%rsp)
+	movb	315(%rdx), %al
+	movb	%al, 3899(%rsp)
+	movb	315(%rcx), %al
+	movb	%al, 2907(%rsp)
+	movb	315(%r8), %al
+	movb	%al, 1915(%rsp)
+	movb	316(%rsi), %al
+	movb	%al, 4892(%rsp)
+	movb	316(%rdx), %al
+	movb	%al, 3900(%rsp)
+	movb	316(%rcx), %al
+	movb	%al, 2908(%rsp)
+	movb	316(%r8), %al
+	movb	%al, 1916(%rsp)
+	movb	317(%rsi), %al
+	movb	%al, 4893(%rsp)
+	movb	317(%rdx), %al
+	movb	%al, 3901(%rsp)
+	movb	317(%rcx), %al
+	movb	%al, 2909(%rsp)
+	movb	317(%r8), %al
+	movb	%al, 1917(%rsp)
+	movb	318(%rsi), %al
+	movb	%al, 4894(%rsp)
+	movb	318(%rdx), %al
+	movb	%al, 3902(%rsp)
+	movb	318(%rcx), %al
+	movb	%al, 2910(%rsp)
+	movb	318(%r8), %al
+	movb	%al, 1918(%rsp)
+	movb	319(%rsi), %al
+	movb	%al, 4895(%rsp)
+	movb	319(%rdx), %al
+	movb	%al, 3903(%rsp)
+	movb	319(%rcx), %al
+	movb	%al, 2911(%rsp)
+	movb	319(%r8), %al
+	movb	%al, 1919(%rsp)
+	movb	320(%rsi), %al
+	movb	%al, 4896(%rsp)
+	movb	320(%rdx), %al
+	movb	%al, 3904(%rsp)
+	movb	320(%rcx), %al
+	movb	%al, 2912(%rsp)
+	movb	320(%r8), %al
+	movb	%al, 1920(%rsp)
+	movb	321(%rsi), %al
+	movb	%al, 4897(%rsp)
+	movb	321(%rdx), %al
+	movb	%al, 3905(%rsp)
+	movb	321(%rcx), %al
+	movb	%al, 2913(%rsp)
+	movb	321(%r8), %al
+	movb	%al, 1921(%rsp)
+	movb	322(%rsi), %al
+	movb	%al, 4898(%rsp)
+	movb	322(%rdx), %al
+	movb	%al, 3906(%rsp)
+	movb	322(%rcx), %al
+	movb	%al, 2914(%rsp)
+	movb	322(%r8), %al
+	movb	%al, 1922(%rsp)
+	movb	323(%rsi), %al
+	movb	%al, 4899(%rsp)
+	movb	323(%rdx), %al
+	movb	%al, 3907(%rsp)
+	movb	323(%rcx), %al
+	movb	%al, 2915(%rsp)
+	movb	323(%r8), %al
+	movb	%al, 1923(%rsp)
+	movb	324(%rsi), %al
+	movb	%al, 4900(%rsp)
+	movb	324(%rdx), %al
+	movb	%al, 3908(%rsp)
+	movb	324(%rcx), %al
+	movb	%al, 2916(%rsp)
+	movb	324(%r8), %al
+	movb	%al, 1924(%rsp)
+	movb	325(%rsi), %al
+	movb	%al, 4901(%rsp)
+	movb	325(%rdx), %al
+	movb	%al, 3909(%rsp)
+	movb	325(%rcx), %al
+	movb	%al, 2917(%rsp)
+	movb	325(%r8), %al
+	movb	%al, 1925(%rsp)
+	movb	326(%rsi), %al
+	movb	%al, 4902(%rsp)
+	movb	326(%rdx), %al
+	movb	%al, 3910(%rsp)
+	movb	326(%rcx), %al
+	movb	%al, 2918(%rsp)
+	movb	326(%r8), %al
+	movb	%al, 1926(%rsp)
+	movb	327(%rsi), %al
+	movb	%al, 4903(%rsp)
+	movb	327(%rdx), %al
+	movb	%al, 3911(%rsp)
+	movb	327(%rcx), %al
+	movb	%al, 2919(%rsp)
+	movb	327(%r8), %al
+	movb	%al, 1927(%rsp)
+	movb	328(%rsi), %al
+	movb	%al, 4904(%rsp)
+	movb	328(%rdx), %al
+	movb	%al, 3912(%rsp)
+	movb	328(%rcx), %al
+	movb	%al, 2920(%rsp)
+	movb	328(%r8), %al
+	movb	%al, 1928(%rsp)
+	movb	329(%rsi), %al
+	movb	%al, 4905(%rsp)
+	movb	329(%rdx), %al
+	movb	%al, 3913(%rsp)
+	movb	329(%rcx), %al
+	movb	%al, 2921(%rsp)
+	movb	329(%r8), %al
+	movb	%al, 1929(%rsp)
+	movb	330(%rsi), %al
+	movb	%al, 4906(%rsp)
+	movb	330(%rdx), %al
+	movb	%al, 3914(%rsp)
+	movb	330(%rcx), %al
+	movb	%al, 2922(%rsp)
+	movb	330(%r8), %al
+	movb	%al, 1930(%rsp)
+	movb	331(%rsi), %al
+	movb	%al, 4907(%rsp)
+	movb	331(%rdx), %al
+	movb	%al, 3915(%rsp)
+	movb	331(%rcx), %al
+	movb	%al, 2923(%rsp)
+	movb	331(%r8), %al
+	movb	%al, 1931(%rsp)
+	movb	332(%rsi), %al
+	movb	%al, 4908(%rsp)
+	movb	332(%rdx), %al
+	movb	%al, 3916(%rsp)
+	movb	332(%rcx), %al
+	movb	%al, 2924(%rsp)
+	movb	332(%r8), %al
+	movb	%al, 1932(%rsp)
+	movb	333(%rsi), %al
+	movb	%al, 4909(%rsp)
+	movb	333(%rdx), %al
+	movb	%al, 3917(%rsp)
+	movb	333(%rcx), %al
+	movb	%al, 2925(%rsp)
+	movb	333(%r8), %al
+	movb	%al, 1933(%rsp)
+	movb	334(%rsi), %al
+	movb	%al, 4910(%rsp)
+	movb	334(%rdx), %al
+	movb	%al, 3918(%rsp)
+	movb	334(%rcx), %al
+	movb	%al, 2926(%rsp)
+	movb	334(%r8), %al
+	movb	%al, 1934(%rsp)
+	movb	335(%rsi), %al
+	movb	%al, 4911(%rsp)
+	movb	335(%rdx), %al
+	movb	%al, 3919(%rsp)
+	movb	335(%rcx), %al
+	movb	%al, 2927(%rsp)
+	movb	335(%r8), %al
+	movb	%al, 1935(%rsp)
+	movb	336(%rsi), %al
+	movb	%al, 4912(%rsp)
+	movb	336(%rdx), %al
+	movb	%al, 3920(%rsp)
+	movb	336(%rcx), %al
+	movb	%al, 2928(%rsp)
+	movb	336(%r8), %al
+	movb	%al, 1936(%rsp)
+	movb	337(%rsi), %al
+	movb	%al, 4913(%rsp)
+	movb	337(%rdx), %al
+	movb	%al, 3921(%rsp)
+	movb	337(%rcx), %al
+	movb	%al, 2929(%rsp)
+	movb	337(%r8), %al
+	movb	%al, 1937(%rsp)
+	movb	338(%rsi), %al
+	movb	%al, 4914(%rsp)
+	movb	338(%rdx), %al
+	movb	%al, 3922(%rsp)
+	movb	338(%rcx), %al
+	movb	%al, 2930(%rsp)
+	movb	338(%r8), %al
+	movb	%al, 1938(%rsp)
+	movb	339(%rsi), %al
+	movb	%al, 4915(%rsp)
+	movb	339(%rdx), %al
+	movb	%al, 3923(%rsp)
+	movb	339(%rcx), %al
+	movb	%al, 2931(%rsp)
+	movb	339(%r8), %al
+	movb	%al, 1939(%rsp)
+	movb	340(%rsi), %al
+	movb	%al, 4916(%rsp)
+	movb	340(%rdx), %al
+	movb	%al, 3924(%rsp)
+	movb	340(%rcx), %al
+	movb	%al, 2932(%rsp)
+	movb	340(%r8), %al
+	movb	%al, 1940(%rsp)
+	movb	341(%rsi), %al
+	movb	%al, 4917(%rsp)
+	movb	341(%rdx), %al
+	movb	%al, 3925(%rsp)
+	movb	341(%rcx), %al
+	movb	%al, 2933(%rsp)
+	movb	341(%r8), %al
+	movb	%al, 1941(%rsp)
+	movb	342(%rsi), %al
+	movb	%al, 4918(%rsp)
+	movb	342(%rdx), %al
+	movb	%al, 3926(%rsp)
+	movb	342(%rcx), %al
+	movb	%al, 2934(%rsp)
+	movb	342(%r8), %al
+	movb	%al, 1942(%rsp)
+	movb	343(%rsi), %al
+	movb	%al, 4919(%rsp)
+	movb	343(%rdx), %al
+	movb	%al, 3927(%rsp)
+	movb	343(%rcx), %al
+	movb	%al, 2935(%rsp)
+	movb	343(%r8), %al
+	movb	%al, 1943(%rsp)
+	movb	344(%rsi), %al
+	movb	%al, 4920(%rsp)
+	movb	344(%rdx), %al
+	movb	%al, 3928(%rsp)
+	movb	344(%rcx), %al
+	movb	%al, 2936(%rsp)
+	movb	344(%r8), %al
+	movb	%al, 1944(%rsp)
+	movb	345(%rsi), %al
+	movb	%al, 4921(%rsp)
+	movb	345(%rdx), %al
+	movb	%al, 3929(%rsp)
+	movb	345(%rcx), %al
+	movb	%al, 2937(%rsp)
+	movb	345(%r8), %al
+	movb	%al, 1945(%rsp)
+	movb	346(%rsi), %al
+	movb	%al, 4922(%rsp)
+	movb	346(%rdx), %al
+	movb	%al, 3930(%rsp)
+	movb	346(%rcx), %al
+	movb	%al, 2938(%rsp)
+	movb	346(%r8), %al
+	movb	%al, 1946(%rsp)
+	movb	347(%rsi), %al
+	movb	%al, 4923(%rsp)
+	movb	347(%rdx), %al
+	movb	%al, 3931(%rsp)
+	movb	347(%rcx), %al
+	movb	%al, 2939(%rsp)
+	movb	347(%r8), %al
+	movb	%al, 1947(%rsp)
+	movb	348(%rsi), %al
+	movb	%al, 4924(%rsp)
+	movb	348(%rdx), %al
+	movb	%al, 3932(%rsp)
+	movb	348(%rcx), %al
+	movb	%al, 2940(%rsp)
+	movb	348(%r8), %al
+	movb	%al, 1948(%rsp)
+	movb	349(%rsi), %al
+	movb	%al, 4925(%rsp)
+	movb	349(%rdx), %al
+	movb	%al, 3933(%rsp)
+	movb	349(%rcx), %al
+	movb	%al, 2941(%rsp)
+	movb	349(%r8), %al
+	movb	%al, 1949(%rsp)
+	movb	350(%rsi), %al
+	movb	%al, 4926(%rsp)
+	movb	350(%rdx), %al
+	movb	%al, 3934(%rsp)
+	movb	350(%rcx), %al
+	movb	%al, 2942(%rsp)
+	movb	350(%r8), %al
+	movb	%al, 1950(%rsp)
+	movb	351(%rsi), %al
+	movb	%al, 4927(%rsp)
+	movb	351(%rdx), %al
+	movb	%al, 3935(%rsp)
+	movb	351(%rcx), %al
+	movb	%al, 2943(%rsp)
+	movb	351(%r8), %al
+	movb	%al, 1951(%rsp)
+	movb	352(%rsi), %al
+	movb	%al, 4928(%rsp)
+	movb	352(%rdx), %al
+	movb	%al, 3936(%rsp)
+	movb	352(%rcx), %al
+	movb	%al, 2944(%rsp)
+	movb	352(%r8), %al
+	movb	%al, 1952(%rsp)
+	movb	353(%rsi), %al
+	movb	%al, 4929(%rsp)
+	movb	353(%rdx), %al
+	movb	%al, 3937(%rsp)
+	movb	353(%rcx), %al
+	movb	%al, 2945(%rsp)
+	movb	353(%r8), %al
+	movb	%al, 1953(%rsp)
+	movb	354(%rsi), %al
+	movb	%al, 4930(%rsp)
+	movb	354(%rdx), %al
+	movb	%al, 3938(%rsp)
+	movb	354(%rcx), %al
+	movb	%al, 2946(%rsp)
+	movb	354(%r8), %al
+	movb	%al, 1954(%rsp)
+	movb	355(%rsi), %al
+	movb	%al, 4931(%rsp)
+	movb	355(%rdx), %al
+	movb	%al, 3939(%rsp)
+	movb	355(%rcx), %al
+	movb	%al, 2947(%rsp)
+	movb	355(%r8), %al
+	movb	%al, 1955(%rsp)
+	movb	356(%rsi), %al
+	movb	%al, 4932(%rsp)
+	movb	356(%rdx), %al
+	movb	%al, 3940(%rsp)
+	movb	356(%rcx), %al
+	movb	%al, 2948(%rsp)
+	movb	356(%r8), %al
+	movb	%al, 1956(%rsp)
+	movb	357(%rsi), %al
+	movb	%al, 4933(%rsp)
+	movb	357(%rdx), %al
+	movb	%al, 3941(%rsp)
+	movb	357(%rcx), %al
+	movb	%al, 2949(%rsp)
+	movb	357(%r8), %al
+	movb	%al, 1957(%rsp)
+	movb	358(%rsi), %al
+	movb	%al, 4934(%rsp)
+	movb	358(%rdx), %al
+	movb	%al, 3942(%rsp)
+	movb	358(%rcx), %al
+	movb	%al, 2950(%rsp)
+	movb	358(%r8), %al
+	movb	%al, 1958(%rsp)
+	movb	359(%rsi), %al
+	movb	%al, 4935(%rsp)
+	movb	359(%rdx), %al
+	movb	%al, 3943(%rsp)
+	movb	359(%rcx), %al
+	movb	%al, 2951(%rsp)
+	movb	359(%r8), %al
+	movb	%al, 1959(%rsp)
+	movb	360(%rsi), %al
+	movb	%al, 4936(%rsp)
+	movb	360(%rdx), %al
+	movb	%al, 3944(%rsp)
+	movb	360(%rcx), %al
+	movb	%al, 2952(%rsp)
+	movb	360(%r8), %al
+	movb	%al, 1960(%rsp)
+	movb	361(%rsi), %al
+	movb	%al, 4937(%rsp)
+	movb	361(%rdx), %al
+	movb	%al, 3945(%rsp)
+	movb	361(%rcx), %al
+	movb	%al, 2953(%rsp)
+	movb	361(%r8), %al
+	movb	%al, 1961(%rsp)
+	movb	362(%rsi), %al
+	movb	%al, 4938(%rsp)
+	movb	362(%rdx), %al
+	movb	%al, 3946(%rsp)
+	movb	362(%rcx), %al
+	movb	%al, 2954(%rsp)
+	movb	362(%r8), %al
+	movb	%al, 1962(%rsp)
+	movb	363(%rsi), %al
+	movb	%al, 4939(%rsp)
+	movb	363(%rdx), %al
+	movb	%al, 3947(%rsp)
+	movb	363(%rcx), %al
+	movb	%al, 2955(%rsp)
+	movb	363(%r8), %al
+	movb	%al, 1963(%rsp)
+	movb	364(%rsi), %al
+	movb	%al, 4940(%rsp)
+	movb	364(%rdx), %al
+	movb	%al, 3948(%rsp)
+	movb	364(%rcx), %al
+	movb	%al, 2956(%rsp)
+	movb	364(%r8), %al
+	movb	%al, 1964(%rsp)
+	movb	365(%rsi), %al
+	movb	%al, 4941(%rsp)
+	movb	365(%rdx), %al
+	movb	%al, 3949(%rsp)
+	movb	365(%rcx), %al
+	movb	%al, 2957(%rsp)
+	movb	365(%r8), %al
+	movb	%al, 1965(%rsp)
+	movb	366(%rsi), %al
+	movb	%al, 4942(%rsp)
+	movb	366(%rdx), %al
+	movb	%al, 3950(%rsp)
+	movb	366(%rcx), %al
+	movb	%al, 2958(%rsp)
+	movb	366(%r8), %al
+	movb	%al, 1966(%rsp)
+	movb	367(%rsi), %al
+	movb	%al, 4943(%rsp)
+	movb	367(%rdx), %al
+	movb	%al, 3951(%rsp)
+	movb	367(%rcx), %al
+	movb	%al, 2959(%rsp)
+	movb	367(%r8), %al
+	movb	%al, 1967(%rsp)
+	movb	368(%rsi), %al
+	movb	%al, 4944(%rsp)
+	movb	368(%rdx), %al
+	movb	%al, 3952(%rsp)
+	movb	368(%rcx), %al
+	movb	%al, 2960(%rsp)
+	movb	368(%r8), %al
+	movb	%al, 1968(%rsp)
+	movb	369(%rsi), %al
+	movb	%al, 4945(%rsp)
+	movb	369(%rdx), %al
+	movb	%al, 3953(%rsp)
+	movb	369(%rcx), %al
+	movb	%al, 2961(%rsp)
+	movb	369(%r8), %al
+	movb	%al, 1969(%rsp)
+	movb	370(%rsi), %al
+	movb	%al, 4946(%rsp)
+	movb	370(%rdx), %al
+	movb	%al, 3954(%rsp)
+	movb	370(%rcx), %al
+	movb	%al, 2962(%rsp)
+	movb	370(%r8), %al
+	movb	%al, 1970(%rsp)
+	movb	371(%rsi), %al
+	movb	%al, 4947(%rsp)
+	movb	371(%rdx), %al
+	movb	%al, 3955(%rsp)
+	movb	371(%rcx), %al
+	movb	%al, 2963(%rsp)
+	movb	371(%r8), %al
+	movb	%al, 1971(%rsp)
+	movb	372(%rsi), %al
+	movb	%al, 4948(%rsp)
+	movb	372(%rdx), %al
+	movb	%al, 3956(%rsp)
+	movb	372(%rcx), %al
+	movb	%al, 2964(%rsp)
+	movb	372(%r8), %al
+	movb	%al, 1972(%rsp)
+	movb	373(%rsi), %al
+	movb	%al, 4949(%rsp)
+	movb	373(%rdx), %al
+	movb	%al, 3957(%rsp)
+	movb	373(%rcx), %al
+	movb	%al, 2965(%rsp)
+	movb	373(%r8), %al
+	movb	%al, 1973(%rsp)
+	movb	374(%rsi), %al
+	movb	%al, 4950(%rsp)
+	movb	374(%rdx), %al
+	movb	%al, 3958(%rsp)
+	movb	374(%rcx), %al
+	movb	%al, 2966(%rsp)
+	movb	374(%r8), %al
+	movb	%al, 1974(%rsp)
+	movb	375(%rsi), %al
+	movb	%al, 4951(%rsp)
+	movb	375(%rdx), %al
+	movb	%al, 3959(%rsp)
+	movb	375(%rcx), %al
+	movb	%al, 2967(%rsp)
+	movb	375(%r8), %al
+	movb	%al, 1975(%rsp)
+	movb	376(%rsi), %al
+	movb	%al, 4952(%rsp)
+	movb	376(%rdx), %al
+	movb	%al, 3960(%rsp)
+	movb	376(%rcx), %al
+	movb	%al, 2968(%rsp)
+	movb	376(%r8), %al
+	movb	%al, 1976(%rsp)
+	movb	377(%rsi), %al
+	movb	%al, 4953(%rsp)
+	movb	377(%rdx), %al
+	movb	%al, 3961(%rsp)
+	movb	377(%rcx), %al
+	movb	%al, 2969(%rsp)
+	movb	377(%r8), %al
+	movb	%al, 1977(%rsp)
+	movb	378(%rsi), %al
+	movb	%al, 4954(%rsp)
+	movb	378(%rdx), %al
+	movb	%al, 3962(%rsp)
+	movb	378(%rcx), %al
+	movb	%al, 2970(%rsp)
+	movb	378(%r8), %al
+	movb	%al, 1978(%rsp)
+	movb	379(%rsi), %al
+	movb	%al, 4955(%rsp)
+	movb	379(%rdx), %al
+	movb	%al, 3963(%rsp)
+	movb	379(%rcx), %al
+	movb	%al, 2971(%rsp)
+	movb	379(%r8), %al
+	movb	%al, 1979(%rsp)
+	movb	380(%rsi), %al
+	movb	%al, 4956(%rsp)
+	movb	380(%rdx), %al
+	movb	%al, 3964(%rsp)
+	movb	380(%rcx), %al
+	movb	%al, 2972(%rsp)
+	movb	380(%r8), %al
+	movb	%al, 1980(%rsp)
+	movb	381(%rsi), %al
+	movb	%al, 4957(%rsp)
+	movb	381(%rdx), %al
+	movb	%al, 3965(%rsp)
+	movb	381(%rcx), %al
+	movb	%al, 2973(%rsp)
+	movb	381(%r8), %al
+	movb	%al, 1981(%rsp)
+	movb	382(%rsi), %al
+	movb	%al, 4958(%rsp)
+	movb	382(%rdx), %al
+	movb	%al, 3966(%rsp)
+	movb	382(%rcx), %al
+	movb	%al, 2974(%rsp)
+	movb	382(%r8), %al
+	movb	%al, 1982(%rsp)
+	movb	383(%rsi), %al
+	movb	%al, 4959(%rsp)
+	movb	383(%rdx), %al
+	movb	%al, 3967(%rsp)
+	movb	383(%rcx), %al
+	movb	%al, 2975(%rsp)
+	movb	383(%r8), %al
+	movb	%al, 1983(%rsp)
+	movb	384(%rsi), %al
+	movb	%al, 4960(%rsp)
+	movb	384(%rdx), %al
+	movb	%al, 3968(%rsp)
+	movb	384(%rcx), %al
+	movb	%al, 2976(%rsp)
+	movb	384(%r8), %al
+	movb	%al, 1984(%rsp)
+	movb	385(%rsi), %al
+	movb	%al, 4961(%rsp)
+	movb	385(%rdx), %al
+	movb	%al, 3969(%rsp)
+	movb	385(%rcx), %al
+	movb	%al, 2977(%rsp)
+	movb	385(%r8), %al
+	movb	%al, 1985(%rsp)
+	movb	386(%rsi), %al
+	movb	%al, 4962(%rsp)
+	movb	386(%rdx), %al
+	movb	%al, 3970(%rsp)
+	movb	386(%rcx), %al
+	movb	%al, 2978(%rsp)
+	movb	386(%r8), %al
+	movb	%al, 1986(%rsp)
+	movb	387(%rsi), %al
+	movb	%al, 4963(%rsp)
+	movb	387(%rdx), %al
+	movb	%al, 3971(%rsp)
+	movb	387(%rcx), %al
+	movb	%al, 2979(%rsp)
+	movb	387(%r8), %al
+	movb	%al, 1987(%rsp)
+	movb	388(%rsi), %al
+	movb	%al, 4964(%rsp)
+	movb	388(%rdx), %al
+	movb	%al, 3972(%rsp)
+	movb	388(%rcx), %al
+	movb	%al, 2980(%rsp)
+	movb	388(%r8), %al
+	movb	%al, 1988(%rsp)
+	movb	389(%rsi), %al
+	movb	%al, 4965(%rsp)
+	movb	389(%rdx), %al
+	movb	%al, 3973(%rsp)
+	movb	389(%rcx), %al
+	movb	%al, 2981(%rsp)
+	movb	389(%r8), %al
+	movb	%al, 1989(%rsp)
+	movb	390(%rsi), %al
+	movb	%al, 4966(%rsp)
+	movb	390(%rdx), %al
+	movb	%al, 3974(%rsp)
+	movb	390(%rcx), %al
+	movb	%al, 2982(%rsp)
+	movb	390(%r8), %al
+	movb	%al, 1990(%rsp)
+	movb	391(%rsi), %al
+	movb	%al, 4967(%rsp)
+	movb	391(%rdx), %al
+	movb	%al, 3975(%rsp)
+	movb	391(%rcx), %al
+	movb	%al, 2983(%rsp)
+	movb	391(%r8), %al
+	movb	%al, 1991(%rsp)
+	movb	392(%rsi), %al
+	movb	%al, 4968(%rsp)
+	movb	392(%rdx), %al
+	movb	%al, 3976(%rsp)
+	movb	392(%rcx), %al
+	movb	%al, 2984(%rsp)
+	movb	392(%r8), %al
+	movb	%al, 1992(%rsp)
+	movb	393(%rsi), %al
+	movb	%al, 4969(%rsp)
+	movb	393(%rdx), %al
+	movb	%al, 3977(%rsp)
+	movb	393(%rcx), %al
+	movb	%al, 2985(%rsp)
+	movb	393(%r8), %al
+	movb	%al, 1993(%rsp)
+	movb	394(%rsi), %al
+	movb	%al, 4970(%rsp)
+	movb	394(%rdx), %al
+	movb	%al, 3978(%rsp)
+	movb	394(%rcx), %al
+	movb	%al, 2986(%rsp)
+	movb	394(%r8), %al
+	movb	%al, 1994(%rsp)
+	movb	395(%rsi), %al
+	movb	%al, 4971(%rsp)
+	movb	395(%rdx), %al
+	movb	%al, 3979(%rsp)
+	movb	395(%rcx), %al
+	movb	%al, 2987(%rsp)
+	movb	395(%r8), %al
+	movb	%al, 1995(%rsp)
+	movb	396(%rsi), %al
+	movb	%al, 4972(%rsp)
+	movb	396(%rdx), %al
+	movb	%al, 3980(%rsp)
+	movb	396(%rcx), %al
+	movb	%al, 2988(%rsp)
+	movb	396(%r8), %al
+	movb	%al, 1996(%rsp)
+	movb	397(%rsi), %al
+	movb	%al, 4973(%rsp)
+	movb	397(%rdx), %al
+	movb	%al, 3981(%rsp)
+	movb	397(%rcx), %al
+	movb	%al, 2989(%rsp)
+	movb	397(%r8), %al
+	movb	%al, 1997(%rsp)
+	movb	398(%rsi), %al
+	movb	%al, 4974(%rsp)
+	movb	398(%rdx), %al
+	movb	%al, 3982(%rsp)
+	movb	398(%rcx), %al
+	movb	%al, 2990(%rsp)
+	movb	398(%r8), %al
+	movb	%al, 1998(%rsp)
+	movb	399(%rsi), %al
+	movb	%al, 4975(%rsp)
+	movb	399(%rdx), %al
+	movb	%al, 3983(%rsp)
+	movb	399(%rcx), %al
+	movb	%al, 2991(%rsp)
+	movb	399(%r8), %al
+	movb	%al, 1999(%rsp)
+	movb	400(%rsi), %al
+	movb	%al, 4976(%rsp)
+	movb	400(%rdx), %al
+	movb	%al, 3984(%rsp)
+	movb	400(%rcx), %al
+	movb	%al, 2992(%rsp)
+	movb	400(%r8), %al
+	movb	%al, 2000(%rsp)
+	movb	401(%rsi), %al
+	movb	%al, 4977(%rsp)
+	movb	401(%rdx), %al
+	movb	%al, 3985(%rsp)
+	movb	401(%rcx), %al
+	movb	%al, 2993(%rsp)
+	movb	401(%r8), %al
+	movb	%al, 2001(%rsp)
+	movb	402(%rsi), %al
+	movb	%al, 4978(%rsp)
+	movb	402(%rdx), %al
+	movb	%al, 3986(%rsp)
+	movb	402(%rcx), %al
+	movb	%al, 2994(%rsp)
+	movb	402(%r8), %al
+	movb	%al, 2002(%rsp)
+	movb	403(%rsi), %al
+	movb	%al, 4979(%rsp)
+	movb	403(%rdx), %al
+	movb	%al, 3987(%rsp)
+	movb	403(%rcx), %al
+	movb	%al, 2995(%rsp)
+	movb	403(%r8), %al
+	movb	%al, 2003(%rsp)
+	movb	404(%rsi), %al
+	movb	%al, 4980(%rsp)
+	movb	404(%rdx), %al
+	movb	%al, 3988(%rsp)
+	movb	404(%rcx), %al
+	movb	%al, 2996(%rsp)
+	movb	404(%r8), %al
+	movb	%al, 2004(%rsp)
+	movb	405(%rsi), %al
+	movb	%al, 4981(%rsp)
+	movb	405(%rdx), %al
+	movb	%al, 3989(%rsp)
+	movb	405(%rcx), %al
+	movb	%al, 2997(%rsp)
+	movb	405(%r8), %al
+	movb	%al, 2005(%rsp)
+	movb	406(%rsi), %al
+	movb	%al, 4982(%rsp)
+	movb	406(%rdx), %al
+	movb	%al, 3990(%rsp)
+	movb	406(%rcx), %al
+	movb	%al, 2998(%rsp)
+	movb	406(%r8), %al
+	movb	%al, 2006(%rsp)
+	movb	407(%rsi), %al
+	movb	%al, 4983(%rsp)
+	movb	407(%rdx), %al
+	movb	%al, 3991(%rsp)
+	movb	407(%rcx), %al
+	movb	%al, 2999(%rsp)
+	movb	407(%r8), %al
+	movb	%al, 2007(%rsp)
+	movb	408(%rsi), %al
+	movb	%al, 4984(%rsp)
+	movb	408(%rdx), %al
+	movb	%al, 3992(%rsp)
+	movb	408(%rcx), %al
+	movb	%al, 3000(%rsp)
+	movb	408(%r8), %al
+	movb	%al, 2008(%rsp)
+	movb	409(%rsi), %al
+	movb	%al, 4985(%rsp)
+	movb	409(%rdx), %al
+	movb	%al, 3993(%rsp)
+	movb	409(%rcx), %al
+	movb	%al, 3001(%rsp)
+	movb	409(%r8), %al
+	movb	%al, 2009(%rsp)
+	movb	410(%rsi), %al
+	movb	%al, 4986(%rsp)
+	movb	410(%rdx), %al
+	movb	%al, 3994(%rsp)
+	movb	410(%rcx), %al
+	movb	%al, 3002(%rsp)
+	movb	410(%r8), %al
+	movb	%al, 2010(%rsp)
+	movb	411(%rsi), %al
+	movb	%al, 4987(%rsp)
+	movb	411(%rdx), %al
+	movb	%al, 3995(%rsp)
+	movb	411(%rcx), %al
+	movb	%al, 3003(%rsp)
+	movb	411(%r8), %al
+	movb	%al, 2011(%rsp)
+	movb	412(%rsi), %al
+	movb	%al, 4988(%rsp)
+	movb	412(%rdx), %al
+	movb	%al, 3996(%rsp)
+	movb	412(%rcx), %al
+	movb	%al, 3004(%rsp)
+	movb	412(%r8), %al
+	movb	%al, 2012(%rsp)
+	movb	413(%rsi), %al
+	movb	%al, 4989(%rsp)
+	movb	413(%rdx), %al
+	movb	%al, 3997(%rsp)
+	movb	413(%rcx), %al
+	movb	%al, 3005(%rsp)
+	movb	413(%r8), %al
+	movb	%al, 2013(%rsp)
+	movb	414(%rsi), %al
+	movb	%al, 4990(%rsp)
+	movb	414(%rdx), %al
+	movb	%al, 3998(%rsp)
+	movb	414(%rcx), %al
+	movb	%al, 3006(%rsp)
+	movb	414(%r8), %al
+	movb	%al, 2014(%rsp)
+	movb	415(%rsi), %al
+	movb	%al, 4991(%rsp)
+	movb	415(%rdx), %al
+	movb	%al, 3999(%rsp)
+	movb	415(%rcx), %al
+	movb	%al, 3007(%rsp)
+	movb	415(%r8), %al
+	movb	%al, 2015(%rsp)
+	movb	416(%rsi), %al
+	movb	%al, 4992(%rsp)
+	movb	416(%rdx), %al
+	movb	%al, 4000(%rsp)
+	movb	416(%rcx), %al
+	movb	%al, 3008(%rsp)
+	movb	416(%r8), %al
+	movb	%al, 2016(%rsp)
+	movb	417(%rsi), %al
+	movb	%al, 4993(%rsp)
+	movb	417(%rdx), %al
+	movb	%al, 4001(%rsp)
+	movb	417(%rcx), %al
+	movb	%al, 3009(%rsp)
+	movb	417(%r8), %al
+	movb	%al, 2017(%rsp)
+	movb	418(%rsi), %al
+	movb	%al, 4994(%rsp)
+	movb	418(%rdx), %al
+	movb	%al, 4002(%rsp)
+	movb	418(%rcx), %al
+	movb	%al, 3010(%rsp)
+	movb	418(%r8), %al
+	movb	%al, 2018(%rsp)
+	movb	419(%rsi), %al
+	movb	%al, 4995(%rsp)
+	movb	419(%rdx), %al
+	movb	%al, 4003(%rsp)
+	movb	419(%rcx), %al
+	movb	%al, 3011(%rsp)
+	movb	419(%r8), %al
+	movb	%al, 2019(%rsp)
+	movb	420(%rsi), %al
+	movb	%al, 4996(%rsp)
+	movb	420(%rdx), %al
+	movb	%al, 4004(%rsp)
+	movb	420(%rcx), %al
+	movb	%al, 3012(%rsp)
+	movb	420(%r8), %al
+	movb	%al, 2020(%rsp)
+	movb	421(%rsi), %al
+	movb	%al, 4997(%rsp)
+	movb	421(%rdx), %al
+	movb	%al, 4005(%rsp)
+	movb	421(%rcx), %al
+	movb	%al, 3013(%rsp)
+	movb	421(%r8), %al
+	movb	%al, 2021(%rsp)
+	movb	422(%rsi), %al
+	movb	%al, 4998(%rsp)
+	movb	422(%rdx), %al
+	movb	%al, 4006(%rsp)
+	movb	422(%rcx), %al
+	movb	%al, 3014(%rsp)
+	movb	422(%r8), %al
+	movb	%al, 2022(%rsp)
+	movb	423(%rsi), %al
+	movb	%al, 4999(%rsp)
+	movb	423(%rdx), %al
+	movb	%al, 4007(%rsp)
+	movb	423(%rcx), %al
+	movb	%al, 3015(%rsp)
+	movb	423(%r8), %al
+	movb	%al, 2023(%rsp)
+	movb	424(%rsi), %al
+	movb	%al, 5000(%rsp)
+	movb	424(%rdx), %al
+	movb	%al, 4008(%rsp)
+	movb	424(%rcx), %al
+	movb	%al, 3016(%rsp)
+	movb	424(%r8), %al
+	movb	%al, 2024(%rsp)
+	movb	425(%rsi), %al
+	movb	%al, 5001(%rsp)
+	movb	425(%rdx), %al
+	movb	%al, 4009(%rsp)
+	movb	425(%rcx), %al
+	movb	%al, 3017(%rsp)
+	movb	425(%r8), %al
+	movb	%al, 2025(%rsp)
+	movb	426(%rsi), %al
+	movb	%al, 5002(%rsp)
+	movb	426(%rdx), %al
+	movb	%al, 4010(%rsp)
+	movb	426(%rcx), %al
+	movb	%al, 3018(%rsp)
+	movb	426(%r8), %al
+	movb	%al, 2026(%rsp)
+	movb	427(%rsi), %al
+	movb	%al, 5003(%rsp)
+	movb	427(%rdx), %al
+	movb	%al, 4011(%rsp)
+	movb	427(%rcx), %al
+	movb	%al, 3019(%rsp)
+	movb	427(%r8), %al
+	movb	%al, 2027(%rsp)
+	movb	428(%rsi), %al
+	movb	%al, 5004(%rsp)
+	movb	428(%rdx), %al
+	movb	%al, 4012(%rsp)
+	movb	428(%rcx), %al
+	movb	%al, 3020(%rsp)
+	movb	428(%r8), %al
+	movb	%al, 2028(%rsp)
+	movb	429(%rsi), %al
+	movb	%al, 5005(%rsp)
+	movb	429(%rdx), %al
+	movb	%al, 4013(%rsp)
+	movb	429(%rcx), %al
+	movb	%al, 3021(%rsp)
+	movb	429(%r8), %al
+	movb	%al, 2029(%rsp)
+	movb	430(%rsi), %al
+	movb	%al, 5006(%rsp)
+	movb	430(%rdx), %al
+	movb	%al, 4014(%rsp)
+	movb	430(%rcx), %al
+	movb	%al, 3022(%rsp)
+	movb	430(%r8), %al
+	movb	%al, 2030(%rsp)
+	movb	431(%rsi), %al
+	movb	%al, 5007(%rsp)
+	movb	431(%rdx), %al
+	movb	%al, 4015(%rsp)
+	movb	431(%rcx), %al
+	movb	%al, 3023(%rsp)
+	movb	431(%r8), %al
+	movb	%al, 2031(%rsp)
+	movb	432(%rsi), %al
+	movb	%al, 5008(%rsp)
+	movb	432(%rdx), %al
+	movb	%al, 4016(%rsp)
+	movb	432(%rcx), %al
+	movb	%al, 3024(%rsp)
+	movb	432(%r8), %al
+	movb	%al, 2032(%rsp)
+	movb	433(%rsi), %al
+	movb	%al, 5009(%rsp)
+	movb	433(%rdx), %al
+	movb	%al, 4017(%rsp)
+	movb	433(%rcx), %al
+	movb	%al, 3025(%rsp)
+	movb	433(%r8), %al
+	movb	%al, 2033(%rsp)
+	movb	434(%rsi), %al
+	movb	%al, 5010(%rsp)
+	movb	434(%rdx), %al
+	movb	%al, 4018(%rsp)
+	movb	434(%rcx), %al
+	movb	%al, 3026(%rsp)
+	movb	434(%r8), %al
+	movb	%al, 2034(%rsp)
+	movb	435(%rsi), %al
+	movb	%al, 5011(%rsp)
+	movb	435(%rdx), %al
+	movb	%al, 4019(%rsp)
+	movb	435(%rcx), %al
+	movb	%al, 3027(%rsp)
+	movb	435(%r8), %al
+	movb	%al, 2035(%rsp)
+	movb	436(%rsi), %al
+	movb	%al, 5012(%rsp)
+	movb	436(%rdx), %al
+	movb	%al, 4020(%rsp)
+	movb	436(%rcx), %al
+	movb	%al, 3028(%rsp)
+	movb	436(%r8), %al
+	movb	%al, 2036(%rsp)
+	movb	437(%rsi), %al
+	movb	%al, 5013(%rsp)
+	movb	437(%rdx), %al
+	movb	%al, 4021(%rsp)
+	movb	437(%rcx), %al
+	movb	%al, 3029(%rsp)
+	movb	437(%r8), %al
+	movb	%al, 2037(%rsp)
+	movb	438(%rsi), %al
+	movb	%al, 5014(%rsp)
+	movb	438(%rdx), %al
+	movb	%al, 4022(%rsp)
+	movb	438(%rcx), %al
+	movb	%al, 3030(%rsp)
+	movb	438(%r8), %al
+	movb	%al, 2038(%rsp)
+	movb	439(%rsi), %al
+	movb	%al, 5015(%rsp)
+	movb	439(%rdx), %al
+	movb	%al, 4023(%rsp)
+	movb	439(%rcx), %al
+	movb	%al, 3031(%rsp)
+	movb	439(%r8), %al
+	movb	%al, 2039(%rsp)
+	movb	440(%rsi), %al
+	movb	%al, 5016(%rsp)
+	movb	440(%rdx), %al
+	movb	%al, 4024(%rsp)
+	movb	440(%rcx), %al
+	movb	%al, 3032(%rsp)
+	movb	440(%r8), %al
+	movb	%al, 2040(%rsp)
+	movb	441(%rsi), %al
+	movb	%al, 5017(%rsp)
+	movb	441(%rdx), %al
+	movb	%al, 4025(%rsp)
+	movb	441(%rcx), %al
+	movb	%al, 3033(%rsp)
+	movb	441(%r8), %al
+	movb	%al, 2041(%rsp)
+	movb	442(%rsi), %al
+	movb	%al, 5018(%rsp)
+	movb	442(%rdx), %al
+	movb	%al, 4026(%rsp)
+	movb	442(%rcx), %al
+	movb	%al, 3034(%rsp)
+	movb	442(%r8), %al
+	movb	%al, 2042(%rsp)
+	movb	443(%rsi), %al
+	movb	%al, 5019(%rsp)
+	movb	443(%rdx), %al
+	movb	%al, 4027(%rsp)
+	movb	443(%rcx), %al
+	movb	%al, 3035(%rsp)
+	movb	443(%r8), %al
+	movb	%al, 2043(%rsp)
+	movb	444(%rsi), %al
+	movb	%al, 5020(%rsp)
+	movb	444(%rdx), %al
+	movb	%al, 4028(%rsp)
+	movb	444(%rcx), %al
+	movb	%al, 3036(%rsp)
+	movb	444(%r8), %al
+	movb	%al, 2044(%rsp)
+	movb	445(%rsi), %al
+	movb	%al, 5021(%rsp)
+	movb	445(%rdx), %al
+	movb	%al, 4029(%rsp)
+	movb	445(%rcx), %al
+	movb	%al, 3037(%rsp)
+	movb	445(%r8), %al
+	movb	%al, 2045(%rsp)
+	movb	446(%rsi), %al
+	movb	%al, 5022(%rsp)
+	movb	446(%rdx), %al
+	movb	%al, 4030(%rsp)
+	movb	446(%rcx), %al
+	movb	%al, 3038(%rsp)
+	movb	446(%r8), %al
+	movb	%al, 2046(%rsp)
+	movb	447(%rsi), %al
+	movb	%al, 5023(%rsp)
+	movb	447(%rdx), %al
+	movb	%al, 4031(%rsp)
+	movb	447(%rcx), %al
+	movb	%al, 3039(%rsp)
+	movb	447(%r8), %al
+	movb	%al, 2047(%rsp)
+	movb	448(%rsi), %al
+	movb	%al, 5024(%rsp)
+	movb	448(%rdx), %al
+	movb	%al, 4032(%rsp)
+	movb	448(%rcx), %al
+	movb	%al, 3040(%rsp)
+	movb	448(%r8), %al
+	movb	%al, 2048(%rsp)
+	movb	449(%rsi), %al
+	movb	%al, 5025(%rsp)
+	movb	449(%rdx), %al
+	movb	%al, 4033(%rsp)
+	movb	449(%rcx), %al
+	movb	%al, 3041(%rsp)
+	movb	449(%r8), %al
+	movb	%al, 2049(%rsp)
+	movb	450(%rsi), %al
+	movb	%al, 5026(%rsp)
+	movb	450(%rdx), %al
+	movb	%al, 4034(%rsp)
+	movb	450(%rcx), %al
+	movb	%al, 3042(%rsp)
+	movb	450(%r8), %al
+	movb	%al, 2050(%rsp)
+	movb	451(%rsi), %al
+	movb	%al, 5027(%rsp)
+	movb	451(%rdx), %al
+	movb	%al, 4035(%rsp)
+	movb	451(%rcx), %al
+	movb	%al, 3043(%rsp)
+	movb	451(%r8), %al
+	movb	%al, 2051(%rsp)
+	movb	452(%rsi), %al
+	movb	%al, 5028(%rsp)
+	movb	452(%rdx), %al
+	movb	%al, 4036(%rsp)
+	movb	452(%rcx), %al
+	movb	%al, 3044(%rsp)
+	movb	452(%r8), %al
+	movb	%al, 2052(%rsp)
+	movb	453(%rsi), %al
+	movb	%al, 5029(%rsp)
+	movb	453(%rdx), %al
+	movb	%al, 4037(%rsp)
+	movb	453(%rcx), %al
+	movb	%al, 3045(%rsp)
+	movb	453(%r8), %al
+	movb	%al, 2053(%rsp)
+	movb	454(%rsi), %al
+	movb	%al, 5030(%rsp)
+	movb	454(%rdx), %al
+	movb	%al, 4038(%rsp)
+	movb	454(%rcx), %al
+	movb	%al, 3046(%rsp)
+	movb	454(%r8), %al
+	movb	%al, 2054(%rsp)
+	movb	455(%rsi), %al
+	movb	%al, 5031(%rsp)
+	movb	455(%rdx), %al
+	movb	%al, 4039(%rsp)
+	movb	455(%rcx), %al
+	movb	%al, 3047(%rsp)
+	movb	455(%r8), %al
+	movb	%al, 2055(%rsp)
+	movb	456(%rsi), %al
+	movb	%al, 5032(%rsp)
+	movb	456(%rdx), %al
+	movb	%al, 4040(%rsp)
+	movb	456(%rcx), %al
+	movb	%al, 3048(%rsp)
+	movb	456(%r8), %al
+	movb	%al, 2056(%rsp)
+	movb	457(%rsi), %al
+	movb	%al, 5033(%rsp)
+	movb	457(%rdx), %al
+	movb	%al, 4041(%rsp)
+	movb	457(%rcx), %al
+	movb	%al, 3049(%rsp)
+	movb	457(%r8), %al
+	movb	%al, 2057(%rsp)
+	movb	458(%rsi), %al
+	movb	%al, 5034(%rsp)
+	movb	458(%rdx), %al
+	movb	%al, 4042(%rsp)
+	movb	458(%rcx), %al
+	movb	%al, 3050(%rsp)
+	movb	458(%r8), %al
+	movb	%al, 2058(%rsp)
+	movb	459(%rsi), %al
+	movb	%al, 5035(%rsp)
+	movb	459(%rdx), %al
+	movb	%al, 4043(%rsp)
+	movb	459(%rcx), %al
+	movb	%al, 3051(%rsp)
+	movb	459(%r8), %al
+	movb	%al, 2059(%rsp)
+	movb	460(%rsi), %al
+	movb	%al, 5036(%rsp)
+	movb	460(%rdx), %al
+	movb	%al, 4044(%rsp)
+	movb	460(%rcx), %al
+	movb	%al, 3052(%rsp)
+	movb	460(%r8), %al
+	movb	%al, 2060(%rsp)
+	movb	461(%rsi), %al
+	movb	%al, 5037(%rsp)
+	movb	461(%rdx), %al
+	movb	%al, 4045(%rsp)
+	movb	461(%rcx), %al
+	movb	%al, 3053(%rsp)
+	movb	461(%r8), %al
+	movb	%al, 2061(%rsp)
+	movb	462(%rsi), %al
+	movb	%al, 5038(%rsp)
+	movb	462(%rdx), %al
+	movb	%al, 4046(%rsp)
+	movb	462(%rcx), %al
+	movb	%al, 3054(%rsp)
+	movb	462(%r8), %al
+	movb	%al, 2062(%rsp)
+	movb	463(%rsi), %al
+	movb	%al, 5039(%rsp)
+	movb	463(%rdx), %al
+	movb	%al, 4047(%rsp)
+	movb	463(%rcx), %al
+	movb	%al, 3055(%rsp)
+	movb	463(%r8), %al
+	movb	%al, 2063(%rsp)
+	movb	464(%rsi), %al
+	movb	%al, 5040(%rsp)
+	movb	464(%rdx), %al
+	movb	%al, 4048(%rsp)
+	movb	464(%rcx), %al
+	movb	%al, 3056(%rsp)
+	movb	464(%r8), %al
+	movb	%al, 2064(%rsp)
+	movb	465(%rsi), %al
+	movb	%al, 5041(%rsp)
+	movb	465(%rdx), %al
+	movb	%al, 4049(%rsp)
+	movb	465(%rcx), %al
+	movb	%al, 3057(%rsp)
+	movb	465(%r8), %al
+	movb	%al, 2065(%rsp)
+	movb	466(%rsi), %al
+	movb	%al, 5042(%rsp)
+	movb	466(%rdx), %al
+	movb	%al, 4050(%rsp)
+	movb	466(%rcx), %al
+	movb	%al, 3058(%rsp)
+	movb	466(%r8), %al
+	movb	%al, 2066(%rsp)
+	movb	467(%rsi), %al
+	movb	%al, 5043(%rsp)
+	movb	467(%rdx), %al
+	movb	%al, 4051(%rsp)
+	movb	467(%rcx), %al
+	movb	%al, 3059(%rsp)
+	movb	467(%r8), %al
+	movb	%al, 2067(%rsp)
+	movb	468(%rsi), %al
+	movb	%al, 5044(%rsp)
+	movb	468(%rdx), %al
+	movb	%al, 4052(%rsp)
+	movb	468(%rcx), %al
+	movb	%al, 3060(%rsp)
+	movb	468(%r8), %al
+	movb	%al, 2068(%rsp)
+	movb	469(%rsi), %al
+	movb	%al, 5045(%rsp)
+	movb	469(%rdx), %al
+	movb	%al, 4053(%rsp)
+	movb	469(%rcx), %al
+	movb	%al, 3061(%rsp)
+	movb	469(%r8), %al
+	movb	%al, 2069(%rsp)
+	movb	470(%rsi), %al
+	movb	%al, 5046(%rsp)
+	movb	470(%rdx), %al
+	movb	%al, 4054(%rsp)
+	movb	470(%rcx), %al
+	movb	%al, 3062(%rsp)
+	movb	470(%r8), %al
+	movb	%al, 2070(%rsp)
+	movb	471(%rsi), %al
+	movb	%al, 5047(%rsp)
+	movb	471(%rdx), %al
+	movb	%al, 4055(%rsp)
+	movb	471(%rcx), %al
+	movb	%al, 3063(%rsp)
+	movb	471(%r8), %al
+	movb	%al, 2071(%rsp)
+	movb	472(%rsi), %al
+	movb	%al, 5048(%rsp)
+	movb	472(%rdx), %al
+	movb	%al, 4056(%rsp)
+	movb	472(%rcx), %al
+	movb	%al, 3064(%rsp)
+	movb	472(%r8), %al
+	movb	%al, 2072(%rsp)
+	movb	473(%rsi), %al
+	movb	%al, 5049(%rsp)
+	movb	473(%rdx), %al
+	movb	%al, 4057(%rsp)
+	movb	473(%rcx), %al
+	movb	%al, 3065(%rsp)
+	movb	473(%r8), %al
+	movb	%al, 2073(%rsp)
+	movb	474(%rsi), %al
+	movb	%al, 5050(%rsp)
+	movb	474(%rdx), %al
+	movb	%al, 4058(%rsp)
+	movb	474(%rcx), %al
+	movb	%al, 3066(%rsp)
+	movb	474(%r8), %al
+	movb	%al, 2074(%rsp)
+	movb	475(%rsi), %al
+	movb	%al, 5051(%rsp)
+	movb	475(%rdx), %al
+	movb	%al, 4059(%rsp)
+	movb	475(%rcx), %al
+	movb	%al, 3067(%rsp)
+	movb	475(%r8), %al
+	movb	%al, 2075(%rsp)
+	movb	476(%rsi), %al
+	movb	%al, 5052(%rsp)
+	movb	476(%rdx), %al
+	movb	%al, 4060(%rsp)
+	movb	476(%rcx), %al
+	movb	%al, 3068(%rsp)
+	movb	476(%r8), %al
+	movb	%al, 2076(%rsp)
+	movb	477(%rsi), %al
+	movb	%al, 5053(%rsp)
+	movb	477(%rdx), %al
+	movb	%al, 4061(%rsp)
+	movb	477(%rcx), %al
+	movb	%al, 3069(%rsp)
+	movb	477(%r8), %al
+	movb	%al, 2077(%rsp)
+	movb	478(%rsi), %al
+	movb	%al, 5054(%rsp)
+	movb	478(%rdx), %al
+	movb	%al, 4062(%rsp)
+	movb	478(%rcx), %al
+	movb	%al, 3070(%rsp)
+	movb	478(%r8), %al
+	movb	%al, 2078(%rsp)
+	movb	479(%rsi), %al
+	movb	%al, 5055(%rsp)
+	movb	479(%rdx), %al
+	movb	%al, 4063(%rsp)
+	movb	479(%rcx), %al
+	movb	%al, 3071(%rsp)
+	movb	479(%r8), %al
+	movb	%al, 2079(%rsp)
+	movb	480(%rsi), %al
+	movb	%al, 5056(%rsp)
+	movb	480(%rdx), %al
+	movb	%al, 4064(%rsp)
+	movb	480(%rcx), %al
+	movb	%al, 3072(%rsp)
+	movb	480(%r8), %al
+	movb	%al, 2080(%rsp)
+	movb	481(%rsi), %al
+	movb	%al, 5057(%rsp)
+	movb	481(%rdx), %al
+	movb	%al, 4065(%rsp)
+	movb	481(%rcx), %al
+	movb	%al, 3073(%rsp)
+	movb	481(%r8), %al
+	movb	%al, 2081(%rsp)
+	movb	482(%rsi), %al
+	movb	%al, 5058(%rsp)
+	movb	482(%rdx), %al
+	movb	%al, 4066(%rsp)
+	movb	482(%rcx), %al
+	movb	%al, 3074(%rsp)
+	movb	482(%r8), %al
+	movb	%al, 2082(%rsp)
+	movb	483(%rsi), %al
+	movb	%al, 5059(%rsp)
+	movb	483(%rdx), %al
+	movb	%al, 4067(%rsp)
+	movb	483(%rcx), %al
+	movb	%al, 3075(%rsp)
+	movb	483(%r8), %al
+	movb	%al, 2083(%rsp)
+	movb	484(%rsi), %al
+	movb	%al, 5060(%rsp)
+	movb	484(%rdx), %al
+	movb	%al, 4068(%rsp)
+	movb	484(%rcx), %al
+	movb	%al, 3076(%rsp)
+	movb	484(%r8), %al
+	movb	%al, 2084(%rsp)
+	movb	485(%rsi), %al
+	movb	%al, 5061(%rsp)
+	movb	485(%rdx), %al
+	movb	%al, 4069(%rsp)
+	movb	485(%rcx), %al
+	movb	%al, 3077(%rsp)
+	movb	485(%r8), %al
+	movb	%al, 2085(%rsp)
+	movb	486(%rsi), %al
+	movb	%al, 5062(%rsp)
+	movb	486(%rdx), %al
+	movb	%al, 4070(%rsp)
+	movb	486(%rcx), %al
+	movb	%al, 3078(%rsp)
+	movb	486(%r8), %al
+	movb	%al, 2086(%rsp)
+	movb	487(%rsi), %al
+	movb	%al, 5063(%rsp)
+	movb	487(%rdx), %al
+	movb	%al, 4071(%rsp)
+	movb	487(%rcx), %al
+	movb	%al, 3079(%rsp)
+	movb	487(%r8), %al
+	movb	%al, 2087(%rsp)
+	movb	488(%rsi), %al
+	movb	%al, 5064(%rsp)
+	movb	488(%rdx), %al
+	movb	%al, 4072(%rsp)
+	movb	488(%rcx), %al
+	movb	%al, 3080(%rsp)
+	movb	488(%r8), %al
+	movb	%al, 2088(%rsp)
+	movb	489(%rsi), %al
+	movb	%al, 5065(%rsp)
+	movb	489(%rdx), %al
+	movb	%al, 4073(%rsp)
+	movb	489(%rcx), %al
+	movb	%al, 3081(%rsp)
+	movb	489(%r8), %al
+	movb	%al, 2089(%rsp)
+	movb	490(%rsi), %al
+	movb	%al, 5066(%rsp)
+	movb	490(%rdx), %al
+	movb	%al, 4074(%rsp)
+	movb	490(%rcx), %al
+	movb	%al, 3082(%rsp)
+	movb	490(%r8), %al
+	movb	%al, 2090(%rsp)
+	movb	491(%rsi), %al
+	movb	%al, 5067(%rsp)
+	movb	491(%rdx), %al
+	movb	%al, 4075(%rsp)
+	movb	491(%rcx), %al
+	movb	%al, 3083(%rsp)
+	movb	491(%r8), %al
+	movb	%al, 2091(%rsp)
+	movb	492(%rsi), %al
+	movb	%al, 5068(%rsp)
+	movb	492(%rdx), %al
+	movb	%al, 4076(%rsp)
+	movb	492(%rcx), %al
+	movb	%al, 3084(%rsp)
+	movb	492(%r8), %al
+	movb	%al, 2092(%rsp)
+	movb	493(%rsi), %al
+	movb	%al, 5069(%rsp)
+	movb	493(%rdx), %al
+	movb	%al, 4077(%rsp)
+	movb	493(%rcx), %al
+	movb	%al, 3085(%rsp)
+	movb	493(%r8), %al
+	movb	%al, 2093(%rsp)
+	movb	494(%rsi), %al
+	movb	%al, 5070(%rsp)
+	movb	494(%rdx), %al
+	movb	%al, 4078(%rsp)
+	movb	494(%rcx), %al
+	movb	%al, 3086(%rsp)
+	movb	494(%r8), %al
+	movb	%al, 2094(%rsp)
+	movb	495(%rsi), %al
+	movb	%al, 5071(%rsp)
+	movb	495(%rdx), %al
+	movb	%al, 4079(%rsp)
+	movb	495(%rcx), %al
+	movb	%al, 3087(%rsp)
+	movb	495(%r8), %al
+	movb	%al, 2095(%rsp)
+	movb	496(%rsi), %al
+	movb	%al, 5072(%rsp)
+	movb	496(%rdx), %al
+	movb	%al, 4080(%rsp)
+	movb	496(%rcx), %al
+	movb	%al, 3088(%rsp)
+	movb	496(%r8), %al
+	movb	%al, 2096(%rsp)
+	movb	497(%rsi), %al
+	movb	%al, 5073(%rsp)
+	movb	497(%rdx), %al
+	movb	%al, 4081(%rsp)
+	movb	497(%rcx), %al
+	movb	%al, 3089(%rsp)
+	movb	497(%r8), %al
+	movb	%al, 2097(%rsp)
+	movb	498(%rsi), %al
+	movb	%al, 5074(%rsp)
+	movb	498(%rdx), %al
+	movb	%al, 4082(%rsp)
+	movb	498(%rcx), %al
+	movb	%al, 3090(%rsp)
+	movb	498(%r8), %al
+	movb	%al, 2098(%rsp)
+	movb	499(%rsi), %al
+	movb	%al, 5075(%rsp)
+	movb	499(%rdx), %al
+	movb	%al, 4083(%rsp)
+	movb	499(%rcx), %al
+	movb	%al, 3091(%rsp)
+	movb	499(%r8), %al
+	movb	%al, 2099(%rsp)
+	movb	500(%rsi), %al
+	movb	%al, 5076(%rsp)
+	movb	500(%rdx), %al
+	movb	%al, 4084(%rsp)
+	movb	500(%rcx), %al
+	movb	%al, 3092(%rsp)
+	movb	500(%r8), %al
+	movb	%al, 2100(%rsp)
+	movb	501(%rsi), %al
+	movb	%al, 5077(%rsp)
+	movb	501(%rdx), %al
+	movb	%al, 4085(%rsp)
+	movb	501(%rcx), %al
+	movb	%al, 3093(%rsp)
+	movb	501(%r8), %al
+	movb	%al, 2101(%rsp)
+	movb	502(%rsi), %al
+	movb	%al, 5078(%rsp)
+	movb	502(%rdx), %al
+	movb	%al, 4086(%rsp)
+	movb	502(%rcx), %al
+	movb	%al, 3094(%rsp)
+	movb	502(%r8), %al
+	movb	%al, 2102(%rsp)
+	movb	503(%rsi), %al
+	movb	%al, 5079(%rsp)
+	movb	503(%rdx), %al
+	movb	%al, 4087(%rsp)
+	movb	503(%rcx), %al
+	movb	%al, 3095(%rsp)
+	movb	503(%r8), %al
+	movb	%al, 2103(%rsp)
+	movb	504(%rsi), %al
+	movb	%al, 5080(%rsp)
+	movb	504(%rdx), %al
+	movb	%al, 4088(%rsp)
+	movb	504(%rcx), %al
+	movb	%al, 3096(%rsp)
+	movb	504(%r8), %al
+	movb	%al, 2104(%rsp)
+	movb	505(%rsi), %al
+	movb	%al, 5081(%rsp)
+	movb	505(%rdx), %al
+	movb	%al, 4089(%rsp)
+	movb	505(%rcx), %al
+	movb	%al, 3097(%rsp)
+	movb	505(%r8), %al
+	movb	%al, 2105(%rsp)
+	movb	506(%rsi), %al
+	movb	%al, 5082(%rsp)
+	movb	506(%rdx), %al
+	movb	%al, 4090(%rsp)
+	movb	506(%rcx), %al
+	movb	%al, 3098(%rsp)
+	movb	506(%r8), %al
+	movb	%al, 2106(%rsp)
+	movb	507(%rsi), %al
+	movb	%al, 5083(%rsp)
+	movb	507(%rdx), %al
+	movb	%al, 4091(%rsp)
+	movb	507(%rcx), %al
+	movb	%al, 3099(%rsp)
+	movb	507(%r8), %al
+	movb	%al, 2107(%rsp)
+	movb	508(%rsi), %al
+	movb	%al, 5084(%rsp)
+	movb	508(%rdx), %al
+	movb	%al, 4092(%rsp)
+	movb	508(%rcx), %al
+	movb	%al, 3100(%rsp)
+	movb	508(%r8), %al
+	movb	%al, 2108(%rsp)
+	movb	509(%rsi), %al
+	movb	%al, 5085(%rsp)
+	movb	509(%rdx), %al
+	movb	%al, 4093(%rsp)
+	movb	509(%rcx), %al
+	movb	%al, 3101(%rsp)
+	movb	509(%r8), %al
+	movb	%al, 2109(%rsp)
+	movb	510(%rsi), %al
+	movb	%al, 5086(%rsp)
+	movb	510(%rdx), %al
+	movb	%al, 4094(%rsp)
+	movb	510(%rcx), %al
+	movb	%al, 3102(%rsp)
+	movb	510(%r8), %al
+	movb	%al, 2110(%rsp)
+	movb	511(%rsi), %al
+	movb	%al, 5087(%rsp)
+	movb	511(%rdx), %al
+	movb	%al, 4095(%rsp)
+	movb	511(%rcx), %al
+	movb	%al, 3103(%rsp)
+	movb	511(%r8), %al
+	movb	%al, 2111(%rsp)
+	movb	512(%rsi), %al
+	movb	%al, 5088(%rsp)
+	movb	512(%rdx), %al
+	movb	%al, 4096(%rsp)
+	movb	512(%rcx), %al
+	movb	%al, 3104(%rsp)
+	movb	512(%r8), %al
+	movb	%al, 2112(%rsp)
+	movb	513(%rsi), %al
+	movb	%al, 5089(%rsp)
+	movb	513(%rdx), %al
+	movb	%al, 4097(%rsp)
+	movb	513(%rcx), %al
+	movb	%al, 3105(%rsp)
+	movb	513(%r8), %al
+	movb	%al, 2113(%rsp)
+	movb	514(%rsi), %al
+	movb	%al, 5090(%rsp)
+	movb	514(%rdx), %al
+	movb	%al, 4098(%rsp)
+	movb	514(%rcx), %al
+	movb	%al, 3106(%rsp)
+	movb	514(%r8), %al
+	movb	%al, 2114(%rsp)
+	movb	515(%rsi), %al
+	movb	%al, 5091(%rsp)
+	movb	515(%rdx), %al
+	movb	%al, 4099(%rsp)
+	movb	515(%rcx), %al
+	movb	%al, 3107(%rsp)
+	movb	515(%r8), %al
+	movb	%al, 2115(%rsp)
+	movb	516(%rsi), %al
+	movb	%al, 5092(%rsp)
+	movb	516(%rdx), %al
+	movb	%al, 4100(%rsp)
+	movb	516(%rcx), %al
+	movb	%al, 3108(%rsp)
+	movb	516(%r8), %al
+	movb	%al, 2116(%rsp)
+	movb	517(%rsi), %al
+	movb	%al, 5093(%rsp)
+	movb	517(%rdx), %al
+	movb	%al, 4101(%rsp)
+	movb	517(%rcx), %al
+	movb	%al, 3109(%rsp)
+	movb	517(%r8), %al
+	movb	%al, 2117(%rsp)
+	movb	518(%rsi), %al
+	movb	%al, 5094(%rsp)
+	movb	518(%rdx), %al
+	movb	%al, 4102(%rsp)
+	movb	518(%rcx), %al
+	movb	%al, 3110(%rsp)
+	movb	518(%r8), %al
+	movb	%al, 2118(%rsp)
+	movb	519(%rsi), %al
+	movb	%al, 5095(%rsp)
+	movb	519(%rdx), %al
+	movb	%al, 4103(%rsp)
+	movb	519(%rcx), %al
+	movb	%al, 3111(%rsp)
+	movb	519(%r8), %al
+	movb	%al, 2119(%rsp)
+	movb	520(%rsi), %al
+	movb	%al, 5096(%rsp)
+	movb	520(%rdx), %al
+	movb	%al, 4104(%rsp)
+	movb	520(%rcx), %al
+	movb	%al, 3112(%rsp)
+	movb	520(%r8), %al
+	movb	%al, 2120(%rsp)
+	movb	521(%rsi), %al
+	movb	%al, 5097(%rsp)
+	movb	521(%rdx), %al
+	movb	%al, 4105(%rsp)
+	movb	521(%rcx), %al
+	movb	%al, 3113(%rsp)
+	movb	521(%r8), %al
+	movb	%al, 2121(%rsp)
+	movb	522(%rsi), %al
+	movb	%al, 5098(%rsp)
+	movb	522(%rdx), %al
+	movb	%al, 4106(%rsp)
+	movb	522(%rcx), %al
+	movb	%al, 3114(%rsp)
+	movb	522(%r8), %al
+	movb	%al, 2122(%rsp)
+	movb	523(%rsi), %al
+	movb	%al, 5099(%rsp)
+	movb	523(%rdx), %al
+	movb	%al, 4107(%rsp)
+	movb	523(%rcx), %al
+	movb	%al, 3115(%rsp)
+	movb	523(%r8), %al
+	movb	%al, 2123(%rsp)
+	movb	524(%rsi), %al
+	movb	%al, 5100(%rsp)
+	movb	524(%rdx), %al
+	movb	%al, 4108(%rsp)
+	movb	524(%rcx), %al
+	movb	%al, 3116(%rsp)
+	movb	524(%r8), %al
+	movb	%al, 2124(%rsp)
+	movb	525(%rsi), %al
+	movb	%al, 5101(%rsp)
+	movb	525(%rdx), %al
+	movb	%al, 4109(%rsp)
+	movb	525(%rcx), %al
+	movb	%al, 3117(%rsp)
+	movb	525(%r8), %al
+	movb	%al, 2125(%rsp)
+	movb	526(%rsi), %al
+	movb	%al, 5102(%rsp)
+	movb	526(%rdx), %al
+	movb	%al, 4110(%rsp)
+	movb	526(%rcx), %al
+	movb	%al, 3118(%rsp)
+	movb	526(%r8), %al
+	movb	%al, 2126(%rsp)
+	movb	527(%rsi), %al
+	movb	%al, 5103(%rsp)
+	movb	527(%rdx), %al
+	movb	%al, 4111(%rsp)
+	movb	527(%rcx), %al
+	movb	%al, 3119(%rsp)
+	movb	527(%r8), %al
+	movb	%al, 2127(%rsp)
+	movb	528(%rsi), %al
+	movb	%al, 5104(%rsp)
+	movb	528(%rdx), %al
+	movb	%al, 4112(%rsp)
+	movb	528(%rcx), %al
+	movb	%al, 3120(%rsp)
+	movb	528(%r8), %al
+	movb	%al, 2128(%rsp)
+	movb	529(%rsi), %al
+	movb	%al, 5105(%rsp)
+	movb	529(%rdx), %al
+	movb	%al, 4113(%rsp)
+	movb	529(%rcx), %al
+	movb	%al, 3121(%rsp)
+	movb	529(%r8), %al
+	movb	%al, 2129(%rsp)
+	movb	530(%rsi), %al
+	movb	%al, 5106(%rsp)
+	movb	530(%rdx), %al
+	movb	%al, 4114(%rsp)
+	movb	530(%rcx), %al
+	movb	%al, 3122(%rsp)
+	movb	530(%r8), %al
+	movb	%al, 2130(%rsp)
+	movb	531(%rsi), %al
+	movb	%al, 5107(%rsp)
+	movb	531(%rdx), %al
+	movb	%al, 4115(%rsp)
+	movb	531(%rcx), %al
+	movb	%al, 3123(%rsp)
+	movb	531(%r8), %al
+	movb	%al, 2131(%rsp)
+	movb	532(%rsi), %al
+	movb	%al, 5108(%rsp)
+	movb	532(%rdx), %al
+	movb	%al, 4116(%rsp)
+	movb	532(%rcx), %al
+	movb	%al, 3124(%rsp)
+	movb	532(%r8), %al
+	movb	%al, 2132(%rsp)
+	movb	533(%rsi), %al
+	movb	%al, 5109(%rsp)
+	movb	533(%rdx), %al
+	movb	%al, 4117(%rsp)
+	movb	533(%rcx), %al
+	movb	%al, 3125(%rsp)
+	movb	533(%r8), %al
+	movb	%al, 2133(%rsp)
+	movb	534(%rsi), %al
+	movb	%al, 5110(%rsp)
+	movb	534(%rdx), %al
+	movb	%al, 4118(%rsp)
+	movb	534(%rcx), %al
+	movb	%al, 3126(%rsp)
+	movb	534(%r8), %al
+	movb	%al, 2134(%rsp)
+	movb	535(%rsi), %al
+	movb	%al, 5111(%rsp)
+	movb	535(%rdx), %al
+	movb	%al, 4119(%rsp)
+	movb	535(%rcx), %al
+	movb	%al, 3127(%rsp)
+	movb	535(%r8), %al
+	movb	%al, 2135(%rsp)
+	movb	536(%rsi), %al
+	movb	%al, 5112(%rsp)
+	movb	536(%rdx), %al
+	movb	%al, 4120(%rsp)
+	movb	536(%rcx), %al
+	movb	%al, 3128(%rsp)
+	movb	536(%r8), %al
+	movb	%al, 2136(%rsp)
+	movb	537(%rsi), %al
+	movb	%al, 5113(%rsp)
+	movb	537(%rdx), %al
+	movb	%al, 4121(%rsp)
+	movb	537(%rcx), %al
+	movb	%al, 3129(%rsp)
+	movb	537(%r8), %al
+	movb	%al, 2137(%rsp)
+	movb	538(%rsi), %al
+	movb	%al, 5114(%rsp)
+	movb	538(%rdx), %al
+	movb	%al, 4122(%rsp)
+	movb	538(%rcx), %al
+	movb	%al, 3130(%rsp)
+	movb	538(%r8), %al
+	movb	%al, 2138(%rsp)
+	movb	539(%rsi), %al
+	movb	%al, 5115(%rsp)
+	movb	539(%rdx), %al
+	movb	%al, 4123(%rsp)
+	movb	539(%rcx), %al
+	movb	%al, 3131(%rsp)
+	movb	539(%r8), %al
+	movb	%al, 2139(%rsp)
+	movb	540(%rsi), %al
+	movb	%al, 5116(%rsp)
+	movb	540(%rdx), %al
+	movb	%al, 4124(%rsp)
+	movb	540(%rcx), %al
+	movb	%al, 3132(%rsp)
+	movb	540(%r8), %al
+	movb	%al, 2140(%rsp)
+	movb	541(%rsi), %al
+	movb	%al, 5117(%rsp)
+	movb	541(%rdx), %al
+	movb	%al, 4125(%rsp)
+	movb	541(%rcx), %al
+	movb	%al, 3133(%rsp)
+	movb	541(%r8), %al
+	movb	%al, 2141(%rsp)
+	movb	542(%rsi), %al
+	movb	%al, 5118(%rsp)
+	movb	542(%rdx), %al
+	movb	%al, 4126(%rsp)
+	movb	542(%rcx), %al
+	movb	%al, 3134(%rsp)
+	movb	542(%r8), %al
+	movb	%al, 2142(%rsp)
+	movb	543(%rsi), %al
+	movb	%al, 5119(%rsp)
+	movb	543(%rdx), %al
+	movb	%al, 4127(%rsp)
+	movb	543(%rcx), %al
+	movb	%al, 3135(%rsp)
+	movb	543(%r8), %al
+	movb	%al, 2143(%rsp)
+	movb	544(%rsi), %al
+	movb	%al, 5120(%rsp)
+	movb	544(%rdx), %al
+	movb	%al, 4128(%rsp)
+	movb	544(%rcx), %al
+	movb	%al, 3136(%rsp)
+	movb	544(%r8), %al
+	movb	%al, 2144(%rsp)
+	movb	545(%rsi), %al
+	movb	%al, 5121(%rsp)
+	movb	545(%rdx), %al
+	movb	%al, 4129(%rsp)
+	movb	545(%rcx), %al
+	movb	%al, 3137(%rsp)
+	movb	545(%r8), %al
+	movb	%al, 2145(%rsp)
+	movb	546(%rsi), %al
+	movb	%al, 5122(%rsp)
+	movb	546(%rdx), %al
+	movb	%al, 4130(%rsp)
+	movb	546(%rcx), %al
+	movb	%al, 3138(%rsp)
+	movb	546(%r8), %al
+	movb	%al, 2146(%rsp)
+	movb	547(%rsi), %al
+	movb	%al, 5123(%rsp)
+	movb	547(%rdx), %al
+	movb	%al, 4131(%rsp)
+	movb	547(%rcx), %al
+	movb	%al, 3139(%rsp)
+	movb	547(%r8), %al
+	movb	%al, 2147(%rsp)
+	movb	548(%rsi), %al
+	movb	%al, 5124(%rsp)
+	movb	548(%rdx), %al
+	movb	%al, 4132(%rsp)
+	movb	548(%rcx), %al
+	movb	%al, 3140(%rsp)
+	movb	548(%r8), %al
+	movb	%al, 2148(%rsp)
+	movb	549(%rsi), %al
+	movb	%al, 5125(%rsp)
+	movb	549(%rdx), %al
+	movb	%al, 4133(%rsp)
+	movb	549(%rcx), %al
+	movb	%al, 3141(%rsp)
+	movb	549(%r8), %al
+	movb	%al, 2149(%rsp)
+	movb	550(%rsi), %al
+	movb	%al, 5126(%rsp)
+	movb	550(%rdx), %al
+	movb	%al, 4134(%rsp)
+	movb	550(%rcx), %al
+	movb	%al, 3142(%rsp)
+	movb	550(%r8), %al
+	movb	%al, 2150(%rsp)
+	movb	551(%rsi), %al
+	movb	%al, 5127(%rsp)
+	movb	551(%rdx), %al
+	movb	%al, 4135(%rsp)
+	movb	551(%rcx), %al
+	movb	%al, 3143(%rsp)
+	movb	551(%r8), %al
+	movb	%al, 2151(%rsp)
+	movb	552(%rsi), %al
+	movb	%al, 5128(%rsp)
+	movb	552(%rdx), %al
+	movb	%al, 4136(%rsp)
+	movb	552(%rcx), %al
+	movb	%al, 3144(%rsp)
+	movb	552(%r8), %al
+	movb	%al, 2152(%rsp)
+	movb	553(%rsi), %al
+	movb	%al, 5129(%rsp)
+	movb	553(%rdx), %al
+	movb	%al, 4137(%rsp)
+	movb	553(%rcx), %al
+	movb	%al, 3145(%rsp)
+	movb	553(%r8), %al
+	movb	%al, 2153(%rsp)
+	movb	554(%rsi), %al
+	movb	%al, 5130(%rsp)
+	movb	554(%rdx), %al
+	movb	%al, 4138(%rsp)
+	movb	554(%rcx), %al
+	movb	%al, 3146(%rsp)
+	movb	554(%r8), %al
+	movb	%al, 2154(%rsp)
+	movb	555(%rsi), %al
+	movb	%al, 5131(%rsp)
+	movb	555(%rdx), %al
+	movb	%al, 4139(%rsp)
+	movb	555(%rcx), %al
+	movb	%al, 3147(%rsp)
+	movb	555(%r8), %al
+	movb	%al, 2155(%rsp)
+	movb	556(%rsi), %al
+	movb	%al, 5132(%rsp)
+	movb	556(%rdx), %al
+	movb	%al, 4140(%rsp)
+	movb	556(%rcx), %al
+	movb	%al, 3148(%rsp)
+	movb	556(%r8), %al
+	movb	%al, 2156(%rsp)
+	movb	557(%rsi), %al
+	movb	%al, 5133(%rsp)
+	movb	557(%rdx), %al
+	movb	%al, 4141(%rsp)
+	movb	557(%rcx), %al
+	movb	%al, 3149(%rsp)
+	movb	557(%r8), %al
+	movb	%al, 2157(%rsp)
+	movb	558(%rsi), %al
+	movb	%al, 5134(%rsp)
+	movb	558(%rdx), %al
+	movb	%al, 4142(%rsp)
+	movb	558(%rcx), %al
+	movb	%al, 3150(%rsp)
+	movb	558(%r8), %al
+	movb	%al, 2158(%rsp)
+	movb	559(%rsi), %al
+	movb	%al, 5135(%rsp)
+	movb	559(%rdx), %al
+	movb	%al, 4143(%rsp)
+	movb	559(%rcx), %al
+	movb	%al, 3151(%rsp)
+	movb	559(%r8), %al
+	movb	%al, 2159(%rsp)
+	movb	560(%rsi), %al
+	movb	%al, 5136(%rsp)
+	movb	560(%rdx), %al
+	movb	%al, 4144(%rsp)
+	movb	560(%rcx), %al
+	movb	%al, 3152(%rsp)
+	movb	560(%r8), %al
+	movb	%al, 2160(%rsp)
+	movb	561(%rsi), %al
+	movb	%al, 5137(%rsp)
+	movb	561(%rdx), %al
+	movb	%al, 4145(%rsp)
+	movb	561(%rcx), %al
+	movb	%al, 3153(%rsp)
+	movb	561(%r8), %al
+	movb	%al, 2161(%rsp)
+	movb	562(%rsi), %al
+	movb	%al, 5138(%rsp)
+	movb	562(%rdx), %al
+	movb	%al, 4146(%rsp)
+	movb	562(%rcx), %al
+	movb	%al, 3154(%rsp)
+	movb	562(%r8), %al
+	movb	%al, 2162(%rsp)
+	movb	563(%rsi), %al
+	movb	%al, 5139(%rsp)
+	movb	563(%rdx), %al
+	movb	%al, 4147(%rsp)
+	movb	563(%rcx), %al
+	movb	%al, 3155(%rsp)
+	movb	563(%r8), %al
+	movb	%al, 2163(%rsp)
+	movb	564(%rsi), %al
+	movb	%al, 5140(%rsp)
+	movb	564(%rdx), %al
+	movb	%al, 4148(%rsp)
+	movb	564(%rcx), %al
+	movb	%al, 3156(%rsp)
+	movb	564(%r8), %al
+	movb	%al, 2164(%rsp)
+	movb	565(%rsi), %al
+	movb	%al, 5141(%rsp)
+	movb	565(%rdx), %al
+	movb	%al, 4149(%rsp)
+	movb	565(%rcx), %al
+	movb	%al, 3157(%rsp)
+	movb	565(%r8), %al
+	movb	%al, 2165(%rsp)
+	movb	566(%rsi), %al
+	movb	%al, 5142(%rsp)
+	movb	566(%rdx), %al
+	movb	%al, 4150(%rsp)
+	movb	566(%rcx), %al
+	movb	%al, 3158(%rsp)
+	movb	566(%r8), %al
+	movb	%al, 2166(%rsp)
+	movb	567(%rsi), %al
+	movb	%al, 5143(%rsp)
+	movb	567(%rdx), %al
+	movb	%al, 4151(%rsp)
+	movb	567(%rcx), %al
+	movb	%al, 3159(%rsp)
+	movb	567(%r8), %al
+	movb	%al, 2167(%rsp)
+	movb	568(%rsi), %al
+	movb	%al, 5144(%rsp)
+	movb	568(%rdx), %al
+	movb	%al, 4152(%rsp)
+	movb	568(%rcx), %al
+	movb	%al, 3160(%rsp)
+	movb	568(%r8), %al
+	movb	%al, 2168(%rsp)
+	movb	569(%rsi), %al
+	movb	%al, 5145(%rsp)
+	movb	569(%rdx), %al
+	movb	%al, 4153(%rsp)
+	movb	569(%rcx), %al
+	movb	%al, 3161(%rsp)
+	movb	569(%r8), %al
+	movb	%al, 2169(%rsp)
+	movb	570(%rsi), %al
+	movb	%al, 5146(%rsp)
+	movb	570(%rdx), %al
+	movb	%al, 4154(%rsp)
+	movb	570(%rcx), %al
+	movb	%al, 3162(%rsp)
+	movb	570(%r8), %al
+	movb	%al, 2170(%rsp)
+	movb	571(%rsi), %al
+	movb	%al, 5147(%rsp)
+	movb	571(%rdx), %al
+	movb	%al, 4155(%rsp)
+	movb	571(%rcx), %al
+	movb	%al, 3163(%rsp)
+	movb	571(%r8), %al
+	movb	%al, 2171(%rsp)
+	movb	572(%rsi), %al
+	movb	%al, 5148(%rsp)
+	movb	572(%rdx), %al
+	movb	%al, 4156(%rsp)
+	movb	572(%rcx), %al
+	movb	%al, 3164(%rsp)
+	movb	572(%r8), %al
+	movb	%al, 2172(%rsp)
+	movb	573(%rsi), %al
+	movb	%al, 5149(%rsp)
+	movb	573(%rdx), %al
+	movb	%al, 4157(%rsp)
+	movb	573(%rcx), %al
+	movb	%al, 3165(%rsp)
+	movb	573(%r8), %al
+	movb	%al, 2173(%rsp)
+	movb	574(%rsi), %al
+	movb	%al, 5150(%rsp)
+	movb	574(%rdx), %al
+	movb	%al, 4158(%rsp)
+	movb	574(%rcx), %al
+	movb	%al, 3166(%rsp)
+	movb	574(%r8), %al
+	movb	%al, 2174(%rsp)
+	movb	575(%rsi), %al
+	movb	%al, 5151(%rsp)
+	movb	575(%rdx), %al
+	movb	%al, 4159(%rsp)
+	movb	575(%rcx), %al
+	movb	%al, 3167(%rsp)
+	movb	575(%r8), %al
+	movb	%al, 2175(%rsp)
+	movb	576(%rsi), %al
+	movb	%al, 5152(%rsp)
+	movb	576(%rdx), %al
+	movb	%al, 4160(%rsp)
+	movb	576(%rcx), %al
+	movb	%al, 3168(%rsp)
+	movb	576(%r8), %al
+	movb	%al, 2176(%rsp)
+	movb	577(%rsi), %al
+	movb	%al, 5153(%rsp)
+	movb	577(%rdx), %al
+	movb	%al, 4161(%rsp)
+	movb	577(%rcx), %al
+	movb	%al, 3169(%rsp)
+	movb	577(%r8), %al
+	movb	%al, 2177(%rsp)
+	movb	578(%rsi), %al
+	movb	%al, 5154(%rsp)
+	movb	578(%rdx), %al
+	movb	%al, 4162(%rsp)
+	movb	578(%rcx), %al
+	movb	%al, 3170(%rsp)
+	movb	578(%r8), %al
+	movb	%al, 2178(%rsp)
+	movb	579(%rsi), %al
+	movb	%al, 5155(%rsp)
+	movb	579(%rdx), %al
+	movb	%al, 4163(%rsp)
+	movb	579(%rcx), %al
+	movb	%al, 3171(%rsp)
+	movb	579(%r8), %al
+	movb	%al, 2179(%rsp)
+	movb	580(%rsi), %al
+	movb	%al, 5156(%rsp)
+	movb	580(%rdx), %al
+	movb	%al, 4164(%rsp)
+	movb	580(%rcx), %al
+	movb	%al, 3172(%rsp)
+	movb	580(%r8), %al
+	movb	%al, 2180(%rsp)
+	movb	581(%rsi), %al
+	movb	%al, 5157(%rsp)
+	movb	581(%rdx), %al
+	movb	%al, 4165(%rsp)
+	movb	581(%rcx), %al
+	movb	%al, 3173(%rsp)
+	movb	581(%r8), %al
+	movb	%al, 2181(%rsp)
+	movb	582(%rsi), %al
+	movb	%al, 5158(%rsp)
+	movb	582(%rdx), %al
+	movb	%al, 4166(%rsp)
+	movb	582(%rcx), %al
+	movb	%al, 3174(%rsp)
+	movb	582(%r8), %al
+	movb	%al, 2182(%rsp)
+	movb	583(%rsi), %al
+	movb	%al, 5159(%rsp)
+	movb	583(%rdx), %al
+	movb	%al, 4167(%rsp)
+	movb	583(%rcx), %al
+	movb	%al, 3175(%rsp)
+	movb	583(%r8), %al
+	movb	%al, 2183(%rsp)
+	movb	584(%rsi), %al
+	movb	%al, 5160(%rsp)
+	movb	584(%rdx), %al
+	movb	%al, 4168(%rsp)
+	movb	584(%rcx), %al
+	movb	%al, 3176(%rsp)
+	movb	584(%r8), %al
+	movb	%al, 2184(%rsp)
+	movb	585(%rsi), %al
+	movb	%al, 5161(%rsp)
+	movb	585(%rdx), %al
+	movb	%al, 4169(%rsp)
+	movb	585(%rcx), %al
+	movb	%al, 3177(%rsp)
+	movb	585(%r8), %al
+	movb	%al, 2185(%rsp)
+	movb	586(%rsi), %al
+	movb	%al, 5162(%rsp)
+	movb	586(%rdx), %al
+	movb	%al, 4170(%rsp)
+	movb	586(%rcx), %al
+	movb	%al, 3178(%rsp)
+	movb	586(%r8), %al
+	movb	%al, 2186(%rsp)
+	movb	587(%rsi), %al
+	movb	%al, 5163(%rsp)
+	movb	587(%rdx), %al
+	movb	%al, 4171(%rsp)
+	movb	587(%rcx), %al
+	movb	%al, 3179(%rsp)
+	movb	587(%r8), %al
+	movb	%al, 2187(%rsp)
+	movb	588(%rsi), %al
+	movb	%al, 5164(%rsp)
+	movb	588(%rdx), %al
+	movb	%al, 4172(%rsp)
+	movb	588(%rcx), %al
+	movb	%al, 3180(%rsp)
+	movb	588(%r8), %al
+	movb	%al, 2188(%rsp)
+	movb	589(%rsi), %al
+	movb	%al, 5165(%rsp)
+	movb	589(%rdx), %al
+	movb	%al, 4173(%rsp)
+	movb	589(%rcx), %al
+	movb	%al, 3181(%rsp)
+	movb	589(%r8), %al
+	movb	%al, 2189(%rsp)
+	movb	590(%rsi), %al
+	movb	%al, 5166(%rsp)
+	movb	590(%rdx), %al
+	movb	%al, 4174(%rsp)
+	movb	590(%rcx), %al
+	movb	%al, 3182(%rsp)
+	movb	590(%r8), %al
+	movb	%al, 2190(%rsp)
+	movb	591(%rsi), %al
+	movb	%al, 5167(%rsp)
+	movb	591(%rdx), %al
+	movb	%al, 4175(%rsp)
+	movb	591(%rcx), %al
+	movb	%al, 3183(%rsp)
+	movb	591(%r8), %al
+	movb	%al, 2191(%rsp)
+	movb	592(%rsi), %al
+	movb	%al, 5168(%rsp)
+	movb	592(%rdx), %al
+	movb	%al, 4176(%rsp)
+	movb	592(%rcx), %al
+	movb	%al, 3184(%rsp)
+	movb	592(%r8), %al
+	movb	%al, 2192(%rsp)
+	movb	593(%rsi), %al
+	movb	%al, 5169(%rsp)
+	movb	593(%rdx), %al
+	movb	%al, 4177(%rsp)
+	movb	593(%rcx), %al
+	movb	%al, 3185(%rsp)
+	movb	593(%r8), %al
+	movb	%al, 2193(%rsp)
+	movb	594(%rsi), %al
+	movb	%al, 5170(%rsp)
+	movb	594(%rdx), %al
+	movb	%al, 4178(%rsp)
+	movb	594(%rcx), %al
+	movb	%al, 3186(%rsp)
+	movb	594(%r8), %al
+	movb	%al, 2194(%rsp)
+	movb	595(%rsi), %al
+	movb	%al, 5171(%rsp)
+	movb	595(%rdx), %al
+	movb	%al, 4179(%rsp)
+	movb	595(%rcx), %al
+	movb	%al, 3187(%rsp)
+	movb	595(%r8), %al
+	movb	%al, 2195(%rsp)
+	movb	596(%rsi), %al
+	movb	%al, 5172(%rsp)
+	movb	596(%rdx), %al
+	movb	%al, 4180(%rsp)
+	movb	596(%rcx), %al
+	movb	%al, 3188(%rsp)
+	movb	596(%r8), %al
+	movb	%al, 2196(%rsp)
+	movb	597(%rsi), %al
+	movb	%al, 5173(%rsp)
+	movb	597(%rdx), %al
+	movb	%al, 4181(%rsp)
+	movb	597(%rcx), %al
+	movb	%al, 3189(%rsp)
+	movb	597(%r8), %al
+	movb	%al, 2197(%rsp)
+	movb	598(%rsi), %al
+	movb	%al, 5174(%rsp)
+	movb	598(%rdx), %al
+	movb	%al, 4182(%rsp)
+	movb	598(%rcx), %al
+	movb	%al, 3190(%rsp)
+	movb	598(%r8), %al
+	movb	%al, 2198(%rsp)
+	movb	599(%rsi), %al
+	movb	%al, 5175(%rsp)
+	movb	599(%rdx), %al
+	movb	%al, 4183(%rsp)
+	movb	599(%rcx), %al
+	movb	%al, 3191(%rsp)
+	movb	599(%r8), %al
+	movb	%al, 2199(%rsp)
+	movb	600(%rsi), %al
+	movb	%al, 5176(%rsp)
+	movb	600(%rdx), %al
+	movb	%al, 4184(%rsp)
+	movb	600(%rcx), %al
+	movb	%al, 3192(%rsp)
+	movb	600(%r8), %al
+	movb	%al, 2200(%rsp)
+	movb	601(%rsi), %al
+	movb	%al, 5177(%rsp)
+	movb	601(%rdx), %al
+	movb	%al, 4185(%rsp)
+	movb	601(%rcx), %al
+	movb	%al, 3193(%rsp)
+	movb	601(%r8), %al
+	movb	%al, 2201(%rsp)
+	movb	602(%rsi), %al
+	movb	%al, 5178(%rsp)
+	movb	602(%rdx), %al
+	movb	%al, 4186(%rsp)
+	movb	602(%rcx), %al
+	movb	%al, 3194(%rsp)
+	movb	602(%r8), %al
+	movb	%al, 2202(%rsp)
+	movb	603(%rsi), %al
+	movb	%al, 5179(%rsp)
+	movb	603(%rdx), %al
+	movb	%al, 4187(%rsp)
+	movb	603(%rcx), %al
+	movb	%al, 3195(%rsp)
+	movb	603(%r8), %al
+	movb	%al, 2203(%rsp)
+	movb	604(%rsi), %al
+	movb	%al, 5180(%rsp)
+	movb	604(%rdx), %al
+	movb	%al, 4188(%rsp)
+	movb	604(%rcx), %al
+	movb	%al, 3196(%rsp)
+	movb	604(%r8), %al
+	movb	%al, 2204(%rsp)
+	movb	605(%rsi), %al
+	movb	%al, 5181(%rsp)
+	movb	605(%rdx), %al
+	movb	%al, 4189(%rsp)
+	movb	605(%rcx), %al
+	movb	%al, 3197(%rsp)
+	movb	605(%r8), %al
+	movb	%al, 2205(%rsp)
+	movb	606(%rsi), %al
+	movb	%al, 5182(%rsp)
+	movb	606(%rdx), %al
+	movb	%al, 4190(%rsp)
+	movb	606(%rcx), %al
+	movb	%al, 3198(%rsp)
+	movb	606(%r8), %al
+	movb	%al, 2206(%rsp)
+	movb	607(%rsi), %al
+	movb	%al, 5183(%rsp)
+	movb	607(%rdx), %al
+	movb	%al, 4191(%rsp)
+	movb	607(%rcx), %al
+	movb	%al, 3199(%rsp)
+	movb	607(%r8), %al
+	movb	%al, 2207(%rsp)
+	movb	608(%rsi), %al
+	movb	%al, 5184(%rsp)
+	movb	608(%rdx), %al
+	movb	%al, 4192(%rsp)
+	movb	608(%rcx), %al
+	movb	%al, 3200(%rsp)
+	movb	608(%r8), %al
+	movb	%al, 2208(%rsp)
+	movb	609(%rsi), %al
+	movb	%al, 5185(%rsp)
+	movb	609(%rdx), %al
+	movb	%al, 4193(%rsp)
+	movb	609(%rcx), %al
+	movb	%al, 3201(%rsp)
+	movb	609(%r8), %al
+	movb	%al, 2209(%rsp)
+	movb	610(%rsi), %al
+	movb	%al, 5186(%rsp)
+	movb	610(%rdx), %al
+	movb	%al, 4194(%rsp)
+	movb	610(%rcx), %al
+	movb	%al, 3202(%rsp)
+	movb	610(%r8), %al
+	movb	%al, 2210(%rsp)
+	movb	611(%rsi), %al
+	movb	%al, 5187(%rsp)
+	movb	611(%rdx), %al
+	movb	%al, 4195(%rsp)
+	movb	611(%rcx), %al
+	movb	%al, 3203(%rsp)
+	movb	611(%r8), %al
+	movb	%al, 2211(%rsp)
+	movb	612(%rsi), %al
+	movb	%al, 5188(%rsp)
+	movb	612(%rdx), %al
+	movb	%al, 4196(%rsp)
+	movb	612(%rcx), %al
+	movb	%al, 3204(%rsp)
+	movb	612(%r8), %al
+	movb	%al, 2212(%rsp)
+	movb	613(%rsi), %al
+	movb	%al, 5189(%rsp)
+	movb	613(%rdx), %al
+	movb	%al, 4197(%rsp)
+	movb	613(%rcx), %al
+	movb	%al, 3205(%rsp)
+	movb	613(%r8), %al
+	movb	%al, 2213(%rsp)
+	movb	614(%rsi), %al
+	movb	%al, 5190(%rsp)
+	movb	614(%rdx), %al
+	movb	%al, 4198(%rsp)
+	movb	614(%rcx), %al
+	movb	%al, 3206(%rsp)
+	movb	614(%r8), %al
+	movb	%al, 2214(%rsp)
+	movb	615(%rsi), %al
+	movb	%al, 5191(%rsp)
+	movb	615(%rdx), %al
+	movb	%al, 4199(%rsp)
+	movb	615(%rcx), %al
+	movb	%al, 3207(%rsp)
+	movb	615(%r8), %al
+	movb	%al, 2215(%rsp)
+	movb	616(%rsi), %al
+	movb	%al, 5192(%rsp)
+	movb	616(%rdx), %al
+	movb	%al, 4200(%rsp)
+	movb	616(%rcx), %al
+	movb	%al, 3208(%rsp)
+	movb	616(%r8), %al
+	movb	%al, 2216(%rsp)
+	movb	617(%rsi), %al
+	movb	%al, 5193(%rsp)
+	movb	617(%rdx), %al
+	movb	%al, 4201(%rsp)
+	movb	617(%rcx), %al
+	movb	%al, 3209(%rsp)
+	movb	617(%r8), %al
+	movb	%al, 2217(%rsp)
+	movb	618(%rsi), %al
+	movb	%al, 5194(%rsp)
+	movb	618(%rdx), %al
+	movb	%al, 4202(%rsp)
+	movb	618(%rcx), %al
+	movb	%al, 3210(%rsp)
+	movb	618(%r8), %al
+	movb	%al, 2218(%rsp)
+	movb	619(%rsi), %al
+	movb	%al, 5195(%rsp)
+	movb	619(%rdx), %al
+	movb	%al, 4203(%rsp)
+	movb	619(%rcx), %al
+	movb	%al, 3211(%rsp)
+	movb	619(%r8), %al
+	movb	%al, 2219(%rsp)
+	movb	620(%rsi), %al
+	movb	%al, 5196(%rsp)
+	movb	620(%rdx), %al
+	movb	%al, 4204(%rsp)
+	movb	620(%rcx), %al
+	movb	%al, 3212(%rsp)
+	movb	620(%r8), %al
+	movb	%al, 2220(%rsp)
+	movb	621(%rsi), %al
+	movb	%al, 5197(%rsp)
+	movb	621(%rdx), %al
+	movb	%al, 4205(%rsp)
+	movb	621(%rcx), %al
+	movb	%al, 3213(%rsp)
+	movb	621(%r8), %al
+	movb	%al, 2221(%rsp)
+	movb	622(%rsi), %al
+	movb	%al, 5198(%rsp)
+	movb	622(%rdx), %al
+	movb	%al, 4206(%rsp)
+	movb	622(%rcx), %al
+	movb	%al, 3214(%rsp)
+	movb	622(%r8), %al
+	movb	%al, 2222(%rsp)
+	movb	623(%rsi), %al
+	movb	%al, 5199(%rsp)
+	movb	623(%rdx), %al
+	movb	%al, 4207(%rsp)
+	movb	623(%rcx), %al
+	movb	%al, 3215(%rsp)
+	movb	623(%r8), %al
+	movb	%al, 2223(%rsp)
+	movb	624(%rsi), %al
+	movb	%al, 5200(%rsp)
+	movb	624(%rdx), %al
+	movb	%al, 4208(%rsp)
+	movb	624(%rcx), %al
+	movb	%al, 3216(%rsp)
+	movb	624(%r8), %al
+	movb	%al, 2224(%rsp)
+	movb	625(%rsi), %al
+	movb	%al, 5201(%rsp)
+	movb	625(%rdx), %al
+	movb	%al, 4209(%rsp)
+	movb	625(%rcx), %al
+	movb	%al, 3217(%rsp)
+	movb	625(%r8), %al
+	movb	%al, 2225(%rsp)
+	movb	626(%rsi), %al
+	movb	%al, 5202(%rsp)
+	movb	626(%rdx), %al
+	movb	%al, 4210(%rsp)
+	movb	626(%rcx), %al
+	movb	%al, 3218(%rsp)
+	movb	626(%r8), %al
+	movb	%al, 2226(%rsp)
+	movb	627(%rsi), %al
+	movb	%al, 5203(%rsp)
+	movb	627(%rdx), %al
+	movb	%al, 4211(%rsp)
+	movb	627(%rcx), %al
+	movb	%al, 3219(%rsp)
+	movb	627(%r8), %al
+	movb	%al, 2227(%rsp)
+	movb	628(%rsi), %al
+	movb	%al, 5204(%rsp)
+	movb	628(%rdx), %al
+	movb	%al, 4212(%rsp)
+	movb	628(%rcx), %al
+	movb	%al, 3220(%rsp)
+	movb	628(%r8), %al
+	movb	%al, 2228(%rsp)
+	movb	629(%rsi), %al
+	movb	%al, 5205(%rsp)
+	movb	629(%rdx), %al
+	movb	%al, 4213(%rsp)
+	movb	629(%rcx), %al
+	movb	%al, 3221(%rsp)
+	movb	629(%r8), %al
+	movb	%al, 2229(%rsp)
+	movb	630(%rsi), %al
+	movb	%al, 5206(%rsp)
+	movb	630(%rdx), %al
+	movb	%al, 4214(%rsp)
+	movb	630(%rcx), %al
+	movb	%al, 3222(%rsp)
+	movb	630(%r8), %al
+	movb	%al, 2230(%rsp)
+	movb	631(%rsi), %al
+	movb	%al, 5207(%rsp)
+	movb	631(%rdx), %al
+	movb	%al, 4215(%rsp)
+	movb	631(%rcx), %al
+	movb	%al, 3223(%rsp)
+	movb	631(%r8), %al
+	movb	%al, 2231(%rsp)
+	movb	632(%rsi), %al
+	movb	%al, 5208(%rsp)
+	movb	632(%rdx), %al
+	movb	%al, 4216(%rsp)
+	movb	632(%rcx), %al
+	movb	%al, 3224(%rsp)
+	movb	632(%r8), %al
+	movb	%al, 2232(%rsp)
+	movb	633(%rsi), %al
+	movb	%al, 5209(%rsp)
+	movb	633(%rdx), %al
+	movb	%al, 4217(%rsp)
+	movb	633(%rcx), %al
+	movb	%al, 3225(%rsp)
+	movb	633(%r8), %al
+	movb	%al, 2233(%rsp)
+	movb	634(%rsi), %al
+	movb	%al, 5210(%rsp)
+	movb	634(%rdx), %al
+	movb	%al, 4218(%rsp)
+	movb	634(%rcx), %al
+	movb	%al, 3226(%rsp)
+	movb	634(%r8), %al
+	movb	%al, 2234(%rsp)
+	movb	635(%rsi), %al
+	movb	%al, 5211(%rsp)
+	movb	635(%rdx), %al
+	movb	%al, 4219(%rsp)
+	movb	635(%rcx), %al
+	movb	%al, 3227(%rsp)
+	movb	635(%r8), %al
+	movb	%al, 2235(%rsp)
+	movb	636(%rsi), %al
+	movb	%al, 5212(%rsp)
+	movb	636(%rdx), %al
+	movb	%al, 4220(%rsp)
+	movb	636(%rcx), %al
+	movb	%al, 3228(%rsp)
+	movb	636(%r8), %al
+	movb	%al, 2236(%rsp)
+	movb	637(%rsi), %al
+	movb	%al, 5213(%rsp)
+	movb	637(%rdx), %al
+	movb	%al, 4221(%rsp)
+	movb	637(%rcx), %al
+	movb	%al, 3229(%rsp)
+	movb	637(%r8), %al
+	movb	%al, 2237(%rsp)
+	movb	638(%rsi), %al
+	movb	%al, 5214(%rsp)
+	movb	638(%rdx), %al
+	movb	%al, 4222(%rsp)
+	movb	638(%rcx), %al
+	movb	%al, 3230(%rsp)
+	movb	638(%r8), %al
+	movb	%al, 2238(%rsp)
+	movb	639(%rsi), %al
+	movb	%al, 5215(%rsp)
+	movb	639(%rdx), %al
+	movb	%al, 4223(%rsp)
+	movb	639(%rcx), %al
+	movb	%al, 3231(%rsp)
+	movb	639(%r8), %al
+	movb	%al, 2239(%rsp)
+	movb	640(%rsi), %al
+	movb	%al, 5216(%rsp)
+	movb	640(%rdx), %al
+	movb	%al, 4224(%rsp)
+	movb	640(%rcx), %al
+	movb	%al, 3232(%rsp)
+	movb	640(%r8), %al
+	movb	%al, 2240(%rsp)
+	movb	641(%rsi), %al
+	movb	%al, 5217(%rsp)
+	movb	641(%rdx), %al
+	movb	%al, 4225(%rsp)
+	movb	641(%rcx), %al
+	movb	%al, 3233(%rsp)
+	movb	641(%r8), %al
+	movb	%al, 2241(%rsp)
+	movb	642(%rsi), %al
+	movb	%al, 5218(%rsp)
+	movb	642(%rdx), %al
+	movb	%al, 4226(%rsp)
+	movb	642(%rcx), %al
+	movb	%al, 3234(%rsp)
+	movb	642(%r8), %al
+	movb	%al, 2242(%rsp)
+	movb	643(%rsi), %al
+	movb	%al, 5219(%rsp)
+	movb	643(%rdx), %al
+	movb	%al, 4227(%rsp)
+	movb	643(%rcx), %al
+	movb	%al, 3235(%rsp)
+	movb	643(%r8), %al
+	movb	%al, 2243(%rsp)
+	movb	644(%rsi), %al
+	movb	%al, 5220(%rsp)
+	movb	644(%rdx), %al
+	movb	%al, 4228(%rsp)
+	movb	644(%rcx), %al
+	movb	%al, 3236(%rsp)
+	movb	644(%r8), %al
+	movb	%al, 2244(%rsp)
+	movb	645(%rsi), %al
+	movb	%al, 5221(%rsp)
+	movb	645(%rdx), %al
+	movb	%al, 4229(%rsp)
+	movb	645(%rcx), %al
+	movb	%al, 3237(%rsp)
+	movb	645(%r8), %al
+	movb	%al, 2245(%rsp)
+	movb	646(%rsi), %al
+	movb	%al, 5222(%rsp)
+	movb	646(%rdx), %al
+	movb	%al, 4230(%rsp)
+	movb	646(%rcx), %al
+	movb	%al, 3238(%rsp)
+	movb	646(%r8), %al
+	movb	%al, 2246(%rsp)
+	movb	647(%rsi), %al
+	movb	%al, 5223(%rsp)
+	movb	647(%rdx), %al
+	movb	%al, 4231(%rsp)
+	movb	647(%rcx), %al
+	movb	%al, 3239(%rsp)
+	movb	647(%r8), %al
+	movb	%al, 2247(%rsp)
+	movb	648(%rsi), %al
+	movb	%al, 5224(%rsp)
+	movb	648(%rdx), %al
+	movb	%al, 4232(%rsp)
+	movb	648(%rcx), %al
+	movb	%al, 3240(%rsp)
+	movb	648(%r8), %al
+	movb	%al, 2248(%rsp)
+	movb	649(%rsi), %al
+	movb	%al, 5225(%rsp)
+	movb	649(%rdx), %al
+	movb	%al, 4233(%rsp)
+	movb	649(%rcx), %al
+	movb	%al, 3241(%rsp)
+	movb	649(%r8), %al
+	movb	%al, 2249(%rsp)
+	movb	650(%rsi), %al
+	movb	%al, 5226(%rsp)
+	movb	650(%rdx), %al
+	movb	%al, 4234(%rsp)
+	movb	650(%rcx), %al
+	movb	%al, 3242(%rsp)
+	movb	650(%r8), %al
+	movb	%al, 2250(%rsp)
+	movb	651(%rsi), %al
+	movb	%al, 5227(%rsp)
+	movb	651(%rdx), %al
+	movb	%al, 4235(%rsp)
+	movb	651(%rcx), %al
+	movb	%al, 3243(%rsp)
+	movb	651(%r8), %al
+	movb	%al, 2251(%rsp)
+	movb	652(%rsi), %al
+	movb	%al, 5228(%rsp)
+	movb	652(%rdx), %al
+	movb	%al, 4236(%rsp)
+	movb	652(%rcx), %al
+	movb	%al, 3244(%rsp)
+	movb	652(%r8), %al
+	movb	%al, 2252(%rsp)
+	movb	653(%rsi), %al
+	movb	%al, 5229(%rsp)
+	movb	653(%rdx), %al
+	movb	%al, 4237(%rsp)
+	movb	653(%rcx), %al
+	movb	%al, 3245(%rsp)
+	movb	653(%r8), %al
+	movb	%al, 2253(%rsp)
+	movb	654(%rsi), %al
+	movb	%al, 5230(%rsp)
+	movb	654(%rdx), %al
+	movb	%al, 4238(%rsp)
+	movb	654(%rcx), %al
+	movb	%al, 3246(%rsp)
+	movb	654(%r8), %al
+	movb	%al, 2254(%rsp)
+	movb	655(%rsi), %al
+	movb	%al, 5231(%rsp)
+	movb	655(%rdx), %al
+	movb	%al, 4239(%rsp)
+	movb	655(%rcx), %al
+	movb	%al, 3247(%rsp)
+	movb	655(%r8), %al
+	movb	%al, 2255(%rsp)
+	movb	656(%rsi), %al
+	movb	%al, 5232(%rsp)
+	movb	656(%rdx), %al
+	movb	%al, 4240(%rsp)
+	movb	656(%rcx), %al
+	movb	%al, 3248(%rsp)
+	movb	656(%r8), %al
+	movb	%al, 2256(%rsp)
+	movb	657(%rsi), %al
+	movb	%al, 5233(%rsp)
+	movb	657(%rdx), %al
+	movb	%al, 4241(%rsp)
+	movb	657(%rcx), %al
+	movb	%al, 3249(%rsp)
+	movb	657(%r8), %al
+	movb	%al, 2257(%rsp)
+	movb	658(%rsi), %al
+	movb	%al, 5234(%rsp)
+	movb	658(%rdx), %al
+	movb	%al, 4242(%rsp)
+	movb	658(%rcx), %al
+	movb	%al, 3250(%rsp)
+	movb	658(%r8), %al
+	movb	%al, 2258(%rsp)
+	movb	659(%rsi), %al
+	movb	%al, 5235(%rsp)
+	movb	659(%rdx), %al
+	movb	%al, 4243(%rsp)
+	movb	659(%rcx), %al
+	movb	%al, 3251(%rsp)
+	movb	659(%r8), %al
+	movb	%al, 2259(%rsp)
+	movb	660(%rsi), %al
+	movb	%al, 5236(%rsp)
+	movb	660(%rdx), %al
+	movb	%al, 4244(%rsp)
+	movb	660(%rcx), %al
+	movb	%al, 3252(%rsp)
+	movb	660(%r8), %al
+	movb	%al, 2260(%rsp)
+	movb	661(%rsi), %al
+	movb	%al, 5237(%rsp)
+	movb	661(%rdx), %al
+	movb	%al, 4245(%rsp)
+	movb	661(%rcx), %al
+	movb	%al, 3253(%rsp)
+	movb	661(%r8), %al
+	movb	%al, 2261(%rsp)
+	movb	662(%rsi), %al
+	movb	%al, 5238(%rsp)
+	movb	662(%rdx), %al
+	movb	%al, 4246(%rsp)
+	movb	662(%rcx), %al
+	movb	%al, 3254(%rsp)
+	movb	662(%r8), %al
+	movb	%al, 2262(%rsp)
+	movb	663(%rsi), %al
+	movb	%al, 5239(%rsp)
+	movb	663(%rdx), %al
+	movb	%al, 4247(%rsp)
+	movb	663(%rcx), %al
+	movb	%al, 3255(%rsp)
+	movb	663(%r8), %al
+	movb	%al, 2263(%rsp)
+	movb	664(%rsi), %al
+	movb	%al, 5240(%rsp)
+	movb	664(%rdx), %al
+	movb	%al, 4248(%rsp)
+	movb	664(%rcx), %al
+	movb	%al, 3256(%rsp)
+	movb	664(%r8), %al
+	movb	%al, 2264(%rsp)
+	movb	665(%rsi), %al
+	movb	%al, 5241(%rsp)
+	movb	665(%rdx), %al
+	movb	%al, 4249(%rsp)
+	movb	665(%rcx), %al
+	movb	%al, 3257(%rsp)
+	movb	665(%r8), %al
+	movb	%al, 2265(%rsp)
+	movb	666(%rsi), %al
+	movb	%al, 5242(%rsp)
+	movb	666(%rdx), %al
+	movb	%al, 4250(%rsp)
+	movb	666(%rcx), %al
+	movb	%al, 3258(%rsp)
+	movb	666(%r8), %al
+	movb	%al, 2266(%rsp)
+	movb	667(%rsi), %al
+	movb	%al, 5243(%rsp)
+	movb	667(%rdx), %al
+	movb	%al, 4251(%rsp)
+	movb	667(%rcx), %al
+	movb	%al, 3259(%rsp)
+	movb	667(%r8), %al
+	movb	%al, 2267(%rsp)
+	movb	668(%rsi), %al
+	movb	%al, 5244(%rsp)
+	movb	668(%rdx), %al
+	movb	%al, 4252(%rsp)
+	movb	668(%rcx), %al
+	movb	%al, 3260(%rsp)
+	movb	668(%r8), %al
+	movb	%al, 2268(%rsp)
+	movb	669(%rsi), %al
+	movb	%al, 5245(%rsp)
+	movb	669(%rdx), %al
+	movb	%al, 4253(%rsp)
+	movb	669(%rcx), %al
+	movb	%al, 3261(%rsp)
+	movb	669(%r8), %al
+	movb	%al, 2269(%rsp)
+	movb	670(%rsi), %al
+	movb	%al, 5246(%rsp)
+	movb	670(%rdx), %al
+	movb	%al, 4254(%rsp)
+	movb	670(%rcx), %al
+	movb	%al, 3262(%rsp)
+	movb	670(%r8), %al
+	movb	%al, 2270(%rsp)
+	movb	671(%rsi), %al
+	movb	%al, 5247(%rsp)
+	movb	671(%rdx), %al
+	movb	%al, 4255(%rsp)
+	movb	671(%rcx), %al
+	movb	%al, 3263(%rsp)
+	movb	671(%r8), %al
+	movb	%al, 2271(%rsp)
+	movb	672(%rsi), %al
+	movb	%al, 5248(%rsp)
+	movb	672(%rdx), %al
+	movb	%al, 4256(%rsp)
+	movb	672(%rcx), %al
+	movb	%al, 3264(%rsp)
+	movb	672(%r8), %al
+	movb	%al, 2272(%rsp)
+	movb	673(%rsi), %al
+	movb	%al, 5249(%rsp)
+	movb	673(%rdx), %al
+	movb	%al, 4257(%rsp)
+	movb	673(%rcx), %al
+	movb	%al, 3265(%rsp)
+	movb	673(%r8), %al
+	movb	%al, 2273(%rsp)
+	movb	674(%rsi), %al
+	movb	%al, 5250(%rsp)
+	movb	674(%rdx), %al
+	movb	%al, 4258(%rsp)
+	movb	674(%rcx), %al
+	movb	%al, 3266(%rsp)
+	movb	674(%r8), %al
+	movb	%al, 2274(%rsp)
+	movb	675(%rsi), %al
+	movb	%al, 5251(%rsp)
+	movb	675(%rdx), %al
+	movb	%al, 4259(%rsp)
+	movb	675(%rcx), %al
+	movb	%al, 3267(%rsp)
+	movb	675(%r8), %al
+	movb	%al, 2275(%rsp)
+	movb	676(%rsi), %al
+	movb	%al, 5252(%rsp)
+	movb	676(%rdx), %al
+	movb	%al, 4260(%rsp)
+	movb	676(%rcx), %al
+	movb	%al, 3268(%rsp)
+	movb	676(%r8), %al
+	movb	%al, 2276(%rsp)
+	movb	677(%rsi), %al
+	movb	%al, 5253(%rsp)
+	movb	677(%rdx), %al
+	movb	%al, 4261(%rsp)
+	movb	677(%rcx), %al
+	movb	%al, 3269(%rsp)
+	movb	677(%r8), %al
+	movb	%al, 2277(%rsp)
+	movb	678(%rsi), %al
+	movb	%al, 5254(%rsp)
+	movb	678(%rdx), %al
+	movb	%al, 4262(%rsp)
+	movb	678(%rcx), %al
+	movb	%al, 3270(%rsp)
+	movb	678(%r8), %al
+	movb	%al, 2278(%rsp)
+	movb	679(%rsi), %al
+	movb	%al, 5255(%rsp)
+	movb	679(%rdx), %al
+	movb	%al, 4263(%rsp)
+	movb	679(%rcx), %al
+	movb	%al, 3271(%rsp)
+	movb	679(%r8), %al
+	movb	%al, 2279(%rsp)
+	movb	680(%rsi), %al
+	movb	%al, 5256(%rsp)
+	movb	680(%rdx), %al
+	movb	%al, 4264(%rsp)
+	movb	680(%rcx), %al
+	movb	%al, 3272(%rsp)
+	movb	680(%r8), %al
+	movb	%al, 2280(%rsp)
+	movb	681(%rsi), %al
+	movb	%al, 5257(%rsp)
+	movb	681(%rdx), %al
+	movb	%al, 4265(%rsp)
+	movb	681(%rcx), %al
+	movb	%al, 3273(%rsp)
+	movb	681(%r8), %al
+	movb	%al, 2281(%rsp)
+	movb	682(%rsi), %al
+	movb	%al, 5258(%rsp)
+	movb	682(%rdx), %al
+	movb	%al, 4266(%rsp)
+	movb	682(%rcx), %al
+	movb	%al, 3274(%rsp)
+	movb	682(%r8), %al
+	movb	%al, 2282(%rsp)
+	movb	683(%rsi), %al
+	movb	%al, 5259(%rsp)
+	movb	683(%rdx), %al
+	movb	%al, 4267(%rsp)
+	movb	683(%rcx), %al
+	movb	%al, 3275(%rsp)
+	movb	683(%r8), %al
+	movb	%al, 2283(%rsp)
+	movb	684(%rsi), %al
+	movb	%al, 5260(%rsp)
+	movb	684(%rdx), %al
+	movb	%al, 4268(%rsp)
+	movb	684(%rcx), %al
+	movb	%al, 3276(%rsp)
+	movb	684(%r8), %al
+	movb	%al, 2284(%rsp)
+	movb	685(%rsi), %al
+	movb	%al, 5261(%rsp)
+	movb	685(%rdx), %al
+	movb	%al, 4269(%rsp)
+	movb	685(%rcx), %al
+	movb	%al, 3277(%rsp)
+	movb	685(%r8), %al
+	movb	%al, 2285(%rsp)
+	movb	686(%rsi), %al
+	movb	%al, 5262(%rsp)
+	movb	686(%rdx), %al
+	movb	%al, 4270(%rsp)
+	movb	686(%rcx), %al
+	movb	%al, 3278(%rsp)
+	movb	686(%r8), %al
+	movb	%al, 2286(%rsp)
+	movb	687(%rsi), %al
+	movb	%al, 5263(%rsp)
+	movb	687(%rdx), %al
+	movb	%al, 4271(%rsp)
+	movb	687(%rcx), %al
+	movb	%al, 3279(%rsp)
+	movb	687(%r8), %al
+	movb	%al, 2287(%rsp)
+	movb	688(%rsi), %al
+	movb	%al, 5264(%rsp)
+	movb	688(%rdx), %al
+	movb	%al, 4272(%rsp)
+	movb	688(%rcx), %al
+	movb	%al, 3280(%rsp)
+	movb	688(%r8), %al
+	movb	%al, 2288(%rsp)
+	movb	689(%rsi), %al
+	movb	%al, 5265(%rsp)
+	movb	689(%rdx), %al
+	movb	%al, 4273(%rsp)
+	movb	689(%rcx), %al
+	movb	%al, 3281(%rsp)
+	movb	689(%r8), %al
+	movb	%al, 2289(%rsp)
+	movb	690(%rsi), %al
+	movb	%al, 5266(%rsp)
+	movb	690(%rdx), %al
+	movb	%al, 4274(%rsp)
+	movb	690(%rcx), %al
+	movb	%al, 3282(%rsp)
+	movb	690(%r8), %al
+	movb	%al, 2290(%rsp)
+	movb	691(%rsi), %al
+	movb	%al, 5267(%rsp)
+	movb	691(%rdx), %al
+	movb	%al, 4275(%rsp)
+	movb	691(%rcx), %al
+	movb	%al, 3283(%rsp)
+	movb	691(%r8), %al
+	movb	%al, 2291(%rsp)
+	movb	692(%rsi), %al
+	movb	%al, 5268(%rsp)
+	movb	692(%rdx), %al
+	movb	%al, 4276(%rsp)
+	movb	692(%rcx), %al
+	movb	%al, 3284(%rsp)
+	movb	692(%r8), %al
+	movb	%al, 2292(%rsp)
+	movb	693(%rsi), %al
+	movb	%al, 5269(%rsp)
+	movb	693(%rdx), %al
+	movb	%al, 4277(%rsp)
+	movb	693(%rcx), %al
+	movb	%al, 3285(%rsp)
+	movb	693(%r8), %al
+	movb	%al, 2293(%rsp)
+	movb	694(%rsi), %al
+	movb	%al, 5270(%rsp)
+	movb	694(%rdx), %al
+	movb	%al, 4278(%rsp)
+	movb	694(%rcx), %al
+	movb	%al, 3286(%rsp)
+	movb	694(%r8), %al
+	movb	%al, 2294(%rsp)
+	movb	695(%rsi), %al
+	movb	%al, 5271(%rsp)
+	movb	695(%rdx), %al
+	movb	%al, 4279(%rsp)
+	movb	695(%rcx), %al
+	movb	%al, 3287(%rsp)
+	movb	695(%r8), %al
+	movb	%al, 2295(%rsp)
+	movb	696(%rsi), %al
+	movb	%al, 5272(%rsp)
+	movb	696(%rdx), %al
+	movb	%al, 4280(%rsp)
+	movb	696(%rcx), %al
+	movb	%al, 3288(%rsp)
+	movb	696(%r8), %al
+	movb	%al, 2296(%rsp)
+	movb	697(%rsi), %al
+	movb	%al, 5273(%rsp)
+	movb	697(%rdx), %al
+	movb	%al, 4281(%rsp)
+	movb	697(%rcx), %al
+	movb	%al, 3289(%rsp)
+	movb	697(%r8), %al
+	movb	%al, 2297(%rsp)
+	movb	698(%rsi), %al
+	movb	%al, 5274(%rsp)
+	movb	698(%rdx), %al
+	movb	%al, 4282(%rsp)
+	movb	698(%rcx), %al
+	movb	%al, 3290(%rsp)
+	movb	698(%r8), %al
+	movb	%al, 2298(%rsp)
+	movb	699(%rsi), %al
+	movb	%al, 5275(%rsp)
+	movb	699(%rdx), %al
+	movb	%al, 4283(%rsp)
+	movb	699(%rcx), %al
+	movb	%al, 3291(%rsp)
+	movb	699(%r8), %al
+	movb	%al, 2299(%rsp)
+	movb	700(%rsi), %al
+	movb	%al, 5276(%rsp)
+	movb	700(%rdx), %al
+	movb	%al, 4284(%rsp)
+	movb	700(%rcx), %al
+	movb	%al, 3292(%rsp)
+	movb	700(%r8), %al
+	movb	%al, 2300(%rsp)
+	movb	701(%rsi), %al
+	movb	%al, 5277(%rsp)
+	movb	701(%rdx), %al
+	movb	%al, 4285(%rsp)
+	movb	701(%rcx), %al
+	movb	%al, 3293(%rsp)
+	movb	701(%r8), %al
+	movb	%al, 2301(%rsp)
+	movb	702(%rsi), %al
+	movb	%al, 5278(%rsp)
+	movb	702(%rdx), %al
+	movb	%al, 4286(%rsp)
+	movb	702(%rcx), %al
+	movb	%al, 3294(%rsp)
+	movb	702(%r8), %al
+	movb	%al, 2302(%rsp)
+	movb	703(%rsi), %al
+	movb	%al, 5279(%rsp)
+	movb	703(%rdx), %al
+	movb	%al, 4287(%rsp)
+	movb	703(%rcx), %al
+	movb	%al, 3295(%rsp)
+	movb	703(%r8), %al
+	movb	%al, 2303(%rsp)
+	movb	704(%rsi), %al
+	movb	%al, 5280(%rsp)
+	movb	704(%rdx), %al
+	movb	%al, 4288(%rsp)
+	movb	704(%rcx), %al
+	movb	%al, 3296(%rsp)
+	movb	704(%r8), %al
+	movb	%al, 2304(%rsp)
+	movb	705(%rsi), %al
+	movb	%al, 5281(%rsp)
+	movb	705(%rdx), %al
+	movb	%al, 4289(%rsp)
+	movb	705(%rcx), %al
+	movb	%al, 3297(%rsp)
+	movb	705(%r8), %al
+	movb	%al, 2305(%rsp)
+	movb	706(%rsi), %al
+	movb	%al, 5282(%rsp)
+	movb	706(%rdx), %al
+	movb	%al, 4290(%rsp)
+	movb	706(%rcx), %al
+	movb	%al, 3298(%rsp)
+	movb	706(%r8), %al
+	movb	%al, 2306(%rsp)
+	movb	707(%rsi), %al
+	movb	%al, 5283(%rsp)
+	movb	707(%rdx), %al
+	movb	%al, 4291(%rsp)
+	movb	707(%rcx), %al
+	movb	%al, 3299(%rsp)
+	movb	707(%r8), %al
+	movb	%al, 2307(%rsp)
+	movb	708(%rsi), %al
+	movb	%al, 5284(%rsp)
+	movb	708(%rdx), %al
+	movb	%al, 4292(%rsp)
+	movb	708(%rcx), %al
+	movb	%al, 3300(%rsp)
+	movb	708(%r8), %al
+	movb	%al, 2308(%rsp)
+	movb	709(%rsi), %al
+	movb	%al, 5285(%rsp)
+	movb	709(%rdx), %al
+	movb	%al, 4293(%rsp)
+	movb	709(%rcx), %al
+	movb	%al, 3301(%rsp)
+	movb	709(%r8), %al
+	movb	%al, 2309(%rsp)
+	movb	710(%rsi), %al
+	movb	%al, 5286(%rsp)
+	movb	710(%rdx), %al
+	movb	%al, 4294(%rsp)
+	movb	710(%rcx), %al
+	movb	%al, 3302(%rsp)
+	movb	710(%r8), %al
+	movb	%al, 2310(%rsp)
+	movb	711(%rsi), %al
+	movb	%al, 5287(%rsp)
+	movb	711(%rdx), %al
+	movb	%al, 4295(%rsp)
+	movb	711(%rcx), %al
+	movb	%al, 3303(%rsp)
+	movb	711(%r8), %al
+	movb	%al, 2311(%rsp)
+	movb	712(%rsi), %al
+	movb	%al, 5288(%rsp)
+	movb	712(%rdx), %al
+	movb	%al, 4296(%rsp)
+	movb	712(%rcx), %al
+	movb	%al, 3304(%rsp)
+	movb	712(%r8), %al
+	movb	%al, 2312(%rsp)
+	movb	713(%rsi), %al
+	movb	%al, 5289(%rsp)
+	movb	713(%rdx), %al
+	movb	%al, 4297(%rsp)
+	movb	713(%rcx), %al
+	movb	%al, 3305(%rsp)
+	movb	713(%r8), %al
+	movb	%al, 2313(%rsp)
+	movb	714(%rsi), %al
+	movb	%al, 5290(%rsp)
+	movb	714(%rdx), %al
+	movb	%al, 4298(%rsp)
+	movb	714(%rcx), %al
+	movb	%al, 3306(%rsp)
+	movb	714(%r8), %al
+	movb	%al, 2314(%rsp)
+	movb	715(%rsi), %al
+	movb	%al, 5291(%rsp)
+	movb	715(%rdx), %al
+	movb	%al, 4299(%rsp)
+	movb	715(%rcx), %al
+	movb	%al, 3307(%rsp)
+	movb	715(%r8), %al
+	movb	%al, 2315(%rsp)
+	movb	716(%rsi), %al
+	movb	%al, 5292(%rsp)
+	movb	716(%rdx), %al
+	movb	%al, 4300(%rsp)
+	movb	716(%rcx), %al
+	movb	%al, 3308(%rsp)
+	movb	716(%r8), %al
+	movb	%al, 2316(%rsp)
+	movb	717(%rsi), %al
+	movb	%al, 5293(%rsp)
+	movb	717(%rdx), %al
+	movb	%al, 4301(%rsp)
+	movb	717(%rcx), %al
+	movb	%al, 3309(%rsp)
+	movb	717(%r8), %al
+	movb	%al, 2317(%rsp)
+	movb	718(%rsi), %al
+	movb	%al, 5294(%rsp)
+	movb	718(%rdx), %al
+	movb	%al, 4302(%rsp)
+	movb	718(%rcx), %al
+	movb	%al, 3310(%rsp)
+	movb	718(%r8), %al
+	movb	%al, 2318(%rsp)
+	movb	719(%rsi), %al
+	movb	%al, 5295(%rsp)
+	movb	719(%rdx), %al
+	movb	%al, 4303(%rsp)
+	movb	719(%rcx), %al
+	movb	%al, 3311(%rsp)
+	movb	719(%r8), %al
+	movb	%al, 2319(%rsp)
+	movb	720(%rsi), %al
+	movb	%al, 5296(%rsp)
+	movb	720(%rdx), %al
+	movb	%al, 4304(%rsp)
+	movb	720(%rcx), %al
+	movb	%al, 3312(%rsp)
+	movb	720(%r8), %al
+	movb	%al, 2320(%rsp)
+	movb	721(%rsi), %al
+	movb	%al, 5297(%rsp)
+	movb	721(%rdx), %al
+	movb	%al, 4305(%rsp)
+	movb	721(%rcx), %al
+	movb	%al, 3313(%rsp)
+	movb	721(%r8), %al
+	movb	%al, 2321(%rsp)
+	movb	722(%rsi), %al
+	movb	%al, 5298(%rsp)
+	movb	722(%rdx), %al
+	movb	%al, 4306(%rsp)
+	movb	722(%rcx), %al
+	movb	%al, 3314(%rsp)
+	movb	722(%r8), %al
+	movb	%al, 2322(%rsp)
+	movb	723(%rsi), %al
+	movb	%al, 5299(%rsp)
+	movb	723(%rdx), %al
+	movb	%al, 4307(%rsp)
+	movb	723(%rcx), %al
+	movb	%al, 3315(%rsp)
+	movb	723(%r8), %al
+	movb	%al, 2323(%rsp)
+	movb	724(%rsi), %al
+	movb	%al, 5300(%rsp)
+	movb	724(%rdx), %al
+	movb	%al, 4308(%rsp)
+	movb	724(%rcx), %al
+	movb	%al, 3316(%rsp)
+	movb	724(%r8), %al
+	movb	%al, 2324(%rsp)
+	movb	725(%rsi), %al
+	movb	%al, 5301(%rsp)
+	movb	725(%rdx), %al
+	movb	%al, 4309(%rsp)
+	movb	725(%rcx), %al
+	movb	%al, 3317(%rsp)
+	movb	725(%r8), %al
+	movb	%al, 2325(%rsp)
+	movb	726(%rsi), %al
+	movb	%al, 5302(%rsp)
+	movb	726(%rdx), %al
+	movb	%al, 4310(%rsp)
+	movb	726(%rcx), %al
+	movb	%al, 3318(%rsp)
+	movb	726(%r8), %al
+	movb	%al, 2326(%rsp)
+	movb	727(%rsi), %al
+	movb	%al, 5303(%rsp)
+	movb	727(%rdx), %al
+	movb	%al, 4311(%rsp)
+	movb	727(%rcx), %al
+	movb	%al, 3319(%rsp)
+	movb	727(%r8), %al
+	movb	%al, 2327(%rsp)
+	movb	728(%rsi), %al
+	movb	%al, 5304(%rsp)
+	movb	728(%rdx), %al
+	movb	%al, 4312(%rsp)
+	movb	728(%rcx), %al
+	movb	%al, 3320(%rsp)
+	movb	728(%r8), %al
+	movb	%al, 2328(%rsp)
+	movb	729(%rsi), %al
+	movb	%al, 5305(%rsp)
+	movb	729(%rdx), %al
+	movb	%al, 4313(%rsp)
+	movb	729(%rcx), %al
+	movb	%al, 3321(%rsp)
+	movb	729(%r8), %al
+	movb	%al, 2329(%rsp)
+	movb	730(%rsi), %al
+	movb	%al, 5306(%rsp)
+	movb	730(%rdx), %al
+	movb	%al, 4314(%rsp)
+	movb	730(%rcx), %al
+	movb	%al, 3322(%rsp)
+	movb	730(%r8), %al
+	movb	%al, 2330(%rsp)
+	movb	731(%rsi), %al
+	movb	%al, 5307(%rsp)
+	movb	731(%rdx), %al
+	movb	%al, 4315(%rsp)
+	movb	731(%rcx), %al
+	movb	%al, 3323(%rsp)
+	movb	731(%r8), %al
+	movb	%al, 2331(%rsp)
+	movb	732(%rsi), %al
+	movb	%al, 5308(%rsp)
+	movb	732(%rdx), %al
+	movb	%al, 4316(%rsp)
+	movb	732(%rcx), %al
+	movb	%al, 3324(%rsp)
+	movb	732(%r8), %al
+	movb	%al, 2332(%rsp)
+	movb	733(%rsi), %al
+	movb	%al, 5309(%rsp)
+	movb	733(%rdx), %al
+	movb	%al, 4317(%rsp)
+	movb	733(%rcx), %al
+	movb	%al, 3325(%rsp)
+	movb	733(%r8), %al
+	movb	%al, 2333(%rsp)
+	movb	734(%rsi), %al
+	movb	%al, 5310(%rsp)
+	movb	734(%rdx), %al
+	movb	%al, 4318(%rsp)
+	movb	734(%rcx), %al
+	movb	%al, 3326(%rsp)
+	movb	734(%r8), %al
+	movb	%al, 2334(%rsp)
+	movb	735(%rsi), %al
+	movb	%al, 5311(%rsp)
+	movb	735(%rdx), %al
+	movb	%al, 4319(%rsp)
+	movb	735(%rcx), %al
+	movb	%al, 3327(%rsp)
+	movb	735(%r8), %al
+	movb	%al, 2335(%rsp)
+	movb	736(%rsi), %al
+	movb	%al, 5312(%rsp)
+	movb	736(%rdx), %al
+	movb	%al, 4320(%rsp)
+	movb	736(%rcx), %al
+	movb	%al, 3328(%rsp)
+	movb	736(%r8), %al
+	movb	%al, 2336(%rsp)
+	movb	737(%rsi), %al
+	movb	%al, 5313(%rsp)
+	movb	737(%rdx), %al
+	movb	%al, 4321(%rsp)
+	movb	737(%rcx), %al
+	movb	%al, 3329(%rsp)
+	movb	737(%r8), %al
+	movb	%al, 2337(%rsp)
+	movb	738(%rsi), %al
+	movb	%al, 5314(%rsp)
+	movb	738(%rdx), %al
+	movb	%al, 4322(%rsp)
+	movb	738(%rcx), %al
+	movb	%al, 3330(%rsp)
+	movb	738(%r8), %al
+	movb	%al, 2338(%rsp)
+	movb	739(%rsi), %al
+	movb	%al, 5315(%rsp)
+	movb	739(%rdx), %al
+	movb	%al, 4323(%rsp)
+	movb	739(%rcx), %al
+	movb	%al, 3331(%rsp)
+	movb	739(%r8), %al
+	movb	%al, 2339(%rsp)
+	movb	740(%rsi), %al
+	movb	%al, 5316(%rsp)
+	movb	740(%rdx), %al
+	movb	%al, 4324(%rsp)
+	movb	740(%rcx), %al
+	movb	%al, 3332(%rsp)
+	movb	740(%r8), %al
+	movb	%al, 2340(%rsp)
+	movb	741(%rsi), %al
+	movb	%al, 5317(%rsp)
+	movb	741(%rdx), %al
+	movb	%al, 4325(%rsp)
+	movb	741(%rcx), %al
+	movb	%al, 3333(%rsp)
+	movb	741(%r8), %al
+	movb	%al, 2341(%rsp)
+	movb	742(%rsi), %al
+	movb	%al, 5318(%rsp)
+	movb	742(%rdx), %al
+	movb	%al, 4326(%rsp)
+	movb	742(%rcx), %al
+	movb	%al, 3334(%rsp)
+	movb	742(%r8), %al
+	movb	%al, 2342(%rsp)
+	movb	743(%rsi), %al
+	movb	%al, 5319(%rsp)
+	movb	743(%rdx), %al
+	movb	%al, 4327(%rsp)
+	movb	743(%rcx), %al
+	movb	%al, 3335(%rsp)
+	movb	743(%r8), %al
+	movb	%al, 2343(%rsp)
+	movb	744(%rsi), %al
+	movb	%al, 5320(%rsp)
+	movb	744(%rdx), %al
+	movb	%al, 4328(%rsp)
+	movb	744(%rcx), %al
+	movb	%al, 3336(%rsp)
+	movb	744(%r8), %al
+	movb	%al, 2344(%rsp)
+	movb	745(%rsi), %al
+	movb	%al, 5321(%rsp)
+	movb	745(%rdx), %al
+	movb	%al, 4329(%rsp)
+	movb	745(%rcx), %al
+	movb	%al, 3337(%rsp)
+	movb	745(%r8), %al
+	movb	%al, 2345(%rsp)
+	movb	746(%rsi), %al
+	movb	%al, 5322(%rsp)
+	movb	746(%rdx), %al
+	movb	%al, 4330(%rsp)
+	movb	746(%rcx), %al
+	movb	%al, 3338(%rsp)
+	movb	746(%r8), %al
+	movb	%al, 2346(%rsp)
+	movb	747(%rsi), %al
+	movb	%al, 5323(%rsp)
+	movb	747(%rdx), %al
+	movb	%al, 4331(%rsp)
+	movb	747(%rcx), %al
+	movb	%al, 3339(%rsp)
+	movb	747(%r8), %al
+	movb	%al, 2347(%rsp)
+	movb	748(%rsi), %al
+	movb	%al, 5324(%rsp)
+	movb	748(%rdx), %al
+	movb	%al, 4332(%rsp)
+	movb	748(%rcx), %al
+	movb	%al, 3340(%rsp)
+	movb	748(%r8), %al
+	movb	%al, 2348(%rsp)
+	movb	749(%rsi), %al
+	movb	%al, 5325(%rsp)
+	movb	749(%rdx), %al
+	movb	%al, 4333(%rsp)
+	movb	749(%rcx), %al
+	movb	%al, 3341(%rsp)
+	movb	749(%r8), %al
+	movb	%al, 2349(%rsp)
+	movb	750(%rsi), %al
+	movb	%al, 5326(%rsp)
+	movb	750(%rdx), %al
+	movb	%al, 4334(%rsp)
+	movb	750(%rcx), %al
+	movb	%al, 3342(%rsp)
+	movb	750(%r8), %al
+	movb	%al, 2350(%rsp)
+	movb	751(%rsi), %al
+	movb	%al, 5327(%rsp)
+	movb	751(%rdx), %al
+	movb	%al, 4335(%rsp)
+	movb	751(%rcx), %al
+	movb	%al, 3343(%rsp)
+	movb	751(%r8), %al
+	movb	%al, 2351(%rsp)
+	movb	752(%rsi), %al
+	movb	%al, 5328(%rsp)
+	movb	752(%rdx), %al
+	movb	%al, 4336(%rsp)
+	movb	752(%rcx), %al
+	movb	%al, 3344(%rsp)
+	movb	752(%r8), %al
+	movb	%al, 2352(%rsp)
+	movb	753(%rsi), %al
+	movb	%al, 5329(%rsp)
+	movb	753(%rdx), %al
+	movb	%al, 4337(%rsp)
+	movb	753(%rcx), %al
+	movb	%al, 3345(%rsp)
+	movb	753(%r8), %al
+	movb	%al, 2353(%rsp)
+	movb	754(%rsi), %al
+	movb	%al, 5330(%rsp)
+	movb	754(%rdx), %al
+	movb	%al, 4338(%rsp)
+	movb	754(%rcx), %al
+	movb	%al, 3346(%rsp)
+	movb	754(%r8), %al
+	movb	%al, 2354(%rsp)
+	movb	755(%rsi), %al
+	movb	%al, 5331(%rsp)
+	movb	755(%rdx), %al
+	movb	%al, 4339(%rsp)
+	movb	755(%rcx), %al
+	movb	%al, 3347(%rsp)
+	movb	755(%r8), %al
+	movb	%al, 2355(%rsp)
+	movb	756(%rsi), %al
+	movb	%al, 5332(%rsp)
+	movb	756(%rdx), %al
+	movb	%al, 4340(%rsp)
+	movb	756(%rcx), %al
+	movb	%al, 3348(%rsp)
+	movb	756(%r8), %al
+	movb	%al, 2356(%rsp)
+	movb	757(%rsi), %al
+	movb	%al, 5333(%rsp)
+	movb	757(%rdx), %al
+	movb	%al, 4341(%rsp)
+	movb	757(%rcx), %al
+	movb	%al, 3349(%rsp)
+	movb	757(%r8), %al
+	movb	%al, 2357(%rsp)
+	movb	758(%rsi), %al
+	movb	%al, 5334(%rsp)
+	movb	758(%rdx), %al
+	movb	%al, 4342(%rsp)
+	movb	758(%rcx), %al
+	movb	%al, 3350(%rsp)
+	movb	758(%r8), %al
+	movb	%al, 2358(%rsp)
+	movb	759(%rsi), %al
+	movb	%al, 5335(%rsp)
+	movb	759(%rdx), %al
+	movb	%al, 4343(%rsp)
+	movb	759(%rcx), %al
+	movb	%al, 3351(%rsp)
+	movb	759(%r8), %al
+	movb	%al, 2359(%rsp)
+	movb	760(%rsi), %al
+	movb	%al, 5336(%rsp)
+	movb	760(%rdx), %al
+	movb	%al, 4344(%rsp)
+	movb	760(%rcx), %al
+	movb	%al, 3352(%rsp)
+	movb	760(%r8), %al
+	movb	%al, 2360(%rsp)
+	movb	761(%rsi), %al
+	movb	%al, 5337(%rsp)
+	movb	761(%rdx), %al
+	movb	%al, 4345(%rsp)
+	movb	761(%rcx), %al
+	movb	%al, 3353(%rsp)
+	movb	761(%r8), %al
+	movb	%al, 2361(%rsp)
+	movb	762(%rsi), %al
+	movb	%al, 5338(%rsp)
+	movb	762(%rdx), %al
+	movb	%al, 4346(%rsp)
+	movb	762(%rcx), %al
+	movb	%al, 3354(%rsp)
+	movb	762(%r8), %al
+	movb	%al, 2362(%rsp)
+	movb	763(%rsi), %al
+	movb	%al, 5339(%rsp)
+	movb	763(%rdx), %al
+	movb	%al, 4347(%rsp)
+	movb	763(%rcx), %al
+	movb	%al, 3355(%rsp)
+	movb	763(%r8), %al
+	movb	%al, 2363(%rsp)
+	movb	764(%rsi), %al
+	movb	%al, 5340(%rsp)
+	movb	764(%rdx), %al
+	movb	%al, 4348(%rsp)
+	movb	764(%rcx), %al
+	movb	%al, 3356(%rsp)
+	movb	764(%r8), %al
+	movb	%al, 2364(%rsp)
+	movb	765(%rsi), %al
+	movb	%al, 5341(%rsp)
+	movb	765(%rdx), %al
+	movb	%al, 4349(%rsp)
+	movb	765(%rcx), %al
+	movb	%al, 3357(%rsp)
+	movb	765(%r8), %al
+	movb	%al, 2365(%rsp)
+	movb	766(%rsi), %al
+	movb	%al, 5342(%rsp)
+	movb	766(%rdx), %al
+	movb	%al, 4350(%rsp)
+	movb	766(%rcx), %al
+	movb	%al, 3358(%rsp)
+	movb	766(%r8), %al
+	movb	%al, 2366(%rsp)
+	movb	767(%rsi), %al
+	movb	%al, 5343(%rsp)
+	movb	767(%rdx), %al
+	movb	%al, 4351(%rsp)
+	movb	767(%rcx), %al
+	movb	%al, 3359(%rsp)
+	movb	767(%r8), %al
+	movb	%al, 2367(%rsp)
+	movb	768(%rsi), %al
+	movb	%al, 5344(%rsp)
+	movb	768(%rdx), %al
+	movb	%al, 4352(%rsp)
+	movb	768(%rcx), %al
+	movb	%al, 3360(%rsp)
+	movb	768(%r8), %al
+	movb	%al, 2368(%rsp)
+	movb	769(%rsi), %al
+	movb	%al, 5345(%rsp)
+	movb	769(%rdx), %al
+	movb	%al, 4353(%rsp)
+	movb	769(%rcx), %al
+	movb	%al, 3361(%rsp)
+	movb	769(%r8), %al
+	movb	%al, 2369(%rsp)
+	movb	770(%rsi), %al
+	movb	%al, 5346(%rsp)
+	movb	770(%rdx), %al
+	movb	%al, 4354(%rsp)
+	movb	770(%rcx), %al
+	movb	%al, 3362(%rsp)
+	movb	770(%r8), %al
+	movb	%al, 2370(%rsp)
+	movb	771(%rsi), %al
+	movb	%al, 5347(%rsp)
+	movb	771(%rdx), %al
+	movb	%al, 4355(%rsp)
+	movb	771(%rcx), %al
+	movb	%al, 3363(%rsp)
+	movb	771(%r8), %al
+	movb	%al, 2371(%rsp)
+	movb	772(%rsi), %al
+	movb	%al, 5348(%rsp)
+	movb	772(%rdx), %al
+	movb	%al, 4356(%rsp)
+	movb	772(%rcx), %al
+	movb	%al, 3364(%rsp)
+	movb	772(%r8), %al
+	movb	%al, 2372(%rsp)
+	movb	773(%rsi), %al
+	movb	%al, 5349(%rsp)
+	movb	773(%rdx), %al
+	movb	%al, 4357(%rsp)
+	movb	773(%rcx), %al
+	movb	%al, 3365(%rsp)
+	movb	773(%r8), %al
+	movb	%al, 2373(%rsp)
+	movb	774(%rsi), %al
+	movb	%al, 5350(%rsp)
+	movb	774(%rdx), %al
+	movb	%al, 4358(%rsp)
+	movb	774(%rcx), %al
+	movb	%al, 3366(%rsp)
+	movb	774(%r8), %al
+	movb	%al, 2374(%rsp)
+	movb	775(%rsi), %al
+	movb	%al, 5351(%rsp)
+	movb	775(%rdx), %al
+	movb	%al, 4359(%rsp)
+	movb	775(%rcx), %al
+	movb	%al, 3367(%rsp)
+	movb	775(%r8), %al
+	movb	%al, 2375(%rsp)
+	movb	776(%rsi), %al
+	movb	%al, 5352(%rsp)
+	movb	776(%rdx), %al
+	movb	%al, 4360(%rsp)
+	movb	776(%rcx), %al
+	movb	%al, 3368(%rsp)
+	movb	776(%r8), %al
+	movb	%al, 2376(%rsp)
+	movb	777(%rsi), %al
+	movb	%al, 5353(%rsp)
+	movb	777(%rdx), %al
+	movb	%al, 4361(%rsp)
+	movb	777(%rcx), %al
+	movb	%al, 3369(%rsp)
+	movb	777(%r8), %al
+	movb	%al, 2377(%rsp)
+	movb	778(%rsi), %al
+	movb	%al, 5354(%rsp)
+	movb	778(%rdx), %al
+	movb	%al, 4362(%rsp)
+	movb	778(%rcx), %al
+	movb	%al, 3370(%rsp)
+	movb	778(%r8), %al
+	movb	%al, 2378(%rsp)
+	movb	779(%rsi), %al
+	movb	%al, 5355(%rsp)
+	movb	779(%rdx), %al
+	movb	%al, 4363(%rsp)
+	movb	779(%rcx), %al
+	movb	%al, 3371(%rsp)
+	movb	779(%r8), %al
+	movb	%al, 2379(%rsp)
+	movb	780(%rsi), %al
+	movb	%al, 5356(%rsp)
+	movb	780(%rdx), %al
+	movb	%al, 4364(%rsp)
+	movb	780(%rcx), %al
+	movb	%al, 3372(%rsp)
+	movb	780(%r8), %al
+	movb	%al, 2380(%rsp)
+	movb	781(%rsi), %al
+	movb	%al, 5357(%rsp)
+	movb	781(%rdx), %al
+	movb	%al, 4365(%rsp)
+	movb	781(%rcx), %al
+	movb	%al, 3373(%rsp)
+	movb	781(%r8), %al
+	movb	%al, 2381(%rsp)
+	movb	782(%rsi), %al
+	movb	%al, 5358(%rsp)
+	movb	782(%rdx), %al
+	movb	%al, 4366(%rsp)
+	movb	782(%rcx), %al
+	movb	%al, 3374(%rsp)
+	movb	782(%r8), %al
+	movb	%al, 2382(%rsp)
+	movb	783(%rsi), %al
+	movb	%al, 5359(%rsp)
+	movb	783(%rdx), %al
+	movb	%al, 4367(%rsp)
+	movb	783(%rcx), %al
+	movb	%al, 3375(%rsp)
+	movb	783(%r8), %al
+	movb	%al, 2383(%rsp)
+	movb	784(%rsi), %al
+	movb	%al, 5360(%rsp)
+	movb	784(%rdx), %al
+	movb	%al, 4368(%rsp)
+	movb	784(%rcx), %al
+	movb	%al, 3376(%rsp)
+	movb	784(%r8), %al
+	movb	%al, 2384(%rsp)
+	movb	785(%rsi), %al
+	movb	%al, 5361(%rsp)
+	movb	785(%rdx), %al
+	movb	%al, 4369(%rsp)
+	movb	785(%rcx), %al
+	movb	%al, 3377(%rsp)
+	movb	785(%r8), %al
+	movb	%al, 2385(%rsp)
+	movb	786(%rsi), %al
+	movb	%al, 5362(%rsp)
+	movb	786(%rdx), %al
+	movb	%al, 4370(%rsp)
+	movb	786(%rcx), %al
+	movb	%al, 3378(%rsp)
+	movb	786(%r8), %al
+	movb	%al, 2386(%rsp)
+	movb	787(%rsi), %al
+	movb	%al, 5363(%rsp)
+	movb	787(%rdx), %al
+	movb	%al, 4371(%rsp)
+	movb	787(%rcx), %al
+	movb	%al, 3379(%rsp)
+	movb	787(%r8), %al
+	movb	%al, 2387(%rsp)
+	movb	788(%rsi), %al
+	movb	%al, 5364(%rsp)
+	movb	788(%rdx), %al
+	movb	%al, 4372(%rsp)
+	movb	788(%rcx), %al
+	movb	%al, 3380(%rsp)
+	movb	788(%r8), %al
+	movb	%al, 2388(%rsp)
+	movb	789(%rsi), %al
+	movb	%al, 5365(%rsp)
+	movb	789(%rdx), %al
+	movb	%al, 4373(%rsp)
+	movb	789(%rcx), %al
+	movb	%al, 3381(%rsp)
+	movb	789(%r8), %al
+	movb	%al, 2389(%rsp)
+	movb	790(%rsi), %al
+	movb	%al, 5366(%rsp)
+	movb	790(%rdx), %al
+	movb	%al, 4374(%rsp)
+	movb	790(%rcx), %al
+	movb	%al, 3382(%rsp)
+	movb	790(%r8), %al
+	movb	%al, 2390(%rsp)
+	movb	791(%rsi), %al
+	movb	%al, 5367(%rsp)
+	movb	791(%rdx), %al
+	movb	%al, 4375(%rsp)
+	movb	791(%rcx), %al
+	movb	%al, 3383(%rsp)
+	movb	791(%r8), %al
+	movb	%al, 2391(%rsp)
+	movb	792(%rsi), %al
+	movb	%al, 5368(%rsp)
+	movb	792(%rdx), %al
+	movb	%al, 4376(%rsp)
+	movb	792(%rcx), %al
+	movb	%al, 3384(%rsp)
+	movb	792(%r8), %al
+	movb	%al, 2392(%rsp)
+	movb	793(%rsi), %al
+	movb	%al, 5369(%rsp)
+	movb	793(%rdx), %al
+	movb	%al, 4377(%rsp)
+	movb	793(%rcx), %al
+	movb	%al, 3385(%rsp)
+	movb	793(%r8), %al
+	movb	%al, 2393(%rsp)
+	movb	794(%rsi), %al
+	movb	%al, 5370(%rsp)
+	movb	794(%rdx), %al
+	movb	%al, 4378(%rsp)
+	movb	794(%rcx), %al
+	movb	%al, 3386(%rsp)
+	movb	794(%r8), %al
+	movb	%al, 2394(%rsp)
+	movb	795(%rsi), %al
+	movb	%al, 5371(%rsp)
+	movb	795(%rdx), %al
+	movb	%al, 4379(%rsp)
+	movb	795(%rcx), %al
+	movb	%al, 3387(%rsp)
+	movb	795(%r8), %al
+	movb	%al, 2395(%rsp)
+	movb	796(%rsi), %al
+	movb	%al, 5372(%rsp)
+	movb	796(%rdx), %al
+	movb	%al, 4380(%rsp)
+	movb	796(%rcx), %al
+	movb	%al, 3388(%rsp)
+	movb	796(%r8), %al
+	movb	%al, 2396(%rsp)
+	movb	797(%rsi), %al
+	movb	%al, 5373(%rsp)
+	movb	797(%rdx), %al
+	movb	%al, 4381(%rsp)
+	movb	797(%rcx), %al
+	movb	%al, 3389(%rsp)
+	movb	797(%r8), %al
+	movb	%al, 2397(%rsp)
+	movb	798(%rsi), %al
+	movb	%al, 5374(%rsp)
+	movb	798(%rdx), %al
+	movb	%al, 4382(%rsp)
+	movb	798(%rcx), %al
+	movb	%al, 3390(%rsp)
+	movb	798(%r8), %al
+	movb	%al, 2398(%rsp)
+	movb	799(%rsi), %al
+	movb	%al, 5375(%rsp)
+	movb	799(%rdx), %al
+	movb	%al, 4383(%rsp)
+	movb	799(%rcx), %al
+	movb	%al, 3391(%rsp)
+	movb	799(%r8), %al
+	movb	%al, 2399(%rsp)
+	movb	800(%rsi), %al
+	movb	%al, 5376(%rsp)
+	movb	800(%rdx), %al
+	movb	%al, 4384(%rsp)
+	movb	800(%rcx), %al
+	movb	%al, 3392(%rsp)
+	movb	800(%r8), %al
+	movb	%al, 2400(%rsp)
+	movb	801(%rsi), %al
+	movb	%al, 5377(%rsp)
+	movb	801(%rdx), %al
+	movb	%al, 4385(%rsp)
+	movb	801(%rcx), %al
+	movb	%al, 3393(%rsp)
+	movb	801(%r8), %al
+	movb	%al, 2401(%rsp)
+	movb	802(%rsi), %al
+	movb	%al, 5378(%rsp)
+	movb	802(%rdx), %al
+	movb	%al, 4386(%rsp)
+	movb	802(%rcx), %al
+	movb	%al, 3394(%rsp)
+	movb	802(%r8), %al
+	movb	%al, 2402(%rsp)
+	movb	803(%rsi), %al
+	movb	%al, 5379(%rsp)
+	movb	803(%rdx), %al
+	movb	%al, 4387(%rsp)
+	movb	803(%rcx), %al
+	movb	%al, 3395(%rsp)
+	movb	803(%r8), %al
+	movb	%al, 2403(%rsp)
+	movb	804(%rsi), %al
+	movb	%al, 5380(%rsp)
+	movb	804(%rdx), %al
+	movb	%al, 4388(%rsp)
+	movb	804(%rcx), %al
+	movb	%al, 3396(%rsp)
+	movb	804(%r8), %al
+	movb	%al, 2404(%rsp)
+	movb	805(%rsi), %al
+	movb	%al, 5381(%rsp)
+	movb	805(%rdx), %al
+	movb	%al, 4389(%rsp)
+	movb	805(%rcx), %al
+	movb	%al, 3397(%rsp)
+	movb	805(%r8), %al
+	movb	%al, 2405(%rsp)
+	movb	806(%rsi), %al
+	movb	%al, 5382(%rsp)
+	movb	806(%rdx), %al
+	movb	%al, 4390(%rsp)
+	movb	806(%rcx), %al
+	movb	%al, 3398(%rsp)
+	movb	806(%r8), %al
+	movb	%al, 2406(%rsp)
+	movb	807(%rsi), %al
+	movb	%al, 5383(%rsp)
+	movb	807(%rdx), %al
+	movb	%al, 4391(%rsp)
+	movb	807(%rcx), %al
+	movb	%al, 3399(%rsp)
+	movb	807(%r8), %al
+	movb	%al, 2407(%rsp)
+	movb	808(%rsi), %al
+	movb	%al, 5384(%rsp)
+	movb	808(%rdx), %al
+	movb	%al, 4392(%rsp)
+	movb	808(%rcx), %al
+	movb	%al, 3400(%rsp)
+	movb	808(%r8), %al
+	movb	%al, 2408(%rsp)
+	movb	809(%rsi), %al
+	movb	%al, 5385(%rsp)
+	movb	809(%rdx), %al
+	movb	%al, 4393(%rsp)
+	movb	809(%rcx), %al
+	movb	%al, 3401(%rsp)
+	movb	809(%r8), %al
+	movb	%al, 2409(%rsp)
+	movb	810(%rsi), %al
+	movb	%al, 5386(%rsp)
+	movb	810(%rdx), %al
+	movb	%al, 4394(%rsp)
+	movb	810(%rcx), %al
+	movb	%al, 3402(%rsp)
+	movb	810(%r8), %al
+	movb	%al, 2410(%rsp)
+	movb	811(%rsi), %al
+	movb	%al, 5387(%rsp)
+	movb	811(%rdx), %al
+	movb	%al, 4395(%rsp)
+	movb	811(%rcx), %al
+	movb	%al, 3403(%rsp)
+	movb	811(%r8), %al
+	movb	%al, 2411(%rsp)
+	movb	812(%rsi), %al
+	movb	%al, 5388(%rsp)
+	movb	812(%rdx), %al
+	movb	%al, 4396(%rsp)
+	movb	812(%rcx), %al
+	movb	%al, 3404(%rsp)
+	movb	812(%r8), %al
+	movb	%al, 2412(%rsp)
+	movb	813(%rsi), %al
+	movb	%al, 5389(%rsp)
+	movb	813(%rdx), %al
+	movb	%al, 4397(%rsp)
+	movb	813(%rcx), %al
+	movb	%al, 3405(%rsp)
+	movb	813(%r8), %al
+	movb	%al, 2413(%rsp)
+	movb	814(%rsi), %al
+	movb	%al, 5390(%rsp)
+	movb	814(%rdx), %al
+	movb	%al, 4398(%rsp)
+	movb	814(%rcx), %al
+	movb	%al, 3406(%rsp)
+	movb	814(%r8), %al
+	movb	%al, 2414(%rsp)
+	movb	815(%rsi), %al
+	movb	%al, 5391(%rsp)
+	movb	815(%rdx), %al
+	movb	%al, 4399(%rsp)
+	movb	815(%rcx), %al
+	movb	%al, 3407(%rsp)
+	movb	815(%r8), %al
+	movb	%al, 2415(%rsp)
+	movb	816(%rsi), %al
+	movb	%al, 5392(%rsp)
+	movb	816(%rdx), %al
+	movb	%al, 4400(%rsp)
+	movb	816(%rcx), %al
+	movb	%al, 3408(%rsp)
+	movb	816(%r8), %al
+	movb	%al, 2416(%rsp)
+	movb	817(%rsi), %al
+	movb	%al, 5393(%rsp)
+	movb	817(%rdx), %al
+	movb	%al, 4401(%rsp)
+	movb	817(%rcx), %al
+	movb	%al, 3409(%rsp)
+	movb	817(%r8), %al
+	movb	%al, 2417(%rsp)
+	movb	818(%rsi), %al
+	movb	%al, 5394(%rsp)
+	movb	818(%rdx), %al
+	movb	%al, 4402(%rsp)
+	movb	818(%rcx), %al
+	movb	%al, 3410(%rsp)
+	movb	818(%r8), %al
+	movb	%al, 2418(%rsp)
+	movb	819(%rsi), %al
+	movb	%al, 5395(%rsp)
+	movb	819(%rdx), %al
+	movb	%al, 4403(%rsp)
+	movb	819(%rcx), %al
+	movb	%al, 3411(%rsp)
+	movb	819(%r8), %al
+	movb	%al, 2419(%rsp)
+	movb	820(%rsi), %al
+	movb	%al, 5396(%rsp)
+	movb	820(%rdx), %al
+	movb	%al, 4404(%rsp)
+	movb	820(%rcx), %al
+	movb	%al, 3412(%rsp)
+	movb	820(%r8), %al
+	movb	%al, 2420(%rsp)
+	movb	821(%rsi), %al
+	movb	%al, 5397(%rsp)
+	movb	821(%rdx), %al
+	movb	%al, 4405(%rsp)
+	movb	821(%rcx), %al
+	movb	%al, 3413(%rsp)
+	movb	821(%r8), %al
+	movb	%al, 2421(%rsp)
+	movb	822(%rsi), %al
+	movb	%al, 5398(%rsp)
+	movb	822(%rdx), %al
+	movb	%al, 4406(%rsp)
+	movb	822(%rcx), %al
+	movb	%al, 3414(%rsp)
+	movb	822(%r8), %al
+	movb	%al, 2422(%rsp)
+	movb	823(%rsi), %al
+	movb	%al, 5399(%rsp)
+	movb	823(%rdx), %al
+	movb	%al, 4407(%rsp)
+	movb	823(%rcx), %al
+	movb	%al, 3415(%rsp)
+	movb	823(%r8), %al
+	movb	%al, 2423(%rsp)
+	movb	824(%rsi), %al
+	movb	%al, 5400(%rsp)
+	movb	824(%rdx), %al
+	movb	%al, 4408(%rsp)
+	movb	824(%rcx), %al
+	movb	%al, 3416(%rsp)
+	movb	824(%r8), %al
+	movb	%al, 2424(%rsp)
+	movb	825(%rsi), %al
+	movb	%al, 5401(%rsp)
+	movb	825(%rdx), %al
+	movb	%al, 4409(%rsp)
+	movb	825(%rcx), %al
+	movb	%al, 3417(%rsp)
+	movb	825(%r8), %al
+	movb	%al, 2425(%rsp)
+	movb	826(%rsi), %al
+	movb	%al, 5402(%rsp)
+	movb	826(%rdx), %al
+	movb	%al, 4410(%rsp)
+	movb	826(%rcx), %al
+	movb	%al, 3418(%rsp)
+	movb	826(%r8), %al
+	movb	%al, 2426(%rsp)
+	movb	827(%rsi), %al
+	movb	%al, 5403(%rsp)
+	movb	827(%rdx), %al
+	movb	%al, 4411(%rsp)
+	movb	827(%rcx), %al
+	movb	%al, 3419(%rsp)
+	movb	827(%r8), %al
+	movb	%al, 2427(%rsp)
+	movb	828(%rsi), %al
+	movb	%al, 5404(%rsp)
+	movb	828(%rdx), %al
+	movb	%al, 4412(%rsp)
+	movb	828(%rcx), %al
+	movb	%al, 3420(%rsp)
+	movb	828(%r8), %al
+	movb	%al, 2428(%rsp)
+	movb	829(%rsi), %al
+	movb	%al, 5405(%rsp)
+	movb	829(%rdx), %al
+	movb	%al, 4413(%rsp)
+	movb	829(%rcx), %al
+	movb	%al, 3421(%rsp)
+	movb	829(%r8), %al
+	movb	%al, 2429(%rsp)
+	movb	830(%rsi), %al
+	movb	%al, 5406(%rsp)
+	movb	830(%rdx), %al
+	movb	%al, 4414(%rsp)
+	movb	830(%rcx), %al
+	movb	%al, 3422(%rsp)
+	movb	830(%r8), %al
+	movb	%al, 2430(%rsp)
+	movb	831(%rsi), %al
+	movb	%al, 5407(%rsp)
+	movb	831(%rdx), %al
+	movb	%al, 4415(%rsp)
+	movb	831(%rcx), %al
+	movb	%al, 3423(%rsp)
+	movb	831(%r8), %al
+	movb	%al, 2431(%rsp)
+	movb	832(%rsi), %al
+	movb	%al, 5408(%rsp)
+	movb	832(%rdx), %al
+	movb	%al, 4416(%rsp)
+	movb	832(%rcx), %al
+	movb	%al, 3424(%rsp)
+	movb	832(%r8), %al
+	movb	%al, 2432(%rsp)
+	movb	833(%rsi), %al
+	movb	%al, 5409(%rsp)
+	movb	833(%rdx), %al
+	movb	%al, 4417(%rsp)
+	movb	833(%rcx), %al
+	movb	%al, 3425(%rsp)
+	movb	833(%r8), %al
+	movb	%al, 2433(%rsp)
+	movb	834(%rsi), %al
+	movb	%al, 5410(%rsp)
+	movb	834(%rdx), %al
+	movb	%al, 4418(%rsp)
+	movb	834(%rcx), %al
+	movb	%al, 3426(%rsp)
+	movb	834(%r8), %al
+	movb	%al, 2434(%rsp)
+	movb	835(%rsi), %al
+	movb	%al, 5411(%rsp)
+	movb	835(%rdx), %al
+	movb	%al, 4419(%rsp)
+	movb	835(%rcx), %al
+	movb	%al, 3427(%rsp)
+	movb	835(%r8), %al
+	movb	%al, 2435(%rsp)
+	movb	836(%rsi), %al
+	movb	%al, 5412(%rsp)
+	movb	836(%rdx), %al
+	movb	%al, 4420(%rsp)
+	movb	836(%rcx), %al
+	movb	%al, 3428(%rsp)
+	movb	836(%r8), %al
+	movb	%al, 2436(%rsp)
+	movb	837(%rsi), %al
+	movb	%al, 5413(%rsp)
+	movb	837(%rdx), %al
+	movb	%al, 4421(%rsp)
+	movb	837(%rcx), %al
+	movb	%al, 3429(%rsp)
+	movb	837(%r8), %al
+	movb	%al, 2437(%rsp)
+	movb	838(%rsi), %al
+	movb	%al, 5414(%rsp)
+	movb	838(%rdx), %al
+	movb	%al, 4422(%rsp)
+	movb	838(%rcx), %al
+	movb	%al, 3430(%rsp)
+	movb	838(%r8), %al
+	movb	%al, 2438(%rsp)
+	movb	839(%rsi), %al
+	movb	%al, 5415(%rsp)
+	movb	839(%rdx), %al
+	movb	%al, 4423(%rsp)
+	movb	839(%rcx), %al
+	movb	%al, 3431(%rsp)
+	movb	839(%r8), %al
+	movb	%al, 2439(%rsp)
+	movb	840(%rsi), %al
+	movb	%al, 5416(%rsp)
+	movb	840(%rdx), %al
+	movb	%al, 4424(%rsp)
+	movb	840(%rcx), %al
+	movb	%al, 3432(%rsp)
+	movb	840(%r8), %al
+	movb	%al, 2440(%rsp)
+	movb	841(%rsi), %al
+	movb	%al, 5417(%rsp)
+	movb	841(%rdx), %al
+	movb	%al, 4425(%rsp)
+	movb	841(%rcx), %al
+	movb	%al, 3433(%rsp)
+	movb	841(%r8), %al
+	movb	%al, 2441(%rsp)
+	movb	842(%rsi), %al
+	movb	%al, 5418(%rsp)
+	movb	842(%rdx), %al
+	movb	%al, 4426(%rsp)
+	movb	842(%rcx), %al
+	movb	%al, 3434(%rsp)
+	movb	842(%r8), %al
+	movb	%al, 2442(%rsp)
+	movb	843(%rsi), %al
+	movb	%al, 5419(%rsp)
+	movb	843(%rdx), %al
+	movb	%al, 4427(%rsp)
+	movb	843(%rcx), %al
+	movb	%al, 3435(%rsp)
+	movb	843(%r8), %al
+	movb	%al, 2443(%rsp)
+	movb	844(%rsi), %al
+	movb	%al, 5420(%rsp)
+	movb	844(%rdx), %al
+	movb	%al, 4428(%rsp)
+	movb	844(%rcx), %al
+	movb	%al, 3436(%rsp)
+	movb	844(%r8), %al
+	movb	%al, 2444(%rsp)
+	movb	845(%rsi), %al
+	movb	%al, 5421(%rsp)
+	movb	845(%rdx), %al
+	movb	%al, 4429(%rsp)
+	movb	845(%rcx), %al
+	movb	%al, 3437(%rsp)
+	movb	845(%r8), %al
+	movb	%al, 2445(%rsp)
+	movb	846(%rsi), %al
+	movb	%al, 5422(%rsp)
+	movb	846(%rdx), %al
+	movb	%al, 4430(%rsp)
+	movb	846(%rcx), %al
+	movb	%al, 3438(%rsp)
+	movb	846(%r8), %al
+	movb	%al, 2446(%rsp)
+	movb	847(%rsi), %al
+	movb	%al, 5423(%rsp)
+	movb	847(%rdx), %al
+	movb	%al, 4431(%rsp)
+	movb	847(%rcx), %al
+	movb	%al, 3439(%rsp)
+	movb	847(%r8), %al
+	movb	%al, 2447(%rsp)
+	movb	848(%rsi), %al
+	movb	%al, 5424(%rsp)
+	movb	848(%rdx), %al
+	movb	%al, 4432(%rsp)
+	movb	848(%rcx), %al
+	movb	%al, 3440(%rsp)
+	movb	848(%r8), %al
+	movb	%al, 2448(%rsp)
+	movb	849(%rsi), %al
+	movb	%al, 5425(%rsp)
+	movb	849(%rdx), %al
+	movb	%al, 4433(%rsp)
+	movb	849(%rcx), %al
+	movb	%al, 3441(%rsp)
+	movb	849(%r8), %al
+	movb	%al, 2449(%rsp)
+	movb	850(%rsi), %al
+	movb	%al, 5426(%rsp)
+	movb	850(%rdx), %al
+	movb	%al, 4434(%rsp)
+	movb	850(%rcx), %al
+	movb	%al, 3442(%rsp)
+	movb	850(%r8), %al
+	movb	%al, 2450(%rsp)
+	movb	851(%rsi), %al
+	movb	%al, 5427(%rsp)
+	movb	851(%rdx), %al
+	movb	%al, 4435(%rsp)
+	movb	851(%rcx), %al
+	movb	%al, 3443(%rsp)
+	movb	851(%r8), %al
+	movb	%al, 2451(%rsp)
+	movb	852(%rsi), %al
+	movb	%al, 5428(%rsp)
+	movb	852(%rdx), %al
+	movb	%al, 4436(%rsp)
+	movb	852(%rcx), %al
+	movb	%al, 3444(%rsp)
+	movb	852(%r8), %al
+	movb	%al, 2452(%rsp)
+	movb	853(%rsi), %al
+	movb	%al, 5429(%rsp)
+	movb	853(%rdx), %al
+	movb	%al, 4437(%rsp)
+	movb	853(%rcx), %al
+	movb	%al, 3445(%rsp)
+	movb	853(%r8), %al
+	movb	%al, 2453(%rsp)
+	movb	854(%rsi), %al
+	movb	%al, 5430(%rsp)
+	movb	854(%rdx), %al
+	movb	%al, 4438(%rsp)
+	movb	854(%rcx), %al
+	movb	%al, 3446(%rsp)
+	movb	854(%r8), %al
+	movb	%al, 2454(%rsp)
+	movb	855(%rsi), %al
+	movb	%al, 5431(%rsp)
+	movb	855(%rdx), %al
+	movb	%al, 4439(%rsp)
+	movb	855(%rcx), %al
+	movb	%al, 3447(%rsp)
+	movb	855(%r8), %al
+	movb	%al, 2455(%rsp)
+	movb	856(%rsi), %al
+	movb	%al, 5432(%rsp)
+	movb	856(%rdx), %al
+	movb	%al, 4440(%rsp)
+	movb	856(%rcx), %al
+	movb	%al, 3448(%rsp)
+	movb	856(%r8), %al
+	movb	%al, 2456(%rsp)
+	movb	857(%rsi), %al
+	movb	%al, 5433(%rsp)
+	movb	857(%rdx), %al
+	movb	%al, 4441(%rsp)
+	movb	857(%rcx), %al
+	movb	%al, 3449(%rsp)
+	movb	857(%r8), %al
+	movb	%al, 2457(%rsp)
+	movb	858(%rsi), %al
+	movb	%al, 5434(%rsp)
+	movb	858(%rdx), %al
+	movb	%al, 4442(%rsp)
+	movb	858(%rcx), %al
+	movb	%al, 3450(%rsp)
+	movb	858(%r8), %al
+	movb	%al, 2458(%rsp)
+	movb	859(%rsi), %al
+	movb	%al, 5435(%rsp)
+	movb	859(%rdx), %al
+	movb	%al, 4443(%rsp)
+	movb	859(%rcx), %al
+	movb	%al, 3451(%rsp)
+	movb	859(%r8), %al
+	movb	%al, 2459(%rsp)
+	movb	860(%rsi), %al
+	movb	%al, 5436(%rsp)
+	movb	860(%rdx), %al
+	movb	%al, 4444(%rsp)
+	movb	860(%rcx), %al
+	movb	%al, 3452(%rsp)
+	movb	860(%r8), %al
+	movb	%al, 2460(%rsp)
+	movb	861(%rsi), %al
+	movb	%al, 5437(%rsp)
+	movb	861(%rdx), %al
+	movb	%al, 4445(%rsp)
+	movb	861(%rcx), %al
+	movb	%al, 3453(%rsp)
+	movb	861(%r8), %al
+	movb	%al, 2461(%rsp)
+	movb	862(%rsi), %al
+	movb	%al, 5438(%rsp)
+	movb	862(%rdx), %al
+	movb	%al, 4446(%rsp)
+	movb	862(%rcx), %al
+	movb	%al, 3454(%rsp)
+	movb	862(%r8), %al
+	movb	%al, 2462(%rsp)
+	movb	863(%rsi), %al
+	movb	%al, 5439(%rsp)
+	movb	863(%rdx), %al
+	movb	%al, 4447(%rsp)
+	movb	863(%rcx), %al
+	movb	%al, 3455(%rsp)
+	movb	863(%r8), %al
+	movb	%al, 2463(%rsp)
+	movb	864(%rsi), %al
+	movb	%al, 5440(%rsp)
+	movb	864(%rdx), %al
+	movb	%al, 4448(%rsp)
+	movb	864(%rcx), %al
+	movb	%al, 3456(%rsp)
+	movb	864(%r8), %al
+	movb	%al, 2464(%rsp)
+	movb	865(%rsi), %al
+	movb	%al, 5441(%rsp)
+	movb	865(%rdx), %al
+	movb	%al, 4449(%rsp)
+	movb	865(%rcx), %al
+	movb	%al, 3457(%rsp)
+	movb	865(%r8), %al
+	movb	%al, 2465(%rsp)
+	movb	866(%rsi), %al
+	movb	%al, 5442(%rsp)
+	movb	866(%rdx), %al
+	movb	%al, 4450(%rsp)
+	movb	866(%rcx), %al
+	movb	%al, 3458(%rsp)
+	movb	866(%r8), %al
+	movb	%al, 2466(%rsp)
+	movb	867(%rsi), %al
+	movb	%al, 5443(%rsp)
+	movb	867(%rdx), %al
+	movb	%al, 4451(%rsp)
+	movb	867(%rcx), %al
+	movb	%al, 3459(%rsp)
+	movb	867(%r8), %al
+	movb	%al, 2467(%rsp)
+	movb	868(%rsi), %al
+	movb	%al, 5444(%rsp)
+	movb	868(%rdx), %al
+	movb	%al, 4452(%rsp)
+	movb	868(%rcx), %al
+	movb	%al, 3460(%rsp)
+	movb	868(%r8), %al
+	movb	%al, 2468(%rsp)
+	movb	869(%rsi), %al
+	movb	%al, 5445(%rsp)
+	movb	869(%rdx), %al
+	movb	%al, 4453(%rsp)
+	movb	869(%rcx), %al
+	movb	%al, 3461(%rsp)
+	movb	869(%r8), %al
+	movb	%al, 2469(%rsp)
+	movb	870(%rsi), %al
+	movb	%al, 5446(%rsp)
+	movb	870(%rdx), %al
+	movb	%al, 4454(%rsp)
+	movb	870(%rcx), %al
+	movb	%al, 3462(%rsp)
+	movb	870(%r8), %al
+	movb	%al, 2470(%rsp)
+	movb	871(%rsi), %al
+	movb	%al, 5447(%rsp)
+	movb	871(%rdx), %al
+	movb	%al, 4455(%rsp)
+	movb	871(%rcx), %al
+	movb	%al, 3463(%rsp)
+	movb	871(%r8), %al
+	movb	%al, 2471(%rsp)
+	movb	872(%rsi), %al
+	movb	%al, 5448(%rsp)
+	movb	872(%rdx), %al
+	movb	%al, 4456(%rsp)
+	movb	872(%rcx), %al
+	movb	%al, 3464(%rsp)
+	movb	872(%r8), %al
+	movb	%al, 2472(%rsp)
+	movb	873(%rsi), %al
+	movb	%al, 5449(%rsp)
+	movb	873(%rdx), %al
+	movb	%al, 4457(%rsp)
+	movb	873(%rcx), %al
+	movb	%al, 3465(%rsp)
+	movb	873(%r8), %al
+	movb	%al, 2473(%rsp)
+	movb	874(%rsi), %al
+	movb	%al, 5450(%rsp)
+	movb	874(%rdx), %al
+	movb	%al, 4458(%rsp)
+	movb	874(%rcx), %al
+	movb	%al, 3466(%rsp)
+	movb	874(%r8), %al
+	movb	%al, 2474(%rsp)
+	movb	875(%rsi), %al
+	movb	%al, 5451(%rsp)
+	movb	875(%rdx), %al
+	movb	%al, 4459(%rsp)
+	movb	875(%rcx), %al
+	movb	%al, 3467(%rsp)
+	movb	875(%r8), %al
+	movb	%al, 2475(%rsp)
+	movb	876(%rsi), %al
+	movb	%al, 5452(%rsp)
+	movb	876(%rdx), %al
+	movb	%al, 4460(%rsp)
+	movb	876(%rcx), %al
+	movb	%al, 3468(%rsp)
+	movb	876(%r8), %al
+	movb	%al, 2476(%rsp)
+	movb	877(%rsi), %al
+	movb	%al, 5453(%rsp)
+	movb	877(%rdx), %al
+	movb	%al, 4461(%rsp)
+	movb	877(%rcx), %al
+	movb	%al, 3469(%rsp)
+	movb	877(%r8), %al
+	movb	%al, 2477(%rsp)
+	movb	878(%rsi), %al
+	movb	%al, 5454(%rsp)
+	movb	878(%rdx), %al
+	movb	%al, 4462(%rsp)
+	movb	878(%rcx), %al
+	movb	%al, 3470(%rsp)
+	movb	878(%r8), %al
+	movb	%al, 2478(%rsp)
+	movb	879(%rsi), %al
+	movb	%al, 5455(%rsp)
+	movb	879(%rdx), %al
+	movb	%al, 4463(%rsp)
+	movb	879(%rcx), %al
+	movb	%al, 3471(%rsp)
+	movb	879(%r8), %al
+	movb	%al, 2479(%rsp)
+	movb	880(%rsi), %al
+	movb	%al, 5456(%rsp)
+	movb	880(%rdx), %al
+	movb	%al, 4464(%rsp)
+	movb	880(%rcx), %al
+	movb	%al, 3472(%rsp)
+	movb	880(%r8), %al
+	movb	%al, 2480(%rsp)
+	movb	881(%rsi), %al
+	movb	%al, 5457(%rsp)
+	movb	881(%rdx), %al
+	movb	%al, 4465(%rsp)
+	movb	881(%rcx), %al
+	movb	%al, 3473(%rsp)
+	movb	881(%r8), %al
+	movb	%al, 2481(%rsp)
+	movb	882(%rsi), %al
+	movb	%al, 5458(%rsp)
+	movb	882(%rdx), %al
+	movb	%al, 4466(%rsp)
+	movb	882(%rcx), %al
+	movb	%al, 3474(%rsp)
+	movb	882(%r8), %al
+	movb	%al, 2482(%rsp)
+	movb	883(%rsi), %al
+	movb	%al, 5459(%rsp)
+	movb	883(%rdx), %al
+	movb	%al, 4467(%rsp)
+	movb	883(%rcx), %al
+	movb	%al, 3475(%rsp)
+	movb	883(%r8), %al
+	movb	%al, 2483(%rsp)
+	movb	884(%rsi), %al
+	movb	%al, 5460(%rsp)
+	movb	884(%rdx), %al
+	movb	%al, 4468(%rsp)
+	movb	884(%rcx), %al
+	movb	%al, 3476(%rsp)
+	movb	884(%r8), %al
+	movb	%al, 2484(%rsp)
+	movb	885(%rsi), %al
+	movb	%al, 5461(%rsp)
+	movb	885(%rdx), %al
+	movb	%al, 4469(%rsp)
+	movb	885(%rcx), %al
+	movb	%al, 3477(%rsp)
+	movb	885(%r8), %al
+	movb	%al, 2485(%rsp)
+	movb	886(%rsi), %al
+	movb	%al, 5462(%rsp)
+	movb	886(%rdx), %al
+	movb	%al, 4470(%rsp)
+	movb	886(%rcx), %al
+	movb	%al, 3478(%rsp)
+	movb	886(%r8), %al
+	movb	%al, 2486(%rsp)
+	movb	887(%rsi), %al
+	movb	%al, 5463(%rsp)
+	movb	887(%rdx), %al
+	movb	%al, 4471(%rsp)
+	movb	887(%rcx), %al
+	movb	%al, 3479(%rsp)
+	movb	887(%r8), %al
+	movb	%al, 2487(%rsp)
+	movb	888(%rsi), %al
+	movb	%al, 5464(%rsp)
+	movb	888(%rdx), %al
+	movb	%al, 4472(%rsp)
+	movb	888(%rcx), %al
+	movb	%al, 3480(%rsp)
+	movb	888(%r8), %al
+	movb	%al, 2488(%rsp)
+	movb	889(%rsi), %al
+	movb	%al, 5465(%rsp)
+	movb	889(%rdx), %al
+	movb	%al, 4473(%rsp)
+	movb	889(%rcx), %al
+	movb	%al, 3481(%rsp)
+	movb	889(%r8), %al
+	movb	%al, 2489(%rsp)
+	movb	890(%rsi), %al
+	movb	%al, 5466(%rsp)
+	movb	890(%rdx), %al
+	movb	%al, 4474(%rsp)
+	movb	890(%rcx), %al
+	movb	%al, 3482(%rsp)
+	movb	890(%r8), %al
+	movb	%al, 2490(%rsp)
+	movb	891(%rsi), %al
+	movb	%al, 5467(%rsp)
+	movb	891(%rdx), %al
+	movb	%al, 4475(%rsp)
+	movb	891(%rcx), %al
+	movb	%al, 3483(%rsp)
+	movb	891(%r8), %al
+	movb	%al, 2491(%rsp)
+	movb	892(%rsi), %al
+	movb	%al, 5468(%rsp)
+	movb	892(%rdx), %al
+	movb	%al, 4476(%rsp)
+	movb	892(%rcx), %al
+	movb	%al, 3484(%rsp)
+	movb	892(%r8), %al
+	movb	%al, 2492(%rsp)
+	movb	893(%rsi), %al
+	movb	%al, 5469(%rsp)
+	movb	893(%rdx), %al
+	movb	%al, 4477(%rsp)
+	movb	893(%rcx), %al
+	movb	%al, 3485(%rsp)
+	movb	893(%r8), %al
+	movb	%al, 2493(%rsp)
+	movb	894(%rsi), %al
+	movb	%al, 5470(%rsp)
+	movb	894(%rdx), %al
+	movb	%al, 4478(%rsp)
+	movb	894(%rcx), %al
+	movb	%al, 3486(%rsp)
+	movb	894(%r8), %al
+	movb	%al, 2494(%rsp)
+	movb	895(%rsi), %al
+	movb	%al, 5471(%rsp)
+	movb	895(%rdx), %al
+	movb	%al, 4479(%rsp)
+	movb	895(%rcx), %al
+	movb	%al, 3487(%rsp)
+	movb	895(%r8), %al
+	movb	%al, 2495(%rsp)
+	movb	896(%rsi), %al
+	movb	%al, 5472(%rsp)
+	movb	896(%rdx), %al
+	movb	%al, 4480(%rsp)
+	movb	896(%rcx), %al
+	movb	%al, 3488(%rsp)
+	movb	896(%r8), %al
+	movb	%al, 2496(%rsp)
+	movb	897(%rsi), %al
+	movb	%al, 5473(%rsp)
+	movb	897(%rdx), %al
+	movb	%al, 4481(%rsp)
+	movb	897(%rcx), %al
+	movb	%al, 3489(%rsp)
+	movb	897(%r8), %al
+	movb	%al, 2497(%rsp)
+	movb	898(%rsi), %al
+	movb	%al, 5474(%rsp)
+	movb	898(%rdx), %al
+	movb	%al, 4482(%rsp)
+	movb	898(%rcx), %al
+	movb	%al, 3490(%rsp)
+	movb	898(%r8), %al
+	movb	%al, 2498(%rsp)
+	movb	899(%rsi), %al
+	movb	%al, 5475(%rsp)
+	movb	899(%rdx), %al
+	movb	%al, 4483(%rsp)
+	movb	899(%rcx), %al
+	movb	%al, 3491(%rsp)
+	movb	899(%r8), %al
+	movb	%al, 2499(%rsp)
+	movb	900(%rsi), %al
+	movb	%al, 5476(%rsp)
+	movb	900(%rdx), %al
+	movb	%al, 4484(%rsp)
+	movb	900(%rcx), %al
+	movb	%al, 3492(%rsp)
+	movb	900(%r8), %al
+	movb	%al, 2500(%rsp)
+	movb	901(%rsi), %al
+	movb	%al, 5477(%rsp)
+	movb	901(%rdx), %al
+	movb	%al, 4485(%rsp)
+	movb	901(%rcx), %al
+	movb	%al, 3493(%rsp)
+	movb	901(%r8), %al
+	movb	%al, 2501(%rsp)
+	movb	902(%rsi), %al
+	movb	%al, 5478(%rsp)
+	movb	902(%rdx), %al
+	movb	%al, 4486(%rsp)
+	movb	902(%rcx), %al
+	movb	%al, 3494(%rsp)
+	movb	902(%r8), %al
+	movb	%al, 2502(%rsp)
+	movb	903(%rsi), %al
+	movb	%al, 5479(%rsp)
+	movb	903(%rdx), %al
+	movb	%al, 4487(%rsp)
+	movb	903(%rcx), %al
+	movb	%al, 3495(%rsp)
+	movb	903(%r8), %al
+	movb	%al, 2503(%rsp)
+	movb	904(%rsi), %al
+	movb	%al, 5480(%rsp)
+	movb	904(%rdx), %al
+	movb	%al, 4488(%rsp)
+	movb	904(%rcx), %al
+	movb	%al, 3496(%rsp)
+	movb	904(%r8), %al
+	movb	%al, 2504(%rsp)
+	movb	905(%rsi), %al
+	movb	%al, 5481(%rsp)
+	movb	905(%rdx), %al
+	movb	%al, 4489(%rsp)
+	movb	905(%rcx), %al
+	movb	%al, 3497(%rsp)
+	movb	905(%r8), %al
+	movb	%al, 2505(%rsp)
+	movb	906(%rsi), %al
+	movb	%al, 5482(%rsp)
+	movb	906(%rdx), %al
+	movb	%al, 4490(%rsp)
+	movb	906(%rcx), %al
+	movb	%al, 3498(%rsp)
+	movb	906(%r8), %al
+	movb	%al, 2506(%rsp)
+	movb	907(%rsi), %al
+	movb	%al, 5483(%rsp)
+	movb	907(%rdx), %al
+	movb	%al, 4491(%rsp)
+	movb	907(%rcx), %al
+	movb	%al, 3499(%rsp)
+	movb	907(%r8), %al
+	movb	%al, 2507(%rsp)
+	movb	908(%rsi), %al
+	movb	%al, 5484(%rsp)
+	movb	908(%rdx), %al
+	movb	%al, 4492(%rsp)
+	movb	908(%rcx), %al
+	movb	%al, 3500(%rsp)
+	movb	908(%r8), %al
+	movb	%al, 2508(%rsp)
+	movb	909(%rsi), %al
+	movb	%al, 5485(%rsp)
+	movb	909(%rdx), %al
+	movb	%al, 4493(%rsp)
+	movb	909(%rcx), %al
+	movb	%al, 3501(%rsp)
+	movb	909(%r8), %al
+	movb	%al, 2509(%rsp)
+	movb	910(%rsi), %al
+	movb	%al, 5486(%rsp)
+	movb	910(%rdx), %al
+	movb	%al, 4494(%rsp)
+	movb	910(%rcx), %al
+	movb	%al, 3502(%rsp)
+	movb	910(%r8), %al
+	movb	%al, 2510(%rsp)
+	movb	911(%rsi), %al
+	movb	%al, 5487(%rsp)
+	movb	911(%rdx), %al
+	movb	%al, 4495(%rsp)
+	movb	911(%rcx), %al
+	movb	%al, 3503(%rsp)
+	movb	911(%r8), %al
+	movb	%al, 2511(%rsp)
+	movb	912(%rsi), %al
+	movb	%al, 5488(%rsp)
+	movb	912(%rdx), %al
+	movb	%al, 4496(%rsp)
+	movb	912(%rcx), %al
+	movb	%al, 3504(%rsp)
+	movb	912(%r8), %al
+	movb	%al, 2512(%rsp)
+	movb	913(%rsi), %al
+	movb	%al, 5489(%rsp)
+	movb	913(%rdx), %al
+	movb	%al, 4497(%rsp)
+	movb	913(%rcx), %al
+	movb	%al, 3505(%rsp)
+	movb	913(%r8), %al
+	movb	%al, 2513(%rsp)
+	movb	914(%rsi), %al
+	movb	%al, 5490(%rsp)
+	movb	914(%rdx), %al
+	movb	%al, 4498(%rsp)
+	movb	914(%rcx), %al
+	movb	%al, 3506(%rsp)
+	movb	914(%r8), %al
+	movb	%al, 2514(%rsp)
+	movb	915(%rsi), %al
+	movb	%al, 5491(%rsp)
+	movb	915(%rdx), %al
+	movb	%al, 4499(%rsp)
+	movb	915(%rcx), %al
+	movb	%al, 3507(%rsp)
+	movb	915(%r8), %al
+	movb	%al, 2515(%rsp)
+	movb	916(%rsi), %al
+	movb	%al, 5492(%rsp)
+	movb	916(%rdx), %al
+	movb	%al, 4500(%rsp)
+	movb	916(%rcx), %al
+	movb	%al, 3508(%rsp)
+	movb	916(%r8), %al
+	movb	%al, 2516(%rsp)
+	movb	917(%rsi), %al
+	movb	%al, 5493(%rsp)
+	movb	917(%rdx), %al
+	movb	%al, 4501(%rsp)
+	movb	917(%rcx), %al
+	movb	%al, 3509(%rsp)
+	movb	917(%r8), %al
+	movb	%al, 2517(%rsp)
+	movb	918(%rsi), %al
+	movb	%al, 5494(%rsp)
+	movb	918(%rdx), %al
+	movb	%al, 4502(%rsp)
+	movb	918(%rcx), %al
+	movb	%al, 3510(%rsp)
+	movb	918(%r8), %al
+	movb	%al, 2518(%rsp)
+	movb	919(%rsi), %al
+	movb	%al, 5495(%rsp)
+	movb	919(%rdx), %al
+	movb	%al, 4503(%rsp)
+	movb	919(%rcx), %al
+	movb	%al, 3511(%rsp)
+	movb	919(%r8), %al
+	movb	%al, 2519(%rsp)
+	movb	920(%rsi), %al
+	movb	%al, 5496(%rsp)
+	movb	920(%rdx), %al
+	movb	%al, 4504(%rsp)
+	movb	920(%rcx), %al
+	movb	%al, 3512(%rsp)
+	movb	920(%r8), %al
+	movb	%al, 2520(%rsp)
+	movb	921(%rsi), %al
+	movb	%al, 5497(%rsp)
+	movb	921(%rdx), %al
+	movb	%al, 4505(%rsp)
+	movb	921(%rcx), %al
+	movb	%al, 3513(%rsp)
+	movb	921(%r8), %al
+	movb	%al, 2521(%rsp)
+	movb	922(%rsi), %al
+	movb	%al, 5498(%rsp)
+	movb	922(%rdx), %al
+	movb	%al, 4506(%rsp)
+	movb	922(%rcx), %al
+	movb	%al, 3514(%rsp)
+	movb	922(%r8), %al
+	movb	%al, 2522(%rsp)
+	movb	923(%rsi), %al
+	movb	%al, 5499(%rsp)
+	movb	923(%rdx), %al
+	movb	%al, 4507(%rsp)
+	movb	923(%rcx), %al
+	movb	%al, 3515(%rsp)
+	movb	923(%r8), %al
+	movb	%al, 2523(%rsp)
+	movb	924(%rsi), %al
+	movb	%al, 5500(%rsp)
+	movb	924(%rdx), %al
+	movb	%al, 4508(%rsp)
+	movb	924(%rcx), %al
+	movb	%al, 3516(%rsp)
+	movb	924(%r8), %al
+	movb	%al, 2524(%rsp)
+	movb	925(%rsi), %al
+	movb	%al, 5501(%rsp)
+	movb	925(%rdx), %al
+	movb	%al, 4509(%rsp)
+	movb	925(%rcx), %al
+	movb	%al, 3517(%rsp)
+	movb	925(%r8), %al
+	movb	%al, 2525(%rsp)
+	movb	926(%rsi), %al
+	movb	%al, 5502(%rsp)
+	movb	926(%rdx), %al
+	movb	%al, 4510(%rsp)
+	movb	926(%rcx), %al
+	movb	%al, 3518(%rsp)
+	movb	926(%r8), %al
+	movb	%al, 2526(%rsp)
+	movb	927(%rsi), %al
+	movb	%al, 5503(%rsp)
+	movb	927(%rdx), %al
+	movb	%al, 4511(%rsp)
+	movb	927(%rcx), %al
+	movb	%al, 3519(%rsp)
+	movb	927(%r8), %al
+	movb	%al, 2527(%rsp)
+	movb	928(%rsi), %al
+	movb	%al, 5504(%rsp)
+	movb	928(%rdx), %al
+	movb	%al, 4512(%rsp)
+	movb	928(%rcx), %al
+	movb	%al, 3520(%rsp)
+	movb	928(%r8), %al
+	movb	%al, 2528(%rsp)
+	movb	929(%rsi), %al
+	movb	%al, 5505(%rsp)
+	movb	929(%rdx), %al
+	movb	%al, 4513(%rsp)
+	movb	929(%rcx), %al
+	movb	%al, 3521(%rsp)
+	movb	929(%r8), %al
+	movb	%al, 2529(%rsp)
+	movb	930(%rsi), %al
+	movb	%al, 5506(%rsp)
+	movb	930(%rdx), %al
+	movb	%al, 4514(%rsp)
+	movb	930(%rcx), %al
+	movb	%al, 3522(%rsp)
+	movb	930(%r8), %al
+	movb	%al, 2530(%rsp)
+	movb	931(%rsi), %al
+	movb	%al, 5507(%rsp)
+	movb	931(%rdx), %al
+	movb	%al, 4515(%rsp)
+	movb	931(%rcx), %al
+	movb	%al, 3523(%rsp)
+	movb	931(%r8), %al
+	movb	%al, 2531(%rsp)
+	movb	932(%rsi), %al
+	movb	%al, 5508(%rsp)
+	movb	932(%rdx), %al
+	movb	%al, 4516(%rsp)
+	movb	932(%rcx), %al
+	movb	%al, 3524(%rsp)
+	movb	932(%r8), %al
+	movb	%al, 2532(%rsp)
+	movb	933(%rsi), %al
+	movb	%al, 5509(%rsp)
+	movb	933(%rdx), %al
+	movb	%al, 4517(%rsp)
+	movb	933(%rcx), %al
+	movb	%al, 3525(%rsp)
+	movb	933(%r8), %al
+	movb	%al, 2533(%rsp)
+	movb	934(%rsi), %al
+	movb	%al, 5510(%rsp)
+	movb	934(%rdx), %al
+	movb	%al, 4518(%rsp)
+	movb	934(%rcx), %al
+	movb	%al, 3526(%rsp)
+	movb	934(%r8), %al
+	movb	%al, 2534(%rsp)
+	movb	935(%rsi), %al
+	movb	%al, 5511(%rsp)
+	movb	935(%rdx), %al
+	movb	%al, 4519(%rsp)
+	movb	935(%rcx), %al
+	movb	%al, 3527(%rsp)
+	movb	935(%r8), %al
+	movb	%al, 2535(%rsp)
+	movb	936(%rsi), %al
+	movb	%al, 5512(%rsp)
+	movb	936(%rdx), %al
+	movb	%al, 4520(%rsp)
+	movb	936(%rcx), %al
+	movb	%al, 3528(%rsp)
+	movb	936(%r8), %al
+	movb	%al, 2536(%rsp)
+	movb	937(%rsi), %al
+	movb	%al, 5513(%rsp)
+	movb	937(%rdx), %al
+	movb	%al, 4521(%rsp)
+	movb	937(%rcx), %al
+	movb	%al, 3529(%rsp)
+	movb	937(%r8), %al
+	movb	%al, 2537(%rsp)
+	movb	938(%rsi), %al
+	movb	%al, 5514(%rsp)
+	movb	938(%rdx), %al
+	movb	%al, 4522(%rsp)
+	movb	938(%rcx), %al
+	movb	%al, 3530(%rsp)
+	movb	938(%r8), %al
+	movb	%al, 2538(%rsp)
+	movb	939(%rsi), %al
+	movb	%al, 5515(%rsp)
+	movb	939(%rdx), %al
+	movb	%al, 4523(%rsp)
+	movb	939(%rcx), %al
+	movb	%al, 3531(%rsp)
+	movb	939(%r8), %al
+	movb	%al, 2539(%rsp)
+	movb	940(%rsi), %al
+	movb	%al, 5516(%rsp)
+	movb	940(%rdx), %al
+	movb	%al, 4524(%rsp)
+	movb	940(%rcx), %al
+	movb	%al, 3532(%rsp)
+	movb	940(%r8), %al
+	movb	%al, 2540(%rsp)
+	movb	941(%rsi), %al
+	movb	%al, 5517(%rsp)
+	movb	941(%rdx), %al
+	movb	%al, 4525(%rsp)
+	movb	941(%rcx), %al
+	movb	%al, 3533(%rsp)
+	movb	941(%r8), %al
+	movb	%al, 2541(%rsp)
+	movb	942(%rsi), %al
+	movb	%al, 5518(%rsp)
+	movb	942(%rdx), %al
+	movb	%al, 4526(%rsp)
+	movb	942(%rcx), %al
+	movb	%al, 3534(%rsp)
+	movb	942(%r8), %al
+	movb	%al, 2542(%rsp)
+	movb	943(%rsi), %al
+	movb	%al, 5519(%rsp)
+	movb	943(%rdx), %al
+	movb	%al, 4527(%rsp)
+	movb	943(%rcx), %al
+	movb	%al, 3535(%rsp)
+	movb	943(%r8), %al
+	movb	%al, 2543(%rsp)
+	movb	944(%rsi), %al
+	movb	%al, 5520(%rsp)
+	movb	944(%rdx), %al
+	movb	%al, 4528(%rsp)
+	movb	944(%rcx), %al
+	movb	%al, 3536(%rsp)
+	movb	944(%r8), %al
+	movb	%al, 2544(%rsp)
+	movb	945(%rsi), %al
+	movb	%al, 5521(%rsp)
+	movb	945(%rdx), %al
+	movb	%al, 4529(%rsp)
+	movb	945(%rcx), %al
+	movb	%al, 3537(%rsp)
+	movb	945(%r8), %al
+	movb	%al, 2545(%rsp)
+	movb	946(%rsi), %al
+	movb	%al, 5522(%rsp)
+	movb	946(%rdx), %al
+	movb	%al, 4530(%rsp)
+	movb	946(%rcx), %al
+	movb	%al, 3538(%rsp)
+	movb	946(%r8), %al
+	movb	%al, 2546(%rsp)
+	movb	947(%rsi), %al
+	movb	%al, 5523(%rsp)
+	movb	947(%rdx), %al
+	movb	%al, 4531(%rsp)
+	movb	947(%rcx), %al
+	movb	%al, 3539(%rsp)
+	movb	947(%r8), %al
+	movb	%al, 2547(%rsp)
+	movb	948(%rsi), %al
+	movb	%al, 5524(%rsp)
+	movb	948(%rdx), %al
+	movb	%al, 4532(%rsp)
+	movb	948(%rcx), %al
+	movb	%al, 3540(%rsp)
+	movb	948(%r8), %al
+	movb	%al, 2548(%rsp)
+	movb	949(%rsi), %al
+	movb	%al, 5525(%rsp)
+	movb	949(%rdx), %al
+	movb	%al, 4533(%rsp)
+	movb	949(%rcx), %al
+	movb	%al, 3541(%rsp)
+	movb	949(%r8), %al
+	movb	%al, 2549(%rsp)
+	movb	950(%rsi), %al
+	movb	%al, 5526(%rsp)
+	movb	950(%rdx), %al
+	movb	%al, 4534(%rsp)
+	movb	950(%rcx), %al
+	movb	%al, 3542(%rsp)
+	movb	950(%r8), %al
+	movb	%al, 2550(%rsp)
+	movb	951(%rsi), %al
+	movb	%al, 5527(%rsp)
+	movb	951(%rdx), %al
+	movb	%al, 4535(%rsp)
+	movb	951(%rcx), %al
+	movb	%al, 3543(%rsp)
+	movb	951(%r8), %al
+	movb	%al, 2551(%rsp)
+	movb	952(%rsi), %al
+	movb	%al, 5528(%rsp)
+	movb	952(%rdx), %al
+	movb	%al, 4536(%rsp)
+	movb	952(%rcx), %al
+	movb	%al, 3544(%rsp)
+	movb	952(%r8), %al
+	movb	%al, 2552(%rsp)
+	movb	953(%rsi), %al
+	movb	%al, 5529(%rsp)
+	movb	953(%rdx), %al
+	movb	%al, 4537(%rsp)
+	movb	953(%rcx), %al
+	movb	%al, 3545(%rsp)
+	movb	953(%r8), %al
+	movb	%al, 2553(%rsp)
+	movb	954(%rsi), %al
+	movb	%al, 5530(%rsp)
+	movb	954(%rdx), %al
+	movb	%al, 4538(%rsp)
+	movb	954(%rcx), %al
+	movb	%al, 3546(%rsp)
+	movb	954(%r8), %al
+	movb	%al, 2554(%rsp)
+	movb	955(%rsi), %al
+	movb	%al, 5531(%rsp)
+	movb	955(%rdx), %al
+	movb	%al, 4539(%rsp)
+	movb	955(%rcx), %al
+	movb	%al, 3547(%rsp)
+	movb	955(%r8), %al
+	movb	%al, 2555(%rsp)
+	movb	956(%rsi), %al
+	movb	%al, 5532(%rsp)
+	movb	956(%rdx), %al
+	movb	%al, 4540(%rsp)
+	movb	956(%rcx), %al
+	movb	%al, 3548(%rsp)
+	movb	956(%r8), %al
+	movb	%al, 2556(%rsp)
+	movb	957(%rsi), %al
+	movb	%al, 5533(%rsp)
+	movb	957(%rdx), %al
+	movb	%al, 4541(%rsp)
+	movb	957(%rcx), %al
+	movb	%al, 3549(%rsp)
+	movb	957(%r8), %al
+	movb	%al, 2557(%rsp)
+	movb	958(%rsi), %al
+	movb	%al, 5534(%rsp)
+	movb	958(%rdx), %al
+	movb	%al, 4542(%rsp)
+	movb	958(%rcx), %al
+	movb	%al, 3550(%rsp)
+	movb	958(%r8), %al
+	movb	%al, 2558(%rsp)
+	movb	959(%rsi), %al
+	movb	%al, 5535(%rsp)
+	movb	959(%rdx), %al
+	movb	%al, 4543(%rsp)
+	movb	959(%rcx), %al
+	movb	%al, 3551(%rsp)
+	movb	959(%r8), %al
+	movb	%al, 2559(%rsp)
+	movb	960(%rsi), %al
+	movb	%al, 5536(%rsp)
+	movb	960(%rdx), %al
+	movb	%al, 4544(%rsp)
+	movb	960(%rcx), %al
+	movb	%al, 3552(%rsp)
+	movb	960(%r8), %al
+	movb	%al, 2560(%rsp)
+	movb	961(%rsi), %al
+	movb	%al, 5537(%rsp)
+	movb	961(%rdx), %al
+	movb	%al, 4545(%rsp)
+	movb	961(%rcx), %al
+	movb	%al, 3553(%rsp)
+	movb	961(%r8), %al
+	movb	%al, 2561(%rsp)
+	movb	962(%rsi), %al
+	movb	%al, 5538(%rsp)
+	movb	962(%rdx), %al
+	movb	%al, 4546(%rsp)
+	movb	962(%rcx), %al
+	movb	%al, 3554(%rsp)
+	movb	962(%r8), %al
+	movb	%al, 2562(%rsp)
+	movb	963(%rsi), %al
+	movb	%al, 5539(%rsp)
+	movb	963(%rdx), %al
+	movb	%al, 4547(%rsp)
+	movb	963(%rcx), %al
+	movb	%al, 3555(%rsp)
+	movb	963(%r8), %al
+	movb	%al, 2563(%rsp)
+	movb	964(%rsi), %al
+	movb	%al, 5540(%rsp)
+	movb	964(%rdx), %al
+	movb	%al, 4548(%rsp)
+	movb	964(%rcx), %al
+	movb	%al, 3556(%rsp)
+	movb	964(%r8), %al
+	movb	%al, 2564(%rsp)
+	movb	965(%rsi), %al
+	movb	%al, 5541(%rsp)
+	movb	965(%rdx), %al
+	movb	%al, 4549(%rsp)
+	movb	965(%rcx), %al
+	movb	%al, 3557(%rsp)
+	movb	965(%r8), %al
+	movb	%al, 2565(%rsp)
+	movb	966(%rsi), %al
+	movb	%al, 5542(%rsp)
+	movb	966(%rdx), %al
+	movb	%al, 4550(%rsp)
+	movb	966(%rcx), %al
+	movb	%al, 3558(%rsp)
+	movb	966(%r8), %al
+	movb	%al, 2566(%rsp)
+	movb	967(%rsi), %al
+	movb	%al, 5543(%rsp)
+	movb	967(%rdx), %al
+	movb	%al, 4551(%rsp)
+	movb	967(%rcx), %al
+	movb	%al, 3559(%rsp)
+	movb	967(%r8), %al
+	movb	%al, 2567(%rsp)
+	movb	968(%rsi), %al
+	movb	%al, 5544(%rsp)
+	movb	968(%rdx), %al
+	movb	%al, 4552(%rsp)
+	movb	968(%rcx), %al
+	movb	%al, 3560(%rsp)
+	movb	968(%r8), %al
+	movb	%al, 2568(%rsp)
+	movb	969(%rsi), %al
+	movb	%al, 5545(%rsp)
+	movb	969(%rdx), %al
+	movb	%al, 4553(%rsp)
+	movb	969(%rcx), %al
+	movb	%al, 3561(%rsp)
+	movb	969(%r8), %al
+	movb	%al, 2569(%rsp)
+	movb	970(%rsi), %al
+	movb	%al, 5546(%rsp)
+	movb	970(%rdx), %al
+	movb	%al, 4554(%rsp)
+	movb	970(%rcx), %al
+	movb	%al, 3562(%rsp)
+	movb	970(%r8), %al
+	movb	%al, 2570(%rsp)
+	movb	971(%rsi), %al
+	movb	%al, 5547(%rsp)
+	movb	971(%rdx), %al
+	movb	%al, 4555(%rsp)
+	movb	971(%rcx), %al
+	movb	%al, 3563(%rsp)
+	movb	971(%r8), %al
+	movb	%al, 2571(%rsp)
+	movb	972(%rsi), %al
+	movb	%al, 5548(%rsp)
+	movb	972(%rdx), %al
+	movb	%al, 4556(%rsp)
+	movb	972(%rcx), %al
+	movb	%al, 3564(%rsp)
+	movb	972(%r8), %al
+	movb	%al, 2572(%rsp)
+	movb	973(%rsi), %al
+	movb	%al, 5549(%rsp)
+	movb	973(%rdx), %al
+	movb	%al, 4557(%rsp)
+	movb	973(%rcx), %al
+	movb	%al, 3565(%rsp)
+	movb	973(%r8), %al
+	movb	%al, 2573(%rsp)
+	movb	974(%rsi), %al
+	movb	%al, 5550(%rsp)
+	movb	974(%rdx), %al
+	movb	%al, 4558(%rsp)
+	movb	974(%rcx), %al
+	movb	%al, 3566(%rsp)
+	movb	974(%r8), %al
+	movb	%al, 2574(%rsp)
+	movb	975(%rsi), %al
+	movb	%al, 5551(%rsp)
+	movb	975(%rdx), %al
+	movb	%al, 4559(%rsp)
+	movb	975(%rcx), %al
+	movb	%al, 3567(%rsp)
+	movb	975(%r8), %al
+	movb	%al, 2575(%rsp)
+	movb	976(%rsi), %al
+	movb	%al, 5552(%rsp)
+	movb	976(%rdx), %al
+	movb	%al, 4560(%rsp)
+	movb	976(%rcx), %al
+	movb	%al, 3568(%rsp)
+	movb	976(%r8), %al
+	movb	%al, 2576(%rsp)
+	movb	977(%rsi), %al
+	movb	%al, 5553(%rsp)
+	movb	977(%rdx), %al
+	movb	%al, 4561(%rsp)
+	movb	977(%rcx), %al
+	movb	%al, 3569(%rsp)
+	movb	977(%r8), %al
+	movb	%al, 2577(%rsp)
+	movb	978(%rsi), %al
+	movb	%al, 5554(%rsp)
+	movb	978(%rdx), %al
+	movb	%al, 4562(%rsp)
+	movb	978(%rcx), %al
+	movb	%al, 3570(%rsp)
+	movb	978(%r8), %al
+	movb	%al, 2578(%rsp)
+	movb	979(%rsi), %al
+	movb	%al, 5555(%rsp)
+	movb	979(%rdx), %al
+	movb	%al, 4563(%rsp)
+	movb	979(%rcx), %al
+	movb	%al, 3571(%rsp)
+	movb	979(%r8), %al
+	movb	%al, 2579(%rsp)
+	movb	980(%rsi), %al
+	movb	%al, 5556(%rsp)
+	movb	980(%rdx), %al
+	movb	%al, 4564(%rsp)
+	movb	980(%rcx), %al
+	movb	%al, 3572(%rsp)
+	movb	980(%r8), %al
+	movb	%al, 2580(%rsp)
+	movb	981(%rsi), %al
+	movb	%al, 5557(%rsp)
+	movb	981(%rdx), %al
+	movb	%al, 4565(%rsp)
+	movb	981(%rcx), %al
+	movb	%al, 3573(%rsp)
+	movb	981(%r8), %al
+	movb	%al, 2581(%rsp)
+	movb	982(%rsi), %al
+	movb	%al, 5558(%rsp)
+	movb	982(%rdx), %al
+	movb	%al, 4566(%rsp)
+	movb	982(%rcx), %al
+	movb	%al, 3574(%rsp)
+	movb	982(%r8), %al
+	movb	%al, 2582(%rsp)
+	movb	983(%rsi), %al
+	movb	%al, 5559(%rsp)
+	movb	983(%rdx), %al
+	movb	%al, 4567(%rsp)
+	movb	983(%rcx), %al
+	movb	%al, 3575(%rsp)
+	movb	983(%r8), %al
+	movb	%al, 2583(%rsp)
+	movb	984(%rsi), %al
+	movb	%al, 5560(%rsp)
+	movb	984(%rdx), %al
+	movb	%al, 4568(%rsp)
+	movb	984(%rcx), %al
+	movb	%al, 3576(%rsp)
+	movb	984(%r8), %al
+	movb	%al, 2584(%rsp)
+	movb	985(%rsi), %al
+	movb	%al, 5561(%rsp)
+	movb	985(%rdx), %al
+	movb	%al, 4569(%rsp)
+	movb	985(%rcx), %al
+	movb	%al, 3577(%rsp)
+	movb	985(%r8), %al
+	movb	%al, 2585(%rsp)
+	movb	986(%rsi), %al
+	movb	%al, 5562(%rsp)
+	movb	986(%rdx), %al
+	movb	%al, 4570(%rsp)
+	movb	986(%rcx), %al
+	movb	%al, 3578(%rsp)
+	movb	986(%r8), %al
+	movb	%al, 2586(%rsp)
+	movb	987(%rsi), %al
+	movb	%al, 5563(%rsp)
+	movb	987(%rdx), %al
+	movb	%al, 4571(%rsp)
+	movb	987(%rcx), %al
+	movb	%al, 3579(%rsp)
+	movb	987(%r8), %al
+	movb	%al, 2587(%rsp)
+	movb	988(%rsi), %al
+	movb	%al, 5564(%rsp)
+	movb	988(%rdx), %al
+	movb	%al, 4572(%rsp)
+	movb	988(%rcx), %al
+	movb	%al, 3580(%rsp)
+	movb	988(%r8), %al
+	movb	%al, 2588(%rsp)
+	movb	989(%rsi), %al
+	movb	%al, 5565(%rsp)
+	movb	989(%rdx), %al
+	movb	%al, 4573(%rsp)
+	movb	989(%rcx), %al
+	movb	%al, 3581(%rsp)
+	movb	989(%r8), %al
+	movb	%al, 2589(%rsp)
+	movb	990(%rsi), %al
+	movb	%al, 5566(%rsp)
+	movb	990(%rdx), %al
+	movb	%al, 4574(%rsp)
+	movb	990(%rcx), %al
+	movb	%al, 3582(%rsp)
+	movb	990(%r8), %al
+	movb	%al, 2590(%rsp)
+	movb	991(%rsi), %al
+	movb	%al, 5567(%rsp)
+	movb	991(%rdx), %al
+	movb	%al, 4575(%rsp)
+	movb	991(%rcx), %al
+	movb	%al, 3583(%rsp)
+	movb	991(%r8), %al
+	movb	%al, 2591(%rsp)
+	movq	%rsp, %r10
+	leaq	4576(%rsp), %rax
+	leaq	3584(%rsp), %rcx
+	leaq	2592(%rsp), %rdx
+	leaq	1600(%rsp), %rsi
+	movzbq	4576(%rsp), %r8
+	movzbq	4577(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4578(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4579(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4580(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4581(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4582(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4583(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, (%r10)
+	movzbq	3584(%rsp), %r8
+	movzbq	3585(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3586(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3587(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3588(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3589(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3590(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3591(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 8(%r10)
+	movzbq	2592(%rsp), %r8
+	movzbq	2593(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2594(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2595(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2596(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2597(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2598(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2599(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 16(%r10)
+	movzbq	1600(%rsp), %r8
+	movzbq	1601(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1602(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1603(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1604(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1605(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1606(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1607(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 24(%r10)
+	movzbq	4584(%rsp), %r8
+	movzbq	4585(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4586(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4587(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4588(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4589(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4590(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4591(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 32(%r10)
+	movzbq	3592(%rsp), %r8
+	movzbq	3593(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3594(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3595(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3596(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3597(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3598(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3599(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 40(%r10)
+	movzbq	2600(%rsp), %r8
+	movzbq	2601(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2602(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2603(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2604(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2605(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2606(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2607(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 48(%r10)
+	movzbq	1608(%rsp), %r8
+	movzbq	1609(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1610(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1611(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1612(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1613(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1614(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1615(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 56(%r10)
+	movzbq	4592(%rsp), %r8
+	movzbq	4593(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4594(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4595(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4596(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4597(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4598(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4599(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 64(%r10)
+	movzbq	3600(%rsp), %r8
+	movzbq	3601(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3602(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3603(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3604(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3605(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3606(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3607(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 72(%r10)
+	movzbq	2608(%rsp), %r8
+	movzbq	2609(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2610(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2611(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2612(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2613(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2614(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2615(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 80(%r10)
+	movzbq	1616(%rsp), %r8
+	movzbq	1617(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1618(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1619(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1620(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1621(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1622(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1623(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 88(%r10)
+	movzbq	4600(%rsp), %r8
+	movzbq	4601(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4602(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4603(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4604(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4605(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4606(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4607(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 96(%r10)
+	movzbq	3608(%rsp), %r8
+	movzbq	3609(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3610(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3611(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3612(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3613(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3614(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3615(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 104(%r10)
+	movzbq	2616(%rsp), %r8
+	movzbq	2617(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2618(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2619(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2620(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2621(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2622(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2623(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 112(%r10)
+	movzbq	1624(%rsp), %r8
+	movzbq	1625(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1626(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1627(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1628(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1629(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1630(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1631(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 120(%r10)
+	movzbq	4608(%rsp), %r8
+	movzbq	4609(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4610(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4611(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4612(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4613(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4614(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4615(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 128(%r10)
+	movzbq	3616(%rsp), %r8
+	movzbq	3617(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3618(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3619(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3620(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3621(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3622(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3623(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 136(%r10)
+	movzbq	2624(%rsp), %r8
+	movzbq	2625(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2626(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2627(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2628(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2629(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2630(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2631(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 144(%r10)
+	movzbq	1632(%rsp), %r8
+	movzbq	1633(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1634(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1635(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1636(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1637(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1638(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1639(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 152(%r10)
+	movzbq	4616(%rsp), %r8
+	movzbq	4617(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4618(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4619(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4620(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4621(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4622(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4623(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 160(%r10)
+	movzbq	3624(%rsp), %r8
+	movzbq	3625(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3626(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3627(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3628(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3629(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3630(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3631(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 168(%r10)
+	movzbq	2632(%rsp), %r8
+	movzbq	2633(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2634(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2635(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2636(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2637(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2638(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2639(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 176(%r10)
+	movzbq	1640(%rsp), %r8
+	movzbq	1641(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1642(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1643(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1644(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1645(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1646(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1647(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 184(%r10)
+	movzbq	4624(%rsp), %r8
+	movzbq	4625(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4626(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4627(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4628(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4629(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4630(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4631(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 192(%r10)
+	movzbq	3632(%rsp), %r8
+	movzbq	3633(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3634(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3635(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3636(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3637(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3638(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3639(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 200(%r10)
+	movzbq	2640(%rsp), %r8
+	movzbq	2641(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2642(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2643(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2644(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2645(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2646(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2647(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 208(%r10)
+	movzbq	1648(%rsp), %r8
+	movzbq	1649(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1650(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1651(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1652(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1653(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1654(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1655(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 216(%r10)
+	movzbq	4632(%rsp), %r8
+	movzbq	4633(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4634(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4635(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4636(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4637(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4638(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4639(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 224(%r10)
+	movzbq	3640(%rsp), %r8
+	movzbq	3641(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3642(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3643(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3644(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3645(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3646(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3647(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 232(%r10)
+	movzbq	2648(%rsp), %r8
+	movzbq	2649(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2650(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2651(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2652(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2653(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2654(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2655(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 240(%r10)
+	movzbq	1656(%rsp), %r8
+	movzbq	1657(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1658(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1659(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1660(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1661(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1662(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1663(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 248(%r10)
+	movzbq	4640(%rsp), %r8
+	movzbq	4641(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4642(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4643(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4644(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4645(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4646(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4647(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 256(%r10)
+	movzbq	3648(%rsp), %r8
+	movzbq	3649(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3650(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3651(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3652(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3653(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3654(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3655(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 264(%r10)
+	movzbq	2656(%rsp), %r8
+	movzbq	2657(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2658(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2659(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2660(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2661(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2662(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2663(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 272(%r10)
+	movzbq	1664(%rsp), %r8
+	movzbq	1665(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1666(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1667(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1668(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1669(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1670(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1671(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 280(%r10)
+	movzbq	4648(%rsp), %r8
+	movzbq	4649(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4650(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4651(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4652(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4653(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4654(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4655(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 288(%r10)
+	movzbq	3656(%rsp), %r8
+	movzbq	3657(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3658(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3659(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3660(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3661(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3662(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3663(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 296(%r10)
+	movzbq	2664(%rsp), %r8
+	movzbq	2665(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2666(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2667(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2668(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2669(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2670(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2671(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 304(%r10)
+	movzbq	1672(%rsp), %r8
+	movzbq	1673(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1674(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1675(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1676(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1677(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1678(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1679(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 312(%r10)
+	movzbq	4656(%rsp), %r8
+	movzbq	4657(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4658(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4659(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4660(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4661(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4662(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4663(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 320(%r10)
+	movzbq	3664(%rsp), %r8
+	movzbq	3665(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3666(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3667(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3668(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3669(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3670(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3671(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 328(%r10)
+	movzbq	2672(%rsp), %r8
+	movzbq	2673(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2674(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2675(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2676(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2677(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2678(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2679(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 336(%r10)
+	movzbq	1680(%rsp), %r8
+	movzbq	1681(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1682(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1683(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1684(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1685(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1686(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1687(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 344(%r10)
+	movzbq	4664(%rsp), %r8
+	movzbq	4665(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4666(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4667(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4668(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4669(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4670(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4671(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 352(%r10)
+	movzbq	3672(%rsp), %r8
+	movzbq	3673(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3674(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3675(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3676(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3677(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3678(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3679(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 360(%r10)
+	movzbq	2680(%rsp), %r8
+	movzbq	2681(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2682(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2683(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2684(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2685(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2686(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2687(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 368(%r10)
+	movzbq	1688(%rsp), %r8
+	movzbq	1689(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1690(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1691(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1692(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1693(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1694(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1695(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 376(%r10)
+	movzbq	4672(%rsp), %r8
+	movzbq	4673(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4674(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4675(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4676(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4677(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4678(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4679(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 384(%r10)
+	movzbq	3680(%rsp), %r8
+	movzbq	3681(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3682(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3683(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3684(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3685(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3686(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3687(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 392(%r10)
+	movzbq	2688(%rsp), %r8
+	movzbq	2689(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2690(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2691(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2692(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2693(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2694(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2695(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 400(%r10)
+	movzbq	1696(%rsp), %r8
+	movzbq	1697(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1698(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1699(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1700(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1701(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1702(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1703(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 408(%r10)
+	movzbq	4680(%rsp), %r8
+	movzbq	4681(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4682(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4683(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4684(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4685(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4686(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4687(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 416(%r10)
+	movzbq	3688(%rsp), %r8
+	movzbq	3689(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3690(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3691(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3692(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3693(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3694(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3695(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 424(%r10)
+	movzbq	2696(%rsp), %r8
+	movzbq	2697(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2698(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2699(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2700(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2701(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2702(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2703(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 432(%r10)
+	movzbq	1704(%rsp), %r8
+	movzbq	1705(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1706(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1707(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1708(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1709(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1710(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1711(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 440(%r10)
+	movzbq	4688(%rsp), %r8
+	movzbq	4689(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4690(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4691(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4692(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4693(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4694(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4695(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 448(%r10)
+	movzbq	3696(%rsp), %r8
+	movzbq	3697(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3698(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3699(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3700(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3701(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3702(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3703(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 456(%r10)
+	movzbq	2704(%rsp), %r8
+	movzbq	2705(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2706(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2707(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2708(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2709(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2710(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2711(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 464(%r10)
+	movzbq	1712(%rsp), %r8
+	movzbq	1713(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1714(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1715(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1716(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1717(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1718(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1719(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 472(%r10)
+	movzbq	4696(%rsp), %r8
+	movzbq	4697(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4698(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4699(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4700(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4701(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4702(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4703(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 480(%r10)
+	movzbq	3704(%rsp), %r8
+	movzbq	3705(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3706(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3707(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3708(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3709(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3710(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3711(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 488(%r10)
+	movzbq	2712(%rsp), %r8
+	movzbq	2713(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2714(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2715(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2716(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2717(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2718(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2719(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 496(%r10)
+	movzbq	1720(%rsp), %r8
+	movzbq	1721(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1722(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1723(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1724(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1725(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1726(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1727(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 504(%r10)
+	movzbq	4704(%rsp), %r8
+	movzbq	4705(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4706(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4707(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4708(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4709(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4710(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4711(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 512(%r10)
+	movzbq	3712(%rsp), %r8
+	movzbq	3713(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3714(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3715(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3716(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3717(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3718(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3719(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 520(%r10)
+	movzbq	2720(%rsp), %r8
+	movzbq	2721(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2722(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2723(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2724(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2725(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2726(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2727(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 528(%r10)
+	movzbq	1728(%rsp), %r8
+	movzbq	1729(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1730(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1731(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1732(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1733(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1734(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1735(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 536(%r10)
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$7(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$7:
+	leaq	960(%rsp), %rsp
+	movzbq	4712(%rsp), %r8
+	movzbq	4713(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4714(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4715(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4716(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4717(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4718(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4719(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, (%r10)
+	movzbq	3720(%rsp), %r8
+	movzbq	3721(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3722(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3723(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3724(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3725(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3726(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3727(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 8(%r10)
+	movzbq	2728(%rsp), %r8
+	movzbq	2729(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2730(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2731(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2732(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2733(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2734(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2735(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 16(%r10)
+	movzbq	1736(%rsp), %r8
+	movzbq	1737(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1738(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1739(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1740(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1741(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1742(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1743(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 24(%r10)
+	movzbq	4720(%rsp), %r8
+	movzbq	4721(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4722(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4723(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4724(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4725(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4726(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4727(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 32(%r10)
+	movzbq	3728(%rsp), %r8
+	movzbq	3729(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3730(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3731(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3732(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3733(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3734(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3735(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 40(%r10)
+	movzbq	2736(%rsp), %r8
+	movzbq	2737(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2738(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2739(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2740(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2741(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2742(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2743(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 48(%r10)
+	movzbq	1744(%rsp), %r8
+	movzbq	1745(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1746(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1747(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1748(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1749(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1750(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1751(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 56(%r10)
+	movzbq	4728(%rsp), %r8
+	movzbq	4729(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4730(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4731(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4732(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4733(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4734(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4735(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 64(%r10)
+	movzbq	3736(%rsp), %r8
+	movzbq	3737(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3738(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3739(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3740(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3741(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3742(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3743(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 72(%r10)
+	movzbq	2744(%rsp), %r8
+	movzbq	2745(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2746(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2747(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2748(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2749(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2750(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2751(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 80(%r10)
+	movzbq	1752(%rsp), %r8
+	movzbq	1753(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1754(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1755(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1756(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1757(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1758(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1759(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 88(%r10)
+	movzbq	4736(%rsp), %r8
+	movzbq	4737(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4738(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4739(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4740(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4741(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4742(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4743(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 96(%r10)
+	movzbq	3744(%rsp), %r8
+	movzbq	3745(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3746(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3747(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3748(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3749(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3750(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3751(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 104(%r10)
+	movzbq	2752(%rsp), %r8
+	movzbq	2753(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2754(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2755(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2756(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2757(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2758(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2759(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 112(%r10)
+	movzbq	1760(%rsp), %r8
+	movzbq	1761(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1762(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1763(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1764(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1765(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1766(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1767(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 120(%r10)
+	movzbq	4744(%rsp), %r8
+	movzbq	4745(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4746(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4747(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4748(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4749(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4750(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4751(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 128(%r10)
+	movzbq	3752(%rsp), %r8
+	movzbq	3753(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3754(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3755(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3756(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3757(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3758(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3759(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 136(%r10)
+	movzbq	2760(%rsp), %r8
+	movzbq	2761(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2762(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2763(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2764(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2765(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2766(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2767(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 144(%r10)
+	movzbq	1768(%rsp), %r8
+	movzbq	1769(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1770(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1771(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1772(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1773(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1774(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1775(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 152(%r10)
+	movzbq	4752(%rsp), %r8
+	movzbq	4753(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4754(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4755(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4756(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4757(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4758(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4759(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 160(%r10)
+	movzbq	3760(%rsp), %r8
+	movzbq	3761(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3762(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3763(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3764(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3765(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3766(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3767(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 168(%r10)
+	movzbq	2768(%rsp), %r8
+	movzbq	2769(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2770(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2771(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2772(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2773(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2774(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2775(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 176(%r10)
+	movzbq	1776(%rsp), %r8
+	movzbq	1777(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1778(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1779(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1780(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1781(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1782(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1783(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 184(%r10)
+	movzbq	4760(%rsp), %r8
+	movzbq	4761(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4762(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4763(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4764(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4765(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4766(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4767(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 192(%r10)
+	movzbq	3768(%rsp), %r8
+	movzbq	3769(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3770(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3771(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3772(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3773(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3774(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3775(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 200(%r10)
+	movzbq	2776(%rsp), %r8
+	movzbq	2777(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2778(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2779(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2780(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2781(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2782(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2783(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 208(%r10)
+	movzbq	1784(%rsp), %r8
+	movzbq	1785(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1786(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1787(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1788(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1789(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1790(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1791(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 216(%r10)
+	movzbq	4768(%rsp), %r8
+	movzbq	4769(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4770(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4771(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4772(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4773(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4774(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4775(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 224(%r10)
+	movzbq	3776(%rsp), %r8
+	movzbq	3777(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3778(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3779(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3780(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3781(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3782(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3783(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 232(%r10)
+	movzbq	2784(%rsp), %r8
+	movzbq	2785(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2786(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2787(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2788(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2789(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2790(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2791(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 240(%r10)
+	movzbq	1792(%rsp), %r8
+	movzbq	1793(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1794(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1795(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1796(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1797(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1798(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1799(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 248(%r10)
+	movzbq	4776(%rsp), %r8
+	movzbq	4777(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4778(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4779(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4780(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4781(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4782(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4783(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 256(%r10)
+	movzbq	3784(%rsp), %r8
+	movzbq	3785(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3786(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3787(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3788(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3789(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3790(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3791(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 264(%r10)
+	movzbq	2792(%rsp), %r8
+	movzbq	2793(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2794(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2795(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2796(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2797(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2798(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2799(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 272(%r10)
+	movzbq	1800(%rsp), %r8
+	movzbq	1801(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1802(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1803(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1804(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1805(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1806(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1807(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 280(%r10)
+	movzbq	4784(%rsp), %r8
+	movzbq	4785(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4786(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4787(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4788(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4789(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4790(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4791(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 288(%r10)
+	movzbq	3792(%rsp), %r8
+	movzbq	3793(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3794(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3795(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3796(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3797(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3798(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3799(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 296(%r10)
+	movzbq	2800(%rsp), %r8
+	movzbq	2801(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2802(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2803(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2804(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2805(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2806(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2807(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 304(%r10)
+	movzbq	1808(%rsp), %r8
+	movzbq	1809(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1810(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1811(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1812(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1813(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1814(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1815(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 312(%r10)
+	movzbq	4792(%rsp), %r8
+	movzbq	4793(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4794(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4795(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4796(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4797(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4798(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4799(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 320(%r10)
+	movzbq	3800(%rsp), %r8
+	movzbq	3801(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3802(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3803(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3804(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3805(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3806(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3807(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 328(%r10)
+	movzbq	2808(%rsp), %r8
+	movzbq	2809(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2810(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2811(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2812(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2813(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2814(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2815(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 336(%r10)
+	movzbq	1816(%rsp), %r8
+	movzbq	1817(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1818(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1819(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1820(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1821(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1822(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1823(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 344(%r10)
+	movzbq	4800(%rsp), %r8
+	movzbq	4801(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4802(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4803(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4804(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4805(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4806(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4807(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 352(%r10)
+	movzbq	3808(%rsp), %r8
+	movzbq	3809(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3810(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3811(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3812(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3813(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3814(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3815(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 360(%r10)
+	movzbq	2816(%rsp), %r8
+	movzbq	2817(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2818(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2819(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2820(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2821(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2822(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2823(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 368(%r10)
+	movzbq	1824(%rsp), %r8
+	movzbq	1825(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1826(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1827(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1828(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1829(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1830(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1831(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 376(%r10)
+	movzbq	4808(%rsp), %r8
+	movzbq	4809(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4810(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4811(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4812(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4813(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4814(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4815(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 384(%r10)
+	movzbq	3816(%rsp), %r8
+	movzbq	3817(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3818(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3819(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3820(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3821(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3822(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3823(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 392(%r10)
+	movzbq	2824(%rsp), %r8
+	movzbq	2825(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2826(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2827(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2828(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2829(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2830(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2831(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 400(%r10)
+	movzbq	1832(%rsp), %r8
+	movzbq	1833(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1834(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1835(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1836(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1837(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1838(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1839(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 408(%r10)
+	movzbq	4816(%rsp), %r8
+	movzbq	4817(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4818(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4819(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4820(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4821(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4822(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4823(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 416(%r10)
+	movzbq	3824(%rsp), %r8
+	movzbq	3825(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3826(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3827(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3828(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3829(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3830(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3831(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 424(%r10)
+	movzbq	2832(%rsp), %r8
+	movzbq	2833(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2834(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2835(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2836(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2837(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2838(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2839(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 432(%r10)
+	movzbq	1840(%rsp), %r8
+	movzbq	1841(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1842(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1843(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1844(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1845(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1846(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1847(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 440(%r10)
+	movzbq	4824(%rsp), %r8
+	movzbq	4825(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4826(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4827(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4828(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4829(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4830(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4831(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 448(%r10)
+	movzbq	3832(%rsp), %r8
+	movzbq	3833(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3834(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3835(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3836(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3837(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3838(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3839(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 456(%r10)
+	movzbq	2840(%rsp), %r8
+	movzbq	2841(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2842(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2843(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2844(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2845(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2846(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2847(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 464(%r10)
+	movzbq	1848(%rsp), %r8
+	movzbq	1849(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1850(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1851(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1852(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1853(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1854(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1855(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 472(%r10)
+	movzbq	4832(%rsp), %r8
+	movzbq	4833(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4834(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4835(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4836(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4837(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4838(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4839(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 480(%r10)
+	movzbq	3840(%rsp), %r8
+	movzbq	3841(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3842(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3843(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3844(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3845(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3846(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3847(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 488(%r10)
+	movzbq	2848(%rsp), %r8
+	movzbq	2849(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2850(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2851(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2852(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2853(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2854(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2855(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 496(%r10)
+	movzbq	1856(%rsp), %r8
+	movzbq	1857(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1858(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1859(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1860(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1861(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1862(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1863(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 504(%r10)
+	movzbq	4840(%rsp), %r8
+	movzbq	4841(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4842(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4843(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4844(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4845(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4846(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4847(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 512(%r10)
+	movzbq	3848(%rsp), %r8
+	movzbq	3849(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3850(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3851(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3852(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3853(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3854(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3855(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 520(%r10)
+	movzbq	2856(%rsp), %r8
+	movzbq	2857(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2858(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2859(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2860(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2861(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2862(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2863(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 528(%r10)
+	movzbq	1864(%rsp), %r8
+	movzbq	1865(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1866(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1867(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1868(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1869(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1870(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1871(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 536(%r10)
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$6(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$6:
+	leaq	960(%rsp), %rsp
+	movzbq	4848(%rsp), %r8
+	movzbq	4849(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4850(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4851(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4852(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4853(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4854(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4855(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, (%r10)
+	movzbq	3856(%rsp), %r8
+	movzbq	3857(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3858(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3859(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3860(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3861(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3862(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3863(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 8(%r10)
+	movzbq	2864(%rsp), %r8
+	movzbq	2865(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2866(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2867(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2868(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2869(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2870(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2871(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 16(%r10)
+	movzbq	1872(%rsp), %r8
+	movzbq	1873(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1874(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1875(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1876(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1877(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1878(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1879(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 24(%r10)
+	movzbq	4856(%rsp), %r8
+	movzbq	4857(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4858(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4859(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4860(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4861(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4862(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4863(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 32(%r10)
+	movzbq	3864(%rsp), %r8
+	movzbq	3865(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3866(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3867(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3868(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3869(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3870(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3871(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 40(%r10)
+	movzbq	2872(%rsp), %r8
+	movzbq	2873(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2874(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2875(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2876(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2877(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2878(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2879(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 48(%r10)
+	movzbq	1880(%rsp), %r8
+	movzbq	1881(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1882(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1883(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1884(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1885(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1886(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1887(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 56(%r10)
+	movzbq	4864(%rsp), %r8
+	movzbq	4865(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4866(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4867(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4868(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4869(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4870(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4871(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 64(%r10)
+	movzbq	3872(%rsp), %r8
+	movzbq	3873(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3874(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3875(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3876(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3877(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3878(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3879(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 72(%r10)
+	movzbq	2880(%rsp), %r8
+	movzbq	2881(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2882(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2883(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2884(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2885(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2886(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2887(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 80(%r10)
+	movzbq	1888(%rsp), %r8
+	movzbq	1889(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1890(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1891(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1892(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1893(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1894(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1895(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 88(%r10)
+	movzbq	4872(%rsp), %r8
+	movzbq	4873(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4874(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4875(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4876(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4877(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4878(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4879(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 96(%r10)
+	movzbq	3880(%rsp), %r8
+	movzbq	3881(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3882(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3883(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3884(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3885(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3886(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3887(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 104(%r10)
+	movzbq	2888(%rsp), %r8
+	movzbq	2889(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2890(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2891(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2892(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2893(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2894(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2895(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 112(%r10)
+	movzbq	1896(%rsp), %r8
+	movzbq	1897(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1898(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1899(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1900(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1901(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1902(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1903(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 120(%r10)
+	movzbq	4880(%rsp), %r8
+	movzbq	4881(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4882(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4883(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4884(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4885(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4886(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4887(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 128(%r10)
+	movzbq	3888(%rsp), %r8
+	movzbq	3889(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3890(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3891(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3892(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3893(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3894(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3895(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 136(%r10)
+	movzbq	2896(%rsp), %r8
+	movzbq	2897(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2898(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2899(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2900(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2901(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2902(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2903(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 144(%r10)
+	movzbq	1904(%rsp), %r8
+	movzbq	1905(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1906(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1907(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1908(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1909(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1910(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1911(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 152(%r10)
+	movzbq	4888(%rsp), %r8
+	movzbq	4889(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4890(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4891(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4892(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4893(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4894(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4895(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 160(%r10)
+	movzbq	3896(%rsp), %r8
+	movzbq	3897(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3898(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3899(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3900(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3901(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3902(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3903(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 168(%r10)
+	movzbq	2904(%rsp), %r8
+	movzbq	2905(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2906(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2907(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2908(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2909(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2910(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2911(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 176(%r10)
+	movzbq	1912(%rsp), %r8
+	movzbq	1913(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1914(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1915(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1916(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1917(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1918(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1919(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 184(%r10)
+	movzbq	4896(%rsp), %r8
+	movzbq	4897(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4898(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4899(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4900(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4901(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4902(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4903(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 192(%r10)
+	movzbq	3904(%rsp), %r8
+	movzbq	3905(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3906(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3907(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3908(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3909(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3910(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3911(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 200(%r10)
+	movzbq	2912(%rsp), %r8
+	movzbq	2913(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2914(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2915(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2916(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2917(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2918(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2919(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 208(%r10)
+	movzbq	1920(%rsp), %r8
+	movzbq	1921(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1922(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1923(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1924(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1925(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1926(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1927(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 216(%r10)
+	movzbq	4904(%rsp), %r8
+	movzbq	4905(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4906(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4907(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4908(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4909(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4910(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4911(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 224(%r10)
+	movzbq	3912(%rsp), %r8
+	movzbq	3913(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3914(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3915(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3916(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3917(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3918(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3919(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 232(%r10)
+	movzbq	2920(%rsp), %r8
+	movzbq	2921(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2922(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2923(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2924(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2925(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2926(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2927(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 240(%r10)
+	movzbq	1928(%rsp), %r8
+	movzbq	1929(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1930(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1931(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1932(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1933(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1934(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1935(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 248(%r10)
+	movzbq	4912(%rsp), %r8
+	movzbq	4913(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4914(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4915(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4916(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4917(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4918(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4919(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 256(%r10)
+	movzbq	3920(%rsp), %r8
+	movzbq	3921(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3922(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3923(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3924(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3925(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3926(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3927(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 264(%r10)
+	movzbq	2928(%rsp), %r8
+	movzbq	2929(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2930(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2931(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2932(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2933(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2934(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2935(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 272(%r10)
+	movzbq	1936(%rsp), %r8
+	movzbq	1937(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1938(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1939(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1940(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1941(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1942(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1943(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 280(%r10)
+	movzbq	4920(%rsp), %r8
+	movzbq	4921(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4922(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4923(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4924(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4925(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4926(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4927(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 288(%r10)
+	movzbq	3928(%rsp), %r8
+	movzbq	3929(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3930(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3931(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3932(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3933(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3934(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3935(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 296(%r10)
+	movzbq	2936(%rsp), %r8
+	movzbq	2937(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2938(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2939(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2940(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2941(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2942(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2943(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 304(%r10)
+	movzbq	1944(%rsp), %r8
+	movzbq	1945(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1946(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1947(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1948(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1949(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1950(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1951(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 312(%r10)
+	movzbq	4928(%rsp), %r8
+	movzbq	4929(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4930(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4931(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4932(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4933(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4934(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4935(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 320(%r10)
+	movzbq	3936(%rsp), %r8
+	movzbq	3937(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3938(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3939(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3940(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3941(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3942(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3943(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 328(%r10)
+	movzbq	2944(%rsp), %r8
+	movzbq	2945(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2946(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2947(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2948(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2949(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2950(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2951(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 336(%r10)
+	movzbq	1952(%rsp), %r8
+	movzbq	1953(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1954(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1955(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1956(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1957(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1958(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1959(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 344(%r10)
+	movzbq	4936(%rsp), %r8
+	movzbq	4937(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4938(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4939(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4940(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4941(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4942(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4943(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 352(%r10)
+	movzbq	3944(%rsp), %r8
+	movzbq	3945(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3946(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3947(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3948(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3949(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3950(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3951(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 360(%r10)
+	movzbq	2952(%rsp), %r8
+	movzbq	2953(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2954(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2955(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2956(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2957(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2958(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2959(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 368(%r10)
+	movzbq	1960(%rsp), %r8
+	movzbq	1961(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1962(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1963(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1964(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1965(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1966(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1967(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 376(%r10)
+	movzbq	4944(%rsp), %r8
+	movzbq	4945(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4946(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4947(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4948(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4949(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4950(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4951(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 384(%r10)
+	movzbq	3952(%rsp), %r8
+	movzbq	3953(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3954(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3955(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3956(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3957(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3958(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3959(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 392(%r10)
+	movzbq	2960(%rsp), %r8
+	movzbq	2961(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2962(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2963(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2964(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2965(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2966(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2967(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 400(%r10)
+	movzbq	1968(%rsp), %r8
+	movzbq	1969(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1970(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1971(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1972(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1973(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1974(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1975(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 408(%r10)
+	movzbq	4952(%rsp), %r8
+	movzbq	4953(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4954(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4955(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4956(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4957(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4958(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4959(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 416(%r10)
+	movzbq	3960(%rsp), %r8
+	movzbq	3961(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3962(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3963(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3964(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3965(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3966(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3967(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 424(%r10)
+	movzbq	2968(%rsp), %r8
+	movzbq	2969(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2970(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2971(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2972(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2973(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2974(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2975(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 432(%r10)
+	movzbq	1976(%rsp), %r8
+	movzbq	1977(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1978(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1979(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1980(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1981(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1982(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1983(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 440(%r10)
+	movzbq	4960(%rsp), %r8
+	movzbq	4961(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4962(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4963(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4964(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4965(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4966(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4967(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 448(%r10)
+	movzbq	3968(%rsp), %r8
+	movzbq	3969(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3970(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3971(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3972(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3973(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3974(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3975(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 456(%r10)
+	movzbq	2976(%rsp), %r8
+	movzbq	2977(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2978(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2979(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2980(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2981(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2982(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2983(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 464(%r10)
+	movzbq	1984(%rsp), %r8
+	movzbq	1985(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1986(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1987(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1988(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1989(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1990(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1991(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 472(%r10)
+	movzbq	4968(%rsp), %r8
+	movzbq	4969(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4970(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4971(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4972(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4973(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4974(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4975(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 480(%r10)
+	movzbq	3976(%rsp), %r8
+	movzbq	3977(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3978(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3979(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3980(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3981(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3982(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3983(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 488(%r10)
+	movzbq	2984(%rsp), %r8
+	movzbq	2985(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2986(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2987(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2988(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2989(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2990(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2991(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 496(%r10)
+	movzbq	1992(%rsp), %r8
+	movzbq	1993(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	1994(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	1995(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	1996(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	1997(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	1998(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	1999(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 504(%r10)
+	movzbq	4976(%rsp), %r8
+	movzbq	4977(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4978(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4979(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4980(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4981(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4982(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4983(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 512(%r10)
+	movzbq	3984(%rsp), %r8
+	movzbq	3985(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3986(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3987(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3988(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3989(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3990(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3991(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 520(%r10)
+	movzbq	2992(%rsp), %r8
+	movzbq	2993(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2994(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2995(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2996(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2997(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2998(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2999(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 528(%r10)
+	movzbq	2000(%rsp), %r8
+	movzbq	2001(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2002(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2003(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2004(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2005(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2006(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2007(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 536(%r10)
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$5(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$5:
+	leaq	960(%rsp), %rsp
+	movzbq	4984(%rsp), %r8
+	movzbq	4985(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4986(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4987(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4988(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4989(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4990(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4991(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, (%r10)
+	movzbq	3992(%rsp), %r8
+	movzbq	3993(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3994(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3995(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3996(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3997(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3998(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3999(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 8(%r10)
+	movzbq	3000(%rsp), %r8
+	movzbq	3001(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3002(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3003(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3004(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3005(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3006(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3007(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 16(%r10)
+	movzbq	2008(%rsp), %r8
+	movzbq	2009(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2010(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2011(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2012(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2013(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2014(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2015(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 24(%r10)
+	movzbq	4992(%rsp), %r8
+	movzbq	4993(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4994(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4995(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4996(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4997(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4998(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4999(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 32(%r10)
+	movzbq	4000(%rsp), %r8
+	movzbq	4001(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4002(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4003(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4004(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4005(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4006(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4007(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 40(%r10)
+	movzbq	3008(%rsp), %r8
+	movzbq	3009(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3010(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3011(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3012(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3013(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3014(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3015(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 48(%r10)
+	movzbq	2016(%rsp), %r8
+	movzbq	2017(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2018(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2019(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2020(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2021(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2022(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2023(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 56(%r10)
+	movzbq	5000(%rsp), %r8
+	movzbq	5001(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5002(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5003(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5004(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5005(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5006(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5007(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 64(%r10)
+	movzbq	4008(%rsp), %r8
+	movzbq	4009(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4010(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4011(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4012(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4013(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4014(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4015(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 72(%r10)
+	movzbq	3016(%rsp), %r8
+	movzbq	3017(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3018(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3019(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3020(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3021(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3022(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3023(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 80(%r10)
+	movzbq	2024(%rsp), %r8
+	movzbq	2025(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2026(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2027(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2028(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2029(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2030(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2031(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 88(%r10)
+	movzbq	5008(%rsp), %r8
+	movzbq	5009(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5010(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5011(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5012(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5013(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5014(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5015(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 96(%r10)
+	movzbq	4016(%rsp), %r8
+	movzbq	4017(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4018(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4019(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4020(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4021(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4022(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4023(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 104(%r10)
+	movzbq	3024(%rsp), %r8
+	movzbq	3025(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3026(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3027(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3028(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3029(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3030(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3031(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 112(%r10)
+	movzbq	2032(%rsp), %r8
+	movzbq	2033(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2034(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2035(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2036(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2037(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2038(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2039(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 120(%r10)
+	movzbq	5016(%rsp), %r8
+	movzbq	5017(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5018(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5019(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5020(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5021(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5022(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5023(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 128(%r10)
+	movzbq	4024(%rsp), %r8
+	movzbq	4025(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4026(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4027(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4028(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4029(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4030(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4031(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 136(%r10)
+	movzbq	3032(%rsp), %r8
+	movzbq	3033(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3034(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3035(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3036(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3037(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3038(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3039(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 144(%r10)
+	movzbq	2040(%rsp), %r8
+	movzbq	2041(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2042(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2043(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2044(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2045(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2046(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2047(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 152(%r10)
+	movzbq	5024(%rsp), %r8
+	movzbq	5025(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5026(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5027(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5028(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5029(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5030(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5031(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 160(%r10)
+	movzbq	4032(%rsp), %r8
+	movzbq	4033(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4034(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4035(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4036(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4037(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4038(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4039(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 168(%r10)
+	movzbq	3040(%rsp), %r8
+	movzbq	3041(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3042(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3043(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3044(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3045(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3046(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3047(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 176(%r10)
+	movzbq	2048(%rsp), %r8
+	movzbq	2049(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2050(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2051(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2052(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2053(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2054(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2055(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 184(%r10)
+	movzbq	5032(%rsp), %r8
+	movzbq	5033(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5034(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5035(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5036(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5037(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5038(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5039(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 192(%r10)
+	movzbq	4040(%rsp), %r8
+	movzbq	4041(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4042(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4043(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4044(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4045(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4046(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4047(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 200(%r10)
+	movzbq	3048(%rsp), %r8
+	movzbq	3049(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3050(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3051(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3052(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3053(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3054(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3055(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 208(%r10)
+	movzbq	2056(%rsp), %r8
+	movzbq	2057(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2058(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2059(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2060(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2061(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2062(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2063(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 216(%r10)
+	movzbq	5040(%rsp), %r8
+	movzbq	5041(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5042(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5043(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5044(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5045(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5046(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5047(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 224(%r10)
+	movzbq	4048(%rsp), %r8
+	movzbq	4049(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4050(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4051(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4052(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4053(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4054(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4055(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 232(%r10)
+	movzbq	3056(%rsp), %r8
+	movzbq	3057(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3058(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3059(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3060(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3061(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3062(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3063(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 240(%r10)
+	movzbq	2064(%rsp), %r8
+	movzbq	2065(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2066(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2067(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2068(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2069(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2070(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2071(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 248(%r10)
+	movzbq	5048(%rsp), %r8
+	movzbq	5049(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5050(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5051(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5052(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5053(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5054(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5055(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 256(%r10)
+	movzbq	4056(%rsp), %r8
+	movzbq	4057(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4058(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4059(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4060(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4061(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4062(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4063(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 264(%r10)
+	movzbq	3064(%rsp), %r8
+	movzbq	3065(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3066(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3067(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3068(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3069(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3070(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3071(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 272(%r10)
+	movzbq	2072(%rsp), %r8
+	movzbq	2073(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2074(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2075(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2076(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2077(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2078(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2079(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 280(%r10)
+	movzbq	5056(%rsp), %r8
+	movzbq	5057(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5058(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5059(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5060(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5061(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5062(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5063(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 288(%r10)
+	movzbq	4064(%rsp), %r8
+	movzbq	4065(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4066(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4067(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4068(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4069(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4070(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4071(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 296(%r10)
+	movzbq	3072(%rsp), %r8
+	movzbq	3073(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3074(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3075(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3076(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3077(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3078(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3079(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 304(%r10)
+	movzbq	2080(%rsp), %r8
+	movzbq	2081(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2082(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2083(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2084(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2085(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2086(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2087(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 312(%r10)
+	movzbq	5064(%rsp), %r8
+	movzbq	5065(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5066(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5067(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5068(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5069(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5070(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5071(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 320(%r10)
+	movzbq	4072(%rsp), %r8
+	movzbq	4073(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4074(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4075(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4076(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4077(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4078(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4079(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 328(%r10)
+	movzbq	3080(%rsp), %r8
+	movzbq	3081(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3082(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3083(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3084(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3085(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3086(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3087(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 336(%r10)
+	movzbq	2088(%rsp), %r8
+	movzbq	2089(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2090(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2091(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2092(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2093(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2094(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2095(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 344(%r10)
+	movzbq	5072(%rsp), %r8
+	movzbq	5073(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5074(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5075(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5076(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5077(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5078(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5079(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 352(%r10)
+	movzbq	4080(%rsp), %r8
+	movzbq	4081(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4082(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4083(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4084(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4085(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4086(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4087(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 360(%r10)
+	movzbq	3088(%rsp), %r8
+	movzbq	3089(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3090(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3091(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3092(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3093(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3094(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3095(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 368(%r10)
+	movzbq	2096(%rsp), %r8
+	movzbq	2097(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2098(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2099(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2100(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2101(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2102(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2103(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 376(%r10)
+	movzbq	5080(%rsp), %r8
+	movzbq	5081(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5082(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5083(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5084(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5085(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5086(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5087(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 384(%r10)
+	movzbq	4088(%rsp), %r8
+	movzbq	4089(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4090(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4091(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4092(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4093(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4094(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4095(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 392(%r10)
+	movzbq	3096(%rsp), %r8
+	movzbq	3097(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3098(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3099(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3100(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3101(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3102(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3103(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 400(%r10)
+	movzbq	2104(%rsp), %r8
+	movzbq	2105(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2106(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2107(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2108(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2109(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2110(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2111(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 408(%r10)
+	movzbq	5088(%rsp), %r8
+	movzbq	5089(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5090(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5091(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5092(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5093(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5094(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5095(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 416(%r10)
+	movzbq	4096(%rsp), %r8
+	movzbq	4097(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4098(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4099(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4100(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4101(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4102(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4103(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 424(%r10)
+	movzbq	3104(%rsp), %r8
+	movzbq	3105(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3106(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3107(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3108(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3109(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3110(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3111(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 432(%r10)
+	movzbq	2112(%rsp), %r8
+	movzbq	2113(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2114(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2115(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2116(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2117(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2118(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2119(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 440(%r10)
+	movzbq	5096(%rsp), %r8
+	movzbq	5097(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5098(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5099(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5100(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5101(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5102(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5103(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 448(%r10)
+	movzbq	4104(%rsp), %r8
+	movzbq	4105(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4106(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4107(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4108(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4109(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4110(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4111(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 456(%r10)
+	movzbq	3112(%rsp), %r8
+	movzbq	3113(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3114(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3115(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3116(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3117(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3118(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3119(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 464(%r10)
+	movzbq	2120(%rsp), %r8
+	movzbq	2121(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2122(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2123(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2124(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2125(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2126(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2127(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 472(%r10)
+	movzbq	5104(%rsp), %r8
+	movzbq	5105(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5106(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5107(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5108(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5109(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5110(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5111(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 480(%r10)
+	movzbq	4112(%rsp), %r8
+	movzbq	4113(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4114(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4115(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4116(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4117(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4118(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4119(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 488(%r10)
+	movzbq	3120(%rsp), %r8
+	movzbq	3121(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3122(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3123(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3124(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3125(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3126(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3127(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 496(%r10)
+	movzbq	2128(%rsp), %r8
+	movzbq	2129(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2130(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2131(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2132(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2133(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2134(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2135(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 504(%r10)
+	movzbq	5112(%rsp), %r8
+	movzbq	5113(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5114(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5115(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5116(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5117(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5118(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5119(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 512(%r10)
+	movzbq	4120(%rsp), %r8
+	movzbq	4121(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4122(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4123(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4124(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4125(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4126(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4127(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 520(%r10)
+	movzbq	3128(%rsp), %r8
+	movzbq	3129(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3130(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3131(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3132(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3133(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3134(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3135(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 528(%r10)
+	movzbq	2136(%rsp), %r8
+	movzbq	2137(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2138(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2139(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2140(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2141(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2142(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2143(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 536(%r10)
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$4(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$4:
+	leaq	960(%rsp), %rsp
+	movzbq	5120(%rsp), %r8
+	movzbq	5121(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5122(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5123(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5124(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5125(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5126(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5127(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, (%r10)
+	movzbq	4128(%rsp), %r8
+	movzbq	4129(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4130(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4131(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4132(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4133(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4134(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4135(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 8(%r10)
+	movzbq	3136(%rsp), %r8
+	movzbq	3137(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3138(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3139(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3140(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3141(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3142(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3143(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 16(%r10)
+	movzbq	2144(%rsp), %r8
+	movzbq	2145(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2146(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2147(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2148(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2149(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2150(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2151(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 24(%r10)
+	movzbq	5128(%rsp), %r8
+	movzbq	5129(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5130(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5131(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5132(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5133(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5134(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5135(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 32(%r10)
+	movzbq	4136(%rsp), %r8
+	movzbq	4137(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4138(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4139(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4140(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4141(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4142(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4143(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 40(%r10)
+	movzbq	3144(%rsp), %r8
+	movzbq	3145(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3146(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3147(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3148(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3149(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3150(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3151(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 48(%r10)
+	movzbq	2152(%rsp), %r8
+	movzbq	2153(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2154(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2155(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2156(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2157(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2158(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2159(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 56(%r10)
+	movzbq	5136(%rsp), %r8
+	movzbq	5137(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5138(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5139(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5140(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5141(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5142(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5143(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 64(%r10)
+	movzbq	4144(%rsp), %r8
+	movzbq	4145(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4146(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4147(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4148(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4149(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4150(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4151(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 72(%r10)
+	movzbq	3152(%rsp), %r8
+	movzbq	3153(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3154(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3155(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3156(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3157(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3158(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3159(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 80(%r10)
+	movzbq	2160(%rsp), %r8
+	movzbq	2161(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2162(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2163(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2164(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2165(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2166(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2167(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 88(%r10)
+	movzbq	5144(%rsp), %r8
+	movzbq	5145(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5146(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5147(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5148(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5149(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5150(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5151(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 96(%r10)
+	movzbq	4152(%rsp), %r8
+	movzbq	4153(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4154(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4155(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4156(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4157(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4158(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4159(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 104(%r10)
+	movzbq	3160(%rsp), %r8
+	movzbq	3161(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3162(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3163(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3164(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3165(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3166(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3167(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 112(%r10)
+	movzbq	2168(%rsp), %r8
+	movzbq	2169(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2170(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2171(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2172(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2173(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2174(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2175(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 120(%r10)
+	movzbq	5152(%rsp), %r8
+	movzbq	5153(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5154(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5155(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5156(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5157(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5158(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5159(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 128(%r10)
+	movzbq	4160(%rsp), %r8
+	movzbq	4161(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4162(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4163(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4164(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4165(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4166(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4167(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 136(%r10)
+	movzbq	3168(%rsp), %r8
+	movzbq	3169(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3170(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3171(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3172(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3173(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3174(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3175(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 144(%r10)
+	movzbq	2176(%rsp), %r8
+	movzbq	2177(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2178(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2179(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2180(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2181(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2182(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2183(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 152(%r10)
+	movzbq	5160(%rsp), %r8
+	movzbq	5161(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5162(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5163(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5164(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5165(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5166(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5167(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 160(%r10)
+	movzbq	4168(%rsp), %r8
+	movzbq	4169(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4170(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4171(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4172(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4173(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4174(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4175(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 168(%r10)
+	movzbq	3176(%rsp), %r8
+	movzbq	3177(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3178(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3179(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3180(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3181(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3182(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3183(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 176(%r10)
+	movzbq	2184(%rsp), %r8
+	movzbq	2185(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2186(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2187(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2188(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2189(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2190(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2191(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 184(%r10)
+	movzbq	5168(%rsp), %r8
+	movzbq	5169(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5170(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5171(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5172(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5173(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5174(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5175(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 192(%r10)
+	movzbq	4176(%rsp), %r8
+	movzbq	4177(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4178(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4179(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4180(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4181(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4182(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4183(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 200(%r10)
+	movzbq	3184(%rsp), %r8
+	movzbq	3185(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3186(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3187(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3188(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3189(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3190(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3191(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 208(%r10)
+	movzbq	2192(%rsp), %r8
+	movzbq	2193(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2194(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2195(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2196(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2197(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2198(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2199(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 216(%r10)
+	movzbq	5176(%rsp), %r8
+	movzbq	5177(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5178(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5179(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5180(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5181(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5182(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5183(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 224(%r10)
+	movzbq	4184(%rsp), %r8
+	movzbq	4185(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4186(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4187(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4188(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4189(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4190(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4191(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 232(%r10)
+	movzbq	3192(%rsp), %r8
+	movzbq	3193(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3194(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3195(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3196(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3197(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3198(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3199(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 240(%r10)
+	movzbq	2200(%rsp), %r8
+	movzbq	2201(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2202(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2203(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2204(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2205(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2206(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2207(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 248(%r10)
+	movzbq	5184(%rsp), %r8
+	movzbq	5185(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5186(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5187(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5188(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5189(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5190(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5191(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 256(%r10)
+	movzbq	4192(%rsp), %r8
+	movzbq	4193(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4194(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4195(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4196(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4197(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4198(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4199(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 264(%r10)
+	movzbq	3200(%rsp), %r8
+	movzbq	3201(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3202(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3203(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3204(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3205(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3206(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3207(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 272(%r10)
+	movzbq	2208(%rsp), %r8
+	movzbq	2209(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2210(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2211(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2212(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2213(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2214(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2215(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 280(%r10)
+	movzbq	5192(%rsp), %r8
+	movzbq	5193(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5194(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5195(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5196(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5197(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5198(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5199(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 288(%r10)
+	movzbq	4200(%rsp), %r8
+	movzbq	4201(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4202(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4203(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4204(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4205(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4206(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4207(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 296(%r10)
+	movzbq	3208(%rsp), %r8
+	movzbq	3209(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3210(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3211(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3212(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3213(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3214(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3215(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 304(%r10)
+	movzbq	2216(%rsp), %r8
+	movzbq	2217(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2218(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2219(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2220(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2221(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2222(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2223(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 312(%r10)
+	movzbq	5200(%rsp), %r8
+	movzbq	5201(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5202(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5203(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5204(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5205(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5206(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5207(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 320(%r10)
+	movzbq	4208(%rsp), %r8
+	movzbq	4209(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4210(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4211(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4212(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4213(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4214(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4215(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 328(%r10)
+	movzbq	3216(%rsp), %r8
+	movzbq	3217(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3218(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3219(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3220(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3221(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3222(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3223(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 336(%r10)
+	movzbq	2224(%rsp), %r8
+	movzbq	2225(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2226(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2227(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2228(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2229(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2230(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2231(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 344(%r10)
+	movzbq	5208(%rsp), %r8
+	movzbq	5209(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5210(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5211(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5212(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5213(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5214(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5215(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 352(%r10)
+	movzbq	4216(%rsp), %r8
+	movzbq	4217(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4218(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4219(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4220(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4221(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4222(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4223(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 360(%r10)
+	movzbq	3224(%rsp), %r8
+	movzbq	3225(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3226(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3227(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3228(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3229(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3230(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3231(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 368(%r10)
+	movzbq	2232(%rsp), %r8
+	movzbq	2233(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2234(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2235(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2236(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2237(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2238(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2239(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 376(%r10)
+	movzbq	5216(%rsp), %r8
+	movzbq	5217(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5218(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5219(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5220(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5221(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5222(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5223(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 384(%r10)
+	movzbq	4224(%rsp), %r8
+	movzbq	4225(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4226(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4227(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4228(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4229(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4230(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4231(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 392(%r10)
+	movzbq	3232(%rsp), %r8
+	movzbq	3233(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3234(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3235(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3236(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3237(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3238(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3239(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 400(%r10)
+	movzbq	2240(%rsp), %r8
+	movzbq	2241(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2242(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2243(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2244(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2245(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2246(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2247(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 408(%r10)
+	movzbq	5224(%rsp), %r8
+	movzbq	5225(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5226(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5227(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5228(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5229(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5230(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5231(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 416(%r10)
+	movzbq	4232(%rsp), %r8
+	movzbq	4233(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4234(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4235(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4236(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4237(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4238(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4239(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 424(%r10)
+	movzbq	3240(%rsp), %r8
+	movzbq	3241(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3242(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3243(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3244(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3245(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3246(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3247(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 432(%r10)
+	movzbq	2248(%rsp), %r8
+	movzbq	2249(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2250(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2251(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2252(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2253(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2254(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2255(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 440(%r10)
+	movzbq	5232(%rsp), %r8
+	movzbq	5233(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5234(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5235(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5236(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5237(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5238(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5239(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 448(%r10)
+	movzbq	4240(%rsp), %r8
+	movzbq	4241(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4242(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4243(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4244(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4245(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4246(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4247(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 456(%r10)
+	movzbq	3248(%rsp), %r8
+	movzbq	3249(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3250(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3251(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3252(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3253(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3254(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3255(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 464(%r10)
+	movzbq	2256(%rsp), %r8
+	movzbq	2257(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2258(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2259(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2260(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2261(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2262(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2263(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 472(%r10)
+	movzbq	5240(%rsp), %r8
+	movzbq	5241(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5242(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5243(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5244(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5245(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5246(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5247(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 480(%r10)
+	movzbq	4248(%rsp), %r8
+	movzbq	4249(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4250(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4251(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4252(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4253(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4254(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4255(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 488(%r10)
+	movzbq	3256(%rsp), %r8
+	movzbq	3257(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3258(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3259(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3260(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3261(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3262(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3263(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 496(%r10)
+	movzbq	2264(%rsp), %r8
+	movzbq	2265(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2266(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2267(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2268(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2269(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2270(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2271(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 504(%r10)
+	movzbq	5248(%rsp), %r8
+	movzbq	5249(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5250(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5251(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5252(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5253(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5254(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5255(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 512(%r10)
+	movzbq	4256(%rsp), %r8
+	movzbq	4257(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4258(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4259(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4260(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4261(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4262(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4263(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 520(%r10)
+	movzbq	3264(%rsp), %r8
+	movzbq	3265(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3266(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3267(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3268(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3269(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3270(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3271(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 528(%r10)
+	movzbq	2272(%rsp), %r8
+	movzbq	2273(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2274(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2275(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2276(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2277(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2278(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2279(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 536(%r10)
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$3(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$3:
+	leaq	960(%rsp), %rsp
+	movzbq	5256(%rsp), %r8
+	movzbq	5257(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5258(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5259(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5260(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5261(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5262(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5263(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, (%r10)
+	movzbq	4264(%rsp), %r8
+	movzbq	4265(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4266(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4267(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4268(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4269(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4270(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4271(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 8(%r10)
+	movzbq	3272(%rsp), %r8
+	movzbq	3273(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3274(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3275(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3276(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3277(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3278(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3279(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 16(%r10)
+	movzbq	2280(%rsp), %r8
+	movzbq	2281(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2282(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2283(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2284(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2285(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2286(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2287(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 24(%r10)
+	movzbq	5264(%rsp), %r8
+	movzbq	5265(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5266(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5267(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5268(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5269(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5270(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5271(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 32(%r10)
+	movzbq	4272(%rsp), %r8
+	movzbq	4273(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4274(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4275(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4276(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4277(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4278(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4279(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 40(%r10)
+	movzbq	3280(%rsp), %r8
+	movzbq	3281(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3282(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3283(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3284(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3285(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3286(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3287(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 48(%r10)
+	movzbq	2288(%rsp), %r8
+	movzbq	2289(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2290(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2291(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2292(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2293(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2294(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2295(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 56(%r10)
+	movzbq	5272(%rsp), %r8
+	movzbq	5273(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5274(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5275(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5276(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5277(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5278(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5279(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 64(%r10)
+	movzbq	4280(%rsp), %r8
+	movzbq	4281(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4282(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4283(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4284(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4285(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4286(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4287(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 72(%r10)
+	movzbq	3288(%rsp), %r8
+	movzbq	3289(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3290(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3291(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3292(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3293(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3294(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3295(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 80(%r10)
+	movzbq	2296(%rsp), %r8
+	movzbq	2297(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2298(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2299(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2300(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2301(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2302(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2303(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 88(%r10)
+	movzbq	5280(%rsp), %r8
+	movzbq	5281(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5282(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5283(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5284(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5285(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5286(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5287(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 96(%r10)
+	movzbq	4288(%rsp), %r8
+	movzbq	4289(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4290(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4291(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4292(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4293(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4294(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4295(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 104(%r10)
+	movzbq	3296(%rsp), %r8
+	movzbq	3297(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3298(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3299(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3300(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3301(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3302(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3303(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 112(%r10)
+	movzbq	2304(%rsp), %r8
+	movzbq	2305(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2306(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2307(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2308(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2309(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2310(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2311(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 120(%r10)
+	movzbq	5288(%rsp), %r8
+	movzbq	5289(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5290(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5291(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5292(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5293(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5294(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5295(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 128(%r10)
+	movzbq	4296(%rsp), %r8
+	movzbq	4297(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4298(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4299(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4300(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4301(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4302(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4303(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 136(%r10)
+	movzbq	3304(%rsp), %r8
+	movzbq	3305(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3306(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3307(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3308(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3309(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3310(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3311(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 144(%r10)
+	movzbq	2312(%rsp), %r8
+	movzbq	2313(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2314(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2315(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2316(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2317(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2318(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2319(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 152(%r10)
+	movzbq	5296(%rsp), %r8
+	movzbq	5297(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5298(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5299(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5300(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5301(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5302(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5303(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 160(%r10)
+	movzbq	4304(%rsp), %r8
+	movzbq	4305(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4306(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4307(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4308(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4309(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4310(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4311(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 168(%r10)
+	movzbq	3312(%rsp), %r8
+	movzbq	3313(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3314(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3315(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3316(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3317(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3318(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3319(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 176(%r10)
+	movzbq	2320(%rsp), %r8
+	movzbq	2321(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2322(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2323(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2324(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2325(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2326(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2327(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 184(%r10)
+	movzbq	5304(%rsp), %r8
+	movzbq	5305(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5306(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5307(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5308(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5309(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5310(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5311(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 192(%r10)
+	movzbq	4312(%rsp), %r8
+	movzbq	4313(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4314(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4315(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4316(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4317(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4318(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4319(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 200(%r10)
+	movzbq	3320(%rsp), %r8
+	movzbq	3321(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3322(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3323(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3324(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3325(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3326(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3327(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 208(%r10)
+	movzbq	2328(%rsp), %r8
+	movzbq	2329(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2330(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2331(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2332(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2333(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2334(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2335(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 216(%r10)
+	movzbq	5312(%rsp), %r8
+	movzbq	5313(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5314(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5315(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5316(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5317(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5318(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5319(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 224(%r10)
+	movzbq	4320(%rsp), %r8
+	movzbq	4321(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4322(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4323(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4324(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4325(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4326(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4327(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 232(%r10)
+	movzbq	3328(%rsp), %r8
+	movzbq	3329(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3330(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3331(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3332(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3333(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3334(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3335(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 240(%r10)
+	movzbq	2336(%rsp), %r8
+	movzbq	2337(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2338(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2339(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2340(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2341(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2342(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2343(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 248(%r10)
+	movzbq	5320(%rsp), %r8
+	movzbq	5321(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5322(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5323(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5324(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5325(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5326(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5327(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 256(%r10)
+	movzbq	4328(%rsp), %r8
+	movzbq	4329(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4330(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4331(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4332(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4333(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4334(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4335(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 264(%r10)
+	movzbq	3336(%rsp), %r8
+	movzbq	3337(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3338(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3339(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3340(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3341(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3342(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3343(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 272(%r10)
+	movzbq	2344(%rsp), %r8
+	movzbq	2345(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2346(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2347(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2348(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2349(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2350(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2351(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 280(%r10)
+	movzbq	5328(%rsp), %r8
+	movzbq	5329(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5330(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5331(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5332(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5333(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5334(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5335(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 288(%r10)
+	movzbq	4336(%rsp), %r8
+	movzbq	4337(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4338(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4339(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4340(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4341(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4342(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4343(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 296(%r10)
+	movzbq	3344(%rsp), %r8
+	movzbq	3345(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3346(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3347(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3348(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3349(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3350(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3351(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 304(%r10)
+	movzbq	2352(%rsp), %r8
+	movzbq	2353(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2354(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2355(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2356(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2357(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2358(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2359(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 312(%r10)
+	movzbq	5336(%rsp), %r8
+	movzbq	5337(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5338(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5339(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5340(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5341(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5342(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5343(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 320(%r10)
+	movzbq	4344(%rsp), %r8
+	movzbq	4345(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4346(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4347(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4348(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4349(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4350(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4351(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 328(%r10)
+	movzbq	3352(%rsp), %r8
+	movzbq	3353(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3354(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3355(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3356(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3357(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3358(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3359(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 336(%r10)
+	movzbq	2360(%rsp), %r8
+	movzbq	2361(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2362(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2363(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2364(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2365(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2366(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2367(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 344(%r10)
+	movzbq	5344(%rsp), %r8
+	movzbq	5345(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5346(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5347(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5348(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5349(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5350(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5351(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 352(%r10)
+	movzbq	4352(%rsp), %r8
+	movzbq	4353(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4354(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4355(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4356(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4357(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4358(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4359(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 360(%r10)
+	movzbq	3360(%rsp), %r8
+	movzbq	3361(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3362(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3363(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3364(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3365(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3366(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3367(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 368(%r10)
+	movzbq	2368(%rsp), %r8
+	movzbq	2369(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2370(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2371(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2372(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2373(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2374(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2375(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 376(%r10)
+	movzbq	5352(%rsp), %r8
+	movzbq	5353(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5354(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5355(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5356(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5357(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5358(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5359(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 384(%r10)
+	movzbq	4360(%rsp), %r8
+	movzbq	4361(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4362(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4363(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4364(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4365(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4366(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4367(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 392(%r10)
+	movzbq	3368(%rsp), %r8
+	movzbq	3369(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3370(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3371(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3372(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3373(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3374(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3375(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 400(%r10)
+	movzbq	2376(%rsp), %r8
+	movzbq	2377(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2378(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2379(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2380(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2381(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2382(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2383(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 408(%r10)
+	movzbq	5360(%rsp), %r8
+	movzbq	5361(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5362(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5363(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5364(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5365(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5366(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5367(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 416(%r10)
+	movzbq	4368(%rsp), %r8
+	movzbq	4369(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4370(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4371(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4372(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4373(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4374(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4375(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 424(%r10)
+	movzbq	3376(%rsp), %r8
+	movzbq	3377(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3378(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3379(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3380(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3381(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3382(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3383(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 432(%r10)
+	movzbq	2384(%rsp), %r8
+	movzbq	2385(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2386(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2387(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2388(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2389(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2390(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2391(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 440(%r10)
+	movzbq	5368(%rsp), %r8
+	movzbq	5369(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5370(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5371(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5372(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5373(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5374(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5375(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 448(%r10)
+	movzbq	4376(%rsp), %r8
+	movzbq	4377(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4378(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4379(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4380(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4381(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4382(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4383(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 456(%r10)
+	movzbq	3384(%rsp), %r8
+	movzbq	3385(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3386(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3387(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3388(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3389(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3390(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3391(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 464(%r10)
+	movzbq	2392(%rsp), %r8
+	movzbq	2393(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2394(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2395(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2396(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2397(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2398(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2399(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 472(%r10)
+	movzbq	5376(%rsp), %r8
+	movzbq	5377(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5378(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5379(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5380(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5381(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5382(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5383(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 480(%r10)
+	movzbq	4384(%rsp), %r8
+	movzbq	4385(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4386(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4387(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4388(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4389(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4390(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4391(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 488(%r10)
+	movzbq	3392(%rsp), %r8
+	movzbq	3393(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3394(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3395(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3396(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3397(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3398(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3399(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 496(%r10)
+	movzbq	2400(%rsp), %r8
+	movzbq	2401(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2402(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2403(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2404(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2405(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2406(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2407(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 504(%r10)
+	movzbq	5384(%rsp), %r8
+	movzbq	5385(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5386(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5387(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5388(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5389(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5390(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5391(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 512(%r10)
+	movzbq	4392(%rsp), %r8
+	movzbq	4393(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4394(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4395(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4396(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4397(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4398(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4399(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 520(%r10)
+	movzbq	3400(%rsp), %r8
+	movzbq	3401(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3402(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3403(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3404(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3405(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3406(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3407(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 528(%r10)
+	movzbq	2408(%rsp), %r8
+	movzbq	2409(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2410(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2411(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2412(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2413(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2414(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2415(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 536(%r10)
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$2(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$2:
+	leaq	960(%rsp), %rsp
+	movzbq	5392(%rsp), %r8
+	movzbq	5393(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5394(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5395(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5396(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5397(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5398(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5399(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, (%r10)
+	movzbq	4400(%rsp), %r8
+	movzbq	4401(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4402(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4403(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4404(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4405(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4406(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4407(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 8(%r10)
+	movzbq	3408(%rsp), %r8
+	movzbq	3409(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3410(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3411(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3412(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3413(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3414(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3415(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 16(%r10)
+	movzbq	2416(%rsp), %r8
+	movzbq	2417(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2418(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2419(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2420(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2421(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2422(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2423(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 24(%r10)
+	movzbq	5400(%rsp), %r8
+	movzbq	5401(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5402(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5403(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5404(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5405(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5406(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5407(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 32(%r10)
+	movzbq	4408(%rsp), %r8
+	movzbq	4409(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4410(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4411(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4412(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4413(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4414(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4415(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 40(%r10)
+	movzbq	3416(%rsp), %r8
+	movzbq	3417(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3418(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3419(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3420(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3421(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3422(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3423(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 48(%r10)
+	movzbq	2424(%rsp), %r8
+	movzbq	2425(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2426(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2427(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2428(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2429(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2430(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2431(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 56(%r10)
+	movzbq	5408(%rsp), %r8
+	movzbq	5409(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5410(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5411(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5412(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5413(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5414(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5415(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 64(%r10)
+	movzbq	4416(%rsp), %r8
+	movzbq	4417(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4418(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4419(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4420(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4421(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4422(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4423(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 72(%r10)
+	movzbq	3424(%rsp), %r8
+	movzbq	3425(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3426(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3427(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3428(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3429(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3430(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3431(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 80(%r10)
+	movzbq	2432(%rsp), %r8
+	movzbq	2433(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2434(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2435(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2436(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2437(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2438(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2439(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 88(%r10)
+	movzbq	5416(%rsp), %r8
+	movzbq	5417(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5418(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5419(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5420(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5421(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5422(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5423(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 96(%r10)
+	movzbq	4424(%rsp), %r8
+	movzbq	4425(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4426(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4427(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4428(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4429(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4430(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4431(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 104(%r10)
+	movzbq	3432(%rsp), %r8
+	movzbq	3433(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3434(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3435(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3436(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3437(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3438(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3439(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 112(%r10)
+	movzbq	2440(%rsp), %r8
+	movzbq	2441(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2442(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2443(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2444(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2445(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2446(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2447(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 120(%r10)
+	movzbq	5424(%rsp), %r8
+	movzbq	5425(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5426(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5427(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5428(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5429(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5430(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5431(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 128(%r10)
+	movzbq	4432(%rsp), %r8
+	movzbq	4433(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4434(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4435(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4436(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4437(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4438(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4439(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 136(%r10)
+	movzbq	3440(%rsp), %r8
+	movzbq	3441(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3442(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3443(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3444(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3445(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3446(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3447(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 144(%r10)
+	movzbq	2448(%rsp), %r8
+	movzbq	2449(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2450(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2451(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2452(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2453(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2454(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2455(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 152(%r10)
+	movzbq	5432(%rsp), %r8
+	movzbq	5433(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5434(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5435(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5436(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5437(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5438(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5439(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 160(%r10)
+	movzbq	4440(%rsp), %r8
+	movzbq	4441(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4442(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4443(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4444(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4445(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4446(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4447(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 168(%r10)
+	movzbq	3448(%rsp), %r8
+	movzbq	3449(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3450(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3451(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3452(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3453(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3454(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3455(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 176(%r10)
+	movzbq	2456(%rsp), %r8
+	movzbq	2457(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2458(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2459(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2460(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2461(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2462(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2463(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 184(%r10)
+	movzbq	5440(%rsp), %r8
+	movzbq	5441(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5442(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5443(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5444(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5445(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5446(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5447(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 192(%r10)
+	movzbq	4448(%rsp), %r8
+	movzbq	4449(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4450(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4451(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4452(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4453(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4454(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4455(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 200(%r10)
+	movzbq	3456(%rsp), %r8
+	movzbq	3457(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3458(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3459(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3460(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3461(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3462(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3463(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 208(%r10)
+	movzbq	2464(%rsp), %r8
+	movzbq	2465(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2466(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2467(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2468(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2469(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2470(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2471(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 216(%r10)
+	movzbq	5448(%rsp), %r8
+	movzbq	5449(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5450(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5451(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5452(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5453(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5454(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5455(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 224(%r10)
+	movzbq	4456(%rsp), %r8
+	movzbq	4457(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4458(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4459(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4460(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4461(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4462(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4463(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 232(%r10)
+	movzbq	3464(%rsp), %r8
+	movzbq	3465(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3466(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3467(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3468(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3469(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3470(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3471(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 240(%r10)
+	movzbq	2472(%rsp), %r8
+	movzbq	2473(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2474(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2475(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2476(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2477(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2478(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2479(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 248(%r10)
+	movzbq	5456(%rsp), %r8
+	movzbq	5457(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5458(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5459(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5460(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5461(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5462(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5463(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 256(%r10)
+	movzbq	4464(%rsp), %r8
+	movzbq	4465(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4466(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4467(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4468(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4469(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4470(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4471(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 264(%r10)
+	movzbq	3472(%rsp), %r8
+	movzbq	3473(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3474(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3475(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3476(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3477(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3478(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3479(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 272(%r10)
+	movzbq	2480(%rsp), %r8
+	movzbq	2481(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2482(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2483(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2484(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2485(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2486(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2487(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 280(%r10)
+	movzbq	5464(%rsp), %r8
+	movzbq	5465(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5466(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5467(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5468(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5469(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5470(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5471(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 288(%r10)
+	movzbq	4472(%rsp), %r8
+	movzbq	4473(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4474(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4475(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4476(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4477(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4478(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4479(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 296(%r10)
+	movzbq	3480(%rsp), %r8
+	movzbq	3481(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3482(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3483(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3484(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3485(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3486(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3487(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 304(%r10)
+	movzbq	2488(%rsp), %r8
+	movzbq	2489(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2490(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2491(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2492(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2493(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2494(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2495(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 312(%r10)
+	movzbq	5472(%rsp), %r8
+	movzbq	5473(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5474(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5475(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5476(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5477(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5478(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5479(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 320(%r10)
+	movzbq	4480(%rsp), %r8
+	movzbq	4481(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4482(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4483(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4484(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4485(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4486(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4487(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 328(%r10)
+	movzbq	3488(%rsp), %r8
+	movzbq	3489(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3490(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3491(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3492(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3493(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3494(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3495(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 336(%r10)
+	movzbq	2496(%rsp), %r8
+	movzbq	2497(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2498(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2499(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2500(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2501(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2502(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2503(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 344(%r10)
+	movzbq	5480(%rsp), %r8
+	movzbq	5481(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5482(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5483(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5484(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5485(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5486(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5487(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 352(%r10)
+	movzbq	4488(%rsp), %r8
+	movzbq	4489(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4490(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4491(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4492(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4493(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4494(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4495(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 360(%r10)
+	movzbq	3496(%rsp), %r8
+	movzbq	3497(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3498(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3499(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3500(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3501(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3502(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3503(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 368(%r10)
+	movzbq	2504(%rsp), %r8
+	movzbq	2505(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2506(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2507(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2508(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2509(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2510(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2511(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 376(%r10)
+	movzbq	5488(%rsp), %r8
+	movzbq	5489(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5490(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5491(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5492(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5493(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5494(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5495(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 384(%r10)
+	movzbq	4496(%rsp), %r8
+	movzbq	4497(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4498(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4499(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4500(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4501(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4502(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4503(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 392(%r10)
+	movzbq	3504(%rsp), %r8
+	movzbq	3505(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3506(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3507(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3508(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3509(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3510(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3511(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 400(%r10)
+	movzbq	2512(%rsp), %r8
+	movzbq	2513(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2514(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2515(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2516(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2517(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2518(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2519(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 408(%r10)
+	movzbq	5496(%rsp), %r8
+	movzbq	5497(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5498(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5499(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5500(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5501(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5502(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5503(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 416(%r10)
+	movzbq	4504(%rsp), %r8
+	movzbq	4505(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4506(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4507(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4508(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4509(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4510(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4511(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 424(%r10)
+	movzbq	3512(%rsp), %r8
+	movzbq	3513(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3514(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3515(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3516(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3517(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3518(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3519(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 432(%r10)
+	movzbq	2520(%rsp), %r8
+	movzbq	2521(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2522(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2523(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2524(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2525(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2526(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2527(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 440(%r10)
+	movzbq	5504(%rsp), %r8
+	movzbq	5505(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5506(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5507(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5508(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5509(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5510(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5511(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 448(%r10)
+	movzbq	4512(%rsp), %r8
+	movzbq	4513(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4514(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4515(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4516(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4517(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4518(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4519(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 456(%r10)
+	movzbq	3520(%rsp), %r8
+	movzbq	3521(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3522(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3523(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3524(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3525(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3526(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3527(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 464(%r10)
+	movzbq	2528(%rsp), %r8
+	movzbq	2529(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2530(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2531(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2532(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2533(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2534(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2535(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 472(%r10)
+	movzbq	5512(%rsp), %r8
+	movzbq	5513(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5514(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5515(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5516(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5517(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5518(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5519(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 480(%r10)
+	movzbq	4520(%rsp), %r8
+	movzbq	4521(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4522(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4523(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4524(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4525(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4526(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4527(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 488(%r10)
+	movzbq	3528(%rsp), %r8
+	movzbq	3529(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3530(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3531(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3532(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3533(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3534(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3535(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 496(%r10)
+	movzbq	2536(%rsp), %r8
+	movzbq	2537(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2538(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2539(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2540(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2541(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2542(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2543(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 504(%r10)
+	movzbq	5520(%rsp), %r8
+	movzbq	5521(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	5522(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	5523(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	5524(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	5525(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	5526(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	5527(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 512(%r10)
+	movzbq	4528(%rsp), %r8
+	movzbq	4529(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	4530(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	4531(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	4532(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	4533(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	4534(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	4535(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 520(%r10)
+	movzbq	3536(%rsp), %r8
+	movzbq	3537(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	3538(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	3539(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	3540(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	3541(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	3542(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	3543(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 528(%r10)
+	movzbq	2544(%rsp), %r8
+	movzbq	2545(%rsp), %r9
+	shlq	$8, %r9
+	orq 	%r9, %r8
+	movzbq	2546(%rsp), %r9
+	shlq	$16, %r9
+	orq 	%r9, %r8
+	movzbq	2547(%rsp), %r9
+	shlq	$24, %r9
+	orq 	%r9, %r8
+	movzbq	2548(%rsp), %r9
+	shlq	$32, %r9
+	orq 	%r9, %r8
+	movzbq	2549(%rsp), %r9
+	shlq	$40, %r9
+	orq 	%r9, %r8
+	movzbq	2550(%rsp), %r9
+	shlq	$48, %r9
+	orq 	%r9, %r8
+	movzbq	2551(%rsp), %r9
+	shlq	$56, %r9
+	orq 	%r9, %r8
+	xorq	%r8, 536(%r10)
+	leaq	-960(%rsp), %rsp
+	leaq	Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$1(%rip), 	%r11
+	jmp 	LKeccakF1600_StatePermute4x$1
+Lkeccak_absorb4x_256_PUBKEYBYTES_jazz$1:
+	leaq	960(%rsp), %rsp
+	movb	$0, 1400(%rsp)
+	movb	$0, 1200(%rsp)
+	movb	$0, 1000(%rsp)
+	movb	$0, 800(%rsp)
+	movb	$0, 1401(%rsp)
+	movb	$0, 1201(%rsp)
+	movb	$0, 1001(%rsp)
+	movb	$0, 801(%rsp)
+	movb	$0, 1402(%rsp)
+	movb	$0, 1202(%rsp)
+	movb	$0, 1002(%rsp)
+	movb	$0, 802(%rsp)
+	movb	$0, 1403(%rsp)
+	movb	$0, 1203(%rsp)
+	movb	$0, 1003(%rsp)
+	movb	$0, 803(%rsp)
+	movb	$0, 1404(%rsp)
+	movb	$0, 1204(%rsp)
+	movb	$0, 1004(%rsp)
+	movb	$0, 804(%rsp)
+	movb	$0, 1405(%rsp)
+	movb	$0, 1205(%rsp)
+	movb	$0, 1005(%rsp)
+	movb	$0, 805(%rsp)
+	movb	$0, 1406(%rsp)
+	movb	$0, 1206(%rsp)
+	movb	$0, 1006(%rsp)
+	movb	$0, 806(%rsp)
+	movb	$0, 1407(%rsp)
+	movb	$0, 1207(%rsp)
+	movb	$0, 1007(%rsp)
+	movb	$0, 807(%rsp)
+	movb	$0, 1408(%rsp)
+	movb	$0, 1208(%rsp)
+	movb	$0, 1008(%rsp)
+	movb	$0, 808(%rsp)
+	movb	$0, 1409(%rsp)
+	movb	$0, 1209(%rsp)
+	movb	$0, 1009(%rsp)
+	movb	$0, 809(%rsp)
+	movb	$0, 1410(%rsp)
+	movb	$0, 1210(%rsp)
+	movb	$0, 1010(%rsp)
+	movb	$0, 810(%rsp)
+	movb	$0, 1411(%rsp)
+	movb	$0, 1211(%rsp)
+	movb	$0, 1011(%rsp)
+	movb	$0, 811(%rsp)
+	movb	$0, 1412(%rsp)
+	movb	$0, 1212(%rsp)
+	movb	$0, 1012(%rsp)
+	movb	$0, 812(%rsp)
+	movb	$0, 1413(%rsp)
+	movb	$0, 1213(%rsp)
+	movb	$0, 1013(%rsp)
+	movb	$0, 813(%rsp)
+	movb	$0, 1414(%rsp)
+	movb	$0, 1214(%rsp)
+	movb	$0, 1014(%rsp)
+	movb	$0, 814(%rsp)
+	movb	$0, 1415(%rsp)
+	movb	$0, 1215(%rsp)
+	movb	$0, 1015(%rsp)
+	movb	$0, 815(%rsp)
+	movb	$0, 1416(%rsp)
+	movb	$0, 1216(%rsp)
+	movb	$0, 1016(%rsp)
+	movb	$0, 816(%rsp)
+	movb	$0, 1417(%rsp)
+	movb	$0, 1217(%rsp)
+	movb	$0, 1017(%rsp)
+	movb	$0, 817(%rsp)
+	movb	$0, 1418(%rsp)
+	movb	$0, 1218(%rsp)
+	movb	$0, 1018(%rsp)
+	movb	$0, 818(%rsp)
+	movb	$0, 1419(%rsp)
+	movb	$0, 1219(%rsp)
+	movb	$0, 1019(%rsp)
+	movb	$0, 819(%rsp)
+	movb	$0, 1420(%rsp)
+	movb	$0, 1220(%rsp)
+	movb	$0, 1020(%rsp)
+	movb	$0, 820(%rsp)
+	movb	$0, 1421(%rsp)
+	movb	$0, 1221(%rsp)
+	movb	$0, 1021(%rsp)
+	movb	$0, 821(%rsp)
+	movb	$0, 1422(%rsp)
+	movb	$0, 1222(%rsp)
+	movb	$0, 1022(%rsp)
+	movb	$0, 822(%rsp)
+	movb	$0, 1423(%rsp)
+	movb	$0, 1223(%rsp)
+	movb	$0, 1023(%rsp)
+	movb	$0, 823(%rsp)
+	movb	$0, 1424(%rsp)
+	movb	$0, 1224(%rsp)
+	movb	$0, 1024(%rsp)
+	movb	$0, 824(%rsp)
+	movb	$0, 1425(%rsp)
+	movb	$0, 1225(%rsp)
+	movb	$0, 1025(%rsp)
+	movb	$0, 825(%rsp)
+	movb	$0, 1426(%rsp)
+	movb	$0, 1226(%rsp)
+	movb	$0, 1026(%rsp)
+	movb	$0, 826(%rsp)
+	movb	$0, 1427(%rsp)
+	movb	$0, 1227(%rsp)
+	movb	$0, 1027(%rsp)
+	movb	$0, 827(%rsp)
+	movb	$0, 1428(%rsp)
+	movb	$0, 1228(%rsp)
+	movb	$0, 1028(%rsp)
+	movb	$0, 828(%rsp)
+	movb	$0, 1429(%rsp)
+	movb	$0, 1229(%rsp)
+	movb	$0, 1029(%rsp)
+	movb	$0, 829(%rsp)
+	movb	$0, 1430(%rsp)
+	movb	$0, 1230(%rsp)
+	movb	$0, 1030(%rsp)
+	movb	$0, 830(%rsp)
+	movb	$0, 1431(%rsp)
+	movb	$0, 1231(%rsp)
+	movb	$0, 1031(%rsp)
+	movb	$0, 831(%rsp)
+	movb	$0, 1432(%rsp)
+	movb	$0, 1232(%rsp)
+	movb	$0, 1032(%rsp)
+	movb	$0, 832(%rsp)
+	movb	$0, 1433(%rsp)
+	movb	$0, 1233(%rsp)
+	movb	$0, 1033(%rsp)
+	movb	$0, 833(%rsp)
+	movb	$0, 1434(%rsp)
+	movb	$0, 1234(%rsp)
+	movb	$0, 1034(%rsp)
+	movb	$0, 834(%rsp)
+	movb	$0, 1435(%rsp)
+	movb	$0, 1235(%rsp)
+	movb	$0, 1035(%rsp)
+	movb	$0, 835(%rsp)
+	movb	$0, 1436(%rsp)
+	movb	$0, 1236(%rsp)
+	movb	$0, 1036(%rsp)
+	movb	$0, 836(%rsp)
+	movb	$0, 1437(%rsp)
+	movb	$0, 1237(%rsp)
+	movb	$0, 1037(%rsp)
+	movb	$0, 837(%rsp)
+	movb	$0, 1438(%rsp)
+	movb	$0, 1238(%rsp)
+	movb	$0, 1038(%rsp)
+	movb	$0, 838(%rsp)
+	movb	$0, 1439(%rsp)
+	movb	$0, 1239(%rsp)
+	movb	$0, 1039(%rsp)
+	movb	$0, 839(%rsp)
+	movb	$0, 1440(%rsp)
+	movb	$0, 1240(%rsp)
+	movb	$0, 1040(%rsp)
+	movb	$0, 840(%rsp)
+	movb	$0, 1441(%rsp)
+	movb	$0, 1241(%rsp)
+	movb	$0, 1041(%rsp)
+	movb	$0, 841(%rsp)
+	movb	$0, 1442(%rsp)
+	movb	$0, 1242(%rsp)
+	movb	$0, 1042(%rsp)
+	movb	$0, 842(%rsp)
+	movb	$0, 1443(%rsp)
+	movb	$0, 1243(%rsp)
+	movb	$0, 1043(%rsp)
+	movb	$0, 843(%rsp)
+	movb	$0, 1444(%rsp)
+	movb	$0, 1244(%rsp)
+	movb	$0, 1044(%rsp)
+	movb	$0, 844(%rsp)
+	movb	$0, 1445(%rsp)
+	movb	$0, 1245(%rsp)
+	movb	$0, 1045(%rsp)
+	movb	$0, 845(%rsp)
+	movb	$0, 1446(%rsp)
+	movb	$0, 1246(%rsp)
+	movb	$0, 1046(%rsp)
+	movb	$0, 846(%rsp)
+	movb	$0, 1447(%rsp)
+	movb	$0, 1247(%rsp)
+	movb	$0, 1047(%rsp)
+	movb	$0, 847(%rsp)
+	movb	$0, 1448(%rsp)
+	movb	$0, 1248(%rsp)
+	movb	$0, 1048(%rsp)
+	movb	$0, 848(%rsp)
+	movb	$0, 1449(%rsp)
+	movb	$0, 1249(%rsp)
+	movb	$0, 1049(%rsp)
+	movb	$0, 849(%rsp)
+	movb	$0, 1450(%rsp)
+	movb	$0, 1250(%rsp)
+	movb	$0, 1050(%rsp)
+	movb	$0, 850(%rsp)
+	movb	$0, 1451(%rsp)
+	movb	$0, 1251(%rsp)
+	movb	$0, 1051(%rsp)
+	movb	$0, 851(%rsp)
+	movb	$0, 1452(%rsp)
+	movb	$0, 1252(%rsp)
+	movb	$0, 1052(%rsp)
+	movb	$0, 852(%rsp)
+	movb	$0, 1453(%rsp)
+	movb	$0, 1253(%rsp)
+	movb	$0, 1053(%rsp)
+	movb	$0, 853(%rsp)
+	movb	$0, 1454(%rsp)
+	movb	$0, 1254(%rsp)
+	movb	$0, 1054(%rsp)
+	movb	$0, 854(%rsp)
+	movb	$0, 1455(%rsp)
+	movb	$0, 1255(%rsp)
+	movb	$0, 1055(%rsp)
+	movb	$0, 855(%rsp)
+	movb	$0, 1456(%rsp)
+	movb	$0, 1256(%rsp)
+	movb	$0, 1056(%rsp)
+	movb	$0, 856(%rsp)
+	movb	$0, 1457(%rsp)
+	movb	$0, 1257(%rsp)
+	movb	$0, 1057(%rsp)
+	movb	$0, 857(%rsp)
+	movb	$0, 1458(%rsp)
+	movb	$0, 1258(%rsp)
+	movb	$0, 1058(%rsp)
+	movb	$0, 858(%rsp)
+	movb	$0, 1459(%rsp)
+	movb	$0, 1259(%rsp)
+	movb	$0, 1059(%rsp)
+	movb	$0, 859(%rsp)
+	movb	$0, 1460(%rsp)
+	movb	$0, 1260(%rsp)
+	movb	$0, 1060(%rsp)
+	movb	$0, 860(%rsp)
+	movb	$0, 1461(%rsp)
+	movb	$0, 1261(%rsp)
+	movb	$0, 1061(%rsp)
+	movb	$0, 861(%rsp)
+	movb	$0, 1462(%rsp)
+	movb	$0, 1262(%rsp)
+	movb	$0, 1062(%rsp)
+	movb	$0, 862(%rsp)
+	movb	$0, 1463(%rsp)
+	movb	$0, 1263(%rsp)
+	movb	$0, 1063(%rsp)
+	movb	$0, 863(%rsp)
+	movb	$0, 1464(%rsp)
+	movb	$0, 1264(%rsp)
+	movb	$0, 1064(%rsp)
+	movb	$0, 864(%rsp)
+	movb	$0, 1465(%rsp)
+	movb	$0, 1265(%rsp)
+	movb	$0, 1065(%rsp)
+	movb	$0, 865(%rsp)
+	movb	$0, 1466(%rsp)
+	movb	$0, 1266(%rsp)
+	movb	$0, 1066(%rsp)
+	movb	$0, 866(%rsp)
+	movb	$0, 1467(%rsp)
+	movb	$0, 1267(%rsp)
+	movb	$0, 1067(%rsp)
+	movb	$0, 867(%rsp)
+	movb	$0, 1468(%rsp)
+	movb	$0, 1268(%rsp)
+	movb	$0, 1068(%rsp)
+	movb	$0, 868(%rsp)
+	movb	$0, 1469(%rsp)
+	movb	$0, 1269(%rsp)
+	movb	$0, 1069(%rsp)
+	movb	$0, 869(%rsp)
+	movb	$0, 1470(%rsp)
+	movb	$0, 1270(%rsp)
+	movb	$0, 1070(%rsp)
+	movb	$0, 870(%rsp)
+	movb	$0, 1471(%rsp)
+	movb	$0, 1271(%rsp)
+	movb	$0, 1071(%rsp)
+	movb	$0, 871(%rsp)
+	movb	$0, 1472(%rsp)
+	movb	$0, 1272(%rsp)
+	movb	$0, 1072(%rsp)
+	movb	$0, 872(%rsp)
+	movb	$0, 1473(%rsp)
+	movb	$0, 1273(%rsp)
+	movb	$0, 1073(%rsp)
+	movb	$0, 873(%rsp)
+	movb	$0, 1474(%rsp)
+	movb	$0, 1274(%rsp)
+	movb	$0, 1074(%rsp)
+	movb	$0, 874(%rsp)
+	movb	$0, 1475(%rsp)
+	movb	$0, 1275(%rsp)
+	movb	$0, 1075(%rsp)
+	movb	$0, 875(%rsp)
+	movb	$0, 1476(%rsp)
+	movb	$0, 1276(%rsp)
+	movb	$0, 1076(%rsp)
+	movb	$0, 876(%rsp)
+	movb	$0, 1477(%rsp)
+	movb	$0, 1277(%rsp)
+	movb	$0, 1077(%rsp)
+	movb	$0, 877(%rsp)
+	movb	$0, 1478(%rsp)
+	movb	$0, 1278(%rsp)
+	movb	$0, 1078(%rsp)
+	movb	$0, 878(%rsp)
+	movb	$0, 1479(%rsp)
+	movb	$0, 1279(%rsp)
+	movb	$0, 1079(%rsp)
+	movb	$0, 879(%rsp)
+	movb	$0, 1480(%rsp)
+	movb	$0, 1280(%rsp)
+	movb	$0, 1080(%rsp)
+	movb	$0, 880(%rsp)
+	movb	$0, 1481(%rsp)
+	movb	$0, 1281(%rsp)
+	movb	$0, 1081(%rsp)
+	movb	$0, 881(%rsp)
+	movb	$0, 1482(%rsp)
+	movb	$0, 1282(%rsp)
+	movb	$0, 1082(%rsp)
+	movb	$0, 882(%rsp)
+	movb	$0, 1483(%rsp)
+	movb	$0, 1283(%rsp)
+	movb	$0, 1083(%rsp)
+	movb	$0, 883(%rsp)
+	movb	$0, 1484(%rsp)
+	movb	$0, 1284(%rsp)
+	movb	$0, 1084(%rsp)
+	movb	$0, 884(%rsp)
+	movb	$0, 1485(%rsp)
+	movb	$0, 1285(%rsp)
+	movb	$0, 1085(%rsp)
+	movb	$0, 885(%rsp)
+	movb	$0, 1486(%rsp)
+	movb	$0, 1286(%rsp)
+	movb	$0, 1086(%rsp)
+	movb	$0, 886(%rsp)
+	movb	$0, 1487(%rsp)
+	movb	$0, 1287(%rsp)
+	movb	$0, 1087(%rsp)
+	movb	$0, 887(%rsp)
+	movb	$0, 1488(%rsp)
+	movb	$0, 1288(%rsp)
+	movb	$0, 1088(%rsp)
+	movb	$0, 888(%rsp)
+	movb	$0, 1489(%rsp)
+	movb	$0, 1289(%rsp)
+	movb	$0, 1089(%rsp)
+	movb	$0, 889(%rsp)
+	movb	$0, 1490(%rsp)
+	movb	$0, 1290(%rsp)
+	movb	$0, 1090(%rsp)
+	movb	$0, 890(%rsp)
+	movb	$0, 1491(%rsp)
+	movb	$0, 1291(%rsp)
+	movb	$0, 1091(%rsp)
+	movb	$0, 891(%rsp)
+	movb	$0, 1492(%rsp)
+	movb	$0, 1292(%rsp)
+	movb	$0, 1092(%rsp)
+	movb	$0, 892(%rsp)
+	movb	$0, 1493(%rsp)
+	movb	$0, 1293(%rsp)
+	movb	$0, 1093(%rsp)
+	movb	$0, 893(%rsp)
+	movb	$0, 1494(%rsp)
+	movb	$0, 1294(%rsp)
+	movb	$0, 1094(%rsp)
+	movb	$0, 894(%rsp)
+	movb	$0, 1495(%rsp)
+	movb	$0, 1295(%rsp)
+	movb	$0, 1095(%rsp)
+	movb	$0, 895(%rsp)
+	movb	$0, 1496(%rsp)
+	movb	$0, 1296(%rsp)
+	movb	$0, 1096(%rsp)
+	movb	$0, 896(%rsp)
+	movb	$0, 1497(%rsp)
+	movb	$0, 1297(%rsp)
+	movb	$0, 1097(%rsp)
+	movb	$0, 897(%rsp)
+	movb	$0, 1498(%rsp)
+	movb	$0, 1298(%rsp)
+	movb	$0, 1098(%rsp)
+	movb	$0, 898(%rsp)
+	movb	$0, 1499(%rsp)
+	movb	$0, 1299(%rsp)
+	movb	$0, 1099(%rsp)
+	movb	$0, 899(%rsp)
+	movb	$0, 1500(%rsp)
+	movb	$0, 1300(%rsp)
+	movb	$0, 1100(%rsp)
+	movb	$0, 900(%rsp)
+	movb	$0, 1501(%rsp)
+	movb	$0, 1301(%rsp)
+	movb	$0, 1101(%rsp)
+	movb	$0, 901(%rsp)
+	movb	$0, 1502(%rsp)
+	movb	$0, 1302(%rsp)
+	movb	$0, 1102(%rsp)
+	movb	$0, 902(%rsp)
+	movb	$0, 1503(%rsp)
+	movb	$0, 1303(%rsp)
+	movb	$0, 1103(%rsp)
+	movb	$0, 903(%rsp)
+	movb	$0, 1504(%rsp)
+	movb	$0, 1304(%rsp)
+	movb	$0, 1104(%rsp)
+	movb	$0, 904(%rsp)
+	movb	$0, 1505(%rsp)
+	movb	$0, 1305(%rsp)
+	movb	$0, 1105(%rsp)
+	movb	$0, 905(%rsp)
+	movb	$0, 1506(%rsp)
+	movb	$0, 1306(%rsp)
+	movb	$0, 1106(%rsp)
+	movb	$0, 906(%rsp)
+	movb	$0, 1507(%rsp)
+	movb	$0, 1307(%rsp)
+	movb	$0, 1107(%rsp)
+	movb	$0, 907(%rsp)
+	movb	$0, 1508(%rsp)
+	movb	$0, 1308(%rsp)
+	movb	$0, 1108(%rsp)
+	movb	$0, 908(%rsp)
+	movb	$0, 1509(%rsp)
+	movb	$0, 1309(%rsp)
+	movb	$0, 1109(%rsp)
+	movb	$0, 909(%rsp)
+	movb	$0, 1510(%rsp)
+	movb	$0, 1310(%rsp)
+	movb	$0, 1110(%rsp)
+	movb	$0, 910(%rsp)
+	movb	$0, 1511(%rsp)
+	movb	$0, 1311(%rsp)
+	movb	$0, 1111(%rsp)
+	movb	$0, 911(%rsp)
+	movb	$0, 1512(%rsp)
+	movb	$0, 1312(%rsp)
+	movb	$0, 1112(%rsp)
+	movb	$0, 912(%rsp)
+	movb	$0, 1513(%rsp)
+	movb	$0, 1313(%rsp)
+	movb	$0, 1113(%rsp)
+	movb	$0, 913(%rsp)
+	movb	$0, 1514(%rsp)
+	movb	$0, 1314(%rsp)
+	movb	$0, 1114(%rsp)
+	movb	$0, 914(%rsp)
+	movb	$0, 1515(%rsp)
+	movb	$0, 1315(%rsp)
+	movb	$0, 1115(%rsp)
+	movb	$0, 915(%rsp)
+	movb	$0, 1516(%rsp)
+	movb	$0, 1316(%rsp)
+	movb	$0, 1116(%rsp)
+	movb	$0, 916(%rsp)
+	movb	$0, 1517(%rsp)
+	movb	$0, 1317(%rsp)
+	movb	$0, 1117(%rsp)
+	movb	$0, 917(%rsp)
+	movb	$0, 1518(%rsp)
+	movb	$0, 1318(%rsp)
+	movb	$0, 1118(%rsp)
+	movb	$0, 918(%rsp)
+	movb	$0, 1519(%rsp)
+	movb	$0, 1319(%rsp)
+	movb	$0, 1119(%rsp)
+	movb	$0, 919(%rsp)
+	movb	$0, 1520(%rsp)
+	movb	$0, 1320(%rsp)
+	movb	$0, 1120(%rsp)
+	movb	$0, 920(%rsp)
+	movb	$0, 1521(%rsp)
+	movb	$0, 1321(%rsp)
+	movb	$0, 1121(%rsp)
+	movb	$0, 921(%rsp)
+	movb	$0, 1522(%rsp)
+	movb	$0, 1322(%rsp)
+	movb	$0, 1122(%rsp)
+	movb	$0, 922(%rsp)
+	movb	$0, 1523(%rsp)
+	movb	$0, 1323(%rsp)
+	movb	$0, 1123(%rsp)
+	movb	$0, 923(%rsp)
+	movb	$0, 1524(%rsp)
+	movb	$0, 1324(%rsp)
+	movb	$0, 1124(%rsp)
+	movb	$0, 924(%rsp)
+	movb	$0, 1525(%rsp)
+	movb	$0, 1325(%rsp)
+	movb	$0, 1125(%rsp)
+	movb	$0, 925(%rsp)
+	movb	$0, 1526(%rsp)
+	movb	$0, 1326(%rsp)
+	movb	$0, 1126(%rsp)
+	movb	$0, 926(%rsp)
+	movb	$0, 1527(%rsp)
+	movb	$0, 1327(%rsp)
+	movb	$0, 1127(%rsp)
+	movb	$0, 927(%rsp)
+	movb	$0, 1528(%rsp)
+	movb	$0, 1328(%rsp)
+	movb	$0, 1128(%rsp)
+	movb	$0, 928(%rsp)
+	movb	$0, 1529(%rsp)
+	movb	$0, 1329(%rsp)
+	movb	$0, 1129(%rsp)
+	movb	$0, 929(%rsp)
+	movb	$0, 1530(%rsp)
+	movb	$0, 1330(%rsp)
+	movb	$0, 1130(%rsp)
+	movb	$0, 930(%rsp)
+	movb	$0, 1531(%rsp)
+	movb	$0, 1331(%rsp)
+	movb	$0, 1131(%rsp)
+	movb	$0, 931(%rsp)
+	movb	$0, 1532(%rsp)
+	movb	$0, 1332(%rsp)
+	movb	$0, 1132(%rsp)
+	movb	$0, 932(%rsp)
+	movb	$0, 1533(%rsp)
+	movb	$0, 1333(%rsp)
+	movb	$0, 1133(%rsp)
+	movb	$0, 933(%rsp)
+	movb	$0, 1534(%rsp)
+	movb	$0, 1334(%rsp)
+	movb	$0, 1134(%rsp)
+	movb	$0, 934(%rsp)
+	movb	$0, 1535(%rsp)
+	movb	$0, 1335(%rsp)
+	movb	$0, 1135(%rsp)
+	movb	$0, 935(%rsp)
+	movb	952(%rax), %r8b
+	movb	%r8b, 1400(%rsp)
+	movb	952(%rcx), %r8b
+	movb	%r8b, 1200(%rsp)
+	movb	952(%rdx), %r8b
+	movb	%r8b, 1000(%rsp)
+	movb	952(%rsi), %r8b
+	movb	%r8b, 800(%rsp)
+	movb	953(%rax), %r8b
+	movb	%r8b, 1401(%rsp)
+	movb	953(%rcx), %r8b
+	movb	%r8b, 1201(%rsp)
+	movb	953(%rdx), %r8b
+	movb	%r8b, 1001(%rsp)
+	movb	953(%rsi), %r8b
+	movb	%r8b, 801(%rsp)
+	movb	954(%rax), %r8b
+	movb	%r8b, 1402(%rsp)
+	movb	954(%rcx), %r8b
+	movb	%r8b, 1202(%rsp)
+	movb	954(%rdx), %r8b
+	movb	%r8b, 1002(%rsp)
+	movb	954(%rsi), %r8b
+	movb	%r8b, 802(%rsp)
+	movb	955(%rax), %r8b
+	movb	%r8b, 1403(%rsp)
+	movb	955(%rcx), %r8b
+	movb	%r8b, 1203(%rsp)
+	movb	955(%rdx), %r8b
+	movb	%r8b, 1003(%rsp)
+	movb	955(%rsi), %r8b
+	movb	%r8b, 803(%rsp)
+	movb	956(%rax), %r8b
+	movb	%r8b, 1404(%rsp)
+	movb	956(%rcx), %r8b
+	movb	%r8b, 1204(%rsp)
+	movb	956(%rdx), %r8b
+	movb	%r8b, 1004(%rsp)
+	movb	956(%rsi), %r8b
+	movb	%r8b, 804(%rsp)
+	movb	957(%rax), %r8b
+	movb	%r8b, 1405(%rsp)
+	movb	957(%rcx), %r8b
+	movb	%r8b, 1205(%rsp)
+	movb	957(%rdx), %r8b
+	movb	%r8b, 1005(%rsp)
+	movb	957(%rsi), %r8b
+	movb	%r8b, 805(%rsp)
+	movb	958(%rax), %r8b
+	movb	%r8b, 1406(%rsp)
+	movb	958(%rcx), %r8b
+	movb	%r8b, 1206(%rsp)
+	movb	958(%rdx), %r8b
+	movb	%r8b, 1006(%rsp)
+	movb	958(%rsi), %r8b
+	movb	%r8b, 806(%rsp)
+	movb	959(%rax), %r8b
+	movb	%r8b, 1407(%rsp)
+	movb	959(%rcx), %r8b
+	movb	%r8b, 1207(%rsp)
+	movb	959(%rdx), %r8b
+	movb	%r8b, 1007(%rsp)
+	movb	959(%rsi), %r8b
+	movb	%r8b, 807(%rsp)
+	movb	960(%rax), %r8b
+	movb	%r8b, 1408(%rsp)
+	movb	960(%rcx), %r8b
+	movb	%r8b, 1208(%rsp)
+	movb	960(%rdx), %r8b
+	movb	%r8b, 1008(%rsp)
+	movb	960(%rsi), %r8b
+	movb	%r8b, 808(%rsp)
+	movb	961(%rax), %r8b
+	movb	%r8b, 1409(%rsp)
+	movb	961(%rcx), %r8b
+	movb	%r8b, 1209(%rsp)
+	movb	961(%rdx), %r8b
+	movb	%r8b, 1009(%rsp)
+	movb	961(%rsi), %r8b
+	movb	%r8b, 809(%rsp)
+	movb	962(%rax), %r8b
+	movb	%r8b, 1410(%rsp)
+	movb	962(%rcx), %r8b
+	movb	%r8b, 1210(%rsp)
+	movb	962(%rdx), %r8b
+	movb	%r8b, 1010(%rsp)
+	movb	962(%rsi), %r8b
+	movb	%r8b, 810(%rsp)
+	movb	963(%rax), %r8b
+	movb	%r8b, 1411(%rsp)
+	movb	963(%rcx), %r8b
+	movb	%r8b, 1211(%rsp)
+	movb	963(%rdx), %r8b
+	movb	%r8b, 1011(%rsp)
+	movb	963(%rsi), %r8b
+	movb	%r8b, 811(%rsp)
+	movb	964(%rax), %r8b
+	movb	%r8b, 1412(%rsp)
+	movb	964(%rcx), %r8b
+	movb	%r8b, 1212(%rsp)
+	movb	964(%rdx), %r8b
+	movb	%r8b, 1012(%rsp)
+	movb	964(%rsi), %r8b
+	movb	%r8b, 812(%rsp)
+	movb	965(%rax), %r8b
+	movb	%r8b, 1413(%rsp)
+	movb	965(%rcx), %r8b
+	movb	%r8b, 1213(%rsp)
+	movb	965(%rdx), %r8b
+	movb	%r8b, 1013(%rsp)
+	movb	965(%rsi), %r8b
+	movb	%r8b, 813(%rsp)
+	movb	966(%rax), %r8b
+	movb	%r8b, 1414(%rsp)
+	movb	966(%rcx), %r8b
+	movb	%r8b, 1214(%rsp)
+	movb	966(%rdx), %r8b
+	movb	%r8b, 1014(%rsp)
+	movb	966(%rsi), %r8b
+	movb	%r8b, 814(%rsp)
+	movb	967(%rax), %r8b
+	movb	%r8b, 1415(%rsp)
+	movb	967(%rcx), %r8b
+	movb	%r8b, 1215(%rsp)
+	movb	967(%rdx), %r8b
+	movb	%r8b, 1015(%rsp)
+	movb	967(%rsi), %r8b
+	movb	%r8b, 815(%rsp)
+	movb	968(%rax), %r8b
+	movb	%r8b, 1416(%rsp)
+	movb	968(%rcx), %r8b
+	movb	%r8b, 1216(%rsp)
+	movb	968(%rdx), %r8b
+	movb	%r8b, 1016(%rsp)
+	movb	968(%rsi), %r8b
+	movb	%r8b, 816(%rsp)
+	movb	969(%rax), %r8b
+	movb	%r8b, 1417(%rsp)
+	movb	969(%rcx), %r8b
+	movb	%r8b, 1217(%rsp)
+	movb	969(%rdx), %r8b
+	movb	%r8b, 1017(%rsp)
+	movb	969(%rsi), %r8b
+	movb	%r8b, 817(%rsp)
+	movb	970(%rax), %r8b
+	movb	%r8b, 1418(%rsp)
+	movb	970(%rcx), %r8b
+	movb	%r8b, 1218(%rsp)
+	movb	970(%rdx), %r8b
+	movb	%r8b, 1018(%rsp)
+	movb	970(%rsi), %r8b
+	movb	%r8b, 818(%rsp)
+	movb	971(%rax), %r8b
+	movb	%r8b, 1419(%rsp)
+	movb	971(%rcx), %r8b
+	movb	%r8b, 1219(%rsp)
+	movb	971(%rdx), %r8b
+	movb	%r8b, 1019(%rsp)
+	movb	971(%rsi), %r8b
+	movb	%r8b, 819(%rsp)
+	movb	972(%rax), %r8b
+	movb	%r8b, 1420(%rsp)
+	movb	972(%rcx), %r8b
+	movb	%r8b, 1220(%rsp)
+	movb	972(%rdx), %r8b
+	movb	%r8b, 1020(%rsp)
+	movb	972(%rsi), %r8b
+	movb	%r8b, 820(%rsp)
+	movb	973(%rax), %r8b
+	movb	%r8b, 1421(%rsp)
+	movb	973(%rcx), %r8b
+	movb	%r8b, 1221(%rsp)
+	movb	973(%rdx), %r8b
+	movb	%r8b, 1021(%rsp)
+	movb	973(%rsi), %r8b
+	movb	%r8b, 821(%rsp)
+	movb	974(%rax), %r8b
+	movb	%r8b, 1422(%rsp)
+	movb	974(%rcx), %r8b
+	movb	%r8b, 1222(%rsp)
+	movb	974(%rdx), %r8b
+	movb	%r8b, 1022(%rsp)
+	movb	974(%rsi), %r8b
+	movb	%r8b, 822(%rsp)
+	movb	975(%rax), %r8b
+	movb	%r8b, 1423(%rsp)
+	movb	975(%rcx), %r8b
+	movb	%r8b, 1223(%rsp)
+	movb	975(%rdx), %r8b
+	movb	%r8b, 1023(%rsp)
+	movb	975(%rsi), %r8b
+	movb	%r8b, 823(%rsp)
+	movb	976(%rax), %r8b
+	movb	%r8b, 1424(%rsp)
+	movb	976(%rcx), %r8b
+	movb	%r8b, 1224(%rsp)
+	movb	976(%rdx), %r8b
+	movb	%r8b, 1024(%rsp)
+	movb	976(%rsi), %r8b
+	movb	%r8b, 824(%rsp)
+	movb	977(%rax), %r8b
+	movb	%r8b, 1425(%rsp)
+	movb	977(%rcx), %r8b
+	movb	%r8b, 1225(%rsp)
+	movb	977(%rdx), %r8b
+	movb	%r8b, 1025(%rsp)
+	movb	977(%rsi), %r8b
+	movb	%r8b, 825(%rsp)
+	movb	978(%rax), %r8b
+	movb	%r8b, 1426(%rsp)
+	movb	978(%rcx), %r8b
+	movb	%r8b, 1226(%rsp)
+	movb	978(%rdx), %r8b
+	movb	%r8b, 1026(%rsp)
+	movb	978(%rsi), %r8b
+	movb	%r8b, 826(%rsp)
+	movb	979(%rax), %r8b
+	movb	%r8b, 1427(%rsp)
+	movb	979(%rcx), %r8b
+	movb	%r8b, 1227(%rsp)
+	movb	979(%rdx), %r8b
+	movb	%r8b, 1027(%rsp)
+	movb	979(%rsi), %r8b
+	movb	%r8b, 827(%rsp)
+	movb	980(%rax), %r8b
+	movb	%r8b, 1428(%rsp)
+	movb	980(%rcx), %r8b
+	movb	%r8b, 1228(%rsp)
+	movb	980(%rdx), %r8b
+	movb	%r8b, 1028(%rsp)
+	movb	980(%rsi), %r8b
+	movb	%r8b, 828(%rsp)
+	movb	981(%rax), %r8b
+	movb	%r8b, 1429(%rsp)
+	movb	981(%rcx), %r8b
+	movb	%r8b, 1229(%rsp)
+	movb	981(%rdx), %r8b
+	movb	%r8b, 1029(%rsp)
+	movb	981(%rsi), %r8b
+	movb	%r8b, 829(%rsp)
+	movb	982(%rax), %r8b
+	movb	%r8b, 1430(%rsp)
+	movb	982(%rcx), %r8b
+	movb	%r8b, 1230(%rsp)
+	movb	982(%rdx), %r8b
+	movb	%r8b, 1030(%rsp)
+	movb	982(%rsi), %r8b
+	movb	%r8b, 830(%rsp)
+	movb	983(%rax), %r8b
+	movb	%r8b, 1431(%rsp)
+	movb	983(%rcx), %r8b
+	movb	%r8b, 1231(%rsp)
+	movb	983(%rdx), %r8b
+	movb	%r8b, 1031(%rsp)
+	movb	983(%rsi), %r8b
+	movb	%r8b, 831(%rsp)
+	movb	984(%rax), %r8b
+	movb	%r8b, 1432(%rsp)
+	movb	984(%rcx), %r8b
+	movb	%r8b, 1232(%rsp)
+	movb	984(%rdx), %r8b
+	movb	%r8b, 1032(%rsp)
+	movb	984(%rsi), %r8b
+	movb	%r8b, 832(%rsp)
+	movb	985(%rax), %r8b
+	movb	%r8b, 1433(%rsp)
+	movb	985(%rcx), %r8b
+	movb	%r8b, 1233(%rsp)
+	movb	985(%rdx), %r8b
+	movb	%r8b, 1033(%rsp)
+	movb	985(%rsi), %r8b
+	movb	%r8b, 833(%rsp)
+	movb	986(%rax), %r8b
+	movb	%r8b, 1434(%rsp)
+	movb	986(%rcx), %r8b
+	movb	%r8b, 1234(%rsp)
+	movb	986(%rdx), %r8b
+	movb	%r8b, 1034(%rsp)
+	movb	986(%rsi), %r8b
+	movb	%r8b, 834(%rsp)
+	movb	987(%rax), %r8b
+	movb	%r8b, 1435(%rsp)
+	movb	987(%rcx), %r8b
+	movb	%r8b, 1235(%rsp)
+	movb	987(%rdx), %r8b
+	movb	%r8b, 1035(%rsp)
+	movb	987(%rsi), %r8b
+	movb	%r8b, 835(%rsp)
+	movb	988(%rax), %r8b
+	movb	%r8b, 1436(%rsp)
+	movb	988(%rcx), %r8b
+	movb	%r8b, 1236(%rsp)
+	movb	988(%rdx), %r8b
+	movb	%r8b, 1036(%rsp)
+	movb	988(%rsi), %r8b
+	movb	%r8b, 836(%rsp)
+	movb	989(%rax), %r8b
+	movb	%r8b, 1437(%rsp)
+	movb	989(%rcx), %r8b
+	movb	%r8b, 1237(%rsp)
+	movb	989(%rdx), %r8b
+	movb	%r8b, 1037(%rsp)
+	movb	989(%rsi), %r8b
+	movb	%r8b, 837(%rsp)
+	movb	990(%rax), %r8b
+	movb	%r8b, 1438(%rsp)
+	movb	990(%rcx), %r8b
+	movb	%r8b, 1238(%rsp)
+	movb	990(%rdx), %r8b
+	movb	%r8b, 1038(%rsp)
+	movb	990(%rsi), %r8b
+	movb	%r8b, 838(%rsp)
+	movb	991(%rax), %al
+	movb	%al, 1439(%rsp)
+	movb	991(%rcx), %al
+	movb	%al, 1239(%rsp)
+	movb	991(%rdx), %al
+	movb	%al, 1039(%rsp)
+	movb	991(%rsi), %al
+	movb	%al, 839(%rsp)
+	movb	$6, 1440(%rsp)
+	movb	$6, 1240(%rsp)
+	movb	$6, 1040(%rsp)
+	movb	$6, 840(%rsp)
+	orb 	$-128, 1535(%rsp)
+	orb 	$-128, 1335(%rsp)
+	orb 	$-128, 1135(%rsp)
+	orb 	$-128, 935(%rsp)
+	movzbq	1400(%rsp), %rax
+	movzbq	1401(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1402(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1403(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1404(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1405(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1406(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1407(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, (%r10)
+	movzbq	1200(%rsp), %rax
+	movzbq	1201(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1202(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1203(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1204(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1205(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1206(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1207(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 8(%r10)
+	movzbq	1000(%rsp), %rax
+	movzbq	1001(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1002(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1003(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1004(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1005(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1006(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1007(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 16(%r10)
+	movzbq	800(%rsp), %rax
+	movzbq	801(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	802(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	803(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	804(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	805(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	806(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	807(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 24(%r10)
+	movzbq	1408(%rsp), %rax
+	movzbq	1409(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1410(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1411(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1412(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1413(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1414(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1415(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 32(%r10)
+	movzbq	1208(%rsp), %rax
+	movzbq	1209(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1210(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1211(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1212(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1213(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1214(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1215(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 40(%r10)
+	movzbq	1008(%rsp), %rax
+	movzbq	1009(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1010(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1011(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1012(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1013(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1014(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1015(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 48(%r10)
+	movzbq	808(%rsp), %rax
+	movzbq	809(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	810(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	811(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	812(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	813(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	814(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	815(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 56(%r10)
+	movzbq	1416(%rsp), %rax
+	movzbq	1417(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1418(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1419(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1420(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1421(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1422(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1423(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 64(%r10)
+	movzbq	1216(%rsp), %rax
+	movzbq	1217(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1218(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1219(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1220(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1221(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1222(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1223(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 72(%r10)
+	movzbq	1016(%rsp), %rax
+	movzbq	1017(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1018(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1019(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1020(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1021(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1022(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1023(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 80(%r10)
+	movzbq	816(%rsp), %rax
+	movzbq	817(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	818(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	819(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	820(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	821(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	822(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	823(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 88(%r10)
+	movzbq	1424(%rsp), %rax
+	movzbq	1425(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1426(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1427(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1428(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1429(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1430(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1431(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 96(%r10)
+	movzbq	1224(%rsp), %rax
+	movzbq	1225(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1226(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1227(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1228(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1229(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1230(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1231(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 104(%r10)
+	movzbq	1024(%rsp), %rax
+	movzbq	1025(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1026(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1027(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1028(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1029(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1030(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1031(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 112(%r10)
+	movzbq	824(%rsp), %rax
+	movzbq	825(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	826(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	827(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	828(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	829(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	830(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	831(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 120(%r10)
+	movzbq	1432(%rsp), %rax
+	movzbq	1433(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1434(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1435(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1436(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1437(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1438(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1439(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 128(%r10)
+	movzbq	1232(%rsp), %rax
+	movzbq	1233(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1234(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1235(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1236(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1237(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1238(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1239(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 136(%r10)
+	movzbq	1032(%rsp), %rax
+	movzbq	1033(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1034(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1035(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1036(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1037(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1038(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1039(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 144(%r10)
+	movzbq	832(%rsp), %rax
+	movzbq	833(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	834(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	835(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	836(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	837(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	838(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	839(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 152(%r10)
+	movzbq	1440(%rsp), %rax
+	movzbq	1441(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1442(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1443(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1444(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1445(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1446(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1447(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 160(%r10)
+	movzbq	1240(%rsp), %rax
+	movzbq	1241(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1242(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1243(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1244(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1245(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1246(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1247(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 168(%r10)
+	movzbq	1040(%rsp), %rax
+	movzbq	1041(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1042(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1043(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1044(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1045(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1046(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1047(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 176(%r10)
+	movzbq	840(%rsp), %rax
+	movzbq	841(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	842(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	843(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	844(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	845(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	846(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	847(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 184(%r10)
+	movzbq	1448(%rsp), %rax
+	movzbq	1449(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1450(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1451(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1452(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1453(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1454(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1455(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 192(%r10)
+	movzbq	1248(%rsp), %rax
+	movzbq	1249(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1250(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1251(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1252(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1253(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1254(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1255(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 200(%r10)
+	movzbq	1048(%rsp), %rax
+	movzbq	1049(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1050(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1051(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1052(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1053(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1054(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1055(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 208(%r10)
+	movzbq	848(%rsp), %rax
+	movzbq	849(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	850(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	851(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	852(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	853(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	854(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	855(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 216(%r10)
+	movzbq	1456(%rsp), %rax
+	movzbq	1457(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1458(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1459(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1460(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1461(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1462(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1463(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 224(%r10)
+	movzbq	1256(%rsp), %rax
+	movzbq	1257(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1258(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1259(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1260(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1261(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1262(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1263(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 232(%r10)
+	movzbq	1056(%rsp), %rax
+	movzbq	1057(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1058(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1059(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1060(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1061(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1062(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1063(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 240(%r10)
+	movzbq	856(%rsp), %rax
+	movzbq	857(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	858(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	859(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	860(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	861(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	862(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	863(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 248(%r10)
+	movzbq	1464(%rsp), %rax
+	movzbq	1465(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1466(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1467(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1468(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1469(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1470(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1471(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 256(%r10)
+	movzbq	1264(%rsp), %rax
+	movzbq	1265(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1266(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1267(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1268(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1269(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1270(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1271(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 264(%r10)
+	movzbq	1064(%rsp), %rax
+	movzbq	1065(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1066(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1067(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1068(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1069(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1070(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1071(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 272(%r10)
+	movzbq	864(%rsp), %rax
+	movzbq	865(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	866(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	867(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	868(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	869(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	870(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	871(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 280(%r10)
+	movzbq	1472(%rsp), %rax
+	movzbq	1473(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1474(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1475(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1476(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1477(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1478(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1479(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 288(%r10)
+	movzbq	1272(%rsp), %rax
+	movzbq	1273(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1274(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1275(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1276(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1277(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1278(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1279(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 296(%r10)
+	movzbq	1072(%rsp), %rax
+	movzbq	1073(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1074(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1075(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1076(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1077(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1078(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1079(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 304(%r10)
+	movzbq	872(%rsp), %rax
+	movzbq	873(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	874(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	875(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	876(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	877(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	878(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	879(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 312(%r10)
+	movzbq	1480(%rsp), %rax
+	movzbq	1481(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1482(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1483(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1484(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1485(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1486(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1487(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 320(%r10)
+	movzbq	1280(%rsp), %rax
+	movzbq	1281(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1282(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1283(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1284(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1285(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1286(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1287(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 328(%r10)
+	movzbq	1080(%rsp), %rax
+	movzbq	1081(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1082(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1083(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1084(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1085(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1086(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1087(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 336(%r10)
+	movzbq	880(%rsp), %rax
+	movzbq	881(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	882(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	883(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	884(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	885(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	886(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	887(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 344(%r10)
+	movzbq	1488(%rsp), %rax
+	movzbq	1489(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1490(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1491(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1492(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1493(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1494(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1495(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 352(%r10)
+	movzbq	1288(%rsp), %rax
+	movzbq	1289(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1290(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1291(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1292(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1293(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1294(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1295(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 360(%r10)
+	movzbq	1088(%rsp), %rax
+	movzbq	1089(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1090(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1091(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1092(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1093(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1094(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1095(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 368(%r10)
+	movzbq	888(%rsp), %rax
+	movzbq	889(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	890(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	891(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	892(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	893(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	894(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	895(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 376(%r10)
+	movzbq	1496(%rsp), %rax
+	movzbq	1497(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1498(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1499(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1500(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1501(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1502(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1503(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 384(%r10)
+	movzbq	1296(%rsp), %rax
+	movzbq	1297(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1298(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1299(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1300(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1301(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1302(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1303(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 392(%r10)
+	movzbq	1096(%rsp), %rax
+	movzbq	1097(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1098(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1099(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1100(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1101(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1102(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1103(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 400(%r10)
+	movzbq	896(%rsp), %rax
+	movzbq	897(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	898(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	899(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	900(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	901(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	902(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	903(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 408(%r10)
+	movzbq	1504(%rsp), %rax
+	movzbq	1505(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1506(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1507(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1508(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1509(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1510(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1511(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 416(%r10)
+	movzbq	1304(%rsp), %rax
+	movzbq	1305(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1306(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1307(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1308(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1309(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1310(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1311(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 424(%r10)
+	movzbq	1104(%rsp), %rax
+	movzbq	1105(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1106(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1107(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1108(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1109(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1110(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1111(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 432(%r10)
+	movzbq	904(%rsp), %rax
+	movzbq	905(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	906(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	907(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	908(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	909(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	910(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	911(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 440(%r10)
+	movzbq	1512(%rsp), %rax
+	movzbq	1513(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1514(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1515(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1516(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1517(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1518(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1519(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 448(%r10)
+	movzbq	1312(%rsp), %rax
+	movzbq	1313(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1314(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1315(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1316(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1317(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1318(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1319(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 456(%r10)
+	movzbq	1112(%rsp), %rax
+	movzbq	1113(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1114(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1115(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1116(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1117(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1118(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1119(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 464(%r10)
+	movzbq	912(%rsp), %rax
+	movzbq	913(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	914(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	915(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	916(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	917(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	918(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	919(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 472(%r10)
+	movzbq	1520(%rsp), %rax
+	movzbq	1521(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1522(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1523(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1524(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1525(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1526(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1527(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 480(%r10)
+	movzbq	1320(%rsp), %rax
+	movzbq	1321(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1322(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1323(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1324(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1325(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1326(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1327(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 488(%r10)
+	movzbq	1120(%rsp), %rax
+	movzbq	1121(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1122(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1123(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1124(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1125(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1126(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1127(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 496(%r10)
+	movzbq	920(%rsp), %rax
+	movzbq	921(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	922(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	923(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	924(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	925(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	926(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	927(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 504(%r10)
+	movzbq	1528(%rsp), %rax
+	movzbq	1529(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1530(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1531(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1532(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1533(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1534(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1535(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 512(%r10)
+	movzbq	1328(%rsp), %rax
+	movzbq	1329(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1330(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1331(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1332(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1333(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1334(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1335(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 520(%r10)
+	movzbq	1128(%rsp), %rax
+	movzbq	1129(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	1130(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	1131(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	1132(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	1133(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	1134(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	1135(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 528(%r10)
+	movzbq	928(%rsp), %rax
+	movzbq	929(%rsp), %rcx
+	shlq	$8, %rcx
+	orq 	%rcx, %rax
+	movzbq	930(%rsp), %rcx
+	shlq	$16, %rcx
+	orq 	%rcx, %rax
+	movzbq	931(%rsp), %rcx
+	shlq	$24, %rcx
+	orq 	%rcx, %rax
+	movzbq	932(%rsp), %rcx
+	shlq	$32, %rcx
+	orq 	%rcx, %rax
+	movzbq	933(%rsp), %rcx
+	shlq	$40, %rcx
+	orq 	%rcx, %rax
+	movzbq	934(%rsp), %rcx
+	shlq	$48, %rcx
+	orq 	%rcx, %rax
+	movzbq	935(%rsp), %rcx
+	shlq	$56, %rcx
+	orq 	%rcx, %rax
+	xorq	%rax, 536(%r10)
+	vmovdqu	(%rsp), %ymm0
+	vmovdqu	%ymm0, (%rdi)
+	vmovdqu	32(%rsp), %ymm0
+	vmovdqu	%ymm0, 32(%rdi)
+	vmovdqu	64(%rsp), %ymm0
+	vmovdqu	%ymm0, 64(%rdi)
+	vmovdqu	96(%rsp), %ymm0
+	vmovdqu	%ymm0, 96(%rdi)
+	vmovdqu	128(%rsp), %ymm0
+	vmovdqu	%ymm0, 128(%rdi)
+	vmovdqu	160(%rsp), %ymm0
+	vmovdqu	%ymm0, 160(%rdi)
+	vmovdqu	192(%rsp), %ymm0
+	vmovdqu	%ymm0, 192(%rdi)
+	vmovdqu	224(%rsp), %ymm0
+	vmovdqu	%ymm0, 224(%rdi)
+	vmovdqu	256(%rsp), %ymm0
+	vmovdqu	%ymm0, 256(%rdi)
+	vmovdqu	288(%rsp), %ymm0
+	vmovdqu	%ymm0, 288(%rdi)
+	vmovdqu	320(%rsp), %ymm0
+	vmovdqu	%ymm0, 320(%rdi)
+	vmovdqu	352(%rsp), %ymm0
+	vmovdqu	%ymm0, 352(%rdi)
+	vmovdqu	384(%rsp), %ymm0
+	vmovdqu	%ymm0, 384(%rdi)
+	vmovdqu	416(%rsp), %ymm0
+	vmovdqu	%ymm0, 416(%rdi)
+	vmovdqu	448(%rsp), %ymm0
+	vmovdqu	%ymm0, 448(%rdi)
+	vmovdqu	480(%rsp), %ymm0
+	vmovdqu	%ymm0, 480(%rdi)
+	vmovdqu	512(%rsp), %ymm0
+	vmovdqu	%ymm0, 512(%rdi)
+	vmovdqu	544(%rsp), %ymm0
+	vmovdqu	%ymm0, 544(%rdi)
+	vmovdqu	576(%rsp), %ymm0
+	vmovdqu	%ymm0, 576(%rdi)
+	vmovdqu	608(%rsp), %ymm0
+	vmovdqu	%ymm0, 608(%rdi)
+	vmovdqu	640(%rsp), %ymm0
+	vmovdqu	%ymm0, 640(%rdi)
+	vmovdqu	672(%rsp), %ymm0
+	vmovdqu	%ymm0, 672(%rdi)
+	vmovdqu	704(%rsp), %ymm0
+	vmovdqu	%ymm0, 704(%rdi)
+	vmovdqu	736(%rsp), %ymm0
+	vmovdqu	%ymm0, 736(%rdi)
+	vmovdqu	768(%rsp), %ymm0
+	vmovdqu	%ymm0, 768(%rdi)
+	movq	5568(%rsp), %rsp
+	ret 
 _keccak_absorb4x_256_CCADEC_jazz:
 keccak_absorb4x_256_CCADEC_jazz:
-	movq	%rsp, %r11
-	leaq	-5952(%rsp), %rsp
+	movq	%rsp, %rax
+	leaq	-5960(%rsp), %rsp
 	andq	$-32, %rsp
+	movq	%rax, 5952(%rsp)
 	vmovdqu	(%rdi), %ymm0
 	vmovdqu	%ymm0, (%rsp)
 	vmovdqu	32(%rdi), %ymm0
@@ -8769,7 +36650,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movb	%al, 3775(%rsp)
 	movb	1087(%r8), %al
 	movb	%al, 2687(%rsp)
-	movq	%rsp, %rdx
+	movq	%rsp, %r10
 	movzbq	4864(%rsp), %rax
 	movzbq	4865(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8792,7 +36673,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4871(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	3776(%rsp), %rax
 	movzbq	3777(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8815,7 +36696,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3783(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	2688(%rsp), %rax
 	movzbq	2689(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8838,7 +36719,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2695(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	1600(%rsp), %rax
 	movzbq	1601(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8861,7 +36742,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1607(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	4872(%rsp), %rax
 	movzbq	4873(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8884,7 +36765,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4879(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	3784(%rsp), %rax
 	movzbq	3785(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8907,7 +36788,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3791(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	2696(%rsp), %rax
 	movzbq	2697(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8930,7 +36811,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2703(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	1608(%rsp), %rax
 	movzbq	1609(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8953,7 +36834,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1615(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	4880(%rsp), %rax
 	movzbq	4881(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8976,7 +36857,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4887(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	3792(%rsp), %rax
 	movzbq	3793(%rsp), %rcx
 	shlq	$8, %rcx
@@ -8999,7 +36880,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3799(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	2704(%rsp), %rax
 	movzbq	2705(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9022,7 +36903,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2711(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	1616(%rsp), %rax
 	movzbq	1617(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9045,7 +36926,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1623(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	4888(%rsp), %rax
 	movzbq	4889(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9068,7 +36949,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4895(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	3800(%rsp), %rax
 	movzbq	3801(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9091,7 +36972,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3807(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	2712(%rsp), %rax
 	movzbq	2713(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9114,7 +36995,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2719(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	1624(%rsp), %rax
 	movzbq	1625(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9137,7 +37018,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1631(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	4896(%rsp), %rax
 	movzbq	4897(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9160,7 +37041,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4903(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	3808(%rsp), %rax
 	movzbq	3809(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9183,7 +37064,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3815(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	2720(%rsp), %rax
 	movzbq	2721(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9206,7 +37087,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2727(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	1632(%rsp), %rax
 	movzbq	1633(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9229,7 +37110,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1639(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	4904(%rsp), %rax
 	movzbq	4905(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9252,7 +37133,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4911(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	3816(%rsp), %rax
 	movzbq	3817(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9275,7 +37156,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3823(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	2728(%rsp), %rax
 	movzbq	2729(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9298,7 +37179,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2735(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	1640(%rsp), %rax
 	movzbq	1641(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9321,7 +37202,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1647(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	4912(%rsp), %rax
 	movzbq	4913(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9344,7 +37225,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4919(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	3824(%rsp), %rax
 	movzbq	3825(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9367,7 +37248,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3831(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	2736(%rsp), %rax
 	movzbq	2737(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9390,7 +37271,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2743(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	1648(%rsp), %rax
 	movzbq	1649(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9413,7 +37294,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1655(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	4920(%rsp), %rax
 	movzbq	4921(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9436,7 +37317,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4927(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	3832(%rsp), %rax
 	movzbq	3833(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9459,7 +37340,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3839(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	2744(%rsp), %rax
 	movzbq	2745(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9482,7 +37363,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2751(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	1656(%rsp), %rax
 	movzbq	1657(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9505,7 +37386,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1663(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	4928(%rsp), %rax
 	movzbq	4929(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9528,7 +37409,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4935(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	3840(%rsp), %rax
 	movzbq	3841(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9551,7 +37432,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3847(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	2752(%rsp), %rax
 	movzbq	2753(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9574,7 +37455,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2759(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	1664(%rsp), %rax
 	movzbq	1665(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9597,7 +37478,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1671(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	4936(%rsp), %rax
 	movzbq	4937(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9620,7 +37501,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4943(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	3848(%rsp), %rax
 	movzbq	3849(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9643,7 +37524,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3855(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	2760(%rsp), %rax
 	movzbq	2761(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9666,7 +37547,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2767(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	1672(%rsp), %rax
 	movzbq	1673(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9689,7 +37570,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1679(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	4944(%rsp), %rax
 	movzbq	4945(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9712,7 +37593,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4951(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	3856(%rsp), %rax
 	movzbq	3857(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9735,7 +37616,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3863(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	2768(%rsp), %rax
 	movzbq	2769(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9758,7 +37639,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2775(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	1680(%rsp), %rax
 	movzbq	1681(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9781,7 +37662,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1687(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	4952(%rsp), %rax
 	movzbq	4953(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9804,7 +37685,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4959(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	3864(%rsp), %rax
 	movzbq	3865(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9827,7 +37708,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3871(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	2776(%rsp), %rax
 	movzbq	2777(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9850,7 +37731,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2783(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	1688(%rsp), %rax
 	movzbq	1689(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9873,7 +37754,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1695(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	4960(%rsp), %rax
 	movzbq	4961(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9896,7 +37777,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4967(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	3872(%rsp), %rax
 	movzbq	3873(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9919,7 +37800,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3879(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	2784(%rsp), %rax
 	movzbq	2785(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9942,7 +37823,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2791(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	1696(%rsp), %rax
 	movzbq	1697(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9965,7 +37846,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1703(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	4968(%rsp), %rax
 	movzbq	4969(%rsp), %rcx
 	shlq	$8, %rcx
@@ -9988,7 +37869,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4975(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	3880(%rsp), %rax
 	movzbq	3881(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10011,7 +37892,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3887(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	2792(%rsp), %rax
 	movzbq	2793(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10034,7 +37915,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2799(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	1704(%rsp), %rax
 	movzbq	1705(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10057,7 +37938,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1711(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	4976(%rsp), %rax
 	movzbq	4977(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10080,7 +37961,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4983(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	3888(%rsp), %rax
 	movzbq	3889(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10103,7 +37984,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3895(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	2800(%rsp), %rax
 	movzbq	2801(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10126,7 +38007,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2807(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	1712(%rsp), %rax
 	movzbq	1713(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10149,7 +38030,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1719(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	4984(%rsp), %rax
 	movzbq	4985(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10172,7 +38053,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4991(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	3896(%rsp), %rax
 	movzbq	3897(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10195,7 +38076,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3903(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	2808(%rsp), %rax
 	movzbq	2809(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10218,7 +38099,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2815(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	1720(%rsp), %rax
 	movzbq	1721(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10241,7 +38122,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1727(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	4992(%rsp), %rax
 	movzbq	4993(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10264,7 +38145,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	4999(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	3904(%rsp), %rax
 	movzbq	3905(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10287,7 +38168,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	3911(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	2816(%rsp), %rax
 	movzbq	2817(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10310,7 +38191,7 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	2823(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	1728(%rsp), %rax
 	movzbq	1729(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10333,9 +38214,9 @@ keccak_absorb4x_256_CCADEC_jazz:
 	movzbq	1735(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$8(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$8(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	leaq	960(%rsp), %rsp
@@ -10361,7 +38242,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5007(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	3912(%rsp), %rax
 	movzbq	3913(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10384,7 +38265,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3919(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	2824(%rsp), %rax
 	movzbq	2825(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10407,7 +38288,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2831(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	1736(%rsp), %rax
 	movzbq	1737(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10430,7 +38311,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1743(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	5008(%rsp), %rax
 	movzbq	5009(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10453,7 +38334,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5015(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	3920(%rsp), %rax
 	movzbq	3921(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10476,7 +38357,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3927(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	2832(%rsp), %rax
 	movzbq	2833(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10499,7 +38380,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2839(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	1744(%rsp), %rax
 	movzbq	1745(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10522,7 +38403,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1751(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	5016(%rsp), %rax
 	movzbq	5017(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10545,7 +38426,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5023(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	3928(%rsp), %rax
 	movzbq	3929(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10568,7 +38449,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3935(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	2840(%rsp), %rax
 	movzbq	2841(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10591,7 +38472,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2847(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	1752(%rsp), %rax
 	movzbq	1753(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10614,7 +38495,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1759(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	5024(%rsp), %rax
 	movzbq	5025(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10637,7 +38518,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5031(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	3936(%rsp), %rax
 	movzbq	3937(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10660,7 +38541,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3943(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	2848(%rsp), %rax
 	movzbq	2849(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10683,7 +38564,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2855(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	1760(%rsp), %rax
 	movzbq	1761(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10706,7 +38587,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1767(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	5032(%rsp), %rax
 	movzbq	5033(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10729,7 +38610,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5039(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	3944(%rsp), %rax
 	movzbq	3945(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10752,7 +38633,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3951(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	2856(%rsp), %rax
 	movzbq	2857(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10775,7 +38656,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2863(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	1768(%rsp), %rax
 	movzbq	1769(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10798,7 +38679,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1775(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	5040(%rsp), %rax
 	movzbq	5041(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10821,7 +38702,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5047(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	3952(%rsp), %rax
 	movzbq	3953(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10844,7 +38725,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3959(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	2864(%rsp), %rax
 	movzbq	2865(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10867,7 +38748,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2871(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	1776(%rsp), %rax
 	movzbq	1777(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10890,7 +38771,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1783(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	5048(%rsp), %rax
 	movzbq	5049(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10913,7 +38794,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5055(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	3960(%rsp), %rax
 	movzbq	3961(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10936,7 +38817,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3967(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	2872(%rsp), %rax
 	movzbq	2873(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10959,7 +38840,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2879(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	1784(%rsp), %rax
 	movzbq	1785(%rsp), %rcx
 	shlq	$8, %rcx
@@ -10982,7 +38863,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1791(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	5056(%rsp), %rax
 	movzbq	5057(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11005,7 +38886,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5063(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	3968(%rsp), %rax
 	movzbq	3969(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11028,7 +38909,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3975(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	2880(%rsp), %rax
 	movzbq	2881(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11051,7 +38932,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2887(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	1792(%rsp), %rax
 	movzbq	1793(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11074,7 +38955,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1799(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	5064(%rsp), %rax
 	movzbq	5065(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11097,7 +38978,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5071(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	3976(%rsp), %rax
 	movzbq	3977(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11120,7 +39001,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3983(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	2888(%rsp), %rax
 	movzbq	2889(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11143,7 +39024,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2895(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	1800(%rsp), %rax
 	movzbq	1801(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11166,7 +39047,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1807(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	5072(%rsp), %rax
 	movzbq	5073(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11189,7 +39070,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5079(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	3984(%rsp), %rax
 	movzbq	3985(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11212,7 +39093,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3991(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	2896(%rsp), %rax
 	movzbq	2897(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11235,7 +39116,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2903(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	1808(%rsp), %rax
 	movzbq	1809(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11258,7 +39139,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1815(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	5080(%rsp), %rax
 	movzbq	5081(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11281,7 +39162,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5087(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	3992(%rsp), %rax
 	movzbq	3993(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11304,7 +39185,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	3999(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	2904(%rsp), %rax
 	movzbq	2905(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11327,7 +39208,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2911(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	1816(%rsp), %rax
 	movzbq	1817(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11350,7 +39231,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1823(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	5088(%rsp), %rax
 	movzbq	5089(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11373,7 +39254,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5095(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	4000(%rsp), %rax
 	movzbq	4001(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11396,7 +39277,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	4007(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	2912(%rsp), %rax
 	movzbq	2913(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11419,7 +39300,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2919(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	1824(%rsp), %rax
 	movzbq	1825(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11442,7 +39323,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1831(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	5096(%rsp), %rax
 	movzbq	5097(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11465,7 +39346,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5103(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	4008(%rsp), %rax
 	movzbq	4009(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11488,7 +39369,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	4015(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	2920(%rsp), %rax
 	movzbq	2921(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11511,7 +39392,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2927(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	1832(%rsp), %rax
 	movzbq	1833(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11534,7 +39415,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1839(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	5104(%rsp), %rax
 	movzbq	5105(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11557,7 +39438,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5111(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	4016(%rsp), %rax
 	movzbq	4017(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11580,7 +39461,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	4023(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	2928(%rsp), %rax
 	movzbq	2929(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11603,7 +39484,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2935(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	1840(%rsp), %rax
 	movzbq	1841(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11626,7 +39507,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1847(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	5112(%rsp), %rax
 	movzbq	5113(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11649,7 +39530,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5119(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	4024(%rsp), %rax
 	movzbq	4025(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11672,7 +39553,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	4031(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	2936(%rsp), %rax
 	movzbq	2937(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11695,7 +39576,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2943(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	1848(%rsp), %rax
 	movzbq	1849(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11718,7 +39599,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1855(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	5120(%rsp), %rax
 	movzbq	5121(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11741,7 +39622,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5127(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	4032(%rsp), %rax
 	movzbq	4033(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11764,7 +39645,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	4039(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	2944(%rsp), %rax
 	movzbq	2945(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11787,7 +39668,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2951(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	1856(%rsp), %rax
 	movzbq	1857(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11810,7 +39691,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1863(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	5128(%rsp), %rax
 	movzbq	5129(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11833,7 +39714,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	5135(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	4040(%rsp), %rax
 	movzbq	4041(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11856,7 +39737,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	4047(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	2952(%rsp), %rax
 	movzbq	2953(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11879,7 +39760,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	2959(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	1864(%rsp), %rax
 	movzbq	1865(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11902,9 +39783,9 @@ Lkeccak_absorb4x_256_CCADEC_jazz$8:
 	movzbq	1871(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$7(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$7(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	leaq	960(%rsp), %rsp
@@ -11930,7 +39811,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5143(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	4048(%rsp), %rax
 	movzbq	4049(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11953,7 +39834,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4055(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	2960(%rsp), %rax
 	movzbq	2961(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11976,7 +39857,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	2967(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	1872(%rsp), %rax
 	movzbq	1873(%rsp), %rcx
 	shlq	$8, %rcx
@@ -11999,7 +39880,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1879(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	5144(%rsp), %rax
 	movzbq	5145(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12022,7 +39903,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5151(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	4056(%rsp), %rax
 	movzbq	4057(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12045,7 +39926,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4063(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	2968(%rsp), %rax
 	movzbq	2969(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12068,7 +39949,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	2975(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	1880(%rsp), %rax
 	movzbq	1881(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12091,7 +39972,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1887(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	5152(%rsp), %rax
 	movzbq	5153(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12114,7 +39995,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5159(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	4064(%rsp), %rax
 	movzbq	4065(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12137,7 +40018,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4071(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	2976(%rsp), %rax
 	movzbq	2977(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12160,7 +40041,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	2983(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	1888(%rsp), %rax
 	movzbq	1889(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12183,7 +40064,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1895(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	5160(%rsp), %rax
 	movzbq	5161(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12206,7 +40087,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5167(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	4072(%rsp), %rax
 	movzbq	4073(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12229,7 +40110,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4079(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	2984(%rsp), %rax
 	movzbq	2985(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12252,7 +40133,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	2991(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	1896(%rsp), %rax
 	movzbq	1897(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12275,7 +40156,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1903(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	5168(%rsp), %rax
 	movzbq	5169(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12298,7 +40179,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5175(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	4080(%rsp), %rax
 	movzbq	4081(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12321,7 +40202,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4087(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	2992(%rsp), %rax
 	movzbq	2993(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12344,7 +40225,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	2999(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	1904(%rsp), %rax
 	movzbq	1905(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12367,7 +40248,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1911(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	5176(%rsp), %rax
 	movzbq	5177(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12390,7 +40271,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5183(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	4088(%rsp), %rax
 	movzbq	4089(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12413,7 +40294,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4095(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	3000(%rsp), %rax
 	movzbq	3001(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12436,7 +40317,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3007(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	1912(%rsp), %rax
 	movzbq	1913(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12459,7 +40340,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1919(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	5184(%rsp), %rax
 	movzbq	5185(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12482,7 +40363,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5191(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	4096(%rsp), %rax
 	movzbq	4097(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12505,7 +40386,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4103(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	3008(%rsp), %rax
 	movzbq	3009(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12528,7 +40409,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3015(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	1920(%rsp), %rax
 	movzbq	1921(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12551,7 +40432,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1927(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	5192(%rsp), %rax
 	movzbq	5193(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12574,7 +40455,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5199(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	4104(%rsp), %rax
 	movzbq	4105(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12597,7 +40478,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4111(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	3016(%rsp), %rax
 	movzbq	3017(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12620,7 +40501,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3023(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	1928(%rsp), %rax
 	movzbq	1929(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12643,7 +40524,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1935(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	5200(%rsp), %rax
 	movzbq	5201(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12666,7 +40547,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5207(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	4112(%rsp), %rax
 	movzbq	4113(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12689,7 +40570,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4119(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	3024(%rsp), %rax
 	movzbq	3025(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12712,7 +40593,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3031(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	1936(%rsp), %rax
 	movzbq	1937(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12735,7 +40616,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1943(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	5208(%rsp), %rax
 	movzbq	5209(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12758,7 +40639,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5215(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	4120(%rsp), %rax
 	movzbq	4121(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12781,7 +40662,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4127(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	3032(%rsp), %rax
 	movzbq	3033(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12804,7 +40685,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3039(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	1944(%rsp), %rax
 	movzbq	1945(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12827,7 +40708,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1951(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	5216(%rsp), %rax
 	movzbq	5217(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12850,7 +40731,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5223(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	4128(%rsp), %rax
 	movzbq	4129(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12873,7 +40754,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4135(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	3040(%rsp), %rax
 	movzbq	3041(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12896,7 +40777,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3047(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	1952(%rsp), %rax
 	movzbq	1953(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12919,7 +40800,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1959(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	5224(%rsp), %rax
 	movzbq	5225(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12942,7 +40823,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5231(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	4136(%rsp), %rax
 	movzbq	4137(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12965,7 +40846,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4143(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	3048(%rsp), %rax
 	movzbq	3049(%rsp), %rcx
 	shlq	$8, %rcx
@@ -12988,7 +40869,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3055(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	1960(%rsp), %rax
 	movzbq	1961(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13011,7 +40892,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1967(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	5232(%rsp), %rax
 	movzbq	5233(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13034,7 +40915,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5239(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	4144(%rsp), %rax
 	movzbq	4145(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13057,7 +40938,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4151(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	3056(%rsp), %rax
 	movzbq	3057(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13080,7 +40961,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3063(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	1968(%rsp), %rax
 	movzbq	1969(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13103,7 +40984,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1975(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	5240(%rsp), %rax
 	movzbq	5241(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13126,7 +41007,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5247(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	4152(%rsp), %rax
 	movzbq	4153(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13149,7 +41030,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4159(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	3064(%rsp), %rax
 	movzbq	3065(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13172,7 +41053,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3071(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	1976(%rsp), %rax
 	movzbq	1977(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13195,7 +41076,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1983(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	5248(%rsp), %rax
 	movzbq	5249(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13218,7 +41099,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5255(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	4160(%rsp), %rax
 	movzbq	4161(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13241,7 +41122,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4167(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	3072(%rsp), %rax
 	movzbq	3073(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13264,7 +41145,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3079(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	1984(%rsp), %rax
 	movzbq	1985(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13287,7 +41168,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1991(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	5256(%rsp), %rax
 	movzbq	5257(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13310,7 +41191,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5263(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	4168(%rsp), %rax
 	movzbq	4169(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13333,7 +41214,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4175(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	3080(%rsp), %rax
 	movzbq	3081(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13356,7 +41237,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3087(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	1992(%rsp), %rax
 	movzbq	1993(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13379,7 +41260,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	1999(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	5264(%rsp), %rax
 	movzbq	5265(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13402,7 +41283,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	5271(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	4176(%rsp), %rax
 	movzbq	4177(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13425,7 +41306,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	4183(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	3088(%rsp), %rax
 	movzbq	3089(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13448,7 +41329,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	3095(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	2000(%rsp), %rax
 	movzbq	2001(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13471,9 +41352,9 @@ Lkeccak_absorb4x_256_CCADEC_jazz$7:
 	movzbq	2007(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$6(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$6(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	leaq	960(%rsp), %rsp
@@ -13499,7 +41380,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5279(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	4184(%rsp), %rax
 	movzbq	4185(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13522,7 +41403,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4191(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	3096(%rsp), %rax
 	movzbq	3097(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13545,7 +41426,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3103(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	2008(%rsp), %rax
 	movzbq	2009(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13568,7 +41449,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2015(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	5280(%rsp), %rax
 	movzbq	5281(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13591,7 +41472,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5287(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	4192(%rsp), %rax
 	movzbq	4193(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13614,7 +41495,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4199(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	3104(%rsp), %rax
 	movzbq	3105(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13637,7 +41518,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3111(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	2016(%rsp), %rax
 	movzbq	2017(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13660,7 +41541,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2023(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	5288(%rsp), %rax
 	movzbq	5289(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13683,7 +41564,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5295(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	4200(%rsp), %rax
 	movzbq	4201(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13706,7 +41587,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4207(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	3112(%rsp), %rax
 	movzbq	3113(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13729,7 +41610,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3119(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	2024(%rsp), %rax
 	movzbq	2025(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13752,7 +41633,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2031(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	5296(%rsp), %rax
 	movzbq	5297(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13775,7 +41656,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5303(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	4208(%rsp), %rax
 	movzbq	4209(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13798,7 +41679,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4215(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	3120(%rsp), %rax
 	movzbq	3121(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13821,7 +41702,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3127(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	2032(%rsp), %rax
 	movzbq	2033(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13844,7 +41725,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2039(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	5304(%rsp), %rax
 	movzbq	5305(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13867,7 +41748,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5311(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	4216(%rsp), %rax
 	movzbq	4217(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13890,7 +41771,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4223(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	3128(%rsp), %rax
 	movzbq	3129(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13913,7 +41794,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3135(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	2040(%rsp), %rax
 	movzbq	2041(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13936,7 +41817,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2047(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	5312(%rsp), %rax
 	movzbq	5313(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13959,7 +41840,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5319(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	4224(%rsp), %rax
 	movzbq	4225(%rsp), %rcx
 	shlq	$8, %rcx
@@ -13982,7 +41863,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4231(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	3136(%rsp), %rax
 	movzbq	3137(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14005,7 +41886,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3143(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	2048(%rsp), %rax
 	movzbq	2049(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14028,7 +41909,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2055(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	5320(%rsp), %rax
 	movzbq	5321(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14051,7 +41932,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5327(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	4232(%rsp), %rax
 	movzbq	4233(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14074,7 +41955,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4239(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	3144(%rsp), %rax
 	movzbq	3145(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14097,7 +41978,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3151(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	2056(%rsp), %rax
 	movzbq	2057(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14120,7 +42001,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2063(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	5328(%rsp), %rax
 	movzbq	5329(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14143,7 +42024,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5335(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	4240(%rsp), %rax
 	movzbq	4241(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14166,7 +42047,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4247(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	3152(%rsp), %rax
 	movzbq	3153(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14189,7 +42070,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3159(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	2064(%rsp), %rax
 	movzbq	2065(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14212,7 +42093,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2071(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	5336(%rsp), %rax
 	movzbq	5337(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14235,7 +42116,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5343(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	4248(%rsp), %rax
 	movzbq	4249(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14258,7 +42139,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4255(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	3160(%rsp), %rax
 	movzbq	3161(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14281,7 +42162,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3167(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	2072(%rsp), %rax
 	movzbq	2073(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14304,7 +42185,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2079(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	5344(%rsp), %rax
 	movzbq	5345(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14327,7 +42208,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5351(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	4256(%rsp), %rax
 	movzbq	4257(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14350,7 +42231,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4263(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	3168(%rsp), %rax
 	movzbq	3169(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14373,7 +42254,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3175(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	2080(%rsp), %rax
 	movzbq	2081(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14396,7 +42277,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2087(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	5352(%rsp), %rax
 	movzbq	5353(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14419,7 +42300,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5359(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	4264(%rsp), %rax
 	movzbq	4265(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14442,7 +42323,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4271(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	3176(%rsp), %rax
 	movzbq	3177(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14465,7 +42346,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3183(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	2088(%rsp), %rax
 	movzbq	2089(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14488,7 +42369,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2095(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	5360(%rsp), %rax
 	movzbq	5361(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14511,7 +42392,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5367(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	4272(%rsp), %rax
 	movzbq	4273(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14534,7 +42415,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4279(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	3184(%rsp), %rax
 	movzbq	3185(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14557,7 +42438,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3191(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	2096(%rsp), %rax
 	movzbq	2097(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14580,7 +42461,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2103(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	5368(%rsp), %rax
 	movzbq	5369(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14603,7 +42484,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5375(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	4280(%rsp), %rax
 	movzbq	4281(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14626,7 +42507,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4287(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	3192(%rsp), %rax
 	movzbq	3193(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14649,7 +42530,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3199(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	2104(%rsp), %rax
 	movzbq	2105(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14672,7 +42553,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2111(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	5376(%rsp), %rax
 	movzbq	5377(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14695,7 +42576,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5383(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	4288(%rsp), %rax
 	movzbq	4289(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14718,7 +42599,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4295(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	3200(%rsp), %rax
 	movzbq	3201(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14741,7 +42622,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3207(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	2112(%rsp), %rax
 	movzbq	2113(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14764,7 +42645,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2119(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	5384(%rsp), %rax
 	movzbq	5385(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14787,7 +42668,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5391(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	4296(%rsp), %rax
 	movzbq	4297(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14810,7 +42691,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4303(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	3208(%rsp), %rax
 	movzbq	3209(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14833,7 +42714,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3215(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	2120(%rsp), %rax
 	movzbq	2121(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14856,7 +42737,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2127(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	5392(%rsp), %rax
 	movzbq	5393(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14879,7 +42760,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5399(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	4304(%rsp), %rax
 	movzbq	4305(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14902,7 +42783,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4311(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	3216(%rsp), %rax
 	movzbq	3217(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14925,7 +42806,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3223(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	2128(%rsp), %rax
 	movzbq	2129(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14948,7 +42829,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2135(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	5400(%rsp), %rax
 	movzbq	5401(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14971,7 +42852,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	5407(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	4312(%rsp), %rax
 	movzbq	4313(%rsp), %rcx
 	shlq	$8, %rcx
@@ -14994,7 +42875,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	4319(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	3224(%rsp), %rax
 	movzbq	3225(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15017,7 +42898,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	3231(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	2136(%rsp), %rax
 	movzbq	2137(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15040,9 +42921,9 @@ Lkeccak_absorb4x_256_CCADEC_jazz$6:
 	movzbq	2143(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$5(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$5(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	leaq	960(%rsp), %rsp
@@ -15068,7 +42949,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5415(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	4320(%rsp), %rax
 	movzbq	4321(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15091,7 +42972,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4327(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	3232(%rsp), %rax
 	movzbq	3233(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15114,7 +42995,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3239(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	2144(%rsp), %rax
 	movzbq	2145(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15137,7 +43018,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2151(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	5416(%rsp), %rax
 	movzbq	5417(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15160,7 +43041,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5423(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	4328(%rsp), %rax
 	movzbq	4329(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15183,7 +43064,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4335(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	3240(%rsp), %rax
 	movzbq	3241(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15206,7 +43087,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3247(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	2152(%rsp), %rax
 	movzbq	2153(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15229,7 +43110,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2159(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	5424(%rsp), %rax
 	movzbq	5425(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15252,7 +43133,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5431(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	4336(%rsp), %rax
 	movzbq	4337(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15275,7 +43156,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4343(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	3248(%rsp), %rax
 	movzbq	3249(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15298,7 +43179,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3255(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	2160(%rsp), %rax
 	movzbq	2161(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15321,7 +43202,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2167(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	5432(%rsp), %rax
 	movzbq	5433(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15344,7 +43225,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5439(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	4344(%rsp), %rax
 	movzbq	4345(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15367,7 +43248,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4351(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	3256(%rsp), %rax
 	movzbq	3257(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15390,7 +43271,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3263(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	2168(%rsp), %rax
 	movzbq	2169(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15413,7 +43294,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2175(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	5440(%rsp), %rax
 	movzbq	5441(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15436,7 +43317,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5447(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	4352(%rsp), %rax
 	movzbq	4353(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15459,7 +43340,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4359(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	3264(%rsp), %rax
 	movzbq	3265(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15482,7 +43363,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3271(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	2176(%rsp), %rax
 	movzbq	2177(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15505,7 +43386,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2183(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	5448(%rsp), %rax
 	movzbq	5449(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15528,7 +43409,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5455(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	4360(%rsp), %rax
 	movzbq	4361(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15551,7 +43432,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4367(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	3272(%rsp), %rax
 	movzbq	3273(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15574,7 +43455,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3279(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	2184(%rsp), %rax
 	movzbq	2185(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15597,7 +43478,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2191(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	5456(%rsp), %rax
 	movzbq	5457(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15620,7 +43501,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5463(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	4368(%rsp), %rax
 	movzbq	4369(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15643,7 +43524,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4375(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	3280(%rsp), %rax
 	movzbq	3281(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15666,7 +43547,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3287(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	2192(%rsp), %rax
 	movzbq	2193(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15689,7 +43570,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2199(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	5464(%rsp), %rax
 	movzbq	5465(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15712,7 +43593,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5471(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	4376(%rsp), %rax
 	movzbq	4377(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15735,7 +43616,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4383(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	3288(%rsp), %rax
 	movzbq	3289(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15758,7 +43639,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3295(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	2200(%rsp), %rax
 	movzbq	2201(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15781,7 +43662,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2207(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	5472(%rsp), %rax
 	movzbq	5473(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15804,7 +43685,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5479(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	4384(%rsp), %rax
 	movzbq	4385(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15827,7 +43708,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4391(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	3296(%rsp), %rax
 	movzbq	3297(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15850,7 +43731,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3303(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	2208(%rsp), %rax
 	movzbq	2209(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15873,7 +43754,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2215(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	5480(%rsp), %rax
 	movzbq	5481(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15896,7 +43777,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5487(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	4392(%rsp), %rax
 	movzbq	4393(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15919,7 +43800,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4399(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	3304(%rsp), %rax
 	movzbq	3305(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15942,7 +43823,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3311(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	2216(%rsp), %rax
 	movzbq	2217(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15965,7 +43846,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2223(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	5488(%rsp), %rax
 	movzbq	5489(%rsp), %rcx
 	shlq	$8, %rcx
@@ -15988,7 +43869,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5495(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	4400(%rsp), %rax
 	movzbq	4401(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16011,7 +43892,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4407(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	3312(%rsp), %rax
 	movzbq	3313(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16034,7 +43915,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3319(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	2224(%rsp), %rax
 	movzbq	2225(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16057,7 +43938,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2231(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	5496(%rsp), %rax
 	movzbq	5497(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16080,7 +43961,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5503(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	4408(%rsp), %rax
 	movzbq	4409(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16103,7 +43984,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4415(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	3320(%rsp), %rax
 	movzbq	3321(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16126,7 +44007,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3327(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	2232(%rsp), %rax
 	movzbq	2233(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16149,7 +44030,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2239(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	5504(%rsp), %rax
 	movzbq	5505(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16172,7 +44053,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5511(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	4416(%rsp), %rax
 	movzbq	4417(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16195,7 +44076,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4423(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	3328(%rsp), %rax
 	movzbq	3329(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16218,7 +44099,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3335(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	2240(%rsp), %rax
 	movzbq	2241(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16241,7 +44122,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2247(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	5512(%rsp), %rax
 	movzbq	5513(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16264,7 +44145,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5519(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	4424(%rsp), %rax
 	movzbq	4425(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16287,7 +44168,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4431(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	3336(%rsp), %rax
 	movzbq	3337(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16310,7 +44191,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3343(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	2248(%rsp), %rax
 	movzbq	2249(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16333,7 +44214,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2255(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	5520(%rsp), %rax
 	movzbq	5521(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16356,7 +44237,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5527(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	4432(%rsp), %rax
 	movzbq	4433(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16379,7 +44260,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4439(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	3344(%rsp), %rax
 	movzbq	3345(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16402,7 +44283,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3351(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	2256(%rsp), %rax
 	movzbq	2257(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16425,7 +44306,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2263(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	5528(%rsp), %rax
 	movzbq	5529(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16448,7 +44329,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5535(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	4440(%rsp), %rax
 	movzbq	4441(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16471,7 +44352,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4447(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	3352(%rsp), %rax
 	movzbq	3353(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16494,7 +44375,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3359(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	2264(%rsp), %rax
 	movzbq	2265(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16517,7 +44398,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2271(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	5536(%rsp), %rax
 	movzbq	5537(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16540,7 +44421,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	5543(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	4448(%rsp), %rax
 	movzbq	4449(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16563,7 +44444,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	4455(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	3360(%rsp), %rax
 	movzbq	3361(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16586,7 +44467,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	3367(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	2272(%rsp), %rax
 	movzbq	2273(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16609,9 +44490,9 @@ Lkeccak_absorb4x_256_CCADEC_jazz$5:
 	movzbq	2279(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$4(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$4(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	leaq	960(%rsp), %rsp
@@ -16637,7 +44518,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5551(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	4456(%rsp), %rax
 	movzbq	4457(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16660,7 +44541,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4463(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	3368(%rsp), %rax
 	movzbq	3369(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16683,7 +44564,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3375(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	2280(%rsp), %rax
 	movzbq	2281(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16706,7 +44587,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2287(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	5552(%rsp), %rax
 	movzbq	5553(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16729,7 +44610,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5559(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	4464(%rsp), %rax
 	movzbq	4465(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16752,7 +44633,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4471(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	3376(%rsp), %rax
 	movzbq	3377(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16775,7 +44656,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3383(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	2288(%rsp), %rax
 	movzbq	2289(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16798,7 +44679,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2295(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	5560(%rsp), %rax
 	movzbq	5561(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16821,7 +44702,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5567(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	4472(%rsp), %rax
 	movzbq	4473(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16844,7 +44725,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4479(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	3384(%rsp), %rax
 	movzbq	3385(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16867,7 +44748,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3391(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	2296(%rsp), %rax
 	movzbq	2297(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16890,7 +44771,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2303(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	5568(%rsp), %rax
 	movzbq	5569(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16913,7 +44794,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5575(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	4480(%rsp), %rax
 	movzbq	4481(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16936,7 +44817,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4487(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	3392(%rsp), %rax
 	movzbq	3393(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16959,7 +44840,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3399(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	2304(%rsp), %rax
 	movzbq	2305(%rsp), %rcx
 	shlq	$8, %rcx
@@ -16982,7 +44863,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2311(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	5576(%rsp), %rax
 	movzbq	5577(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17005,7 +44886,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5583(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	4488(%rsp), %rax
 	movzbq	4489(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17028,7 +44909,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4495(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	3400(%rsp), %rax
 	movzbq	3401(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17051,7 +44932,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3407(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	2312(%rsp), %rax
 	movzbq	2313(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17074,7 +44955,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2319(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	5584(%rsp), %rax
 	movzbq	5585(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17097,7 +44978,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5591(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	4496(%rsp), %rax
 	movzbq	4497(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17120,7 +45001,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4503(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	3408(%rsp), %rax
 	movzbq	3409(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17143,7 +45024,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3415(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	2320(%rsp), %rax
 	movzbq	2321(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17166,7 +45047,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2327(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	5592(%rsp), %rax
 	movzbq	5593(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17189,7 +45070,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5599(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	4504(%rsp), %rax
 	movzbq	4505(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17212,7 +45093,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4511(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	3416(%rsp), %rax
 	movzbq	3417(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17235,7 +45116,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3423(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	2328(%rsp), %rax
 	movzbq	2329(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17258,7 +45139,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2335(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	5600(%rsp), %rax
 	movzbq	5601(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17281,7 +45162,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5607(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	4512(%rsp), %rax
 	movzbq	4513(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17304,7 +45185,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4519(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	3424(%rsp), %rax
 	movzbq	3425(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17327,7 +45208,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3431(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	2336(%rsp), %rax
 	movzbq	2337(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17350,7 +45231,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2343(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	5608(%rsp), %rax
 	movzbq	5609(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17373,7 +45254,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5615(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	4520(%rsp), %rax
 	movzbq	4521(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17396,7 +45277,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4527(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	3432(%rsp), %rax
 	movzbq	3433(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17419,7 +45300,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3439(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	2344(%rsp), %rax
 	movzbq	2345(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17442,7 +45323,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2351(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	5616(%rsp), %rax
 	movzbq	5617(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17465,7 +45346,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5623(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	4528(%rsp), %rax
 	movzbq	4529(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17488,7 +45369,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4535(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	3440(%rsp), %rax
 	movzbq	3441(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17511,7 +45392,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3447(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	2352(%rsp), %rax
 	movzbq	2353(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17534,7 +45415,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2359(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	5624(%rsp), %rax
 	movzbq	5625(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17557,7 +45438,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5631(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	4536(%rsp), %rax
 	movzbq	4537(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17580,7 +45461,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4543(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	3448(%rsp), %rax
 	movzbq	3449(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17603,7 +45484,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3455(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	2360(%rsp), %rax
 	movzbq	2361(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17626,7 +45507,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2367(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	5632(%rsp), %rax
 	movzbq	5633(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17649,7 +45530,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5639(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	4544(%rsp), %rax
 	movzbq	4545(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17672,7 +45553,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4551(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	3456(%rsp), %rax
 	movzbq	3457(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17695,7 +45576,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3463(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	2368(%rsp), %rax
 	movzbq	2369(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17718,7 +45599,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2375(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	5640(%rsp), %rax
 	movzbq	5641(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17741,7 +45622,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5647(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	4552(%rsp), %rax
 	movzbq	4553(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17764,7 +45645,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4559(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	3464(%rsp), %rax
 	movzbq	3465(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17787,7 +45668,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3471(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	2376(%rsp), %rax
 	movzbq	2377(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17810,7 +45691,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2383(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	5648(%rsp), %rax
 	movzbq	5649(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17833,7 +45714,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5655(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	4560(%rsp), %rax
 	movzbq	4561(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17856,7 +45737,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4567(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	3472(%rsp), %rax
 	movzbq	3473(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17879,7 +45760,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3479(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	2384(%rsp), %rax
 	movzbq	2385(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17902,7 +45783,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2391(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	5656(%rsp), %rax
 	movzbq	5657(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17925,7 +45806,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5663(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	4568(%rsp), %rax
 	movzbq	4569(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17948,7 +45829,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4575(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	3480(%rsp), %rax
 	movzbq	3481(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17971,7 +45852,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3487(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	2392(%rsp), %rax
 	movzbq	2393(%rsp), %rcx
 	shlq	$8, %rcx
@@ -17994,7 +45875,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2399(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	5664(%rsp), %rax
 	movzbq	5665(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18017,7 +45898,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5671(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	4576(%rsp), %rax
 	movzbq	4577(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18040,7 +45921,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4583(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	3488(%rsp), %rax
 	movzbq	3489(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18063,7 +45944,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3495(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	2400(%rsp), %rax
 	movzbq	2401(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18086,7 +45967,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2407(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	5672(%rsp), %rax
 	movzbq	5673(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18109,7 +45990,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	5679(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	4584(%rsp), %rax
 	movzbq	4585(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18132,7 +46013,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	4591(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	3496(%rsp), %rax
 	movzbq	3497(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18155,7 +46036,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	3503(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	2408(%rsp), %rax
 	movzbq	2409(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18178,9 +46059,9 @@ Lkeccak_absorb4x_256_CCADEC_jazz$4:
 	movzbq	2415(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$3(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$3(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	leaq	960(%rsp), %rsp
@@ -18206,7 +46087,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5687(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	4592(%rsp), %rax
 	movzbq	4593(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18229,7 +46110,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4599(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	3504(%rsp), %rax
 	movzbq	3505(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18252,7 +46133,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3511(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	2416(%rsp), %rax
 	movzbq	2417(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18275,7 +46156,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2423(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	5688(%rsp), %rax
 	movzbq	5689(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18298,7 +46179,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5695(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	4600(%rsp), %rax
 	movzbq	4601(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18321,7 +46202,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4607(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	3512(%rsp), %rax
 	movzbq	3513(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18344,7 +46225,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3519(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	2424(%rsp), %rax
 	movzbq	2425(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18367,7 +46248,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2431(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	5696(%rsp), %rax
 	movzbq	5697(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18390,7 +46271,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5703(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	4608(%rsp), %rax
 	movzbq	4609(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18413,7 +46294,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4615(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	3520(%rsp), %rax
 	movzbq	3521(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18436,7 +46317,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3527(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	2432(%rsp), %rax
 	movzbq	2433(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18459,7 +46340,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2439(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	5704(%rsp), %rax
 	movzbq	5705(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18482,7 +46363,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5711(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	4616(%rsp), %rax
 	movzbq	4617(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18505,7 +46386,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4623(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	3528(%rsp), %rax
 	movzbq	3529(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18528,7 +46409,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3535(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	2440(%rsp), %rax
 	movzbq	2441(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18551,7 +46432,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2447(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	5712(%rsp), %rax
 	movzbq	5713(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18574,7 +46455,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5719(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	4624(%rsp), %rax
 	movzbq	4625(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18597,7 +46478,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4631(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	3536(%rsp), %rax
 	movzbq	3537(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18620,7 +46501,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3543(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	2448(%rsp), %rax
 	movzbq	2449(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18643,7 +46524,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2455(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	5720(%rsp), %rax
 	movzbq	5721(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18666,7 +46547,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5727(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	4632(%rsp), %rax
 	movzbq	4633(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18689,7 +46570,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4639(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	3544(%rsp), %rax
 	movzbq	3545(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18712,7 +46593,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3551(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	2456(%rsp), %rax
 	movzbq	2457(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18735,7 +46616,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2463(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	5728(%rsp), %rax
 	movzbq	5729(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18758,7 +46639,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5735(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	4640(%rsp), %rax
 	movzbq	4641(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18781,7 +46662,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4647(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	3552(%rsp), %rax
 	movzbq	3553(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18804,7 +46685,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3559(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	2464(%rsp), %rax
 	movzbq	2465(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18827,7 +46708,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2471(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	5736(%rsp), %rax
 	movzbq	5737(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18850,7 +46731,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5743(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	4648(%rsp), %rax
 	movzbq	4649(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18873,7 +46754,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4655(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	3560(%rsp), %rax
 	movzbq	3561(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18896,7 +46777,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3567(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	2472(%rsp), %rax
 	movzbq	2473(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18919,7 +46800,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2479(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	5744(%rsp), %rax
 	movzbq	5745(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18942,7 +46823,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5751(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	4656(%rsp), %rax
 	movzbq	4657(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18965,7 +46846,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4663(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	3568(%rsp), %rax
 	movzbq	3569(%rsp), %rcx
 	shlq	$8, %rcx
@@ -18988,7 +46869,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3575(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	2480(%rsp), %rax
 	movzbq	2481(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19011,7 +46892,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2487(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	5752(%rsp), %rax
 	movzbq	5753(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19034,7 +46915,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5759(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	4664(%rsp), %rax
 	movzbq	4665(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19057,7 +46938,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4671(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	3576(%rsp), %rax
 	movzbq	3577(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19080,7 +46961,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3583(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	2488(%rsp), %rax
 	movzbq	2489(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19103,7 +46984,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2495(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	5760(%rsp), %rax
 	movzbq	5761(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19126,7 +47007,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5767(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	4672(%rsp), %rax
 	movzbq	4673(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19149,7 +47030,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4679(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	3584(%rsp), %rax
 	movzbq	3585(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19172,7 +47053,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3591(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	2496(%rsp), %rax
 	movzbq	2497(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19195,7 +47076,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2503(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	5768(%rsp), %rax
 	movzbq	5769(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19218,7 +47099,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5775(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	4680(%rsp), %rax
 	movzbq	4681(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19241,7 +47122,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4687(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	3592(%rsp), %rax
 	movzbq	3593(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19264,7 +47145,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3599(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	2504(%rsp), %rax
 	movzbq	2505(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19287,7 +47168,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2511(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	5776(%rsp), %rax
 	movzbq	5777(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19310,7 +47191,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5783(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	4688(%rsp), %rax
 	movzbq	4689(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19333,7 +47214,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4695(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	3600(%rsp), %rax
 	movzbq	3601(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19356,7 +47237,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3607(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	2512(%rsp), %rax
 	movzbq	2513(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19379,7 +47260,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2519(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	5784(%rsp), %rax
 	movzbq	5785(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19402,7 +47283,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5791(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	4696(%rsp), %rax
 	movzbq	4697(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19425,7 +47306,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4703(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	3608(%rsp), %rax
 	movzbq	3609(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19448,7 +47329,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3615(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	2520(%rsp), %rax
 	movzbq	2521(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19471,7 +47352,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2527(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	5792(%rsp), %rax
 	movzbq	5793(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19494,7 +47375,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5799(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	4704(%rsp), %rax
 	movzbq	4705(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19517,7 +47398,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4711(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	3616(%rsp), %rax
 	movzbq	3617(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19540,7 +47421,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3623(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	2528(%rsp), %rax
 	movzbq	2529(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19563,7 +47444,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2535(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	5800(%rsp), %rax
 	movzbq	5801(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19586,7 +47467,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5807(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	4712(%rsp), %rax
 	movzbq	4713(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19609,7 +47490,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4719(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	3624(%rsp), %rax
 	movzbq	3625(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19632,7 +47513,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3631(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	2536(%rsp), %rax
 	movzbq	2537(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19655,7 +47536,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2543(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	5808(%rsp), %rax
 	movzbq	5809(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19678,7 +47559,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	5815(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	4720(%rsp), %rax
 	movzbq	4721(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19701,7 +47582,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	4727(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	3632(%rsp), %rax
 	movzbq	3633(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19724,7 +47605,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	3639(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	2544(%rsp), %rax
 	movzbq	2545(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19747,9 +47628,9 @@ Lkeccak_absorb4x_256_CCADEC_jazz$3:
 	movzbq	2551(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$2(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$2(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	leaq	960(%rsp), %rsp
@@ -19775,7 +47656,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5823(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	4728(%rsp), %rax
 	movzbq	4729(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19798,7 +47679,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4735(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	3640(%rsp), %rax
 	movzbq	3641(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19821,7 +47702,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3647(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	2552(%rsp), %rax
 	movzbq	2553(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19844,7 +47725,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2559(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	5824(%rsp), %rax
 	movzbq	5825(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19867,7 +47748,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5831(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	4736(%rsp), %rax
 	movzbq	4737(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19890,7 +47771,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4743(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	3648(%rsp), %rax
 	movzbq	3649(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19913,7 +47794,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3655(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	2560(%rsp), %rax
 	movzbq	2561(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19936,7 +47817,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2567(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	5832(%rsp), %rax
 	movzbq	5833(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19959,7 +47840,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5839(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	4744(%rsp), %rax
 	movzbq	4745(%rsp), %rcx
 	shlq	$8, %rcx
@@ -19982,7 +47863,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4751(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	3656(%rsp), %rax
 	movzbq	3657(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20005,7 +47886,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3663(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	2568(%rsp), %rax
 	movzbq	2569(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20028,7 +47909,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2575(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	5840(%rsp), %rax
 	movzbq	5841(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20051,7 +47932,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5847(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	4752(%rsp), %rax
 	movzbq	4753(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20074,7 +47955,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4759(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	3664(%rsp), %rax
 	movzbq	3665(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20097,7 +47978,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3671(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	2576(%rsp), %rax
 	movzbq	2577(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20120,7 +48001,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2583(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	5848(%rsp), %rax
 	movzbq	5849(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20143,7 +48024,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5855(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	4760(%rsp), %rax
 	movzbq	4761(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20166,7 +48047,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4767(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	3672(%rsp), %rax
 	movzbq	3673(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20189,7 +48070,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3679(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	2584(%rsp), %rax
 	movzbq	2585(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20212,7 +48093,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2591(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	5856(%rsp), %rax
 	movzbq	5857(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20235,7 +48116,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5863(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	4768(%rsp), %rax
 	movzbq	4769(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20258,7 +48139,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4775(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	3680(%rsp), %rax
 	movzbq	3681(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20281,7 +48162,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3687(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	2592(%rsp), %rax
 	movzbq	2593(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20304,7 +48185,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2599(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	5864(%rsp), %rax
 	movzbq	5865(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20327,7 +48208,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5871(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	4776(%rsp), %rax
 	movzbq	4777(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20350,7 +48231,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4783(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	3688(%rsp), %rax
 	movzbq	3689(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20373,7 +48254,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3695(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	2600(%rsp), %rax
 	movzbq	2601(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20396,7 +48277,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2607(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	5872(%rsp), %rax
 	movzbq	5873(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20419,7 +48300,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5879(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	4784(%rsp), %rax
 	movzbq	4785(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20442,7 +48323,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4791(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	3696(%rsp), %rax
 	movzbq	3697(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20465,7 +48346,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3703(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	2608(%rsp), %rax
 	movzbq	2609(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20488,7 +48369,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2615(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	5880(%rsp), %rax
 	movzbq	5881(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20511,7 +48392,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5887(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	4792(%rsp), %rax
 	movzbq	4793(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20534,7 +48415,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4799(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	3704(%rsp), %rax
 	movzbq	3705(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20557,7 +48438,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3711(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	2616(%rsp), %rax
 	movzbq	2617(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20580,7 +48461,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2623(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	5888(%rsp), %rax
 	movzbq	5889(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20603,7 +48484,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5895(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	4800(%rsp), %rax
 	movzbq	4801(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20626,7 +48507,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4807(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	3712(%rsp), %rax
 	movzbq	3713(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20649,7 +48530,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3719(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	2624(%rsp), %rax
 	movzbq	2625(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20672,7 +48553,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2631(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	5896(%rsp), %rax
 	movzbq	5897(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20695,7 +48576,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5903(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	4808(%rsp), %rax
 	movzbq	4809(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20718,7 +48599,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4815(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	3720(%rsp), %rax
 	movzbq	3721(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20741,7 +48622,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3727(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	2632(%rsp), %rax
 	movzbq	2633(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20764,7 +48645,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2639(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	5904(%rsp), %rax
 	movzbq	5905(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20787,7 +48668,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5911(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	4816(%rsp), %rax
 	movzbq	4817(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20810,7 +48691,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4823(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	3728(%rsp), %rax
 	movzbq	3729(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20833,7 +48714,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3735(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	2640(%rsp), %rax
 	movzbq	2641(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20856,7 +48737,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2647(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	5912(%rsp), %rax
 	movzbq	5913(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20879,7 +48760,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5919(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	4824(%rsp), %rax
 	movzbq	4825(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20902,7 +48783,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4831(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	3736(%rsp), %rax
 	movzbq	3737(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20925,7 +48806,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3743(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	2648(%rsp), %rax
 	movzbq	2649(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20948,7 +48829,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2655(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	5920(%rsp), %rax
 	movzbq	5921(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20971,7 +48852,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5927(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	4832(%rsp), %rax
 	movzbq	4833(%rsp), %rcx
 	shlq	$8, %rcx
@@ -20994,7 +48875,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4839(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	3744(%rsp), %rax
 	movzbq	3745(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21017,7 +48898,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3751(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	2656(%rsp), %rax
 	movzbq	2657(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21040,7 +48921,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2663(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	5928(%rsp), %rax
 	movzbq	5929(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21063,7 +48944,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5935(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	4840(%rsp), %rax
 	movzbq	4841(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21086,7 +48967,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4847(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	3752(%rsp), %rax
 	movzbq	3753(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21109,7 +48990,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3759(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	2664(%rsp), %rax
 	movzbq	2665(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21132,7 +49013,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2671(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	5936(%rsp), %rax
 	movzbq	5937(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21155,7 +49036,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5943(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	4848(%rsp), %rax
 	movzbq	4849(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21178,7 +49059,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4855(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	3760(%rsp), %rax
 	movzbq	3761(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21201,7 +49082,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3767(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	2672(%rsp), %rax
 	movzbq	2673(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21224,7 +49105,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2679(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	5944(%rsp), %rax
 	movzbq	5945(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21247,7 +49128,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	5951(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	4856(%rsp), %rax
 	movzbq	4857(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21270,7 +49151,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	4863(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	3768(%rsp), %rax
 	movzbq	3769(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21293,7 +49174,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	3775(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	2680(%rsp), %rax
 	movzbq	2681(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21316,9 +49197,9 @@ Lkeccak_absorb4x_256_CCADEC_jazz$2:
 	movzbq	2687(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	leaq	-960(%rsp), %rsp
-	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$1(%rip), 	%r10
+	leaq	Lkeccak_absorb4x_256_CCADEC_jazz$1(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	leaq	960(%rsp), %rsp
@@ -21896,7 +49777,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1407(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, (%rdx)
+	xorq	%rax, (%r10)
 	movzbq	1200(%rsp), %rax
 	movzbq	1201(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21919,7 +49800,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1207(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 8(%rdx)
+	xorq	%rax, 8(%r10)
 	movzbq	1000(%rsp), %rax
 	movzbq	1001(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21942,7 +49823,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1007(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 16(%rdx)
+	xorq	%rax, 16(%r10)
 	movzbq	800(%rsp), %rax
 	movzbq	801(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21965,7 +49846,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	807(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 24(%rdx)
+	xorq	%rax, 24(%r10)
 	movzbq	1408(%rsp), %rax
 	movzbq	1409(%rsp), %rcx
 	shlq	$8, %rcx
@@ -21988,7 +49869,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1415(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 32(%rdx)
+	xorq	%rax, 32(%r10)
 	movzbq	1208(%rsp), %rax
 	movzbq	1209(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22011,7 +49892,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1215(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 40(%rdx)
+	xorq	%rax, 40(%r10)
 	movzbq	1008(%rsp), %rax
 	movzbq	1009(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22034,7 +49915,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1015(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 48(%rdx)
+	xorq	%rax, 48(%r10)
 	movzbq	808(%rsp), %rax
 	movzbq	809(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22057,7 +49938,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	815(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 56(%rdx)
+	xorq	%rax, 56(%r10)
 	movzbq	1416(%rsp), %rax
 	movzbq	1417(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22080,7 +49961,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1423(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 64(%rdx)
+	xorq	%rax, 64(%r10)
 	movzbq	1216(%rsp), %rax
 	movzbq	1217(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22103,7 +49984,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1223(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 72(%rdx)
+	xorq	%rax, 72(%r10)
 	movzbq	1016(%rsp), %rax
 	movzbq	1017(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22126,7 +50007,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1023(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 80(%rdx)
+	xorq	%rax, 80(%r10)
 	movzbq	816(%rsp), %rax
 	movzbq	817(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22149,7 +50030,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	823(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 88(%rdx)
+	xorq	%rax, 88(%r10)
 	movzbq	1424(%rsp), %rax
 	movzbq	1425(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22172,7 +50053,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1431(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 96(%rdx)
+	xorq	%rax, 96(%r10)
 	movzbq	1224(%rsp), %rax
 	movzbq	1225(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22195,7 +50076,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1231(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 104(%rdx)
+	xorq	%rax, 104(%r10)
 	movzbq	1024(%rsp), %rax
 	movzbq	1025(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22218,7 +50099,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1031(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 112(%rdx)
+	xorq	%rax, 112(%r10)
 	movzbq	824(%rsp), %rax
 	movzbq	825(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22241,7 +50122,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	831(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 120(%rdx)
+	xorq	%rax, 120(%r10)
 	movzbq	1432(%rsp), %rax
 	movzbq	1433(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22264,7 +50145,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1439(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 128(%rdx)
+	xorq	%rax, 128(%r10)
 	movzbq	1232(%rsp), %rax
 	movzbq	1233(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22287,7 +50168,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1239(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 136(%rdx)
+	xorq	%rax, 136(%r10)
 	movzbq	1032(%rsp), %rax
 	movzbq	1033(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22310,7 +50191,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1039(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 144(%rdx)
+	xorq	%rax, 144(%r10)
 	movzbq	832(%rsp), %rax
 	movzbq	833(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22333,7 +50214,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	839(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 152(%rdx)
+	xorq	%rax, 152(%r10)
 	movzbq	1440(%rsp), %rax
 	movzbq	1441(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22356,7 +50237,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1447(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 160(%rdx)
+	xorq	%rax, 160(%r10)
 	movzbq	1240(%rsp), %rax
 	movzbq	1241(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22379,7 +50260,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1247(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 168(%rdx)
+	xorq	%rax, 168(%r10)
 	movzbq	1040(%rsp), %rax
 	movzbq	1041(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22402,7 +50283,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1047(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 176(%rdx)
+	xorq	%rax, 176(%r10)
 	movzbq	840(%rsp), %rax
 	movzbq	841(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22425,7 +50306,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	847(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 184(%rdx)
+	xorq	%rax, 184(%r10)
 	movzbq	1448(%rsp), %rax
 	movzbq	1449(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22448,7 +50329,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1455(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 192(%rdx)
+	xorq	%rax, 192(%r10)
 	movzbq	1248(%rsp), %rax
 	movzbq	1249(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22471,7 +50352,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1255(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 200(%rdx)
+	xorq	%rax, 200(%r10)
 	movzbq	1048(%rsp), %rax
 	movzbq	1049(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22494,7 +50375,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1055(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 208(%rdx)
+	xorq	%rax, 208(%r10)
 	movzbq	848(%rsp), %rax
 	movzbq	849(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22517,7 +50398,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	855(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 216(%rdx)
+	xorq	%rax, 216(%r10)
 	movzbq	1456(%rsp), %rax
 	movzbq	1457(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22540,7 +50421,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1463(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 224(%rdx)
+	xorq	%rax, 224(%r10)
 	movzbq	1256(%rsp), %rax
 	movzbq	1257(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22563,7 +50444,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1263(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 232(%rdx)
+	xorq	%rax, 232(%r10)
 	movzbq	1056(%rsp), %rax
 	movzbq	1057(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22586,7 +50467,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1063(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 240(%rdx)
+	xorq	%rax, 240(%r10)
 	movzbq	856(%rsp), %rax
 	movzbq	857(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22609,7 +50490,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	863(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 248(%rdx)
+	xorq	%rax, 248(%r10)
 	movzbq	1464(%rsp), %rax
 	movzbq	1465(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22632,7 +50513,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1471(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 256(%rdx)
+	xorq	%rax, 256(%r10)
 	movzbq	1264(%rsp), %rax
 	movzbq	1265(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22655,7 +50536,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1271(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 264(%rdx)
+	xorq	%rax, 264(%r10)
 	movzbq	1064(%rsp), %rax
 	movzbq	1065(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22678,7 +50559,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1071(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 272(%rdx)
+	xorq	%rax, 272(%r10)
 	movzbq	864(%rsp), %rax
 	movzbq	865(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22701,7 +50582,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	871(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 280(%rdx)
+	xorq	%rax, 280(%r10)
 	movzbq	1472(%rsp), %rax
 	movzbq	1473(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22724,7 +50605,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1479(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 288(%rdx)
+	xorq	%rax, 288(%r10)
 	movzbq	1272(%rsp), %rax
 	movzbq	1273(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22747,7 +50628,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1279(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 296(%rdx)
+	xorq	%rax, 296(%r10)
 	movzbq	1072(%rsp), %rax
 	movzbq	1073(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22770,7 +50651,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1079(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 304(%rdx)
+	xorq	%rax, 304(%r10)
 	movzbq	872(%rsp), %rax
 	movzbq	873(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22793,7 +50674,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	879(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 312(%rdx)
+	xorq	%rax, 312(%r10)
 	movzbq	1480(%rsp), %rax
 	movzbq	1481(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22816,7 +50697,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1487(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 320(%rdx)
+	xorq	%rax, 320(%r10)
 	movzbq	1280(%rsp), %rax
 	movzbq	1281(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22839,7 +50720,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1287(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 328(%rdx)
+	xorq	%rax, 328(%r10)
 	movzbq	1080(%rsp), %rax
 	movzbq	1081(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22862,7 +50743,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1087(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 336(%rdx)
+	xorq	%rax, 336(%r10)
 	movzbq	880(%rsp), %rax
 	movzbq	881(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22885,7 +50766,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	887(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 344(%rdx)
+	xorq	%rax, 344(%r10)
 	movzbq	1488(%rsp), %rax
 	movzbq	1489(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22908,7 +50789,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1495(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 352(%rdx)
+	xorq	%rax, 352(%r10)
 	movzbq	1288(%rsp), %rax
 	movzbq	1289(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22931,7 +50812,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1295(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 360(%rdx)
+	xorq	%rax, 360(%r10)
 	movzbq	1088(%rsp), %rax
 	movzbq	1089(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22954,7 +50835,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1095(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 368(%rdx)
+	xorq	%rax, 368(%r10)
 	movzbq	888(%rsp), %rax
 	movzbq	889(%rsp), %rcx
 	shlq	$8, %rcx
@@ -22977,7 +50858,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	895(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 376(%rdx)
+	xorq	%rax, 376(%r10)
 	movzbq	1496(%rsp), %rax
 	movzbq	1497(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23000,7 +50881,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1503(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 384(%rdx)
+	xorq	%rax, 384(%r10)
 	movzbq	1296(%rsp), %rax
 	movzbq	1297(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23023,7 +50904,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1303(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 392(%rdx)
+	xorq	%rax, 392(%r10)
 	movzbq	1096(%rsp), %rax
 	movzbq	1097(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23046,7 +50927,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1103(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 400(%rdx)
+	xorq	%rax, 400(%r10)
 	movzbq	896(%rsp), %rax
 	movzbq	897(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23069,7 +50950,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	903(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 408(%rdx)
+	xorq	%rax, 408(%r10)
 	movzbq	1504(%rsp), %rax
 	movzbq	1505(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23092,7 +50973,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1511(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 416(%rdx)
+	xorq	%rax, 416(%r10)
 	movzbq	1304(%rsp), %rax
 	movzbq	1305(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23115,7 +50996,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1311(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 424(%rdx)
+	xorq	%rax, 424(%r10)
 	movzbq	1104(%rsp), %rax
 	movzbq	1105(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23138,7 +51019,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1111(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 432(%rdx)
+	xorq	%rax, 432(%r10)
 	movzbq	904(%rsp), %rax
 	movzbq	905(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23161,7 +51042,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	911(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 440(%rdx)
+	xorq	%rax, 440(%r10)
 	movzbq	1512(%rsp), %rax
 	movzbq	1513(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23184,7 +51065,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1519(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 448(%rdx)
+	xorq	%rax, 448(%r10)
 	movzbq	1312(%rsp), %rax
 	movzbq	1313(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23207,7 +51088,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1319(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 456(%rdx)
+	xorq	%rax, 456(%r10)
 	movzbq	1112(%rsp), %rax
 	movzbq	1113(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23230,7 +51111,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1119(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 464(%rdx)
+	xorq	%rax, 464(%r10)
 	movzbq	912(%rsp), %rax
 	movzbq	913(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23253,7 +51134,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	919(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 472(%rdx)
+	xorq	%rax, 472(%r10)
 	movzbq	1520(%rsp), %rax
 	movzbq	1521(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23276,7 +51157,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1527(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 480(%rdx)
+	xorq	%rax, 480(%r10)
 	movzbq	1320(%rsp), %rax
 	movzbq	1321(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23299,7 +51180,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1327(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 488(%rdx)
+	xorq	%rax, 488(%r10)
 	movzbq	1120(%rsp), %rax
 	movzbq	1121(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23322,7 +51203,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1127(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 496(%rdx)
+	xorq	%rax, 496(%r10)
 	movzbq	920(%rsp), %rax
 	movzbq	921(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23345,7 +51226,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	927(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 504(%rdx)
+	xorq	%rax, 504(%r10)
 	movzbq	1528(%rsp), %rax
 	movzbq	1529(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23368,7 +51249,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1535(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 512(%rdx)
+	xorq	%rax, 512(%r10)
 	movzbq	1328(%rsp), %rax
 	movzbq	1329(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23391,7 +51272,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1335(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 520(%rdx)
+	xorq	%rax, 520(%r10)
 	movzbq	1128(%rsp), %rax
 	movzbq	1129(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23414,7 +51295,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	1135(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 528(%rdx)
+	xorq	%rax, 528(%r10)
 	movzbq	928(%rsp), %rax
 	movzbq	929(%rsp), %rcx
 	shlq	$8, %rcx
@@ -23437,7 +51318,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	movzbq	935(%rsp), %rcx
 	shlq	$56, %rcx
 	orq 	%rcx, %rax
-	xorq	%rax, 536(%rdx)
+	xorq	%rax, 536(%r10)
 	vmovdqu	(%rsp), %ymm0
 	vmovdqu	%ymm0, (%rdi)
 	vmovdqu	32(%rsp), %ymm0
@@ -23488,7 +51369,7 @@ Lkeccak_absorb4x_256_CCADEC_jazz$1:
 	vmovdqu	%ymm0, 736(%rdi)
 	vmovdqu	768(%rsp), %ymm0
 	vmovdqu	%ymm0, 768(%rdi)
-	movq	%r11, %rsp
+	movq	5952(%rsp), %rsp
 	ret 
 _keccak_absorb4x_256_64_jazz:
 keccak_absorb4x_256_64_jazz:
@@ -29910,9 +57791,9 @@ KeccakF1600_StatePermute4x_jazz:
 	vmovdqu	%ymm0, 736(%rsp)
 	vmovdqu	768(%rdi), %ymm0
 	vmovdqu	%ymm0, 768(%rsp)
-	movq	%rsp, %rdx
+	movq	%rsp, %r10
 	leaq	-960(%rsp), %rsp
-	leaq	LKeccakF1600_StatePermute4x_jazz$1(%rip), 	%r10
+	leaq	LKeccakF1600_StatePermute4x_jazz$1(%rip), 	%r11
 	jmp 	LKeccakF1600_StatePermute4x$1
 LKeccakF1600_StatePermute4x_jazz$1:
 	leaq	960(%rsp), %rsp
@@ -32839,32 +60720,32 @@ Lkeccak_absorb4x_128_32$1:
 	xorq	%rcx, 664(%rax)
 	jmp 	*%r10
 LKeccakF1600_StatePermute4x$1:
-	movq	%rdx, %rax
-	vmovdqu	640(%rax), %ymm0
-	vpxor	480(%rax), %ymm0, %ymm0
-	vpxor	320(%rax), %ymm0, %ymm0
-	vpxor	160(%rax), %ymm0, %ymm0
-	vpxor	(%rax), %ymm0, %ymm0
-	vmovdqu	672(%rax), %ymm1
-	vpxor	512(%rax), %ymm1, %ymm1
-	vpxor	352(%rax), %ymm1, %ymm1
-	vpxor	192(%rax), %ymm1, %ymm1
-	vpxor	32(%rax), %ymm1, %ymm1
-	vmovdqu	704(%rax), %ymm2
-	vpxor	544(%rax), %ymm2, %ymm2
-	vpxor	384(%rax), %ymm2, %ymm2
-	vpxor	224(%rax), %ymm2, %ymm2
-	vpxor	64(%rax), %ymm2, %ymm2
-	vmovdqu	736(%rax), %ymm3
-	vpxor	576(%rax), %ymm3, %ymm3
-	vpxor	416(%rax), %ymm3, %ymm3
-	vpxor	256(%rax), %ymm3, %ymm3
-	vpxor	96(%rax), %ymm3, %ymm3
-	vmovdqu	768(%rax), %ymm4
-	vpxor	608(%rax), %ymm4, %ymm4
-	vpxor	448(%rax), %ymm4, %ymm4
-	vpxor	288(%rax), %ymm4, %ymm4
-	vpxor	128(%rax), %ymm4, %ymm4
+	movq	%r10, %r9
+	vmovdqu	640(%r9), %ymm0
+	vpxor	480(%r9), %ymm0, %ymm0
+	vpxor	320(%r9), %ymm0, %ymm0
+	vpxor	160(%r9), %ymm0, %ymm0
+	vpxor	(%r9), %ymm0, %ymm0
+	vmovdqu	672(%r9), %ymm1
+	vpxor	512(%r9), %ymm1, %ymm1
+	vpxor	352(%r9), %ymm1, %ymm1
+	vpxor	192(%r9), %ymm1, %ymm1
+	vpxor	32(%r9), %ymm1, %ymm1
+	vmovdqu	704(%r9), %ymm2
+	vpxor	544(%r9), %ymm2, %ymm2
+	vpxor	384(%r9), %ymm2, %ymm2
+	vpxor	224(%r9), %ymm2, %ymm2
+	vpxor	64(%r9), %ymm2, %ymm2
+	vmovdqu	736(%r9), %ymm3
+	vpxor	576(%r9), %ymm3, %ymm3
+	vpxor	416(%r9), %ymm3, %ymm3
+	vpxor	256(%r9), %ymm3, %ymm3
+	vpxor	96(%r9), %ymm3, %ymm3
+	vmovdqu	768(%r9), %ymm4
+	vpxor	608(%r9), %ymm4, %ymm4
+	vpxor	448(%r9), %ymm4, %ymm4
+	vpxor	288(%r9), %ymm4, %ymm4
+	vpxor	128(%r9), %ymm4, %ymm4
 	vpsllq	$1, %ymm1, %ymm5
 	vpsrlq	$63, %ymm1, %ymm6
 	vpor	%ymm6, %ymm5, %ymm5
@@ -32885,18 +60766,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm0, %ymm0
 	vpor	%ymm0, %ymm4, %ymm0
 	vpxor	%ymm0, %ymm3, %ymm0
-	vmovdqu	(%rdx), %ymm3
+	vmovdqu	(%r10), %ymm3
 	vpxor	%ymm5, %ymm3, %ymm3
-	vmovdqu	%ymm3, (%rdx)
-	vmovdqu	192(%rdx), %ymm4
+	vmovdqu	%ymm3, (%r10)
+	vmovdqu	192(%r10), %ymm4
 	vpxor	%ymm6, %ymm4, %ymm4
-	vmovdqu	%ymm4, 192(%rdx)
+	vmovdqu	%ymm4, 192(%r10)
 	vpsllq	$44, %ymm4, %ymm7
 	vpsrlq	$20, %ymm4, %ymm4
 	vpor	%ymm4, %ymm7, %ymm4
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm1, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -32904,18 +60785,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 0(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm2, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm4, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -32928,21 +60809,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm4, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
 	vmovdqu	%ymm3, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm4
+	vmovdqu	96(%r10), %ymm4
 	vpxor	%ymm2, %ymm4, %ymm4
-	vmovdqu	%ymm4, 96(%rdx)
+	vmovdqu	%ymm4, 96(%r10)
 	vpsllq	$28, %ymm4, %ymm11
 	vpsrlq	$36, %ymm4, %ymm4
 	vpor	%ymm4, %ymm11, %ymm4
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm5, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -32950,9 +60831,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm4, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm6, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -32960,9 +60841,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm1, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -32978,21 +60859,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm4, %ymm4
 	vmovdqu	%ymm4, 448(%rsp)
 	vpxor	%ymm4, %ymm3, %ymm3
-	vmovdqu	32(%rdx), %ymm4
+	vmovdqu	32(%r10), %ymm4
 	vpxor	%ymm6, %ymm4, %ymm4
-	vmovdqu	%ymm4, 32(%rdx)
+	vmovdqu	%ymm4, 32(%r10)
 	vpsllq	$1, %ymm4, %ymm11
 	vpsrlq	$63, %ymm4, %ymm4
 	vpor	%ymm4, %ymm11, %ymm4
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm2, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -33000,17 +60881,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm4, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm0, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm5, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -33026,23 +60907,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm4, %ymm4
 	vmovdqu	%ymm4, 608(%rsp)
 	vpxor	%ymm4, %ymm3, %ymm3
-	vmovdqu	128(%rdx), %ymm4
+	vmovdqu	128(%r10), %ymm4
 	vpxor	%ymm0, %ymm4, %ymm4
-	vmovdqu	%ymm4, 128(%rdx)
+	vmovdqu	%ymm4, 128(%r10)
 	vpsllq	$27, %ymm4, %ymm11
 	vpsrlq	$37, %ymm4, %ymm4
 	vpor	%ymm4, %ymm11, %ymm4
 	vmovdqu	%ymm4, (%rsp)
-	vmovdqu	160(%rdx), %ymm4
+	vmovdqu	160(%r10), %ymm4
 	vpxor	%ymm5, %ymm4, %ymm4
-	vmovdqu	%ymm4, 160(%rdx)
+	vmovdqu	%ymm4, 160(%r10)
 	vpsllq	$36, %ymm4, %ymm11
 	vpsrlq	$28, %ymm4, %ymm4
 	vpor	%ymm4, %ymm11, %ymm4
 	vmovdqu	%ymm4, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm4
+	vmovdqu	352(%r10), %ymm4
 	vpxor	%ymm6, %ymm4, %ymm4
-	vmovdqu	%ymm4, 352(%rdx)
+	vmovdqu	%ymm4, 352(%r10)
 	vpsllq	$10, %ymm4, %ymm11
 	vpsrlq	$54, %ymm4, %ymm4
 	vpor	%ymm4, %ymm11, %ymm4
@@ -33053,9 +60934,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	(%rsp), %ymm4, %ymm4
 	vmovdqu	%ymm4, 640(%rsp)
 	vpxor	%ymm4, %ymm8, %ymm4
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -33065,9 +60946,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm2, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 128(%rsp)
 	vmovdqu	128(%rsp), %ymm11
@@ -33085,21 +60966,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	128(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm3, %ymm3
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 64(%rdx)
+	vmovdqu	%ymm1, 64(%r10)
 	vpsllq	$62, %ymm1, %ymm8
 	vpsrlq	$2, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
-	vmovdqu	%ymm2, 256(%rdx)
+	vmovdqu	%ymm2, 256(%r10)
 	vpsllq	$55, %ymm2, %ymm8
 	vpsrlq	$9, %ymm2, %ymm2
 	vpor	%ymm2, %ymm8, %ymm2
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 448(%rdx)
+	vmovdqu	%ymm0, 448(%r10)
 	vpsllq	$39, %ymm0, %ymm8
 	vpsrlq	$25, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
@@ -33107,9 +60988,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm1, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm4, %ymm4
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpsllq	$41, %ymm5, %ymm8
 	vpsrlq	$23, %ymm5, %ymm5
 	vpor	%ymm5, %ymm8, %ymm5
@@ -33117,9 +60998,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm6, %ymm10, %ymm6
-	vmovdqu	%ymm6, 672(%rdx)
+	vmovdqu	%ymm6, 672(%r10)
 	vpsllq	$2, %ymm6, %ymm10
 	vpsrlq	$62, %ymm6, %ymm6
 	vpor	%ymm6, %ymm10, %ymm6
@@ -33173,7 +61054,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm4, %ymm8, %ymm8
 	vpxor	glob_data + 32(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -33182,7 +61063,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -33191,13 +61072,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm4, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm4, %ymm4
 	vpxor	%ymm11, %ymm4, %ymm4
-	vmovdqu	%ymm4, 128(%rdx)
+	vmovdqu	%ymm4, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -33218,7 +61099,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm3, %ymm13, %ymm13
@@ -33228,7 +61109,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -33238,15 +61119,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm4, %ymm4
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
@@ -33268,7 +61149,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -33276,7 +61157,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -33286,15 +61167,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm4, %ymm4
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -33321,7 +61202,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	96(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	128(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -33333,7 +61214,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -33343,17 +61224,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	96(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	128(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	64(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm4, %ymm4
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -33375,7 +61256,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -33385,7 +61266,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm3, %ymm10, %ymm3
@@ -33395,15 +61276,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm3, %ymm10, %ymm3
 	vpandn	%ymm3, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm3, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm3, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm4, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -33425,18 +61306,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -33444,18 +61325,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 64(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -33468,21 +61349,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -33490,9 +61371,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -33500,9 +61381,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -33518,21 +61399,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -33540,17 +61421,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -33566,23 +61447,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 64(%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -33593,9 +61474,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	64(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -33605,9 +61486,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 96(%rsp)
 	vmovdqu	96(%rsp), %ymm11
@@ -33625,21 +61506,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	96(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -33647,9 +61528,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -33657,9 +61538,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -33713,7 +61594,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 96(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -33722,7 +61603,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -33731,13 +61612,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -33758,7 +61639,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -33768,7 +61649,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -33778,15 +61659,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -33808,7 +61689,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -33816,7 +61697,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -33826,15 +61707,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -33861,7 +61742,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	128(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	96(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -33873,7 +61754,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -33883,17 +61764,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	128(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	96(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	64(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -33915,7 +61796,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -33925,7 +61806,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -33935,15 +61816,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -33965,18 +61846,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -33984,18 +61865,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 128(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -34008,21 +61889,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -34030,9 +61911,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -34040,9 +61921,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -34058,21 +61939,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -34080,17 +61961,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -34106,23 +61987,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, (%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -34133,9 +62014,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -34145,9 +62026,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 128(%rsp)
 	vmovdqu	128(%rsp), %ymm11
@@ -34165,21 +62046,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	128(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -34187,9 +62068,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -34197,9 +62078,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -34253,7 +62134,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 160(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -34262,7 +62143,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -34271,13 +62152,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -34298,7 +62179,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -34308,7 +62189,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -34318,15 +62199,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -34348,7 +62229,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -34356,7 +62237,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -34366,15 +62247,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -34401,7 +62282,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	96(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	128(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -34413,7 +62294,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -34423,17 +62304,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	96(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	128(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	64(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -34455,7 +62336,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -34465,7 +62346,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -34475,15 +62356,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -34505,18 +62386,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -34524,18 +62405,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 192(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -34548,21 +62429,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -34570,9 +62451,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -34580,9 +62461,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -34598,21 +62479,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -34620,17 +62501,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -34646,23 +62527,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 64(%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -34673,9 +62554,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	64(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -34685,9 +62566,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 96(%rsp)
 	vmovdqu	96(%rsp), %ymm11
@@ -34705,21 +62586,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	96(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -34727,9 +62608,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -34737,9 +62618,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -34793,7 +62674,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 224(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -34802,7 +62683,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -34811,13 +62692,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -34838,7 +62719,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -34848,7 +62729,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -34858,15 +62739,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -34888,7 +62769,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -34896,7 +62777,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -34906,15 +62787,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -34941,7 +62822,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	128(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	96(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -34953,7 +62834,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -34963,17 +62844,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	128(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	96(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	64(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -34995,7 +62876,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -35005,7 +62886,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -35015,15 +62896,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -35045,18 +62926,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -35064,18 +62945,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 256(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -35088,21 +62969,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -35110,9 +62991,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -35120,9 +63001,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -35138,21 +63019,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -35160,17 +63041,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -35186,23 +63067,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, (%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -35213,9 +63094,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -35225,9 +63106,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 128(%rsp)
 	vmovdqu	128(%rsp), %ymm11
@@ -35245,21 +63126,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	128(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -35267,9 +63148,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -35277,9 +63158,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -35333,7 +63214,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 288(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -35342,7 +63223,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -35351,13 +63232,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -35378,7 +63259,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -35388,7 +63269,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -35398,15 +63279,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -35428,7 +63309,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -35436,7 +63317,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -35446,15 +63327,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -35481,7 +63362,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	96(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	128(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -35493,7 +63374,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -35503,17 +63384,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	96(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	128(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	64(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -35535,7 +63416,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -35545,7 +63426,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -35555,15 +63436,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -35585,18 +63466,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -35604,18 +63485,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 320(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -35628,21 +63509,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -35650,9 +63531,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -35660,9 +63541,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -35678,21 +63559,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -35700,17 +63581,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -35726,23 +63607,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 64(%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -35753,9 +63634,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	64(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -35765,9 +63646,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 96(%rsp)
 	vmovdqu	96(%rsp), %ymm11
@@ -35785,21 +63666,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	96(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -35807,9 +63688,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -35817,9 +63698,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -35873,7 +63754,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 352(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -35882,7 +63763,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -35891,13 +63772,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -35918,7 +63799,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -35928,7 +63809,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -35938,15 +63819,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -35968,7 +63849,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -35976,7 +63857,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -35986,15 +63867,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -36021,7 +63902,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	128(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	96(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -36033,7 +63914,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -36043,17 +63924,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	128(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	96(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	64(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -36075,7 +63956,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -36085,7 +63966,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -36095,15 +63976,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -36125,18 +64006,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -36144,18 +64025,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 384(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -36168,21 +64049,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -36190,9 +64071,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -36200,9 +64081,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -36218,21 +64099,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -36240,17 +64121,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -36266,23 +64147,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, (%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -36293,9 +64174,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -36305,9 +64186,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 128(%rsp)
 	vmovdqu	128(%rsp), %ymm11
@@ -36325,21 +64206,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	128(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -36347,9 +64228,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -36357,9 +64238,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -36413,7 +64294,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 416(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -36422,7 +64303,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -36431,13 +64312,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -36458,7 +64339,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -36468,7 +64349,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -36478,15 +64359,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -36508,7 +64389,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -36516,7 +64397,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -36526,15 +64407,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -36561,7 +64442,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	96(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	128(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -36573,7 +64454,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -36583,17 +64464,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	96(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	128(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	64(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -36615,7 +64496,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -36625,7 +64506,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -36635,15 +64516,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -36665,18 +64546,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -36684,18 +64565,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 448(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -36708,21 +64589,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -36730,9 +64611,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -36740,9 +64621,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -36758,21 +64639,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -36780,17 +64661,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -36806,23 +64687,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 64(%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -36833,9 +64714,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	64(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -36845,9 +64726,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 96(%rsp)
 	vmovdqu	96(%rsp), %ymm11
@@ -36865,21 +64746,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	96(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -36887,9 +64768,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -36897,9 +64778,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -36953,7 +64834,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 480(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -36962,7 +64843,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -36971,13 +64852,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -36998,7 +64879,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -37008,7 +64889,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -37018,15 +64899,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -37048,7 +64929,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -37056,7 +64937,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -37066,15 +64947,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -37101,7 +64982,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	128(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	96(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -37113,7 +64994,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -37123,17 +65004,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	128(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	96(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	64(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -37155,7 +65036,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -37165,7 +65046,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -37175,15 +65056,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -37205,18 +65086,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -37224,18 +65105,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 512(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -37248,21 +65129,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -37270,9 +65151,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -37280,9 +65161,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -37298,21 +65179,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -37320,17 +65201,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -37346,23 +65227,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, (%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -37373,9 +65254,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -37385,9 +65266,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 128(%rsp)
 	vmovdqu	128(%rsp), %ymm11
@@ -37405,21 +65286,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	128(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -37427,9 +65308,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -37437,9 +65318,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -37493,7 +65374,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 544(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -37502,7 +65383,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -37511,13 +65392,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -37538,7 +65419,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -37548,7 +65429,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -37558,15 +65439,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -37588,7 +65469,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -37596,7 +65477,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -37606,15 +65487,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -37641,7 +65522,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	96(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	128(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -37653,7 +65534,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -37663,17 +65544,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	96(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	128(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	64(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -37695,7 +65576,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -37705,7 +65586,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -37715,15 +65596,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -37745,18 +65626,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -37764,18 +65645,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 576(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -37788,21 +65669,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -37810,9 +65691,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -37820,9 +65701,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -37838,21 +65719,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -37860,17 +65741,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -37886,23 +65767,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 64(%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -37913,9 +65794,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	64(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -37925,9 +65806,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 96(%rsp)
 	vmovdqu	96(%rsp), %ymm11
@@ -37945,21 +65826,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	96(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -37967,9 +65848,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -37977,9 +65858,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -38033,7 +65914,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 608(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -38042,7 +65923,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -38051,13 +65932,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -38078,7 +65959,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -38088,7 +65969,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -38098,15 +65979,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -38128,7 +66009,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -38136,7 +66017,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -38146,15 +66027,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -38181,7 +66062,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	128(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	96(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -38193,7 +66074,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -38203,17 +66084,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	128(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	96(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	64(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -38235,7 +66116,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -38245,7 +66126,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -38255,15 +66136,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -38285,18 +66166,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -38304,18 +66185,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 640(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -38328,21 +66209,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -38350,9 +66231,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -38360,9 +66241,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -38378,21 +66259,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -38400,17 +66281,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -38426,23 +66307,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, (%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -38453,9 +66334,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -38465,9 +66346,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 128(%rsp)
 	vmovdqu	128(%rsp), %ymm11
@@ -38485,21 +66366,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	128(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -38507,9 +66388,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -38517,9 +66398,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -38573,7 +66454,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 672(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
 	vmovdqu	%ymm9, 736(%rsp)
@@ -38582,7 +66463,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
-	vmovdqu	%ymm10, 32(%rdx)
+	vmovdqu	%ymm10, 32(%r10)
 	vmovdqu	928(%rsp), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
 	vmovdqu	%ymm11, 928(%rsp)
@@ -38591,13 +66472,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm11, %ymm12, %ymm11
 	vpandn	%ymm11, %ymm9, %ymm12
 	vpxor	%ymm7, %ymm12, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm11, %ymm12
 	vpxor	%ymm9, %ymm12, %ymm9
-	vmovdqu	%ymm9, 96(%rdx)
+	vmovdqu	%ymm9, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm11, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 256(%rsp)
@@ -38618,7 +66499,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 160(%rdx)
+	vmovdqu	%ymm13, 160(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	672(%rsp), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
@@ -38628,7 +66509,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm13, %ymm14, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 192(%rdx)
+	vmovdqu	%ymm14, 192(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	864(%rsp), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
@@ -38638,15 +66519,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 224(%rdx)
+	vmovdqu	%ymm12, 224(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 256(%rdx)
+	vmovdqu	%ymm12, 256(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 288(%rdx)
+	vmovdqu	%ymm5, 288(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	192(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
@@ -38668,7 +66549,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm12, %ymm13, %ymm12
 	vpandn	%ymm12, %ymm11, %ymm13
 	vpxor	%ymm5, %ymm13, %ymm13
-	vmovdqu	%ymm13, 320(%rdx)
+	vmovdqu	%ymm13, 320(%r10)
 	vpxor	%ymm13, %ymm8, %ymm8
 	vmovdqu	768(%rsp), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
@@ -38676,7 +66557,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
-	vmovdqu	%ymm14, 352(%rdx)
+	vmovdqu	%ymm14, 352(%r10)
 	vpxor	%ymm14, %ymm10, %ymm10
 	vmovdqu	800(%rsp), %ymm14
 	vpxor	%ymm2, %ymm14, %ymm14
@@ -38686,15 +66567,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm14, %ymm15, %ymm14
 	vpandn	%ymm14, %ymm13, %ymm15
 	vpxor	%ymm12, %ymm15, %ymm12
-	vmovdqu	%ymm12, 384(%rdx)
+	vmovdqu	%ymm12, 384(%r10)
 	vpxor	%ymm12, %ymm7, %ymm7
 	vpandn	%ymm5, %ymm14, %ymm12
 	vpxor	%ymm13, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpxor	%ymm12, %ymm9, %ymm9
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	%ymm14, %ymm5, %ymm5
-	vmovdqu	%ymm5, 448(%rdx)
+	vmovdqu	%ymm5, 448(%r10)
 	vpxor	%ymm5, %ymm3, %ymm3
 	vmovdqu	288(%rsp), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
@@ -38721,7 +66602,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	96(%rsp), %ymm11
 	vpandn	%ymm11, %ymm5, %ymm5
 	vpxor	128(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 480(%rdx)
+	vmovdqu	%ymm5, 480(%r10)
 	vpxor	%ymm5, %ymm8, %ymm5
 	vmovdqu	704(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
@@ -38733,7 +66614,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	32(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 512(%rdx)
+	vmovdqu	%ymm11, 512(%r10)
 	vpxor	%ymm11, %ymm10, %ymm10
 	vmovdqu	896(%rsp), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
@@ -38743,17 +66624,17 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	96(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpxor	%ymm8, %ymm7, %ymm7
 	vmovdqu	128(%rsp), %ymm8
 	vpandn	%ymm8, %ymm11, %ymm11
 	vpxor	(%rsp), %ymm11, %ymm11
-	vmovdqu	%ymm11, 576(%rdx)
+	vmovdqu	%ymm11, 576(%r10)
 	vpxor	%ymm11, %ymm9, %ymm9
 	vmovdqu	32(%rsp), %ymm11
 	vpandn	%ymm11, %ymm8, %ymm8
 	vpxor	64(%rsp), %ymm8, %ymm8
-	vmovdqu	%ymm8, 608(%rdx)
+	vmovdqu	%ymm8, 608(%r10)
 	vpxor	%ymm8, %ymm3, %ymm3
 	vmovdqu	224(%rsp), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
@@ -38775,7 +66656,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm8, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 640(%rdx)
+	vmovdqu	%ymm8, 640(%r10)
 	vpxor	%ymm8, %ymm5, %ymm5
 	vmovdqu	640(%rsp), %ymm8
 	vpxor	%ymm2, %ymm8, %ymm2
@@ -38785,7 +66666,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm8, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
-	vmovdqu	%ymm8, 672(%rdx)
+	vmovdqu	%ymm8, 672(%r10)
 	vpxor	%ymm8, %ymm10, %ymm8
 	vmovdqu	832(%rsp), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
@@ -38795,15 +66676,15 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm10, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm10
 	vpxor	%ymm1, %ymm10, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpxor	%ymm1, %ymm7, %ymm1
 	vpandn	%ymm6, %ymm4, %ymm7
 	vpxor	%ymm2, %ymm7, %ymm2
-	vmovdqu	%ymm2, 736(%rdx)
+	vmovdqu	%ymm2, 736(%r10)
 	vpxor	%ymm2, %ymm9, %ymm2
 	vpandn	%ymm0, %ymm6, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
+	vmovdqu	%ymm0, 768(%r10)
 	vpxor	%ymm0, %ymm3, %ymm0
 	vpsllq	$1, %ymm8, %ymm3
 	vpsrlq	$63, %ymm8, %ymm4
@@ -38825,18 +66706,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm1, %ymm1
 	vpxor	%ymm1, %ymm2, %ymm1
-	vmovdqu	(%rdx), %ymm2
+	vmovdqu	(%r10), %ymm2
 	vpxor	%ymm3, %ymm2, %ymm2
-	vmovdqu	%ymm2, (%rdx)
-	vmovdqu	192(%rdx), %ymm5
+	vmovdqu	%ymm2, (%r10)
+	vmovdqu	192(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 192(%rdx)
+	vmovdqu	%ymm5, 192(%r10)
 	vpsllq	$44, %ymm5, %ymm7
 	vpsrlq	$20, %ymm5, %ymm5
 	vpor	%ymm5, %ymm7, %ymm5
-	vmovdqu	384(%rdx), %ymm7
+	vmovdqu	384(%r10), %ymm7
 	vpxor	%ymm6, %ymm7, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpsllq	$43, %ymm7, %ymm8
 	vpsrlq	$21, %ymm7, %ymm7
 	vpor	%ymm7, %ymm8, %ymm7
@@ -38844,18 +66725,18 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm2, %ymm8, %ymm8
 	vpxor	glob_data + 704(%rip), %ymm8, %ymm8
 	vmovdqu	%ymm8, 160(%rsp)
-	vmovdqu	576(%rdx), %ymm9
+	vmovdqu	576(%r10), %ymm9
 	vpxor	%ymm0, %ymm9, %ymm9
-	vmovdqu	%ymm9, 576(%rdx)
+	vmovdqu	%ymm9, 576(%r10)
 	vpsllq	$21, %ymm9, %ymm10
 	vpsrlq	$43, %ymm9, %ymm9
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm7, %ymm10
 	vpxor	%ymm5, %ymm10, %ymm10
 	vmovdqu	%ymm10, 192(%rsp)
-	vmovdqu	768(%rdx), %ymm11
+	vmovdqu	768(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 768(%rdx)
+	vmovdqu	%ymm11, 768(%r10)
 	vpsllq	$14, %ymm11, %ymm12
 	vpsrlq	$50, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
@@ -38868,21 +66749,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm5, %ymm2, %ymm2
 	vpxor	%ymm11, %ymm2, %ymm2
 	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	96(%rdx), %ymm5
+	vmovdqu	96(%r10), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 96(%rdx)
+	vmovdqu	%ymm5, 96(%r10)
 	vpsllq	$28, %ymm5, %ymm11
 	vpsrlq	$36, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	288(%rdx), %ymm11
+	vmovdqu	288(%r10), %ymm11
 	vpxor	%ymm1, %ymm11, %ymm11
-	vmovdqu	%ymm11, 288(%rdx)
+	vmovdqu	%ymm11, 288(%r10)
 	vpsllq	$20, %ymm11, %ymm12
 	vpsrlq	$44, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	320(%rdx), %ymm12
+	vmovdqu	320(%r10), %ymm12
 	vpxor	%ymm3, %ymm12, %ymm12
-	vmovdqu	%ymm12, 320(%rdx)
+	vmovdqu	%ymm12, 320(%r10)
 	vpsllq	$3, %ymm12, %ymm13
 	vpsrlq	$61, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -38890,9 +66771,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 320(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	512(%rdx), %ymm13
+	vmovdqu	512(%r10), %ymm13
 	vpxor	%ymm4, %ymm13, %ymm13
-	vmovdqu	%ymm13, 512(%rdx)
+	vmovdqu	%ymm13, 512(%r10)
 	vpsllq	$45, %ymm13, %ymm14
 	vpsrlq	$19, %ymm13, %ymm13
 	vpor	%ymm13, %ymm14, %ymm13
@@ -38900,9 +66781,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 352(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	704(%rdx), %ymm14
+	vmovdqu	704(%r10), %ymm14
 	vpxor	%ymm6, %ymm14, %ymm14
-	vmovdqu	%ymm14, 704(%rdx)
+	vmovdqu	%ymm14, 704(%r10)
 	vpsllq	$61, %ymm14, %ymm15
 	vpsrlq	$3, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -38918,21 +66799,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 448(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	32(%rdx), %ymm5
+	vmovdqu	32(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 32(%rdx)
+	vmovdqu	%ymm5, 32(%r10)
 	vpsllq	$1, %ymm5, %ymm11
 	vpsrlq	$63, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
-	vmovdqu	224(%rdx), %ymm11
+	vmovdqu	224(%r10), %ymm11
 	vpxor	%ymm6, %ymm11, %ymm11
-	vmovdqu	%ymm11, 224(%rdx)
+	vmovdqu	%ymm11, 224(%r10)
 	vpsllq	$6, %ymm11, %ymm12
 	vpsrlq	$58, %ymm11, %ymm11
 	vpor	%ymm11, %ymm12, %ymm11
-	vmovdqu	416(%rdx), %ymm12
+	vmovdqu	416(%r10), %ymm12
 	vpxor	%ymm0, %ymm12, %ymm12
-	vmovdqu	%ymm12, 416(%rdx)
+	vmovdqu	%ymm12, 416(%r10)
 	vpsllq	$25, %ymm12, %ymm13
 	vpsrlq	$39, %ymm12, %ymm12
 	vpor	%ymm12, %ymm13, %ymm12
@@ -38940,17 +66821,17 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm5, %ymm13, %ymm13
 	vmovdqu	%ymm13, 480(%rsp)
 	vpxor	%ymm13, %ymm8, %ymm8
-	vmovdqu	608(%rdx), %ymm13
+	vmovdqu	608(%r10), %ymm13
 	vpxor	%ymm1, %ymm13, %ymm13
-	vmovdqu	%ymm13, 608(%rdx)
+	vmovdqu	%ymm13, 608(%r10)
 	vpshufb	glob_data + 800(%rip), %ymm13, %ymm13
 	vpandn	%ymm13, %ymm12, %ymm14
 	vpxor	%ymm11, %ymm14, %ymm14
 	vmovdqu	%ymm14, 512(%rsp)
 	vpxor	%ymm14, %ymm10, %ymm10
-	vmovdqu	640(%rdx), %ymm14
+	vmovdqu	640(%r10), %ymm14
 	vpxor	%ymm3, %ymm14, %ymm14
-	vmovdqu	%ymm14, 640(%rdx)
+	vmovdqu	%ymm14, 640(%r10)
 	vpsllq	$18, %ymm14, %ymm15
 	vpsrlq	$46, %ymm14, %ymm14
 	vpor	%ymm14, %ymm15, %ymm14
@@ -38966,23 +66847,23 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm14, %ymm5, %ymm5
 	vmovdqu	%ymm5, 608(%rsp)
 	vpxor	%ymm5, %ymm2, %ymm2
-	vmovdqu	128(%rdx), %ymm5
+	vmovdqu	128(%r10), %ymm5
 	vpxor	%ymm1, %ymm5, %ymm5
-	vmovdqu	%ymm5, 128(%rdx)
+	vmovdqu	%ymm5, 128(%r10)
 	vpsllq	$27, %ymm5, %ymm11
 	vpsrlq	$37, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 64(%rsp)
-	vmovdqu	160(%rdx), %ymm5
+	vmovdqu	160(%r10), %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 160(%rdx)
+	vmovdqu	%ymm5, 160(%r10)
 	vpsllq	$36, %ymm5, %ymm11
 	vpsrlq	$28, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
 	vmovdqu	%ymm5, 32(%rsp)
-	vmovdqu	352(%rdx), %ymm5
+	vmovdqu	352(%r10), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm5
-	vmovdqu	%ymm5, 352(%rdx)
+	vmovdqu	%ymm5, 352(%r10)
 	vpsllq	$10, %ymm5, %ymm11
 	vpsrlq	$54, %ymm5, %ymm5
 	vpor	%ymm5, %ymm11, %ymm5
@@ -38993,9 +66874,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	64(%rsp), %ymm5, %ymm5
 	vmovdqu	%ymm5, 640(%rsp)
 	vpxor	%ymm5, %ymm8, %ymm5
-	vmovdqu	544(%rdx), %ymm8
+	vmovdqu	544(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm8
-	vmovdqu	%ymm8, 544(%rdx)
+	vmovdqu	%ymm8, 544(%r10)
 	vpsllq	$15, %ymm8, %ymm12
 	vpsrlq	$49, %ymm8, %ymm8
 	vpor	%ymm8, %ymm12, %ymm8
@@ -39005,9 +66886,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	32(%rsp), %ymm11, %ymm11
 	vmovdqu	%ymm11, 672(%rsp)
 	vpxor	%ymm11, %ymm10, %ymm10
-	vmovdqu	736(%rdx), %ymm11
+	vmovdqu	736(%r10), %ymm11
 	vpxor	%ymm0, %ymm11, %ymm11
-	vmovdqu	%ymm11, 736(%rdx)
+	vmovdqu	%ymm11, 736(%r10)
 	vpshufb	glob_data + 768(%rip), %ymm11, %ymm11
 	vmovdqu	%ymm11, 96(%rsp)
 	vmovdqu	96(%rsp), %ymm11
@@ -39025,21 +66906,21 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	96(%rsp), %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpxor	%ymm8, %ymm2, %ymm2
-	vmovdqu	64(%rdx), %ymm8
+	vmovdqu	64(%r10), %ymm8
 	vpxor	%ymm6, %ymm8, %ymm6
-	vmovdqu	%ymm6, 64(%rdx)
+	vmovdqu	%ymm6, 64(%r10)
 	vpsllq	$62, %ymm6, %ymm8
 	vpsrlq	$2, %ymm6, %ymm6
 	vpor	%ymm6, %ymm8, %ymm6
-	vmovdqu	256(%rdx), %ymm8
+	vmovdqu	256(%r10), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm0
-	vmovdqu	%ymm0, 256(%rdx)
+	vmovdqu	%ymm0, 256(%r10)
 	vpsllq	$55, %ymm0, %ymm8
 	vpsrlq	$9, %ymm0, %ymm0
 	vpor	%ymm0, %ymm8, %ymm0
-	vmovdqu	448(%rdx), %ymm8
+	vmovdqu	448(%r10), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm1
-	vmovdqu	%ymm1, 448(%rdx)
+	vmovdqu	%ymm1, 448(%r10)
 	vpsllq	$39, %ymm1, %ymm8
 	vpsrlq	$25, %ymm1, %ymm1
 	vpor	%ymm1, %ymm8, %ymm1
@@ -39047,9 +66928,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm6, %ymm8, %ymm8
 	vmovdqu	%ymm8, 800(%rsp)
 	vpxor	%ymm8, %ymm5, %ymm5
-	vmovdqu	480(%rdx), %ymm8
+	vmovdqu	480(%r10), %ymm8
 	vpxor	%ymm3, %ymm8, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vpsllq	$41, %ymm3, %ymm8
 	vpsrlq	$23, %ymm3, %ymm3
 	vpor	%ymm3, %ymm8, %ymm3
@@ -39057,9 +66938,9 @@ LKeccakF1600_StatePermute4x$1:
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 832(%rsp)
 	vpxor	%ymm8, %ymm10, %ymm8
-	vmovdqu	672(%rdx), %ymm10
+	vmovdqu	672(%r10), %ymm10
 	vpxor	%ymm4, %ymm10, %ymm4
-	vmovdqu	%ymm4, 672(%rdx)
+	vmovdqu	%ymm4, 672(%r10)
 	vpsllq	$2, %ymm4, %ymm10
 	vpsrlq	$62, %ymm4, %ymm4
 	vpor	%ymm4, %ymm10, %ymm4
@@ -39113,7 +66994,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
 	vpxor	glob_data + 736(%rip), %ymm8, %ymm8
-	vmovdqu	%ymm8, (%rdx)
+	vmovdqu	%ymm8, (%r10)
 	vmovdqu	736(%rsp), %ymm8
 	vpxor	%ymm0, %ymm8, %ymm8
 	vmovdqu	%ymm8, 736(%rsp)
@@ -39122,7 +67003,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm8, %ymm9, %ymm8
 	vpandn	%ymm8, %ymm7, %ymm9
 	vpxor	%ymm5, %ymm9, %ymm9
-	vmovdqu	%ymm9, 32(%rdx)
+	vmovdqu	%ymm9, 32(%r10)
 	vmovdqu	928(%rsp), %ymm9
 	vpxor	%ymm1, %ymm9, %ymm9
 	vmovdqu	%ymm9, 928(%rsp)
@@ -39131,13 +67012,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm8, %ymm10
 	vpxor	%ymm7, %ymm10, %ymm7
-	vmovdqu	%ymm7, 64(%rdx)
+	vmovdqu	%ymm7, 64(%r10)
 	vpandn	%ymm3, %ymm9, %ymm7
 	vpxor	%ymm8, %ymm7, %ymm7
-	vmovdqu	%ymm7, 96(%rdx)
+	vmovdqu	%ymm7, 96(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm9, %ymm3, %ymm3
-	vmovdqu	%ymm3, 128(%rdx)
+	vmovdqu	%ymm3, 128(%r10)
 	vmovdqu	256(%rsp), %ymm3
 	vpxor	%ymm0, %ymm3, %ymm3
 	vmovdqu	%ymm3, 256(%rsp)
@@ -39158,7 +67039,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm7, %ymm8, %ymm7
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
-	vmovdqu	%ymm8, 160(%rdx)
+	vmovdqu	%ymm8, 160(%r10)
 	vmovdqu	672(%rsp), %ymm8
 	vpxor	%ymm4, %ymm8, %ymm8
 	vmovdqu	%ymm8, 672(%rsp)
@@ -39167,7 +67048,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm8, %ymm9, %ymm8
 	vpandn	%ymm8, %ymm7, %ymm9
 	vpxor	%ymm5, %ymm9, %ymm9
-	vmovdqu	%ymm9, 192(%rdx)
+	vmovdqu	%ymm9, 192(%r10)
 	vmovdqu	864(%rsp), %ymm9
 	vpxor	%ymm6, %ymm9, %ymm9
 	vmovdqu	%ymm9, 864(%rsp)
@@ -39176,13 +67057,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm8, %ymm10
 	vpxor	%ymm7, %ymm10, %ymm7
-	vmovdqu	%ymm7, 224(%rdx)
+	vmovdqu	%ymm7, 224(%r10)
 	vpandn	%ymm3, %ymm9, %ymm7
 	vpxor	%ymm8, %ymm7, %ymm7
-	vmovdqu	%ymm7, 256(%rdx)
+	vmovdqu	%ymm7, 256(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm9, %ymm3, %ymm3
-	vmovdqu	%ymm3, 288(%rdx)
+	vmovdqu	%ymm3, 288(%r10)
 	vmovdqu	192(%rsp), %ymm3
 	vpxor	%ymm4, %ymm3, %ymm3
 	vmovdqu	%ymm3, 192(%rsp)
@@ -39203,14 +67084,14 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm7, %ymm8, %ymm7
 	vpandn	%ymm7, %ymm5, %ymm8
 	vpxor	%ymm3, %ymm8, %ymm8
-	vmovdqu	%ymm8, 320(%rdx)
+	vmovdqu	%ymm8, 320(%r10)
 	vmovdqu	768(%rsp), %ymm8
 	vpxor	%ymm1, %ymm8, %ymm8
 	vmovdqu	%ymm8, 768(%rsp)
 	vpshufb	glob_data + 800(%rip), %ymm8, %ymm8
 	vpandn	%ymm8, %ymm7, %ymm9
 	vpxor	%ymm5, %ymm9, %ymm9
-	vmovdqu	%ymm9, 352(%rdx)
+	vmovdqu	%ymm9, 352(%r10)
 	vmovdqu	800(%rsp), %ymm9
 	vpxor	%ymm2, %ymm9, %ymm9
 	vmovdqu	%ymm9, 800(%rsp)
@@ -39219,13 +67100,13 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm9, %ymm10, %ymm9
 	vpandn	%ymm9, %ymm8, %ymm10
 	vpxor	%ymm7, %ymm10, %ymm7
-	vmovdqu	%ymm7, 384(%rdx)
+	vmovdqu	%ymm7, 384(%r10)
 	vpandn	%ymm3, %ymm9, %ymm7
 	vpxor	%ymm8, %ymm7, %ymm7
-	vmovdqu	%ymm7, 416(%rdx)
+	vmovdqu	%ymm7, 416(%r10)
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	%ymm9, %ymm3, %ymm3
-	vmovdqu	%ymm3, 448(%rdx)
+	vmovdqu	%ymm3, 448(%r10)
 	vmovdqu	288(%rsp), %ymm3
 	vpxor	%ymm1, %ymm3, %ymm3
 	vmovdqu	%ymm3, 288(%rsp)
@@ -39251,7 +67132,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	128(%rsp), %ymm5
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	96(%rsp), %ymm3, %ymm3
-	vmovdqu	%ymm3, 480(%rdx)
+	vmovdqu	%ymm3, 480(%r10)
 	vmovdqu	704(%rsp), %ymm3
 	vpxor	%ymm6, %ymm3, %ymm3
 	vmovdqu	%ymm3, 704(%rsp)
@@ -39262,7 +67143,7 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	64(%rsp), %ymm3
 	vpandn	%ymm3, %ymm5, %ymm5
 	vpxor	32(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 512(%rdx)
+	vmovdqu	%ymm5, 512(%r10)
 	vmovdqu	896(%rsp), %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
 	vmovdqu	%ymm5, 896(%rsp)
@@ -39271,15 +67152,15 @@ LKeccakF1600_StatePermute4x$1:
 	vmovdqu	(%rsp), %ymm5
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	128(%rsp), %ymm3, %ymm3
-	vmovdqu	%ymm3, 544(%rdx)
+	vmovdqu	%ymm3, 544(%r10)
 	vmovdqu	96(%rsp), %ymm3
 	vpandn	%ymm3, %ymm5, %ymm5
 	vpxor	64(%rsp), %ymm5, %ymm5
-	vmovdqu	%ymm5, 576(%rdx)
+	vmovdqu	%ymm5, 576(%r10)
 	vmovdqu	32(%rsp), %ymm5
 	vpandn	%ymm5, %ymm3, %ymm3
 	vpxor	(%rsp), %ymm3, %ymm3
-	vmovdqu	%ymm3, 608(%rdx)
+	vmovdqu	%ymm3, 608(%r10)
 	vmovdqu	224(%rsp), %ymm3
 	vpxor	%ymm6, %ymm3, %ymm3
 	vmovdqu	%ymm3, 224(%rsp)
@@ -39300,7 +67181,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm1, %ymm5, %ymm1
 	vpandn	%ymm1, %ymm0, %ymm5
 	vpxor	%ymm3, %ymm5, %ymm5
-	vmovdqu	%ymm5, 640(%rdx)
+	vmovdqu	%ymm5, 640(%r10)
 	vmovdqu	640(%rsp), %ymm5
 	vpxor	%ymm2, %ymm5, %ymm2
 	vmovdqu	%ymm2, 640(%rsp)
@@ -39309,7 +67190,7 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm2, %ymm5, %ymm2
 	vpandn	%ymm2, %ymm1, %ymm5
 	vpxor	%ymm0, %ymm5, %ymm5
-	vmovdqu	%ymm5, 672(%rdx)
+	vmovdqu	%ymm5, 672(%r10)
 	vmovdqu	832(%rsp), %ymm5
 	vpxor	%ymm4, %ymm5, %ymm4
 	vpsllq	$2, %ymm4, %ymm5
@@ -39317,14 +67198,14 @@ LKeccakF1600_StatePermute4x$1:
 	vpor	%ymm4, %ymm5, %ymm4
 	vpandn	%ymm4, %ymm2, %ymm5
 	vpxor	%ymm1, %ymm5, %ymm1
-	vmovdqu	%ymm1, 704(%rdx)
+	vmovdqu	%ymm1, 704(%r10)
 	vpandn	%ymm3, %ymm4, %ymm1
 	vpxor	%ymm2, %ymm1, %ymm1
-	vmovdqu	%ymm1, 736(%rdx)
+	vmovdqu	%ymm1, 736(%r10)
 	vpandn	%ymm0, %ymm3, %ymm0
 	vpxor	%ymm4, %ymm0, %ymm0
-	vmovdqu	%ymm0, 768(%rdx)
-	jmp 	*%r10
+	vmovdqu	%ymm0, 768(%r10)
+	jmp 	*%r11
 	.data
 	.globl	_glob_data
 	.globl	glob_data
