@@ -462,14 +462,7 @@ void KeccakP1600times4_PermuteAll_24rounds_debug(void *states)
     #endif
 
     copyFromState(A, statesAsLanes)
-    prepareTheta
-    thetaRhoPiChiIotaPrepareTheta( 0, A, E)
-    Aba = Ca;
-    Abe = Ce;
-    Abi = Ci;
-    Abo = Co;
-    Abu = Cu;
-    //thetaRhoPiChiIotaPrepareTheta( 2, A, E)
+    rounds24
     copyToState(statesAsLanes, A)
 }
 
