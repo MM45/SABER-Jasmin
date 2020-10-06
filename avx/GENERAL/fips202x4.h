@@ -102,4 +102,27 @@ void keccak_squeezeblocks4x_128_128_jazz(unsigned char *h0,
                                unsigned char *h3, 
                                __m256i *s);
 
+void keccak_squeezeblocks4x_128_KK13N8_jazz(unsigned char *h0, 
+                               unsigned char *h1, 
+                               unsigned char *h2, 
+                               unsigned char *h3, 
+                               __m256i *s);
+
+void keccak_squeezeblocks4x_128_MUNK8_jazz(unsigned char *h0, 
+                               unsigned char *h1, 
+                               unsigned char *h2, 
+                               unsigned char *h3, 
+                               __m256i *s);
+
+void keccak_squeezeblocks4x_256_256_jazz(unsigned char *h0, 
+                               unsigned char *h1, 
+                               unsigned char *h2, 
+                               unsigned char *h3, 
+                               __m256i *s);
+
+void keccak_squeezeblocks4x_512_512_jazz(unsigned char *h0, 
+                               unsigned char *h1, 
+                               unsigned char *h2, 
+                               unsigned char *h3, 
+                               __m256i *s);
 #endif

@@ -60,6 +60,19 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_PUBKEYBYTES \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_CCADEC \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_KeccakF1600_StatePermute4x \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_128_32 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_32 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_64 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_PUBKEYBYTES \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_CCADEC \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_512_64 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_32 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_128 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_KK13N8 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_MUNK8 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_256_256 \
+				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_512_512 \
 				${REGULARDIRECTORY}/test/test_poly_regular_GenSecret \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret \
@@ -258,6 +271,19 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_PUBKEYBYTES 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_CCADEC 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_KeccakF1600_StatePermute4x 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_128_32 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_32 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_64 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_PUBKEYBYTES 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_CCADEC 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_512_64 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_32 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_128 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_KK13N8 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_MUNK8 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_256_256 
+	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_512_512 
 	-rm ${REGULARDIRECTORY}/test/test_poly_regular_GenSecret 
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret

@@ -1,4 +1,4 @@
-/*** test_fips202x4_regular_keccak_squeezeblocks4x_128_128.c: File containing the unit test for the keccak_squeezeblocks_128_1284x function, with (regular) SABER parameters ***/
+/*** test_fips202x4_regular_keccak_squeezeblocks4x_128_128.c: File containing the unit test for the keccak_squeezeblocks4x_128_128 function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 #include <stdint.h>

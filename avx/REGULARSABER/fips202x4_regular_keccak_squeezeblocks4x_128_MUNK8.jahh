@@ -1,0 +1,32 @@
+/*** fips202x4_regular_keccak_squeezeblocks4x_128_MUNK8.jahh: File containing the Jasmin implementation of keccak_squeezeblocks4x function from fips202x4.c, where rate == SHAKE128, outlen == MUNK8 and with (regular) SABER parameters ***/
+
+#ifndef KECCAK_SQUEEZEBLOCKS4X_128_MUNK8_HH
+#define KECCAK_SQUEEZEBLOCKS4X_128_MUNK8_HH
+
+#include "SABER_params.jahh"
+#include "fips202x4_regular_KeccakF1600_StatePermute4x.jahh"
+#include "fips202x4_regular_store64.jahh"
+
+inline fn keccak_squeezeblocks4x_128_MUNK8(reg ptr u8[MUNK8] h0, reg ptr u8[MUNK8] h1, reg ptr u8[MUNK8] h2, reg ptr u8[MUNK8] h3, reg ptr u256[25] s) -> reg ptr u8[MUNK8], reg ptr u8[MUNK8], reg ptr u8[MUNK8], reg ptr u8[MUNK8], reg ptr u256[25]
+{
+	inline int i;
+	inline int j;
+	inline int iterations;
+
+	iterations = MUNK8 / SHAKE128_RATE;
+
+	for j = 0 to iterations {
+		s = KeccakF1600_StatePermute4x(s);
+
+		for i = 0 to (SHAKE128_RATE / 8) {
+			h0[j * SHAKE128_RATE + 8 * i:8] = store64(h0[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i]);
+			h1[j * SHAKE128_RATE + 8 * i:8] = store64(h1[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i + 1]);
+			h2[j * SHAKE128_RATE + 8 * i:8] = store64(h2[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i + 2]);
+			h3[j * SHAKE128_RATE + 8 * i:8] = store64(h3[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i + 3]);
+		}
+	}
+
+	return h0, h1, h2, h3, s;
+}
+
+#endif
