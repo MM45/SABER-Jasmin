@@ -48,5 +48,4 @@ int main()
 			printf("[!] Unit test failed.\nFunction:\t indcpa_kem_enc.\nReason:\tciphertext_c[%d] != ciphertext_jazz[%d] ==> %d != %d\n", i, i, ciphertext_c[i], ciphertext_jazz[i]);
 		}
 	}
-
 }

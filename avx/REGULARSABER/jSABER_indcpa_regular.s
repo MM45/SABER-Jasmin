@@ -10532,6 +10532,102 @@ indcpa_kem_enc_jazz:
 	movb	1087(%rcx), %al
 	movb	%al, 11527(%rsp)
 	movq	%rcx, 2560(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1024(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1056(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1088(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1120(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1152(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1184(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1216(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1248(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1280(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1312(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1344(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1376(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1408(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1440(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1472(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1504(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1536(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1568(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1600(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1632(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1664(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1696(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1728(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1760(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1792(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1824(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1856(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1888(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1920(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1952(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1984(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2016(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2048(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2080(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2112(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2144(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2176(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2208(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2240(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2272(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2304(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2336(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2368(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2400(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2432(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2464(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2496(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2528(%rsp)
 	vpbroadcastw	glob_data + 240(%rip), %ymm0
 	vpbroadcastw	glob_data + 242(%rip), %ymm1
 	vpbroadcastw	glob_data + 246(%rip), %ymm2
@@ -10606,109 +10702,13 @@ indcpa_kem_enc_jazz:
 	jmp 	LGenMatrix$1
 Lindcpa_kem_enc_jazz$4:
 	leaq	4632(%rsp), %rsp
-	leaq	1024(%rsp), %rax
+	leaq	3080(%rsp), %rax
 	leaq	9256(%rsp), %rdx
 	leaq	-1912(%rsp), %rsp
 	leaq	Lindcpa_kem_enc_jazz$3(%rip), 	%r13
 	jmp 	LGenSecret$1
 Lindcpa_kem_enc_jazz$3:
 	leaq	1912(%rsp), %rsp
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1024(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1056(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1088(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1120(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1152(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1184(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1216(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1248(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1280(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1312(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1344(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1376(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1408(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1440(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1472(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1504(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1536(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1568(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1600(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1632(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1664(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1696(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1728(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1760(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1792(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1824(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1856(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1888(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1920(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1952(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1984(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2016(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2048(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2080(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2112(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2144(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2176(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2208(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2240(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2272(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2304(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2336(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2368(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2400(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2432(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2464(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2496(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2528(%rsp)
 	vmovdqu	1024(%rsp), %ymm3
 	vpaddw	%ymm2, %ymm3, %ymm3
 	vpsrlw	$3, %ymm3, %ymm3
@@ -12419,21 +12419,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2568(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2584(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2584(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2570(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2586(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2586(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2572(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2588(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2588(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2574(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2590(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2590(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2576(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2592(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2592(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2578(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2594(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2594(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2580(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2596(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2596(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2582(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2598(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2598(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12442,21 +12442,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2600(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2616(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2616(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2602(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2618(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2618(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2604(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2620(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2620(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2606(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2622(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2622(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2608(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2624(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2624(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2610(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2626(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2626(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2612(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2628(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2628(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2614(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2630(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2630(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12465,21 +12465,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2632(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2648(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2648(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2634(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2650(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2650(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2636(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2652(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2652(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2638(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2654(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2654(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2640(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2656(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2656(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2642(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2658(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2658(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2644(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2660(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2660(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2646(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2662(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2662(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12488,21 +12488,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2664(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2680(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2680(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2666(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2682(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2682(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2668(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2684(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2684(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2670(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2686(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2686(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2672(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2688(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2688(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2674(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2690(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2690(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2676(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2692(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2692(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2678(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2694(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2694(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12511,21 +12511,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2696(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2712(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2712(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2698(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2714(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2714(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2700(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2716(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2716(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2702(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2718(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2718(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2704(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2720(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2720(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2706(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2722(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2722(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2708(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2724(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2724(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2710(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2726(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2726(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12534,21 +12534,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2728(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2744(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2744(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2730(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2746(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2746(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2732(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2748(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2748(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2734(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2750(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2750(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2736(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2752(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2752(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2738(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2754(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2754(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2740(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2756(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2756(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2742(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2758(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2758(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12557,21 +12557,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2760(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2776(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2776(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2762(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2778(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2778(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2764(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2780(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2780(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2766(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2782(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2782(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2768(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2784(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2784(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2770(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2786(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2786(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2772(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2788(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2788(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2774(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2790(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2790(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12580,21 +12580,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2792(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2808(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2808(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2794(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2810(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2810(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2796(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2812(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2812(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2798(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2814(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2814(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2800(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2816(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2816(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2802(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2818(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2818(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2804(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2820(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2820(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2806(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2822(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2822(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12603,21 +12603,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2824(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2840(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2840(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2826(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2842(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2842(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2828(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2844(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2844(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2830(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2846(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2846(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2832(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2848(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2848(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2834(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2850(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2850(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2836(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2852(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2852(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2838(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2854(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2854(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12626,21 +12626,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2856(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2872(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2872(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2858(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2874(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2874(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2860(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2876(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2876(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2862(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2878(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2878(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2864(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2880(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2880(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2866(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2882(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2882(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2868(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2884(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2884(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2870(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2886(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2886(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12649,21 +12649,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2888(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2904(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2904(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2890(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2906(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2906(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2892(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2908(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2908(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2894(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2910(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2910(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2896(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2912(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2912(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2898(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2914(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2914(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2900(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2916(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2916(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2902(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2918(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2918(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12672,21 +12672,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2920(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2936(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2936(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2922(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2938(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2938(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2924(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2940(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2940(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2926(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2942(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2942(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2928(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2944(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2944(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2930(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2946(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2946(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2932(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2948(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2948(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2934(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2950(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2950(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12695,21 +12695,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2952(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 2968(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 2968(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2954(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 2970(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 2970(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2956(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 2972(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 2972(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2958(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 2974(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 2974(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2960(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 2976(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 2976(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2962(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 2978(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 2978(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2964(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 2980(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 2980(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2966(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 2982(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 2982(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12718,21 +12718,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 2984(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 3000(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 3000(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 2986(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 3002(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 3002(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 2988(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 3004(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 3004(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 2990(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 3006(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 3006(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 2992(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 3008(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 3008(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 2994(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 3010(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 3010(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 2996(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 3012(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 3012(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 2998(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 3014(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 3014(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12741,21 +12741,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 3016(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 3032(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 3032(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 3018(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 3034(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 3034(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 3020(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 3036(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 3036(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 3022(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 3038(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 3038(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 3024(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 3040(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 3040(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 3026(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 3042(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 3042(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 3028(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 3044(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 3044(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 3030(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 3046(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 3046(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0
@@ -12764,21 +12764,21 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	glob_data + 32(%rip), %xmm2
 	vmovdqu	glob_data + 0(%rip), %ymm3
 	vpinsrw	$0, 3048(%rsp), %xmm0, %xmm0
-	vpinsrw	$8, 3064(%rsp), %xmm2, %xmm2
+	vpinsrw	$0, 3064(%rsp), %xmm2, %xmm2
 	vpinsrw	$1, 3050(%rsp), %xmm0, %xmm0
-	vpinsrw	$9, 3066(%rsp), %xmm2, %xmm2
+	vpinsrw	$1, 3066(%rsp), %xmm2, %xmm2
 	vpinsrw	$2, 3052(%rsp), %xmm0, %xmm0
-	vpinsrw	$10, 3068(%rsp), %xmm2, %xmm2
+	vpinsrw	$2, 3068(%rsp), %xmm2, %xmm2
 	vpinsrw	$3, 3054(%rsp), %xmm0, %xmm0
-	vpinsrw	$11, 3070(%rsp), %xmm2, %xmm2
+	vpinsrw	$3, 3070(%rsp), %xmm2, %xmm2
 	vpinsrw	$4, 3056(%rsp), %xmm0, %xmm0
-	vpinsrw	$12, 3072(%rsp), %xmm2, %xmm2
+	vpinsrw	$4, 3072(%rsp), %xmm2, %xmm2
 	vpinsrw	$5, 3058(%rsp), %xmm0, %xmm0
-	vpinsrw	$13, 3074(%rsp), %xmm2, %xmm2
+	vpinsrw	$5, 3074(%rsp), %xmm2, %xmm2
 	vpinsrw	$6, 3060(%rsp), %xmm0, %xmm0
-	vpinsrw	$14, 3076(%rsp), %xmm2, %xmm2
+	vpinsrw	$6, 3076(%rsp), %xmm2, %xmm2
 	vpinsrw	$7, 3062(%rsp), %xmm0, %xmm0
-	vpinsrw	$15, 3078(%rsp), %xmm2, %xmm2
+	vpinsrw	$7, 3078(%rsp), %xmm2, %xmm2
 	vinserti128	$0, %xmm0, %ymm3, %ymm0
 	vinserti128	$1, %xmm2, %ymm0, %ymm0
 	vpsllw	$9, %ymm0, %ymm0

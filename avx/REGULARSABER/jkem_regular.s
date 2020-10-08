@@ -11558,6 +11558,102 @@ Lcrypto_kem_dec_jazz$7:
 	movb	%cl, 62(%rax)
 	movb	9679(%rsp), %cl
 	movb	%cl, 63(%rax)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1536(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1568(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1600(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1632(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1664(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1696(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1728(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1760(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1792(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1824(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1856(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1888(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1920(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1952(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1984(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2016(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2048(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2080(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2112(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2144(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2176(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2208(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2240(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2272(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2304(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2336(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2368(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2400(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2432(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2464(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2496(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2528(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2560(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2592(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2624(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2656(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2688(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2720(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2752(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2784(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2816(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2848(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2880(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2912(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2944(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2976(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 3008(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 3040(%rsp)
 	vpbroadcastw	glob_data + 240(%rip), %ymm0
 	vpbroadcastw	glob_data + 242(%rip), %ymm1
 	vpbroadcastw	glob_data + 246(%rip), %ymm2
@@ -11632,109 +11728,13 @@ Lcrypto_kem_dec_jazz$7:
 	jmp 	LGenMatrix$1
 Lcrypto_kem_dec_jazz$6:
 	leaq	4632(%rsp), %rsp
-	leaq	1536(%rsp), %rax
+	leaq	3280(%rsp), %rax
 	leaq	9584(%rsp), %rdx
 	leaq	-1912(%rsp), %rsp
 	leaq	Lcrypto_kem_dec_jazz$5(%rip), 	%r14
 	jmp 	LGenSecret$1
 Lcrypto_kem_dec_jazz$5:
 	leaq	1912(%rsp), %rsp
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1536(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1568(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1600(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1632(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1664(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1696(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1728(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1760(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1792(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1824(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1856(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1888(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1920(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1952(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1984(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2016(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2048(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2080(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2112(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2144(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2176(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2208(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2240(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2272(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2304(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2336(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2368(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2400(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2432(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2464(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2496(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2528(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2560(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2592(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2624(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2656(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2688(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2720(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2752(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2784(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2816(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2848(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2880(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2912(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2944(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2976(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 3008(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 3040(%rsp)
 	vmovdqu	1536(%rsp), %ymm3
 	vpaddw	%ymm2, %ymm3, %ymm3
 	vpsrlw	$3, %ymm3, %ymm3
@@ -24695,6 +24695,102 @@ Lcrypto_kem_enc_randominc_jazz$7:
 	movb	%cl, 62(%rax)
 	movb	9687(%rsp), %cl
 	movb	%cl, 63(%rax)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1024(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1056(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1088(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1120(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1152(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1184(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1216(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1248(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1280(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1312(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1344(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1376(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1408(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1440(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1472(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1504(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1536(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1568(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1600(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1632(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1664(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1696(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1728(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1760(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1792(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1824(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1856(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1888(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1920(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1952(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1984(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2016(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2048(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2080(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2112(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2144(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2176(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2208(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2240(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2272(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2304(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2336(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2368(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2400(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2432(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2464(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2496(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 2528(%rsp)
 	vpbroadcastw	glob_data + 240(%rip), %ymm0
 	vpbroadcastw	glob_data + 242(%rip), %ymm1
 	vpbroadcastw	glob_data + 246(%rip), %ymm2
@@ -24769,109 +24865,13 @@ Lcrypto_kem_enc_randominc_jazz$7:
 	jmp 	LGenMatrix$1
 Lcrypto_kem_enc_randominc_jazz$6:
 	leaq	4632(%rsp), %rsp
-	leaq	1024(%rsp), %rax
+	leaq	3288(%rsp), %rax
 	leaq	9592(%rsp), %rdx
 	leaq	-1912(%rsp), %rsp
 	leaq	Lcrypto_kem_enc_randominc_jazz$5(%rip), 	%r14
 	jmp 	LGenSecret$1
 Lcrypto_kem_enc_randominc_jazz$5:
 	leaq	1912(%rsp), %rsp
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1024(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1056(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1088(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1120(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1152(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1184(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1216(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1248(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1280(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1312(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1344(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1376(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1408(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1440(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1472(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1504(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1536(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1568(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1600(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1632(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1664(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1696(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1728(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1760(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1792(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1824(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1856(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1888(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1920(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1952(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 1984(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2016(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2048(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2080(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2112(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2144(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2176(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2208(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2240(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2272(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2304(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2336(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2368(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2400(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2432(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2464(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2496(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm3
-	vmovdqu	%ymm3, 2528(%rsp)
 	vmovdqu	1024(%rsp), %ymm3
 	vpaddw	%ymm2, %ymm3, %ymm3
 	vpsrlw	$3, %ymm3, %ymm3
@@ -37354,6 +37354,102 @@ crypto_kem_keypair_randominc_jazz:
 	movb	%al, 7991(%rsp)
 	movq	%rdi, 1536(%rsp)
 	movq	%rsi, 1544(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, (%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 32(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 64(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 96(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 128(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 160(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 192(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 224(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 256(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 288(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 320(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 352(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 384(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 416(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 448(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 480(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 512(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 544(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 576(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 608(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 640(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 672(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 704(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 736(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 768(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 800(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 832(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 864(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 896(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 928(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 960(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 992(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1024(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1056(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1088(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1120(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1152(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1184(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1216(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1248(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1280(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1312(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1344(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1376(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1408(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1440(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1472(%rsp)
+	vmovdqu	glob_data + 0(%rip), %ymm0
+	vmovdqu	%ymm0, 1504(%rsp)
 	vpbroadcastw	glob_data + 240(%rip), %ymm0
 	vpbroadcastw	glob_data + 246(%rip), %ymm1
 	leaq	7928(%rsp), %rax
@@ -37810,102 +37906,6 @@ Lcrypto_kem_keypair_randominc_jazz$4:
 	jmp 	LGenSecret$1
 Lcrypto_kem_keypair_randominc_jazz$3:
 	leaq	1912(%rsp), %rsp
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, (%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 32(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 64(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 96(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 128(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 160(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 192(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 224(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 256(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 288(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 320(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 352(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 384(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 416(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 448(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 480(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 512(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 544(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 576(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 608(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 640(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 672(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 704(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 736(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 768(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 800(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 832(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 864(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 896(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 928(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 960(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 992(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1024(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1056(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1088(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1120(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1152(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1184(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1216(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1248(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1280(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1312(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1344(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1376(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1408(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1440(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1472(%rsp)
-	vmovdqu	glob_data + 0(%rip), %ymm2
-	vmovdqu	%ymm2, 1504(%rsp)
 	vmovdqu	(%rsp), %ymm2
 	vpaddw	%ymm1, %ymm2, %ymm2
 	vpsrlw	$3, %ymm2, %ymm2

@@ -587,7 +587,6 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
  reg u16 t16;
 
  stack u8[KK13N8] buf;
- stack u8[SABER_POLYBYTES] tbuf;
 
  stack u16[SABER_N] temp_ar;
 
@@ -2857,6 +2856,7 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
  stack u16[SABER_KN] pksv;
  stack u16[SABER_N] v;
  stack u16[SABER_N] op;
+
  sksv = BS2POLVECq(sk, sksv);
 
  pksv = BS2POLVECp(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], pksv);

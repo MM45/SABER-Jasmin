@@ -108,12 +108,11 @@ export fn cmov_jazz(reg u64 rp, reg u64 xp, reg u8 b)
  stack u8[SABER_KEYBYTES] r;
  stack u8[SABER_KEYBYTES] x;
 
-
  for i = 0 to SABER_KEYBYTES {
   r[i] = (u8) [rp + i];
   x[i] = (u8) [xp + i];
  }
-
+ rp += 1;
  r = cmov(r, x, b);
 
  for i = 0 to SABER_KEYBYTES {

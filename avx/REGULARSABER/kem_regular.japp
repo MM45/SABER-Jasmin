@@ -1098,12 +1098,14 @@ fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
 
 
-inline fn load_16u16(reg u256 r, stack u16[16] buf) -> reg u256
+inline fn load_16u16(stack u16[16] buf) -> reg u256
 {
  inline int i;
 
  reg u128 x;
  reg u128 y;
+
+ reg u256 r;
 
  x = zero_u128;
  y = zero_u128;
@@ -1162,6 +1164,12 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
  stack u256[SABER_KN / 16] res_avx;
 
 
+
+ for i = 0 to SABER_KN / 16 {
+  t256 = zero_u256;
+  res_avx[i] = t256;
+ }
+
  mod = #VPBROADCAST_16u16(modq_u16);
  H1_avx = #VPBROADCAST_16u16(h1_u16);
 
@@ -1174,7 +1182,7 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 
  for i = 0 to SABER_K {
   for j = 0 to SABER_N / 16 {
-   t256 = load_16u16(t256, skpv1[i * SABER_N + j * 16:16]);
+   t256 = load_16u16(skpv1[i * SABER_N + j * 16:16]);
    sk_avx[i * SABER_N / 16 + j] = t256;
   }
  }
@@ -1182,16 +1190,10 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
  for i = 0 to SABER_K {
   for j = 0 to SABER_K {
    for k = 0 to SABER_N / 16 {
-    t256 = load_16u16(t256, a[i * SABER_KN + j * SABER_N + k * 16:16]);
+    t256 = load_16u16(a[i * SABER_KN + j * SABER_N + k * 16:16]);
     a_avx[i * SABER_KN / 16 + j * SABER_N / 16 + k] = t256;
    }
   }
- }
-
-
- for i = 0 to SABER_KN / 16 {
-  t256 = zero_u256;
-  res_avx[i] = t256;
  }
 
 
@@ -1998,6 +2000,12 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
  stack u256[SABER_N / 16] message_avx;
 
 
+
+ for i = 0 to SABER_KN / 16 {
+  t256 = zero_u256;
+  res_avx[i] = t256;
+ }
+
  mod = #VPBROADCAST_16u16(modq_u16);
  modp = #VPBROADCAST_16u16(modp_u16);
  H1_avx = #VPBROADCAST_16u16(h1_u16);
@@ -2013,7 +2021,7 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
  for i = 0 to SABER_K {
   for j = 0 to SABER_N / 16 {
-   t256 = load_16u16(t256, skpv1[i * SABER_N + j * 16:16]);
+   t256 = load_16u16(skpv1[i * SABER_N + j * 16:16]);
    sk_avx[i * SABER_N / 16 + j] = t256;
   }
  }
@@ -2021,16 +2029,10 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
  for i = 0 to SABER_K {
   for j = 0 to SABER_K {
    for k = 0 to SABER_N / 16 {
-    t256 = load_16u16(t256, a[i * SABER_KN + j * SABER_N + k * 16:16]);
+    t256 = load_16u16(a[i * SABER_KN + j * SABER_N + k * 16:16]);
     a_avx[i * SABER_KN / 16 + j * SABER_N / 16 + k] = t256;
    }
   }
- }
-
-
- for i = 0 to SABER_KN / 16 {
-  t256 = zero_u256;
-  res_avx[i] = t256;
  }
 
 
@@ -2056,7 +2058,7 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
  for i = 0 to SABER_K {
   for j = 0 to SABER_N / 16 {
-   t256 = load_16u16(t256, pkcl[i * SABER_N + j * 16:16]);
+   t256 = load_16u16(pkcl[i * SABER_N + j * 16:16]);
    pkcl_avx[i * SABER_N / 16 + j] = t256;
   }
  }
@@ -2086,7 +2088,7 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
  }
 
  for i = 0 to SABER_N / 16 {
-  t256 = load_16u16(t256, message[i * 16:16]);
+  t256 = load_16u16(message[i * 16:16]);
   t256 <<16u16= (SABER_EP - 1);
   message_avx[i] = t256;
  }
@@ -2336,6 +2338,7 @@ inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYT
 }
 
 
+
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
  inline int i;
@@ -2367,9 +2370,9 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 
  for i = 0 to SABER_K {
   for j = 0 to SABER_N / 16 {
-   t256 = load_16u16(t256, sksv[i * SABER_N + j * 16:16]);
+   t256 = load_16u16(sksv[i * SABER_N + j * 16:16]);
    sksv_avx[i * SABER_N / 16 + j] = t256;
-   t256 = load_16u16(t256, pksv[i * SABER_N + j * 16:16]);
+   t256 = load_16u16(pksv[i * SABER_N + j * 16:16]);
    pksv_avx[i * SABER_N / 16 + j] = t256;
   }
  }

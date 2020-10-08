@@ -181,7 +181,7 @@ void indcpa_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned
 	
   __m256i sk_avx[SABER_K][SABER_N/16];
   __m256i mod;
-  __m256i res_avx[SABER_K][SABER_N/16];
+  __m256i res_avx[SABER_K][SABER_N/16] = {}; // TODO: remove initialization once multiplication is implemented.
   __m256i a_avx[SABER_K][SABER_K][SABER_N/16];
   //__m256i acc[2*SABER_N/16];
 
@@ -399,7 +399,7 @@ void indcpa_kem_enc(unsigned char *message_received, unsigned char *noiseseed, c
 	
 	  __m256i sk_avx[SABER_K][SABER_N/16];
 	  __m256i mod, mod_p;
-	  __m256i res_avx[SABER_K][SABER_N/16];
+	  __m256i res_avx[SABER_K][SABER_N/16] = {}; // TODO: remove initialization once multiplication is done.
 	  __m256i vprime_avx[SABER_N/16];
 	  __m256i a_avx[SABER_K][SABER_K][SABER_N/16];
 	  //__m256i acc[2*SABER_N/16];
@@ -424,7 +424,7 @@ void indcpa_kem_enc(unsigned char *message_received, unsigned char *noiseseed, c
 
 	//--------------AVX declaration ends------------------
 	//load_values();
-      
+
 	for(i=0;i<SABER_SEEDBYTES;i++){ // Load the seedbytes in the client seed from PK.
 		seed[i]=pk[ SABER_POLYVECCOMPRESSEDBYTES + i]; 
 	}
@@ -456,6 +456,7 @@ void indcpa_kem_enc(unsigned char *message_received, unsigned char *noiseseed, c
 			  }
 		  }
  	 }
+
 	//-----------------matrix-vector multiplication and rounding
  	/*
 	CLOCK1=cpucycles();
@@ -486,7 +487,6 @@ void indcpa_kem_enc(unsigned char *message_received, unsigned char *noiseseed, c
 	  }
 	
 	POLVEC2BS(ciphertext,temp, SABER_P); // Pack b_prime into ciphertext byte string
-
 //**************client matrix-vector multiplication ends******************//
 
 	//------now calculate the v'

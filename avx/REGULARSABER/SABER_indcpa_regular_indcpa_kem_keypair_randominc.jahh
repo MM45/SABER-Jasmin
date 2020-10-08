@@ -32,6 +32,12 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 	stack u256[SABER_KN / 16] res_avx;
 	//stack u256[SABER_K * 64] b_bucket;
 
+	// TODO: remove once multiplication is implemented
+	for i = 0 to SABER_KN / 16 {
+		t256 = zero_u256;
+		res_avx[i] = t256;
+	}
+
 	mod = #VPBROADCAST_16u16(modq_u16);
 	H1_avx = #VPBROADCAST_16u16(h1_u16);
 
@@ -56,12 +62,6 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 				a_avx[i * SABER_KN / 16 + j * SABER_N / 16 + k] = t256;
 			}
 		}
-	}
-
-	// TODO: remove once multiplication is implemented
-	for i = 0 to SABER_KN / 16 {
-		t256 = zero_u256;
-		res_avx[i] = t256;
 	}
 
 	//res = MatrixVectorMul(a, skpv, res, 1);

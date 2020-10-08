@@ -25,6 +25,7 @@ export fn verify_jazz(reg u64 ap, reg u64 bp) -> reg u64
 	return r;
 }
 */
+
 export fn cmov_jazz(reg u64 rp, reg u64 xp, reg u8 b)
 {
 	inline int i;
@@ -33,13 +34,12 @@ export fn cmov_jazz(reg u64 rp, reg u64 xp, reg u8 b)
 	
 	stack u8[SABER_KEYBYTES] r;
 	stack u8[SABER_KEYBYTES] x;
-	
 
 	for i = 0 to SABER_KEYBYTES {
 		r[i] = (u8) [rp + i];
 		x[i] = (u8) [xp + i];
 	}
-
+	
 	r = cmov(r, x, b);
 
 	for i = 0 to SABER_KEYBYTES {

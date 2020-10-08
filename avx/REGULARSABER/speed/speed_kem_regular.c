@@ -9,7 +9,7 @@
 #include "../test/randomtestdata.h"
 #include "../../GENERAL/kem.h"
 
-#define NRUNS 1000
+#define NRUNS 10000
 
 static inline uint64_t cpucycles(void) {
   uint64_t result;
@@ -59,15 +59,15 @@ int test_kem_cca()
 
 	unsigned char pk_c[SABER_PUBLICKEYBYTES];
 	unsigned char sk_c[SABER_SECRETKEYBYTES];
-	unsigned char c_c[SABER_BYTES_CCA_DEC];	
-	unsigned char k_a_c[SABER_KEYBYTES];
-	unsigned char k_b_c[SABER_KEYBYTES];
+	unsigned char c_c[SABER_BYTES_CCA_DEC] = {};	
+	unsigned char k_a_c[SABER_KEYBYTES] = {};
+	unsigned char k_b_c[SABER_KEYBYTES] = {};
 
 	unsigned char pk_jazz[SABER_PUBLICKEYBYTES];
 	unsigned char sk_jazz[SABER_SECRETKEYBYTES];
-	unsigned char c_jazz[SABER_BYTES_CCA_DEC];	
-	unsigned char k_a_jazz[SABER_KEYBYTES];
-	unsigned char k_b_jazz[SABER_KEYBYTES];
+	unsigned char c_jazz[SABER_BYTES_CCA_DEC] = {};	
+	unsigned char k_a_jazz[SABER_KEYBYTES] = {};
+	unsigned char k_b_jazz[SABER_KEYBYTES] = {};
 
 	uint64_t i, j;
 	uint64_t t_kp_c[NRUNS];
@@ -180,7 +180,7 @@ int test_kem_cca()
 	    
 	    //Key-Decapsulation call; input: sk, c; output: shared-secret k_b; Jasmin
 	    CLOCK1 = cpucycles();
-	    crypto_kem_dec_jazz(k_b_jazz, c_c, sk_c);
+	    crypto_kem_dec_jazz(k_b_jazz, c_jazz, sk_c);
 	    CLOCK2 = cpucycles();	
 	    t_dec_jazz[i] = CLOCK2 - CLOCK1;	
 
