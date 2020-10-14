@@ -36,12 +36,6 @@ export fn sha3_256_CCADEC_jazz(reg u64 outputp, reg u64 inputp)
 
 	stack u64 soutputp;
 
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to 32 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
-
 	for i = 0 to SABER_BYTES_CCA_DEC {
 		t = (u8) [inputp + i];
 		input[i] = t;
@@ -71,12 +65,6 @@ export fn sha3_256_PUBKEYBYTES_jazz(reg u64 outputp, reg u64 inputp)
 
 	stack u64 soutputp;
 
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to 32 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
-
 	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
 		t = (u8) [inputp + i];
 		input[i] = t;
@@ -105,12 +93,6 @@ export fn sha3_256_64_jazz(reg u64 outputp, reg u64 inputp)
 	stack u8[64] input;
 
 	stack u64 soutputp;
-
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to 32 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
 
 	for i = 0 to 64 {
 		t = (u8) [inputp + i];
@@ -145,12 +127,6 @@ export fn keccak_squeezeblocks_256_256_jazz(reg u64 hp, reg u64 sp)
 
 	stack u64 shp;
 	stack u64 ssp;
-
-	// TODO: Technically not necessary to copy, as h is only used as output
-	for i = 0 to SHA3_256_RATE {
-		th = (u8) [hp + i];
-		h[i] = th;
-	}
 
 	for i = 0 to 25 {
 		ts = (u64) [sp + 8 * i];
@@ -193,7 +169,6 @@ export fn keccak_squeezeblocks_128_MUNK8_jazz(reg u64 hp, reg u64 sp)
 	stack u64 shp;
 	stack u64 ssp;
 
-	// TODO: Technically not necessary to copy, as h is only used as output
 	for i = 0 to MUNK8 {
 		th = (u8) [hp + i];
 		h[i] = th;
@@ -236,12 +211,6 @@ export fn shake128_KK13N8_32_jazz(reg u64 outputp, reg u64 inputp)
 
 	stack u64 soutputp;
 
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to KK13N8 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
-
 	for i = 0 to 32 {
 		t = (u8) [inputp + i];
 		input[i] = t;
@@ -275,7 +244,6 @@ export fn keccak_squeezeblocks_128_KK13N8_jazz(reg u64 hp, reg u64 sp)
 	stack u64 shp;
 	stack u64 ssp;
 
-	// TODO: Technically not necessary to copy, as h is only used as output
 	for i = 0 to KK13N8 {
 		th = (u8) [hp + i];
 		h[i] = th;
@@ -317,12 +285,6 @@ export fn shake128_32_32_jazz(reg u64 outputp, reg u64 inputp)
 
 	stack u64 soutputp;
 
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to 32 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
-
 	for i = 0 to 32 {
 		t = (u8) [inputp + i];
 		input[i] = t;
@@ -355,13 +317,6 @@ export fn keccak_squeezeblocks_128_128_jazz(reg u64 hp, reg u64 sp)
 
 	stack u64 shp;
 	stack u64 ssp;
-
-
-	// TODO: Technically not necessary to copy, as h is only used as output
-	for i = 0 to SHAKE128_RATE {
-		th = (u8) [hp + i];
-		h[i] = th;
-	}
 
 	for i = 0 to 25 {
 		ts = (u64) [sp + 8 * i];
@@ -398,12 +353,6 @@ export fn shake128_MUNK8_32_jazz(reg u64 outputp, reg u64 inputp)
 	stack u8[32] input;
 
 	stack u64 soutputp;
-
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to MUNK8 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
 
 	for i = 0 to 32 {
 		t = (u8) [inputp + i];
@@ -474,12 +423,6 @@ export fn keccak_squeezeblocks_512_512_jazz(reg u64 hp, reg u64 sp)
 
 	stack u64 shp;
 	stack u64 ssp;
-
-	// TODO: Technically not necessary to copy, as h is only used as output
-	for i = 0 to SHA3_512_RATE {
-		th = (u8) [hp + i];
-		h[i] = th;
-	}
 
 	for i = 0 to 25 {
 		ts = (u64) [sp + 8 * i];
@@ -700,12 +643,6 @@ export fn sha3_256_32_jazz(reg u64 outputp, reg u64 inputp)
 
 	stack u64 soutputp;
 
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to 32 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
-
 	for i = 0 to 32 {
 		t = (u8) [inputp + i];
 		input[i] = t;
@@ -735,12 +672,6 @@ export fn sha3_512_64_jazz(reg u64 outputp, reg u64 inputp)
 	stack u8[64] input;
 
 	stack u64 soutputp;
-
-	// TODO: Technically not necessary to copy, as output is only used as output
-	for i = 0 to 64 {
-		t = (u8) [outputp + i];
-		output[i] = t;
-	}
 
 	for i = 0 to 64 {
 		t = (u8) [inputp + i];
@@ -786,12 +717,6 @@ export fn store64_jazz(reg u64 xp, reg u64 u)
 	reg u8 t;
 
 	stack u8[8] x;
-
-	// TODO: technically not necessary, as x is only used as an output array
-	for i = 0 to 8 {
-		t = (u8) [xp + i];
-		x[i] = t;
-	}
 
 	x = store64(x, u);
 

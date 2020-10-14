@@ -22,9 +22,9 @@ fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
 			// bytes[offset_byte + 1]= ( (data[i][ offset_data + 0 ] >>8) & 0x03 ) | ((data[i][ offset_data + 1 ] & 0x3f) << 2);
 			d1 = data[i * SABER_N + 4 * j];
+			d2 = data[i * SABER_N + 4 * j + 1];
 			d1 >>= 8;
 			d1 &= 0x03;
-			d2 = data[i * SABER_N + 4 * j + 1];
 			d2 &= 0x3f;
 			d2 <<= 2;
 			d1 |= d2;
@@ -32,9 +32,9 @@ fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
 			// bytes[offset_byte + 2]= ( (data[i][ offset_data + 1 ] >>6) & 0x0f ) | ( (data[i][ offset_data + 2 ] &0x0f) << 4);
 			d1 = data[i * SABER_N + 4 * j + 1];
+			d2 = data[i * SABER_N + 4 * j + 2];
 			d1 >>= 6;
 			d1 &= 0x0f;
-			d2 = data[i * SABER_N + 4 * j + 2];
 			d2 &= 0x0f;
 			d2 <<= 4;
 			d1 |= d2;
@@ -42,9 +42,9 @@ fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
 			// bytes[offset_byte + 3]= ( (data[i][ offset_data + 2 ] >>4) & 0x3f ) | ((data[i][ offset_data + 3 ] & 0x03) << 6);
 			d1 = data[i * SABER_N + 4 * j + 2];
+			d2 = data[i * SABER_N + 4 * j + 3];
 			d1 >>= 4;
 			d1 &= 0x3f;
-			d2 = data[i * SABER_N + 4 * j + 3];
 			d2 &= 0x03;
 			d2 <<= 6;
 			d1 |= d2;
