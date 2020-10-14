@@ -23,6 +23,10 @@ typedef struct{
 
 void GenSecret(uint16_t r[SABER_K][SABER_N],const unsigned char *seed);
 
+
+
+/** C wrappers for Jasmin equivalent of above functions, used for unit testing **/
+
 void GenSecret_jazz(uint16_t r[SABER_K][SABER_N],const unsigned char *seed);
 
 #endif

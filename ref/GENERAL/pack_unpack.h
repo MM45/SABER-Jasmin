@@ -18,13 +18,13 @@ void SABER_pack_6bit(uint8_t *bytes, uint16_t *data);
 void SABER_un_pack6bit(const unsigned char *bytes, uint16_t *data);
 
 
-void POLVECp2BS(uint8_t *bytes, uint16_t data[SABER_K][SABER_N]); // TODO: Only in header for unit test purposes
+void POLVECp2BS(uint8_t *bytes, uint16_t data[SABER_K][SABER_N]); // Only in header for unit test purposes
 
-void POLVECq2BS(uint8_t *bytes, uint16_t data[SABER_K][SABER_N]); // TODO: Only in header for unit test purposes
+void POLVECq2BS(uint8_t *bytes, uint16_t data[SABER_K][SABER_N]); // Only in header for unit test purposes
 
-void BS2POLVECp(const unsigned char *bytes, uint16_t data[SABER_K][SABER_N]); // TODO: Only in header for unit test purposes
+void BS2POLVECp(const unsigned char *bytes, uint16_t data[SABER_K][SABER_N]); // Only in header for unit test purposes
 
-void BS2POLVECq(const unsigned char *bytes, uint16_t data[SABER_K][SABER_N]); // TODO: Only in header for unit test purposes
+void BS2POLVECq(const unsigned char *bytes, uint16_t data[SABER_K][SABER_N]); // Only in header for unit test purposes
 
 void BS2POL(const unsigned char *bytes, uint16_t data[SABER_N]);
 

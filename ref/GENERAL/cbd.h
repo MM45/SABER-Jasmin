@@ -10,15 +10,11 @@ Vadim Lyubashevsky, John M. Schanck, Peter Schwabe & Damien stehle
 
 #include <stdint.h>
 
-uint64_t load_littleendian(const unsigned char *x, int bytes); // TODO: Only in header for unit test purposes
-
 void cbd(uint16_t *r, const unsigned char *buf);
 
 
 
 /** C wrappers for Jasmin equivalent of above functions, used for unit testing **/
-
-uint64_t load_littleendian_jazz(const unsigned char *x);
 
 void cbd_jazz(uint16_t *r, const unsigned char *buf);
 
