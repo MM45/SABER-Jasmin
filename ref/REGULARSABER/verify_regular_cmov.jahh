@@ -13,7 +13,6 @@ inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b)
 
 	reg u64 t64;
 	
-	// TODO: Correct way of doing this?
 	t64 = (64u) b;
 	t64 *= -1;
 	b = (8u) t64;

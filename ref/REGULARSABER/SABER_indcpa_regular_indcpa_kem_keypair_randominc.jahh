@@ -14,7 +14,6 @@
 inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_SEEDBYTES] seed, stack u8[SABER_COINBYTES] noiseseed) -> stack u8[SABER_INDCPA_PUBLICKEYBYTES], stack u8[SABER_INDCPA_SECRETKEYBYTES]
 {
 	inline int i;
-	inline int j;
 
 	reg u8 t8;
 

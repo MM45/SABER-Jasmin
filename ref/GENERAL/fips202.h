@@ -28,7 +28,7 @@ void sha3_512(unsigned char *output, const unsigned char *input,  unsigned long 
 
 /** C wrappers for Jasmin equivalent of above functions, used for unit testing **/
 
-uint64_t load64_jazz(const unsigned char *x); Only in header for unit test purposes; Removed static modifier for unit test purposes
+uint64_t load64_jazz(const unsigned char *x); // Only in header for unit test purposes; Removed static modifier for unit test purposes
 
 void store64_jazz(uint8_t *x, uint64_t u); 
 
@@ -41,7 +41,7 @@ void shake128_KK13N8_32_jazz(unsigned char *output, const unsigned char *input);
 void keccak_absorb_128_32_jazz(uint64_t *s, const unsigned char *m); 
 
 void keccak_absorb_256_32_jazz(uint64_t *s, const unsigned char *m); 
-void keccak_absorb_256_64_jazz(uint64_t *s, const unsigned char *m); /
+void keccak_absorb_256_64_jazz(uint64_t *s, const unsigned char *m);
 void keccak_absorb_256_PUBKEYBYTES_jazz(uint64_t *s, const unsigned char *m); 
 void keccak_absorb_256_CCADEC_jazz(uint64_t *s, const unsigned char *m); 
 

@@ -200,9 +200,7 @@ inline fn toom_cook_4way(reg ptr u16[SABER_N] a1, reg ptr u16[SABER_N] b1, reg p
 
 		// r3 = ((r3-r2) >> 1);
 		p1 = (32u) r3;
-		//p1 = (32s) p1;
 		p2 = (32u) r2;
-		//p2 = (32s) p2;
 		p1 -= p2;
 		p1 >>= 1;
 		r3 = (16u) p1;
@@ -235,10 +233,8 @@ inline fn toom_cook_4way(reg ptr u16[SABER_N] a1, reg ptr u16[SABER_N] b1, reg p
 
 	 	// r4 = ( ( ( r4 - ( r2 << 3 ) ) * inv3 ) >> 3 );
 	 	p1 = (32u) r2;
-	 	//p1 = (32s) p1;
 	 	p1 <<= 3;
 	 	p2 = (32u) r4;
-	 	//p2 = (32s) p2;
 	 	p2 -= p1;
 	 	p2 *= 43691;
 	 	p2 >>= 3;
@@ -248,10 +244,8 @@ inline fn toom_cook_4way(reg ptr u16[SABER_N] a1, reg ptr u16[SABER_N] b1, reg p
 
 	 	// r1 = ( ( ( r1 + ( r3 << 4 ) ) * inv9 ) >> 1 );
 	 	p1 = (32u) r3;
-	 	//p1 = (32s) p1;
 	 	p1 <<= 4;
 	 	p2 = (32u) r1;
-	 	//p2 = (32s) p2;
 	 	p2 += p1;
 	 	p2 *= 36409;
 	 	p2 >>= 1;
@@ -259,19 +253,15 @@ inline fn toom_cook_4way(reg ptr u16[SABER_N] a1, reg ptr u16[SABER_N] b1, reg p
 
 	 	// r3 = -(r3 + r1);
 	 	p1 = (32u) r3;
-	 	//p1 = (32s) p1;
 	 	p2 = (32u) r1;
-	 	//p2 = (32s) r1;
 	 	p1 += p2;
 	 	p1 *= -1;
 	 	r3 = (16u) p1;
 
 	 	// r5 = ( ( ( 30 * r1 - r5 ) * inv15 ) >> 2 );
 	 	p1 = (32u) r1;
-	 	//p1 = (32s) p1;
 	 	p1 *= 30;
 	 	p2 = (32u) r5;
-	 	//p2 = (32s) p2;
 	 	p1 -= p2;
 	 	p1 *= 61167;
 	 	p1 >>= 2;

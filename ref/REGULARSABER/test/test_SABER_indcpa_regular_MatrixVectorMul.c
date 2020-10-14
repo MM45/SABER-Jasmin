@@ -13,7 +13,6 @@ int main()
 	// Loop variables
 	int i;
 	int j;
-	int k;
 
 	// Declare variables for test
 	polyvec a[SABER_K];
@@ -25,16 +24,9 @@ int main()
 
 	// Initialize variables for test
 	for (i = 0; i < SABER_K; ++i) {
-		polyvec* tv = &a[i];
-
 		for (j = 0; j < SABER_K; ++j) {
-			poly* tp = &tv->vec[j];
-
-			for (k = 0; k < SABER_N; ++k) {
-				random_test_16bit_blocks((uint16_t *) tp, SABER_N);
-			}
-			
-		}
+			random_test_16bit_blocks((uint16_t *) &a[i].vec[j], SABER_N);
+		}	
 
 		random_test_16bit_blocks(skpv[i], SABER_N);
 

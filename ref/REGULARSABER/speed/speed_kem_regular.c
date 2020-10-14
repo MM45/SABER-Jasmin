@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "../SABER_params.h"
+#include "SABER_params.h"
 #include "../test/randomtestdata.h"
 #include "../../GENERAL/kem.h"
 

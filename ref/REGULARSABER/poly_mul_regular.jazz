@@ -1,15 +1,11 @@
 /*** poly_mul_regular.jazz: File containing the Jasmin wrappers of the functions in the poly_mul_regular*.jahh files, only used for unit testing ***/
 
 #include "SABER_params.jahh"
-//#include "poly_mul_regular_karatsuba_simple.jahh"
+#include "poly_mul_regular_karatsuba_simple.jahh"
 #include "poly_mul_regular_toom_cook_4way.jahh"
-//#include "poly_mul_regular_pol_mul_p.jahh"
+#include "poly_mul_regular_pol_mul_p.jahh"
 #include "poly_mul_regular_pol_mul_q.jahh"
-//#include "poly_mul_regular_toom_cook_4way_debug.jahh"
 
-
-
-/*
 export fn karatsuba_simple_jazz(reg u64 ap, reg u64 bp, reg u64 result_finalp)
 {
 	inline int i;
@@ -30,12 +26,6 @@ export fn karatsuba_simple_jazz(reg u64 ap, reg u64 bp, reg u64 result_finalp)
 	for i = 0 to N_SB {
 		t = (u16) [bp + 2 * i];
 		b_1[i] = t;
-	}
-
-	// TODO: Technically not necessary to copy, as result_final contains no relevant content on input, is only used as a result array
-	for i = 0 to N_SB_RES {
-		t = (u16) [result_finalp + 2 * i];
-		result_final[i] = t;
 	}
 
 	sresult_finalp = result_finalp;
@@ -112,12 +102,6 @@ export fn pol_mul_p_jazz(reg u64 ap, reg u64 bp, reg u64 resp)
 		b[i] = t;
 	}
 
-	// TODO: Technically not necessary to copy, as res contains no relevant content on input, is only used as a result array
-	for i = 0 to SABER_N {
-		t = (u16) [resp + 2 * i];
-		res[i] = t;
-	}
-
 	sresp = resp;
 
 	res = pol_mul_p(a, b, res);
@@ -129,7 +113,6 @@ export fn pol_mul_p_jazz(reg u64 ap, reg u64 bp, reg u64 resp)
 		(u16) [resp + 2 * i] = t;
 	}	
 }
-*/
 
 export fn pol_mul_q_jazz(reg u64 ap, reg u64 bp, reg u64 resp)
 {
@@ -153,12 +136,6 @@ export fn pol_mul_q_jazz(reg u64 ap, reg u64 bp, reg u64 resp)
 		b[i] = t;
 	}
 
-	// TODO: Technically not necessary to copy, as res contains no relevant content on input, is only used as a result array
-	for i = 0 to SABER_N {
-		t = (u16) [resp + 2 * i];
-		res[i] = t;
-	}
-
 	sresp = resp;
 
 	res = pol_mul_q(a, b, res);
@@ -170,33 +147,3 @@ export fn pol_mul_q_jazz(reg u64 ap, reg u64 bp, reg u64 resp)
 		(u16) [resp + 2 * i] = t;
 	}	
 }
-
-
-/*
-export fn toom_cook_4way_debug_jazz(reg u64 ap, reg u64 bp, reg u64 rp) {
-	inline int i;
-
-	reg u16 t;
-
-	stack u16[SABER_N] a1;
-	stack u16[SABER_N] b1;
-	stack u16[14] r;
-
-	for i = 0 to SABER_N {
-		t = (u16) [ap + 2 * i];
-		a1[i] = t;
-	}
-
-	for i = 0 to SABER_N {
-		t = (u16) [bp + 2 * i];
-		b1[i] = t;
-	}
-
-	r = toom_cook_4way_debug(a1, b1);
-
-	for i = 0 to 14 {
-		t = r[i];
-		(u16) [rp + 2 * i] = t;
-	}
-}
-*/

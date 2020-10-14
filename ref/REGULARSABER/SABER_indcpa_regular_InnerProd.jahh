@@ -35,8 +35,6 @@ inline fn InnerProd(reg ptr u16[SABER_KN] pkcl, reg ptr u16[SABER_KN] skpv, reg 
 
 			res[k] += t;
 			res[k] &= (SABER_P - 1);
-			
-			acc[k] = 0;
 		}
 	}
 
