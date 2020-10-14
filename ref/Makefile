@@ -1,5 +1,5 @@
 CC = /usr/bin/gcc
-CFLAGS = -Wall -Wextra -g -mavx2
+CFLAGS = -Wall -Wextra -g
 LDFLAGS = -lssl -lcrypto
 JASMIN = ../compiler/jasminc
 JFLAGS = -lea -pasm ${JADDFLAGS}
@@ -12,7 +12,7 @@ FIREDIRECTORY = FIRESABER
 
 
 
-.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jpoly_mul_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jfips202x4_regular.s
+.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jpoly_mul_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s
 
 default: test_all speed_all
 
@@ -40,6 +40,8 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_MatrixVectorMul \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_InnerProd \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG \
+				${REGULARDIRECTORY}/test/test_fips202_regular_load64 \
+				${REGULARDIRECTORY}/test/test_fips202_regular_store64 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_KeccakF1600_StatePermute \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_128_32 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_32 \
@@ -60,22 +62,8 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_PUBKEYBYTES \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_CCADEC \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_KeccakF1600_StatePermute4x \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_128_32 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_32 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_64 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_PUBKEYBYTES \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_CCADEC \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_512_64 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_128 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_KK13N8 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_MUNK8 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_256_256 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_512_512 \
 				${REGULARDIRECTORY}/test/test_poly_regular_GenSecret \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix \
-				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret \
-				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_BS2POLq \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_keypair_randominc \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_enc \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_dec \
@@ -90,6 +78,7 @@ test_fire: ${FIREDIRECTORY}/test/test_pack_unpack_fire_SABER_pack_6bit \
 
 
 speed_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular \
+
 
 
 ##### GENERAL #####
@@ -144,12 +133,6 @@ ${REGULARDIRECTORY}/test/test_poly_regular_%: ${REGULARDIRECTORY}/test/test_poly
 ${REGULARDIRECTORY}/test/test_kem_regular_%: ${REGULARDIRECTORY}/test/test_kem_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s
 	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_auxilliary_%: ${REGULARDIRECTORY}/test/test_auxilliary_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jauxilliary.s
-	${CC} ${CFLAGS} -iquote $${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jauxilliary.s $< ${LDFLAGS}
-
-${REGULARDIRECTORY}/test/test_fips202x4_regular_%: ${REGULARDIRECTORY}/test/test_fips202x4_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jfips202x4_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jfips202x4_regular.s $< ${LDFLAGS}
-
 
 ${REGULARDIRECTORY}/speed/speed_kem_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${HEADERSREGULAR} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s
 	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESREGULAR} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
@@ -179,19 +162,13 @@ ${REGULARDIRECTORY}/poly_regular.japp: ${REGULARDIRECTORY}/poly_regular.jazz ${J
 ${REGULARDIRECTORY}/kem_regular.japp: ${REGULARDIRECTORY}/kem_regular.jazz ${JHEADERSREGULAR}
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
-${REGULARDIRECTORY}/auxilliary.japp: ${REGULARDIRECTORY}/auxilliary.jazz ${JHEADERSREGULAR}
-	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
-
-${REGULARDIRECTORY}/fips202x4_regular.japp: ${REGULARDIRECTORY}/fips202x4_regular.jazz ${JHEADERSREGULAR}
-	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
-
 
 ${REGULARDIRECTORY}/j%.s: ${REGULARDIRECTORY}/%.japp
 	$(JASMIN) $(JFLAGS) $^ > $@
 
 
 
-##### FIRESABER #####
+##### FIRESABER #####				
 JHEADERSFIRE = $(wildcard ${FIREDIRECTORY}/*.jahh)
 
 
@@ -258,23 +235,10 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_PUBKEYBYTES 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_CCADEC 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_KeccakF1600_StatePermute4x 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_128_32 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_32 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_64 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_PUBKEYBYTES 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_CCADEC 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_512_64 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_32 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_128 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_KK13N8 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_MUNK8 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_256_256 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_512_512 
+	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_load64
+	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_store64
 	-rm ${REGULARDIRECTORY}/test/test_poly_regular_GenSecret 
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix
-	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret
-	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_BS2POLq
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_keypair_randominc
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_enc
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_dec
