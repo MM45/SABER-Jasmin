@@ -1,0 +1,184 @@
+
+
+
+
+
+
+
+
+
+param int CRYPTO_SECRETKEYBYTES = 2304;
+param int CRYPTO_PUBLICKEYBYTES = (3 * 320 + 32);
+param int CRYPTO_BYTES = 32;
+param int CRYPTO_CIPHERTEXTBYTES = 1088;
+param int Saber_type = 2;
+
+param int SABER_K = 3;
+param int SABER_MU = 8;
+param int SABER_ET = 4;
+
+param int SABER_EQ = 13;
+param int SABER_EP = 10;
+
+param int SABER_N = 256;
+param int SABER_Q = 8192;
+param int SABER_P = 1024;
+
+param int SABER_SEEDBYTES = 32;
+param int SABER_NOISESEEDBYTES = 32;
+param int SABER_COINBYTES = 32;
+param int SABER_KEYBYTES = 32;
+
+param int SABER_HASHBYTES = 32;
+
+param int SABER_POLYBYTES = 416;
+
+param int SABER_POLYVECBYTES = (SABER_K * SABER_POLYBYTES);
+
+param int SABER_POLYVECCOMPRESSEDBYTES = (SABER_K * 320);
+
+param int SABER_CIPHERTEXTBYTES = (SABER_POLYVECCOMPRESSEDBYTES);
+
+
+
+param int SABER_SCALEBYTES_KEM = (SABER_ET * SABER_N / 8);
+
+param int SABER_INDCPA_PUBLICKEYBYTES = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SEEDBYTES);
+param int SABER_INDCPA_SECRETKEYBYTES = (SABER_POLYVECBYTES);
+
+param int SABER_PUBLICKEYBYTES = (SABER_INDCPA_PUBLICKEYBYTES);
+
+param int SABER_SECRETKEYBYTES = (SABER_INDCPA_SECRETKEYBYTES + SABER_INDCPA_PUBLICKEYBYTES + SABER_HASHBYTES + SABER_KEYBYTES);
+
+param int SABER_BYTES_CCA_DEC = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SCALEBYTES_KEM);
+
+
+
+param int SABER_KN = (SABER_K * SABER_N);
+param int SABER_KKN = (SABER_K * SABER_K * SABER_N);
+param int N_SB = (SABER_N / 4);
+param int N_SB_RES = (2 * N_SB - 1);
+
+param int SHAKE128_RATE = 168;
+param int SHAKE256_RATE = 136;
+param int SHA3_256_RATE = 136;
+param int SHA3_512_RATE = 72;
+
+param int KK13N8 = (SABER_K * SABER_K * (13 * SABER_N / 8));
+param int MUNK8 = (SABER_MU * SABER_N * SABER_K / 8);
+
+param int h1 = 4;
+param int h2 = 228;
+
+
+
+
+
+
+inline fn verify(stack u8[SABER_BYTES_CCA_DEC] a, stack u8[SABER_BYTES_CCA_DEC] b) -> reg u64
+{
+ inline int i;
+
+ reg u8 t8;
+ reg u8 tr;
+
+ reg u64 r;
+
+ tr = 0;
+ for i = 0 to SABER_BYTES_CCA_DEC {
+
+  t8 = a[i];
+  t8 ^= b[i];
+  tr |= t8;
+ }
+
+
+ r = (64u) tr;
+ r *= -1;
+ r >>= 63;
+
+ return r;
+}
+
+
+
+
+
+
+
+inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b) -> stack u8[SABER_KEYBYTES]
+{
+ inline int i;
+
+ reg u8 t8;
+
+ reg u64 t64;
+
+ t64 = (64u) b;
+ t64 *= -1;
+ b = (8u) t64;
+
+ for i = 0 to SABER_KEYBYTES {
+
+  t8 = x[i];
+  t8 ^= r[i];
+  t8 &= b;
+  r[i] ^= t8;
+ }
+
+ return r;
+}
+
+export fn verify_jazz(reg u64 ap, reg u64 bp) -> reg u64
+{
+ inline int i;
+
+ reg u8 t;
+
+ reg u64 r;
+
+ stack u8[SABER_BYTES_CCA_DEC] a;
+ stack u8[SABER_BYTES_CCA_DEC] b;
+
+ for i = 0 to SABER_BYTES_CCA_DEC {
+  t = (u8) [ap + i];
+  a[i] = t;
+ }
+
+ for i = 0 to SABER_BYTES_CCA_DEC {
+  t = (u8) [bp + i];
+  b[i] = t;
+ }
+
+ r = verify(a, b);
+
+ return r;
+}
+
+export fn cmov_jazz(reg u64 rp, reg u64 xp, reg u8 b)
+{
+ inline int i;
+
+ reg u8 t;
+
+ stack u8[SABER_KEYBYTES] r;
+ stack u8[SABER_KEYBYTES] x;
+
+ for i = 0 to SABER_KEYBYTES {
+  t = (u8) [rp + i];
+  r[i] = t;
+
+ }
+
+ for i = 0 to SABER_KEYBYTES {
+  t = (u8) [xp + i];
+  x[i] = t;
+ }
+
+ r = cmov(r, x, b);
+
+ for i = 0 to SABER_KEYBYTES {
+  t = r[i];
+  (u8) [rp + i] = t;
+ }
+}

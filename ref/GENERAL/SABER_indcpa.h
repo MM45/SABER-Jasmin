@@ -6,7 +6,7 @@
 
 void indcpa_kem_keypair(unsigned char *pk, unsigned char *sk);
 
-void indcpa_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned char seed[SABER_SEEDBYTES], unsigned char noiseseed[SABER_COINBYTES]); // randomness included instead of via randombytes
+void indcpa_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned char seed[SABER_SEEDBYTES], unsigned char noiseseed[SABER_COINBYTES]); // Randomness included instead of via randombytes
 
 void indcpa_kem_enc(unsigned char *message, unsigned char *noiseseed, const unsigned char *pk, unsigned char *ciphertext);
 

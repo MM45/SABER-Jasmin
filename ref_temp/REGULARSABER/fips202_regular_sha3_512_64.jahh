@@ -1,0 +1,36 @@
+/*** fips202_regular_sha3_512_64.jahh: File containing the Jasmin implementation of sha3_512 function from fips202.c, where inlen == 64 and with (regular) SABER parameters ***/
+
+#ifndef SHA3_512_64_HH
+#define SHA3_512_64_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_keccak_absorb_512_64.jahh"
+#include "fips202_regular_keccak_squeezeblocks_512_512.jahh"
+
+inline fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SHA3_512_RATE] t;
+
+	stack u64[25] s;
+
+	for i = 0 to 25 {
+		s[i] = 0;
+	}
+
+	s = keccak_absorb_512_64(s, input);
+
+	t, s = keccak_squeezeblocks_512_512(t, s);
+
+	for i = 0 to 64 {
+		t8 = t[i];
+		output[i] = t8;
+	}
+	
+	return output;
+}
+
+#endif

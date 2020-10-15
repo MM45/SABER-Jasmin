@@ -1,0 +1,45 @@
+/*** SABER_indcpa_regular_GenMatrix.jahh: File containing the Jasmin implementation of the GenMatrix function from SABER_indcpa.c, with (regular) SABER parameters ***/
+
+#ifndef GENMATRIX_HH
+#define GENMATRIX_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_shake128_KK13N8_32.jahh"
+#include "pack_unpack_regular_BS2POL.jahh"
+
+fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
+{
+	inline int i;
+	inline int j;
+	inline int k;
+
+	reg u16 t16;
+
+	stack u8[KK13N8] buf;
+
+	stack u16[SABER_N] temp_ar;
+
+	stack ptr u16[SABER_KKN] sa;
+
+	sa = a;
+
+	buf = shake128_KK13N8_32(buf, seed);
+
+	a = sa;
+
+	for i = 0 to SABER_K {
+		for j = 0 to SABER_K {
+			temp_ar = BS2POL(buf[(i * SABER_K + j) * 13 * SABER_N / 8:SABER_POLYBYTES], temp_ar);
+
+			for k = 0 to SABER_N {
+				t16 = temp_ar[k];
+				t16 &= (SABER_Q - 1);
+				a[i * SABER_KN + j * SABER_N + k] = t16;
+			}
+		}
+	}
+
+	return a;
+}
+
+#endif

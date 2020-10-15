@@ -1,0 +1,31 @@
+/*** verify_regular_cmov.jahh: File containing the Jasmin implementation of the cmov function from verify.c, with (regular) SABER parameters ***/
+
+#ifndef CMOV_HH
+#define CMOV_HH
+
+#include "SABER_params.jahh"
+
+inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b) -> stack u8[SABER_KEYBYTES]
+{
+	inline int i;
+
+	reg u8 t8;
+
+	reg u64 t64;
+	
+	t64 = (64u) b;
+	t64 *= -1;
+	b = (8u) t64;
+
+	for i = 0 to SABER_KEYBYTES {
+		// r[i] ^= (-b) & (x[i] ^ r[i]);
+		t8 = x[i];
+		t8 ^= r[i];
+		t8 &= b;
+		r[i] ^= t8;
+	}
+
+	return r;
+}
+
+#endif
