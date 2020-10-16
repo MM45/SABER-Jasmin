@@ -146,11 +146,14 @@ u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x8000
 
 fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 {
-  inline int round;
+  reg u64 round;
 
-  for round = 0 to 24 {
-    state = keccakP1600_round(state, KeccakF_RoundConstants[round]);
+  while (round < 24) {
+    state = keccakP1600_round(state, KeccakF_RoundConstants[(int) round]);
+
+    round += 1;
   }
+
 
   return state;
 }

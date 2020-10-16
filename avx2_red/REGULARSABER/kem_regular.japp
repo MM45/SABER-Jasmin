@@ -245,11 +245,14 @@ u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x8000
 
 fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 {
-  inline int round;
+  reg u64 round;
 
-  for round = 0 to 24 {
-    state = keccakP1600_round(state, KeccakF_RoundConstants[round]);
+  while (round < 24) {
+    state = keccakP1600_round(state, KeccakF_RoundConstants[(int) round]);
+
+    round += 1;
   }
+
 
   return state;
 }
@@ -361,7 +364,7 @@ inline fn store64(reg ptr u8[8] x, reg u64 u) -> reg ptr u8[8]
  return x;
 }
 
-fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
+inline fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
 {
  inline int i;
 
@@ -560,13 +563,11 @@ fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg 
  return data;
 }
 
-inline fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
+fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
  reg u64 k;
 
  stack u8[KK13N8] buf;
-
- stack u16[SABER_N] temp_ar;
 
  stack ptr u16[SABER_KKN] sa;
 
@@ -2056,9 +2057,9 @@ inline fn crypto_kem_dec(stack u8[SABER_HASHBYTES] k, stack u8[SABER_BYTES_CCA_D
 
 export fn crypto_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 random_bytes_cryptop, reg u64 indcpa_seedp, reg u64 indcpa_noiseseedp)
 {
- inline int i;
-
  reg u8 t8;
+
+ reg u64 i;
 
  stack u8[SABER_PUBLICKEYBYTES] pk;
  stack u8[SABER_SECRETKEYBYTES] sk;
@@ -2069,19 +2070,28 @@ export fn crypto_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 ra
  stack u64 spkp;
  stack u64 sskp;
 
- for i = 0 to SABER_KEYBYTES {
+ i = 0;
+ while (i < SABER_KEYBYTES) {
   t8 = (u8) [random_bytes_cryptop + i];
-  random_bytes_crypto[i] = t8;
+  random_bytes_crypto[(int) i] = t8;
+
+  i += 1;
  }
 
- for i = 0 to SABER_SEEDBYTES {
+ i = 0;
+ while (i < SABER_SEEDBYTES) {
   t8 = (u8) [indcpa_seedp + i];
-  indcpa_seed[i] = t8;
+  indcpa_seed[(int) i] = t8;
+
+  i += 1;
  }
 
- for i = 0 to SABER_COINBYTES {
+ i = 0;
+ while (i < SABER_COINBYTES) {
   t8 = (u8) [indcpa_noiseseedp + i];
-  indcpa_noiseseed[i] = t8;
+  indcpa_noiseseed[(int) i] = t8;
+
+  i += 1;
  }
 
  spkp = pkp;
@@ -2092,23 +2102,29 @@ export fn crypto_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 ra
  pkp = spkp;
  skp = sskp;
 
- for i = 0 to SABER_PUBLICKEYBYTES {
-  t8 = pk[i] ;
+ i = 0;
+ while (i < SABER_PUBLICKEYBYTES) {
+  t8 = pk[(int) i] ;
   (u8) [pkp + i] = t8;
+
+  i += 1;
  }
 
- for i = 0 to SABER_SECRETKEYBYTES {
-  t8 = sk[i];
+ i = 0;
+ while (i < SABER_SECRETKEYBYTES) {
+  t8 = sk[(int) i];
   (u8) [skp + i] = t8;
+
+  i += 1;
  }
 }
 
 
 export fn crypto_kem_enc_randominc_jazz(reg u64 cp, reg u64 kp, reg u64 pkp, reg u64 random_bytes_cryptop)
 {
- inline int i;
-
  reg u8 t8;
+
+ reg u64 i;
 
  stack u8[SABER_BYTES_CCA_DEC] c;
  stack u8[SABER_HASHBYTES] k;
@@ -2118,14 +2134,20 @@ export fn crypto_kem_enc_randominc_jazz(reg u64 cp, reg u64 kp, reg u64 pkp, reg
  stack u64 scp;
  stack u64 skp;
 
- for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+ i = 0;
+ while (i < SABER_INDCPA_PUBLICKEYBYTES) {
   t8 = (u8) [pkp + i];
-  pk[i] = t8;
+  pk[(int) i] = t8;
+
+  i += 1;
  }
 
- for i = 0 to 32 {
+ i = 0;
+ while (i < 32) {
   t8 = (u8) [random_bytes_cryptop + i];
-  random_bytes_crypto[i] = t8;
+  random_bytes_crypto[(int) i] = t8;
+
+  i += 1;
  }
 
  scp = cp;
@@ -2136,22 +2158,28 @@ export fn crypto_kem_enc_randominc_jazz(reg u64 cp, reg u64 kp, reg u64 pkp, reg
  cp = scp;
  kp = skp;
 
- for i = 0 to SABER_BYTES_CCA_DEC {
-  t8 = c[i] ;
+ i = 0;
+ while (i < SABER_BYTES_CCA_DEC) {
+  t8 = c[(int) i] ;
   (u8) [cp + i] = t8;
+
+  i += 1;
  }
 
- for i = 0 to SABER_HASHBYTES {
-  t8 = k[i];
+ i = 0;
+ while (i < SABER_HASHBYTES) {
+  t8 = k[(int) i];
   (u8) [kp + i] = t8;
+
+  i += 1;
  }
 }
 
 export fn crypto_kem_dec_jazz(reg u64 kp, reg u64 cp, reg u64 skp)
 {
- inline int i;
-
  reg u8 t8;
+
+ reg u64 i;
 
  stack u8[SABER_HASHBYTES] k;
  stack u8[SABER_BYTES_CCA_DEC] c;
@@ -2159,14 +2187,20 @@ export fn crypto_kem_dec_jazz(reg u64 kp, reg u64 cp, reg u64 skp)
 
  stack u64 stkp;
 
- for i = 0 to SABER_BYTES_CCA_DEC {
+ i = 0;
+ while (i < SABER_BYTES_CCA_DEC) {
   t8 = (u8) [cp + i];
-  c[i] = t8;
+  c[(int) i] = t8;
+
+  i += 1;
  }
 
- for i = 0 to SABER_SECRETKEYBYTES {
+ i = 0;
+ while (i < SABER_SECRETKEYBYTES) {
   t8 = (u8) [skp + i];
-  sk[i] = t8;
+  sk[(int) i] = t8;
+
+  i += 1;
  }
 
  stkp = kp;
@@ -2175,8 +2209,11 @@ export fn crypto_kem_dec_jazz(reg u64 kp, reg u64 cp, reg u64 skp)
 
  kp = stkp;
 
- for i = 0 to SABER_HASHBYTES {
-  t8 = k[i];
+ i = 0;
+ while (i < SABER_HASHBYTES) {
+  t8 = k[(int) i];
   (u8) [kp + i] = t8;
+
+  i += 1;
  }
 }

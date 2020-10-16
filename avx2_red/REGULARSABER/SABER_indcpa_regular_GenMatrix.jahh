@@ -7,13 +7,11 @@
 #include "fips202_regular_shake128_KK13N8_32.jahh"
 #include "SABER_indcpa_regular_BS2POLq.jahh"
 
-inline fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
+fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
 	reg u64 k;
 
 	stack u8[KK13N8] buf;
-
-	stack u16[SABER_N] temp_ar;
 
 	stack ptr u16[SABER_KKN] sa;
 
