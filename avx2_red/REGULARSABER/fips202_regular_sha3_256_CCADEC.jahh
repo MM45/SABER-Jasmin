@@ -1,0 +1,51 @@
+/*** fips202_regular_sha3_256_CCADEC.jahh: File containing the Jasmin implementation of sha3_256 function from fips202.c, where inlen == SABER_BYTES_CCA_DEC and with (regular) SABER parameters ***/
+
+#ifndef SHA3_256_CCADEC_HH
+#define SHA3_256_CCADEC_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_keccak_absorb_256_single.jahh"
+
+fn sha3_256_CCADEC(reg ptr u8[32] output, reg ptr u8[SABER_BYTES_CCA_DEC] input) -> reg ptr u8[32]
+{
+	inline int i;
+	inline int nblocks;
+	inline int handled;
+	inline int remainder;
+
+	reg u8 t8;
+
+	stack u64[25] s;
+
+	nblocks = SABER_BYTES_CCA_DEC / SHA3_256_RATE;
+	handled = nblocks * SHA3_256_RATE;
+	remainder = SABER_BYTES_CCA_DEC - handled;
+
+	for i = 0 to 25 {
+		s[i] = 0;
+	}
+
+	// s = keccak_absorb_256_CCADEC(s, input);
+	for i = 0 to nblocks {
+		s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
+	}
+
+	for i = 0 to remainder {
+		t8 = input[handled + i];
+		s[u8 i] ^= t8;
+	}
+
+	s[u8 remainder] ^= 0x06;
+	s[u8 SHA3_256_RATE - 1] ^= 0x80;
+
+	s = KeccakF1600_StatePermute(s);
+
+	for i = 0 to 32 {
+		t8 = s[u8 i];
+		output[i] = t8;
+	}
+
+	return output;
+}
+
+#endif

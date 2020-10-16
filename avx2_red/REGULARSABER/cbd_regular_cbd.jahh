@@ -7,8 +7,6 @@
 
 fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
-	inline int i;
-
 	reg u8 t8;
 
 	//reg u16 t16;
@@ -20,19 +18,27 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 	stack u32[4] a;
 	stack u32[4] b;
 
-	for i = 0 to (SABER_N / 4) {
+    reg u64 i;
+    reg u64 address;
+
+    i = 0;
+	while (i < (SABER_N / 4)) {
         // load_littleendian
-        t32 = (32u) buf[4 * i];
+        address = i * 4;
+        t32 = (32u) buf[(int) address];
         
-        tt = (32u) buf[4 * i + 1];
+        address += 1;
+        tt = (32u) buf[(int) address];
         tt <<= 8;
         t32 |= tt;
 
-        tt = (32u) buf[4 * i + 2];
+        address += 1;
+        tt = (32u) buf[(int) address];
         tt <<= 16;
         t32 |= tt;
 
-        tt = (32u) buf[4 * i + 3];
+        address += 1;
+        tt = (32u) buf[(int) address];
         tt <<= 24;
         t32 |= tt;
 
@@ -107,28 +113,34 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
     	t32 -= b[0];
     	//t16 = (16u) t32;
     	t32 &= (SABER_Q - 1);
-    	r[4 * i] = (16u) t32;
+        address -= 3;
+    	r[(int) address] = (16u) t32;
 
     	// r[4*i+1] = (uint16_t)(a[1]  - b[1]) & Qmod_minus1;
     	t32 = a[1];
     	t32 -= b[1];
         //t16 = (16u) t32;
         t32 &= (SABER_Q - 1);
-    	r[4 * i + 1] = (16u) t32;
+        address += 1;
+    	r[(int) address] = (16u) t32;
 
     	// r[4*i+2] = (uint16_t)(a[2]  - b[2]) & Qmod_minus1;
     	t32 = a[2];
     	t32 -= b[2];
         //t16 = (16u) t32;
         t32 &= (SABER_Q - 1);
-    	r[4 * i + 2] = (16u) t32;
+        address += 1;
+    	r[(int) address] = (16u) t32;
 
     	// r[4*i+3] = (uint16_t)(a[3]  - b[3]) & Qmod_minus1;
     	t32 = a[3];
     	t32 -= b[3];
         //t16 = (16u) t32;
         t32 &= (SABER_Q - 1);
-    	r[4 * i + 3] = (16u) t32;
+        address += 1;
+    	r[(int) address] = (16u) t32;
+
+        i += 1;
 	}
 
 	return r;

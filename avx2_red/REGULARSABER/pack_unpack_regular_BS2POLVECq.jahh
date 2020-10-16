@@ -1,0 +1,149 @@
+/*** pack_unpack_regular_BS2POLVECq.jahh: File containing the Jasmin implementation of the BS2POLVECq function from pack_unpack.c, with (regular) SABER parameters ***/
+
+#ifndef BS2POLVECQ_HH
+#define BS2POLVECQ_HH
+
+#include "SABER_params.jahh"
+
+inline fn BS2POLVECq(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
+{
+	reg u16 b1;
+	reg u16 b2;
+	reg u16 b3;
+
+	reg u64 i;
+	reg u64 j;
+	reg u64 address_bytes;
+	reg u64 address_data;
+
+	i = 0;
+	address_bytes = 0;
+	address_data = 0;
+	while (i < SABER_K) {
+		j = 0;
+		while (j < (SABER_N / 8)) {
+			// data[i][offset_data + 0]= ( bytes[ offset_byte + 0 ] & (0xff)) | ((bytes[offset_byte + 1] & 0x1f)<<8);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 &= 0xff;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0x1f;
+			b2 <<= 8;
+			b1 |= b2;
+			data[(int) address_data] = b1;
+
+			// data[i][offset_data + 1]= ( bytes[ offset_byte + 1 ]>>5 & (0x07)) | ((bytes[offset_byte + 2] & 0xff)<<3) | ((bytes[offset_byte + 3] & 0x03)<<11);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 >>= 5;
+			b1 &= 0x07;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0xff;
+			b2 <<= 3;
+			address_bytes += 1;
+			b3 = (16u) bytes[(int) address_bytes];
+			b3 &= 0x03;
+			b3 <<= 11;
+			b2 |= b3;
+			b1 |= b2;
+			address_data += 1;
+			data[(int) address_data] = b1;
+
+			// data[i][offset_data + 2]= ( bytes[ offset_byte + 3 ]>>2 & (0x3f)) | ((bytes[offset_byte + 4] & 0x7f)<<6);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 >>= 2;
+			b1 &= 0x3f;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0x7f;
+			b2 <<= 6;
+			b1 |= b2;
+			address_data += 1;
+			data[(int) address_data] = b1;
+
+			// data[i][offset_data + 3]= ( bytes[ offset_byte + 4 ]>>7 & (0x01)) | ((bytes[offset_byte + 5] & 0xff)<<1) | ((bytes[offset_byte + 6] & 0x0f)<<9);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 >>= 7;
+			b1 &= 0x01;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0xff;
+			b2 <<= 1;
+			address_bytes += 1;
+			b3 = (16u) bytes[(int) address_bytes];
+			b3 &= 0x0f;
+			b3 <<= 9;
+			b2 |= b3;
+			b1 |= b2;
+			address_data += 1;
+			data[(int) address_data] = b1;
+
+			// data[i][offset_data + 4]= ( bytes[ offset_byte + 6 ]>>4 & (0x0f)) | ((bytes[offset_byte + 7] & 0xff)<<4) | ((bytes[offset_byte + 8] & 0x01)<<12);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 >>= 4;
+			b1 &= 0x0f;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0xff;
+			b2 <<= 4;
+			address_bytes += 1;
+			b3 = (16u) bytes[(int) address_bytes];
+			b3 &= 0x01;
+			b3 <<= 12;
+			b2 |= b3;
+			b1 |= b2;
+			address_data += 1;
+			data[(int) address_data] = b1;
+
+			// data[i][offset_data + 5]= ( bytes[ offset_byte + 8]>>1 & (0x7f)) | ((bytes[offset_byte + 9] & 0x3f)<<7);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 >>= 1;
+			b1 &= 0x7f;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0x3f;
+			b2 <<= 7;
+			b1 |= b2;
+			address_data += 1;
+			data[(int) address_data] = b1;
+
+			// data[i][offset_data + 6]= ( bytes[ offset_byte + 9]>>6 & (0x03)) | ((bytes[offset_byte + 10] & 0xff)<<2) | ((bytes[offset_byte + 11] & 0x07)<<10);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 >>= 6;
+			b1 &= 0x03;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0xff;
+			b2 <<= 2;
+			address_bytes += 1;
+			b3 = (16u) bytes[(int) address_bytes];
+			b3 &= 0x07;
+			b3 <<= 10;
+			b2 |= b3;
+			b1 |= b2;
+			address_data += 1;
+			data[(int) address_data] = b1;
+
+			// data[i][offset_data + 7]= ( bytes[ offset_byte + 11]>>3 & (0x1f)) | ((bytes[offset_byte + 12] & 0xff)<<5);
+			b1 = (16u) bytes[(int) address_bytes];
+			b1 >>= 3;
+			b1 &= 0x1f;
+			address_bytes += 1;
+			b2 = (16u) bytes[(int) address_bytes];
+			b2 &= 0xff;
+			b2 <<= 5;
+			b1 |= b2;
+			address_data += 1;
+			data[(int) address_data] = b1;
+			
+			j += 1;
+			address_bytes += 1;
+			address_data += 1;
+		}
+		i += 1;
+	}
+
+	return data;
+}
+
+#endif

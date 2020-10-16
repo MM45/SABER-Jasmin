@@ -1,0 +1,124 @@
+/*** kem_regular_crypto_kem_dec_debug.jahh: File containing the Jasmin implementation of the crypto_kem_dec function from kem.c, with (regular) SABER parameters, for debugging***/
+
+#ifndef CRYPTO_KEM_DEC_DEBUG_HH
+#define CRYPTO_KEM_DEC_DEBUG_HH
+
+#include "SABER_params.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_dec.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_enc.jahh"
+#include "fips202_regular_sha3_512_64.jahh"
+#include "fips202_regular_sha3_256_CCADEC.jahh"
+#include "fips202_regular_sha3_256_64.jahh"
+#include "verify_regular_cmov.jahh"
+#include "verify_regular_verify.jahh"
+
+inline fn crypto_kem_dec_debug(stack u8[SABER_KEYBYTES] k, stack u8[SABER_BYTES_CCA_DEC] c, stack u8[SABER_SECRETKEYBYTES] sk) -> stack u8[SABER_KEYBYTES]
+{
+	inline int i;
+
+	reg u8 t8;
+
+	reg u64 fail;
+
+	stack u8[SABER_BYTES_CCA_DEC] cmp;
+	stack u8[64] buf;
+	stack u8[64] kr;
+	stack u8[SABER_KEYBYTES] tbuf;
+	stack u8[32] tkr;
+	stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk; // Only need SABER_INDCPA_PUBLICKEYBYTES bytes making up the pk (i.e., no coins/seedbytes)
+	stack u8[SABER_KEYBYTES] tsk;
+	stack u8[SABER_INDCPA_SECRETKEYBYTES] realsk;
+
+	// copy relevant part of sk to tpk
+	for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
+		t8 = sk[i];
+		realsk[i] = t8;
+	}
+
+	// copy relevant part of sk to pk
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		t8 = sk[SABER_INDCPA_SECRETKEYBYTES + i];
+		pk[i] = t8;
+	}
+
+	tbuf = indcpa_kem_dec(realsk, c, tbuf);
+
+
+	// copy result to buf
+	for i = 0 to SABER_KEYBYTES {
+		t8 = tbuf[i];
+		buf[i] = t8;
+	}
+
+	for i = 0 to 32 {
+		t8 = sk[SABER_SECRETKEYBYTES - 64 + i];
+		buf[32 + i] = t8;
+	}
+
+	kr = sha3_512_64(kr, buf);
+
+
+	// copy values from buf to tbuf for indcpa_kem_enc call
+	for i = 0 to SABER_KEYBYTES {
+		t8 = buf[i];
+		tbuf[i] = t8;
+	}
+
+	// copy values from kr to tkr for indcpa_kem_enc call
+	for i = 0 to 32 {
+		t8 = kr[32 + i];
+		tkr[i] = t8;
+	}
+
+	cmp = indcpa_kem_enc(tbuf, tkr, pk, cmp);
+
+	fail = verify(c, cmp);
+	
+
+	tkr = sha3_256_CCADEC(tkr, c);
+
+	// copy result from tkr to kr
+	for i = 0 to 32 {
+		t8 = tkr[i];
+		kr[32 + i] = t8;
+	}
+	
+	// copy relevant values of kr to tkr for call to cmov
+	for i = 0 to SABER_KEYBYTES {
+		t8 = kr[i];
+		tkr[i] = t8;
+	}
+
+	// copy relevant values from sk to tsk for call to cmov
+	for i = 0 to SABER_KEYBYTES {
+		t8 = sk[(SABER_SECRETKEYBYTES - SABER_KEYBYTES) + i];
+		tsk[i] = t8;
+	}
+
+	t8 = (8u) fail;
+	
+	tkr = cmov(tkr, tsk, t8);
+/*	
+	for i = 0 to 32 {
+		t8 = tkr[i];
+		buf[i] = t8;
+
+		t8 = tsk[i];
+		buf[32 + i] = t8;
+	}
+
+	return buf;
+*/
+
+	// copy result from tkr to kr
+	for i = 0 to 32 {
+		t8 = tkr[i];
+		kr[i] = t8;
+	}
+
+	k = sha3_256_64(k, kr);
+
+	return k;
+}
+
+#endif

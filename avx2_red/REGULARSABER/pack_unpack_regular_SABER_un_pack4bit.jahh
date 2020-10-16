@@ -1,0 +1,37 @@
+/*** pack_unpack_regular_SABER_un_pack4bit.jahh: File containing the Jasmin implementation of the SABER_un_pack4bit function from pack_unpack.c, with (regular) SABER parameters ***/
+
+#ifndef SABER_UN_PACK4BIT_HH
+#define SABER_UN_PACK4BIT_HH
+
+#include "SABER_params.jahh"
+
+inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
+{
+	reg u16 b1;
+
+	reg u64 j;
+	reg u64 address_ar;
+
+	j = 0;
+	address_ar = 0;
+	while (j < (SABER_N / 2)) {
+		// ar[offset_data] = bytes[j] & 0x0f;
+		b1 = (16u) bytes[(int) j];
+		b1 &= 0x0f;
+		ar[(int) address_ar] = b1;
+
+		// ar[offset_data+1] = (bytes[j]>>4) & 0x0f;
+		b1 = (16u) bytes[(int) j];
+		b1 >>= 4;
+		b1 &= 0x0f;
+		address_ar += 1;
+		ar[(int) address_ar] = b1;
+
+		j += 1;
+		address_ar += 1;
+	}
+
+	return ar;
+}
+
+#endif

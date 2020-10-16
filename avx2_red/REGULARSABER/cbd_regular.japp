@@ -1,0 +1,253 @@
+
+
+
+
+
+
+
+
+
+param int CRYPTO_SECRETKEYBYTES = 2304;
+param int CRYPTO_PUBLICKEYBYTES = (3 * 320 + 32);
+param int CRYPTO_BYTES = 32;
+param int CRYPTO_CIPHERTEXTBYTES = 1088;
+param int Saber_type = 2;
+
+param int SABER_K = 3;
+param int SABER_MU = 8;
+param int SABER_ET = 4;
+
+param int SABER_EQ = 13;
+param int SABER_EP = 10;
+
+param int SABER_N = 256;
+param int SABER_Q = 8192;
+param int SABER_P = 1024;
+
+param int SABER_SEEDBYTES = 32;
+param int SABER_NOISESEEDBYTES = 32;
+param int SABER_COINBYTES = 32;
+param int SABER_KEYBYTES = 32;
+
+param int SABER_HASHBYTES = 32;
+
+param int SABER_POLYBYTES = 416;
+
+param int SABER_POLYVECBYTES = (SABER_K * SABER_POLYBYTES);
+
+param int SABER_POLYVECCOMPRESSEDBYTES = (SABER_K * 320);
+
+param int SABER_CIPHERTEXTBYTES = (SABER_POLYVECCOMPRESSEDBYTES);
+
+
+
+param int SABER_SCALEBYTES_KEM = (SABER_ET * SABER_N / 8);
+
+param int SABER_INDCPA_PUBLICKEYBYTES = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SEEDBYTES);
+param int SABER_INDCPA_SECRETKEYBYTES = (SABER_POLYVECBYTES);
+
+param int SABER_PUBLICKEYBYTES = (SABER_INDCPA_PUBLICKEYBYTES);
+
+param int SABER_SECRETKEYBYTES = (SABER_INDCPA_SECRETKEYBYTES + SABER_INDCPA_PUBLICKEYBYTES + SABER_HASHBYTES + SABER_KEYBYTES);
+
+param int SABER_BYTES_CCA_DEC = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SCALEBYTES_KEM);
+
+
+
+param int SABER_KN = (SABER_K * SABER_N);
+param int SABER_KKN = (SABER_K * SABER_K * SABER_N);
+param int N_SB = (SABER_N / 4);
+param int N_SB_RES = (2 * N_SB - 1);
+
+param int SHAKE128_RATE = 168;
+param int SHAKE256_RATE = 136;
+param int SHA3_256_RATE = 136;
+param int SHA3_512_RATE = 72;
+
+param int KK13N8 = (SABER_K * SABER_K * (13 * SABER_N / 8));
+param int MUNK8 = (SABER_MU * SABER_N * SABER_K / 8);
+
+param int h1 = 4;
+param int h2 = 228;
+
+
+
+
+u16 h1_u16 = h1;
+u16 h2_u16 = h2;
+u16 modp_u16 = SABER_P - 1;
+u16 modq_u16 = SABER_Q - 1;
+
+u128 zero_u128 = 0;
+u256 zero_u256 = 0;
+
+
+
+
+
+
+fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
+{
+ inline int i;
+
+ reg u8 t8;
+
+
+
+ reg u32 t32;
+ reg u32 d;
+ reg u32 tt;
+
+ stack u32[4] a;
+ stack u32[4] b;
+
+    reg u64 i;
+    reg u64 address;
+
+    i = 0;
+ while (i < (SABER_N / 4)) {
+
+        address = i * 4;
+        t32 = (32u) buf[(int) address];
+
+        address += 1;
+        tt = (32u) buf[(int) address];
+        tt <<= 8;
+        t32 |= tt;
+
+        address += 1;
+        tt = (32u) buf[(int) address];
+        tt <<= 16;
+        t32 |= tt;
+
+        address += 1;
+        tt = (32u) buf[(int) address];
+        tt <<= 24;
+        t32 |= tt;
+
+
+  tt = t32;
+        tt &= 0x11111111;
+  d = tt;
+
+  tt = t32;
+  tt >>= 1;
+  tt &= 0x11111111;
+  d += tt;
+
+  tt = t32;
+  tt >>= 2;
+  tt &= 0x11111111;
+  d += tt;
+
+  tt = t32;
+  tt >>= 3;
+  tt &= 0x11111111;
+  d += tt;
+
+
+     t32 = d;
+     t32 &= 0xf;
+  a[0] = t32;
+
+
+     t32 = d;
+     t32 >>= 4;
+     t32 & = 0xf;
+     b[0] = t32;
+
+
+     t32 = d;
+     t32 >>= 8;
+     t32 &= 0xf;
+     a[1] = t32;
+
+
+     t32 = d;
+     t32 >>= 12;
+     t32 &= 0xf;
+     b[1] = t32;
+
+
+     t32 = d;
+     t32 >>= 16;
+     t32 &= 0xf;
+     a[2] = t32;
+
+
+  t32 = d;
+     t32 >>= 20;
+     t32 &= 0xf;
+     b[2] = t32;
+
+
+     t32 = d;
+     t32 >>= 24;
+     t32 &= 0xf;
+     a[3] = t32;
+
+
+     t32 = d;
+     t32 >>= 28;
+     b[3] = t32;
+
+
+     t32 = a[0];
+     t32 -= b[0];
+
+     t32 &= (SABER_Q - 1);
+        address -= 3;
+     r[(int) address] = (16u) t32;
+
+
+     t32 = a[1];
+     t32 -= b[1];
+
+        t32 &= (SABER_Q - 1);
+        address += 1;
+     r[(int) address] = (16u) t32;
+
+
+     t32 = a[2];
+     t32 -= b[2];
+
+        t32 &= (SABER_Q - 1);
+        address += 1;
+     r[(int) address] = (16u) t32;
+
+
+     t32 = a[3];
+     t32 -= b[3];
+
+        t32 &= (SABER_Q - 1);
+        address += 1;
+     r[(int) address] = (16u) t32;
+
+        i += 1;
+ }
+
+ return r;
+}
+
+export fn cbd_jazz(reg u64 rp, reg u64 bufp)
+{
+ inline int i;
+
+ reg u8 tbuf;
+ reg u16 tr;
+
+ stack u8[SABER_N] buf;
+ stack u16[SABER_N] r;
+
+ for i = 0 to SABER_N {
+  tbuf = (u8) [bufp + i];
+  buf[i] = tbuf;
+ }
+
+ r = cbd(r, buf);
+
+ for i = 0 to SABER_N {
+  tr = r[i];
+  (u16) [rp + 2 * i] = tr;
+ }
+}

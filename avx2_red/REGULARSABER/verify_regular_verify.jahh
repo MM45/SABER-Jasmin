@@ -1,0 +1,38 @@
+/*** verify_verify.jahh: File containing the Jasmin implementation of the verify function from verify.c, with (regular) SABER parameters ***/
+
+#ifndef VERIFY_HH
+#define VERIFY_HH
+
+#include "SABER_params.jahh"
+
+inline fn verify(stack u8[SABER_BYTES_CCA_DEC] a, stack u8[SABER_BYTES_CCA_DEC] b) -> reg u64
+{
+	//inline int i;
+
+	reg u8 t8;
+	reg u8 tr;
+
+	reg u64 i;
+	reg u64 r;
+
+	tr = 0;
+	i = 0;
+	while (i < SABER_BYTES_CCA_DEC) {
+		// r |= a[i] ^ b[i];
+		t8 = a[(int) i];
+		t8 ^= b[(int) i];
+		tr |= t8;
+
+		i += 1;
+	}
+
+	// r = (-r) >> 63
+	r = (64u) tr;
+	r *= -1;
+	r >>= 63;
+
+	return r;
+}
+
+#endif
+

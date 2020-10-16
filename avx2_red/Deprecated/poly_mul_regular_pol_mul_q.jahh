@@ -1,0 +1,41 @@
+/*** poly_mul_regular_pol_mul_q.jahh: File containing the Jasmin implementation of pol_mul function from poly_mul.c, with p == SABER_Q and (regular) SABER parameters ***/
+
+#ifndef POL_MUL_Q_HH
+#define POL_MUL_Q_HH
+
+#include "SABER_params.jahh"
+#include "poly_mul_regular_toom_cook_4way.jahh"
+
+fn pol_mul_q(reg ptr u16[SABER_N] a, reg ptr u16[SABER_N] b, reg ptr u16[SABER_N] res) -> reg ptr u16[SABER_N]
+{
+	inline int i;
+
+	reg u16 t16;
+
+	stack u16[512] c;
+
+	stack ptr u16[SABER_N] sres;
+	
+	for i = 0 to 512 {
+		c[i] = 0;
+	}
+
+	sres = res;
+
+	c = toom_cook_4way(a, b, c);
+
+	res = sres;
+
+	for i = SABER_N to 2 * SABER_N {
+		// res[i-n]=(c[i-n]-c[i])&(p-1)
+		t16 = c[i - SABER_N];
+		t16 -= c[i];
+		res[i - SABER_N] = t16;
+		t16 = SABER_Q - 1;
+		res[i - SABER_N] &= t16;
+	}
+
+	return res;
+}
+
+#endif

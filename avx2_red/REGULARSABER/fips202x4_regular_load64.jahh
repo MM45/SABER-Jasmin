@@ -1,0 +1,25 @@
+/*** fips202_regular_load64.jahh: File containing the Jasmin implementation of load64 function from fips202.c, with (regular) SABER parameters ***/
+
+#ifndef LOAD64_HH
+#define LOAD64_HH
+
+
+inline fn load64(stack u8[8] x) -> reg u64
+{
+	inline int i;
+
+	reg u64 r;
+	reg u64 t;
+
+	r = (64u) x[0];
+	
+	for i = 1 to 8 {
+		t = (64u) x[i];
+		t <<= (8 * i);
+		r |= t;
+	}
+
+	return r;
+}
+
+#endif
