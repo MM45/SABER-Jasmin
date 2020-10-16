@@ -227,15 +227,6 @@ inline fn iota(reg ptr u64[25] a, reg u64 c) -> reg ptr u64[25] {
 }
 
 
-inline fn keccakP1600_round(reg ptr u64[25] state, reg u64 c) -> reg ptr u64[25] {
-  state = theta(state);
-  state = rho(state);
-  state = pi(state);
-  state = chi(state);
-  state = iota(state, c);
-  return state;
-}
-
 u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x800000000000808a, 0x8000000080008000,
                                     0x000000000000808b, 0x0000000080000001, 0x8000000080008081, 0x8000000000008009,
                                     0x000000000000008a, 0x0000000000000088, 0x0000000080008009, 0x000000008000000a,
@@ -246,10 +237,16 @@ u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x8000
 fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 {
   reg u64 round;
+  reg ptr u64[24] constptr;
 
+  round = 0;
   while (round < 24) {
-    state = keccakP1600_round(state, KeccakF_RoundConstants[(int) round]);
-
+    state = theta(state);
+    state = rho(state);
+    state = pi(state);
+    state = chi(state);
+    constptr = KeccakF_RoundConstants;
+    state = iota(state, constptr[(int) round]);
     round += 1;
   }
 
@@ -364,7 +361,7 @@ inline fn store64(reg ptr u8[8] x, reg u64 u) -> reg ptr u8[8]
  return x;
 }
 
-inline fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
+fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
 {
  inline int i;
 
