@@ -27,6 +27,12 @@ int test_indcpa()
 	unsigned char bytes_jazz[SABER_POLYBYTES];
 	uint16_t data_jazz[SABER_N];
 	
+	unsigned char message_dec_packed_c[SABER_KEYBYTES];
+	uint16_t message_dec_unpacked_c[SABER_N];
+
+	unsigned char message_dec_packed_jazz[SABER_KEYBYTES];
+	uint16_t message_dec_unpacked_jazz[SABER_N];
+
 	unsigned char pk_c[SABER_INDCPA_PUBLICKEYBYTES];
 	unsigned char sk_c[SABER_INDCPA_SECRETKEYBYTES];
 	unsigned char c_c[SABER_BYTES_CCA_DEC] = {};	
@@ -44,6 +50,8 @@ int test_indcpa()
 	uint64_t t_sec_jazz[NRUNS];
 	uint64_t t_bs2polq_c[NRUNS];
 	uint64_t t_bs2polq_jazz[NRUNS];
+	uint64_t t_pol2msg_c[NRUNS];
+	uint64_t t_pol2msg_jazz[NRUNS];
 	uint64_t t_kp_c[NRUNS];
 	uint64_t t_kp_jazz[NRUNS];
 	uint64_t t_enc_c[NRUNS];
@@ -97,6 +105,7 @@ int test_indcpa()
    		random_test_bytes(kp_noiseseed_c, SABER_COINBYTES);
    		random_test_bytes(enc_noiseseed_c, SABER_COINBYTES);
    		random_test_bytes(message_c, SABER_COINBYTES);
+   		random_test_16bit_blocks(message_dec_unpacked_c, SABER_N);
    		
    		for(j = 0; j < SABER_SEEDBYTES; ++j) {
    			matrix_seed_jazz[j] = matrix_seed_c[j];
@@ -108,6 +117,10 @@ int test_indcpa()
 
    		for(j = 0; j < SABER_POLYBYTES; ++j) {
    			bytes_jazz[j] = bytes_c[j];
+   		}
+
+   		for(j = 0; j < SABER_N; ++j) {
+   			message_dec_unpacked_jazz[j] = message_dec_unpacked_c[j];
    		}
    		
    		for(j = 0; j < SABER_SEEDBYTES; ++j) {
@@ -125,6 +138,7 @@ int test_indcpa()
    		for(j = 0; j < SABER_KEYBYTES; ++j) {
    			message_jazz[j] = message_c[j];
    		}
+
    		
    		//Generation of matrix; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -168,13 +182,13 @@ int test_indcpa()
 			}
 		}
    		
-   		//Generation of secret; Reference_C
+   		//Bytes to poly; Reference_C
 	    CLOCK1 = cpucycles();	
 	    BS2POLq(bytes_c, data_c);
 	    CLOCK2 = cpucycles();	
 	    t_bs2polq_c[i]= CLOCK2 - CLOCK1;	
 
-	    //Generation of secret; Jasmin
+	    //Bytes to poly; Jasmin
 	    CLOCK1 = cpucycles();	
 	   	BS2POLq_jazz(bytes_jazz, data_jazz);
 	    CLOCK2 = cpucycles();	
@@ -183,6 +197,24 @@ int test_indcpa()
 		for (j = 0; j < SABER_N; ++j) {
 			if (data_c[j] != data_jazz[j]) {
 				printf("[!] Functional test failed.\nFunction:\tBS2POLq.\nReason:\tdata_c[%ld]!= data_jazz[%ld] ==> %d != %d\n", j, j, data_c[j], data_jazz[j]);
+			}
+		}
+   		
+   		//Generation of secret; Reference_C
+	    CLOCK1 = cpucycles();	
+	    POL2MSG(message_dec_unpacked_c, message_dec_packed_c);
+	    CLOCK2 = cpucycles();	
+	    t_pol2msg_c[i]= CLOCK2 - CLOCK1;	
+
+	    //Generation of secret; Jasmin
+	    CLOCK1 = cpucycles();	
+	   	POL2MSG_jazz(message_dec_unpacked_jazz, message_dec_packed_jazz);
+	    CLOCK2 = cpucycles();	
+	    t_pol2msg_jazz[i]= CLOCK2 - CLOCK1;	
+   		
+		for (j = 0; j < SABER_KEYBYTES; ++j) {
+			if (message_dec_packed_c[j] != message_dec_packed_jazz[j]) {
+				printf("[!] Functional test failed.\nFunction:\tPOL2MSG.\nReason:\tmessage_dec_packed_c[%ld]!= message_dec_packed_jazz[%ld] ==> %d != %d\n", j, j, message_dec_packed_c[j], message_dec_packed_jazz[j]);
 			}
 		}
 
@@ -255,6 +287,8 @@ int test_indcpa()
  	print_results("GenSecret_jazz: ", t_sec_jazz, NRUNS);
  	print_results("BS2POLq_c: ", t_bs2polq_c, NRUNS);
  	print_results("BS2POLq_jazz: ", t_bs2polq_jazz, NRUNS);
+ 	print_results("POL2MSG_c: ", t_pol2msg_c, NRUNS);
+ 	print_results("POL2MSG_jazz: ", t_pol2msg_jazz, NRUNS);
  	print_results("indcpa_keypair_c: ", t_kp_c, NRUNS);
  	print_results("indcpa_keypair_jazz: ", t_kp_jazz, NRUNS);
  	print_results("indcpa_enc_c: ", t_enc_c, NRUNS);

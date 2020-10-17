@@ -4920,9 +4920,7 @@ Lcrypto_kem_dec_jazz$4:
 	leaq	200(%rsp), %rsp
 	movq	4616(%rsp), %rax
 	movb	%al, %al
-	movzbq	%al, %rax
-	imulq	$-1, %rax, %rax
-	movb	%al, %al
+	negb	%al
 	movb	14000(%rsp), %cl
 	xorb	9360(%rsp), %cl
 	andb	%al, %cl

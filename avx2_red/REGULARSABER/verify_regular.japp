@@ -88,8 +88,6 @@ u256 zero_u256 = 0;
 
 inline fn verify(stack u8[SABER_BYTES_CCA_DEC] a, stack u8[SABER_BYTES_CCA_DEC] b) -> reg u64
 {
-
-
  reg u8 t8;
  reg u8 tr;
 
@@ -129,9 +127,10 @@ inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b)
 
  reg u64 t64;
 
- t64 = (64u) b;
- t64 *= -1;
- b = (8u) t64;
+
+
+
+ _, _, _, _, _, b = #NEG_8(b);
 
  for i = 0 to SABER_KEYBYTES {
 
