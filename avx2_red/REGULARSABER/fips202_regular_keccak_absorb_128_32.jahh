@@ -4,7 +4,6 @@
 #define KECCAK_ABSORB_128_32_HH
 
 #include "SABER_params.jahh"
-#include "fips202_regular_load64.jahh"
 
 fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 {

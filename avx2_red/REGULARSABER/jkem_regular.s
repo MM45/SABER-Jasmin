@@ -9,20 +9,20 @@
 _crypto_kem_dec_jazz:
 crypto_kem_dec_jazz:
 	movq	%rsp, %rax
-	leaq	-14288(%rsp), %rsp
+	leaq	-14088(%rsp), %rsp
 	andq	$-32, %rsp
-	movq	%rax, 14232(%rsp)
-	movq	%rbx, 14240(%rsp)
-	movq	%rbp, 14248(%rsp)
-	movq	%r12, 14256(%rsp)
-	movq	%r13, 14264(%rsp)
-	movq	%r14, 14272(%rsp)
-	movq	%r15, 14280(%rsp)
+	movq	%rax, 14032(%rsp)
+	movq	%rbx, 14040(%rsp)
+	movq	%rbp, 14048(%rsp)
+	movq	%r12, 14056(%rsp)
+	movq	%r13, 14064(%rsp)
+	movq	%r14, 14072(%rsp)
+	movq	%r15, 14080(%rsp)
 	movq	$0, %rax
 	jmp 	Lcrypto_kem_dec_jazz$23
 Lcrypto_kem_dec_jazz$24:
 	movb	(%rsi,%rax), %cl
-	movb	%cl, 9752(%rsp,%rax)
+	movb	%cl, 9552(%rsp,%rax)
 	leaq	1(%rax), %rax
 Lcrypto_kem_dec_jazz$23:
 	cmpq	$1088, %rax
@@ -31,7 +31,7 @@ Lcrypto_kem_dec_jazz$23:
 	jmp 	Lcrypto_kem_dec_jazz$21
 Lcrypto_kem_dec_jazz$22:
 	movb	(%rdx,%rax), %cl
-	movb	%cl, 11928(%rsp,%rax)
+	movb	%cl, 11728(%rsp,%rax)
 	leaq	1(%rax), %rax
 Lcrypto_kem_dec_jazz$21:
 	cmpq	$2304, %rax
@@ -51,7 +51,7 @@ Lcrypto_kem_dec_jazz$19:
 Lcrypto_kem_dec_jazz$17:
 	cmpq	$3, %rax
 	jb  	Lcrypto_kem_dec_jazz$18
-	leaq	9752(%rsp), %rax
+	leaq	9552(%rsp), %rax
 	leaq	1536(%rsp), %rcx
 	leaq	Lcrypto_kem_dec_jazz$16(%rip), 	%r11
 	jmp 	LBS2POLVECp$1
@@ -136,263 +136,263 @@ Lcrypto_kem_dec_jazz$16:
 	vmovdqu	%ymm0, 960(%rsp)
 	vmovdqu	480(%rsp), %ymm0
 	vmovdqu	%ymm0, 992(%rsp)
-	movb	10712(%rsp), %al
-	movb	%al, 9624(%rsp)
-	movb	10713(%rsp), %al
-	movb	%al, 9625(%rsp)
-	movb	10714(%rsp), %al
-	movb	%al, 9626(%rsp)
-	movb	10715(%rsp), %al
-	movb	%al, 9627(%rsp)
-	movb	10716(%rsp), %al
-	movb	%al, 9628(%rsp)
-	movb	10717(%rsp), %al
-	movb	%al, 9629(%rsp)
-	movb	10718(%rsp), %al
-	movb	%al, 9630(%rsp)
-	movb	10719(%rsp), %al
-	movb	%al, 9631(%rsp)
-	movb	10720(%rsp), %al
-	movb	%al, 9632(%rsp)
-	movb	10721(%rsp), %al
-	movb	%al, 9633(%rsp)
-	movb	10722(%rsp), %al
-	movb	%al, 9634(%rsp)
-	movb	10723(%rsp), %al
-	movb	%al, 9635(%rsp)
-	movb	10724(%rsp), %al
-	movb	%al, 9636(%rsp)
-	movb	10725(%rsp), %al
-	movb	%al, 9637(%rsp)
-	movb	10726(%rsp), %al
-	movb	%al, 9638(%rsp)
-	movb	10727(%rsp), %al
-	movb	%al, 9639(%rsp)
-	movb	10728(%rsp), %al
-	movb	%al, 9640(%rsp)
-	movb	10729(%rsp), %al
-	movb	%al, 9641(%rsp)
-	movb	10730(%rsp), %al
-	movb	%al, 9642(%rsp)
-	movb	10731(%rsp), %al
-	movb	%al, 9643(%rsp)
-	movb	10732(%rsp), %al
-	movb	%al, 9644(%rsp)
-	movb	10733(%rsp), %al
-	movb	%al, 9645(%rsp)
-	movb	10734(%rsp), %al
-	movb	%al, 9646(%rsp)
-	movb	10735(%rsp), %al
-	movb	%al, 9647(%rsp)
-	movb	10736(%rsp), %al
-	movb	%al, 9648(%rsp)
-	movb	10737(%rsp), %al
-	movb	%al, 9649(%rsp)
-	movb	10738(%rsp), %al
-	movb	%al, 9650(%rsp)
-	movb	10739(%rsp), %al
-	movb	%al, 9651(%rsp)
-	movb	10740(%rsp), %al
-	movb	%al, 9652(%rsp)
-	movb	10741(%rsp), %al
-	movb	%al, 9653(%rsp)
-	movb	10742(%rsp), %al
-	movb	%al, 9654(%rsp)
-	movb	10743(%rsp), %al
-	movb	%al, 9655(%rsp)
-	movb	10744(%rsp), %al
-	movb	%al, 9656(%rsp)
-	movb	10745(%rsp), %al
-	movb	%al, 9657(%rsp)
-	movb	10746(%rsp), %al
-	movb	%al, 9658(%rsp)
-	movb	10747(%rsp), %al
-	movb	%al, 9659(%rsp)
-	movb	10748(%rsp), %al
-	movb	%al, 9660(%rsp)
-	movb	10749(%rsp), %al
-	movb	%al, 9661(%rsp)
-	movb	10750(%rsp), %al
-	movb	%al, 9662(%rsp)
-	movb	10751(%rsp), %al
-	movb	%al, 9663(%rsp)
-	movb	10752(%rsp), %al
-	movb	%al, 9664(%rsp)
-	movb	10753(%rsp), %al
-	movb	%al, 9665(%rsp)
-	movb	10754(%rsp), %al
-	movb	%al, 9666(%rsp)
-	movb	10755(%rsp), %al
-	movb	%al, 9667(%rsp)
-	movb	10756(%rsp), %al
-	movb	%al, 9668(%rsp)
-	movb	10757(%rsp), %al
-	movb	%al, 9669(%rsp)
-	movb	10758(%rsp), %al
-	movb	%al, 9670(%rsp)
-	movb	10759(%rsp), %al
-	movb	%al, 9671(%rsp)
-	movb	10760(%rsp), %al
-	movb	%al, 9672(%rsp)
-	movb	10761(%rsp), %al
-	movb	%al, 9673(%rsp)
-	movb	10762(%rsp), %al
-	movb	%al, 9674(%rsp)
-	movb	10763(%rsp), %al
-	movb	%al, 9675(%rsp)
-	movb	10764(%rsp), %al
-	movb	%al, 9676(%rsp)
-	movb	10765(%rsp), %al
-	movb	%al, 9677(%rsp)
-	movb	10766(%rsp), %al
-	movb	%al, 9678(%rsp)
-	movb	10767(%rsp), %al
-	movb	%al, 9679(%rsp)
-	movb	10768(%rsp), %al
-	movb	%al, 9680(%rsp)
-	movb	10769(%rsp), %al
-	movb	%al, 9681(%rsp)
-	movb	10770(%rsp), %al
-	movb	%al, 9682(%rsp)
-	movb	10771(%rsp), %al
-	movb	%al, 9683(%rsp)
-	movb	10772(%rsp), %al
-	movb	%al, 9684(%rsp)
-	movb	10773(%rsp), %al
-	movb	%al, 9685(%rsp)
-	movb	10774(%rsp), %al
-	movb	%al, 9686(%rsp)
-	movb	10775(%rsp), %al
-	movb	%al, 9687(%rsp)
-	movb	10776(%rsp), %al
-	movb	%al, 9688(%rsp)
-	movb	10777(%rsp), %al
-	movb	%al, 9689(%rsp)
-	movb	10778(%rsp), %al
-	movb	%al, 9690(%rsp)
-	movb	10779(%rsp), %al
-	movb	%al, 9691(%rsp)
-	movb	10780(%rsp), %al
-	movb	%al, 9692(%rsp)
-	movb	10781(%rsp), %al
-	movb	%al, 9693(%rsp)
-	movb	10782(%rsp), %al
-	movb	%al, 9694(%rsp)
-	movb	10783(%rsp), %al
-	movb	%al, 9695(%rsp)
-	movb	10784(%rsp), %al
-	movb	%al, 9696(%rsp)
-	movb	10785(%rsp), %al
-	movb	%al, 9697(%rsp)
-	movb	10786(%rsp), %al
-	movb	%al, 9698(%rsp)
-	movb	10787(%rsp), %al
-	movb	%al, 9699(%rsp)
-	movb	10788(%rsp), %al
-	movb	%al, 9700(%rsp)
-	movb	10789(%rsp), %al
-	movb	%al, 9701(%rsp)
-	movb	10790(%rsp), %al
-	movb	%al, 9702(%rsp)
-	movb	10791(%rsp), %al
-	movb	%al, 9703(%rsp)
-	movb	10792(%rsp), %al
-	movb	%al, 9704(%rsp)
-	movb	10793(%rsp), %al
-	movb	%al, 9705(%rsp)
-	movb	10794(%rsp), %al
-	movb	%al, 9706(%rsp)
-	movb	10795(%rsp), %al
-	movb	%al, 9707(%rsp)
-	movb	10796(%rsp), %al
-	movb	%al, 9708(%rsp)
-	movb	10797(%rsp), %al
-	movb	%al, 9709(%rsp)
-	movb	10798(%rsp), %al
-	movb	%al, 9710(%rsp)
-	movb	10799(%rsp), %al
-	movb	%al, 9711(%rsp)
-	movb	10800(%rsp), %al
-	movb	%al, 9712(%rsp)
-	movb	10801(%rsp), %al
-	movb	%al, 9713(%rsp)
-	movb	10802(%rsp), %al
-	movb	%al, 9714(%rsp)
-	movb	10803(%rsp), %al
-	movb	%al, 9715(%rsp)
-	movb	10804(%rsp), %al
-	movb	%al, 9716(%rsp)
-	movb	10805(%rsp), %al
-	movb	%al, 9717(%rsp)
-	movb	10806(%rsp), %al
-	movb	%al, 9718(%rsp)
-	movb	10807(%rsp), %al
-	movb	%al, 9719(%rsp)
-	movb	10808(%rsp), %al
-	movb	%al, 9720(%rsp)
-	movb	10809(%rsp), %al
-	movb	%al, 9721(%rsp)
-	movb	10810(%rsp), %al
-	movb	%al, 9722(%rsp)
-	movb	10811(%rsp), %al
-	movb	%al, 9723(%rsp)
-	movb	10812(%rsp), %al
-	movb	%al, 9724(%rsp)
-	movb	10813(%rsp), %al
-	movb	%al, 9725(%rsp)
-	movb	10814(%rsp), %al
-	movb	%al, 9726(%rsp)
-	movb	10815(%rsp), %al
-	movb	%al, 9727(%rsp)
-	movb	10816(%rsp), %al
-	movb	%al, 9728(%rsp)
-	movb	10817(%rsp), %al
-	movb	%al, 9729(%rsp)
-	movb	10818(%rsp), %al
-	movb	%al, 9730(%rsp)
-	movb	10819(%rsp), %al
-	movb	%al, 9731(%rsp)
-	movb	10820(%rsp), %al
-	movb	%al, 9732(%rsp)
-	movb	10821(%rsp), %al
-	movb	%al, 9733(%rsp)
-	movb	10822(%rsp), %al
-	movb	%al, 9734(%rsp)
-	movb	10823(%rsp), %al
-	movb	%al, 9735(%rsp)
-	movb	10824(%rsp), %al
-	movb	%al, 9736(%rsp)
-	movb	10825(%rsp), %al
-	movb	%al, 9737(%rsp)
-	movb	10826(%rsp), %al
-	movb	%al, 9738(%rsp)
-	movb	10827(%rsp), %al
-	movb	%al, 9739(%rsp)
-	movb	10828(%rsp), %al
-	movb	%al, 9740(%rsp)
-	movb	10829(%rsp), %al
-	movb	%al, 9741(%rsp)
-	movb	10830(%rsp), %al
-	movb	%al, 9742(%rsp)
-	movb	10831(%rsp), %al
-	movb	%al, 9743(%rsp)
-	movb	10832(%rsp), %al
-	movb	%al, 9744(%rsp)
-	movb	10833(%rsp), %al
-	movb	%al, 9745(%rsp)
-	movb	10834(%rsp), %al
-	movb	%al, 9746(%rsp)
-	movb	10835(%rsp), %al
-	movb	%al, 9747(%rsp)
-	movb	10836(%rsp), %al
-	movb	%al, 9748(%rsp)
-	movb	10837(%rsp), %al
-	movb	%al, 9749(%rsp)
-	movb	10838(%rsp), %al
-	movb	%al, 9750(%rsp)
-	movb	10839(%rsp), %al
-	movb	%al, 9751(%rsp)
-	leaq	9624(%rsp), %rax
+	movb	10512(%rsp), %al
+	movb	%al, 9424(%rsp)
+	movb	10513(%rsp), %al
+	movb	%al, 9425(%rsp)
+	movb	10514(%rsp), %al
+	movb	%al, 9426(%rsp)
+	movb	10515(%rsp), %al
+	movb	%al, 9427(%rsp)
+	movb	10516(%rsp), %al
+	movb	%al, 9428(%rsp)
+	movb	10517(%rsp), %al
+	movb	%al, 9429(%rsp)
+	movb	10518(%rsp), %al
+	movb	%al, 9430(%rsp)
+	movb	10519(%rsp), %al
+	movb	%al, 9431(%rsp)
+	movb	10520(%rsp), %al
+	movb	%al, 9432(%rsp)
+	movb	10521(%rsp), %al
+	movb	%al, 9433(%rsp)
+	movb	10522(%rsp), %al
+	movb	%al, 9434(%rsp)
+	movb	10523(%rsp), %al
+	movb	%al, 9435(%rsp)
+	movb	10524(%rsp), %al
+	movb	%al, 9436(%rsp)
+	movb	10525(%rsp), %al
+	movb	%al, 9437(%rsp)
+	movb	10526(%rsp), %al
+	movb	%al, 9438(%rsp)
+	movb	10527(%rsp), %al
+	movb	%al, 9439(%rsp)
+	movb	10528(%rsp), %al
+	movb	%al, 9440(%rsp)
+	movb	10529(%rsp), %al
+	movb	%al, 9441(%rsp)
+	movb	10530(%rsp), %al
+	movb	%al, 9442(%rsp)
+	movb	10531(%rsp), %al
+	movb	%al, 9443(%rsp)
+	movb	10532(%rsp), %al
+	movb	%al, 9444(%rsp)
+	movb	10533(%rsp), %al
+	movb	%al, 9445(%rsp)
+	movb	10534(%rsp), %al
+	movb	%al, 9446(%rsp)
+	movb	10535(%rsp), %al
+	movb	%al, 9447(%rsp)
+	movb	10536(%rsp), %al
+	movb	%al, 9448(%rsp)
+	movb	10537(%rsp), %al
+	movb	%al, 9449(%rsp)
+	movb	10538(%rsp), %al
+	movb	%al, 9450(%rsp)
+	movb	10539(%rsp), %al
+	movb	%al, 9451(%rsp)
+	movb	10540(%rsp), %al
+	movb	%al, 9452(%rsp)
+	movb	10541(%rsp), %al
+	movb	%al, 9453(%rsp)
+	movb	10542(%rsp), %al
+	movb	%al, 9454(%rsp)
+	movb	10543(%rsp), %al
+	movb	%al, 9455(%rsp)
+	movb	10544(%rsp), %al
+	movb	%al, 9456(%rsp)
+	movb	10545(%rsp), %al
+	movb	%al, 9457(%rsp)
+	movb	10546(%rsp), %al
+	movb	%al, 9458(%rsp)
+	movb	10547(%rsp), %al
+	movb	%al, 9459(%rsp)
+	movb	10548(%rsp), %al
+	movb	%al, 9460(%rsp)
+	movb	10549(%rsp), %al
+	movb	%al, 9461(%rsp)
+	movb	10550(%rsp), %al
+	movb	%al, 9462(%rsp)
+	movb	10551(%rsp), %al
+	movb	%al, 9463(%rsp)
+	movb	10552(%rsp), %al
+	movb	%al, 9464(%rsp)
+	movb	10553(%rsp), %al
+	movb	%al, 9465(%rsp)
+	movb	10554(%rsp), %al
+	movb	%al, 9466(%rsp)
+	movb	10555(%rsp), %al
+	movb	%al, 9467(%rsp)
+	movb	10556(%rsp), %al
+	movb	%al, 9468(%rsp)
+	movb	10557(%rsp), %al
+	movb	%al, 9469(%rsp)
+	movb	10558(%rsp), %al
+	movb	%al, 9470(%rsp)
+	movb	10559(%rsp), %al
+	movb	%al, 9471(%rsp)
+	movb	10560(%rsp), %al
+	movb	%al, 9472(%rsp)
+	movb	10561(%rsp), %al
+	movb	%al, 9473(%rsp)
+	movb	10562(%rsp), %al
+	movb	%al, 9474(%rsp)
+	movb	10563(%rsp), %al
+	movb	%al, 9475(%rsp)
+	movb	10564(%rsp), %al
+	movb	%al, 9476(%rsp)
+	movb	10565(%rsp), %al
+	movb	%al, 9477(%rsp)
+	movb	10566(%rsp), %al
+	movb	%al, 9478(%rsp)
+	movb	10567(%rsp), %al
+	movb	%al, 9479(%rsp)
+	movb	10568(%rsp), %al
+	movb	%al, 9480(%rsp)
+	movb	10569(%rsp), %al
+	movb	%al, 9481(%rsp)
+	movb	10570(%rsp), %al
+	movb	%al, 9482(%rsp)
+	movb	10571(%rsp), %al
+	movb	%al, 9483(%rsp)
+	movb	10572(%rsp), %al
+	movb	%al, 9484(%rsp)
+	movb	10573(%rsp), %al
+	movb	%al, 9485(%rsp)
+	movb	10574(%rsp), %al
+	movb	%al, 9486(%rsp)
+	movb	10575(%rsp), %al
+	movb	%al, 9487(%rsp)
+	movb	10576(%rsp), %al
+	movb	%al, 9488(%rsp)
+	movb	10577(%rsp), %al
+	movb	%al, 9489(%rsp)
+	movb	10578(%rsp), %al
+	movb	%al, 9490(%rsp)
+	movb	10579(%rsp), %al
+	movb	%al, 9491(%rsp)
+	movb	10580(%rsp), %al
+	movb	%al, 9492(%rsp)
+	movb	10581(%rsp), %al
+	movb	%al, 9493(%rsp)
+	movb	10582(%rsp), %al
+	movb	%al, 9494(%rsp)
+	movb	10583(%rsp), %al
+	movb	%al, 9495(%rsp)
+	movb	10584(%rsp), %al
+	movb	%al, 9496(%rsp)
+	movb	10585(%rsp), %al
+	movb	%al, 9497(%rsp)
+	movb	10586(%rsp), %al
+	movb	%al, 9498(%rsp)
+	movb	10587(%rsp), %al
+	movb	%al, 9499(%rsp)
+	movb	10588(%rsp), %al
+	movb	%al, 9500(%rsp)
+	movb	10589(%rsp), %al
+	movb	%al, 9501(%rsp)
+	movb	10590(%rsp), %al
+	movb	%al, 9502(%rsp)
+	movb	10591(%rsp), %al
+	movb	%al, 9503(%rsp)
+	movb	10592(%rsp), %al
+	movb	%al, 9504(%rsp)
+	movb	10593(%rsp), %al
+	movb	%al, 9505(%rsp)
+	movb	10594(%rsp), %al
+	movb	%al, 9506(%rsp)
+	movb	10595(%rsp), %al
+	movb	%al, 9507(%rsp)
+	movb	10596(%rsp), %al
+	movb	%al, 9508(%rsp)
+	movb	10597(%rsp), %al
+	movb	%al, 9509(%rsp)
+	movb	10598(%rsp), %al
+	movb	%al, 9510(%rsp)
+	movb	10599(%rsp), %al
+	movb	%al, 9511(%rsp)
+	movb	10600(%rsp), %al
+	movb	%al, 9512(%rsp)
+	movb	10601(%rsp), %al
+	movb	%al, 9513(%rsp)
+	movb	10602(%rsp), %al
+	movb	%al, 9514(%rsp)
+	movb	10603(%rsp), %al
+	movb	%al, 9515(%rsp)
+	movb	10604(%rsp), %al
+	movb	%al, 9516(%rsp)
+	movb	10605(%rsp), %al
+	movb	%al, 9517(%rsp)
+	movb	10606(%rsp), %al
+	movb	%al, 9518(%rsp)
+	movb	10607(%rsp), %al
+	movb	%al, 9519(%rsp)
+	movb	10608(%rsp), %al
+	movb	%al, 9520(%rsp)
+	movb	10609(%rsp), %al
+	movb	%al, 9521(%rsp)
+	movb	10610(%rsp), %al
+	movb	%al, 9522(%rsp)
+	movb	10611(%rsp), %al
+	movb	%al, 9523(%rsp)
+	movb	10612(%rsp), %al
+	movb	%al, 9524(%rsp)
+	movb	10613(%rsp), %al
+	movb	%al, 9525(%rsp)
+	movb	10614(%rsp), %al
+	movb	%al, 9526(%rsp)
+	movb	10615(%rsp), %al
+	movb	%al, 9527(%rsp)
+	movb	10616(%rsp), %al
+	movb	%al, 9528(%rsp)
+	movb	10617(%rsp), %al
+	movb	%al, 9529(%rsp)
+	movb	10618(%rsp), %al
+	movb	%al, 9530(%rsp)
+	movb	10619(%rsp), %al
+	movb	%al, 9531(%rsp)
+	movb	10620(%rsp), %al
+	movb	%al, 9532(%rsp)
+	movb	10621(%rsp), %al
+	movb	%al, 9533(%rsp)
+	movb	10622(%rsp), %al
+	movb	%al, 9534(%rsp)
+	movb	10623(%rsp), %al
+	movb	%al, 9535(%rsp)
+	movb	10624(%rsp), %al
+	movb	%al, 9536(%rsp)
+	movb	10625(%rsp), %al
+	movb	%al, 9537(%rsp)
+	movb	10626(%rsp), %al
+	movb	%al, 9538(%rsp)
+	movb	10627(%rsp), %al
+	movb	%al, 9539(%rsp)
+	movb	10628(%rsp), %al
+	movb	%al, 9540(%rsp)
+	movb	10629(%rsp), %al
+	movb	%al, 9541(%rsp)
+	movb	10630(%rsp), %al
+	movb	%al, 9542(%rsp)
+	movb	10631(%rsp), %al
+	movb	%al, 9543(%rsp)
+	movb	10632(%rsp), %al
+	movb	%al, 9544(%rsp)
+	movb	10633(%rsp), %al
+	movb	%al, 9545(%rsp)
+	movb	10634(%rsp), %al
+	movb	%al, 9546(%rsp)
+	movb	10635(%rsp), %al
+	movb	%al, 9547(%rsp)
+	movb	10636(%rsp), %al
+	movb	%al, 9548(%rsp)
+	movb	10637(%rsp), %al
+	movb	%al, 9549(%rsp)
+	movb	10638(%rsp), %al
+	movb	%al, 9550(%rsp)
+	movb	10639(%rsp), %al
+	movb	%al, 9551(%rsp)
+	leaq	9424(%rsp), %rax
 	movq	%rsp, %rcx
 	movq	$0, %rdx
 	movq	$0, %rsi
@@ -1947,1417 +1947,877 @@ Lcrypto_kem_dec_jazz$14:
 	subw	%ax, 1022(%rsp)
 	andw	$1023, 1022(%rsp)
 	shrw	$9, 1022(%rsp)
-	movb	$0, 9496(%rsp)
+	movb	$0, 9296(%rsp)
 	movw	512(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
+	orb 	%al, 9296(%rsp)
 	movw	514(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
+	orb 	%al, 9296(%rsp)
 	movw	516(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
+	orb 	%al, 9296(%rsp)
 	movw	518(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
+	orb 	%al, 9296(%rsp)
 	movw	520(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
+	orb 	%al, 9296(%rsp)
 	movw	522(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
+	orb 	%al, 9296(%rsp)
 	movw	524(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
+	orb 	%al, 9296(%rsp)
 	movw	526(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9496(%rsp)
-	movb	$0, 9497(%rsp)
+	orb 	%al, 9296(%rsp)
+	movb	$0, 9297(%rsp)
 	movw	528(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
+	orb 	%al, 9297(%rsp)
 	movw	530(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
+	orb 	%al, 9297(%rsp)
 	movw	532(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
+	orb 	%al, 9297(%rsp)
 	movw	534(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
+	orb 	%al, 9297(%rsp)
 	movw	536(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
+	orb 	%al, 9297(%rsp)
 	movw	538(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
+	orb 	%al, 9297(%rsp)
 	movw	540(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
+	orb 	%al, 9297(%rsp)
 	movw	542(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9497(%rsp)
-	movb	$0, 9498(%rsp)
+	orb 	%al, 9297(%rsp)
+	movb	$0, 9298(%rsp)
 	movw	544(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
+	orb 	%al, 9298(%rsp)
 	movw	546(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
+	orb 	%al, 9298(%rsp)
 	movw	548(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
+	orb 	%al, 9298(%rsp)
 	movw	550(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
+	orb 	%al, 9298(%rsp)
 	movw	552(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
+	orb 	%al, 9298(%rsp)
 	movw	554(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
+	orb 	%al, 9298(%rsp)
 	movw	556(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
+	orb 	%al, 9298(%rsp)
 	movw	558(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9498(%rsp)
-	movb	$0, 9499(%rsp)
+	orb 	%al, 9298(%rsp)
+	movb	$0, 9299(%rsp)
 	movw	560(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
+	orb 	%al, 9299(%rsp)
 	movw	562(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
+	orb 	%al, 9299(%rsp)
 	movw	564(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
+	orb 	%al, 9299(%rsp)
 	movw	566(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
+	orb 	%al, 9299(%rsp)
 	movw	568(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
+	orb 	%al, 9299(%rsp)
 	movw	570(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
+	orb 	%al, 9299(%rsp)
 	movw	572(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
+	orb 	%al, 9299(%rsp)
 	movw	574(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9499(%rsp)
-	movb	$0, 9500(%rsp)
+	orb 	%al, 9299(%rsp)
+	movb	$0, 9300(%rsp)
 	movw	576(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
+	orb 	%al, 9300(%rsp)
 	movw	578(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
+	orb 	%al, 9300(%rsp)
 	movw	580(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
+	orb 	%al, 9300(%rsp)
 	movw	582(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
+	orb 	%al, 9300(%rsp)
 	movw	584(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
+	orb 	%al, 9300(%rsp)
 	movw	586(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
+	orb 	%al, 9300(%rsp)
 	movw	588(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
+	orb 	%al, 9300(%rsp)
 	movw	590(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9500(%rsp)
-	movb	$0, 9501(%rsp)
+	orb 	%al, 9300(%rsp)
+	movb	$0, 9301(%rsp)
 	movw	592(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
+	orb 	%al, 9301(%rsp)
 	movw	594(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
+	orb 	%al, 9301(%rsp)
 	movw	596(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
+	orb 	%al, 9301(%rsp)
 	movw	598(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
+	orb 	%al, 9301(%rsp)
 	movw	600(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
+	orb 	%al, 9301(%rsp)
 	movw	602(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
+	orb 	%al, 9301(%rsp)
 	movw	604(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
+	orb 	%al, 9301(%rsp)
 	movw	606(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9501(%rsp)
-	movb	$0, 9502(%rsp)
+	orb 	%al, 9301(%rsp)
+	movb	$0, 9302(%rsp)
 	movw	608(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
+	orb 	%al, 9302(%rsp)
 	movw	610(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
+	orb 	%al, 9302(%rsp)
 	movw	612(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
+	orb 	%al, 9302(%rsp)
 	movw	614(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
+	orb 	%al, 9302(%rsp)
 	movw	616(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
+	orb 	%al, 9302(%rsp)
 	movw	618(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
+	orb 	%al, 9302(%rsp)
 	movw	620(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
+	orb 	%al, 9302(%rsp)
 	movw	622(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9502(%rsp)
-	movb	$0, 9503(%rsp)
+	orb 	%al, 9302(%rsp)
+	movb	$0, 9303(%rsp)
 	movw	624(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
+	orb 	%al, 9303(%rsp)
 	movw	626(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
+	orb 	%al, 9303(%rsp)
 	movw	628(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
+	orb 	%al, 9303(%rsp)
 	movw	630(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
+	orb 	%al, 9303(%rsp)
 	movw	632(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
+	orb 	%al, 9303(%rsp)
 	movw	634(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
+	orb 	%al, 9303(%rsp)
 	movw	636(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
+	orb 	%al, 9303(%rsp)
 	movw	638(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9503(%rsp)
-	movb	$0, 9504(%rsp)
+	orb 	%al, 9303(%rsp)
+	movb	$0, 9304(%rsp)
 	movw	640(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
+	orb 	%al, 9304(%rsp)
 	movw	642(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
+	orb 	%al, 9304(%rsp)
 	movw	644(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
+	orb 	%al, 9304(%rsp)
 	movw	646(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
+	orb 	%al, 9304(%rsp)
 	movw	648(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
+	orb 	%al, 9304(%rsp)
 	movw	650(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
+	orb 	%al, 9304(%rsp)
 	movw	652(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
+	orb 	%al, 9304(%rsp)
 	movw	654(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9504(%rsp)
-	movb	$0, 9505(%rsp)
+	orb 	%al, 9304(%rsp)
+	movb	$0, 9305(%rsp)
 	movw	656(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
+	orb 	%al, 9305(%rsp)
 	movw	658(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
+	orb 	%al, 9305(%rsp)
 	movw	660(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
+	orb 	%al, 9305(%rsp)
 	movw	662(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
+	orb 	%al, 9305(%rsp)
 	movw	664(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
+	orb 	%al, 9305(%rsp)
 	movw	666(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
+	orb 	%al, 9305(%rsp)
 	movw	668(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
+	orb 	%al, 9305(%rsp)
 	movw	670(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9505(%rsp)
-	movb	$0, 9506(%rsp)
+	orb 	%al, 9305(%rsp)
+	movb	$0, 9306(%rsp)
 	movw	672(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
+	orb 	%al, 9306(%rsp)
 	movw	674(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
+	orb 	%al, 9306(%rsp)
 	movw	676(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
+	orb 	%al, 9306(%rsp)
 	movw	678(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
+	orb 	%al, 9306(%rsp)
 	movw	680(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
+	orb 	%al, 9306(%rsp)
 	movw	682(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
+	orb 	%al, 9306(%rsp)
 	movw	684(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
+	orb 	%al, 9306(%rsp)
 	movw	686(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9506(%rsp)
-	movb	$0, 9507(%rsp)
+	orb 	%al, 9306(%rsp)
+	movb	$0, 9307(%rsp)
 	movw	688(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
+	orb 	%al, 9307(%rsp)
 	movw	690(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
+	orb 	%al, 9307(%rsp)
 	movw	692(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
+	orb 	%al, 9307(%rsp)
 	movw	694(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
+	orb 	%al, 9307(%rsp)
 	movw	696(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
+	orb 	%al, 9307(%rsp)
 	movw	698(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
+	orb 	%al, 9307(%rsp)
 	movw	700(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
+	orb 	%al, 9307(%rsp)
 	movw	702(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9507(%rsp)
-	movb	$0, 9508(%rsp)
+	orb 	%al, 9307(%rsp)
+	movb	$0, 9308(%rsp)
 	movw	704(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
+	orb 	%al, 9308(%rsp)
 	movw	706(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
+	orb 	%al, 9308(%rsp)
 	movw	708(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
+	orb 	%al, 9308(%rsp)
 	movw	710(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
+	orb 	%al, 9308(%rsp)
 	movw	712(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
+	orb 	%al, 9308(%rsp)
 	movw	714(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
+	orb 	%al, 9308(%rsp)
 	movw	716(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
+	orb 	%al, 9308(%rsp)
 	movw	718(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9508(%rsp)
-	movb	$0, 9509(%rsp)
+	orb 	%al, 9308(%rsp)
+	movb	$0, 9309(%rsp)
 	movw	720(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
+	orb 	%al, 9309(%rsp)
 	movw	722(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
+	orb 	%al, 9309(%rsp)
 	movw	724(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
+	orb 	%al, 9309(%rsp)
 	movw	726(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
+	orb 	%al, 9309(%rsp)
 	movw	728(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
+	orb 	%al, 9309(%rsp)
 	movw	730(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
+	orb 	%al, 9309(%rsp)
 	movw	732(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
+	orb 	%al, 9309(%rsp)
 	movw	734(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9509(%rsp)
-	movb	$0, 9510(%rsp)
+	orb 	%al, 9309(%rsp)
+	movb	$0, 9310(%rsp)
 	movw	736(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
+	orb 	%al, 9310(%rsp)
 	movw	738(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
+	orb 	%al, 9310(%rsp)
 	movw	740(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
+	orb 	%al, 9310(%rsp)
 	movw	742(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
+	orb 	%al, 9310(%rsp)
 	movw	744(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
+	orb 	%al, 9310(%rsp)
 	movw	746(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
+	orb 	%al, 9310(%rsp)
 	movw	748(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
+	orb 	%al, 9310(%rsp)
 	movw	750(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9510(%rsp)
-	movb	$0, 9511(%rsp)
+	orb 	%al, 9310(%rsp)
+	movb	$0, 9311(%rsp)
 	movw	752(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
+	orb 	%al, 9311(%rsp)
 	movw	754(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
+	orb 	%al, 9311(%rsp)
 	movw	756(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
+	orb 	%al, 9311(%rsp)
 	movw	758(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
+	orb 	%al, 9311(%rsp)
 	movw	760(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
+	orb 	%al, 9311(%rsp)
 	movw	762(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
+	orb 	%al, 9311(%rsp)
 	movw	764(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
+	orb 	%al, 9311(%rsp)
 	movw	766(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9511(%rsp)
-	movb	$0, 9512(%rsp)
+	orb 	%al, 9311(%rsp)
+	movb	$0, 9312(%rsp)
 	movw	768(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
+	orb 	%al, 9312(%rsp)
 	movw	770(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
+	orb 	%al, 9312(%rsp)
 	movw	772(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
+	orb 	%al, 9312(%rsp)
 	movw	774(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
+	orb 	%al, 9312(%rsp)
 	movw	776(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
+	orb 	%al, 9312(%rsp)
 	movw	778(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
+	orb 	%al, 9312(%rsp)
 	movw	780(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
+	orb 	%al, 9312(%rsp)
 	movw	782(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9512(%rsp)
-	movb	$0, 9513(%rsp)
+	orb 	%al, 9312(%rsp)
+	movb	$0, 9313(%rsp)
 	movw	784(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
+	orb 	%al, 9313(%rsp)
 	movw	786(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
+	orb 	%al, 9313(%rsp)
 	movw	788(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
+	orb 	%al, 9313(%rsp)
 	movw	790(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
+	orb 	%al, 9313(%rsp)
 	movw	792(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
+	orb 	%al, 9313(%rsp)
 	movw	794(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
+	orb 	%al, 9313(%rsp)
 	movw	796(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
+	orb 	%al, 9313(%rsp)
 	movw	798(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9513(%rsp)
-	movb	$0, 9514(%rsp)
+	orb 	%al, 9313(%rsp)
+	movb	$0, 9314(%rsp)
 	movw	800(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
+	orb 	%al, 9314(%rsp)
 	movw	802(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
+	orb 	%al, 9314(%rsp)
 	movw	804(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
+	orb 	%al, 9314(%rsp)
 	movw	806(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
+	orb 	%al, 9314(%rsp)
 	movw	808(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
+	orb 	%al, 9314(%rsp)
 	movw	810(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
+	orb 	%al, 9314(%rsp)
 	movw	812(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
+	orb 	%al, 9314(%rsp)
 	movw	814(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9514(%rsp)
-	movb	$0, 9515(%rsp)
+	orb 	%al, 9314(%rsp)
+	movb	$0, 9315(%rsp)
 	movw	816(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
+	orb 	%al, 9315(%rsp)
 	movw	818(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
+	orb 	%al, 9315(%rsp)
 	movw	820(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
+	orb 	%al, 9315(%rsp)
 	movw	822(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
+	orb 	%al, 9315(%rsp)
 	movw	824(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
+	orb 	%al, 9315(%rsp)
 	movw	826(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
+	orb 	%al, 9315(%rsp)
 	movw	828(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
+	orb 	%al, 9315(%rsp)
 	movw	830(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9515(%rsp)
-	movb	$0, 9516(%rsp)
+	orb 	%al, 9315(%rsp)
+	movb	$0, 9316(%rsp)
 	movw	832(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
+	orb 	%al, 9316(%rsp)
 	movw	834(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
+	orb 	%al, 9316(%rsp)
 	movw	836(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
+	orb 	%al, 9316(%rsp)
 	movw	838(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
+	orb 	%al, 9316(%rsp)
 	movw	840(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
+	orb 	%al, 9316(%rsp)
 	movw	842(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
+	orb 	%al, 9316(%rsp)
 	movw	844(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
+	orb 	%al, 9316(%rsp)
 	movw	846(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9516(%rsp)
-	movb	$0, 9517(%rsp)
+	orb 	%al, 9316(%rsp)
+	movb	$0, 9317(%rsp)
 	movw	848(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
+	orb 	%al, 9317(%rsp)
 	movw	850(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
+	orb 	%al, 9317(%rsp)
 	movw	852(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
+	orb 	%al, 9317(%rsp)
 	movw	854(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
+	orb 	%al, 9317(%rsp)
 	movw	856(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
+	orb 	%al, 9317(%rsp)
 	movw	858(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
+	orb 	%al, 9317(%rsp)
 	movw	860(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
+	orb 	%al, 9317(%rsp)
 	movw	862(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9517(%rsp)
-	movb	$0, 9518(%rsp)
+	orb 	%al, 9317(%rsp)
+	movb	$0, 9318(%rsp)
 	movw	864(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
+	orb 	%al, 9318(%rsp)
 	movw	866(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
+	orb 	%al, 9318(%rsp)
 	movw	868(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
+	orb 	%al, 9318(%rsp)
 	movw	870(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
+	orb 	%al, 9318(%rsp)
 	movw	872(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
+	orb 	%al, 9318(%rsp)
 	movw	874(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
+	orb 	%al, 9318(%rsp)
 	movw	876(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
+	orb 	%al, 9318(%rsp)
 	movw	878(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9518(%rsp)
-	movb	$0, 9519(%rsp)
+	orb 	%al, 9318(%rsp)
+	movb	$0, 9319(%rsp)
 	movw	880(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
+	orb 	%al, 9319(%rsp)
 	movw	882(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
+	orb 	%al, 9319(%rsp)
 	movw	884(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
+	orb 	%al, 9319(%rsp)
 	movw	886(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
+	orb 	%al, 9319(%rsp)
 	movw	888(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
+	orb 	%al, 9319(%rsp)
 	movw	890(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
+	orb 	%al, 9319(%rsp)
 	movw	892(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
+	orb 	%al, 9319(%rsp)
 	movw	894(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9519(%rsp)
-	movb	$0, 9520(%rsp)
+	orb 	%al, 9319(%rsp)
+	movb	$0, 9320(%rsp)
 	movw	896(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
+	orb 	%al, 9320(%rsp)
 	movw	898(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
+	orb 	%al, 9320(%rsp)
 	movw	900(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
+	orb 	%al, 9320(%rsp)
 	movw	902(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
+	orb 	%al, 9320(%rsp)
 	movw	904(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
+	orb 	%al, 9320(%rsp)
 	movw	906(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
+	orb 	%al, 9320(%rsp)
 	movw	908(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
+	orb 	%al, 9320(%rsp)
 	movw	910(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9520(%rsp)
-	movb	$0, 9521(%rsp)
+	orb 	%al, 9320(%rsp)
+	movb	$0, 9321(%rsp)
 	movw	912(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
+	orb 	%al, 9321(%rsp)
 	movw	914(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
+	orb 	%al, 9321(%rsp)
 	movw	916(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
+	orb 	%al, 9321(%rsp)
 	movw	918(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
+	orb 	%al, 9321(%rsp)
 	movw	920(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
+	orb 	%al, 9321(%rsp)
 	movw	922(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
+	orb 	%al, 9321(%rsp)
 	movw	924(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
+	orb 	%al, 9321(%rsp)
 	movw	926(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9521(%rsp)
-	movb	$0, 9522(%rsp)
+	orb 	%al, 9321(%rsp)
+	movb	$0, 9322(%rsp)
 	movw	928(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
+	orb 	%al, 9322(%rsp)
 	movw	930(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
+	orb 	%al, 9322(%rsp)
 	movw	932(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
+	orb 	%al, 9322(%rsp)
 	movw	934(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
+	orb 	%al, 9322(%rsp)
 	movw	936(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
+	orb 	%al, 9322(%rsp)
 	movw	938(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
+	orb 	%al, 9322(%rsp)
 	movw	940(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
+	orb 	%al, 9322(%rsp)
 	movw	942(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9522(%rsp)
-	movb	$0, 9523(%rsp)
+	orb 	%al, 9322(%rsp)
+	movb	$0, 9323(%rsp)
 	movw	944(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
+	orb 	%al, 9323(%rsp)
 	movw	946(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
+	orb 	%al, 9323(%rsp)
 	movw	948(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
+	orb 	%al, 9323(%rsp)
 	movw	950(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
+	orb 	%al, 9323(%rsp)
 	movw	952(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
+	orb 	%al, 9323(%rsp)
 	movw	954(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
+	orb 	%al, 9323(%rsp)
 	movw	956(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
+	orb 	%al, 9323(%rsp)
 	movw	958(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9523(%rsp)
-	movb	$0, 9524(%rsp)
+	orb 	%al, 9323(%rsp)
+	movb	$0, 9324(%rsp)
 	movw	960(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
+	orb 	%al, 9324(%rsp)
 	movw	962(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
+	orb 	%al, 9324(%rsp)
 	movw	964(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
+	orb 	%al, 9324(%rsp)
 	movw	966(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
+	orb 	%al, 9324(%rsp)
 	movw	968(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
+	orb 	%al, 9324(%rsp)
 	movw	970(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
+	orb 	%al, 9324(%rsp)
 	movw	972(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
+	orb 	%al, 9324(%rsp)
 	movw	974(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9524(%rsp)
-	movb	$0, 9525(%rsp)
+	orb 	%al, 9324(%rsp)
+	movb	$0, 9325(%rsp)
 	movw	976(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
+	orb 	%al, 9325(%rsp)
 	movw	978(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
+	orb 	%al, 9325(%rsp)
 	movw	980(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
+	orb 	%al, 9325(%rsp)
 	movw	982(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
+	orb 	%al, 9325(%rsp)
 	movw	984(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
+	orb 	%al, 9325(%rsp)
 	movw	986(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
+	orb 	%al, 9325(%rsp)
 	movw	988(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
+	orb 	%al, 9325(%rsp)
 	movw	990(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9525(%rsp)
-	movb	$0, 9526(%rsp)
+	orb 	%al, 9325(%rsp)
+	movb	$0, 9326(%rsp)
 	movw	992(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
+	orb 	%al, 9326(%rsp)
 	movw	994(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
+	orb 	%al, 9326(%rsp)
 	movw	996(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
+	orb 	%al, 9326(%rsp)
 	movw	998(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
+	orb 	%al, 9326(%rsp)
 	movw	1000(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
+	orb 	%al, 9326(%rsp)
 	movw	1002(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
+	orb 	%al, 9326(%rsp)
 	movw	1004(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
+	orb 	%al, 9326(%rsp)
 	movw	1006(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9526(%rsp)
-	movb	$0, 9527(%rsp)
+	orb 	%al, 9326(%rsp)
+	movb	$0, 9327(%rsp)
 	movw	1008(%rsp), %ax
 	shlw	$0, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
+	orb 	%al, 9327(%rsp)
 	movw	1010(%rsp), %ax
 	shlw	$1, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
+	orb 	%al, 9327(%rsp)
 	movw	1012(%rsp), %ax
 	shlw	$2, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
+	orb 	%al, 9327(%rsp)
 	movw	1014(%rsp), %ax
 	shlw	$3, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
+	orb 	%al, 9327(%rsp)
 	movw	1016(%rsp), %ax
 	shlw	$4, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
+	orb 	%al, 9327(%rsp)
 	movw	1018(%rsp), %ax
 	shlw	$5, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
+	orb 	%al, 9327(%rsp)
 	movw	1020(%rsp), %ax
 	shlw	$6, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
+	orb 	%al, 9327(%rsp)
 	movw	1022(%rsp), %ax
 	shlw	$7, %ax
-	movb	%al, %al
-	orb 	%al, 9527(%rsp)
-	movb	14168(%rsp), %al
-	movb	%al, 9528(%rsp)
-	movb	14169(%rsp), %al
-	movb	%al, 9529(%rsp)
-	movb	14170(%rsp), %al
-	movb	%al, 9530(%rsp)
-	movb	14171(%rsp), %al
-	movb	%al, 9531(%rsp)
-	movb	14172(%rsp), %al
-	movb	%al, 9532(%rsp)
-	movb	14173(%rsp), %al
-	movb	%al, 9533(%rsp)
-	movb	14174(%rsp), %al
-	movb	%al, 9534(%rsp)
-	movb	14175(%rsp), %al
-	movb	%al, 9535(%rsp)
-	movb	14176(%rsp), %al
-	movb	%al, 9536(%rsp)
-	movb	14177(%rsp), %al
-	movb	%al, 9537(%rsp)
-	movb	14178(%rsp), %al
-	movb	%al, 9538(%rsp)
-	movb	14179(%rsp), %al
-	movb	%al, 9539(%rsp)
-	movb	14180(%rsp), %al
-	movb	%al, 9540(%rsp)
-	movb	14181(%rsp), %al
-	movb	%al, 9541(%rsp)
-	movb	14182(%rsp), %al
-	movb	%al, 9542(%rsp)
-	movb	14183(%rsp), %al
-	movb	%al, 9543(%rsp)
-	movb	14184(%rsp), %al
-	movb	%al, 9544(%rsp)
-	movb	14185(%rsp), %al
-	movb	%al, 9545(%rsp)
-	movb	14186(%rsp), %al
-	movb	%al, 9546(%rsp)
-	movb	14187(%rsp), %al
-	movb	%al, 9547(%rsp)
-	movb	14188(%rsp), %al
-	movb	%al, 9548(%rsp)
-	movb	14189(%rsp), %al
-	movb	%al, 9549(%rsp)
-	movb	14190(%rsp), %al
-	movb	%al, 9550(%rsp)
-	movb	14191(%rsp), %al
-	movb	%al, 9551(%rsp)
-	movb	14192(%rsp), %al
-	movb	%al, 9552(%rsp)
-	movb	14193(%rsp), %al
-	movb	%al, 9553(%rsp)
-	movb	14194(%rsp), %al
-	movb	%al, 9554(%rsp)
-	movb	14195(%rsp), %al
-	movb	%al, 9555(%rsp)
-	movb	14196(%rsp), %al
-	movb	%al, 9556(%rsp)
-	movb	14197(%rsp), %al
-	movb	%al, 9557(%rsp)
-	movb	14198(%rsp), %al
-	movb	%al, 9558(%rsp)
-	movb	14199(%rsp), %al
-	movb	%al, 9559(%rsp)
-	leaq	9560(%rsp), %rax
-	leaq	9496(%rsp), %rcx
-	movq	$0, 4624(%rsp)
-	movq	$0, 4632(%rsp)
-	movq	$0, 4640(%rsp)
-	movq	$0, 4648(%rsp)
-	movq	$0, 4656(%rsp)
-	movq	$0, 4664(%rsp)
-	movq	$0, 4672(%rsp)
-	movq	$0, 4680(%rsp)
-	movq	$0, 4688(%rsp)
-	movq	$0, 4696(%rsp)
-	movq	$0, 4704(%rsp)
-	movq	$0, 4712(%rsp)
-	movq	$0, 4720(%rsp)
-	movq	$0, 4728(%rsp)
-	movq	$0, 4736(%rsp)
-	movq	$0, 4744(%rsp)
-	movq	$0, 4752(%rsp)
-	movq	$0, 4760(%rsp)
-	movq	$0, 4768(%rsp)
-	movq	$0, 4776(%rsp)
-	movq	$0, 4784(%rsp)
-	movq	$0, 4792(%rsp)
-	movq	$0, 4800(%rsp)
-	movq	$0, 4808(%rsp)
-	movq	$0, 4816(%rsp)
-	movb	(%rcx), %dl
-	xorb	%dl, 4624(%rsp)
-	movb	1(%rcx), %dl
-	xorb	%dl, 4625(%rsp)
-	movb	2(%rcx), %dl
-	xorb	%dl, 4626(%rsp)
-	movb	3(%rcx), %dl
-	xorb	%dl, 4627(%rsp)
-	movb	4(%rcx), %dl
-	xorb	%dl, 4628(%rsp)
-	movb	5(%rcx), %dl
-	xorb	%dl, 4629(%rsp)
-	movb	6(%rcx), %dl
-	xorb	%dl, 4630(%rsp)
-	movb	7(%rcx), %dl
-	xorb	%dl, 4631(%rsp)
-	movb	8(%rcx), %dl
-	xorb	%dl, 4632(%rsp)
-	movb	9(%rcx), %dl
-	xorb	%dl, 4633(%rsp)
-	movb	10(%rcx), %dl
-	xorb	%dl, 4634(%rsp)
-	movb	11(%rcx), %dl
-	xorb	%dl, 4635(%rsp)
-	movb	12(%rcx), %dl
-	xorb	%dl, 4636(%rsp)
-	movb	13(%rcx), %dl
-	xorb	%dl, 4637(%rsp)
-	movb	14(%rcx), %dl
-	xorb	%dl, 4638(%rsp)
-	movb	15(%rcx), %dl
-	xorb	%dl, 4639(%rsp)
-	movb	16(%rcx), %dl
-	xorb	%dl, 4640(%rsp)
-	movb	17(%rcx), %dl
-	xorb	%dl, 4641(%rsp)
-	movb	18(%rcx), %dl
-	xorb	%dl, 4642(%rsp)
-	movb	19(%rcx), %dl
-	xorb	%dl, 4643(%rsp)
-	movb	20(%rcx), %dl
-	xorb	%dl, 4644(%rsp)
-	movb	21(%rcx), %dl
-	xorb	%dl, 4645(%rsp)
-	movb	22(%rcx), %dl
-	xorb	%dl, 4646(%rsp)
-	movb	23(%rcx), %dl
-	xorb	%dl, 4647(%rsp)
-	movb	24(%rcx), %dl
-	xorb	%dl, 4648(%rsp)
-	movb	25(%rcx), %dl
-	xorb	%dl, 4649(%rsp)
-	movb	26(%rcx), %dl
-	xorb	%dl, 4650(%rsp)
-	movb	27(%rcx), %dl
-	xorb	%dl, 4651(%rsp)
-	movb	28(%rcx), %dl
-	xorb	%dl, 4652(%rsp)
-	movb	29(%rcx), %dl
-	xorb	%dl, 4653(%rsp)
-	movb	30(%rcx), %dl
-	xorb	%dl, 4654(%rsp)
-	movb	31(%rcx), %dl
-	xorb	%dl, 4655(%rsp)
-	movb	32(%rcx), %dl
-	xorb	%dl, 4656(%rsp)
-	movb	33(%rcx), %dl
-	xorb	%dl, 4657(%rsp)
-	movb	34(%rcx), %dl
-	xorb	%dl, 4658(%rsp)
-	movb	35(%rcx), %dl
-	xorb	%dl, 4659(%rsp)
-	movb	36(%rcx), %dl
-	xorb	%dl, 4660(%rsp)
-	movb	37(%rcx), %dl
-	xorb	%dl, 4661(%rsp)
-	movb	38(%rcx), %dl
-	xorb	%dl, 4662(%rsp)
-	movb	39(%rcx), %dl
-	xorb	%dl, 4663(%rsp)
-	movb	40(%rcx), %dl
-	xorb	%dl, 4664(%rsp)
-	movb	41(%rcx), %dl
-	xorb	%dl, 4665(%rsp)
-	movb	42(%rcx), %dl
-	xorb	%dl, 4666(%rsp)
-	movb	43(%rcx), %dl
-	xorb	%dl, 4667(%rsp)
-	movb	44(%rcx), %dl
-	xorb	%dl, 4668(%rsp)
-	movb	45(%rcx), %dl
-	xorb	%dl, 4669(%rsp)
-	movb	46(%rcx), %dl
-	xorb	%dl, 4670(%rsp)
-	movb	47(%rcx), %dl
-	xorb	%dl, 4671(%rsp)
-	movb	48(%rcx), %dl
-	xorb	%dl, 4672(%rsp)
-	movb	49(%rcx), %dl
-	xorb	%dl, 4673(%rsp)
-	movb	50(%rcx), %dl
-	xorb	%dl, 4674(%rsp)
-	movb	51(%rcx), %dl
-	xorb	%dl, 4675(%rsp)
-	movb	52(%rcx), %dl
-	xorb	%dl, 4676(%rsp)
-	movb	53(%rcx), %dl
-	xorb	%dl, 4677(%rsp)
-	movb	54(%rcx), %dl
-	xorb	%dl, 4678(%rsp)
-	movb	55(%rcx), %dl
-	xorb	%dl, 4679(%rsp)
-	movb	56(%rcx), %dl
-	xorb	%dl, 4680(%rsp)
-	movb	57(%rcx), %dl
-	xorb	%dl, 4681(%rsp)
-	movb	58(%rcx), %dl
-	xorb	%dl, 4682(%rsp)
-	movb	59(%rcx), %dl
-	xorb	%dl, 4683(%rsp)
-	movb	60(%rcx), %dl
-	xorb	%dl, 4684(%rsp)
-	movb	61(%rcx), %dl
-	xorb	%dl, 4685(%rsp)
-	movb	62(%rcx), %dl
-	xorb	%dl, 4686(%rsp)
-	movb	63(%rcx), %cl
-	xorb	%cl, 4687(%rsp)
-	xorb	$6, 4688(%rsp)
-	xorb	$-128, 4695(%rsp)
-	leaq	4624(%rsp), %rdi
+	orb 	%al, 9327(%rsp)
+	movb	13968(%rsp), %al
+	movb	%al, 9328(%rsp)
+	movb	13969(%rsp), %al
+	movb	%al, 9329(%rsp)
+	movb	13970(%rsp), %al
+	movb	%al, 9330(%rsp)
+	movb	13971(%rsp), %al
+	movb	%al, 9331(%rsp)
+	movb	13972(%rsp), %al
+	movb	%al, 9332(%rsp)
+	movb	13973(%rsp), %al
+	movb	%al, 9333(%rsp)
+	movb	13974(%rsp), %al
+	movb	%al, 9334(%rsp)
+	movb	13975(%rsp), %al
+	movb	%al, 9335(%rsp)
+	movb	13976(%rsp), %al
+	movb	%al, 9336(%rsp)
+	movb	13977(%rsp), %al
+	movb	%al, 9337(%rsp)
+	movb	13978(%rsp), %al
+	movb	%al, 9338(%rsp)
+	movb	13979(%rsp), %al
+	movb	%al, 9339(%rsp)
+	movb	13980(%rsp), %al
+	movb	%al, 9340(%rsp)
+	movb	13981(%rsp), %al
+	movb	%al, 9341(%rsp)
+	movb	13982(%rsp), %al
+	movb	%al, 9342(%rsp)
+	movb	13983(%rsp), %al
+	movb	%al, 9343(%rsp)
+	movb	13984(%rsp), %al
+	movb	%al, 9344(%rsp)
+	movb	13985(%rsp), %al
+	movb	%al, 9345(%rsp)
+	movb	13986(%rsp), %al
+	movb	%al, 9346(%rsp)
+	movb	13987(%rsp), %al
+	movb	%al, 9347(%rsp)
+	movb	13988(%rsp), %al
+	movb	%al, 9348(%rsp)
+	movb	13989(%rsp), %al
+	movb	%al, 9349(%rsp)
+	movb	13990(%rsp), %al
+	movb	%al, 9350(%rsp)
+	movb	13991(%rsp), %al
+	movb	%al, 9351(%rsp)
+	movb	13992(%rsp), %al
+	movb	%al, 9352(%rsp)
+	movb	13993(%rsp), %al
+	movb	%al, 9353(%rsp)
+	movb	13994(%rsp), %al
+	movb	%al, 9354(%rsp)
+	movb	13995(%rsp), %al
+	movb	%al, 9355(%rsp)
+	movb	13996(%rsp), %al
+	movb	%al, 9356(%rsp)
+	movb	13997(%rsp), %al
+	movb	%al, 9357(%rsp)
+	movb	13998(%rsp), %al
+	movb	%al, 9358(%rsp)
+	movb	13999(%rsp), %al
+	movb	%al, 9359(%rsp)
+	leaq	9360(%rsp), %rax
+	leaq	9296(%rsp), %rcx
 	leaq	-200(%rsp), %rsp
-	leaq	Lcrypto_kem_dec_jazz$13(%rip), 	%r14
-	jmp 	LKeccakF1600_StatePermute$1
+	leaq	Lcrypto_kem_dec_jazz$13(%rip), 	%r13
+	jmp 	Lsha3_512_64$1
 Lcrypto_kem_dec_jazz$13:
 	leaq	200(%rsp), %rsp
-	movb	4624(%rsp), %cl
-	movb	%cl, (%rax)
-	movb	4625(%rsp), %cl
-	movb	%cl, 1(%rax)
-	movb	4626(%rsp), %cl
-	movb	%cl, 2(%rax)
-	movb	4627(%rsp), %cl
-	movb	%cl, 3(%rax)
-	movb	4628(%rsp), %cl
-	movb	%cl, 4(%rax)
-	movb	4629(%rsp), %cl
-	movb	%cl, 5(%rax)
-	movb	4630(%rsp), %cl
-	movb	%cl, 6(%rax)
-	movb	4631(%rsp), %cl
-	movb	%cl, 7(%rax)
-	movb	4632(%rsp), %cl
-	movb	%cl, 8(%rax)
-	movb	4633(%rsp), %cl
-	movb	%cl, 9(%rax)
-	movb	4634(%rsp), %cl
-	movb	%cl, 10(%rax)
-	movb	4635(%rsp), %cl
-	movb	%cl, 11(%rax)
-	movb	4636(%rsp), %cl
-	movb	%cl, 12(%rax)
-	movb	4637(%rsp), %cl
-	movb	%cl, 13(%rax)
-	movb	4638(%rsp), %cl
-	movb	%cl, 14(%rax)
-	movb	4639(%rsp), %cl
-	movb	%cl, 15(%rax)
-	movb	4640(%rsp), %cl
-	movb	%cl, 16(%rax)
-	movb	4641(%rsp), %cl
-	movb	%cl, 17(%rax)
-	movb	4642(%rsp), %cl
-	movb	%cl, 18(%rax)
-	movb	4643(%rsp), %cl
-	movb	%cl, 19(%rax)
-	movb	4644(%rsp), %cl
-	movb	%cl, 20(%rax)
-	movb	4645(%rsp), %cl
-	movb	%cl, 21(%rax)
-	movb	4646(%rsp), %cl
-	movb	%cl, 22(%rax)
-	movb	4647(%rsp), %cl
-	movb	%cl, 23(%rax)
-	movb	4648(%rsp), %cl
-	movb	%cl, 24(%rax)
-	movb	4649(%rsp), %cl
-	movb	%cl, 25(%rax)
-	movb	4650(%rsp), %cl
-	movb	%cl, 26(%rax)
-	movb	4651(%rsp), %cl
-	movb	%cl, 27(%rax)
-	movb	4652(%rsp), %cl
-	movb	%cl, 28(%rax)
-	movb	4653(%rsp), %cl
-	movb	%cl, 29(%rax)
-	movb	4654(%rsp), %cl
-	movb	%cl, 30(%rax)
-	movb	4655(%rsp), %cl
-	movb	%cl, 31(%rax)
-	movb	4656(%rsp), %cl
-	movb	%cl, 32(%rax)
-	movb	4657(%rsp), %cl
-	movb	%cl, 33(%rax)
-	movb	4658(%rsp), %cl
-	movb	%cl, 34(%rax)
-	movb	4659(%rsp), %cl
-	movb	%cl, 35(%rax)
-	movb	4660(%rsp), %cl
-	movb	%cl, 36(%rax)
-	movb	4661(%rsp), %cl
-	movb	%cl, 37(%rax)
-	movb	4662(%rsp), %cl
-	movb	%cl, 38(%rax)
-	movb	4663(%rsp), %cl
-	movb	%cl, 39(%rax)
-	movb	4664(%rsp), %cl
-	movb	%cl, 40(%rax)
-	movb	4665(%rsp), %cl
-	movb	%cl, 41(%rax)
-	movb	4666(%rsp), %cl
-	movb	%cl, 42(%rax)
-	movb	4667(%rsp), %cl
-	movb	%cl, 43(%rax)
-	movb	4668(%rsp), %cl
-	movb	%cl, 44(%rax)
-	movb	4669(%rsp), %cl
-	movb	%cl, 45(%rax)
-	movb	4670(%rsp), %cl
-	movb	%cl, 46(%rax)
-	movb	4671(%rsp), %cl
-	movb	%cl, 47(%rax)
-	movb	4672(%rsp), %cl
-	movb	%cl, 48(%rax)
-	movb	4673(%rsp), %cl
-	movb	%cl, 49(%rax)
-	movb	4674(%rsp), %cl
-	movb	%cl, 50(%rax)
-	movb	4675(%rsp), %cl
-	movb	%cl, 51(%rax)
-	movb	4676(%rsp), %cl
-	movb	%cl, 52(%rax)
-	movb	4677(%rsp), %cl
-	movb	%cl, 53(%rax)
-	movb	4678(%rsp), %cl
-	movb	%cl, 54(%rax)
-	movb	4679(%rsp), %cl
-	movb	%cl, 55(%rax)
-	movb	4680(%rsp), %cl
-	movb	%cl, 56(%rax)
-	movb	4681(%rsp), %cl
-	movb	%cl, 57(%rax)
-	movb	4682(%rsp), %cl
-	movb	%cl, 58(%rax)
-	movb	4683(%rsp), %cl
-	movb	%cl, 59(%rax)
-	movb	4684(%rsp), %cl
-	movb	%cl, 60(%rax)
-	movb	4685(%rsp), %cl
-	movb	%cl, 61(%rax)
-	movb	4686(%rsp), %cl
-	movb	%cl, 62(%rax)
-	movb	4687(%rsp), %cl
-	movb	%cl, 63(%rax)
 	vmovdqu	glob_data + 0(%rip), %ymm0
 	vmovdqu	%ymm0, 1536(%rsp)
 	vmovdqu	glob_data + 0(%rip), %ymm0
@@ -3457,79 +2917,79 @@ Lcrypto_kem_dec_jazz$13:
 	vpbroadcastw	glob_data + 240(%rip), %ymm0
 	vpbroadcastw	glob_data + 242(%rip), %ymm1
 	vpbroadcastw	glob_data + 246(%rip), %ymm2
-	movb	14136(%rsp), %al
-	movb	%al, 9464(%rsp)
-	movb	14137(%rsp), %al
-	movb	%al, 9465(%rsp)
-	movb	14138(%rsp), %al
-	movb	%al, 9466(%rsp)
-	movb	14139(%rsp), %al
-	movb	%al, 9467(%rsp)
-	movb	14140(%rsp), %al
-	movb	%al, 9468(%rsp)
-	movb	14141(%rsp), %al
-	movb	%al, 9469(%rsp)
-	movb	14142(%rsp), %al
-	movb	%al, 9470(%rsp)
-	movb	14143(%rsp), %al
-	movb	%al, 9471(%rsp)
-	movb	14144(%rsp), %al
-	movb	%al, 9472(%rsp)
-	movb	14145(%rsp), %al
-	movb	%al, 9473(%rsp)
-	movb	14146(%rsp), %al
-	movb	%al, 9474(%rsp)
-	movb	14147(%rsp), %al
-	movb	%al, 9475(%rsp)
-	movb	14148(%rsp), %al
-	movb	%al, 9476(%rsp)
-	movb	14149(%rsp), %al
-	movb	%al, 9477(%rsp)
-	movb	14150(%rsp), %al
-	movb	%al, 9478(%rsp)
-	movb	14151(%rsp), %al
-	movb	%al, 9479(%rsp)
-	movb	14152(%rsp), %al
-	movb	%al, 9480(%rsp)
-	movb	14153(%rsp), %al
-	movb	%al, 9481(%rsp)
-	movb	14154(%rsp), %al
-	movb	%al, 9482(%rsp)
-	movb	14155(%rsp), %al
-	movb	%al, 9483(%rsp)
-	movb	14156(%rsp), %al
-	movb	%al, 9484(%rsp)
-	movb	14157(%rsp), %al
-	movb	%al, 9485(%rsp)
-	movb	14158(%rsp), %al
-	movb	%al, 9486(%rsp)
-	movb	14159(%rsp), %al
-	movb	%al, 9487(%rsp)
-	movb	14160(%rsp), %al
-	movb	%al, 9488(%rsp)
-	movb	14161(%rsp), %al
-	movb	%al, 9489(%rsp)
-	movb	14162(%rsp), %al
-	movb	%al, 9490(%rsp)
-	movb	14163(%rsp), %al
-	movb	%al, 9491(%rsp)
-	movb	14164(%rsp), %al
-	movb	%al, 9492(%rsp)
-	movb	14165(%rsp), %al
-	movb	%al, 9493(%rsp)
-	movb	14166(%rsp), %al
-	movb	%al, 9494(%rsp)
-	movb	14167(%rsp), %al
-	movb	%al, 9495(%rsp)
-	leaq	4824(%rsp), %rax
-	leaq	9464(%rsp), %rdx
+	movb	13936(%rsp), %al
+	movb	%al, 9264(%rsp)
+	movb	13937(%rsp), %al
+	movb	%al, 9265(%rsp)
+	movb	13938(%rsp), %al
+	movb	%al, 9266(%rsp)
+	movb	13939(%rsp), %al
+	movb	%al, 9267(%rsp)
+	movb	13940(%rsp), %al
+	movb	%al, 9268(%rsp)
+	movb	13941(%rsp), %al
+	movb	%al, 9269(%rsp)
+	movb	13942(%rsp), %al
+	movb	%al, 9270(%rsp)
+	movb	13943(%rsp), %al
+	movb	%al, 9271(%rsp)
+	movb	13944(%rsp), %al
+	movb	%al, 9272(%rsp)
+	movb	13945(%rsp), %al
+	movb	%al, 9273(%rsp)
+	movb	13946(%rsp), %al
+	movb	%al, 9274(%rsp)
+	movb	13947(%rsp), %al
+	movb	%al, 9275(%rsp)
+	movb	13948(%rsp), %al
+	movb	%al, 9276(%rsp)
+	movb	13949(%rsp), %al
+	movb	%al, 9277(%rsp)
+	movb	13950(%rsp), %al
+	movb	%al, 9278(%rsp)
+	movb	13951(%rsp), %al
+	movb	%al, 9279(%rsp)
+	movb	13952(%rsp), %al
+	movb	%al, 9280(%rsp)
+	movb	13953(%rsp), %al
+	movb	%al, 9281(%rsp)
+	movb	13954(%rsp), %al
+	movb	%al, 9282(%rsp)
+	movb	13955(%rsp), %al
+	movb	%al, 9283(%rsp)
+	movb	13956(%rsp), %al
+	movb	%al, 9284(%rsp)
+	movb	13957(%rsp), %al
+	movb	%al, 9285(%rsp)
+	movb	13958(%rsp), %al
+	movb	%al, 9286(%rsp)
+	movb	13959(%rsp), %al
+	movb	%al, 9287(%rsp)
+	movb	13960(%rsp), %al
+	movb	%al, 9288(%rsp)
+	movb	13961(%rsp), %al
+	movb	%al, 9289(%rsp)
+	movb	13962(%rsp), %al
+	movb	%al, 9290(%rsp)
+	movb	13963(%rsp), %al
+	movb	%al, 9291(%rsp)
+	movb	13964(%rsp), %al
+	movb	%al, 9292(%rsp)
+	movb	13965(%rsp), %al
+	movb	%al, 9293(%rsp)
+	movb	13966(%rsp), %al
+	movb	%al, 9294(%rsp)
+	movb	13967(%rsp), %al
+	movb	%al, 9295(%rsp)
+	leaq	4624(%rsp), %rax
+	leaq	9264(%rsp), %rdx
 	leaq	-3952(%rsp), %rsp
 	leaq	Lcrypto_kem_dec_jazz$12(%rip), 	%r13
 	jmp 	LGenMatrix$1
 Lcrypto_kem_dec_jazz$12:
 	leaq	3952(%rsp), %rsp
 	leaq	3072(%rsp), %rax
-	leaq	9592(%rsp), %rdx
+	leaq	9392(%rsp), %rdx
 	leaq	-976(%rsp), %rsp
 	leaq	Lcrypto_kem_dec_jazz$11(%rip), 	%r13
 	jmp 	LGenSecret$1
@@ -3871,12 +3331,12 @@ Lcrypto_kem_dec_jazz$11:
 	vmovdqu	%ymm0, 4544(%rsp)
 	vmovdqu	3040(%rsp), %ymm0
 	vmovdqu	%ymm0, 4576(%rsp)
-	leaq	10840(%rsp), %rax
+	leaq	10640(%rsp), %rax
 	leaq	3072(%rsp), %rcx
 	leaq	Lcrypto_kem_dec_jazz$10(%rip), 	%r11
 	jmp 	LPOLVECp2BS$1
 Lcrypto_kem_dec_jazz$10:
-	leaq	13176(%rsp), %rax
+	leaq	12976(%rsp), %rax
 	leaq	1536(%rsp), %rcx
 	leaq	Lcrypto_kem_dec_jazz$9(%rip), 	%r11
 	jmp 	LBS2POLVECp$1
@@ -3977,1027 +3437,1027 @@ Lcrypto_kem_dec_jazz$9:
 	vmovdqu	992(%rsp), %ymm0
 	vpaddw	%ymm2, %ymm0, %ymm0
 	vmovdqu	%ymm0, 992(%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, (%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 2(%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 4(%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 6(%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 8(%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 10(%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 12(%rsp)
-	movzbw	9496(%rsp), %ax
+	movzbw	9296(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 14(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 16(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 18(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 20(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 22(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 24(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 26(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 28(%rsp)
-	movzbw	9497(%rsp), %ax
+	movzbw	9297(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 30(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 32(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 34(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 36(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 38(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 40(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 42(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 44(%rsp)
-	movzbw	9498(%rsp), %ax
+	movzbw	9298(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 46(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 48(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 50(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 52(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 54(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 56(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 58(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 60(%rsp)
-	movzbw	9499(%rsp), %ax
+	movzbw	9299(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 62(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 64(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 66(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 68(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 70(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 72(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 74(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 76(%rsp)
-	movzbw	9500(%rsp), %ax
+	movzbw	9300(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 78(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 80(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 82(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 84(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 86(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 88(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 90(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 92(%rsp)
-	movzbw	9501(%rsp), %ax
+	movzbw	9301(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 94(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 96(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 98(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 100(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 102(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 104(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 106(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 108(%rsp)
-	movzbw	9502(%rsp), %ax
+	movzbw	9302(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 110(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 112(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 114(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 116(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 118(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 120(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 122(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 124(%rsp)
-	movzbw	9503(%rsp), %ax
+	movzbw	9303(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 126(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 128(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 130(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 132(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 134(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 136(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 138(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 140(%rsp)
-	movzbw	9504(%rsp), %ax
+	movzbw	9304(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 142(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 144(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 146(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 148(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 150(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 152(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 154(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 156(%rsp)
-	movzbw	9505(%rsp), %ax
+	movzbw	9305(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 158(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 160(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 162(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 164(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 166(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 168(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 170(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 172(%rsp)
-	movzbw	9506(%rsp), %ax
+	movzbw	9306(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 174(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 176(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 178(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 180(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 182(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 184(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 186(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 188(%rsp)
-	movzbw	9507(%rsp), %ax
+	movzbw	9307(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 190(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 192(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 194(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 196(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 198(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 200(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 202(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 204(%rsp)
-	movzbw	9508(%rsp), %ax
+	movzbw	9308(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 206(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 208(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 210(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 212(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 214(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 216(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 218(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 220(%rsp)
-	movzbw	9509(%rsp), %ax
+	movzbw	9309(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 222(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 224(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 226(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 228(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 230(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 232(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 234(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 236(%rsp)
-	movzbw	9510(%rsp), %ax
+	movzbw	9310(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 238(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 240(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 242(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 244(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 246(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 248(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 250(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 252(%rsp)
-	movzbw	9511(%rsp), %ax
+	movzbw	9311(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 254(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 256(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 258(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 260(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 262(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 264(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 266(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 268(%rsp)
-	movzbw	9512(%rsp), %ax
+	movzbw	9312(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 270(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 272(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 274(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 276(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 278(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 280(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 282(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 284(%rsp)
-	movzbw	9513(%rsp), %ax
+	movzbw	9313(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 286(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 288(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 290(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 292(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 294(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 296(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 298(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 300(%rsp)
-	movzbw	9514(%rsp), %ax
+	movzbw	9314(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 302(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 304(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 306(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 308(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 310(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 312(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 314(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 316(%rsp)
-	movzbw	9515(%rsp), %ax
+	movzbw	9315(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 318(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 320(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 322(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 324(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 326(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 328(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 330(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 332(%rsp)
-	movzbw	9516(%rsp), %ax
+	movzbw	9316(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 334(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 336(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 338(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 340(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 342(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 344(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 346(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 348(%rsp)
-	movzbw	9517(%rsp), %ax
+	movzbw	9317(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 350(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 352(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 354(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 356(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 358(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 360(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 362(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 364(%rsp)
-	movzbw	9518(%rsp), %ax
+	movzbw	9318(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 366(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 368(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 370(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 372(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 374(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 376(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 378(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 380(%rsp)
-	movzbw	9519(%rsp), %ax
+	movzbw	9319(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 382(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 384(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 386(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 388(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 390(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 392(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 394(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 396(%rsp)
-	movzbw	9520(%rsp), %ax
+	movzbw	9320(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 398(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 400(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 402(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 404(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 406(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 408(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 410(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 412(%rsp)
-	movzbw	9521(%rsp), %ax
+	movzbw	9321(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 414(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 416(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 418(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 420(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 422(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 424(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 426(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 428(%rsp)
-	movzbw	9522(%rsp), %ax
+	movzbw	9322(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 430(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 432(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 434(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 436(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 438(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 440(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 442(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 444(%rsp)
-	movzbw	9523(%rsp), %ax
+	movzbw	9323(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 446(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 448(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 450(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 452(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 454(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 456(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 458(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 460(%rsp)
-	movzbw	9524(%rsp), %ax
+	movzbw	9324(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 462(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 464(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 466(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 468(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 470(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 472(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 474(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 476(%rsp)
-	movzbw	9525(%rsp), %ax
+	movzbw	9325(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 478(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 480(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 482(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 484(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 486(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 488(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 490(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 492(%rsp)
-	movzbw	9526(%rsp), %ax
+	movzbw	9326(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 494(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$0, %ax
 	andw	$1, %ax
 	movw	%ax, 496(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$1, %ax
 	andw	$1, %ax
 	movw	%ax, 498(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$2, %ax
 	andw	$1, %ax
 	movw	%ax, 500(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$3, %ax
 	andw	$1, %ax
 	movw	%ax, 502(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$4, %ax
 	andw	$1, %ax
 	movw	%ax, 504(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$5, %ax
 	andw	$1, %ax
 	movw	%ax, 506(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$6, %ax
 	andw	$1, %ax
 	movw	%ax, 508(%rsp)
-	movzbw	9527(%rsp), %ax
+	movzbw	9327(%rsp), %ax
 	shrw	$7, %ax
 	andw	$1, %ax
 	movw	%ax, 510(%rsp)
@@ -5161,7 +4621,7 @@ Lcrypto_kem_dec_jazz$9:
 	vmovdqu	%ymm0, 3520(%rsp)
 	vmovdqu	992(%rsp), %ymm0
 	vmovdqu	%ymm0, 3552(%rsp)
-	leaq	9624(%rsp), %rax
+	leaq	9424(%rsp), %rax
 	leaq	3072(%rsp), %rcx
 	movq	$0, %rdx
 	movq	$0, %rsi
@@ -5180,268 +4640,268 @@ Lcrypto_kem_dec_jazz$8:
 Lcrypto_kem_dec_jazz$7:
 	cmpq	$128, %rdx
 	jb  	Lcrypto_kem_dec_jazz$8
-	movb	9624(%rsp), %al
-	movb	%al, 11800(%rsp)
-	movb	9625(%rsp), %al
-	movb	%al, 11801(%rsp)
-	movb	9626(%rsp), %al
-	movb	%al, 11802(%rsp)
-	movb	9627(%rsp), %al
-	movb	%al, 11803(%rsp)
-	movb	9628(%rsp), %al
-	movb	%al, 11804(%rsp)
-	movb	9629(%rsp), %al
-	movb	%al, 11805(%rsp)
-	movb	9630(%rsp), %al
-	movb	%al, 11806(%rsp)
-	movb	9631(%rsp), %al
-	movb	%al, 11807(%rsp)
-	movb	9632(%rsp), %al
-	movb	%al, 11808(%rsp)
-	movb	9633(%rsp), %al
-	movb	%al, 11809(%rsp)
-	movb	9634(%rsp), %al
-	movb	%al, 11810(%rsp)
-	movb	9635(%rsp), %al
-	movb	%al, 11811(%rsp)
-	movb	9636(%rsp), %al
-	movb	%al, 11812(%rsp)
-	movb	9637(%rsp), %al
-	movb	%al, 11813(%rsp)
-	movb	9638(%rsp), %al
-	movb	%al, 11814(%rsp)
-	movb	9639(%rsp), %al
-	movb	%al, 11815(%rsp)
-	movb	9640(%rsp), %al
-	movb	%al, 11816(%rsp)
-	movb	9641(%rsp), %al
-	movb	%al, 11817(%rsp)
-	movb	9642(%rsp), %al
-	movb	%al, 11818(%rsp)
-	movb	9643(%rsp), %al
-	movb	%al, 11819(%rsp)
-	movb	9644(%rsp), %al
-	movb	%al, 11820(%rsp)
-	movb	9645(%rsp), %al
-	movb	%al, 11821(%rsp)
-	movb	9646(%rsp), %al
-	movb	%al, 11822(%rsp)
-	movb	9647(%rsp), %al
-	movb	%al, 11823(%rsp)
-	movb	9648(%rsp), %al
-	movb	%al, 11824(%rsp)
-	movb	9649(%rsp), %al
-	movb	%al, 11825(%rsp)
-	movb	9650(%rsp), %al
-	movb	%al, 11826(%rsp)
-	movb	9651(%rsp), %al
-	movb	%al, 11827(%rsp)
-	movb	9652(%rsp), %al
-	movb	%al, 11828(%rsp)
-	movb	9653(%rsp), %al
-	movb	%al, 11829(%rsp)
-	movb	9654(%rsp), %al
-	movb	%al, 11830(%rsp)
-	movb	9655(%rsp), %al
-	movb	%al, 11831(%rsp)
-	movb	9656(%rsp), %al
-	movb	%al, 11832(%rsp)
-	movb	9657(%rsp), %al
-	movb	%al, 11833(%rsp)
-	movb	9658(%rsp), %al
-	movb	%al, 11834(%rsp)
-	movb	9659(%rsp), %al
-	movb	%al, 11835(%rsp)
-	movb	9660(%rsp), %al
-	movb	%al, 11836(%rsp)
-	movb	9661(%rsp), %al
-	movb	%al, 11837(%rsp)
-	movb	9662(%rsp), %al
-	movb	%al, 11838(%rsp)
-	movb	9663(%rsp), %al
-	movb	%al, 11839(%rsp)
-	movb	9664(%rsp), %al
-	movb	%al, 11840(%rsp)
-	movb	9665(%rsp), %al
-	movb	%al, 11841(%rsp)
-	movb	9666(%rsp), %al
-	movb	%al, 11842(%rsp)
-	movb	9667(%rsp), %al
-	movb	%al, 11843(%rsp)
-	movb	9668(%rsp), %al
-	movb	%al, 11844(%rsp)
-	movb	9669(%rsp), %al
-	movb	%al, 11845(%rsp)
-	movb	9670(%rsp), %al
-	movb	%al, 11846(%rsp)
-	movb	9671(%rsp), %al
-	movb	%al, 11847(%rsp)
-	movb	9672(%rsp), %al
-	movb	%al, 11848(%rsp)
-	movb	9673(%rsp), %al
-	movb	%al, 11849(%rsp)
-	movb	9674(%rsp), %al
-	movb	%al, 11850(%rsp)
-	movb	9675(%rsp), %al
-	movb	%al, 11851(%rsp)
-	movb	9676(%rsp), %al
-	movb	%al, 11852(%rsp)
-	movb	9677(%rsp), %al
-	movb	%al, 11853(%rsp)
-	movb	9678(%rsp), %al
-	movb	%al, 11854(%rsp)
-	movb	9679(%rsp), %al
-	movb	%al, 11855(%rsp)
-	movb	9680(%rsp), %al
-	movb	%al, 11856(%rsp)
-	movb	9681(%rsp), %al
-	movb	%al, 11857(%rsp)
-	movb	9682(%rsp), %al
-	movb	%al, 11858(%rsp)
-	movb	9683(%rsp), %al
-	movb	%al, 11859(%rsp)
-	movb	9684(%rsp), %al
-	movb	%al, 11860(%rsp)
-	movb	9685(%rsp), %al
-	movb	%al, 11861(%rsp)
-	movb	9686(%rsp), %al
-	movb	%al, 11862(%rsp)
-	movb	9687(%rsp), %al
-	movb	%al, 11863(%rsp)
-	movb	9688(%rsp), %al
-	movb	%al, 11864(%rsp)
-	movb	9689(%rsp), %al
-	movb	%al, 11865(%rsp)
-	movb	9690(%rsp), %al
-	movb	%al, 11866(%rsp)
-	movb	9691(%rsp), %al
-	movb	%al, 11867(%rsp)
-	movb	9692(%rsp), %al
-	movb	%al, 11868(%rsp)
-	movb	9693(%rsp), %al
-	movb	%al, 11869(%rsp)
-	movb	9694(%rsp), %al
-	movb	%al, 11870(%rsp)
-	movb	9695(%rsp), %al
-	movb	%al, 11871(%rsp)
-	movb	9696(%rsp), %al
-	movb	%al, 11872(%rsp)
-	movb	9697(%rsp), %al
-	movb	%al, 11873(%rsp)
-	movb	9698(%rsp), %al
-	movb	%al, 11874(%rsp)
-	movb	9699(%rsp), %al
-	movb	%al, 11875(%rsp)
-	movb	9700(%rsp), %al
-	movb	%al, 11876(%rsp)
-	movb	9701(%rsp), %al
-	movb	%al, 11877(%rsp)
-	movb	9702(%rsp), %al
-	movb	%al, 11878(%rsp)
-	movb	9703(%rsp), %al
-	movb	%al, 11879(%rsp)
-	movb	9704(%rsp), %al
-	movb	%al, 11880(%rsp)
-	movb	9705(%rsp), %al
-	movb	%al, 11881(%rsp)
-	movb	9706(%rsp), %al
-	movb	%al, 11882(%rsp)
-	movb	9707(%rsp), %al
-	movb	%al, 11883(%rsp)
-	movb	9708(%rsp), %al
-	movb	%al, 11884(%rsp)
-	movb	9709(%rsp), %al
-	movb	%al, 11885(%rsp)
-	movb	9710(%rsp), %al
-	movb	%al, 11886(%rsp)
-	movb	9711(%rsp), %al
-	movb	%al, 11887(%rsp)
-	movb	9712(%rsp), %al
-	movb	%al, 11888(%rsp)
-	movb	9713(%rsp), %al
-	movb	%al, 11889(%rsp)
-	movb	9714(%rsp), %al
-	movb	%al, 11890(%rsp)
-	movb	9715(%rsp), %al
-	movb	%al, 11891(%rsp)
-	movb	9716(%rsp), %al
-	movb	%al, 11892(%rsp)
-	movb	9717(%rsp), %al
-	movb	%al, 11893(%rsp)
-	movb	9718(%rsp), %al
-	movb	%al, 11894(%rsp)
-	movb	9719(%rsp), %al
-	movb	%al, 11895(%rsp)
-	movb	9720(%rsp), %al
-	movb	%al, 11896(%rsp)
-	movb	9721(%rsp), %al
-	movb	%al, 11897(%rsp)
-	movb	9722(%rsp), %al
-	movb	%al, 11898(%rsp)
-	movb	9723(%rsp), %al
-	movb	%al, 11899(%rsp)
-	movb	9724(%rsp), %al
-	movb	%al, 11900(%rsp)
-	movb	9725(%rsp), %al
-	movb	%al, 11901(%rsp)
-	movb	9726(%rsp), %al
-	movb	%al, 11902(%rsp)
-	movb	9727(%rsp), %al
-	movb	%al, 11903(%rsp)
-	movb	9728(%rsp), %al
-	movb	%al, 11904(%rsp)
-	movb	9729(%rsp), %al
-	movb	%al, 11905(%rsp)
-	movb	9730(%rsp), %al
-	movb	%al, 11906(%rsp)
-	movb	9731(%rsp), %al
-	movb	%al, 11907(%rsp)
-	movb	9732(%rsp), %al
-	movb	%al, 11908(%rsp)
-	movb	9733(%rsp), %al
-	movb	%al, 11909(%rsp)
-	movb	9734(%rsp), %al
-	movb	%al, 11910(%rsp)
-	movb	9735(%rsp), %al
-	movb	%al, 11911(%rsp)
-	movb	9736(%rsp), %al
-	movb	%al, 11912(%rsp)
-	movb	9737(%rsp), %al
-	movb	%al, 11913(%rsp)
-	movb	9738(%rsp), %al
-	movb	%al, 11914(%rsp)
-	movb	9739(%rsp), %al
-	movb	%al, 11915(%rsp)
-	movb	9740(%rsp), %al
-	movb	%al, 11916(%rsp)
-	movb	9741(%rsp), %al
-	movb	%al, 11917(%rsp)
-	movb	9742(%rsp), %al
-	movb	%al, 11918(%rsp)
-	movb	9743(%rsp), %al
-	movb	%al, 11919(%rsp)
-	movb	9744(%rsp), %al
-	movb	%al, 11920(%rsp)
-	movb	9745(%rsp), %al
-	movb	%al, 11921(%rsp)
-	movb	9746(%rsp), %al
-	movb	%al, 11922(%rsp)
-	movb	9747(%rsp), %al
-	movb	%al, 11923(%rsp)
-	movb	9748(%rsp), %al
-	movb	%al, 11924(%rsp)
-	movb	9749(%rsp), %al
-	movb	%al, 11925(%rsp)
-	movb	9750(%rsp), %al
-	movb	%al, 11926(%rsp)
-	movb	9751(%rsp), %al
-	movb	%al, 11927(%rsp)
+	movb	9424(%rsp), %al
+	movb	%al, 11600(%rsp)
+	movb	9425(%rsp), %al
+	movb	%al, 11601(%rsp)
+	movb	9426(%rsp), %al
+	movb	%al, 11602(%rsp)
+	movb	9427(%rsp), %al
+	movb	%al, 11603(%rsp)
+	movb	9428(%rsp), %al
+	movb	%al, 11604(%rsp)
+	movb	9429(%rsp), %al
+	movb	%al, 11605(%rsp)
+	movb	9430(%rsp), %al
+	movb	%al, 11606(%rsp)
+	movb	9431(%rsp), %al
+	movb	%al, 11607(%rsp)
+	movb	9432(%rsp), %al
+	movb	%al, 11608(%rsp)
+	movb	9433(%rsp), %al
+	movb	%al, 11609(%rsp)
+	movb	9434(%rsp), %al
+	movb	%al, 11610(%rsp)
+	movb	9435(%rsp), %al
+	movb	%al, 11611(%rsp)
+	movb	9436(%rsp), %al
+	movb	%al, 11612(%rsp)
+	movb	9437(%rsp), %al
+	movb	%al, 11613(%rsp)
+	movb	9438(%rsp), %al
+	movb	%al, 11614(%rsp)
+	movb	9439(%rsp), %al
+	movb	%al, 11615(%rsp)
+	movb	9440(%rsp), %al
+	movb	%al, 11616(%rsp)
+	movb	9441(%rsp), %al
+	movb	%al, 11617(%rsp)
+	movb	9442(%rsp), %al
+	movb	%al, 11618(%rsp)
+	movb	9443(%rsp), %al
+	movb	%al, 11619(%rsp)
+	movb	9444(%rsp), %al
+	movb	%al, 11620(%rsp)
+	movb	9445(%rsp), %al
+	movb	%al, 11621(%rsp)
+	movb	9446(%rsp), %al
+	movb	%al, 11622(%rsp)
+	movb	9447(%rsp), %al
+	movb	%al, 11623(%rsp)
+	movb	9448(%rsp), %al
+	movb	%al, 11624(%rsp)
+	movb	9449(%rsp), %al
+	movb	%al, 11625(%rsp)
+	movb	9450(%rsp), %al
+	movb	%al, 11626(%rsp)
+	movb	9451(%rsp), %al
+	movb	%al, 11627(%rsp)
+	movb	9452(%rsp), %al
+	movb	%al, 11628(%rsp)
+	movb	9453(%rsp), %al
+	movb	%al, 11629(%rsp)
+	movb	9454(%rsp), %al
+	movb	%al, 11630(%rsp)
+	movb	9455(%rsp), %al
+	movb	%al, 11631(%rsp)
+	movb	9456(%rsp), %al
+	movb	%al, 11632(%rsp)
+	movb	9457(%rsp), %al
+	movb	%al, 11633(%rsp)
+	movb	9458(%rsp), %al
+	movb	%al, 11634(%rsp)
+	movb	9459(%rsp), %al
+	movb	%al, 11635(%rsp)
+	movb	9460(%rsp), %al
+	movb	%al, 11636(%rsp)
+	movb	9461(%rsp), %al
+	movb	%al, 11637(%rsp)
+	movb	9462(%rsp), %al
+	movb	%al, 11638(%rsp)
+	movb	9463(%rsp), %al
+	movb	%al, 11639(%rsp)
+	movb	9464(%rsp), %al
+	movb	%al, 11640(%rsp)
+	movb	9465(%rsp), %al
+	movb	%al, 11641(%rsp)
+	movb	9466(%rsp), %al
+	movb	%al, 11642(%rsp)
+	movb	9467(%rsp), %al
+	movb	%al, 11643(%rsp)
+	movb	9468(%rsp), %al
+	movb	%al, 11644(%rsp)
+	movb	9469(%rsp), %al
+	movb	%al, 11645(%rsp)
+	movb	9470(%rsp), %al
+	movb	%al, 11646(%rsp)
+	movb	9471(%rsp), %al
+	movb	%al, 11647(%rsp)
+	movb	9472(%rsp), %al
+	movb	%al, 11648(%rsp)
+	movb	9473(%rsp), %al
+	movb	%al, 11649(%rsp)
+	movb	9474(%rsp), %al
+	movb	%al, 11650(%rsp)
+	movb	9475(%rsp), %al
+	movb	%al, 11651(%rsp)
+	movb	9476(%rsp), %al
+	movb	%al, 11652(%rsp)
+	movb	9477(%rsp), %al
+	movb	%al, 11653(%rsp)
+	movb	9478(%rsp), %al
+	movb	%al, 11654(%rsp)
+	movb	9479(%rsp), %al
+	movb	%al, 11655(%rsp)
+	movb	9480(%rsp), %al
+	movb	%al, 11656(%rsp)
+	movb	9481(%rsp), %al
+	movb	%al, 11657(%rsp)
+	movb	9482(%rsp), %al
+	movb	%al, 11658(%rsp)
+	movb	9483(%rsp), %al
+	movb	%al, 11659(%rsp)
+	movb	9484(%rsp), %al
+	movb	%al, 11660(%rsp)
+	movb	9485(%rsp), %al
+	movb	%al, 11661(%rsp)
+	movb	9486(%rsp), %al
+	movb	%al, 11662(%rsp)
+	movb	9487(%rsp), %al
+	movb	%al, 11663(%rsp)
+	movb	9488(%rsp), %al
+	movb	%al, 11664(%rsp)
+	movb	9489(%rsp), %al
+	movb	%al, 11665(%rsp)
+	movb	9490(%rsp), %al
+	movb	%al, 11666(%rsp)
+	movb	9491(%rsp), %al
+	movb	%al, 11667(%rsp)
+	movb	9492(%rsp), %al
+	movb	%al, 11668(%rsp)
+	movb	9493(%rsp), %al
+	movb	%al, 11669(%rsp)
+	movb	9494(%rsp), %al
+	movb	%al, 11670(%rsp)
+	movb	9495(%rsp), %al
+	movb	%al, 11671(%rsp)
+	movb	9496(%rsp), %al
+	movb	%al, 11672(%rsp)
+	movb	9497(%rsp), %al
+	movb	%al, 11673(%rsp)
+	movb	9498(%rsp), %al
+	movb	%al, 11674(%rsp)
+	movb	9499(%rsp), %al
+	movb	%al, 11675(%rsp)
+	movb	9500(%rsp), %al
+	movb	%al, 11676(%rsp)
+	movb	9501(%rsp), %al
+	movb	%al, 11677(%rsp)
+	movb	9502(%rsp), %al
+	movb	%al, 11678(%rsp)
+	movb	9503(%rsp), %al
+	movb	%al, 11679(%rsp)
+	movb	9504(%rsp), %al
+	movb	%al, 11680(%rsp)
+	movb	9505(%rsp), %al
+	movb	%al, 11681(%rsp)
+	movb	9506(%rsp), %al
+	movb	%al, 11682(%rsp)
+	movb	9507(%rsp), %al
+	movb	%al, 11683(%rsp)
+	movb	9508(%rsp), %al
+	movb	%al, 11684(%rsp)
+	movb	9509(%rsp), %al
+	movb	%al, 11685(%rsp)
+	movb	9510(%rsp), %al
+	movb	%al, 11686(%rsp)
+	movb	9511(%rsp), %al
+	movb	%al, 11687(%rsp)
+	movb	9512(%rsp), %al
+	movb	%al, 11688(%rsp)
+	movb	9513(%rsp), %al
+	movb	%al, 11689(%rsp)
+	movb	9514(%rsp), %al
+	movb	%al, 11690(%rsp)
+	movb	9515(%rsp), %al
+	movb	%al, 11691(%rsp)
+	movb	9516(%rsp), %al
+	movb	%al, 11692(%rsp)
+	movb	9517(%rsp), %al
+	movb	%al, 11693(%rsp)
+	movb	9518(%rsp), %al
+	movb	%al, 11694(%rsp)
+	movb	9519(%rsp), %al
+	movb	%al, 11695(%rsp)
+	movb	9520(%rsp), %al
+	movb	%al, 11696(%rsp)
+	movb	9521(%rsp), %al
+	movb	%al, 11697(%rsp)
+	movb	9522(%rsp), %al
+	movb	%al, 11698(%rsp)
+	movb	9523(%rsp), %al
+	movb	%al, 11699(%rsp)
+	movb	9524(%rsp), %al
+	movb	%al, 11700(%rsp)
+	movb	9525(%rsp), %al
+	movb	%al, 11701(%rsp)
+	movb	9526(%rsp), %al
+	movb	%al, 11702(%rsp)
+	movb	9527(%rsp), %al
+	movb	%al, 11703(%rsp)
+	movb	9528(%rsp), %al
+	movb	%al, 11704(%rsp)
+	movb	9529(%rsp), %al
+	movb	%al, 11705(%rsp)
+	movb	9530(%rsp), %al
+	movb	%al, 11706(%rsp)
+	movb	9531(%rsp), %al
+	movb	%al, 11707(%rsp)
+	movb	9532(%rsp), %al
+	movb	%al, 11708(%rsp)
+	movb	9533(%rsp), %al
+	movb	%al, 11709(%rsp)
+	movb	9534(%rsp), %al
+	movb	%al, 11710(%rsp)
+	movb	9535(%rsp), %al
+	movb	%al, 11711(%rsp)
+	movb	9536(%rsp), %al
+	movb	%al, 11712(%rsp)
+	movb	9537(%rsp), %al
+	movb	%al, 11713(%rsp)
+	movb	9538(%rsp), %al
+	movb	%al, 11714(%rsp)
+	movb	9539(%rsp), %al
+	movb	%al, 11715(%rsp)
+	movb	9540(%rsp), %al
+	movb	%al, 11716(%rsp)
+	movb	9541(%rsp), %al
+	movb	%al, 11717(%rsp)
+	movb	9542(%rsp), %al
+	movb	%al, 11718(%rsp)
+	movb	9543(%rsp), %al
+	movb	%al, 11719(%rsp)
+	movb	9544(%rsp), %al
+	movb	%al, 11720(%rsp)
+	movb	9545(%rsp), %al
+	movb	%al, 11721(%rsp)
+	movb	9546(%rsp), %al
+	movb	%al, 11722(%rsp)
+	movb	9547(%rsp), %al
+	movb	%al, 11723(%rsp)
+	movb	9548(%rsp), %al
+	movb	%al, 11724(%rsp)
+	movb	9549(%rsp), %al
+	movb	%al, 11725(%rsp)
+	movb	9550(%rsp), %al
+	movb	%al, 11726(%rsp)
+	movb	9551(%rsp), %al
+	movb	%al, 11727(%rsp)
 	movb	$0, %al
 	movq	$0, %rcx
 	jmp 	Lcrypto_kem_dec_jazz$5
 Lcrypto_kem_dec_jazz$6:
-	movb	9752(%rsp,%rcx), %dl
-	xorb	10840(%rsp,%rcx), %dl
+	movb	9552(%rsp,%rcx), %dl
+	xorb	10640(%rsp,%rcx), %dl
 	orb 	%dl, %al
 	leaq	1(%rcx), %rcx
 Lcrypto_kem_dec_jazz$5:
@@ -5451,8 +4911,8 @@ Lcrypto_kem_dec_jazz$5:
 	imulq	$-1, %rax, %rax
 	shrq	$63, %rax
 	movq	%rax, 4616(%rsp)
-	leaq	9592(%rsp), %rax
-	leaq	9752(%rsp), %rcx
+	leaq	9392(%rsp), %rax
+	leaq	9552(%rsp), %rcx
 	leaq	-200(%rsp), %rsp
 	leaq	Lcrypto_kem_dec_jazz$4(%rip), 	%r13
 	jmp 	Lsha3_256_CCADEC$1
@@ -5463,136 +4923,136 @@ Lcrypto_kem_dec_jazz$4:
 	movzbq	%al, %rax
 	imulq	$-1, %rax, %rax
 	movb	%al, %al
-	movb	14200(%rsp), %cl
-	xorb	9560(%rsp), %cl
+	movb	14000(%rsp), %cl
+	xorb	9360(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9560(%rsp)
-	movb	14201(%rsp), %cl
-	xorb	9561(%rsp), %cl
+	xorb	%cl, 9360(%rsp)
+	movb	14001(%rsp), %cl
+	xorb	9361(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9561(%rsp)
-	movb	14202(%rsp), %cl
-	xorb	9562(%rsp), %cl
+	xorb	%cl, 9361(%rsp)
+	movb	14002(%rsp), %cl
+	xorb	9362(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9562(%rsp)
-	movb	14203(%rsp), %cl
-	xorb	9563(%rsp), %cl
+	xorb	%cl, 9362(%rsp)
+	movb	14003(%rsp), %cl
+	xorb	9363(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9563(%rsp)
-	movb	14204(%rsp), %cl
-	xorb	9564(%rsp), %cl
+	xorb	%cl, 9363(%rsp)
+	movb	14004(%rsp), %cl
+	xorb	9364(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9564(%rsp)
-	movb	14205(%rsp), %cl
-	xorb	9565(%rsp), %cl
+	xorb	%cl, 9364(%rsp)
+	movb	14005(%rsp), %cl
+	xorb	9365(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9565(%rsp)
-	movb	14206(%rsp), %cl
-	xorb	9566(%rsp), %cl
+	xorb	%cl, 9365(%rsp)
+	movb	14006(%rsp), %cl
+	xorb	9366(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9566(%rsp)
-	movb	14207(%rsp), %cl
-	xorb	9567(%rsp), %cl
+	xorb	%cl, 9366(%rsp)
+	movb	14007(%rsp), %cl
+	xorb	9367(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9567(%rsp)
-	movb	14208(%rsp), %cl
-	xorb	9568(%rsp), %cl
+	xorb	%cl, 9367(%rsp)
+	movb	14008(%rsp), %cl
+	xorb	9368(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9568(%rsp)
-	movb	14209(%rsp), %cl
-	xorb	9569(%rsp), %cl
+	xorb	%cl, 9368(%rsp)
+	movb	14009(%rsp), %cl
+	xorb	9369(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9569(%rsp)
-	movb	14210(%rsp), %cl
-	xorb	9570(%rsp), %cl
+	xorb	%cl, 9369(%rsp)
+	movb	14010(%rsp), %cl
+	xorb	9370(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9570(%rsp)
-	movb	14211(%rsp), %cl
-	xorb	9571(%rsp), %cl
+	xorb	%cl, 9370(%rsp)
+	movb	14011(%rsp), %cl
+	xorb	9371(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9571(%rsp)
-	movb	14212(%rsp), %cl
-	xorb	9572(%rsp), %cl
+	xorb	%cl, 9371(%rsp)
+	movb	14012(%rsp), %cl
+	xorb	9372(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9572(%rsp)
-	movb	14213(%rsp), %cl
-	xorb	9573(%rsp), %cl
+	xorb	%cl, 9372(%rsp)
+	movb	14013(%rsp), %cl
+	xorb	9373(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9573(%rsp)
-	movb	14214(%rsp), %cl
-	xorb	9574(%rsp), %cl
+	xorb	%cl, 9373(%rsp)
+	movb	14014(%rsp), %cl
+	xorb	9374(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9574(%rsp)
-	movb	14215(%rsp), %cl
-	xorb	9575(%rsp), %cl
+	xorb	%cl, 9374(%rsp)
+	movb	14015(%rsp), %cl
+	xorb	9375(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9575(%rsp)
-	movb	14216(%rsp), %cl
-	xorb	9576(%rsp), %cl
+	xorb	%cl, 9375(%rsp)
+	movb	14016(%rsp), %cl
+	xorb	9376(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9576(%rsp)
-	movb	14217(%rsp), %cl
-	xorb	9577(%rsp), %cl
+	xorb	%cl, 9376(%rsp)
+	movb	14017(%rsp), %cl
+	xorb	9377(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9577(%rsp)
-	movb	14218(%rsp), %cl
-	xorb	9578(%rsp), %cl
+	xorb	%cl, 9377(%rsp)
+	movb	14018(%rsp), %cl
+	xorb	9378(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9578(%rsp)
-	movb	14219(%rsp), %cl
-	xorb	9579(%rsp), %cl
+	xorb	%cl, 9378(%rsp)
+	movb	14019(%rsp), %cl
+	xorb	9379(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9579(%rsp)
-	movb	14220(%rsp), %cl
-	xorb	9580(%rsp), %cl
+	xorb	%cl, 9379(%rsp)
+	movb	14020(%rsp), %cl
+	xorb	9380(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9580(%rsp)
-	movb	14221(%rsp), %cl
-	xorb	9581(%rsp), %cl
+	xorb	%cl, 9380(%rsp)
+	movb	14021(%rsp), %cl
+	xorb	9381(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9581(%rsp)
-	movb	14222(%rsp), %cl
-	xorb	9582(%rsp), %cl
+	xorb	%cl, 9381(%rsp)
+	movb	14022(%rsp), %cl
+	xorb	9382(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9582(%rsp)
-	movb	14223(%rsp), %cl
-	xorb	9583(%rsp), %cl
+	xorb	%cl, 9382(%rsp)
+	movb	14023(%rsp), %cl
+	xorb	9383(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9583(%rsp)
-	movb	14224(%rsp), %cl
-	xorb	9584(%rsp), %cl
+	xorb	%cl, 9383(%rsp)
+	movb	14024(%rsp), %cl
+	xorb	9384(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9584(%rsp)
-	movb	14225(%rsp), %cl
-	xorb	9585(%rsp), %cl
+	xorb	%cl, 9384(%rsp)
+	movb	14025(%rsp), %cl
+	xorb	9385(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9585(%rsp)
-	movb	14226(%rsp), %cl
-	xorb	9586(%rsp), %cl
+	xorb	%cl, 9385(%rsp)
+	movb	14026(%rsp), %cl
+	xorb	9386(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9586(%rsp)
-	movb	14227(%rsp), %cl
-	xorb	9587(%rsp), %cl
+	xorb	%cl, 9386(%rsp)
+	movb	14027(%rsp), %cl
+	xorb	9387(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9587(%rsp)
-	movb	14228(%rsp), %cl
-	xorb	9588(%rsp), %cl
+	xorb	%cl, 9387(%rsp)
+	movb	14028(%rsp), %cl
+	xorb	9388(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9588(%rsp)
-	movb	14229(%rsp), %cl
-	xorb	9589(%rsp), %cl
+	xorb	%cl, 9388(%rsp)
+	movb	14029(%rsp), %cl
+	xorb	9389(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9589(%rsp)
-	movb	14230(%rsp), %cl
-	xorb	9590(%rsp), %cl
+	xorb	%cl, 9389(%rsp)
+	movb	14030(%rsp), %cl
+	xorb	9390(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9590(%rsp)
-	movb	14231(%rsp), %cl
-	xorb	9591(%rsp), %cl
+	xorb	%cl, 9390(%rsp)
+	movb	14031(%rsp), %cl
+	xorb	9391(%rsp), %cl
 	andb	%al, %cl
-	xorb	%cl, 9591(%rsp)
-	leaq	9432(%rsp), %rax
-	leaq	9560(%rsp), %rcx
+	xorb	%cl, 9391(%rsp)
+	leaq	9232(%rsp), %rax
+	leaq	9360(%rsp), %rcx
 	leaq	-200(%rsp), %rsp
 	leaq	Lcrypto_kem_dec_jazz$3(%rip), 	%r13
 	jmp 	Lsha3_256_64$1
@@ -5602,19 +5062,19 @@ Lcrypto_kem_dec_jazz$3:
 	movq	$0, %rcx
 	jmp 	Lcrypto_kem_dec_jazz$1
 Lcrypto_kem_dec_jazz$2:
-	movb	9432(%rsp,%rcx), %dl
+	movb	9232(%rsp,%rcx), %dl
 	movb	%dl, (%rax,%rcx)
 	leaq	1(%rcx), %rcx
 Lcrypto_kem_dec_jazz$1:
 	cmpq	$32, %rcx
 	jb  	Lcrypto_kem_dec_jazz$2
-	movq	14240(%rsp), %rbx
-	movq	14248(%rsp), %rbp
-	movq	14256(%rsp), %r12
-	movq	14264(%rsp), %r13
-	movq	14272(%rsp), %r14
-	movq	14280(%rsp), %r15
-	movq	14232(%rsp), %rsp
+	movq	14040(%rsp), %rbx
+	movq	14048(%rsp), %rbp
+	movq	14056(%rsp), %r12
+	movq	14064(%rsp), %r13
+	movq	14072(%rsp), %r14
+	movq	14080(%rsp), %r15
+	movq	14032(%rsp), %rsp
 	ret 
 _crypto_kem_enc_randominc_jazz:
 crypto_kem_enc_randominc_jazz:
@@ -5884,295 +5344,11 @@ Lcrypto_kem_enc_randominc_jazz$14:
 	leaq	200(%rsp), %rsp
 	leaq	9560(%rsp), %rax
 	leaq	9496(%rsp), %rcx
-	movq	$0, 4624(%rsp)
-	movq	$0, 4632(%rsp)
-	movq	$0, 4640(%rsp)
-	movq	$0, 4648(%rsp)
-	movq	$0, 4656(%rsp)
-	movq	$0, 4664(%rsp)
-	movq	$0, 4672(%rsp)
-	movq	$0, 4680(%rsp)
-	movq	$0, 4688(%rsp)
-	movq	$0, 4696(%rsp)
-	movq	$0, 4704(%rsp)
-	movq	$0, 4712(%rsp)
-	movq	$0, 4720(%rsp)
-	movq	$0, 4728(%rsp)
-	movq	$0, 4736(%rsp)
-	movq	$0, 4744(%rsp)
-	movq	$0, 4752(%rsp)
-	movq	$0, 4760(%rsp)
-	movq	$0, 4768(%rsp)
-	movq	$0, 4776(%rsp)
-	movq	$0, 4784(%rsp)
-	movq	$0, 4792(%rsp)
-	movq	$0, 4800(%rsp)
-	movq	$0, 4808(%rsp)
-	movq	$0, 4816(%rsp)
-	movb	(%rcx), %dl
-	xorb	%dl, 4624(%rsp)
-	movb	1(%rcx), %dl
-	xorb	%dl, 4625(%rsp)
-	movb	2(%rcx), %dl
-	xorb	%dl, 4626(%rsp)
-	movb	3(%rcx), %dl
-	xorb	%dl, 4627(%rsp)
-	movb	4(%rcx), %dl
-	xorb	%dl, 4628(%rsp)
-	movb	5(%rcx), %dl
-	xorb	%dl, 4629(%rsp)
-	movb	6(%rcx), %dl
-	xorb	%dl, 4630(%rsp)
-	movb	7(%rcx), %dl
-	xorb	%dl, 4631(%rsp)
-	movb	8(%rcx), %dl
-	xorb	%dl, 4632(%rsp)
-	movb	9(%rcx), %dl
-	xorb	%dl, 4633(%rsp)
-	movb	10(%rcx), %dl
-	xorb	%dl, 4634(%rsp)
-	movb	11(%rcx), %dl
-	xorb	%dl, 4635(%rsp)
-	movb	12(%rcx), %dl
-	xorb	%dl, 4636(%rsp)
-	movb	13(%rcx), %dl
-	xorb	%dl, 4637(%rsp)
-	movb	14(%rcx), %dl
-	xorb	%dl, 4638(%rsp)
-	movb	15(%rcx), %dl
-	xorb	%dl, 4639(%rsp)
-	movb	16(%rcx), %dl
-	xorb	%dl, 4640(%rsp)
-	movb	17(%rcx), %dl
-	xorb	%dl, 4641(%rsp)
-	movb	18(%rcx), %dl
-	xorb	%dl, 4642(%rsp)
-	movb	19(%rcx), %dl
-	xorb	%dl, 4643(%rsp)
-	movb	20(%rcx), %dl
-	xorb	%dl, 4644(%rsp)
-	movb	21(%rcx), %dl
-	xorb	%dl, 4645(%rsp)
-	movb	22(%rcx), %dl
-	xorb	%dl, 4646(%rsp)
-	movb	23(%rcx), %dl
-	xorb	%dl, 4647(%rsp)
-	movb	24(%rcx), %dl
-	xorb	%dl, 4648(%rsp)
-	movb	25(%rcx), %dl
-	xorb	%dl, 4649(%rsp)
-	movb	26(%rcx), %dl
-	xorb	%dl, 4650(%rsp)
-	movb	27(%rcx), %dl
-	xorb	%dl, 4651(%rsp)
-	movb	28(%rcx), %dl
-	xorb	%dl, 4652(%rsp)
-	movb	29(%rcx), %dl
-	xorb	%dl, 4653(%rsp)
-	movb	30(%rcx), %dl
-	xorb	%dl, 4654(%rsp)
-	movb	31(%rcx), %dl
-	xorb	%dl, 4655(%rsp)
-	movb	32(%rcx), %dl
-	xorb	%dl, 4656(%rsp)
-	movb	33(%rcx), %dl
-	xorb	%dl, 4657(%rsp)
-	movb	34(%rcx), %dl
-	xorb	%dl, 4658(%rsp)
-	movb	35(%rcx), %dl
-	xorb	%dl, 4659(%rsp)
-	movb	36(%rcx), %dl
-	xorb	%dl, 4660(%rsp)
-	movb	37(%rcx), %dl
-	xorb	%dl, 4661(%rsp)
-	movb	38(%rcx), %dl
-	xorb	%dl, 4662(%rsp)
-	movb	39(%rcx), %dl
-	xorb	%dl, 4663(%rsp)
-	movb	40(%rcx), %dl
-	xorb	%dl, 4664(%rsp)
-	movb	41(%rcx), %dl
-	xorb	%dl, 4665(%rsp)
-	movb	42(%rcx), %dl
-	xorb	%dl, 4666(%rsp)
-	movb	43(%rcx), %dl
-	xorb	%dl, 4667(%rsp)
-	movb	44(%rcx), %dl
-	xorb	%dl, 4668(%rsp)
-	movb	45(%rcx), %dl
-	xorb	%dl, 4669(%rsp)
-	movb	46(%rcx), %dl
-	xorb	%dl, 4670(%rsp)
-	movb	47(%rcx), %dl
-	xorb	%dl, 4671(%rsp)
-	movb	48(%rcx), %dl
-	xorb	%dl, 4672(%rsp)
-	movb	49(%rcx), %dl
-	xorb	%dl, 4673(%rsp)
-	movb	50(%rcx), %dl
-	xorb	%dl, 4674(%rsp)
-	movb	51(%rcx), %dl
-	xorb	%dl, 4675(%rsp)
-	movb	52(%rcx), %dl
-	xorb	%dl, 4676(%rsp)
-	movb	53(%rcx), %dl
-	xorb	%dl, 4677(%rsp)
-	movb	54(%rcx), %dl
-	xorb	%dl, 4678(%rsp)
-	movb	55(%rcx), %dl
-	xorb	%dl, 4679(%rsp)
-	movb	56(%rcx), %dl
-	xorb	%dl, 4680(%rsp)
-	movb	57(%rcx), %dl
-	xorb	%dl, 4681(%rsp)
-	movb	58(%rcx), %dl
-	xorb	%dl, 4682(%rsp)
-	movb	59(%rcx), %dl
-	xorb	%dl, 4683(%rsp)
-	movb	60(%rcx), %dl
-	xorb	%dl, 4684(%rsp)
-	movb	61(%rcx), %dl
-	xorb	%dl, 4685(%rsp)
-	movb	62(%rcx), %dl
-	xorb	%dl, 4686(%rsp)
-	movb	63(%rcx), %cl
-	xorb	%cl, 4687(%rsp)
-	xorb	$6, 4688(%rsp)
-	xorb	$-128, 4695(%rsp)
-	leaq	4624(%rsp), %rdi
 	leaq	-200(%rsp), %rsp
-	leaq	Lcrypto_kem_enc_randominc_jazz$13(%rip), 	%r14
-	jmp 	LKeccakF1600_StatePermute$1
+	leaq	Lcrypto_kem_enc_randominc_jazz$13(%rip), 	%r13
+	jmp 	Lsha3_512_64$1
 Lcrypto_kem_enc_randominc_jazz$13:
 	leaq	200(%rsp), %rsp
-	movb	4624(%rsp), %cl
-	movb	%cl, (%rax)
-	movb	4625(%rsp), %cl
-	movb	%cl, 1(%rax)
-	movb	4626(%rsp), %cl
-	movb	%cl, 2(%rax)
-	movb	4627(%rsp), %cl
-	movb	%cl, 3(%rax)
-	movb	4628(%rsp), %cl
-	movb	%cl, 4(%rax)
-	movb	4629(%rsp), %cl
-	movb	%cl, 5(%rax)
-	movb	4630(%rsp), %cl
-	movb	%cl, 6(%rax)
-	movb	4631(%rsp), %cl
-	movb	%cl, 7(%rax)
-	movb	4632(%rsp), %cl
-	movb	%cl, 8(%rax)
-	movb	4633(%rsp), %cl
-	movb	%cl, 9(%rax)
-	movb	4634(%rsp), %cl
-	movb	%cl, 10(%rax)
-	movb	4635(%rsp), %cl
-	movb	%cl, 11(%rax)
-	movb	4636(%rsp), %cl
-	movb	%cl, 12(%rax)
-	movb	4637(%rsp), %cl
-	movb	%cl, 13(%rax)
-	movb	4638(%rsp), %cl
-	movb	%cl, 14(%rax)
-	movb	4639(%rsp), %cl
-	movb	%cl, 15(%rax)
-	movb	4640(%rsp), %cl
-	movb	%cl, 16(%rax)
-	movb	4641(%rsp), %cl
-	movb	%cl, 17(%rax)
-	movb	4642(%rsp), %cl
-	movb	%cl, 18(%rax)
-	movb	4643(%rsp), %cl
-	movb	%cl, 19(%rax)
-	movb	4644(%rsp), %cl
-	movb	%cl, 20(%rax)
-	movb	4645(%rsp), %cl
-	movb	%cl, 21(%rax)
-	movb	4646(%rsp), %cl
-	movb	%cl, 22(%rax)
-	movb	4647(%rsp), %cl
-	movb	%cl, 23(%rax)
-	movb	4648(%rsp), %cl
-	movb	%cl, 24(%rax)
-	movb	4649(%rsp), %cl
-	movb	%cl, 25(%rax)
-	movb	4650(%rsp), %cl
-	movb	%cl, 26(%rax)
-	movb	4651(%rsp), %cl
-	movb	%cl, 27(%rax)
-	movb	4652(%rsp), %cl
-	movb	%cl, 28(%rax)
-	movb	4653(%rsp), %cl
-	movb	%cl, 29(%rax)
-	movb	4654(%rsp), %cl
-	movb	%cl, 30(%rax)
-	movb	4655(%rsp), %cl
-	movb	%cl, 31(%rax)
-	movb	4656(%rsp), %cl
-	movb	%cl, 32(%rax)
-	movb	4657(%rsp), %cl
-	movb	%cl, 33(%rax)
-	movb	4658(%rsp), %cl
-	movb	%cl, 34(%rax)
-	movb	4659(%rsp), %cl
-	movb	%cl, 35(%rax)
-	movb	4660(%rsp), %cl
-	movb	%cl, 36(%rax)
-	movb	4661(%rsp), %cl
-	movb	%cl, 37(%rax)
-	movb	4662(%rsp), %cl
-	movb	%cl, 38(%rax)
-	movb	4663(%rsp), %cl
-	movb	%cl, 39(%rax)
-	movb	4664(%rsp), %cl
-	movb	%cl, 40(%rax)
-	movb	4665(%rsp), %cl
-	movb	%cl, 41(%rax)
-	movb	4666(%rsp), %cl
-	movb	%cl, 42(%rax)
-	movb	4667(%rsp), %cl
-	movb	%cl, 43(%rax)
-	movb	4668(%rsp), %cl
-	movb	%cl, 44(%rax)
-	movb	4669(%rsp), %cl
-	movb	%cl, 45(%rax)
-	movb	4670(%rsp), %cl
-	movb	%cl, 46(%rax)
-	movb	4671(%rsp), %cl
-	movb	%cl, 47(%rax)
-	movb	4672(%rsp), %cl
-	movb	%cl, 48(%rax)
-	movb	4673(%rsp), %cl
-	movb	%cl, 49(%rax)
-	movb	4674(%rsp), %cl
-	movb	%cl, 50(%rax)
-	movb	4675(%rsp), %cl
-	movb	%cl, 51(%rax)
-	movb	4676(%rsp), %cl
-	movb	%cl, 52(%rax)
-	movb	4677(%rsp), %cl
-	movb	%cl, 53(%rax)
-	movb	4678(%rsp), %cl
-	movb	%cl, 54(%rax)
-	movb	4679(%rsp), %cl
-	movb	%cl, 55(%rax)
-	movb	4680(%rsp), %cl
-	movb	%cl, 56(%rax)
-	movb	4681(%rsp), %cl
-	movb	%cl, 57(%rax)
-	movb	4682(%rsp), %cl
-	movb	%cl, 58(%rax)
-	movb	4683(%rsp), %cl
-	movb	%cl, 59(%rax)
-	movb	4684(%rsp), %cl
-	movb	%cl, 60(%rax)
-	movb	4685(%rsp), %cl
-	movb	%cl, 61(%rax)
-	movb	4686(%rsp), %cl
-	movb	%cl, 62(%rax)
-	movb	4687(%rsp), %cl
-	movb	%cl, 63(%rax)
 	vmovdqu	glob_data + 0(%rip), %ymm0
 	vmovdqu	%ymm0, 1536(%rsp)
 	vmovdqu	glob_data + 0(%rip), %ymm0
@@ -9238,6 +8414,297 @@ LBS2POLVECp$2:
 	cmpq	$3, %rdx
 	jb  	LBS2POLVECp$3
 	jmp 	*%r11
+Lsha3_512_64$1:
+	movq	$0, (%rsp)
+	movq	$0, 8(%rsp)
+	movq	$0, 16(%rsp)
+	movq	$0, 24(%rsp)
+	movq	$0, 32(%rsp)
+	movq	$0, 40(%rsp)
+	movq	$0, 48(%rsp)
+	movq	$0, 56(%rsp)
+	movq	$0, 64(%rsp)
+	movq	$0, 72(%rsp)
+	movq	$0, 80(%rsp)
+	movq	$0, 88(%rsp)
+	movq	$0, 96(%rsp)
+	movq	$0, 104(%rsp)
+	movq	$0, 112(%rsp)
+	movq	$0, 120(%rsp)
+	movq	$0, 128(%rsp)
+	movq	$0, 136(%rsp)
+	movq	$0, 144(%rsp)
+	movq	$0, 152(%rsp)
+	movq	$0, 160(%rsp)
+	movq	$0, 168(%rsp)
+	movq	$0, 176(%rsp)
+	movq	$0, 184(%rsp)
+	movq	$0, 192(%rsp)
+	movb	(%rcx), %dl
+	xorb	%dl, (%rsp)
+	movb	1(%rcx), %dl
+	xorb	%dl, 1(%rsp)
+	movb	2(%rcx), %dl
+	xorb	%dl, 2(%rsp)
+	movb	3(%rcx), %dl
+	xorb	%dl, 3(%rsp)
+	movb	4(%rcx), %dl
+	xorb	%dl, 4(%rsp)
+	movb	5(%rcx), %dl
+	xorb	%dl, 5(%rsp)
+	movb	6(%rcx), %dl
+	xorb	%dl, 6(%rsp)
+	movb	7(%rcx), %dl
+	xorb	%dl, 7(%rsp)
+	movb	8(%rcx), %dl
+	xorb	%dl, 8(%rsp)
+	movb	9(%rcx), %dl
+	xorb	%dl, 9(%rsp)
+	movb	10(%rcx), %dl
+	xorb	%dl, 10(%rsp)
+	movb	11(%rcx), %dl
+	xorb	%dl, 11(%rsp)
+	movb	12(%rcx), %dl
+	xorb	%dl, 12(%rsp)
+	movb	13(%rcx), %dl
+	xorb	%dl, 13(%rsp)
+	movb	14(%rcx), %dl
+	xorb	%dl, 14(%rsp)
+	movb	15(%rcx), %dl
+	xorb	%dl, 15(%rsp)
+	movb	16(%rcx), %dl
+	xorb	%dl, 16(%rsp)
+	movb	17(%rcx), %dl
+	xorb	%dl, 17(%rsp)
+	movb	18(%rcx), %dl
+	xorb	%dl, 18(%rsp)
+	movb	19(%rcx), %dl
+	xorb	%dl, 19(%rsp)
+	movb	20(%rcx), %dl
+	xorb	%dl, 20(%rsp)
+	movb	21(%rcx), %dl
+	xorb	%dl, 21(%rsp)
+	movb	22(%rcx), %dl
+	xorb	%dl, 22(%rsp)
+	movb	23(%rcx), %dl
+	xorb	%dl, 23(%rsp)
+	movb	24(%rcx), %dl
+	xorb	%dl, 24(%rsp)
+	movb	25(%rcx), %dl
+	xorb	%dl, 25(%rsp)
+	movb	26(%rcx), %dl
+	xorb	%dl, 26(%rsp)
+	movb	27(%rcx), %dl
+	xorb	%dl, 27(%rsp)
+	movb	28(%rcx), %dl
+	xorb	%dl, 28(%rsp)
+	movb	29(%rcx), %dl
+	xorb	%dl, 29(%rsp)
+	movb	30(%rcx), %dl
+	xorb	%dl, 30(%rsp)
+	movb	31(%rcx), %dl
+	xorb	%dl, 31(%rsp)
+	movb	32(%rcx), %dl
+	xorb	%dl, 32(%rsp)
+	movb	33(%rcx), %dl
+	xorb	%dl, 33(%rsp)
+	movb	34(%rcx), %dl
+	xorb	%dl, 34(%rsp)
+	movb	35(%rcx), %dl
+	xorb	%dl, 35(%rsp)
+	movb	36(%rcx), %dl
+	xorb	%dl, 36(%rsp)
+	movb	37(%rcx), %dl
+	xorb	%dl, 37(%rsp)
+	movb	38(%rcx), %dl
+	xorb	%dl, 38(%rsp)
+	movb	39(%rcx), %dl
+	xorb	%dl, 39(%rsp)
+	movb	40(%rcx), %dl
+	xorb	%dl, 40(%rsp)
+	movb	41(%rcx), %dl
+	xorb	%dl, 41(%rsp)
+	movb	42(%rcx), %dl
+	xorb	%dl, 42(%rsp)
+	movb	43(%rcx), %dl
+	xorb	%dl, 43(%rsp)
+	movb	44(%rcx), %dl
+	xorb	%dl, 44(%rsp)
+	movb	45(%rcx), %dl
+	xorb	%dl, 45(%rsp)
+	movb	46(%rcx), %dl
+	xorb	%dl, 46(%rsp)
+	movb	47(%rcx), %dl
+	xorb	%dl, 47(%rsp)
+	movb	48(%rcx), %dl
+	xorb	%dl, 48(%rsp)
+	movb	49(%rcx), %dl
+	xorb	%dl, 49(%rsp)
+	movb	50(%rcx), %dl
+	xorb	%dl, 50(%rsp)
+	movb	51(%rcx), %dl
+	xorb	%dl, 51(%rsp)
+	movb	52(%rcx), %dl
+	xorb	%dl, 52(%rsp)
+	movb	53(%rcx), %dl
+	xorb	%dl, 53(%rsp)
+	movb	54(%rcx), %dl
+	xorb	%dl, 54(%rsp)
+	movb	55(%rcx), %dl
+	xorb	%dl, 55(%rsp)
+	movb	56(%rcx), %dl
+	xorb	%dl, 56(%rsp)
+	movb	57(%rcx), %dl
+	xorb	%dl, 57(%rsp)
+	movb	58(%rcx), %dl
+	xorb	%dl, 58(%rsp)
+	movb	59(%rcx), %dl
+	xorb	%dl, 59(%rsp)
+	movb	60(%rcx), %dl
+	xorb	%dl, 60(%rsp)
+	movb	61(%rcx), %dl
+	xorb	%dl, 61(%rsp)
+	movb	62(%rcx), %dl
+	xorb	%dl, 62(%rsp)
+	movb	63(%rcx), %cl
+	xorb	%cl, 63(%rsp)
+	xorb	$6, 64(%rsp)
+	xorb	$-128, 71(%rsp)
+	movq	%rsp, %rdi
+	leaq	-200(%rsp), %rsp
+	leaq	Lsha3_512_64$2(%rip), 	%r14
+	jmp 	LKeccakF1600_StatePermute$1
+Lsha3_512_64$2:
+	leaq	200(%rsp), %rsp
+	movb	(%rsp), %cl
+	movb	%cl, (%rax)
+	movb	1(%rsp), %cl
+	movb	%cl, 1(%rax)
+	movb	2(%rsp), %cl
+	movb	%cl, 2(%rax)
+	movb	3(%rsp), %cl
+	movb	%cl, 3(%rax)
+	movb	4(%rsp), %cl
+	movb	%cl, 4(%rax)
+	movb	5(%rsp), %cl
+	movb	%cl, 5(%rax)
+	movb	6(%rsp), %cl
+	movb	%cl, 6(%rax)
+	movb	7(%rsp), %cl
+	movb	%cl, 7(%rax)
+	movb	8(%rsp), %cl
+	movb	%cl, 8(%rax)
+	movb	9(%rsp), %cl
+	movb	%cl, 9(%rax)
+	movb	10(%rsp), %cl
+	movb	%cl, 10(%rax)
+	movb	11(%rsp), %cl
+	movb	%cl, 11(%rax)
+	movb	12(%rsp), %cl
+	movb	%cl, 12(%rax)
+	movb	13(%rsp), %cl
+	movb	%cl, 13(%rax)
+	movb	14(%rsp), %cl
+	movb	%cl, 14(%rax)
+	movb	15(%rsp), %cl
+	movb	%cl, 15(%rax)
+	movb	16(%rsp), %cl
+	movb	%cl, 16(%rax)
+	movb	17(%rsp), %cl
+	movb	%cl, 17(%rax)
+	movb	18(%rsp), %cl
+	movb	%cl, 18(%rax)
+	movb	19(%rsp), %cl
+	movb	%cl, 19(%rax)
+	movb	20(%rsp), %cl
+	movb	%cl, 20(%rax)
+	movb	21(%rsp), %cl
+	movb	%cl, 21(%rax)
+	movb	22(%rsp), %cl
+	movb	%cl, 22(%rax)
+	movb	23(%rsp), %cl
+	movb	%cl, 23(%rax)
+	movb	24(%rsp), %cl
+	movb	%cl, 24(%rax)
+	movb	25(%rsp), %cl
+	movb	%cl, 25(%rax)
+	movb	26(%rsp), %cl
+	movb	%cl, 26(%rax)
+	movb	27(%rsp), %cl
+	movb	%cl, 27(%rax)
+	movb	28(%rsp), %cl
+	movb	%cl, 28(%rax)
+	movb	29(%rsp), %cl
+	movb	%cl, 29(%rax)
+	movb	30(%rsp), %cl
+	movb	%cl, 30(%rax)
+	movb	31(%rsp), %cl
+	movb	%cl, 31(%rax)
+	movb	32(%rsp), %cl
+	movb	%cl, 32(%rax)
+	movb	33(%rsp), %cl
+	movb	%cl, 33(%rax)
+	movb	34(%rsp), %cl
+	movb	%cl, 34(%rax)
+	movb	35(%rsp), %cl
+	movb	%cl, 35(%rax)
+	movb	36(%rsp), %cl
+	movb	%cl, 36(%rax)
+	movb	37(%rsp), %cl
+	movb	%cl, 37(%rax)
+	movb	38(%rsp), %cl
+	movb	%cl, 38(%rax)
+	movb	39(%rsp), %cl
+	movb	%cl, 39(%rax)
+	movb	40(%rsp), %cl
+	movb	%cl, 40(%rax)
+	movb	41(%rsp), %cl
+	movb	%cl, 41(%rax)
+	movb	42(%rsp), %cl
+	movb	%cl, 42(%rax)
+	movb	43(%rsp), %cl
+	movb	%cl, 43(%rax)
+	movb	44(%rsp), %cl
+	movb	%cl, 44(%rax)
+	movb	45(%rsp), %cl
+	movb	%cl, 45(%rax)
+	movb	46(%rsp), %cl
+	movb	%cl, 46(%rax)
+	movb	47(%rsp), %cl
+	movb	%cl, 47(%rax)
+	movb	48(%rsp), %cl
+	movb	%cl, 48(%rax)
+	movb	49(%rsp), %cl
+	movb	%cl, 49(%rax)
+	movb	50(%rsp), %cl
+	movb	%cl, 50(%rax)
+	movb	51(%rsp), %cl
+	movb	%cl, 51(%rax)
+	movb	52(%rsp), %cl
+	movb	%cl, 52(%rax)
+	movb	53(%rsp), %cl
+	movb	%cl, 53(%rax)
+	movb	54(%rsp), %cl
+	movb	%cl, 54(%rax)
+	movb	55(%rsp), %cl
+	movb	%cl, 55(%rax)
+	movb	56(%rsp), %cl
+	movb	%cl, 56(%rax)
+	movb	57(%rsp), %cl
+	movb	%cl, 57(%rax)
+	movb	58(%rsp), %cl
+	movb	%cl, 58(%rax)
+	movb	59(%rsp), %cl
+	movb	%cl, 59(%rax)
+	movb	60(%rsp), %cl
+	movb	%cl, 60(%rax)
+	movb	61(%rsp), %cl
+	movb	%cl, 61(%rax)
+	movb	62(%rsp), %cl
+	movb	%cl, 62(%rax)
+	movb	63(%rsp), %cl
+	movb	%cl, 63(%rax)
+	jmp 	*%r13
 Lsha3_256_CCADEC$1:
 	movq	$0, (%rsp)
 	movq	$0, 8(%rsp)

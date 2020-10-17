@@ -4,6 +4,7 @@
 #define SHAKE128_KK13N8_32_HH
 
 #include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
 #include "fips202_regular_keccak_absorb_128_32.jahh"
 #include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
 
@@ -15,8 +16,6 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 	inline int remainder;
 
 	reg u8 t8;
-
-	stack u8[SHAKE128_RATE] t;
 
 	stack u64[25] s;
 

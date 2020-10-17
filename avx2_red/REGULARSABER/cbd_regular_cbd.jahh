@@ -9,8 +9,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
 	reg u8 t8;
 
-	//reg u16 t16;
-
 	reg u32 t32;
 	reg u32 d;
 	reg u32 tt;
@@ -111,7 +109,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
     	// r[4*i+0] = (uint16_t)(a[0]  - b[0]) & Qmod_minus1;
     	t32 = a[0];
     	t32 -= b[0];
-    	//t16 = (16u) t32;
     	t32 &= (SABER_Q - 1);
         address -= 3;
     	r[(int) address] = (16u) t32;
@@ -119,7 +116,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
     	// r[4*i+1] = (uint16_t)(a[1]  - b[1]) & Qmod_minus1;
     	t32 = a[1];
     	t32 -= b[1];
-        //t16 = (16u) t32;
         t32 &= (SABER_Q - 1);
         address += 1;
     	r[(int) address] = (16u) t32;
@@ -127,7 +123,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
     	// r[4*i+2] = (uint16_t)(a[2]  - b[2]) & Qmod_minus1;
     	t32 = a[2];
     	t32 -= b[2];
-        //t16 = (16u) t32;
         t32 &= (SABER_Q - 1);
         address += 1;
     	r[(int) address] = (16u) t32;
@@ -135,7 +130,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
     	// r[4*i+3] = (uint16_t)(a[3]  - b[3]) & Qmod_minus1;
     	t32 = a[3];
     	t32 -= b[3];
-        //t16 = (16u) t32;
         t32 &= (SABER_Q - 1);
         address += 1;
     	r[(int) address] = (16u) t32;

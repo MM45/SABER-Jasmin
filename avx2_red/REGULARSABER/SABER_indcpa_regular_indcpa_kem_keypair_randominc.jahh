@@ -45,7 +45,7 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 	skpv1 = GenSecret(skpv1, noiseseed);
 
 	for i = 0 to SABER_KN / 16 {
-		t256 = skpv1[u256 i]; //load_16u16(skpv1[i * SABER_N + j * 16:16]);
+		t256 = skpv1[u256 i];
 		sk_avx[i] = t256;
 	}
 

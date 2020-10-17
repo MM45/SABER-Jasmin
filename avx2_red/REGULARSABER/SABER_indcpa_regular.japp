@@ -86,73 +86,32 @@ u256 zero_u256 = 0;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-inline fn load64(reg ptr u8[8] x) -> reg u64
+inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
  inline int i;
+ inline int j;
 
- reg u64 r;
- reg u64 t;
+ reg u16 t16;
 
- r = (64u) x[0];
 
- for i = 1 to 8 {
-  t = (64u) x[i];
-  t <<= (8 * i);
-  r |= t;
+ for j = 0 to SABER_KEYBYTES {
+  message_dec[j] = 0;
+
+  for i = 0 to 8 {
+   t16 = message_dec_unpacked[j * 8 + i];
+   t16 <<= i;
+   message_dec[j] |= (8u) t16;
+  }
  }
 
- return r;
+ return message_dec;
 }
 
-fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
-{
- inline int i;
 
- reg u8 t8;
 
- reg u64 t64;
 
- stack u8[200] t;
 
- for i = 0 to SHAKE128_RATE {
-  t[i] = 0;
- }
 
- for i = 0 to 32 {
-  t8 = m[i];
-  t[i] = t8;
- }
-
- t[32] = 0x1F;
- t[SHAKE128_RATE - 1] |= 128;
-
- for i = 0 to (SHAKE128_RATE / 8) {
-  t64 = load64(t[8 * i:8]);
-  s[i] ^= t64;
- }
-
- return s;
-}
 
 
 
@@ -289,15 +248,6 @@ inline fn iota(reg ptr u64[25] a, reg u64 c) -> reg ptr u64[25] {
 }
 
 
-inline fn keccakP1600_round(reg ptr u64[25] state, reg u64 c) -> reg ptr u64[25] {
-  state = theta(state);
-  state = rho(state);
-  state = pi(state);
-  state = chi(state);
-  state = iota(state, c);
-  return state;
-}
-
 u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x800000000000808a, 0x8000000080008000,
                                     0x000000000000808b, 0x0000000080000001, 0x8000000080008081, 0x8000000000008009,
                                     0x000000000000008a, 0x0000000000000088, 0x0000000080008009, 0x000000008000000a,
@@ -307,11 +257,20 @@ u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x8000
 
 fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 {
-  inline int round;
+  reg u64 round;
+  reg ptr u64[24] constptr;
 
-  for round = 0 to 24 {
-    state = keccakP1600_round(state, KeccakF_RoundConstants[round]);
+  round = 0;
+  while (round < 24) {
+    state = theta(state);
+    state = rho(state);
+    state = pi(state);
+    state = chi(state);
+    constptr = KeccakF_RoundConstants;
+    state = iota(state, constptr[(int) round]);
+    round += 1;
   }
+
 
   return state;
 }
@@ -320,96 +279,39 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
 
 
-inline fn store64(reg ptr u8[8] x, reg u64 u) -> reg ptr u8[8]
-{
- inline int i;
 
- for i = 0 to 7 {
-  x[i] = u;
-  u >>= 8;
- }
 
- x[7] = u;
-
- return x;
-}
-
-inline fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
-{
- inline int i;
-
- reg u64 u;
-
- s = KeccakF1600_StatePermute(s);
-
- for i = 0 to (SHAKE128_RATE / 8) {
-  u = s[i];
-  h[8 * i:8] = store64(h[8 * i:8], u);
- }
-
- return h, s;
-}
-
-inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8[32]
+fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 {
  inline int i;
 
  reg u8 t8;
 
- stack u8[SHAKE128_RATE] t;
-
- stack u64[25] s;
-
- for i = 0 to 25 {
-  s[i] = 0;
- }
-
- s = keccak_absorb_128_32(s, input);
-
- t, s = keccak_squeezeblocks_128_128(t, s);
-
  for i = 0 to 32 {
-  t8 = t[i];
-  output[i] = t8;
+  t8 = m[i];
+  s[u8 i] ^= t8;
  }
 
- return output;
+ s[u8 32] ^= 0x1F;
+ s[u8 SHAKE128_RATE - 1] ^= 0x80;
+
+ return s;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-inline fn keccak_squeezeblocks_128_KK13N8(reg ptr u8[KK13N8] h, reg ptr u64[25] s) -> reg ptr u8[KK13N8], reg ptr u64[25]
+fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
 {
  inline int i;
- inline int j;
- inline int iterations;
 
- reg u64 u;
+ reg u8 t8;
 
- iterations = KK13N8 / SHAKE128_RATE;
+ s = KeccakF1600_StatePermute(s);
 
- for j = 0 to iterations {
-  s = KeccakF1600_StatePermute(s);
-
-  for i = 0 to (SHAKE128_RATE / 8) {
-   u = s[i];
-   h[j * SHAKE128_RATE + 8 * i:8] = store64(h[j * SHAKE128_RATE + 8 * i:8], u);
-  }
+ for i = 0 to SHAKE128_RATE {
+  t8 = s[u8 i];
+  h[i] = t8;
  }
 
  return h, s;
 }
-
 
 inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) -> reg ptr u8[KK13N8]
 {
@@ -419,8 +321,6 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
  inline int remainder;
 
  reg u8 t8;
-
- stack u8[SHAKE128_RATE] t;
 
  stack u64[25] s;
 
@@ -434,15 +334,16 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
  s = keccak_absorb_128_32(s, input);
 
- output, s = keccak_squeezeblocks_128_KK13N8(output, s);
 
- if (remainder > 0) {
-  t, s = keccak_squeezeblocks_128_128(t, s);
+ for i = 0 to nblocks {
+  output[i * SHAKE128_RATE:SHAKE128_RATE], s = keccak_squeezeblocks_128_128(output[i * SHAKE128_RATE:SHAKE128_RATE], s);
+ }
 
-  for i = 0 to remainder {
-   t8 = t[i];
-   output[handled + i] = t8;
-  }
+ s = KeccakF1600_StatePermute(s);
+
+ for i = 0 to remainder {
+  t8 = s[u8 i];
+  output[handled + i] = t8;
  }
 
  return output;
@@ -456,8 +357,6 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
 fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg ptr u16[SABER_N]
 {
-
-
  reg u16 b1;
  reg u16 b2;
  reg u16 b3;
@@ -595,13 +494,9 @@ fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg 
 
 fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
- reg u16 t16;
-
  reg u64 k;
 
  stack u8[KK13N8] buf;
-
- stack u16[SABER_N] temp_ar;
 
  stack ptr u16[SABER_KKN] sa;
 
@@ -636,34 +531,33 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
 
 
-
-
-
-
-
-
-
-inline fn keccak_squeezeblocks_128_MUNK8(reg ptr u8[MUNK8] h, reg ptr u64[25] s) -> reg ptr u8[MUNK8], reg ptr u64[25]
+inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8[32]
 {
  inline int i;
- inline int j;
- inline int iterations;
 
- reg u64 u;
+ reg u8 t8;
 
- iterations = MUNK8 / SHAKE128_RATE;
+ stack u64[25] s;
 
- for j = 0 to iterations {
-  s = KeccakF1600_StatePermute(s);
-
-  for i = 0 to (SHAKE128_RATE / 8) {
-   u = s[i];
-   h[j * SHAKE128_RATE + 8 * i:8] = store64(h[j * SHAKE128_RATE + 8 * i:8], u);
-  }
+ for i = 0 to 25 {
+  s[i] = 0;
  }
 
- return h, s;
+ s = keccak_absorb_128_32(s, input);
+
+ s = KeccakF1600_StatePermute(s);
+
+ for i = 0 to 32 {
+  t8 = s[u8 i];
+  output[i] = t8;
+ }
+
+ return output;
 }
+
+
+
+
 
 
 inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> reg ptr u8[MUNK8]
@@ -674,8 +568,6 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
  inline int remainder;
 
  reg u8 t8;
-
- stack u8[SHAKE128_RATE] t;
 
  stack u64[25] s;
 
@@ -689,15 +581,16 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
  s = keccak_absorb_128_32(s, input);
 
- output, s = keccak_squeezeblocks_128_MUNK8(output, s);
 
- if (remainder > 0) {
-  t, s = keccak_squeezeblocks_128_128(t, s);
+ for i = 0 to nblocks {
+  output[i * SHAKE128_RATE:SHAKE128_RATE], s = keccak_squeezeblocks_128_128(output[i * SHAKE128_RATE:SHAKE128_RATE], s);
+ }
 
-  for i = 0 to remainder {
-   t8 = t[i];
-   output[handled + i] = t8;
-  }
+ s = KeccakF1600_StatePermute(s);
+
+ for i = 0 to remainder {
+  t8 = s[u8 i];
+  output[handled + i] = t8;
  }
 
  return output;
@@ -712,8 +605,6 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
  reg u8 t8;
-
-
 
  reg u32 t32;
  reg u32 d;
@@ -815,7 +706,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[0];
      t32 -= b[0];
-
      t32 &= (SABER_Q - 1);
         address -= 3;
      r[(int) address] = (16u) t32;
@@ -823,7 +713,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[1];
      t32 -= b[1];
-
         t32 &= (SABER_Q - 1);
         address += 1;
      r[(int) address] = (16u) t32;
@@ -831,7 +720,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[2];
      t32 -= b[2];
-
         t32 &= (SABER_Q - 1);
         address += 1;
      r[(int) address] = (16u) t32;
@@ -839,7 +727,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[3];
      t32 -= b[3];
-
         t32 &= (SABER_Q - 1);
         address += 1;
      r[(int) address] = (16u) t32;
@@ -879,9 +766,6 @@ fn GenSecret(reg ptr u16[SABER_KN] r, reg ptr u8[SABER_COINBYTES] seed) -> reg p
 
 inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u8[SABER_POLYVECBYTES]
 {
-
-
-
  reg u16 d1;
  reg u16 d2;
 
@@ -1633,36 +1517,6 @@ inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[
  return ar;
 }
 
-
-
-
-
-
-
-inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
-{
- inline int i;
- inline int j;
-
- reg u8 t8;
-
- reg u16 t16;
-
-
- for j = 0 to SABER_KEYBYTES {
-  message_dec[j] = 0;
-
-  for i = 0 to 8 {
-   t16 = message_dec_unpacked[j * 8 + i];
-   t16 <<= i;
-   t8 = (8u) t16;
-   message_dec[j] |= t8;
-  }
- }
-
- return message_dec;
-}
-
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
  inline int i;
@@ -1732,7 +1586,6 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
   message_dec_unpacked[i] >>= (SABER_EP - 1);
  }
 
-
  message_dec = POL2MSG(message_dec_unpacked, message_dec);
 
  return message_dec;
@@ -1753,12 +1606,6 @@ export fn BS2POLq_jazz(reg u64 bytesp, reg u64 datap)
  for i = 0 to SABER_POLYBYTES {
   tb = (u8) [bytesp + i];
   bytes[i] = tb;
- }
-
-
- for i = 0 to SABER_N {
-  td = (u16) [datap + 2 * i];
-  data[i] = td;
  }
 
  data = BS2POLq(bytes, data);
@@ -1787,12 +1634,6 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
 
  stack u64 srp;
 
-
- for i = 0 to SABER_KN {
-  tr = (u16) [rp + 2 * i];
-  r[i] = tr;
- }
-
  for i = 0 to SABER_COINBYTES {
   ts = (u8) [seedp + i];
   seed[i] = ts;
@@ -1813,6 +1654,31 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
  }
 
 }
+
+export fn POL2MSG_jazz(reg u64 message_dec_unpackedp, reg u64 message_decp)
+{
+ inline int i;
+
+ reg u8 tmd;
+
+ reg u16 tmdu;
+
+ stack u8[SABER_KEYBYTES] message_dec;
+ stack u16[SABER_N] message_dec_unpacked;
+
+ for i = 0 to SABER_N {
+  tmdu = (u16) [message_dec_unpackedp + 2 * i];
+  message_dec_unpacked[i] = tmdu;
+ }
+
+ message_dec = POL2MSG(message_dec_unpacked, message_dec);
+
+ for i = 0 to SABER_KEYBYTES {
+  tmd = message_dec[i];
+  (u8) [message_decp + i] = tmd;
+ }
+}
+
 export fn GenMatrix_jazz(reg u64 ap, reg u64 seedp)
 {
  inline int i;
@@ -1826,11 +1692,6 @@ export fn GenMatrix_jazz(reg u64 ap, reg u64 seedp)
  stack u16[SABER_KKN] a;
 
  stack u64 sap;
-
- for i = 0 to SABER_KKN {
-  t16 = (u16) [ap + 2 * i];
-  a[i] = t16;
- }
 
  for i = 0 to SABER_SEEDBYTES {
   t8 = (u8) [seedp + i];
@@ -1864,16 +1725,6 @@ export fn indcpa_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 se
  stack u64 spkp;
  stack u64 sskp;
 
- for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
-  t8 = (u8) [pkp + i];
-  pk[i] = t8;
- }
-
- for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
-  t8 = (u8) [skp + i];
-  sk[i] = t8;
- }
-
  for i = 0 to SABER_SEEDBYTES {
   t8 = (u8) [seedp + i];
   seed[i] = t8;
@@ -1903,8 +1754,6 @@ export fn indcpa_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 se
  }
 }
 
-
-
 export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg u64 pkp, reg u64 ciphertextp)
 {
  inline int i;
@@ -1933,11 +1782,6 @@ export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg
   pk[i] = t8;
  }
 
- for i = 0 to SABER_BYTES_CCA_DEC {
-  t8 = (u8) [ciphertextp + i];
-  ciphertext[i] = t8;
- }
-
  sciphertextp = ciphertextp;
 
  ciphertext = indcpa_kem_enc(message_received, noiseseed, pk, ciphertext);
@@ -1949,8 +1793,6 @@ export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg
   (u8) [ciphertextp + i] = t8;
  }
 }
-
-
 
 export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_decp)
 {
@@ -1972,11 +1814,6 @@ export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_
  for i = 0 to SABER_BYTES_CCA_DEC {
   t8 = (u8) [ciphertextp + i];
   ciphertext[i] = t8;
- }
-
- for i = 0 to SABER_KEYBYTES {
-  t8 = (u8) [message_decp + i];
-  message_dec[i] = t8;
  }
 
  smessage_decp = message_decp;

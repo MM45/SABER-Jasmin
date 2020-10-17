@@ -7,8 +7,6 @@
 
 inline fn verify(stack u8[SABER_BYTES_CCA_DEC] a, stack u8[SABER_BYTES_CCA_DEC] b) -> reg u64
 {
-	//inline int i;
-
 	reg u8 t8;
 	reg u8 tr;
 

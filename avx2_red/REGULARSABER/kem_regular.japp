@@ -260,28 +260,6 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
 
 
-
-
-
-
-inline fn load64(reg ptr u8[8] x) -> reg u64
-{
- inline int i;
-
- reg u64 r;
- reg u64 t;
-
- r = (64u) x[0];
-
- for i = 1 to 8 {
-  t = (64u) x[i];
-  t <<= (8 * i);
-  r |= t;
- }
-
- return r;
-}
-
 fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 {
  inline int i;
@@ -328,39 +306,6 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-inline fn store64(reg ptr u8[8] x, reg u64 u) -> reg ptr u8[8]
-{
- inline int i;
-
- for i = 0 to 7 {
-  x[i] = u;
-  u >>= 8;
- }
-
- x[7] = u;
-
- return x;
-}
-
 fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
 {
  inline int i;
@@ -385,8 +330,6 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
  inline int remainder;
 
  reg u8 t8;
-
- stack u8[SHAKE128_RATE] t;
 
  stack u64[25] s;
 
@@ -423,8 +366,6 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
 fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg ptr u16[SABER_N]
 {
-
-
  reg u16 b1;
  reg u16 b2;
  reg u16 b3;
@@ -645,8 +586,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
  reg u8 t8;
 
-
-
  reg u32 t32;
  reg u32 d;
  reg u32 tt;
@@ -747,7 +686,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[0];
      t32 -= b[0];
-
      t32 &= (SABER_Q - 1);
         address -= 3;
      r[(int) address] = (16u) t32;
@@ -755,7 +693,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[1];
      t32 -= b[1];
-
         t32 &= (SABER_Q - 1);
         address += 1;
      r[(int) address] = (16u) t32;
@@ -763,7 +700,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[2];
      t32 -= b[2];
-
         t32 &= (SABER_Q - 1);
         address += 1;
      r[(int) address] = (16u) t32;
@@ -771,7 +707,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
      t32 = a[3];
      t32 -= b[3];
-
         t32 &= (SABER_Q - 1);
         address += 1;
      r[(int) address] = (16u) t32;
@@ -811,9 +746,6 @@ fn GenSecret(reg ptr u16[SABER_KN] r, reg ptr u8[SABER_COINBYTES] seed) -> reg p
 
 inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u8[SABER_POLYVECBYTES]
 {
-
-
-
  reg u16 d1;
  reg u16 d2;
 
@@ -1118,6 +1050,7 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 
 
 
+
 fn keccak_absorb_256_single(reg ptr u64[25] s, reg ptr u8[SHA3_256_RATE] m) -> reg ptr u64[25]
 {
  inline int j;
@@ -1133,7 +1066,6 @@ fn keccak_absorb_256_single(reg ptr u64[25] s, reg ptr u8[SHA3_256_RATE] m) -> r
 
  return s;
 }
-
 
 fn sha3_256_PUBKEYBYTES(reg ptr u8[32] output, reg ptr u8[SABER_INDCPA_PUBLICKEYBYTES] input) -> reg ptr u8[32]
 {
@@ -1317,7 +1249,7 @@ fn sha3_256_CCADEC(reg ptr u8[32] output, reg ptr u8[SABER_BYTES_CCA_DEC] input)
 
  return output;
 }
-inline fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
+fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
 {
  inline int i;
 
@@ -1847,8 +1779,6 @@ inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYT
  inline int i;
  inline int j;
 
- reg u8 t8;
-
  reg u16 t16;
 
 
@@ -1858,8 +1788,7 @@ inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYT
   for i = 0 to 8 {
    t16 = message_dec_unpacked[j * 8 + i];
    t16 <<= i;
-   t8 = (8u) t16;
-   message_dec[j] |= t8;
+   message_dec[j] |= (8u) t16;
   }
  }
 
@@ -1935,7 +1864,6 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
   message_dec_unpacked[i] >>= (SABER_EP - 1);
  }
 
-
  message_dec = POL2MSG(message_dec_unpacked, message_dec);
 
  return message_dec;
@@ -1982,8 +1910,6 @@ inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b)
 
 inline fn verify(stack u8[SABER_BYTES_CCA_DEC] a, stack u8[SABER_BYTES_CCA_DEC] b) -> reg u64
 {
-
-
  reg u8 t8;
  reg u8 tr;
 

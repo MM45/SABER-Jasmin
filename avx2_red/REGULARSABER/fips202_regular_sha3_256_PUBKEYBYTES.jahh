@@ -4,8 +4,8 @@
 #define SHA3_256_PUBKEYBYTES_HH
 
 #include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
 #include "fips202_regular_keccak_absorb_256_single.jahh"
-//#include "fips202_regular_keccak_squeezeblocks_256_256.jahh"
 
 fn sha3_256_PUBKEYBYTES(reg ptr u8[32] output, reg ptr u8[SABER_INDCPA_PUBLICKEYBYTES] input) -> reg ptr u8[32]
 {
@@ -26,7 +26,7 @@ fn sha3_256_PUBKEYBYTES(reg ptr u8[32] output, reg ptr u8[SABER_INDCPA_PUBLICKEY
 		s[i] = 0;
 	}
 
-	// s = keccak_absorb_256_CCADEC(s, input);
+	// s = keccak_absorb_256_PUBKEYBYTES(s, input);
 	for i = 0 to nblocks {
 		s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
 	}

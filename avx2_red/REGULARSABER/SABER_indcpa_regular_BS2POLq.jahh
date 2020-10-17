@@ -7,8 +7,6 @@
 
 fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg ptr u16[SABER_N]
 {
-	//inline int j;
-
 	reg u16 b1;
 	reg u16 b2;
 	reg u16 b3;

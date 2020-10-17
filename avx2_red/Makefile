@@ -35,16 +35,7 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG \
 				${REGULARDIRECTORY}/test/test_fips202_regular_KeccakF1600_StatePermute \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_128_32 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_32 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_64 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_PUBKEYBYTES \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_CCADEC \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_512_64 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_128 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_KK13N8 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_MUNK8 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_256_256 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_512_512 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_shake128_32_32 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_shake128_KK13N8_32 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_shake128_MUNK8_32 \
@@ -143,8 +134,11 @@ ${REGULARDIRECTORY}/test/test_fips202x4_regular_%: ${REGULARDIRECTORY}/test/test
 	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202x4_regular.s $< ${LDFLAGS}
 
 
-${REGULARDIRECTORY}/speed/speed_kem_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s
+${REGULARDIRECTORY}/speed/speed_kem_regular_%: ${REGULARDIRECTORY}/speed/speed_kem_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s
 	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
+
+${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s
+	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
 
 
 ${REGULARDIRECTORY}/pack_unpack_regular.japp: ${REGULARDIRECTORY}/pack_unpack_regular.jazz ${JHEADERSREGULAR}
@@ -229,16 +223,7 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_KeccakF1600_StatePermute
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_128_32
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_32
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_64
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_PUBKEYBYTES
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_CCADEC
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_512_64
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_128
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_KK13N8
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_MUNK8
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_256_256
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_512_512
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_shake128_32_32 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_shake128_KK13N8_32 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_shake128_MUNK8_32 

@@ -40,9 +40,9 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_N / 16 {
-			t256 = sksv[u256 i * SABER_N / 16 + j]; //load_16u16(sksv[i * SABER_N + j * 16:16]);
+			t256 = sksv[u256 i * SABER_N / 16 + j];
 			sksv_avx[i * SABER_N / 16 + j] = t256;
-			t256 = pksv[u256 i * SABER_N / 16 + j]; //load_16u16(pksv[i * SABER_N + j * 16:16]);
+			t256 = pksv[u256 i * SABER_N / 16 + j];
 			pksv_avx[i * SABER_N / 16 + j] = t256;
 		}
 	}
@@ -57,7 +57,7 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 
 	for i = 0 to SABER_N / 16 {
 		t256 = v_avx[i];
-		message_dec_unpacked[u256 i] = t256; //store_16u16(t256, message_dec_unpacked[i * 16:16]);
+		message_dec_unpacked[u256 i] = t256;
 	}
 
 	
@@ -77,7 +77,6 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 		message_dec_unpacked[i] &= (SABER_P - 1);
 		message_dec_unpacked[i] >>= (SABER_EP - 1);
 	}
-
 
 	message_dec = POL2MSG(message_dec_unpacked, message_dec);
 	

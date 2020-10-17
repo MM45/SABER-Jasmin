@@ -6,7 +6,7 @@
 #include "SABER_params.jahh"
 #include "fips202_regular_KeccakF1600_StatePermute.jahh"
 
-inline fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
+fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
 {
 	inline int i;
 

@@ -7,9 +7,6 @@
 
 inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u8[SABER_POLYVECBYTES]
 {
-	//inline int i;
-	//inline int j;
-
 	reg u16 d1;
 	reg u16 d2;
 

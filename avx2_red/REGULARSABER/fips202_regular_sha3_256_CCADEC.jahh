@@ -4,6 +4,7 @@
 #define SHA3_256_CCADEC_HH
 
 #include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
 #include "fips202_regular_keccak_absorb_256_single.jahh"
 
 fn sha3_256_CCADEC(reg ptr u8[32] output, reg ptr u8[SABER_BYTES_CCA_DEC] input) -> reg ptr u8[32]

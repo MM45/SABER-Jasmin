@@ -65,7 +65,7 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_N / 16 {
-			t256 = skpv1[u256 i * SABER_N / 16 + j]; //load_16u16(skpv1[i * SABER_N + j * 16:16]);
+			t256 = skpv1[u256 i * SABER_N / 16 + j];
 			sk_avx[i * SABER_N / 16 + j] = t256;
 		}
 	}
@@ -92,7 +92,7 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_N / 16 {
 			t256 = res_avx[i * SABER_N / 16 + j];
-			temp[u256 i * SABER_N / 16 + j] = t256; //store_16u16(t256, temp[i * SABER_N + j * 16:16]);
+			temp[u256 i * SABER_N / 16 + j] = t256;
 		}
 	}
 
@@ -132,7 +132,7 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 	}
 
 	for i = 0 to SABER_N / 16 {
-		t256 = message[u256 i];//load_16u16(message[i * 16:16]);
+		t256 = message[u256 i];
 		t256 <<16u16= (SABER_EP - 1);
 		message_avx[i] = t256;
 	}
