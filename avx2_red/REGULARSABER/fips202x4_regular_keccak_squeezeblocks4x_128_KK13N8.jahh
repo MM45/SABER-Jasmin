@@ -13,16 +13,22 @@ inline fn keccak_squeezeblocks4x_128_KK13N8(reg ptr u8[KK13N8] h0, reg ptr u8[KK
 	inline int j;
 	inline int iterations;
 
+	reg u64 t64;
+	
 	iterations = KK13N8 / SHAKE128_RATE;
 
 	for j = 0 to iterations {
 		s = KeccakF1600_StatePermute4x(s);
 
 		for i = 0 to (SHAKE128_RATE / 8) {
-			h0[j * SHAKE128_RATE + 8 * i:8] = store64(h0[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i]);
-			h1[j * SHAKE128_RATE + 8 * i:8] = store64(h1[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i + 1]);
-			h2[j * SHAKE128_RATE + 8 * i:8] = store64(h2[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i + 2]);
-			h3[j * SHAKE128_RATE + 8 * i:8] = store64(h3[j * SHAKE128_RATE + 8 * i:8], s[u64 4 * i + 3]);
+			t64 = s[u64 4 * i];
+			h0[u64 j * SHAKE128_RATE / 8 + i] = t64;
+			t64 = s[u64 4 * i + 1];
+			h1[u64 j * SHAKE128_RATE / 8 + i] = t64;
+			t64 = s[u64 4 * i + 2];
+			h2[u64 j * SHAKE128_RATE / 8 + i] = t64;
+			t64 = s[u64 4 * i + 3];
+			h3[u64 j * SHAKE128_RATE / 8+ i] = t64;
 		}
 	}
 

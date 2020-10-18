@@ -51,13 +51,13 @@ inline fn keccak_absorb4x_256_64(reg ptr u256[25] s, reg ptr u8[64] m0, reg ptr 
 	t3[SHA3_256_RATE - 1] |= 128;
 
 	for i = 0 to (SHA3_256_RATE / 8) {
-		t64 = load64(t0[8 * i:8]);
+		t64 = t0[u64 i];
 		s[u64 4 * i] ^= t64;
-		t64 = load64(t1[8 * i:8]);
+		t64 = t1[u64 i];
 		s[u64 4 * i + 1] ^= t64;
-		t64 = load64(t2[8 * i:8]);
+		t64 = t2[u64 i];
 		s[u64 4 * i + 2] ^= t64;
-		t64 = load64(t3[8 * i:8]);
+		t64 = t3[u64 i];
 		s[u64 4 * i + 3] ^= t64;
 	}
 
