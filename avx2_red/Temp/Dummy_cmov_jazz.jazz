@@ -10,12 +10,8 @@ fn cmov(reg ptr u8[SABER_KEYBYTES] r, reg ptr u8[SABER_KEYBYTES] x, reg u8 b) ->
 
 	reg u64 t64;
 	
-	//t64 = (64u) b;
-	//t64 *= -1;
-	//b = (8u) t64;
+	_, _, _, _, _, b = #NEG_8(b);
 
-	b = !b;
-	
 	for i = 0 to SABER_KEYBYTES {
 		// r[i] ^= (-b) & (x[i] ^ r[i]);
 		t8 = x[i];

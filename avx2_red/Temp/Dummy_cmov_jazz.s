@@ -16,7 +16,7 @@ Ldummy$1:
 	movq	%r8, %rsp
 	ret 
 Lcmov$1:
-	notb	%dl
+	negb	%dl
 	movb	(%rcx), %sil
 	xorb	(%rax), %sil
 	andb	%dl, %sil

@@ -120,84 +120,36 @@ random_test_64bit_blocks:
 	.cfi_endproc
 .LFE25:
 	.size	random_test_64bit_blocks, .-random_test_64bit_blocks
-	.section	.rodata.str1.1
-.LC2:
-	.string	"%u\n"
-	.text
-	.p2align 4
-	.globl	dum_print
-	.type	dum_print, @function
-dum_print:
-.LFB26:
-	.cfi_startproc
-	endbr64
-	pushq	%r12
-	.cfi_def_cfa_offset 16
-	.cfi_offset 12, -16
-	leaq	32(%rdi), %r12
-	pushq	%rbp
-	.cfi_def_cfa_offset 24
-	.cfi_offset 6, -24
-	leaq	.LC2(%rip), %rbp
-	pushq	%rbx
-	.cfi_def_cfa_offset 32
-	.cfi_offset 3, -32
-	movq	%rdi, %rbx
-	.p2align 4,,10
-	.p2align 3
-.L9:
-	movzbl	(%rbx), %edx
-	movq	%rbp, %rsi
-	movl	$1, %edi
-	xorl	%eax, %eax
-	addq	$1, %rbx
-	call	__printf_chk@PLT
-	cmpq	%r12, %rbx
-	jne	.L9
-	popq	%rbx
-	.cfi_def_cfa_offset 24
-	popq	%rbp
-	.cfi_def_cfa_offset 16
-	popq	%r12
-	.cfi_def_cfa_offset 8
-	ret
-	.cfi_endproc
-.LFE26:
-	.size	dum_print, .-dum_print
 	.p2align 4
 	.globl	cmov
 	.type	cmov, @function
 cmov:
-.LFB27:
+.LFB26:
 	.cfi_startproc
 	endbr64
-	leaq	15(%rdi), %rax
+	leaq	31(%rdi), %rax
 	negl	%edx
 	subq	%rsi, %rax
-	cmpq	$30, %rax
-	jbe	.L15
-	movd	%edx, %xmm0
-	movdqu	(%rsi), %xmm1
-	movdqu	(%rdi), %xmm2
-	punpcklbw	%xmm0, %xmm0
-	movdqu	16(%rdi), %xmm4
-	punpcklwd	%xmm0, %xmm0
-	pxor	%xmm2, %xmm1
-	pshufd	$0, %xmm0, %xmm0
-	pand	%xmm0, %xmm1
-	pxor	%xmm2, %xmm1
-	movups	%xmm1, (%rdi)
-	movdqu	16(%rsi), %xmm1
-	pxor	%xmm4, %xmm1
-	pand	%xmm1, %xmm0
-	pxor	%xmm4, %xmm0
-	movups	%xmm0, 16(%rdi)
+	cmpq	$62, %rax
+	jbe	.L11
+	vmovdqu	(%rsi), %xmm4
+	vmovdqu	(%rdi), %xmm3
+	vinserti128	$0x1, 16(%rsi), %ymm4, %ymm0
+	vinserti128	$0x1, 16(%rdi), %ymm3, %ymm2
+	vpxor	%ymm2, %ymm0, %ymm1
+	vmovd	%edx, %xmm0
+	vpbroadcastb	%xmm0, %ymm0
+	vpand	%ymm0, %ymm1, %ymm0
+	vpxor	%ymm2, %ymm0, %ymm0
+	vmovups	%xmm0, (%rdi)
+	vextracti128	$0x1, %ymm0, 16(%rdi)
+	vzeroupper
 	ret
-.L15:
+.L11:
 	xorl	%eax, %eax
 	.p2align 4,,10
 	.p2align 3
-.L13:
+.L9:
 	movzbl	(%rdi,%rax), %r8d
 	movzbl	(%rsi,%rax), %ecx
 	xorl	%r8d, %ecx
@@ -206,130 +158,46 @@ cmov:
 	movb	%cl, (%rdi,%rax)
 	addq	$1, %rax
 	cmpq	$32, %rax
-	jne	.L13
+	jne	.L9
 	ret
 	.cfi_endproc
-.LFE27:
+.LFE26:
 	.size	cmov, .-cmov
 	.section	.text.startup,"ax",@progbits
 	.p2align 4
 	.globl	main
 	.type	main, @function
 main:
-.LFB28:
+.LFB27:
 	.cfi_startproc
 	endbr64
-	pushq	%r13
-	.cfi_def_cfa_offset 16
-	.cfi_offset 13, -16
-	movl	$32, %esi
-	leaq	.LC2(%rip), %r13
-	pushq	%r12
-	.cfi_def_cfa_offset 24
-	.cfi_offset 12, -24
-	pushq	%rbp
-	.cfi_def_cfa_offset 32
-	.cfi_offset 6, -32
-	pushq	%rbx
-	.cfi_def_cfa_offset 40
-	.cfi_offset 3, -40
 	subq	$104, %rsp
-	.cfi_def_cfa_offset 144
+	.cfi_def_cfa_offset 112
+	movl	$32, %esi
 	movq	%fs:40, %rax
 	movq	%rax, 88(%rsp)
 	xorl	%eax, %eax
-	leaq	16(%rsp), %rbx
-	leaq	48(%rsp), %r12
-	movq	%rbx, %rdi
-	movq	%rbx, %rbp
+	leaq	16(%rsp), %rdi
 	call	random_test_bytes
+	leaq	48(%rsp), %rdi
 	movl	$32, %esi
-	movq	%r12, %rdi
 	call	random_test_bytes
 	leaq	15(%rsp), %rdi
 	movl	$1, %esi
 	call	random_test_bytes
-	movzbl	15(%rsp), %eax
-	movdqa	16(%rsp), %xmm1
-	pxor	48(%rsp), %xmm1
-	andl	$1, %eax
-	movb	%al, 15(%rsp)
-	negl	%eax
-	movd	%eax, %xmm0
-	punpcklbw	%xmm0, %xmm0
-	punpcklwd	%xmm0, %xmm0
-	pshufd	$0, %xmm0, %xmm0
-	pand	%xmm0, %xmm1
-	pxor	16(%rsp), %xmm1
-	movaps	%xmm1, 16(%rsp)
-	movdqa	32(%rsp), %xmm1
-	pxor	64(%rsp), %xmm1
-	pand	%xmm1, %xmm0
-	pxor	32(%rsp), %xmm0
-	movaps	%xmm0, 32(%rsp)
-	.p2align 4,,10
-	.p2align 3
-.L18:
-	movzbl	0(%rbp), %edx
-	movq	%r13, %rsi
-	movl	$1, %edi
-	xorl	%eax, %eax
-	addq	$1, %rbp
-	call	__printf_chk@PLT
-	cmpq	%r12, %rbp
-	jne	.L18
-	movzbl	15(%rsp), %eax
-	movdqa	16(%rsp), %xmm1
-	leaq	.LC2(%rip), %rbp
-	pxor	48(%rsp), %xmm1
-	addl	$1, %eax
-	andl	$1, %eax
-	movb	%al, 15(%rsp)
-	negl	%eax
-	movd	%eax, %xmm0
-	punpcklbw	%xmm0, %xmm0
-	punpcklwd	%xmm0, %xmm0
-	pshufd	$0, %xmm0, %xmm0
-	pand	%xmm0, %xmm1
-	pxor	16(%rsp), %xmm1
-	movaps	%xmm1, 16(%rsp)
-	movdqa	32(%rsp), %xmm1
-	pxor	64(%rsp), %xmm1
-	pand	%xmm1, %xmm0
-	pxor	32(%rsp), %xmm0
-	movaps	%xmm0, 32(%rsp)
-	.p2align 4,,10
-	.p2align 3
-.L19:
-	movzbl	(%rbx), %edx
-	movq	%rbp, %rsi
-	movl	$1, %edi
-	xorl	%eax, %eax
-	addq	$1, %rbx
-	call	__printf_chk@PLT
-	cmpq	%rbx, %r12
-	jne	.L19
 	movq	88(%rsp), %rax
 	xorq	%fs:40, %rax
-	jne	.L24
+	jne	.L17
+	xorl	%eax, %eax
 	addq	$104, %rsp
 	.cfi_remember_state
-	.cfi_def_cfa_offset 40
-	xorl	%eax, %eax
-	popq	%rbx
-	.cfi_def_cfa_offset 32
-	popq	%rbp
-	.cfi_def_cfa_offset 24
-	popq	%r12
-	.cfi_def_cfa_offset 16
-	popq	%r13
 	.cfi_def_cfa_offset 8
 	ret
-.L24:
+.L17:
 	.cfi_restore_state
 	call	__stack_chk_fail@PLT
 	.cfi_endproc
-.LFE28:
+.LFE27:
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu 9.3.0-10ubuntu2) 9.3.0"
 	.section	.note.GNU-stack,"",@progbits

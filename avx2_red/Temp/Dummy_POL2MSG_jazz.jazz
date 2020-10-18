@@ -1,4 +1,3 @@
-
 param int SABER_N = 256;
 param int SABER_KEYBYTES = 32;
 
@@ -8,7 +7,6 @@ fn POL2MSG(reg ptr u16[SABER_N] message_dec_unpacked, reg ptr u8[SABER_KEYBYTES]
 	inline int j;
 
 	reg u16 t16;
-
 
 	for j = 0 to SABER_KEYBYTES {
 		message_dec[j] = 0;
@@ -30,4 +28,3 @@ export fn dummy()
 
 	md = POL2MSG(mdu, md);
 }
-	
