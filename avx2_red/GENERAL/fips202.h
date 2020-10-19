@@ -68,4 +68,6 @@ void sha3_256_CCADEC_jazz(unsigned char *output, const unsigned char *input);
 
 void sha3_512_64_jazz(unsigned char *output, const unsigned char *input);
 
+
+void KeccakP1600_Permute_24rounds(uint64_t* state); // TODO: Remove
 #endif
