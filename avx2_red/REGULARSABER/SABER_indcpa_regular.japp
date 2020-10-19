@@ -994,6 +994,33 @@ fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
  return bytes;
 }
 
+
+
+
+
+
+
+
+inline fn dummy_mv_mul(reg ptr u256[SABER_KKN / 16] a_avx, reg ptr u256[SABER_KN / 16] b_avx, reg ptr u256[SABER_KN / 16] res_avx) -> reg ptr u256[SABER_KN / 16]
+{
+ inline int i j k;
+
+ reg u256 t256;
+
+ for i = 0 to SABER_K {
+  for j = 0 to SABER_K {
+   for k = 0 to SABER_N / 16 {
+    t256 = a_avx[i * SABER_KN / 16 + j * SABER_N / 16 + k];
+    t256 ^= b_avx[j * SABER_N / 16 + k];
+    t256 ^= res_avx[j * SABER_N / 16 + k];
+    res_avx[j * SABER_N / 16 + k] = t256;
+   }
+  }
+ }
+
+ return res_avx;
+}
+
 inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_SEEDBYTES] seed, stack u8[SABER_COINBYTES] noiseseed) -> stack u8[SABER_INDCPA_PUBLICKEYBYTES], stack u8[SABER_INDCPA_SECRETKEYBYTES]
 {
  inline int i;
@@ -1039,6 +1066,8 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
  }
 
 
+
+ res_avx = dummy_mv_mul(a_avx, sk_avx, res_avx);
 
  for i = 0 to SABER_KN / 16 {
   t256 = res_avx[i];
@@ -1177,6 +1206,32 @@ inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SA
  return bytes;
 }
 
+
+
+
+
+
+
+
+
+inline fn dummy_vv_mul(reg ptr u256[SABER_KN / 16] a_avx, reg ptr u256[SABER_KN / 16] b_avx, reg ptr u256[SABER_N / 16] res_avx) -> reg ptr u256[SABER_N / 16]
+{
+ inline int i j;
+
+ reg u256 t256;
+
+ for i = 0 to SABER_K {
+  for j = 0 to SABER_N / 16 {
+   t256 = a_avx[i * SABER_N / 16 + j];
+   t256 ^= b_avx[i * SABER_N / 16 + j];
+   t256 ^= res_avx[j];
+   res_avx[j] = t256;
+  }
+ }
+
+ return res_avx;
+}
+
 inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32] noiseseed, stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_BYTES_CCA_DEC] ciphertext) -> stack u8[SABER_BYTES_CCA_DEC]
 {
  inline int i;
@@ -1248,6 +1303,8 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 
 
 
+ res_avx = dummy_mv_mul(a_avx, sk_avx, res_avx);
+
  for i = 0 to SABER_KN / 16 {
   t256 = res_avx[i];
   t256 +16u16= H1_avx;
@@ -1281,6 +1338,8 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
  }
 
 
+
+ vprime_avx = dummy_vv_mul(pkcl_avx, sk_avx, vprime_avx);
 
  for i = 0 to SABER_N / 16 {
   t256 = vprime_avx[i];
@@ -1517,6 +1576,9 @@ inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[
  return ar;
 }
 
+
+
+
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
  inline int i;
@@ -1562,6 +1624,7 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
  }
 
 
+ v_avx = dummy_vv_mul(pksv_avx, sksv_avx, v_avx);
 
  for i = 0 to SABER_N / 16 {
   t256 = v_avx[i];

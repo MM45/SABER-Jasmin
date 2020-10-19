@@ -10,6 +10,8 @@
 #include "pack_unpack_regular_POLVECq2BS.jahh"
 #include "pack_unpack_regular_POLVECp2BS.jahh"
 
+#include "SABER_indcpa_regular_dummy_mv_mul.jahh" // TODO: REMOVE ONCE REAL MUL IS HERE
+
 inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_SEEDBYTES] seed, stack u8[SABER_COINBYTES] noiseseed) -> stack u8[SABER_INDCPA_PUBLICKEYBYTES], stack u8[SABER_INDCPA_SECRETKEYBYTES]
 {
 	inline int i;
@@ -55,7 +57,9 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 	}
 
 	//res = MatrixVectorMul(a, skpv, res, 1);
-
+	// TODO: REMOVE DUMMY MUL ONCE REAL MUL IS HERE
+	res_avx = dummy_mv_mul(a_avx, sk_avx, res_avx);
+	
 	for i = 0 to SABER_KN / 16 {
 		t256 = res_avx[i];
 		t256 +16u16= H1_avx;

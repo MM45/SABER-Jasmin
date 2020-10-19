@@ -140,6 +140,9 @@ ${REGULARDIRECTORY}/speed/speed_kem_regular_%: ${REGULARDIRECTORY}/speed/speed_k
 ${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s
 	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
 
+${REGULARDIRECTORY}/speed/speed_fips202_regular_%: ${REGULARDIRECTORY}/speed/speed_fips202_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s
+	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s $< ${LDFLAGS}
+
 
 ${REGULARDIRECTORY}/pack_unpack_regular.japp: ${REGULARDIRECTORY}/pack_unpack_regular.jazz ${JHEADERSREGULAR}
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@

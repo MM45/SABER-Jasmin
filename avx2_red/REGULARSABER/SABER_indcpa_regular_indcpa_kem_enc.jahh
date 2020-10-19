@@ -10,6 +10,9 @@
 #include "pack_unpack_regular_BS2POLVECp.jahh"
 #include "pack_unpack_regular_SABER_pack_4bit.jahh"
 
+#include "SABER_indcpa_regular_dummy_mv_mul.jahh" // TODO: REMOVE ONCE REAL MUL IS HERE
+#include "SABER_indcpa_regular_dummy_vv_mul.jahh" // TODO: REMOVE ONCE REAL MUL IS HERE
+
 inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32] noiseseed, stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_BYTES_CCA_DEC] ciphertext) -> stack u8[SABER_BYTES_CCA_DEC]
 {
 	inline int i;
@@ -80,6 +83,8 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 	}
 
 	//res = MatrixVectorMul(a, skpv1, res, 0);
+	// TODO: REMOVE DUMMY MUL ONCE REAL MUL IS HERE
+	res_avx = dummy_mv_mul(a_avx, sk_avx, res_avx);
 
 	for i = 0 to SABER_KN / 16 {
 		t256 = res_avx[i];
@@ -114,6 +119,8 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 	}
 
 	//vprime = InnerProd(pkcl, skpv1, vprime);
+	// TODO: REMOVE DUMMY MUL ONCE REAL MUL IS HERE
+	vprime_avx = dummy_vv_mul(pkcl_avx, sk_avx, vprime_avx);
 
 	for i = 0 to SABER_N / 16 {
 		t256 = vprime_avx[i];

@@ -9,6 +9,9 @@
 #include "pack_unpack_regular_SABER_un_pack4bit.jahh"
 #include "SABER_indcpa_regular_POL2MSG.jahh"
 
+#include "SABER_indcpa_regular_dummy_vv_mul.jahh" // TODO: REMOVE DUMMY MUL ONCE REAL MUL IS HERE
+
+
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
 	inline int i;
@@ -54,7 +57,8 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 	}
 
 	//v = InnerProd(pksv, sksv, v);
-
+	v_avx = dummy_vv_mul(pksv_avx, sksv_avx, v_avx);
+	
 	for i = 0 to SABER_N / 16 {
 		t256 = v_avx[i];
 		message_dec_unpacked[u256 i] = t256;
