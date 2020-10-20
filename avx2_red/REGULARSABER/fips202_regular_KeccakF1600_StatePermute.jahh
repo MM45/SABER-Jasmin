@@ -131,7 +131,6 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     T[_a] = #NOT_64(T[_a]);
     T[_a] &= C[_i];
     T[_a] ^= C[_a];
-    //T[_a] ^= constptr[(int) round];
     T[_a] ^= KeccakF_RoundConstants[2 * round];
     E[_ba] = T[_a];
 

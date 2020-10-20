@@ -125,28 +125,19 @@ u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x8000
                                     0x8000000000008002, 0x8000000000000080, 0x000000000000800a, 0x800000008000000a,
                                     0x8000000080008081, 0x8000000000008080, 0x0000000080000001, 0x8000000080008008};
 
-
-inline fn KeccakF1600_DoubleRound(reg ptr u64[25] state, stack u64[25] E, inline u64 c1, inline u64 c2) -> reg ptr u64[25]
-{
-
-  return state;
-}
-
 fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 {
-  reg u64[5] C;
-  reg u64 Da, De, Di, Do, Du;
-  stack u64[5] D;
-  reg u64[5] T;
 
   inline int round;
 
-  reg ptr u64[24] constptr;
+  reg u64 Da, De, Di;
+
+  reg u64[5] C;
+  reg u64[5] T;
+
+  stack u64 Do, Du;
 
   stack u64[25] E;
-
-
-
 
   for round = 0 to 12 {
 
@@ -184,20 +175,20 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     Da = C[1];
     De = C[2];
     Di = C[3];
-    D[3] = C[4];
-    D[4] = C[0];
+    Do = C[4];
+    Du = C[0];
 
     _, _, Da = #ROL_64(Da, 1);
     _, _, De = #ROL_64(De, 1);
     _, _, Di = #ROL_64(Di, 1);
-    _, _, D[3] = #ROL_64(D[3], 1);
-    _, _, D[4] = #ROL_64(D[4], 1);
+    _, _, Do = #ROL_64(Do, 1);
+    _, _, Du = #ROL_64(Du, 1);
 
     Da ^= C[4];
     De ^= C[0];
     Di ^= C[1];
-    D[3] ^= C[2];
-    D[4] ^= C[3];
+    Do ^= C[2];
+    Du ^= C[3];
 
 
     C[0] = state[0];
@@ -209,8 +200,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[0] ^= Da;
     C[1] ^= De;
     C[2] ^= Di;
-    C[3] ^= D[3];
-    C[4] ^= D[4];
+    C[3] ^= Do;
+    C[4] ^= Du;
 
     _, _, C[1] = #ROL_64(C[1], 44);
     _, _, C[2] = #ROL_64(C[2], 43);
@@ -221,7 +212,6 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     T[0] = #NOT_64(T[0]);
     T[0] &= C[2];
     T[0] ^= C[0];
-
     T[0] ^= KeccakF_RoundConstants[2 * round];
     E[0] = T[0];
 
@@ -256,8 +246,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = state[16];
     C[4] = state[22];
 
-    C[0] ^= D[3];
-    C[1] ^= D[4];
+    C[0] ^= Do;
+    C[1] ^= Du;
     C[2] ^= Da;
     C[3] ^= De;
     C[4] ^= Di;
@@ -307,8 +297,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
     C[0] ^= De;
     C[1] ^= Di;
-    C[2] ^= D[3];
-    C[3] ^= D[4];
+    C[2] ^= Do;
+    C[3] ^= Du;
     C[4] ^= Da;
 
     _, _, C[0] = #ROL_64(C[0], 1);
@@ -354,11 +344,11 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = state[17];
     C[4] = state[23];
 
-    C[0] ^= D[4];
+    C[0] ^= Du;
     C[1] ^= Da;
     C[2] ^= De;
     C[3] ^= Di;
-    C[4] ^= D[3];
+    C[4] ^= Do;
 
     _, _, C[0] = #ROL_64(C[0], 27);
     _, _, C[1] = #ROL_64(C[1], 36);
@@ -404,8 +394,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[4] = state[21];
 
     C[0] ^= Di;
-    C[1] ^= D[3];
-    C[2] ^= D[4];
+    C[1] ^= Do;
+    C[2] ^= Du;
     C[3] ^= Da;
     C[4] ^= De;
 
@@ -481,20 +471,20 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     Da = C[1];
     De = C[2];
     Di = C[3];
-    D[3] = C[4];
-    D[4] = C[0];
+    Do = C[4];
+    Du = C[0];
 
     _, _, Da = #ROL_64(Da, 1);
     _, _, De = #ROL_64(De, 1);
     _, _, Di = #ROL_64(Di, 1);
-    _, _, D[3] = #ROL_64(D[3], 1);
-    _, _, D[4] = #ROL_64(D[4], 1);
+    _, _, Do = #ROL_64(Do, 1);
+    _, _, Du = #ROL_64(Du, 1);
 
     Da ^= C[4];
     De ^= C[0];
     Di ^= C[1];
-    D[3] ^= C[2];
-    D[4] ^= C[3];
+    Do ^= C[2];
+    Du ^= C[3];
 
 
     C[0] = E[0];
@@ -506,8 +496,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[0] ^= Da;
     C[1] ^= De;
     C[2] ^= Di;
-    C[3] ^= D[3];
-    C[4] ^= D[4];
+    C[3] ^= Do;
+    C[4] ^= Du;
 
     _, _, C[1] = #ROL_64(C[1], 44);
     _, _, C[2] = #ROL_64(C[2], 43);
@@ -518,8 +508,6 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     T[0] = #NOT_64(T[0]);
     T[0] &= C[2];
     T[0] ^= C[0];
-
-
     T[0] ^= KeccakF_RoundConstants[2 * round + 1];
     state[0] = T[0];
 
@@ -554,8 +542,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = E[16];
     C[4] = E[22];
 
-    C[0] ^= D[3];
-    C[1] ^= D[4];
+    C[0] ^= Do;
+    C[1] ^= Du;
     C[2] ^= Da;
     C[3] ^= De;
     C[4] ^= Di;
@@ -605,8 +593,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
     C[0] ^= De;
     C[1] ^= Di;
-    C[2] ^= D[3];
-    C[3] ^= D[4];
+    C[2] ^= Do;
+    C[3] ^= Du;
     C[4] ^= Da;
 
     _, _, C[0] = #ROL_64(C[0], 1);
@@ -652,11 +640,11 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = E[17];
     C[4] = E[23];
 
-    C[0] ^= D[4];
+    C[0] ^= Du;
     C[1] ^= Da;
     C[2] ^= De;
     C[3] ^= Di;
-    C[4] ^= D[3];
+    C[4] ^= Do;
 
     _, _, C[0] = #ROL_64(C[0], 27);
     _, _, C[1] = #ROL_64(C[1], 36);
@@ -702,8 +690,8 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[4] = E[21];
 
     C[0] ^= Di;
-    C[1] ^= D[3];
-    C[2] ^= D[4];
+    C[1] ^= Do;
+    C[2] ^= Du;
     C[3] ^= Da;
     C[4] ^= De;
 
@@ -742,10 +730,7 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     T[4] &= C[1];
     T[4] ^= C[4];
     state[24] = T[4];
-
-
   }
-
 
   return state;
 }
@@ -830,140 +815,103 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
 
 
+u16[24] and_ops = {0xff, 0x07, 0x3f, 0x01, 0x0f, 0x7f, 0x03, 0x1f,
+   0x1f, 0xff, 0x7f, 0xff, 0xff, 0x3f, 0xff, 0xff,
+   0x00, 0x03, 0x00, 0x0f, 0x01, 0x00, 0x07, 0x00};
+
+u16[24] shift_ops = {0x00, 0x05, 0x02, 0x07, 0x04, 0x01, 0x06, 0x03,
+      0x08, 0x03, 0x06, 0x01, 0x04, 0x07, 0x02, 0x05,
+      0x00, 0x0b, 0x00, 0x09, 0x0c, 0x00, 0x0a, 0x00};
+
 fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg ptr u16[SABER_N]
 {
- reg u16 b1;
- reg u16 b2;
- reg u16 b3;
-
- reg u64 j;
- reg u64 address_byte;
- reg u64 address_data;
-
- j = 0;
- address_byte = 0;
- address_data = 0;
-
- while (j < (SABER_N / 8)) {
-
-  b1 = (16u) bytes[(int) address_byte];
-  b1 &= 0xff;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0x1f;
-  b2 <<= 8;
-  b1 |= b2;
-  data[(int) address_data] = b1;
+ inline int i;
 
 
-  b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 5;
-  b1 &= 0x07;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 3;
-  address_byte += 1;
-  b3 = (16u) bytes[(int) address_byte];
-  b3 &= 0x03;
-  b3 <<= 11;
-  b2 |= b3;
-  b1 |= b2;
-  address_data += 1;
-  data[(int) address_data] = b1;
 
 
-  b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 2;
-  b1 &= 0x3f;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0x7f;
-  b2 <<= 6;
-  b1 |= b2;
-  address_data += 1;
-  data[(int) address_data] = b1;
+
+ reg u16[8] b16;
 
 
-  b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 7;
-  b1 &= 0x01;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 1;
-  address_byte += 1;
-  b3 = (16u) bytes[(int) address_byte];
-  b3 &= 0x0f;
-  b3 <<= 9;
-  b2 |= b3;
-  b1 |= b2;
-  address_data += 1;
-  data[(int) address_data] = b1;
 
 
-  b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 4;
-  b1 &= 0x0f;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 4;
-  address_byte += 1;
-  b3 = (16u) bytes[(int) address_byte];
-  b3 &= 0x01;
-  b3 <<= 12;
-  b2 |= b3;
-  b1 |= b2;
-  address_data += 1;
-  data[(int) address_data] = b1;
+
+ reg u128 b128_0, b128_1, b128_2;
+ reg u128[3] and;
+ reg u128[3] shift;
+
+ reg u256 b256;
+ reg u256 t256;
 
 
-  b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 1;
-  b1 &= 0x7f;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0x3f;
-  b2 <<= 7;
-  b1 |= b2;
-  address_data += 1;
-  data[(int) address_data] = b1;
 
 
-  b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 6;
-  b1 &= 0x03;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 2;
-  address_byte += 1;
-  b3 = (16u) bytes[(int) address_byte];
-  b3 &= 0x07;
-  b3 <<= 10;
-  b2 |= b3;
-  b1 |= b2;
-  address_data += 1;
-  data[(int) address_data] = b1;
+
+ b128_0 = zero_u128;
+ b128_1 = zero_u128;
+ b128_2 = zero_u128;
+ b256 = zero_u256;
+
+ and[0] = and_ops[u128 0];
+ and[1] = and_ops[u128 1];
+ and[2] = and_ops[u128 2];
+
+ shift[0] = shift_ops[u128 0];
+ shift[1] = shift_ops[u128 1];
+ shift[2] = shift_ops[u128 2];
 
 
-  b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 3;
-  b1 &= 0x1f;
-  address_byte += 1;
-  b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 5;
-  b1 |= b2;
-  address_data += 1;
-  data[(int) address_data] = b1;
+  b16[0] = (16u) bytes[0];
+  b16[1] = (16u) bytes[1];
+  b16[2] = (16u) bytes[3];
+  b16[3] = (16u) bytes[4];
+  b16[4] = (16u) bytes[6];
+  b16[5] = (16u) bytes[8];
+  b16[6] = (16u) bytes[9];
+  b16[7] = (16u) bytes[11];
 
-  j += 1;
-  address_byte += 1;
-  address_data += 1;
- }
+  for i = 0 to 8 {
+   b128_0 = #VPINSR_16u16(b128_0, b16[i], i);
+  }
 
+  b16[0] = (16u) bytes[1];
+  b16[1] = (16u) bytes[2];
+  b16[2] = (16u) bytes[4];
+  b16[3] = (16u) bytes[5];
+  b16[4] = (16u) bytes[7];
+  b16[5] = (16u) bytes[9];
+  b16[6] = (16u) bytes[10];
+  b16[7] = (16u) bytes[12];
+
+  for i = 0 to 8 {
+   b128_1 = #VPINSR_16u16(b128_1, b16[i], i);
+  }
+
+  b16[1] = (16u) bytes[3];
+  b16[3] = (16u) bytes[6];
+  b16[4] = (16u) bytes[8];
+  b16[6] = (16u) bytes[11];
+
+  b128_2 = #VPINSR_8u16(b128_2, b16[1], 1);
+  b128_2 = #VPINSR_8u16(b128_2, b16[3], 3);
+  b128_2 = #VPINSR_8u16(b128_2, b16[4], 4);
+  b128_2 = #VPINSR_8u16(b128_2, b16[6], 6);
+
+  b128_0 = #VPSRL_8u16(b128_0, shift[0]);
+
+  b128_1 = #VPAND_128(b128_1, and[1]);
+  b128_2 = #VPAND_128(b128_2, and[2]);
+
+  b128_0 = #VPAND_128(b128_0, and[0]);
+
+  b128_1 = #VPSLL_8u16(b128_1, shift[1]);
+  b128_2 = #VPSRL_8u16(b128_2, shift[2]);
+
+  b128_0 |= b128_1;
+  b128_0 |= b128_2;
+
+  data[u128 0] = b128_0;
  return data;
 }
 
