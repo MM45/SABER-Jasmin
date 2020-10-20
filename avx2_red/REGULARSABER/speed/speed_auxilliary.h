@@ -15,15 +15,15 @@ static int cmp_uint64(const void *a, const void *b) {
   return 0;
 }
 
-static uint64_t median(uint64_t *l, size_t llen) {
+static uint64_t median(uint64_t *l, uint64_t llen) {
   qsort(l,llen,sizeof(uint64_t),cmp_uint64);
 
   if(llen%2) return l[llen/2];
   else return (l[llen/2-1]+l[llen/2])/2;
 }
 
-static uint64_t average(uint64_t *t, size_t tlen) {
-  size_t i;
+static uint64_t average(uint64_t *t, uint64_t tlen) {
+  uint64_t i;
   uint64_t acc=0;
 
   for(i=0;i<tlen;i++)
@@ -32,11 +32,10 @@ static uint64_t average(uint64_t *t, size_t tlen) {
   return acc/tlen;
 }
 
-void print_results(const char *s, uint64_t *t, size_t tlen) {
-  size_t i;
-
+void print_results(const char *s, uint64_t *t, uint64_t tlen) {
   printf("%s\n", s);
-  printf("median: %llu cycles/ticks\n", (unsigned long long)median(t, tlen));
-  printf("average: %llu cycles/ticks\n", (unsigned long long)average(t, tlen));
+  printf("median: %lu cycles/ticks\n",  median(t, tlen));
+  printf("average: %lu cycles/ticks\n",  average(t, tlen));
+
   printf("\n");
 }

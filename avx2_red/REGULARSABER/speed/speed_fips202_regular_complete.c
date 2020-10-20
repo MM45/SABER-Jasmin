@@ -54,7 +54,6 @@ int test_fips202()
 				printf("[!] Functional test failed.\nFunction:\tKeccakF1600_StatePermute.\nReason:\tstate_c[%ld] != state_jazz[%ld] ==> %ld != %ld\n", j, j, state_c[j], state_jazz[j]);
 			}
 		}
-		
 	}
 
 	print_results("KeccakF1600_StatePermute_c: ", t_keccakf1600_c, NRUNS);

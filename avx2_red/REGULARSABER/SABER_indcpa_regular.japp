@@ -125,21 +125,30 @@ u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x8000
                                     0x8000000000008002, 0x8000000000000080, 0x000000000000800a, 0x800000008000000a,
                                     0x8000000080008081, 0x8000000000008080, 0x0000000080000001, 0x8000000080008008};
 
+
+inline fn KeccakF1600_DoubleRound(reg ptr u64[25] state, stack u64[25] E, inline u64 c1, inline u64 c2) -> reg ptr u64[25]
+{
+
+  return state;
+}
+
 fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 {
   reg u64[5] C;
+  reg u64 Da, De, Di, Do, Du;
   stack u64[5] D;
   reg u64[5] T;
 
-  reg u64 round;
+  inline int round;
 
   reg ptr u64[24] constptr;
 
   stack u64[25] E;
 
-  round = 0;
-  constptr = KeccakF_RoundConstants;
-  while (round < 24) {
+
+
+
+  for round = 0 to 12 {
 
 
     C[0] = state[0];
@@ -172,21 +181,21 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] ^= state[23];
     C[4] ^= state[24];
 
-    D[0] = C[1];
-    D[1] = C[2];
-    D[2] = C[3];
+    Da = C[1];
+    De = C[2];
+    Di = C[3];
     D[3] = C[4];
     D[4] = C[0];
 
-    _, _, D[0] = #ROL_64(D[0], 1);
-    _, _, D[1] = #ROL_64(D[1], 1);
-    _, _, D[2] = #ROL_64(D[2], 1);
+    _, _, Da = #ROL_64(Da, 1);
+    _, _, De = #ROL_64(De, 1);
+    _, _, Di = #ROL_64(Di, 1);
     _, _, D[3] = #ROL_64(D[3], 1);
     _, _, D[4] = #ROL_64(D[4], 1);
 
-    D[0] ^= C[4];
-    D[1] ^= C[0];
-    D[2] ^= C[1];
+    Da ^= C[4];
+    De ^= C[0];
+    Di ^= C[1];
     D[3] ^= C[2];
     D[4] ^= C[3];
 
@@ -197,9 +206,9 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = state[18];
     C[4] = state[24];
 
-    C[0] ^= D[0];
-    C[1] ^= D[1];
-    C[2] ^= D[2];
+    C[0] ^= Da;
+    C[1] ^= De;
+    C[2] ^= Di;
     C[3] ^= D[3];
     C[4] ^= D[4];
 
@@ -213,7 +222,7 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     T[0] &= C[2];
     T[0] ^= C[0];
 
-    T[0] ^= constptr[(int) round];
+    T[0] ^= KeccakF_RoundConstants[2 * round];
     E[0] = T[0];
 
     T[1] = C[2];
@@ -249,9 +258,9 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
     C[0] ^= D[3];
     C[1] ^= D[4];
-    C[2] ^= D[0];
-    C[3] ^= D[1];
-    C[4] ^= D[2];
+    C[2] ^= Da;
+    C[3] ^= De;
+    C[4] ^= Di;
 
     _, _, C[0] = #ROL_64(C[0], 28);
     _, _, C[1] = #ROL_64(C[1], 20);
@@ -296,11 +305,11 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = state[19];
     C[4] = state[20];
 
-    C[0] ^= D[1];
-    C[1] ^= D[2];
+    C[0] ^= De;
+    C[1] ^= Di;
     C[2] ^= D[3];
     C[3] ^= D[4];
-    C[4] ^= D[0];
+    C[4] ^= Da;
 
     _, _, C[0] = #ROL_64(C[0], 1);
     _, _, C[1] = #ROL_64(C[1], 6);
@@ -346,9 +355,9 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[4] = state[23];
 
     C[0] ^= D[4];
-    C[1] ^= D[0];
-    C[2] ^= D[1];
-    C[3] ^= D[2];
+    C[1] ^= Da;
+    C[2] ^= De;
+    C[3] ^= Di;
     C[4] ^= D[3];
 
     _, _, C[0] = #ROL_64(C[0], 27);
@@ -394,11 +403,11 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = state[15];
     C[4] = state[21];
 
-    C[0] ^= D[2];
+    C[0] ^= Di;
     C[1] ^= D[3];
     C[2] ^= D[4];
-    C[3] ^= D[0];
-    C[4] ^= D[1];
+    C[3] ^= Da;
+    C[4] ^= De;
 
     _, _, C[0] = #ROL_64(C[0], 62);
     _, _, C[1] = #ROL_64(C[1], 55);
@@ -469,21 +478,21 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] ^= E[23];
     C[4] ^= E[24];
 
-    D[0] = C[1];
-    D[1] = C[2];
-    D[2] = C[3];
+    Da = C[1];
+    De = C[2];
+    Di = C[3];
     D[3] = C[4];
     D[4] = C[0];
 
-    _, _, D[0] = #ROL_64(D[0], 1);
-    _, _, D[1] = #ROL_64(D[1], 1);
-    _, _, D[2] = #ROL_64(D[2], 1);
+    _, _, Da = #ROL_64(Da, 1);
+    _, _, De = #ROL_64(De, 1);
+    _, _, Di = #ROL_64(Di, 1);
     _, _, D[3] = #ROL_64(D[3], 1);
     _, _, D[4] = #ROL_64(D[4], 1);
 
-    D[0] ^= C[4];
-    D[1] ^= C[0];
-    D[2] ^= C[1];
+    Da ^= C[4];
+    De ^= C[0];
+    Di ^= C[1];
     D[3] ^= C[2];
     D[4] ^= C[3];
 
@@ -494,9 +503,9 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = E[18];
     C[4] = E[24];
 
-    C[0] ^= D[0];
-    C[1] ^= D[1];
-    C[2] ^= D[2];
+    C[0] ^= Da;
+    C[1] ^= De;
+    C[2] ^= Di;
     C[3] ^= D[3];
     C[4] ^= D[4];
 
@@ -509,8 +518,9 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     T[0] = #NOT_64(T[0]);
     T[0] &= C[2];
     T[0] ^= C[0];
-    round += 1;
-    T[0] ^= constptr[(int) round];
+
+
+    T[0] ^= KeccakF_RoundConstants[2 * round + 1];
     state[0] = T[0];
 
     T[1] = C[2];
@@ -546,9 +556,9 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
     C[0] ^= D[3];
     C[1] ^= D[4];
-    C[2] ^= D[0];
-    C[3] ^= D[1];
-    C[4] ^= D[2];
+    C[2] ^= Da;
+    C[3] ^= De;
+    C[4] ^= Di;
 
     _, _, C[0] = #ROL_64(C[0], 28);
     _, _, C[1] = #ROL_64(C[1], 20);
@@ -593,11 +603,11 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = E[19];
     C[4] = E[20];
 
-    C[0] ^= D[1];
-    C[1] ^= D[2];
+    C[0] ^= De;
+    C[1] ^= Di;
     C[2] ^= D[3];
     C[3] ^= D[4];
-    C[4] ^= D[0];
+    C[4] ^= Da;
 
     _, _, C[0] = #ROL_64(C[0], 1);
     _, _, C[1] = #ROL_64(C[1], 6);
@@ -643,9 +653,9 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[4] = E[23];
 
     C[0] ^= D[4];
-    C[1] ^= D[0];
-    C[2] ^= D[1];
-    C[3] ^= D[2];
+    C[1] ^= Da;
+    C[2] ^= De;
+    C[3] ^= Di;
     C[4] ^= D[3];
 
     _, _, C[0] = #ROL_64(C[0], 27);
@@ -691,11 +701,11 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     C[3] = E[15];
     C[4] = E[21];
 
-    C[0] ^= D[2];
+    C[0] ^= Di;
     C[1] ^= D[3];
     C[2] ^= D[4];
-    C[3] ^= D[0];
-    C[4] ^= D[1];
+    C[3] ^= Da;
+    C[4] ^= De;
 
     _, _, C[0] = #ROL_64(C[0], 62);
     _, _, C[1] = #ROL_64(C[1], 55);
@@ -733,7 +743,7 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
     T[4] ^= C[4];
     state[24] = T[4];
 
-    round += 1;
+
   }
 
 
