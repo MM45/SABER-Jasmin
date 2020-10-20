@@ -78,7 +78,7 @@ speed_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular \
 ##### GENERAL #####
 HEADERSGENERAL = $(wildcard ${GENERALDIRECTORY}/*.h)
 
-SOURCESGENERAL = $(wildcard ${GENERALDIRECTORY}/*.c)
+SOURCESGENERAL = $(wildcard ${GENERALDIRECTORY}/*.c) ${GENERALDIRECTORY}/KeccakF1600_StatePermute_x64s.s
 
 
 

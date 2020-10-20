@@ -2,6 +2,7 @@
 
 #include "SABER_params.jahh"
 #include "fips202_regular_KeccakF1600_StatePermute.jahh"
+
 #include "fips202_regular_keccak_absorb_128_32.jahh"
 #include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
 #include "fips202_regular_shake128_32_32.jahh"
@@ -12,6 +13,35 @@
 #include "fips202_regular_sha3_256_PUBKEYBYTES.jahh"
 #include "fips202_regular_sha3_256_CCADEC.jahh"
 #include "fips202_regular_sha3_512_64.jahh"
+
+
+export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
+{
+	inline int i;
+	
+	reg u64 t;
+
+	stack u64[25] state;
+	
+	stack u64 sstatep;
+
+	for i = 0 to 25 {
+		t = (u64) [statep + 8 * i];
+		state[i] = t;
+	}
+
+	sstatep = statep;
+
+	state = KeccakF1600_StatePermute(state);
+
+	statep = sstatep;
+
+	for i = 0 to 25 {
+		t = state[i];
+		(u64) [statep + 8 * i] = t;
+	}
+}
+
 
 // INLEN: SABER_BYTES_CCA_DEC
 export fn sha3_256_CCADEC_jazz(reg u64 outputp, reg u64 inputp) 
@@ -255,27 +285,6 @@ export fn keccak_absorb_128_32_jazz(reg u64 sp, reg u64 mp)
 	for i = 0 to 25 {
 		ts = s[i];
 		(u64) [sp + 8 * i] = ts;
-	}
-}
-
-export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
-{
-	inline int i;
-	
-	reg u64 t;
-
-	stack u64[25] state;
-
-	for i = 0 to 25 {
-		t = (u64) [statep + 8 * i];
-		state[i] = t;
-	}
-
-	state = KeccakF1600_StatePermute(state);
-
-	for i = 0 to 25 {
-		t = state[i];
-		(u64) [statep + 8 * i] = t;
 	}
 }
 

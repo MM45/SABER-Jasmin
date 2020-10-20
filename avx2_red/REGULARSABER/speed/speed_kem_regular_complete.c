@@ -153,6 +153,9 @@ int test_kem_cca()
 			if(k_a_jazz[j] != k_b_jazz[j]) {
 				printf("[!] Functional test failed.\nReason:\tk_a_jazz[%ld] != k_b_jazz[%ld] ==> %d != %d\n", j, j, k_a_jazz[j], k_b_jazz[j]);
 			}
+			if(k_a_c[j] != k_b_c[j]) {
+				printf("[!] Functional test failed.\nReason:\tk_a_c[%ld] != k_b_c[%ld] ==> %d != %d\n", j, j, k_a_c[j], k_b_c[j]);
+			}
 	    }
 		//printf("\n");
   	}

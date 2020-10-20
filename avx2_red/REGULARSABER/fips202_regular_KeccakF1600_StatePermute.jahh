@@ -3,6 +3,41 @@
 #ifndef KECCAKF1600_STATEPERMUTE_HH
 #define KECCAKF1600_STATEPERMUTE_HH
 
+// offsets in state
+#define _ba 0
+#define _be 1
+#define _bi 2
+#define _bo 3
+#define _bu 4
+#define _ga 5
+#define _ge 6
+#define _gi 7
+#define _go 8
+#define _gu 9
+#define _ka 10
+#define _ke 11
+#define _ki 12
+#define _ko 13
+#define _ku 14
+#define _ma 15
+#define _me 16
+#define _mi 17
+#define _mo 18
+#define _mu 19
+#define _sa 20
+#define _se 21
+#define _si 22
+#define _so 23
+#define _su 24
+
+// offsets in register array
+#define _a 0
+#define _e 1
+#define _i 2
+#define _o 3
+#define _u 4
+
+/*
 inline fn index(inline int x, inline int y) -> inline int {
   inline int r;
   r = (x % 5) + 5 * (y % 5);
@@ -28,13 +63,6 @@ inline fn theta(reg ptr u64[25] a) -> reg ptr u64[25] {
   }
 
   for x = 0 to 5 {
-    /* d[x] = ROL64(c[(x + 1) % 5], 1); */
-    /* extraction fails */
-
-    /*    _, _, d[x] = #ROL_64(c[(x + 1) % 5], 1);*/
-    /*    d[x] ^= c[(x + 4) % 5];*/
-    /* does not compile */
-
     d[x] = c[(x + 1) % 5];
     _, _, d[x] = #ROL_64(d[x], 1);
     d[x] ^= c[(x + 4) % 5];
@@ -154,5 +182,627 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
   return state;
 }
+*/
 
+u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x800000000000808a, 0x8000000080008000, 
+                                    0x000000000000808b, 0x0000000080000001, 0x8000000080008081, 0x8000000000008009, 
+                                    0x000000000000008a, 0x0000000000000088, 0x0000000080008009, 0x000000008000000a, 
+                                    0x000000008000808b, 0x800000000000008b, 0x8000000000008089, 0x8000000000008003, 
+                                    0x8000000000008002, 0x8000000000000080, 0x000000000000800a, 0x800000008000000a, 
+                                    0x8000000080008081, 0x8000000000008080, 0x0000000080000001, 0x8000000080008008};
+
+fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
+{
+  reg u64[5] C;
+  stack u64[5] D;
+  reg u64[5] T;
+
+  reg u64 round;
+
+  reg ptr u64[24] constptr;
+
+  stack u64[25] E;
+
+  round = 0;
+  constptr = KeccakF_RoundConstants;
+  while (round < 24)  {
+    /** 1/2 **/
+    // Preparation
+    C[_a] = state[_ba];
+    C[_e] = state[_be];
+    C[_i] = state[_bi];
+    C[_o] = state[_bo];
+    C[_u] = state[_bu];
+
+    C[_a] ^= state[_ga];
+    C[_e] ^= state[_ge];
+    C[_i] ^= state[_gi];
+    C[_o] ^= state[_go];
+    C[_u] ^= state[_gu];
+
+    C[_a] ^= state[_ka];
+    C[_e] ^= state[_ke];
+    C[_i] ^= state[_ki];
+    C[_o] ^= state[_ko];
+    C[_u] ^= state[_ku];
+
+    C[_a] ^= state[_ma];
+    C[_e] ^= state[_me];
+    C[_i] ^= state[_mi];
+    C[_o] ^= state[_mo];
+    C[_u] ^= state[_mu];
+
+    C[_a] ^= state[_sa];
+    C[_e] ^= state[_se];
+    C[_i] ^= state[_si];
+    C[_o] ^= state[_so];
+    C[_u] ^= state[_su];
+
+    D[_a] = C[_e];
+    D[_e] = C[_i];
+    D[_i] = C[_o];
+    D[_o] = C[_u];
+    D[_u] = C[_a];
+
+    _, _, D[_a] = #ROL_64(D[_a], 1);
+    _, _, D[_e] = #ROL_64(D[_e], 1);
+    _, _, D[_i] = #ROL_64(D[_i], 1);
+    _, _, D[_o] = #ROL_64(D[_o], 1);
+    _, _, D[_u] = #ROL_64(D[_u], 1);
+
+    D[_a] ^= C[_u];
+    D[_e] ^= C[_a];
+    D[_i] ^= C[_e];
+    D[_o] ^= C[_i];
+    D[_u] ^= C[_o];
+
+    // Result b
+    C[_a] = state[_ba];
+    C[_e] = state[_ge];
+    C[_i] = state[_ki];
+    C[_o] = state[_mo];
+    C[_u] = state[_su];
+
+    C[_a] ^= D[_a];
+    C[_e] ^= D[_e];
+    C[_i] ^= D[_i];
+    C[_o] ^= D[_o];
+    C[_u] ^= D[_u];
+
+    _, _, C[_e] = #ROL_64(C[_e], 44);
+    _, _, C[_i] = #ROL_64(C[_i], 43);
+    _, _, C[_o] = #ROL_64(C[_o], 21);
+    _, _, C[_u] = #ROL_64(C[_u], 14);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    //constptr = KeccakF_RoundConstants;
+    T[_a] ^= constptr[(int) round];
+    E[_ba] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    E[_be] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    E[_bi] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    E[_bo] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    E[_bu] = T[_u];
+
+    // Result g
+    C[_a] = state[_bo];
+    C[_e] = state[_gu];
+    C[_i] = state[_ka];
+    C[_o] = state[_me];
+    C[_u] = state[_si];
+
+    C[_a] ^= D[_o];
+    C[_e] ^= D[_u];
+    C[_i] ^= D[_a];
+    C[_o] ^= D[_e];
+    C[_u] ^= D[_i];
+
+    _, _, C[_a] = #ROL_64(C[_a], 28);
+    _, _, C[_e] = #ROL_64(C[_e], 20);
+    _, _, C[_i] = #ROL_64(C[_i], 3);
+    _, _, C[_o] = #ROL_64(C[_o], 45);
+    _, _, C[_u] = #ROL_64(C[_u], 61);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    E[_ga] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    E[_ge] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    E[_gi] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    E[_go] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    E[_gu] = T[_u];
+
+    // Result k
+    C[_a] = state[_be];
+    C[_e] = state[_gi];
+    C[_i] = state[_ko];
+    C[_o] = state[_mu];
+    C[_u] = state[_sa];
+
+    C[_a] ^= D[_e];
+    C[_e] ^= D[_i];
+    C[_i] ^= D[_o];
+    C[_o] ^= D[_u];
+    C[_u] ^= D[_a];
+
+    _, _, C[_a] = #ROL_64(C[_a], 1);
+    _, _, C[_e] = #ROL_64(C[_e], 6);
+    _, _, C[_i] = #ROL_64(C[_i], 25);
+    _, _, C[_o] = #ROL_64(C[_o], 8);
+    _, _, C[_u] = #ROL_64(C[_u], 18);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    E[_ka] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    E[_ke] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    E[_ki] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    E[_ko] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    E[_ku] = T[_u];
+
+    // Result m
+    C[_a] = state[_bu];
+    C[_e] = state[_ga];
+    C[_i] = state[_ke];
+    C[_o] = state[_mi];
+    C[_u] = state[_so];
+
+    C[_a] ^= D[_u];
+    C[_e] ^= D[_a];
+    C[_i] ^= D[_e];
+    C[_o] ^= D[_i];
+    C[_u] ^= D[_o];
+
+    _, _, C[_a] = #ROL_64(C[_a], 27);
+    _, _, C[_e] = #ROL_64(C[_e], 36);
+    _, _, C[_i] = #ROL_64(C[_i], 10);
+    _, _, C[_o] = #ROL_64(C[_o], 15);
+    _, _, C[_u] = #ROL_64(C[_u], 56);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    E[_ma] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    E[_me] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    E[_mi] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    E[_mo] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    E[_mu] = T[_u];
+
+    // Result s
+    C[_a] = state[_bi];
+    C[_e] = state[_go];
+    C[_i] = state[_ku];
+    C[_o] = state[_ma];
+    C[_u] = state[_se];
+
+    C[_a] ^= D[_i];
+    C[_e] ^= D[_o];
+    C[_i] ^= D[_u];
+    C[_o] ^= D[_a];
+    C[_u] ^= D[_e];
+
+    _, _, C[_a] = #ROL_64(C[_a], 62);
+    _, _, C[_e] = #ROL_64(C[_e], 55);
+    _, _, C[_i] = #ROL_64(C[_i], 39);
+    _, _, C[_o] = #ROL_64(C[_o], 41);
+    _, _, C[_u] = #ROL_64(C[_u], 2);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    E[_sa] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    E[_se] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    E[_si] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    E[_so] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    E[_su] = T[_u];
+
+
+    /** 2/2 **/
+    // Preparation
+    C[_a] = E[_ba];
+    C[_e] = E[_be];
+    C[_i] = E[_bi];
+    C[_o] = E[_bo];
+    C[_u] = E[_bu];
+
+    C[_a] ^= E[_ga];
+    C[_e] ^= E[_ge];
+    C[_i] ^= E[_gi];
+    C[_o] ^= E[_go];
+    C[_u] ^= E[_gu];
+
+    C[_a] ^= E[_ka];
+    C[_e] ^= E[_ke];
+    C[_i] ^= E[_ki];
+    C[_o] ^= E[_ko];
+    C[_u] ^= E[_ku];
+
+    C[_a] ^= E[_ma];
+    C[_e] ^= E[_me];
+    C[_i] ^= E[_mi];
+    C[_o] ^= E[_mo];
+    C[_u] ^= E[_mu];
+
+    C[_a] ^= E[_sa];
+    C[_e] ^= E[_se];
+    C[_i] ^= E[_si];
+    C[_o] ^= E[_so];
+    C[_u] ^= E[_su];
+
+    D[_a] = C[_e];
+    D[_e] = C[_i];
+    D[_i] = C[_o];
+    D[_o] = C[_u];
+    D[_u] = C[_a];
+
+    _, _, D[_a] = #ROL_64(D[_a], 1);
+    _, _, D[_e] = #ROL_64(D[_e], 1);
+    _, _, D[_i] = #ROL_64(D[_i], 1);
+    _, _, D[_o] = #ROL_64(D[_o], 1);
+    _, _, D[_u] = #ROL_64(D[_u], 1);
+
+    D[_a] ^= C[_u];
+    D[_e] ^= C[_a];
+    D[_i] ^= C[_e];
+    D[_o] ^= C[_i];
+    D[_u] ^= C[_o];
+
+    // Result b
+    C[_a] = E[_ba];
+    C[_e] = E[_ge];
+    C[_i] = E[_ki];
+    C[_o] = E[_mo];
+    C[_u] = E[_su];
+
+    C[_a] ^= D[_a];
+    C[_e] ^= D[_e];
+    C[_i] ^= D[_i];
+    C[_o] ^= D[_o];
+    C[_u] ^= D[_u];
+
+    _, _, C[_e] = #ROL_64(C[_e], 44);
+    _, _, C[_i] = #ROL_64(C[_i], 43);
+    _, _, C[_o] = #ROL_64(C[_o], 21);
+    _, _, C[_u] = #ROL_64(C[_u], 14);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    round += 1;
+    T[_a] ^= constptr[(int) round];
+    state[_ba] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    state[_be] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    state[_bi] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    state[_bo] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    state[_bu] = T[_u];
+
+    // Result g
+    C[_a] = E[_bo];
+    C[_e] = E[_gu];
+    C[_i] = E[_ka];
+    C[_o] = E[_me];
+    C[_u] = E[_si];
+
+    C[_a] ^= D[_o];
+    C[_e] ^= D[_u];
+    C[_i] ^= D[_a];
+    C[_o] ^= D[_e];
+    C[_u] ^= D[_i];
+
+    _, _, C[_a] = #ROL_64(C[_a], 28);
+    _, _, C[_e] = #ROL_64(C[_e], 20);
+    _, _, C[_i] = #ROL_64(C[_i], 3);
+    _, _, C[_o] = #ROL_64(C[_o], 45);
+    _, _, C[_u] = #ROL_64(C[_u], 61);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    state[_ga] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    state[_ge] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    state[_gi] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    state[_go] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    state[_gu] = T[_u];
+
+    // Result k
+    C[_a] = E[_be];
+    C[_e] = E[_gi];
+    C[_i] = E[_ko];
+    C[_o] = E[_mu];
+    C[_u] = E[_sa];
+
+    C[_a] ^= D[_e];
+    C[_e] ^= D[_i];
+    C[_i] ^= D[_o];
+    C[_o] ^= D[_u];
+    C[_u] ^= D[_a];
+
+    _, _, C[_a] = #ROL_64(C[_a], 1);
+    _, _, C[_e] = #ROL_64(C[_e], 6);
+    _, _, C[_i] = #ROL_64(C[_i], 25);
+    _, _, C[_o] = #ROL_64(C[_o], 8);
+    _, _, C[_u] = #ROL_64(C[_u], 18);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    state[_ka] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    state[_ke] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    state[_ki] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    state[_ko] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    state[_ku] = T[_u];
+
+    // Result m
+    C[_a] = E[_bu];
+    C[_e] = E[_ga];
+    C[_i] = E[_ke];
+    C[_o] = E[_mi];
+    C[_u] = E[_so];
+
+    C[_a] ^= D[_u];
+    C[_e] ^= D[_a];
+    C[_i] ^= D[_e];
+    C[_o] ^= D[_i];
+    C[_u] ^= D[_o];
+
+    _, _, C[_a] = #ROL_64(C[_a], 27);
+    _, _, C[_e] = #ROL_64(C[_e], 36);
+    _, _, C[_i] = #ROL_64(C[_i], 10);
+    _, _, C[_o] = #ROL_64(C[_o], 15);
+    _, _, C[_u] = #ROL_64(C[_u], 56);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    state[_ma] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    state[_me] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    state[_mi] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    state[_mo] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    state[_mu] = T[_u];
+
+    // Result s
+    C[_a] = E[_bi];
+    C[_e] = E[_go];
+    C[_i] = E[_ku];
+    C[_o] = E[_ma];
+    C[_u] = E[_se];
+
+    C[_a] ^= D[_i];
+    C[_e] ^= D[_o];
+    C[_i] ^= D[_u];
+    C[_o] ^= D[_a];
+    C[_u] ^= D[_e];
+
+    _, _, C[_a] = #ROL_64(C[_a], 62);
+    _, _, C[_e] = #ROL_64(C[_e], 55);
+    _, _, C[_i] = #ROL_64(C[_i], 39);
+    _, _, C[_o] = #ROL_64(C[_o], 41);
+    _, _, C[_u] = #ROL_64(C[_u], 2);
+
+    T[_a] = C[_e];
+    T[_a] = #NOT_64(T[_a]);
+    T[_a] &= C[_i];
+    T[_a] ^= C[_a];
+    state[_sa] = T[_a];
+
+    T[_e] = C[_i];
+    T[_e] = #NOT_64(T[_e]);
+    T[_e] &= C[_o];
+    T[_e] ^= C[_e];
+    state[_se] = T[_e];
+
+    T[_i] = C[_o];
+    T[_i] = #NOT_64(T[_i]);
+    T[_i] &= C[_u];
+    T[_i] ^= C[_i];
+    state[_si] = T[_i];
+
+    T[_o] = C[_u];
+    T[_o] = #NOT_64(T[_o]);
+    T[_o] &= C[_a];
+    T[_o] ^= C[_o];
+    state[_so] = T[_o];
+
+    T[_u] = C[_a];
+    T[_u] = #NOT_64(T[_u]);
+    T[_u] &= C[_e];
+    T[_u] ^= C[_u];
+    state[_su] = T[_u];
+
+    round += 1;
+  }
+
+
+  return state;
+}
 #endif
