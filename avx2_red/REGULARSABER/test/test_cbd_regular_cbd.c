@@ -33,9 +33,5 @@ int main()
 		}
 	}
 
-	for (i = 0; i < SABER_N; ++i) {
-		printf("r_c[%d] -- r_jazz[%d] ==> %d -- %d\n", i, i, r_c[i], r_jazz[i]);
-	}
-
 	return 0;
 }

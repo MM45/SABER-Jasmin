@@ -88,18 +88,12 @@ u256 zero_u256 = 0;
 
 u256 one_mask_glob = 0x1111111111111111111111111111111111111111111111111111111111111111;
 u256 f_mask_glob = 0x0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f;
-
 u256 qmod_mask_glob = 0x00001fff00001fff00001fff00001fff00001fff00001fff00001fff00001fff;
 u256 sixteen_bit_mask_glob = 0x0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff;
-
 
 fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
     inline int i;
-    inline int address0;
-    inline int address1;
-    inline int address2;
-    inline int address3;
 
     reg u256 tt256;
     reg u256 one_mask;
@@ -173,7 +167,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         r256[0] = #VPACKUS_8u32(t256[0], t256[1]);
 
 
-
         a256[0] = d256[0] >>8u32 8;
         a256[0] &= f_mask;
 
@@ -195,7 +188,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         t256[1] &= qmod;
 
         r256[1] = #VPACKUS_8u32(t256[0], t256[1]);
-
 
 
         a256[0] = d256[0] >>8u32 16;
@@ -221,7 +213,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         r256[2] = #VPACKUS_8u32(t256[0], t256[1]);
 
 
-
         a256[0] = d256[0] >>8u32 24;
         a256[0] &= f_mask;
 
@@ -241,7 +232,6 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         t256[1] &= qmod;
 
         r256[3] = #VPACKUS_8u32(t256[0], t256[1]);
-
 
         t256[0] = #VPUNPCKL_16u16(r256[0], r256[2]);
         t256[1] = #VPUNPCKL_16u16(r256[1], r256[3]);
@@ -265,6 +255,7 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         r[u256 4 * i + 2] = ord256[0];
         r[u256 4 * i + 3] = ord256[1];
     }
+
  return r;
 }
 

@@ -952,9 +952,15 @@ fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg 
  return data;
 }
 
+u256 qmod_glob = 0x1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff;
+
 fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
- reg u64 k;
+ inline int i;
+ inline int k;
+
+ reg u256 qmod;
+ reg u256 t256;
 
  stack u8[KK13N8] buf;
 
@@ -966,21 +972,14 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
  a = sa;
 
- a[0:SABER_N] = BS2POLq(buf[0:SABER_POLYBYTES], a[0:SABER_N]);
- a[SABER_N:SABER_N] = BS2POLq(buf[(13 * SABER_N / 8):SABER_POLYBYTES], a[SABER_N:SABER_N]);
- a[2 * SABER_N:SABER_N] = BS2POLq(buf[2 * (13 * SABER_N / 8):SABER_POLYBYTES], a[2 * SABER_N:SABER_N]);
- a[3 * SABER_N:SABER_N] = BS2POLq(buf[3 * (13 * SABER_N / 8):SABER_POLYBYTES], a[3 * SABER_N:SABER_N]);
- a[4 * SABER_N:SABER_N] = BS2POLq(buf[4 * (13 * SABER_N / 8):SABER_POLYBYTES], a[4 * SABER_N:SABER_N]);
- a[5 * SABER_N:SABER_N] = BS2POLq(buf[5 * (13 * SABER_N / 8):SABER_POLYBYTES], a[5 * SABER_N:SABER_N]);
- a[6 * SABER_N:SABER_N] = BS2POLq(buf[6 * (13 * SABER_N / 8):SABER_POLYBYTES], a[6 * SABER_N:SABER_N]);
- a[7 * SABER_N:SABER_N] = BS2POLq(buf[7 * (13 * SABER_N / 8):SABER_POLYBYTES], a[7 * SABER_N:SABER_N]);
- a[8 * SABER_N:SABER_N] = BS2POLq(buf[8 * (13 * SABER_N / 8):SABER_POLYBYTES], a[8 * SABER_N:SABER_N]);
+ for i = 0 to SABER_K * SABER_K {
+  a[i * SABER_N:SABER_N] = BS2POLq(buf[i * (13 * SABER_N / 8):SABER_POLYBYTES], a[i * SABER_N:SABER_N]);
+ }
 
- k = 0;
- while (k < SABER_KKN) {
-  a[(int) k] &= (SABER_Q - 1);
-
-  k += 1;
+ qmod = qmod_glob;
+ for k = 0 to SABER_KKN / 16 {
+  t256 = qmod & a[u256 k];
+  a[u256 k] = t256;
  }
 
  return a;
@@ -1066,7 +1065,6 @@ u256 one_mask_glob = 0x111111111111111111111111111111111111111111111111111111111
 u256 f_mask_glob = 0x0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f;
 u256 qmod_mask_glob = 0x00001fff00001fff00001fff00001fff00001fff00001fff00001fff00001fff;
 u256 sixteen_bit_mask_glob = 0x0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff;
-
 
 fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
@@ -1232,6 +1230,7 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         r[u256 4 * i + 2] = ord256[0];
         r[u256 4 * i + 3] = ord256[1];
     }
+
  return r;
 }
 

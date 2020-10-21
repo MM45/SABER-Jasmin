@@ -12,7 +12,8 @@ FIREDIRECTORY = FIRESABER
 
 
 
-.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jpoly_mul_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jfips202x4_regular.s REGULARSABER/jcbd_regular.s
+.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jpoly_mul_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jfips202x4_regular.s REGULARSABER/jcbd_regular.s rm REGULARSABER/jverify_regular.s
+
 
 default: test_all speed_all
 

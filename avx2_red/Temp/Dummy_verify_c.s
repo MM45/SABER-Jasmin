@@ -120,25 +120,35 @@ random_test_64bit_blocks:
 	.cfi_endproc
 .LFE25:
 	.size	random_test_64bit_blocks, .-random_test_64bit_blocks
-	.section	.rodata.str1.1
-.LC2:
-	.string	"%lu\n"
-	.text
 	.p2align 4
-	.globl	dum_print
-	.type	dum_print, @function
-dum_print:
+	.globl	verify
+	.type	verify, @function
+verify:
 .LFB26:
 	.cfi_startproc
 	endbr64
-	movq	%rdi, %rdx
-	leaq	.LC2(%rip), %rsi
-	movl	$1, %edi
-	xorl	%eax, %eax
-	jmp	__printf_chk@PLT
+	xorl	%edx, %edx
+	xorl	%ecx, %ecx
+	.p2align 4,,10
+	.p2align 3
+.L9:
+	movzbl	(%rdi,%rdx), %eax
+	xorb	(%rsi,%rdx), %al
+	addq	$1, %rdx
+	movzbl	%al, %eax
+	orq	%rax, %rcx
+	cmpq	$1088, %rdx
+	jne	.L9
+	movq	%rcx, %rax
+	negq	%rax
+	shrq	$63, %rax
+	ret
 	.cfi_endproc
 .LFE26:
-	.size	dum_print, .-dum_print
+	.size	verify, .-verify
+	.section	.rodata.str1.1
+.LC2:
+	.string	"%lu\n"
 	.section	.text.startup,"ax",@progbits
 	.p2align 4
 	.globl	main
@@ -166,18 +176,18 @@ main:
 	movl	$1088, %esi
 	movq	%rbx, %rdi
 	call	random_test_bytes
-	xorl	%edx, %edx
 	xorl	%ecx, %ecx
+	xorl	%edx, %edx
 	.p2align 4,,10
 	.p2align 3
-.L10:
+.L12:
 	movzbl	0(%rbp,%rdx), %eax
 	xorb	(%rbx,%rdx), %al
 	addq	$1, %rdx
 	movzbl	%al, %eax
 	orq	%rax, %rcx
 	cmpq	$1088, %rdx
-	jne	.L10
+	jne	.L12
 	negq	%rcx
 	xorl	%eax, %eax
 	movl	$1, %edi
@@ -187,7 +197,7 @@ main:
 	call	__printf_chk@PLT
 	movq	2184(%rsp), %rax
 	xorq	%fs:40, %rax
-	jne	.L14
+	jne	.L16
 	addq	$2200, %rsp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 24
@@ -197,7 +207,7 @@ main:
 	popq	%rbp
 	.cfi_def_cfa_offset 8
 	ret
-.L14:
+.L16:
 	.cfi_restore_state
 	call	__stack_chk_fail@PLT
 	.cfi_endproc
