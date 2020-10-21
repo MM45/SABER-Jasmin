@@ -6,7 +6,7 @@ _dummy:
 dummy:
 	movq	%rsp, %r8
 	leaq	-64(%rsp), %rsp
-	andq	$-1, %rsp
+	andq	$-32, %rsp
 	movb	$1, %dl
 	leaq	32(%rsp), %rax
 	movq	%rsp, %rcx
@@ -17,6 +17,9 @@ Ldummy$1:
 	ret 
 Lcmov$1:
 	negb	%dl
+	vmovdqu	(%rcx), %ymm0
+	vmovdqu	(%rax), %ymm1
+	vpxor	%ymm0, %ymm1, %ymm0
 	movb	(%rcx), %sil
 	xorb	(%rax), %sil
 	andb	%dl, %sil
@@ -145,4 +148,5 @@ Lcmov$1:
 	xorb	31(%rax), %cl
 	andb	%dl, %cl
 	xorb	%cl, 31(%rax)
+	vmovdqu	%ymm0, (%rax)
 	jmp 	*%r10

@@ -815,103 +815,140 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
 
 
-u16[24] and_ops = {0xff, 0x07, 0x3f, 0x01, 0x0f, 0x7f, 0x03, 0x1f,
-   0x1f, 0xff, 0x7f, 0xff, 0xff, 0x3f, 0xff, 0xff,
-   0x00, 0x03, 0x00, 0x0f, 0x01, 0x00, 0x07, 0x00};
-
-u16[24] shift_ops = {0x00, 0x05, 0x02, 0x07, 0x04, 0x01, 0x06, 0x03,
-      0x08, 0x03, 0x06, 0x01, 0x04, 0x07, 0x02, 0x05,
-      0x00, 0x0b, 0x00, 0x09, 0x0c, 0x00, 0x0a, 0x00};
-
 fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg ptr u16[SABER_N]
 {
- inline int i;
+ reg u16 b1;
+ reg u16 b2;
+ reg u16 b3;
+
+ reg u64 j;
+ reg u64 address_byte;
+ reg u64 address_data;
+
+ j = 0;
+ address_byte = 0;
+ address_data = 0;
+
+ while (j < (SABER_N / 8)) {
+
+  b1 = (16u) bytes[(int) address_byte];
+  b1 &= 0xff;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0x1f;
+  b2 <<= 8;
+  b1 |= b2;
+  data[(int) address_data] = b1;
 
 
+  b1 = (16u) bytes[(int) address_byte];
+  b1 >>= 5;
+  b1 &= 0x07;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0xff;
+  b2 <<= 3;
+  address_byte += 1;
+  b3 = (16u) bytes[(int) address_byte];
+  b3 &= 0x03;
+  b3 <<= 11;
+  b2 |= b3;
+  b1 |= b2;
+  address_data += 1;
+  data[(int) address_data] = b1;
 
 
-
- reg u16[8] b16;
-
-
-
-
-
- reg u128 b128_0, b128_1, b128_2;
- reg u128[3] and;
- reg u128[3] shift;
-
- reg u256 b256;
- reg u256 t256;
+  b1 = (16u) bytes[(int) address_byte];
+  b1 >>= 2;
+  b1 &= 0x3f;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0x7f;
+  b2 <<= 6;
+  b1 |= b2;
+  address_data += 1;
+  data[(int) address_data] = b1;
 
 
+  b1 = (16u) bytes[(int) address_byte];
+  b1 >>= 7;
+  b1 &= 0x01;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0xff;
+  b2 <<= 1;
+  address_byte += 1;
+  b3 = (16u) bytes[(int) address_byte];
+  b3 &= 0x0f;
+  b3 <<= 9;
+  b2 |= b3;
+  b1 |= b2;
+  address_data += 1;
+  data[(int) address_data] = b1;
 
 
+  b1 = (16u) bytes[(int) address_byte];
+  b1 >>= 4;
+  b1 &= 0x0f;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0xff;
+  b2 <<= 4;
+  address_byte += 1;
+  b3 = (16u) bytes[(int) address_byte];
+  b3 &= 0x01;
+  b3 <<= 12;
+  b2 |= b3;
+  b1 |= b2;
+  address_data += 1;
+  data[(int) address_data] = b1;
 
- b128_0 = zero_u128;
- b128_1 = zero_u128;
- b128_2 = zero_u128;
- b256 = zero_u256;
 
- and[0] = and_ops[u128 0];
- and[1] = and_ops[u128 1];
- and[2] = and_ops[u128 2];
+  b1 = (16u) bytes[(int) address_byte];
+  b1 >>= 1;
+  b1 &= 0x7f;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0x3f;
+  b2 <<= 7;
+  b1 |= b2;
+  address_data += 1;
+  data[(int) address_data] = b1;
 
- shift[0] = shift_ops[u128 0];
- shift[1] = shift_ops[u128 1];
- shift[2] = shift_ops[u128 2];
+
+  b1 = (16u) bytes[(int) address_byte];
+  b1 >>= 6;
+  b1 &= 0x03;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0xff;
+  b2 <<= 2;
+  address_byte += 1;
+  b3 = (16u) bytes[(int) address_byte];
+  b3 &= 0x07;
+  b3 <<= 10;
+  b2 |= b3;
+  b1 |= b2;
+  address_data += 1;
+  data[(int) address_data] = b1;
 
 
-  b16[0] = (16u) bytes[0];
-  b16[1] = (16u) bytes[1];
-  b16[2] = (16u) bytes[3];
-  b16[3] = (16u) bytes[4];
-  b16[4] = (16u) bytes[6];
-  b16[5] = (16u) bytes[8];
-  b16[6] = (16u) bytes[9];
-  b16[7] = (16u) bytes[11];
+  b1 = (16u) bytes[(int) address_byte];
+  b1 >>= 3;
+  b1 &= 0x1f;
+  address_byte += 1;
+  b2 = (16u) bytes[(int) address_byte];
+  b2 &= 0xff;
+  b2 <<= 5;
+  b1 |= b2;
+  address_data += 1;
+  data[(int) address_data] = b1;
 
-  for i = 0 to 8 {
-   b128_0 = #VPINSR_16u16(b128_0, b16[i], i);
-  }
+  j += 1;
+  address_byte += 1;
+  address_data += 1;
+ }
 
-  b16[0] = (16u) bytes[1];
-  b16[1] = (16u) bytes[2];
-  b16[2] = (16u) bytes[4];
-  b16[3] = (16u) bytes[5];
-  b16[4] = (16u) bytes[7];
-  b16[5] = (16u) bytes[9];
-  b16[6] = (16u) bytes[10];
-  b16[7] = (16u) bytes[12];
-
-  for i = 0 to 8 {
-   b128_1 = #VPINSR_16u16(b128_1, b16[i], i);
-  }
-
-  b16[1] = (16u) bytes[3];
-  b16[3] = (16u) bytes[6];
-  b16[4] = (16u) bytes[8];
-  b16[6] = (16u) bytes[11];
-
-  b128_2 = #VPINSR_8u16(b128_2, b16[1], 1);
-  b128_2 = #VPINSR_8u16(b128_2, b16[3], 3);
-  b128_2 = #VPINSR_8u16(b128_2, b16[4], 4);
-  b128_2 = #VPINSR_8u16(b128_2, b16[6], 6);
-
-  b128_0 = #VPSRL_8u16(b128_0, shift[0]);
-
-  b128_1 = #VPAND_128(b128_1, and[1]);
-  b128_2 = #VPAND_128(b128_2, and[2]);
-
-  b128_0 = #VPAND_128(b128_0, and[0]);
-
-  b128_1 = #VPSLL_8u16(b128_1, shift[1]);
-  b128_2 = #VPSRL_8u16(b128_2, shift[2]);
-
-  b128_0 |= b128_1;
-  b128_0 |= b128_2;
-
-  data[u128 0] = b128_0;
  return data;
 }
 
@@ -1025,138 +1062,176 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
 
 
+u256 one_mask_glob = 0x1111111111111111111111111111111111111111111111111111111111111111;
+u256 f_mask_glob = 0x0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f;
+u256 qmod_mask_glob = 0x00001fff00001fff00001fff00001fff00001fff00001fff00001fff00001fff;
+u256 sixteen_bit_mask_glob = 0x0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff;
+
+
 fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
- reg u8 t8;
+    inline int i;
 
- reg u32 t32;
- reg u32 d;
- reg u32 tt;
+    reg u256 tt256;
+    reg u256 one_mask;
+    reg u256 f_mask;
+    reg u256 qmod;
+    reg u256 sixteen_bit_mask;
 
- stack u32[4] a;
- stack u32[4] b;
+    reg u256[2] d256;
+    reg u256[2] t256;
+    reg u256[2] a256;
+    reg u256[2] b256;
+    reg u256[4] r256;
+    reg u256[2] ord256;
 
-    reg u64 i;
-    reg u64 address;
+    one_mask = one_mask_glob;
+    f_mask = f_mask_glob;
+    qmod = qmod_mask_glob;
+    sixteen_bit_mask = sixteen_bit_mask_glob;
 
-    i = 0;
- while (i < (SABER_N / 4)) {
+    for i = 0 to (SABER_N / 64) {
+        t256[0] = buf[u256 2 * i];
+        t256[1] = buf[u256 2 * i + 1];
 
-        address = i * 4;
-        t32 = (32u) buf[(int) address];
+        d256[0] = t256[0] & one_mask;
 
-        address += 1;
-        tt = (32u) buf[(int) address];
-        tt <<= 8;
-        t32 |= tt;
+        tt256 = t256[0] >>8u32 1;
+        tt256 &= one_mask;
+        d256[0] +8u32= tt256;
 
-        address += 1;
-        tt = (32u) buf[(int) address];
-        tt <<= 16;
-        t32 |= tt;
+        tt256 = t256[0] >>8u32 2;
+        tt256 &= one_mask;
+        d256[0] +8u32= tt256;
 
-        address += 1;
-        tt = (32u) buf[(int) address];
-        tt <<= 24;
-        t32 |= tt;
+        tt256 = t256[0] >>8u32 3;
+        tt256 &= one_mask;
+        d256[0] +8u32= tt256;
 
+        d256[1] = t256[1] & one_mask;
 
-  tt = t32;
-        tt &= 0x11111111;
-  d = tt;
+        tt256 = t256[1] >>8u32 1;
+        tt256 &= one_mask;
+        d256[1] +8u32= tt256;
 
-  tt = t32;
-  tt >>= 1;
-  tt &= 0x11111111;
-  d += tt;
+        tt256 = t256[1] >>8u32 2;
+        tt256 &= one_mask;
+        d256[1] +8u32= tt256;
 
-  tt = t32;
-  tt >>= 2;
-  tt &= 0x11111111;
-  d += tt;
-
-  tt = t32;
-  tt >>= 3;
-  tt &= 0x11111111;
-  d += tt;
-
-
-     t32 = d;
-     t32 &= 0xf;
-  a[0] = t32;
+        tt256 = t256[1] >>8u32 3;
+        tt256 &= one_mask;
+        d256[1] +8u32= tt256;
 
 
-     t32 = d;
-     t32 >>= 4;
-     t32 & = 0xf;
-     b[0] = t32;
+        a256[0] = d256[0] & f_mask;
+
+        b256[0] = d256[0] >>8u32 4;
+        b256[0] &= f_mask;
+
+        a256[1] = d256[1] & f_mask;
+
+        b256[1] = d256[1] >>8u32 4;
+        b256[1] &= f_mask;
+
+        t256[0] = a256[0] -8u32 b256[0];
+        t256[1] = a256[1] -8u32 b256[1];
+
+        t256[0] &= sixteen_bit_mask;
+        t256[1] &= sixteen_bit_mask;
+        t256[0] &= qmod;
+        t256[1] &= qmod;
+
+        r256[0] = #VPACKUS_8u32(t256[0], t256[1]);
 
 
-     t32 = d;
-     t32 >>= 8;
-     t32 &= 0xf;
-     a[1] = t32;
+        a256[0] = d256[0] >>8u32 8;
+        a256[0] &= f_mask;
+
+        b256[0] = d256[0] >>8u32 12;
+        b256[0] &= f_mask;
+
+        a256[1] = d256[1] >>8u32 8;
+        a256[1] &= f_mask;
+
+        b256[1] = d256[1] >>8u32 12;
+        b256[1] &= f_mask;
+
+        t256[0] = a256[0] -8u32 b256[0];
+        t256[1] = a256[1] -8u32 b256[1];
+
+        t256[0] &= sixteen_bit_mask;
+        t256[1] &= sixteen_bit_mask;
+        t256[0] &= qmod;
+        t256[1] &= qmod;
+
+        r256[1] = #VPACKUS_8u32(t256[0], t256[1]);
 
 
-     t32 = d;
-     t32 >>= 12;
-     t32 &= 0xf;
-     b[1] = t32;
+        a256[0] = d256[0] >>8u32 16;
+        a256[0] &= f_mask;
+
+        b256[0] = d256[0] >>8u32 20;
+        b256[0] &= f_mask;
+
+        a256[1] = d256[1] >>8u32 16;
+        a256[1] &= f_mask;
+
+        b256[1] = d256[1] >>8u32 20;
+        b256[1] &= f_mask;
+
+        t256[0] = a256[0] -8u32 b256[0];
+        t256[1] = a256[1] -8u32 b256[1];
+
+        t256[0] &= sixteen_bit_mask;
+        t256[1] &= sixteen_bit_mask;
+        t256[0] &= qmod;
+        t256[1] &= qmod;
+
+        r256[2] = #VPACKUS_8u32(t256[0], t256[1]);
 
 
-     t32 = d;
-     t32 >>= 16;
-     t32 &= 0xf;
-     a[2] = t32;
+        a256[0] = d256[0] >>8u32 24;
+        a256[0] &= f_mask;
 
+        b256[0] = d256[0] >>8u32 28;
 
-  t32 = d;
-     t32 >>= 20;
-     t32 &= 0xf;
-     b[2] = t32;
+        a256[1] = d256[1] >>8u32 24;
+        a256[1] &= f_mask;
 
+        b256[1] = d256[1] >>8u32 28;
 
-     t32 = d;
-     t32 >>= 24;
-     t32 &= 0xf;
-     a[3] = t32;
+        t256[0] = a256[0] -8u32 b256[0];
+        t256[1] = a256[1] -8u32 b256[1];
 
+        t256[0] &= sixteen_bit_mask;
+        t256[1] &= sixteen_bit_mask;
+        t256[0] &= qmod;
+        t256[1] &= qmod;
 
-     t32 = d;
-     t32 >>= 28;
-     b[3] = t32;
+        r256[3] = #VPACKUS_8u32(t256[0], t256[1]);
 
+        t256[0] = #VPUNPCKL_16u16(r256[0], r256[2]);
+        t256[1] = #VPUNPCKL_16u16(r256[1], r256[3]);
+        t256[0] = #VPERMQ(t256[0], 216);
+        t256[1] = #VPERMQ(t256[1], 216);
 
-     t32 = a[0];
-     t32 -= b[0];
-     t32 &= (SABER_Q - 1);
-        address -= 3;
-     r[(int) address] = (16u) t32;
+        ord256[0] = #VPUNPCKL_16u16(t256[0], t256[1]);
+        ord256[1] = #VPUNPCKH_16u16(t256[0], t256[1]);
 
+        r[u256 4 * i] = ord256[0];
+        r[u256 4 * i + 1] = ord256[1];
 
-     t32 = a[1];
-     t32 -= b[1];
-        t32 &= (SABER_Q - 1);
-        address += 1;
-     r[(int) address] = (16u) t32;
+        t256[0] = #VPUNPCKH_16u16(r256[0], r256[2]);
+        t256[1] = #VPUNPCKH_16u16(r256[1], r256[3]);
+        t256[0] = #VPERMQ(t256[0], 216);
+        t256[1] = #VPERMQ(t256[1], 216);
 
+        ord256[0] = #VPUNPCKL_16u16(t256[0], t256[1]);
+        ord256[1] = #VPUNPCKH_16u16(t256[0], t256[1]);
 
-     t32 = a[2];
-     t32 -= b[2];
-        t32 &= (SABER_Q - 1);
-        address += 1;
-     r[(int) address] = (16u) t32;
-
-
-     t32 = a[3];
-     t32 -= b[3];
-        t32 &= (SABER_Q - 1);
-        address += 1;
-     r[(int) address] = (16u) t32;
-
-        i += 1;
- }
-
+        r[u256 4 * i + 2] = ord256[0];
+        r[u256 4 * i + 3] = ord256[1];
+    }
  return r;
 }
 

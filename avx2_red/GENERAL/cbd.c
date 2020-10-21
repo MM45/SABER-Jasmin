@@ -68,11 +68,17 @@ void cbd(uint16_t *r, const unsigned char *buf)
     b[2] = (d >> 20) & 0xf;
     a[3] = (d >> 24) & 0xf;
     b[3] = (d >> 28);
-
+/*
+    r[4*i+0] = (uint16_t) (a[0]  - b[0]) & Qmod_minus1;
+    r[4*i+1] = (uint16_t) 0;
+    r[4*i+2] = (uint16_t) 0;
+    r[4*i+3] = (uint16_t) 0;
+*/
     r[4*i+0] = (uint16_t)(a[0]  - b[0]) & Qmod_minus1;
     r[4*i+1] = (uint16_t)(a[1]  - b[1]) & Qmod_minus1;
     r[4*i+2] = (uint16_t)(a[2]  - b[2]) & Qmod_minus1;
     r[4*i+3] = (uint16_t)(a[3]  - b[3]) & Qmod_minus1;
+
   }
 #elif Saber_type == 1
   uint64_t t,d, a[4], b[4];
