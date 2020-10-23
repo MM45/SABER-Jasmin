@@ -31774,6 +31774,7 @@ Lcbd$1:
 	vmovdqu	%ymm3, 480(%rcx)
 	jmp 	*%rsi
 LGenMatrix$1:
+	vmovdqu	glob_data + 128(%rip), %ymm3
 	movq	%rax, (%rsp)
 	leaq	208(%rsp), %rax
 	movq	$0, 8(%rsp)
@@ -32063,7 +32064,6 @@ LGenMatrix$3:
 	leaq	LGenMatrix$2(%rip), 	%r12
 	jmp 	LBS2POLq$1
 LGenMatrix$2:
-	vmovdqu	glob_data + 128(%rip), %ymm3
 	vpand	(%rax), %ymm3, %ymm4
 	vmovdqu	%ymm4, (%rax)
 	vpand	32(%rax), %ymm3, %ymm4
@@ -32355,100 +32355,100 @@ LGenMatrix$2:
 	jmp 	*%r13
 LBS2POLq$1:
 	movq	$0, %rdi
-	movq	$0, %r8
-	movq	$0, %r9
+	movq	$1, %r8
+	movq	$2, %r9
+	movq	$0, %r10
 	jmp 	LBS2POLq$2
 LBS2POLq$3:
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	andw	$31, %r11w
-	shlw	$8, %r11w
-	orw 	%r11w, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %bp
-	shrw	$5, %r10w
-	shlw	$3, %r11w
-	andw	$3, %bp
-	shlw	$11, %bp
-	orw 	%r11w, %r10w
-	orw 	%bp, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	shrw	$2, %r10w
-	andw	$127, %r11w
-	shlw	$6, %r11w
-	orw 	%r11w, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %bp
-	shrw	$7, %r10w
-	shlw	$1, %r11w
-	andw	$15, %bp
-	shlw	$9, %bp
-	orw 	%r11w, %r10w
-	orw 	%bp, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %bp
-	shrw	$4, %r10w
-	shlw	$4, %r11w
-	andw	$1, %bp
-	shlw	$12, %bp
-	orw 	%r11w, %r10w
-	orw 	%bp, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	shrw	$1, %r10w
-	andw	$63, %r11w
-	shlw	$7, %r11w
-	orw 	%r11w, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %bp
-	shrw	$6, %r10w
-	shlw	$2, %r11w
-	andw	$7, %bp
-	shlw	$10, %bp
-	orw 	%r11w, %r10w
-	orw 	%bp, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
-	movzbw	(%rcx,%r8), %r10w
-	leaq	1(%r8), %r8
-	movzbw	(%rcx,%r8), %r11w
-	leaq	1(%r8), %r8
-	shrw	$3, %r10w
-	shlw	$5, %r11w
-	orw 	%r11w, %r10w
-	movw	%r10w, (%rdx,%r9,2)
-	leaq	1(%r9), %r9
+	movzbl	(%rcx,%r8), %r11d
+	movzbl	(%rcx,%rdi), %ebp
+	leaq	3(%rdi), %rdi
+	shll	$8, %r11d
+	andl	$7936, %r11d
+	orl 	%r11d, %ebp
+	movw	%bp, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
+	movzbl	(%rcx,%r8), %r11d
+	movzbl	(%rcx,%r9), %ebp
+	leaq	3(%r8), %r8
+	leaq	3(%r9), %r9
+	shrl	$5, %r11d
+	shll	$3, %ebp
+	orl 	%ebp, %r11d
+	movzbl	(%rcx,%rdi), %ebp
+	shll	$11, %ebp
+	andl	$6144, %ebp
+	orl 	%ebp, %r11d
+	movw	%r11w, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
+	movzbl	(%rcx,%r8), %r11d
+	movzbl	(%rcx,%rdi), %ebp
+	leaq	3(%rdi), %rdi
+	shll	$6, %r11d
+	shrl	$2, %ebp
+	andl	$8128, %r11d
+	orl 	%r11d, %ebp
+	movw	%bp, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
+	movzbl	(%rcx,%r8), %r11d
+	movzbl	(%rcx,%r9), %ebp
+	leaq	3(%r8), %r8
+	leaq	3(%r9), %r9
+	shrl	$7, %r11d
+	leal	(%rbp,%rbp), %ebp
+	orl 	%ebp, %r11d
+	movzbl	(%rcx,%rdi), %ebp
+	shll	$9, %ebp
+	andl	$7680, %ebp
+	orl 	%ebp, %r11d
+	movw	%r11w, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
+	movzbl	(%rcx,%rdi), %r11d
+	movzbl	(%rcx,%r8), %ebp
+	leaq	3(%rdi), %rdi
+	leaq	3(%r8), %r8
+	shrl	$4, %r11d
+	shll	$4, %ebp
+	orl 	%ebp, %r11d
+	movzbl	(%rcx,%r9), %ebp
+	shll	$12, %ebp
+	andl	$4096, %ebp
+	orl 	%ebp, %r11d
+	movw	%r11w, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
+	movzbl	(%rcx,%rdi), %r11d
+	movzbl	(%rcx,%r9), %ebp
+	leaq	3(%r9), %r9
+	shll	$7, %r11d
+	shrl	$1, %ebp
+	andl	$8064, %r11d
+	orl 	%r11d, %ebp
+	movw	%bp, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
+	movzbl	(%rcx,%rdi), %r11d
+	movzbl	(%rcx,%r8), %ebp
+	leaq	3(%rdi), %rdi
+	shrl	$6, %r11d
+	shll	$2, %ebp
+	orl 	%ebp, %r11d
+	movzbl	(%rcx,%r9), %ebp
+	shll	$10, %ebp
+	andl	$7168, %ebp
+	orl 	%ebp, %r11d
+	movw	%r11w, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
+	movzbl	(%rcx,%r9), %r11d
+	movzbl	(%rcx,%rdi), %ebp
 	leaq	1(%rdi), %rdi
+	leaq	4(%r8), %r8
+	leaq	4(%r9), %r9
+	shrl	$3, %r11d
+	shll	$5, %ebp
+	orl 	%ebp, %r11d
+	movw	%r11w, (%rdx,%r10,2)
+	leaq	1(%r10), %r10
 LBS2POLq$2:
-	cmpq	$32, %rdi
+	cmpq	$256, %r10
 	jb  	LBS2POLq$3
 	jmp 	*%r12
 Lkeccak_squeezeblocks_128_128$1:

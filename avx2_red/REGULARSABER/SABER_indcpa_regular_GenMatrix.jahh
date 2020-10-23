@@ -11,8 +11,11 @@ u256 qmod_glob = 0x1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1
 
 fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
+
 	inline int i;
 	inline int k;
+
+	reg u16 t16;
 
 	reg u256 qmod;
 	reg u256 t256;
@@ -21,22 +24,24 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
 	stack ptr u16[SABER_KKN] sa;
 
+	qmod = qmod_glob;
+	
 	sa = a;
 
 	buf = shake128_KK13N8_32(buf, seed);
 
 	a = sa;
 
+
 	for i = 0 to SABER_K * SABER_K {
 		a[i * SABER_N:SABER_N] =  BS2POLq(buf[i * (13 * SABER_N / 8):SABER_POLYBYTES], a[i * SABER_N:SABER_N]);
 	}
-
-	qmod = qmod_glob;
+	
+	
 	for k = 0 to SABER_KKN / 16 {
 		t256 = qmod & a[u256 k];
 		a[u256 k] = t256;
 	}
-	
 	return a;
 }
 

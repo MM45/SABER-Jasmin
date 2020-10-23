@@ -1053,10 +1053,10 @@ export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
 
  stack u64 sstatep;
 
- for i = 0 to 25 {
-  t = (u64) [statep + 8 * i];
-  state[i] = t;
- }
+
+
+
+
 
  sstatep = statep;
 
@@ -1064,10 +1064,11 @@ export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
 
  statep = sstatep;
 
- for i = 0 to 25 {
-  t = state[i];
-  (u64) [statep + 8 * i] = t;
- }
+
+
+
+
+
 }
 
 

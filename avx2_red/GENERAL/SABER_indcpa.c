@@ -137,6 +137,7 @@ void BS2POLq(const unsigned char *bytes, uint16_t data[SABER_N]){
 
 void GenMatrix(polyvec *a, const unsigned char *seed) 
 {
+
   unsigned int one_vector=13*SABER_N/8;
   unsigned int byte_bank_length=SABER_K*SABER_K*one_vector;
   unsigned char buf[byte_bank_length];
@@ -147,7 +148,9 @@ void GenMatrix(polyvec *a, const unsigned char *seed)
   uint16_t mod = (SABER_Q-1);
 
   shake128(buf,byte_bank_length,seed,SABER_SEEDBYTES);
-  
+
+
+
   for(i=0;i<SABER_K;i++)
   {
     for(j=0;j<SABER_K;j++)
@@ -156,7 +159,9 @@ void GenMatrix(polyvec *a, const unsigned char *seed)
 	for(k=0;k<SABER_N;k++){
 		a[i].vec[j].coeffs[k] = (temp_ar[k])& mod ;
 	}
+	
     }
+
   }
 }
 

@@ -15752,126 +15752,24 @@ Lsha3_256_CCADEC_jazz$1:
 _KeccakF1600_StatePermute_jazz:
 KeccakF1600_StatePermute_jazz:
 	movq	%rsp, %rax
-	leaq	-248(%rsp), %rsp
+	leaq	-240(%rsp), %rsp
 	andq	$-8, %rsp
-	movq	%rax, 208(%rsp)
-	movq	%rbx, 216(%rsp)
-	movq	%rbp, 224(%rsp)
-	movq	%r12, 232(%rsp)
-	movq	%r15, 240(%rsp)
-	movq	(%rdi), %rax
-	movq	%rax, 8(%rsp)
-	movq	8(%rdi), %rax
-	movq	%rax, 16(%rsp)
-	movq	16(%rdi), %rax
-	movq	%rax, 24(%rsp)
-	movq	24(%rdi), %rax
-	movq	%rax, 32(%rsp)
-	movq	32(%rdi), %rax
-	movq	%rax, 40(%rsp)
-	movq	40(%rdi), %rax
-	movq	%rax, 48(%rsp)
-	movq	48(%rdi), %rax
-	movq	%rax, 56(%rsp)
-	movq	56(%rdi), %rax
-	movq	%rax, 64(%rsp)
-	movq	64(%rdi), %rax
-	movq	%rax, 72(%rsp)
-	movq	72(%rdi), %rax
-	movq	%rax, 80(%rsp)
-	movq	80(%rdi), %rax
-	movq	%rax, 88(%rsp)
-	movq	88(%rdi), %rax
-	movq	%rax, 96(%rsp)
-	movq	96(%rdi), %rax
-	movq	%rax, 104(%rsp)
-	movq	104(%rdi), %rax
-	movq	%rax, 112(%rsp)
-	movq	112(%rdi), %rax
-	movq	%rax, 120(%rsp)
-	movq	120(%rdi), %rax
-	movq	%rax, 128(%rsp)
-	movq	128(%rdi), %rax
-	movq	%rax, 136(%rsp)
-	movq	136(%rdi), %rax
-	movq	%rax, 144(%rsp)
-	movq	144(%rdi), %rax
-	movq	%rax, 152(%rsp)
-	movq	152(%rdi), %rax
-	movq	%rax, 160(%rsp)
-	movq	160(%rdi), %rax
-	movq	%rax, 168(%rsp)
-	movq	168(%rdi), %rax
-	movq	%rax, 176(%rsp)
-	movq	176(%rdi), %rax
-	movq	%rax, 184(%rsp)
-	movq	184(%rdi), %rax
-	movq	%rax, 192(%rsp)
-	movq	192(%rdi), %rax
 	movq	%rax, 200(%rsp)
-	movq	%rdi, (%rsp)
-	leaq	8(%rsp), %rdi
+	movq	%rbx, 208(%rsp)
+	movq	%rbp, 216(%rsp)
+	movq	%r12, 224(%rsp)
+	movq	%r15, 232(%rsp)
+	movq	%rsp, %rdi
 	leaq	-216(%rsp), %rsp
 	leaq	LKeccakF1600_StatePermute_jazz$1(%rip), 	%r15
 	jmp 	LKeccakF1600_StatePermute$1
 LKeccakF1600_StatePermute_jazz$1:
 	leaq	216(%rsp), %rsp
-	movq	(%rsp), %rax
-	movq	8(%rsp), %rcx
-	movq	%rcx, (%rax)
-	movq	16(%rsp), %rcx
-	movq	%rcx, 8(%rax)
-	movq	24(%rsp), %rcx
-	movq	%rcx, 16(%rax)
-	movq	32(%rsp), %rcx
-	movq	%rcx, 24(%rax)
-	movq	40(%rsp), %rcx
-	movq	%rcx, 32(%rax)
-	movq	48(%rsp), %rcx
-	movq	%rcx, 40(%rax)
-	movq	56(%rsp), %rcx
-	movq	%rcx, 48(%rax)
-	movq	64(%rsp), %rcx
-	movq	%rcx, 56(%rax)
-	movq	72(%rsp), %rcx
-	movq	%rcx, 64(%rax)
-	movq	80(%rsp), %rcx
-	movq	%rcx, 72(%rax)
-	movq	88(%rsp), %rcx
-	movq	%rcx, 80(%rax)
-	movq	96(%rsp), %rcx
-	movq	%rcx, 88(%rax)
-	movq	104(%rsp), %rcx
-	movq	%rcx, 96(%rax)
-	movq	112(%rsp), %rcx
-	movq	%rcx, 104(%rax)
-	movq	120(%rsp), %rcx
-	movq	%rcx, 112(%rax)
-	movq	128(%rsp), %rcx
-	movq	%rcx, 120(%rax)
-	movq	136(%rsp), %rcx
-	movq	%rcx, 128(%rax)
-	movq	144(%rsp), %rcx
-	movq	%rcx, 136(%rax)
-	movq	152(%rsp), %rcx
-	movq	%rcx, 144(%rax)
-	movq	160(%rsp), %rcx
-	movq	%rcx, 152(%rax)
-	movq	168(%rsp), %rcx
-	movq	%rcx, 160(%rax)
-	movq	176(%rsp), %rcx
-	movq	%rcx, 168(%rax)
-	movq	184(%rsp), %rcx
-	movq	%rcx, 176(%rax)
-	movq	192(%rsp), %rcx
-	movq	%rcx, 184(%rax)
-	movq	200(%rsp), %rcx
-	movq	%rcx, 192(%rax)
-	movq	216(%rsp), %rbx
-	movq	224(%rsp), %rbp
-	movq	232(%rsp), %r12
-	movq	240(%rsp), %r15
-	movq	208(%rsp), %rsp
+	movq	208(%rsp), %rbx
+	movq	216(%rsp), %rbp
+	movq	224(%rsp), %r12
+	movq	232(%rsp), %r15
+	movq	200(%rsp), %rsp
 	ret 
 Lsha3_512_64$1:
 	movq	$0, (%rsp)
