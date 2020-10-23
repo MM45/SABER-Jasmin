@@ -20,7 +20,6 @@ export fn BS2POLq_jazz(reg u64 bytesp, reg u64 datap)
 	stack u8[SABER_POLYBYTES] bytes;
 	stack u16[SABER_N] data;
 
-	
 	for i = 0 to SABER_POLYBYTES {
 		tb = (u8) [bytesp + i];
 		bytes[i] = tb;
@@ -32,6 +31,7 @@ export fn BS2POLq_jazz(reg u64 bytesp, reg u64 datap)
 		td = data[i];
 		(u16) [datap + 2 * i] = td;
 	}
+
 }
 
 export fn GenSecret_jazz(reg u64 rp, reg u64 seedp) 

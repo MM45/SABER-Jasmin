@@ -831,122 +831,112 @@ fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg 
 
  while (j < (SABER_N / 8)) {
 
+
   b1 = (16u) bytes[(int) address_byte];
-  b1 &= 0xff;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
   b2 &= 0x1f;
   b2 <<= 8;
   b1 |= b2;
   data[(int) address_data] = b1;
+  address_data += 1;
 
 
   b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 5;
-  b1 &= 0x07;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 3;
   address_byte += 1;
   b3 = (16u) bytes[(int) address_byte];
+  b1 >>= 5;
+  b2 <<= 3;
   b3 &= 0x03;
   b3 <<= 11;
-  b2 |= b3;
   b1 |= b2;
-  address_data += 1;
+  b1 |= b3;
   data[(int) address_data] = b1;
+  address_data += 1;
 
 
   b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 2;
-  b1 &= 0x3f;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
+  b1 >>= 2;
   b2 &= 0x7f;
   b2 <<= 6;
   b1 |= b2;
-  address_data += 1;
   data[(int) address_data] = b1;
+  address_data += 1;
 
 
   b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 7;
-  b1 &= 0x01;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 1;
   address_byte += 1;
   b3 = (16u) bytes[(int) address_byte];
+  b1 >>= 7;
+  b2 <<= 1;
   b3 &= 0x0f;
   b3 <<= 9;
-  b2 |= b3;
   b1 |= b2;
-  address_data += 1;
+  b1 |= b3;
   data[(int) address_data] = b1;
+  address_data += 1;
 
 
   b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 4;
-  b1 &= 0x0f;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 4;
   address_byte += 1;
   b3 = (16u) bytes[(int) address_byte];
+  b1 >>= 4;
+  b2 <<= 4;
   b3 &= 0x01;
   b3 <<= 12;
-  b2 |= b3;
   b1 |= b2;
-  address_data += 1;
+  b1 |= b3;
   data[(int) address_data] = b1;
+  address_data += 1;
 
 
   b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 1;
-  b1 &= 0x7f;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
+  b1 >>= 1;
   b2 &= 0x3f;
   b2 <<= 7;
   b1 |= b2;
-  address_data += 1;
   data[(int) address_data] = b1;
+  address_data += 1;
 
 
   b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 6;
-  b1 &= 0x03;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
-  b2 <<= 2;
   address_byte += 1;
   b3 = (16u) bytes[(int) address_byte];
+  b1 >>= 6;
+  b2 <<= 2;
   b3 &= 0x07;
   b3 <<= 10;
-  b2 |= b3;
   b1 |= b2;
-  address_data += 1;
+  b1 |= b3;
   data[(int) address_data] = b1;
+  address_data += 1;
 
 
   b1 = (16u) bytes[(int) address_byte];
-  b1 >>= 3;
-  b1 &= 0x1f;
   address_byte += 1;
   b2 = (16u) bytes[(int) address_byte];
-  b2 &= 0xff;
+  address_byte += 1;
+  b1 >>= 3;
   b2 <<= 5;
   b1 |= b2;
-  address_data += 1;
   data[(int) address_data] = b1;
+  address_data += 1;
 
   j += 1;
-  address_byte += 1;
-  address_data += 1;
+
+
  }
 
  return data;
@@ -2162,7 +2152,6 @@ export fn BS2POLq_jazz(reg u64 bytesp, reg u64 datap)
  stack u8[SABER_POLYBYTES] bytes;
  stack u16[SABER_N] data;
 
-
  for i = 0 to SABER_POLYBYTES {
   tb = (u8) [bytesp + i];
   bytes[i] = tb;
@@ -2174,6 +2163,7 @@ export fn BS2POLq_jazz(reg u64 bytesp, reg u64 datap)
   td = data[i];
   (u16) [datap + 2 * i] = td;
  }
+
 }
 
 export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
