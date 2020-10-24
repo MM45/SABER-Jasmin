@@ -9,12 +9,13 @@ fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 {
 	inline int i;
 
-	reg u8 t8;
+	reg u256 m256;
+	reg u256 s256;
 
-	for i = 0 to 32 {
-		t8 = m[i];
-		s[u8 i] ^= t8; 
-	}
+	s256 = s[u256 0];
+	m256 = m[u256 0];
+	s256 ^= m256;
+	s[u256 0] = s256;
 
 	s[u8 32] ^= 0x1F;
 	s[u8 SHAKE128_RATE - 1] ^= 0x80;

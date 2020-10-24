@@ -10,13 +10,13 @@ fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) 
 {
 	inline int i;
 
-	reg u8 t8;
+	reg u64 t64;
 
 	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to SHAKE128_RATE {
-		t8 = s[u8 i];
-		h[i] = t8;
+	for i = 0 to SHAKE128_RATE / 8 {
+		t64 = s[u64 i];
+		h[u64 i] = t64;
 	}
 
 	return h, s;

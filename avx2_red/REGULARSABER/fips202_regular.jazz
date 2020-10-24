@@ -2,7 +2,6 @@
 
 #include "SABER_params.jahh"
 #include "fips202_regular_KeccakF1600_StatePermute.jahh"
-
 #include "fips202_regular_keccak_absorb_128_32.jahh"
 #include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
 #include "fips202_regular_shake128_32_32.jahh"

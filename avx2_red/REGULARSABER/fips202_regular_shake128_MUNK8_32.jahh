@@ -12,20 +12,19 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 {
 	inline int i;
 	inline int nblocks;
-	inline int handled;
-	inline int remainder;
 
-	reg u8 t8;
+	reg u256[3] t256;
 
 	stack u64[25] s;
 
-	nblocks = MUNK8 / SHAKE128_RATE;
-	handled = nblocks * SHAKE128_RATE;
-	remainder = MUNK8 - handled;
+	nblocks = 4; // MUNK8 / SHAKE128_RATE
 
-	for i = 0 to 25 {
-		s[i] = 0;
+	t256[0] = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256[0];
 	}
+	s[24] = 0;
 
 	s = keccak_absorb_128_32(s, input);
 
@@ -36,10 +35,13 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
 	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to remainder {
-		t8 = s[u8 i];
-		output[handled + i] = t8;
-	}
+	t256[0] = s[u256 0];
+	t256[1] = s[u256 1];
+	t256[2] = s[u256 2];
+
+	output[u256 21] = t256[0];
+	output[u256 22] = t256[1];
+	output[u256 23] = t256[2];
 
 	return output;
 }

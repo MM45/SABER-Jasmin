@@ -11,40 +11,39 @@ fn sha3_256_PUBKEYBYTES(reg ptr u8[32] output, reg ptr u8[SABER_INDCPA_PUBLICKEY
 {
 	inline int i;
 	inline int nblocks;
-	inline int handled;
-	inline int remainder;
 
-	reg u8 t8;
+	reg u64 t64;
+
+	reg u256 t256;
 
 	stack u64[25] s;
 
-	nblocks = SABER_INDCPA_PUBLICKEYBYTES / SHA3_256_RATE;
-	handled = nblocks * SHA3_256_RATE;
-	remainder = SABER_INDCPA_PUBLICKEYBYTES - handled;
+	nblocks = 7; // SABER_INDCPA_PUBLICKEYBYTES / SHA3_256_RATE;
 
-	for i = 0 to 25 {
-		s[i] = 0;
+	t256 = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256;
 	}
+	s[24] = 0;
 
 	// s = keccak_absorb_256_PUBKEYBYTES(s, input);
 	for i = 0 to nblocks {
 		s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
 	}
 
-	for i = 0 to remainder {
-		t8 = input[handled + i];
-		s[u8 i] ^= t8;
+	for i = 0 to 5 {
+		t64 = input[u64 119 + i];
+		s[u64 i] ^= t64; 
 	}
 
-	s[u8 remainder] ^= 0x06;
+	s[u8 40] ^= 0x06;
 	s[u8 SHA3_256_RATE - 1] ^= 0x80;
 
 	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to 32 {
-		t8 = s[u8 i];
-		output[i] = t8;
-	}
+	t256 = s[u256 0];
+	output[u256 0] = t256;
 
 	return output;
 }

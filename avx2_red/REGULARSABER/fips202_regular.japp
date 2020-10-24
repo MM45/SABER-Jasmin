@@ -702,17 +702,17 @@ fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
 
 
 
-
 fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 {
  inline int i;
 
- reg u8 t8;
+ reg u256 m256;
+ reg u256 s256;
 
- for i = 0 to 32 {
-  t8 = m[i];
-  s[u8 i] ^= t8;
- }
+ s256 = s[u256 0];
+ m256 = m[u256 0];
+ s256 ^= m256;
+ s[u256 0] = s256;
 
  s[u8 32] ^= 0x1F;
  s[u8 SHAKE128_RATE - 1] ^= 0x80;
@@ -730,13 +730,13 @@ fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) 
 {
  inline int i;
 
- reg u8 t8;
+ reg u64 t64;
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to SHAKE128_RATE {
-  t8 = s[u8 i];
-  h[i] = t8;
+ for i = 0 to SHAKE128_RATE / 8 {
+  t64 = s[u64 i];
+  h[u64 i] = t64;
  }
 
  return h, s;
@@ -755,20 +755,23 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
 
  reg u8 t8;
 
+ reg u256 t256;
+
  stack u64[25] s;
 
- for i = 0 to 25 {
-  s[i] = 0;
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
  }
+ s[24] = 0;
 
  s = keccak_absorb_128_32(s, input);
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to 32 {
-  t8 = s[u8 i];
-  output[i] = t8;
- }
+ t256 = s[u256 0];
+ output[u256 0] = t256;
 
  return output;
 }
@@ -777,20 +780,20 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 {
  inline int i;
  inline int nblocks;
- inline int handled;
- inline int remainder;
 
- reg u8 t8;
+ reg u128[3] t128;
+ reg u256 t256;
 
  stack u64[25] s;
 
- nblocks = KK13N8 / SHAKE128_RATE;
- handled = nblocks * SHAKE128_RATE;
- remainder = KK13N8 - handled;
+ nblocks = 22;
 
- for i = 0 to 25 {
-  s[i] = 0;
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
  }
+ s[24] = 0;
 
  s = keccak_absorb_128_32(s, input);
 
@@ -801,10 +804,13 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to remainder {
-  t8 = s[u8 i];
-  output[handled + i] = t8;
- }
+ t128[0] = s[u128 0];
+ t128[1] = s[u128 1];
+ t128[2] = s[u128 2];
+
+ output[u128 231] = t128[0];
+ output[u128 232] = t128[1];
+ output[u128 233] = t128[2];
 
  return output;
 }
@@ -812,20 +818,19 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 {
  inline int i;
  inline int nblocks;
- inline int handled;
- inline int remainder;
 
- reg u8 t8;
+ reg u256[3] t256;
 
  stack u64[25] s;
 
- nblocks = MUNK8 / SHAKE128_RATE;
- handled = nblocks * SHAKE128_RATE;
- remainder = MUNK8 - handled;
+ nblocks = 4;
 
- for i = 0 to 25 {
-  s[i] = 0;
+ t256[0] = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256[0];
  }
+ s[24] = 0;
 
  s = keccak_absorb_128_32(s, input);
 
@@ -836,10 +841,13 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to remainder {
-  t8 = s[u8 i];
-  output[handled + i] = t8;
- }
+ t256[0] = s[u256 0];
+ t256[1] = s[u256 1];
+ t256[2] = s[u256 2];
+
+ output[u256 21] = t256[0];
+ output[u256 22] = t256[1];
+ output[u256 23] = t256[2];
 
  return output;
 }
@@ -847,19 +855,23 @@ inline fn sha3_256_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8
 {
  inline int i;
 
- reg u8 t8;
+ reg u256 t256;
+ reg u256 s256;
 
  stack u64[25] s;
 
- for i = 0 to 25 {
-  s[i] = 0;
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
  }
+ s[24] = 0;
 
 
- for i = 0 to 32 {
-  t8 = input[i];
-  s[u8 i] ^= t8;
- }
+ t256 = input[u256 0];
+ s256 = s[u256 0];
+ s256 ^= t256;
+ s[u256 0] = s256;
 
  s[u8 32] ^= 0x06;
  s[u8 SHA3_256_RATE - 1] ^= 0x80;
@@ -867,10 +879,8 @@ inline fn sha3_256_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to 32 {
-  t8 = s[u8 i];
-  output[i] = t8;
- }
+ t256 = s[u256 0];
+ output[u256 0] = t256;
 
  return output;
 }
@@ -878,19 +888,29 @@ fn sha3_256_64(reg ptr u8[32] output, reg ptr u8[64] input) -> reg ptr u8[32]
 {
  inline int i;
 
- reg u8 t8;
+ reg u256[2] t256;
+ reg u256[2] s256;
 
  stack u64[25] s;
 
- for i = 0 to 25 {
-  s[i] = 0;
+ t256[0] = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256[0];
  }
+ s[24] = 0;
 
 
- for i = 0 to 64 {
-  t8 = input[i];
-  s[u8 i] ^= t8;
- }
+ t256[0] = input[u256 0];
+ s256[0] = s[u256 0];
+ t256[1] = input[u256 1];
+ s256[1] = s[u256 1];
+
+ s256[0] ^= t256[0];
+ s256[1] ^= t256[1];
+
+ s[u256 0] = s256[0];
+ s[u256 1] = s256[1];
 
  s[u8 64] ^= 0x06;
  s[u8 SHA3_256_RATE - 1] ^= 0x80;
@@ -898,10 +918,8 @@ fn sha3_256_64(reg ptr u8[32] output, reg ptr u8[64] input) -> reg ptr u8[32]
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to 32 {
-  t8 = s[u8 i];
-  output[i] = t8;
- }
+ t256[0] = s[u256 0];
+ output[u256 0] = t256[0];
 
  return output;
 }
@@ -916,11 +934,11 @@ fn keccak_absorb_256_single(reg ptr u64[25] s, reg ptr u8[SHA3_256_RATE] m) -> r
 {
  inline int j;
 
- reg u8 t8;
+ reg u64 t64;
 
- for j = 0 to SHA3_256_RATE {
-  t8 = m[j];
-  s[u8 j] ^= t8;
+ for j = 0 to SHA3_256_RATE / 8 {
+  t64 = m[u64 j];
+  s[u64 j] ^= t64;
  }
 
  s = KeccakF1600_StatePermute(s);
@@ -932,40 +950,39 @@ fn sha3_256_PUBKEYBYTES(reg ptr u8[32] output, reg ptr u8[SABER_INDCPA_PUBLICKEY
 {
  inline int i;
  inline int nblocks;
- inline int handled;
- inline int remainder;
 
- reg u8 t8;
+ reg u64 t64;
+
+ reg u256 t256;
 
  stack u64[25] s;
 
- nblocks = SABER_INDCPA_PUBLICKEYBYTES / SHA3_256_RATE;
- handled = nblocks * SHA3_256_RATE;
- remainder = SABER_INDCPA_PUBLICKEYBYTES - handled;
+ nblocks = 7;
 
- for i = 0 to 25 {
-  s[i] = 0;
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
  }
+ s[24] = 0;
 
 
  for i = 0 to nblocks {
   s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
  }
 
- for i = 0 to remainder {
-  t8 = input[handled + i];
-  s[u8 i] ^= t8;
+ for i = 0 to 5 {
+  t64 = input[u64 119 + i];
+  s[u64 i] ^= t64;
  }
 
- s[u8 remainder] ^= 0x06;
+ s[u8 40] ^= 0x06;
  s[u8 SHA3_256_RATE - 1] ^= 0x80;
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to 32 {
-  t8 = s[u8 i];
-  output[i] = t8;
- }
+ t256 = s[u256 0];
+ output[u256 0] = t256;
 
  return output;
 }
@@ -973,40 +990,32 @@ fn sha3_256_CCADEC(reg ptr u8[32] output, reg ptr u8[SABER_BYTES_CCA_DEC] input)
 {
  inline int i;
  inline int nblocks;
- inline int handled;
- inline int remainder;
 
- reg u8 t8;
+ reg u256 t256;
 
  stack u64[25] s;
 
- nblocks = SABER_BYTES_CCA_DEC / SHA3_256_RATE;
- handled = nblocks * SHA3_256_RATE;
- remainder = SABER_BYTES_CCA_DEC - handled;
+ nblocks = 8;
 
- for i = 0 to 25 {
-  s[i] = 0;
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
  }
+ s[24] = 0;
 
 
  for i = 0 to nblocks {
   s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
  }
 
- for i = 0 to remainder {
-  t8 = input[handled + i];
-  s[u8 i] ^= t8;
- }
-
- s[u8 remainder] ^= 0x06;
+ s[u8 0] ^= 0x06;
  s[u8 SHA3_256_RATE - 1] ^= 0x80;
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to 32 {
-  t8 = s[u8 i];
-  output[i] = t8;
- }
+ t256 = s[u256 0];
+ output[u256 0] = t256;
 
  return output;
 }
@@ -1014,19 +1023,29 @@ fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
 {
  inline int i;
 
- reg u8 t8;
+ reg u256[2] t256;
+ reg u256[2] s256;
 
  stack u64[25] s;
 
- for i = 0 to 25 {
-  s[i] = 0;
- }
+ t256[0] = zero_u256;
 
-
- for i = 0 to 64 {
-  t8 = input[i];
-  s[u8 i] ^= t8;
+ for i = 0 to 6 {
+  s[u256 i] = t256[0];
  }
+ s[24] = 0;
+
+ t256[0] = input[u256 0];
+ t256[1] = input[u256 1];
+
+ s256[0] = s[u256 0];
+ s256[1] = s[u256 1];
+
+ s256[0] ^= t256[0];
+ s256[1] ^= t256[1];
+
+ s[u256 0] = s256[0];
+ s[u256 1] = s256[1];
 
  s[u8 64] ^= 0x06;
  s[u8 SHA3_512_RATE - 1] ^= 0x80;
@@ -1034,10 +1053,11 @@ fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
 
  s = KeccakF1600_StatePermute(s);
 
- for i = 0 to 64 {
-  t8 = s[u8 i];
-  output[i] = t8;
- }
+ t256[0] = s[u256 0];
+ t256[1] = s[u256 1];
+
+ output[u256 0] = t256[0];
+ output[u256 1] = t256[1];
 
  return output;
 }
@@ -1053,10 +1073,10 @@ export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
 
  stack u64 sstatep;
 
-
-
-
-
+ for i = 0 to 25 {
+  t = (u64) [statep + 8 * i];
+  state[i] = t;
+ }
 
  sstatep = statep;
 
@@ -1064,11 +1084,10 @@ export fn KeccakF1600_StatePermute_jazz(reg u64 statep)
 
  statep = sstatep;
 
-
-
-
-
-
+ for i = 0 to 25 {
+  t = state[i];
+  (u64) [statep + 8 * i] = t;
+ }
 }
 
 

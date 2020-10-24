@@ -13,20 +13,23 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
 	
 	reg u8 t8;
 	
+	reg u256 t256;
+
 	stack u64[25] s;
 
-	for i = 0 to 25 {
-		s[i] = 0;
+	t256 = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256;
 	}
+	s[24] = 0;
 
 	s = keccak_absorb_128_32(s, input);
 
 	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to 32 {
-		t8 = s[u8 i];
-		output[i] = t8;
-	}
+	t256 = s[u256 0];
+	output[u256 0] = t256;
 
 	return output;
 }

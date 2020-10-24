@@ -44,21 +44,8 @@ void shake128_KK13N8_32_jazz(unsigned char *output, const unsigned char *input);
 
 void keccak_absorb_128_32_jazz(uint64_t *s, const unsigned char *m); 
 
-void keccak_absorb_256_32_jazz(uint64_t *s, const unsigned char *m); 
-void keccak_absorb_256_64_jazz(uint64_t *s, const unsigned char *m);
-void keccak_absorb_256_PUBKEYBYTES_jazz(uint64_t *s, const unsigned char *m); 
-void keccak_absorb_256_CCADEC_jazz(uint64_t *s, const unsigned char *m); 
-
-void keccak_absorb_512_64_jazz(uint64_t *s, const unsigned char *m); 
-
-void keccak_squeezeblocks_128_32_jazz(unsigned char *h, uint64_t *s); 
 void keccak_squeezeblocks_128_128_jazz(unsigned char *h, uint64_t *s); 
-void keccak_squeezeblocks_128_KK13N8_jazz(unsigned char *h, uint64_t *s);
-void keccak_squeezeblocks_128_MUNK8_jazz(unsigned char *h, uint64_t *s);
 
-void keccak_squeezeblocks_256_256_jazz(unsigned char *h, uint64_t *s); 
-
-void keccak_squeezeblocks_512_512_jazz(unsigned char *h, uint64_t *s);
 
 void sha3_256_32_jazz(unsigned char *output, const unsigned char *input);
 void sha3_256_64_jazz(unsigned char *output, const unsigned char *input);

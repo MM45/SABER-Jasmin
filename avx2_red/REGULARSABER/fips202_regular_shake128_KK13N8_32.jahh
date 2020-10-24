@@ -12,20 +12,20 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 {
 	inline int i;
 	inline int nblocks;
-	inline int handled;
-	inline int remainder;
 
-	reg u8 t8;
+	reg u128[3] t128;
+	reg u256 t256;
 
 	stack u64[25] s;
 
-	nblocks = KK13N8 / SHAKE128_RATE;
-	handled = nblocks * SHAKE128_RATE;
-	remainder = KK13N8 - handled;
-
-	for i = 0 to 25 {
-		s[i] = 0;
+	nblocks = 22; // KK13N8 / SHAKE128_RATE;
+	
+	t256 = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256;
 	}
+	s[24] = 0;
 
 	s = keccak_absorb_128_32(s, input);
 
@@ -36,10 +36,13 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
 	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to remainder {
-		t8 = s[u8 i];
-		output[handled + i] = t8;
-	}
+	t128[0] = s[u128 0];
+	t128[1] = s[u128 1];
+	t128[2] = s[u128 2];
+
+	output[u128 231] = t128[0];
+	output[u128 232] = t128[1];
+	output[u128 233] = t128[2];
 
 	return output;
 }
