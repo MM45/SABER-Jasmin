@@ -68,7 +68,7 @@ export fn sha3_256_CCADEC_jazz(reg u64 outputp, reg u64 inputp)
 	for i = 0 to 32 {
 		t = output[i];
 		(u8) [outputp + i] = t;
-	}	
+	}
 }
 
 // INLEN: SABER_INDCPA_PUBLICKEYBYTES

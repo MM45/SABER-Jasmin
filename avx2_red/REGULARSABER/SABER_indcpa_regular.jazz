@@ -46,10 +46,6 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
 
 	stack u16[SABER_KN] r;
 
-	stack u8 sts;
-	
-	stack u16 str;
-
 	stack u64 srp;
 
 	for i = 0 to SABER_COINBYTES {
@@ -57,14 +53,11 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
 		seed[i] = ts;
 	}
 
-	sts = ts;
-	str = tr;
 	srp = rp;
 
 	r = GenSecret(r, seed);
 
 	rp = srp;
-	tr = str;
 	
 	for i = 0 to SABER_KN {
 		tr = r[i];
