@@ -391,6 +391,10 @@ inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN]
 
 
 
+u256 twobit_mask_glob = 0x0003000300030003000300030003000300030003000300030003000300030003;
+u256 fourbit_mask_glob = 0x000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f;
+u256 sixbit_mask_glob = 0x003f003f003f003f003f003f003f003f003f003f003f003f003f003f003f003f;
+
 fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
 {
  reg u16 b1;
@@ -620,12 +624,6 @@ export fn SABER_pack_4bit_jazz(reg u64 bytesp, reg u64 datap)
  stack u8[SABER_SCALEBYTES_KEM] bytes;
  stack u16[SABER_N] data;
 
-
- for i = 0 to SABER_SCALEBYTES_KEM {
-  tb = (u8) [bytesp + i];
-  bytes[i] = tb;
- }
-
  for i = 0 to SABER_N {
   td = (u16) [datap + 2 * i];
   data[i] = td;
@@ -654,12 +652,6 @@ export fn SABER_un_pack4bit_jazz(reg u64 bytesp, reg u64 datap)
   bytes[i] = tb;
  }
 
-
- for i = 0 to SABER_N {
-  td = (u16) [datap + 2 * i];
-  data[i] = td;
- }
-
  data = SABER_un_pack4bit(bytes, data);
 
  for i = 0 to SABER_N {
@@ -677,12 +669,6 @@ export fn POLVECp2BS_jazz(reg u64 bytesp, reg u64 datap)
 
  stack u8[SABER_POLYVECCOMPRESSEDBYTES] bytes;
  stack u16[SABER_KN] data;
-
-
- for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-  tb = (u8) [bytesp + i];
-  bytes[i] = tb;
- }
 
  for i = 0 to SABER_KN {
   td = (u16) [datap + 2 * i];
@@ -706,12 +692,6 @@ export fn POLVECq2BS_jazz(reg u64 bytesp, reg u64 datap)
 
  stack u8[SABER_POLYVECBYTES] bytes;
  stack u16[SABER_KN] data;
-
-
- for i = 0 to SABER_POLYVECBYTES {
-  tb = (u8) [bytesp + i];
-  bytes[i] = tb;
- }
 
  for i = 0 to SABER_KN {
   td = (u16) [datap + 2 * i];
@@ -742,12 +722,6 @@ export fn BS2POLVECp_jazz(reg u64 bytesp, reg u64 datap)
   bytes[i] = tb;
  }
 
-
- for i = 0 to SABER_KN {
-  td = (u16) [datap + 2 * i];
-  data[i] = td;
- }
-
  data = BS2POLVECp(bytes, data);
 
  for i = 0 to SABER_KN {
@@ -770,12 +744,6 @@ export fn BS2POLVECq_jazz(reg u64 bytesp, reg u64 datap)
  for i = 0 to SABER_POLYVECBYTES {
   tb = (u8) [bytesp + i];
   bytes[i] = tb;
- }
-
-
- for i = 0 to SABER_KN {
-  td = (u16) [datap + 2 * i];
-  data[i] = td;
  }
 
  data = BS2POLVECq(bytes, data);
