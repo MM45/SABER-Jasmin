@@ -5,7 +5,7 @@
 
 #include "SABER_params.jahh"
 
-inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
+fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
 {
 	reg u16 b1;
 

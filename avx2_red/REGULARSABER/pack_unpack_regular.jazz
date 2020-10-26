@@ -31,6 +31,7 @@ export fn SABER_pack_4bit_jazz(reg u64 bytesp, reg u64 datap)
 	}
 }
 
+
 export fn SABER_un_pack4bit_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
