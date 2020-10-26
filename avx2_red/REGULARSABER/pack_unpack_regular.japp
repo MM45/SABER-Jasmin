@@ -206,66 +206,106 @@ fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
  reg u32 d1;
  reg u32 d2;
 
- reg u64 i;
- reg u64 j;
  reg u64 address_bytes;
  reg u64[2] address_data;
 
- i = 0;
  address_bytes = 0;
+
  address_data[0] = 0;
  address_data[1] = 1;
- while (i < SABER_K) {
-  j = 0;
-  while (j < (SABER_N / 4)) {
 
-   d1 = (32u) data[(int) address_data[0]];
-   bytes[(int) address_bytes] = (8u) d1;
-   address_bytes += 1;
+ while (address_data[0] < SABER_KN) {
 
 
-   d1 = (32u) data[(int) address_data[0]];
-   d2 = (32u) data[(int) address_data[1]];
-   address_data[0] += 2;
-   d1 >>= 8;
-   d2 <<= 2;
-   d1 &= 0x03;
-   d1 |= d2;
-   bytes[(int) address_bytes] = (8u) d1;
-   address_bytes += 1;
+  d1 = (32u) data[(int) address_data[0]];
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = (32u) data[(int) address_data[1]];
-   d2 = (32u) data[(int) address_data[0]];
-   address_data[1] += 2;
-   d1 >>= 6;
-   d2 <<= 4;
-   d1 &= 0x0f;
-   d1 |= d2;
-   bytes[(int) address_bytes] = (8u) d1;
-   address_bytes += 1;
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 8;
+  d2 <<= 2;
+  d1 &= 0x03;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = (32u) data[(int) address_data[0]];
-   d2 = (32u) data[(int) address_data[1]];
-   d1 >>= 4;
-   d2 <<= 6;
-   d1 &= 0x3f;
-   d1 |= d2;
-   bytes[(int) address_bytes] = (8u) d1;
-   address_bytes += 1;
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 6;
+  d2 <<= 4;
+  d1 &= 0x0f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = (32u) data[(int) address_data[1]];
-   address_data[0] += 2;
-   address_data[1] += 2;
-   d1 >>= 2;
-   bytes[(int) address_bytes] = (8u) d1;
-   address_bytes += 1;
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  d1 >>= 4;
+  d2 <<= 6;
+  d1 &= 0x3f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
-   j += 1;
-  }
-  i += 1;
+
+  d1 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  address_data[1] += 2;
+  d1 >>= 2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 8;
+  d2 <<= 2;
+  d1 &= 0x03;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 6;
+  d2 <<= 4;
+  d1 &= 0x0f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  d1 >>= 4;
+  d2 <<= 6;
+  d1 &= 0x3f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  address_data[1] += 2;
+  d1 >>= 2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
  }
 
  return bytes;
@@ -279,149 +319,245 @@ fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
 inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u8[SABER_POLYVECBYTES]
 {
- reg u16 d1;
- reg u16 d2;
+ reg u32 d1;
+ reg u32 d2;
 
- reg u64 i;
- reg u64 j;
  reg u64 address_bytes;
- reg u64 address_data;
+ reg u64[2] address_data;
 
- i = 0;
  address_bytes = 0;
- address_data = 0;
- while (i < SABER_K) {
-  j = 0;
-  while (j < (SABER_N / 8)) {
 
-   d1 = data[(int) address_data];
-   d1 &= 0xff;
-   bytes[(int) address_bytes] = (8u) d1;
+ address_data[0] = 0;
+ address_data[1] = 1;
+
+ while (address_data[0] < SABER_KN) {
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 8;
-   d1 &= 0x1f;
-   address_data += 1;
-   d2 = data[(int) address_data];
-   d2 &= 0x07;
-   d2 <<= 5;
-   d1 |= d2;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[0]];
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 3;
-   d1 &= 0xff;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 8;
+  d2 <<= 5;
+  d1 &= 0x1f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 11;
-   d1 &= 0x03;
-   address_data += 1;
-   d2 = data[(int) address_data];
-   d2 &= 0x3f;
-   d2 <<= 2;
-   d1 |= d2;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[1]];
+  d1 >>= 3;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 6;
-   d1 &= 0x7f;
-   address_data += 1;
-   d2 = data[(int) address_data];
-   d2 &= 0x01;
-   d2 <<= 7;
-   d1 |= d2;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 11;
+  d2 <<= 2;
+  d1 &= 0x03;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 1;
-   d1 &= 0xff;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 6;
+  d2 <<= 7;
+  d1 &= 0x7f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 9;
-   d1 &= 0x0f;
-   address_data += 1;
-   d2 = data[(int) address_data];
-   d2 &= 0x0f;
-   d2 <<= 4;
-   d1 |= d2;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[1]];
+  d1 >>= 1;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 4;
-   d1 &= 0xff;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 9;
+  d2 <<= 4;
+  d1 &= 0x0f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 12;
-   d1 &= 0x01;
-   address_data += 1;
-   d2 = data[(int) address_data];
-   d2 &= 0x7f;
-   d2 <<= 1;
-   d1 |= d2;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[0]];
+  d1 >>= 4;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 7;
-   d1 &= 0x3f;
-   address_data += 1;
-   d2 = data[(int) address_data];
-   d2 &= 0x03;
-   d2 <<= 6;
-   d1 |= d2;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 12;
+  d2 <<= 1;
+  d1 &= 0x01;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 2;
-   d1 &= 0xff;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 7;
+  d2 <<= 6;
+  d1 &= 0x3f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 10;
-   d1 &= 0x07;
-   address_data += 1;
-   d2 = data[(int) address_data];
-   d2 &= 0x1f;
-   d2 <<= 3;
-   d1 |= d2;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[0]];
+  d1 >>= 2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
 
-   d1 = data[(int) address_data];
-   d1 >>= 5;
-   d1 &= 0xff;
-   address_bytes += 1;
-   bytes[(int) address_bytes] = (8u) d1;
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  d1 >>= 10;
+  d2 <<= 3;
+  d1 &= 0x07;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
 
-   j += 1;
-   address_bytes += 1;
-   address_data += 1;
-  }
-  i += 1;
+
+  d1 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  address_data[1] += 2;
+  d1 >>= 5;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 8;
+  d2 <<= 5;
+  d1 &= 0x1f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  d1 >>= 3;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 11;
+  d2 <<= 2;
+  d1 &= 0x03;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 6;
+  d2 <<= 7;
+  d1 &= 0x7f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  d1 >>= 1;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 9;
+  d2 <<= 4;
+  d1 &= 0x0f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d1 >>= 4;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  d1 >>= 12;
+  d2 <<= 1;
+  d1 &= 0x01;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  d2 = (32u) data[(int) address_data[0]];
+  address_data[1] += 2;
+  d1 >>= 7;
+  d2 <<= 6;
+  d1 &= 0x3f;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d1 >>= 2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[0]];
+  d2 = (32u) data[(int) address_data[1]];
+  d1 >>= 10;
+  d2 <<= 3;
+  d1 &= 0x07;
+  d1 |= d2;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
+
+
+  d1 = (32u) data[(int) address_data[1]];
+  address_data[0] += 2;
+  address_data[1] += 2;
+  d1 >>= 5;
+  bytes[(int) address_bytes] = (8u) d1;
+  address_bytes += 1;
  }
 
  return bytes;
@@ -515,142 +651,124 @@ fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
 
 
-inline fn BS2POLVECq(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
+fn BS2POLVECq(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
 {
- reg u16 b1;
- reg u16 b2;
- reg u16 b3;
+ reg u32 b1;
+ reg u32 b2;
+ reg u32 b3;
 
- reg u64 i;
- reg u64 j;
- reg u64 address_bytes;
+ reg u64[3] address_bytes;
  reg u64 address_data;
 
- i = 0;
- address_bytes = 0;
+ address_bytes[0] = 0;
+ address_bytes[1] = 1;
+ address_bytes[2] = 2;
+
  address_data = 0;
- while (i < SABER_K) {
-  j = 0;
-  while (j < (SABER_N / 8)) {
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 &= 0xff;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0x1f;
-   b2 <<= 8;
-   b1 |= b2;
-   data[(int) address_data] = b1;
+ while (address_data < SABER_KN) {
 
-
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 5;
-   b1 &= 0x07;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0xff;
-   b2 <<= 3;
-   address_bytes += 1;
-   b3 = (16u) bytes[(int) address_bytes];
-   b3 &= 0x03;
-   b3 <<= 11;
-   b2 |= b3;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b2 = (32u) bytes[(int) address_bytes[1]];
+  b1 = (32u) bytes[(int) address_bytes[0]];
+  address_bytes[0] += 3;
+  b2 <<= 8;
+  b2 &= 0x1f00;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 2;
-   b1 &= 0x3f;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0x7f;
-   b2 <<= 6;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b1 = (32u) bytes[(int) address_bytes[1]];
+  b2 = (32u) bytes[(int) address_bytes[2]];
+  address_bytes[1] += 3;
+  address_bytes[2] += 3;
+  b1 >>= 5;
+  b2 <<= 3;
+  b1 |= b2;
+  b3 = (32u) bytes[(int) address_bytes[0]];
+  b3 <<= 11;
+  b3 &= 0x1800;
+  b1 |= b3;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 7;
-   b1 &= 0x01;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0xff;
-   b2 <<= 1;
-   address_bytes += 1;
-   b3 = (16u) bytes[(int) address_bytes];
-   b3 &= 0x0f;
-   b3 <<= 9;
-   b2 |= b3;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b2 = (32u) bytes[(int) address_bytes[1]];
+  b1 = (32u) bytes[(int) address_bytes[0]];
+  address_bytes[0] += 3;
+  b2 <<= 6;
+  b1 >>= 2;
+  b2 &= 0x1fc0;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 4;
-   b1 &= 0x0f;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0xff;
-   b2 <<= 4;
-   address_bytes += 1;
-   b3 = (16u) bytes[(int) address_bytes];
-   b3 &= 0x01;
-   b3 <<= 12;
-   b2 |= b3;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b1 = (32u) bytes[(int) address_bytes[1]];
+  b2 = (32u) bytes[(int) address_bytes[2]];
+  address_bytes[1] += 3;
+  address_bytes[2] += 3;
+  b1 >>= 7;
+  b2 += b2;
+  b1 |= b2;
+  b3 = (32u) bytes[(int) address_bytes[0]];
+  b3 <<= 9;
+  b3 &= 0x1e00;
+  b1 |= b3;
+  data[(int) address_data] = b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 1;
-   b1 &= 0x7f;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0x3f;
-   b2 <<= 7;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b1 = (32u) bytes[(int) address_bytes[0]];
+  b2 = (32u) bytes[(int) address_bytes[1]];
+  address_bytes[0] += 3;
+  address_bytes[1] += 3;
+  b1 >>= 4;
+  b2 <<= 4;
+  b1 |= b2;
+  b3 = (32u) bytes[(int) address_bytes[2]];
+  b3 <<= 12;
+  b3 &= 0x1000;
+  b1 |= b3;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 6;
-   b1 &= 0x03;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0xff;
-   b2 <<= 2;
-   address_bytes += 1;
-   b3 = (16u) bytes[(int) address_bytes];
-   b3 &= 0x07;
-   b3 <<= 10;
-   b2 |= b3;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b2 = (32u) bytes[(int) address_bytes[0]];
+  b1 = (32u) bytes[(int) address_bytes[2]];
+  address_bytes[2] += 3;
+  b2 <<= 7;
+  b1 >>= 1;
+  b2 &= 0x1f80;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 3;
-   b1 &= 0x1f;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0xff;
-   b2 <<= 5;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b1 = (32u) bytes[(int) address_bytes[0]];
+  b2 = (32u) bytes[(int) address_bytes[1]];
+  address_bytes[0] += 3;
+  b1 >>= 6;
+  b2 <<= 2;
+  b1 |= b2;
+  b3 = (32u) bytes[(int) address_bytes[2]];
+  b3 <<= 10;
+  b3 &= 0x1c00;
+  b1 |= b3;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
-   j += 1;
-   address_bytes += 1;
-   address_data += 1;
-  }
-  i += 1;
+
+  b1 = (32u) bytes[(int) address_bytes[2]];
+  b2 = (32u) bytes[(int) address_bytes[0]];
+  address_bytes[0] += 1;
+  address_bytes[1] += 4;
+  address_bytes[2] += 4;
+  b1 >>= 3;
+  b2 <<= 5;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
  }
 
  return data;
@@ -713,17 +831,17 @@ export fn POLVECp2BS_jazz(reg u64 bytesp, reg u64 datap)
  stack u8[SABER_POLYVECCOMPRESSEDBYTES] bytes;
  stack u16[SABER_KN] data;
 
-
-
-
-
+ for i = 0 to SABER_KN {
+  td = (u16) [datap + 2 * i];
+  data[i] = td;
+ }
 
  bytes = POLVECp2BS(bytes, data);
 
-
-
-
-
+ for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
+  tb = bytes[i];
+  (u8) [bytesp + i] = tb;
+ }
 
 }
 
@@ -783,7 +901,6 @@ export fn BS2POLVECq_jazz(reg u64 bytesp, reg u64 datap)
 
  stack u8[SABER_POLYVECBYTES] bytes;
  stack u16[SABER_KN] data;
-
 
  for i = 0 to SABER_POLYVECBYTES {
   tb = (u8) [bytesp + i];

@@ -64,19 +64,19 @@ export fn POLVECp2BS_jazz(reg u64 bytesp, reg u64 datap)
 
 	stack u8[SABER_POLYVECCOMPRESSEDBYTES] bytes;
 	stack u16[SABER_KN] data;
-/*
+
 	for i = 0 to SABER_KN {
 		td = (u16) [datap + 2 * i];
 		data[i] = td;
 	}
-*/
+
 	bytes = POLVECp2BS(bytes, data);
-/*
+
 	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
 		tb = bytes[i];
 		(u8) [bytesp + i] = tb;
 	}
-*/
+
 }
 
 export fn POLVECq2BS_jazz(reg u64 bytesp, reg u64 datap)
@@ -136,7 +136,6 @@ export fn BS2POLVECq_jazz(reg u64 bytesp, reg u64 datap)
 	stack u8[SABER_POLYVECBYTES] bytes;
 	stack u16[SABER_KN] data;
 
-	
 	for i = 0 to SABER_POLYVECBYTES {
 		tb = (u8) [bytesp + i];
 		bytes[i] = tb;
