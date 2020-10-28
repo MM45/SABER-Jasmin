@@ -1,22 +1,22 @@
-/*** SABER_indcpa_regular_POL2MSG.jahh: File containing the Jasmin implementation of the MatrixVectorMul function from SABER_indcpa.c, with (regular) SABER parameters ***/
+/*** SABER_indcpa_regular_POL2MSG.jahh: File containing the Jasmin implementation of the POL2MSG function from SABER_indcpa.c, with (regular) SABER parameters ***/
 
 #ifndef POL2MSG_HH
 #define POL2MSG_HH
 
 #include "SABER_params.jahh"
 
-inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
+inline fn POL2MSG(reg ptr u16[SABER_N] message_dec_unpacked, reg ptr u8[SABER_KEYBYTES] message_dec) -> reg ptr u8[SABER_KEYBYTES]
 {
 	inline int i;
 	inline int j;
 
 	reg u16 t16;
 
-
 	for j = 0 to SABER_KEYBYTES {
-		message_dec[j] = 0;
-
-		for i = 0 to 8 {
+		t16 = message_dec_unpacked[j * 8];
+		message_dec[j] = t16;
+		
+		for i = 1 to 8 {
 			t16 = message_dec_unpacked[j * 8 + i];
 			t16 <<= i;
 			message_dec[j] |= (8u) t16;

@@ -29,6 +29,7 @@ export fn SABER_pack_4bit_jazz(reg u64 bytesp, reg u64 datap)
 		tb = bytes[i];
 		(u8) [bytesp + i] = tb;
 	}
+
 }
 
 
@@ -53,6 +54,7 @@ export fn SABER_un_pack4bit_jazz(reg u64 bytesp, reg u64 datap)
 		td = data[i];
 		(u16) [datap + 2 * i] = td;
 	}
+
 }
 
 export fn POLVECp2BS_jazz(reg u64 bytesp, reg u64 datap)

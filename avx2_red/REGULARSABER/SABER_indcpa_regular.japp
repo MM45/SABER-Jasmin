@@ -86,18 +86,17 @@ u256 zero_u256 = 0;
 
 
 
-inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
+fn POL2MSG(reg ptr u16[SABER_N] message_dec_unpacked, reg ptr u8[SABER_KEYBYTES] message_dec) -> reg ptr u8[SABER_KEYBYTES]
 {
  inline int i;
  inline int j;
 
  reg u16 t16;
-
-
  for j = 0 to SABER_KEYBYTES {
-  message_dec[j] = 0;
+  t16 = message_dec_unpacked[j * 8];
+  message_dec[j] = t16;
 
-  for i = 0 to 8 {
+  for i = 1 to 8 {
    t16 = message_dec_unpacked[j * 8 + i];
    t16 <<= i;
    message_dec[j] |= (8u) t16;
@@ -1735,71 +1734,60 @@ u256 sixbit_mask_glob = 0x003f003f003f003f003f003f003f003f003f003f003f003f003f00
 
 fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
 {
- reg u16 b1;
- reg u16 b2;
+ reg u32 b1;
+ reg u32 b2;
 
- reg u64 i;
- reg u64 j;
- reg u64 address_bytes;
+ reg u64[2] address_bytes;
  reg u64 address_data;
 
- i = 0;
- address_bytes = 0;
+ address_bytes[0] = 0;
+ address_bytes[1] = 1;
+
  address_data = 0;
- while (i < SABER_K) {
-  j = 0;
-  while (j < (SABER_N / 4)) {
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 &= 0xff;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0x03;
-   b2 <<= 8;
-   b1 |= b2;
-   data[(int) address_data] = b1;
+ while (address_data < SABER_KN) {
 
-
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 2;
-   b1 &= 0x3f;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0x0f;
-   b2 <<= 6;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b2 = (32u) bytes[(int) address_bytes[1]];
+  b1 = (32u) bytes[(int) address_bytes[0]];
+  address_bytes[0] += 2;
+  b2 &= 0x03;
+  b2 <<= 8;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 4;
-   b1 &= 0x0f;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0x3f;
-   b2 <<= 4;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b2 = (32u) bytes[(int) address_bytes[0]];
+  b1 = (32u) bytes[(int) address_bytes[1]];
+  address_bytes[1] += 2;
+  b2 &= 0x0f;
+  b1 >>= 2;
+  b2 <<= 6;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
 
-   b1 = (16u) bytes[(int) address_bytes];
-   b1 >>= 6;
-   b1 &= 0x03;
-   address_bytes += 1;
-   b2 = (16u) bytes[(int) address_bytes];
-   b2 &= 0xff;
-   b2 <<= 2;
-   b1 |= b2;
-   address_data += 1;
-   data[(int) address_data] = b1;
+  b2 = (32u) bytes[(int) address_bytes[1]];
+  b1 = (32u) bytes[(int) address_bytes[0]];
+  address_bytes[0] += 2;
+  b2 &= 0x3f;
+  b1 >>= 4;
+  b2 <<= 4;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
 
-   j += 1;
-   address_bytes += 1;
-   address_data += 1;
-  }
-  i += 1;
+
+  b2 = (32u) bytes[(int) address_bytes[0]];
+  b1 = (32u) bytes[(int) address_bytes[1]];
+  address_bytes[0] += 1;
+  address_bytes[1] += 3;
+  b2 <<= 2;
+  b1 >>= 6;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+  address_data += 1;
  }
 
  return data;
@@ -2383,17 +2371,18 @@ export fn POL2MSG_jazz(reg u64 message_dec_unpackedp, reg u64 message_decp)
  stack u8[SABER_KEYBYTES] message_dec;
  stack u16[SABER_N] message_dec_unpacked;
 
- for i = 0 to SABER_N {
-  tmdu = (u16) [message_dec_unpackedp + 2 * i];
-  message_dec_unpacked[i] = tmdu;
- }
+
+
+
+
 
  message_dec = POL2MSG(message_dec_unpacked, message_dec);
 
- for i = 0 to SABER_KEYBYTES {
-  tmd = message_dec[i];
-  (u8) [message_decp + i] = tmd;
- }
+
+
+
+
+
 }
 
 export fn GenMatrix_jazz(reg u64 ap, reg u64 seedp)

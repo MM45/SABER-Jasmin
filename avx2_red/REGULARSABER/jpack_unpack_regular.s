@@ -4062,10 +4062,9 @@ LBS2POLVECq_jazz$1:
 _BS2POLVECp_jazz:
 BS2POLVECp_jazz:
 	movq	%rsp, %rax
-	leaq	-2512(%rsp), %rsp
+	leaq	-2504(%rsp), %rsp
 	andq	$-8, %rsp
 	movq	%rax, 2496(%rsp)
-	movq	%r12, 2504(%rsp)
 	movb	(%rdi), %al
 	movb	%al, 1536(%rsp)
 	movb	1(%rdi), %al
@@ -5988,7 +5987,7 @@ BS2POLVECp_jazz:
 	movb	%al, 2495(%rsp)
 	leaq	1536(%rsp), %rax
 	movq	%rsp, %rcx
-	leaq	LBS2POLVECp_jazz$1(%rip), 	%r12
+	leaq	LBS2POLVECp_jazz$1(%rip), 	%r11
 	jmp 	LBS2POLVECp$1
 LBS2POLVECp_jazz$1:
 	movw	(%rsp), %ax
@@ -7527,7 +7526,6 @@ LBS2POLVECp_jazz$1:
 	movw	%ax, 1532(%rsi)
 	movw	1534(%rsp), %ax
 	movw	%ax, 1534(%rsi)
-	movq	2504(%rsp), %r12
 	movq	2496(%rsp), %rsp
 	ret 
 _POLVECq2BS_jazz:
@@ -15485,9 +15483,23 @@ SABER_un_pack4bit_jazz:
 	movb	%al, 639(%rsp)
 	leaq	512(%rsp), %rax
 	movq	%rsp, %rcx
-	leaq	LSABER_un_pack4bit_jazz$1(%rip), 	%r9
-	jmp 	LSABER_un_pack4bit$1
+	movq	$0, %rdx
+	movq	$0, %rdi
+	movq	$1, %r8
+	jmp 	LSABER_un_pack4bit_jazz$1
+LSABER_un_pack4bit_jazz$2:
+	movzbl	(%rax,%rdx), %r9d
+	andl	$15, %r9d
+	movw	%r9w, (%rcx,%rdi,2)
+	movzbl	(%rax,%rdx), %r9d
+	shrl	$4, %r9d
+	movw	%r9w, (%rcx,%r8,2)
+	leaq	1(%rdx), %rdx
+	leaq	2(%rdi), %rdi
+	leaq	2(%r8), %r8
 LSABER_un_pack4bit_jazz$1:
+	cmpq	$256, %rdi
+	jb  	LSABER_un_pack4bit_jazz$2
 	movw	(%rsp), %ax
 	movw	%ax, (%rsi)
 	movw	2(%rsp), %ax
@@ -17228,62 +17240,49 @@ LBS2POLVECq$2:
 	jmp 	*%r12
 LBS2POLVECp$1:
 	movq	$0, %rdx
-	movq	$0, %rdi
+	movq	$1, %rdi
 	movq	$0, %r8
 	jmp 	LBS2POLVECp$2
 LBS2POLVECp$3:
-	movq	$0, %r9
-	jmp 	LBS2POLVECp$4
-LBS2POLVECp$5:
-	movzbw	(%rax,%rdi), %r10w
-	andw	$255, %r10w
-	leaq	1(%rdi), %rdi
-	movzbw	(%rax,%rdi), %r11w
-	andw	$3, %r11w
-	shlw	$8, %r11w
-	orw 	%r11w, %r10w
+	movzbl	(%rax,%rdi), %r9d
+	movzbl	(%rax,%rdx), %r10d
+	leaq	2(%rdx), %rdx
+	andl	$3, %r9d
+	shll	$8, %r9d
+	orl 	%r9d, %r10d
 	movw	%r10w, (%rcx,%r8,2)
-	movzbw	(%rax,%rdi), %r10w
-	shrw	$2, %r10w
-	andw	$63, %r10w
-	leaq	1(%rdi), %rdi
-	movzbw	(%rax,%rdi), %r11w
-	andw	$15, %r11w
-	shlw	$6, %r11w
-	orw 	%r11w, %r10w
 	leaq	1(%r8), %r8
+	movzbl	(%rax,%rdx), %r9d
+	movzbl	(%rax,%rdi), %r10d
+	leaq	2(%rdi), %rdi
+	andl	$15, %r9d
+	shrl	$2, %r10d
+	shll	$6, %r9d
+	orl 	%r9d, %r10d
 	movw	%r10w, (%rcx,%r8,2)
-	movzbw	(%rax,%rdi), %r10w
-	shrw	$4, %r10w
-	andw	$15, %r10w
-	leaq	1(%rdi), %rdi
-	movzbw	(%rax,%rdi), %r11w
-	andw	$63, %r11w
-	shlw	$4, %r11w
-	orw 	%r11w, %r10w
 	leaq	1(%r8), %r8
+	movzbl	(%rax,%rdi), %r9d
+	movzbl	(%rax,%rdx), %r10d
+	leaq	2(%rdx), %rdx
+	andl	$63, %r9d
+	shrl	$4, %r10d
+	shll	$4, %r9d
+	orl 	%r9d, %r10d
 	movw	%r10w, (%rcx,%r8,2)
-	movzbw	(%rax,%rdi), %r10w
-	shrw	$6, %r10w
-	andw	$3, %r10w
-	leaq	1(%rdi), %rdi
-	movzbw	(%rax,%rdi), %r11w
-	andw	$255, %r11w
-	shlw	$2, %r11w
-	orw 	%r11w, %r10w
 	leaq	1(%r8), %r8
-	movw	%r10w, (%rcx,%r8,2)
-	leaq	1(%r9), %r9
-	leaq	1(%rdi), %rdi
-	leaq	1(%r8), %r8
-LBS2POLVECp$4:
-	cmpq	$64, %r9
-	jb  	LBS2POLVECp$5
+	movzbl	(%rax,%rdx), %r9d
+	movzbl	(%rax,%rdi), %r10d
 	leaq	1(%rdx), %rdx
+	leaq	3(%rdi), %rdi
+	shll	$2, %r9d
+	shrl	$6, %r10d
+	orl 	%r9d, %r10d
+	movw	%r10w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
 LBS2POLVECp$2:
-	cmpq	$3, %rdx
+	cmpq	$768, %r8
 	jb  	LBS2POLVECp$3
-	jmp 	*%r12
+	jmp 	*%r11
 LPOLVECp2BS$1:
 	movq	$0, %rdx
 	movq	$0, %rsi
@@ -17364,25 +17363,6 @@ LPOLVECp2BS$2:
 	cmpq	$768, %rsi
 	jb  	LPOLVECp2BS$3
 	jmp 	*%r11
-LSABER_un_pack4bit$1:
-	movq	$0, %rdx
-	movq	$0, %rdi
-	jmp 	LSABER_un_pack4bit$2
-LSABER_un_pack4bit$3:
-	movzbw	(%rax,%rdx), %r8w
-	andw	$15, %r8w
-	movw	%r8w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rdx), %r8w
-	shrw	$4, %r8w
-	andw	$15, %r8w
-	leaq	1(%rdi), %rdi
-	movw	%r8w, (%rcx,%rdi,2)
-	leaq	1(%rdx), %rdx
-	leaq	1(%rdi), %rdi
-LSABER_un_pack4bit$2:
-	cmpq	$128, %rdx
-	jb  	LSABER_un_pack4bit$3
-	jmp 	*%r9
 	.data
 	.globl	_glob_data
 	.globl	glob_data

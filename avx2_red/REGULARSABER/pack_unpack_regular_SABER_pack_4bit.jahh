@@ -76,30 +76,7 @@ inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SA
 
 		bytes[u256 i] = b256;
 	}
-/*
-	reg u16 d1;
-	reg u16 d2;
 
-	reg u64 j;
-	reg u64 address_data;
-
-	j = 0;
-	address_data = 0;
-	while (j < (SABER_N / 2)) {
-		// bytes[j]= (data[offset_data] & 0x0f) | ( (data[offset_data + 1] & 0x0f)<<4 );
-		d1 = data[(int) address_data];
-		d1 &= 0x0f;
-		address_data += 1;
-		d2 = data[(int) address_data];
-		d2 &= 0x0f;
-		d2 <<= 4;
-		d1 |= d2;
-		bytes[(int) j] = (8u) d1;
-
-		j += 1;
-		address_data += 1;
-	}
-*/
 	return bytes;
 }
 
