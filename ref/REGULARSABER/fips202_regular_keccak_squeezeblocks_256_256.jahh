@@ -13,6 +13,8 @@ inline fn keccak_squeezeblocks_256_256(reg ptr u8[SHA3_256_RATE] h, reg ptr u64[
 
 	reg u64 u;
 
+	/** Only one iteration of loop, as nblocks == 1 **/
+	
 	s = KeccakF1600_StatePermute(s);
 
 	for i = 0 to (SHA3_256_RATE / 8) {

@@ -30,21 +30,20 @@ fn karatsuba_simple(reg ptr u16[N_SB] a_1, reg ptr u16[N_SB] b_1, reg ptr u16[N_
 
 	N = 64;
 
-	// memset(memsection, 0, len)
+	// memset(d*, 0, (N-1)*sizeof(uint16_t))
 	for i = 0 to (N / 2 - 1) {
 		d01[i] = 0;
 		d0123[i] = 0;
 		d23[i] = 0;
-		result_d01[i] = 0;
-		result_final[i] = 0;
 	}
 
-	for i = (N / 2 - 1) to (N - 1) {
+	// memset(result_d01, 0, (N/2-1)*sizeof(uint16_t))
+	for i = 0 to (N - 1) {
 		result_d01[i] = 0;
-		result_final[i] = 0;
 	}
 
-	for i = (N - 1) to (2 * N - 1) {
+	// memset(result_final, 0, (2*N-1)*sizeof(uint16_t))
+	for i = 0 to (2 * N - 1) {
 		result_final[i] = 0;
 	}
 

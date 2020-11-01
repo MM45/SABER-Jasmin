@@ -13,7 +13,6 @@ fn BS2POL(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg p
 	reg u16 b2;
 	reg u16 b3;
 
-
 	for j = 0 to (SABER_N / 8) {
 		// data[offset_data + 0]= ( bytes[ offset_byte + 0 ] & (0xff)) | ((bytes[offset_byte + 1] & 0x1f)<<8);
 		b1 = (16u) bytes[13 * j];

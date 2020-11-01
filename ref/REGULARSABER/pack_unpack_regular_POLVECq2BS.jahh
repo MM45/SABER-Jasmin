@@ -15,8 +15,6 @@ inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN]
 
 	for i = 0 to SABER_K {
 		for j = 0 to (SABER_N / 8) {
-			/* data_arr0 */
-
 			// bytes[offset_byte + 0]= ( data[i][ offset_data + 0 ] & (0xff));
 			d1 = data[i * SABER_N + 8 * j];
 			d1 &= 0xff;

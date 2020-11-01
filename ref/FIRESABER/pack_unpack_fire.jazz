@@ -14,12 +14,6 @@ export fn SABER_pack_6bit_jazz(reg u64 bytesp, reg u64 datap)
 	stack u8[SABER_SCALEBYTES_KEM] bytes;
 	stack u16[SABER_N] data;
 
-	// TODO: Technically not necessary to copy, as bytes contains no relevant content on input, is only used as a result array
-	for i = 0 to SABER_SCALEBYTES_KEM {
-		tb = (u8) [bytesp + i];
-		bytes[i] = tb;
-	}
-
 	for i = 0 to SABER_N {
 		td = (u16) [datap + 2 * i];
 		data[i] = td;
@@ -46,12 +40,6 @@ export fn SABER_un_pack6bit_jazz(reg u64 bytesp, reg u64 datap)
 	for i = 0 to SABER_SCALEBYTES_KEM {
 		tb = (u8) [bytesp + i];
 		bytes[i] = tb;
-	}
-
-	// TODO: Technically not necessary to copy, as data contains no relevant content on input, is only used as a result array
-	for i = 0 to SABER_N {
-		td = (u16) [datap + 2 * i];
-		data[i] = td;
 	}
 
 	data = SABER_un_pack6bit(bytes, data);

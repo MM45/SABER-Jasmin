@@ -14,7 +14,6 @@ inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYT
 
 	reg u16 t16;
 
-
 	for j = 0 to SABER_KEYBYTES {
 		message_dec[j] = 0;
 

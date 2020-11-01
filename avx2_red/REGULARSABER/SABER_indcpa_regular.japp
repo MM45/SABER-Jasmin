@@ -86,12 +86,13 @@ u256 zero_u256 = 0;
 
 
 
-fn POL2MSG(reg ptr u16[SABER_N] message_dec_unpacked, reg ptr u8[SABER_KEYBYTES] message_dec) -> reg ptr u8[SABER_KEYBYTES]
+inline fn POL2MSG(reg ptr u16[SABER_N] message_dec_unpacked, reg ptr u8[SABER_KEYBYTES] message_dec) -> reg ptr u8[SABER_KEYBYTES]
 {
  inline int i;
  inline int j;
 
  reg u16 t16;
+
  for j = 0 to SABER_KEYBYTES {
   t16 = message_dec_unpacked[j * 8];
   message_dec[j] = t16;
@@ -762,6 +763,8 @@ fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) 
  inline int i;
 
  reg u64 t64;
+
+ reg u128 t128;
 
  s = KeccakF1600_StatePermute(s);
 
@@ -1870,6 +1873,7 @@ inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SA
 
   bytes[u256 i] = b256;
  }
+
  return bytes;
 }
 
@@ -2196,30 +2200,32 @@ fn BS2POLVECq(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) 
 
 
 
-fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
+inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
 {
- reg u16 b1;
+ reg u32 b1;
 
- reg u64 j;
- reg u64 address_ar;
+ reg u64 address_bytes;
+ reg u64[2] address_ar;
 
- j = 0;
- address_ar = 0;
- while (j < (SABER_N / 2)) {
+ address_bytes = 0;
 
-  b1 = (16u) bytes[(int) j];
+ address_ar[0] = 0;
+ address_ar[1] = 1;
+
+ while (address_ar[0] < SABER_N) {
+
+  b1 = (32u) bytes[(int) address_bytes];
   b1 &= 0x0f;
-  ar[(int) address_ar] = b1;
+  ar[(int) address_ar[0]] = (16u) b1;
 
 
-  b1 = (16u) bytes[(int) j];
+  b1 = (32u) bytes[(int) address_bytes];
   b1 >>= 4;
-  b1 &= 0x0f;
-  address_ar += 1;
-  ar[(int) address_ar] = b1;
+  ar[(int) address_ar[1]] = (16u) b1;
 
-  j += 1;
-  address_ar += 1;
+  address_bytes += 1;
+  address_ar[0] += 2;
+  address_ar[1] += 2;
  }
 
  return ar;
@@ -2371,17 +2377,17 @@ export fn POL2MSG_jazz(reg u64 message_dec_unpackedp, reg u64 message_decp)
  stack u8[SABER_KEYBYTES] message_dec;
  stack u16[SABER_N] message_dec_unpacked;
 
-
-
-
-
+ for i = 0 to SABER_N {
+  tmdu = (u16) [message_dec_unpackedp + 2 * i];
+  message_dec_unpacked[i] = tmdu;
+ }
 
  message_dec = POL2MSG(message_dec_unpacked, message_dec);
 
-
-
-
-
+ for i = 0 to SABER_KEYBYTES {
+  tmd = message_dec[i];
+  (u8) [message_decp + i] = tmd;
+ }
 
 }
 

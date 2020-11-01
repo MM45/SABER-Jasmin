@@ -1,4 +1,4 @@
-/*** fips202_regular.jazz: File containing the Jasmin wrappers of the functions in the fips202_regular*.jahh files, only used for unit testing ***/
+/*** fips202_regular.jazz: File containing the Jasmin wrappers of the functions in the fips202_regular_*.jahh files, only used for unit testing ***/
 
 #include "SABER_params.jahh"
 #include "fips202_regular_keccak_absorb_128_32.jahh"

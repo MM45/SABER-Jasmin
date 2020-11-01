@@ -33,13 +33,12 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
 	output, s = keccak_squeezeblocks_128_MUNK8(output, s);
 
-	if (remainder > 0) {
-		t, s = keccak_squeezeblocks_128_128(t, s);
+	/** No if-statement required, because remainder > 0 always holds in this function **/
+	t, s = keccak_squeezeblocks_128_128(t, s);
 
-		for i = 0 to remainder {
-			t8 = t[i];
-			output[handled + i] = t8;
-		}
+	for i = 0 to remainder {
+		t8 = t[i];
+		output[handled + i] = t8;
 	}
 
 	return output;

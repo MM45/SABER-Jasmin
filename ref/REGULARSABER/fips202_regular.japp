@@ -107,6 +107,8 @@ fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 
  stack u8[200] t;
 
+
+
  for i = 0 to SHAKE128_RATE {
   t[i] = 0;
  }
@@ -135,6 +137,8 @@ inline fn keccak_absorb_256_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u
  reg u64 t64;
 
  stack u8[200] t;
+
+
 
  for i = 0 to SHA3_256_RATE {
   t[i] = 0;
@@ -165,6 +169,8 @@ inline fn keccak_absorb_256_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u
 
  stack u8[200] t;
 
+
+
  for i = 0 to SHA3_256_RATE {
   t[i] = 0;
  }
@@ -187,7 +193,6 @@ inline fn keccak_absorb_256_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u
 inline fn keccak_absorb_512_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u64[25]
 {
  inline int i;
- inline int j;
 
  reg u8 t8;
 
@@ -195,6 +200,8 @@ inline fn keccak_absorb_512_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u
  reg u64 tt;
 
  stack u8[200] t;
+
+
 
  for i = 0 to SHA3_512_RATE {
   t[i] = 0;
@@ -239,6 +246,7 @@ inline fn ROL64(reg u64 x, inline int c) -> reg u64 {
   return y;
 }
 
+
 inline fn theta(reg ptr u64[25] a) -> reg ptr u64[25] {
   inline int x, y;
   reg u64[5] c, d;
@@ -251,13 +259,6 @@ inline fn theta(reg ptr u64[25] a) -> reg ptr u64[25] {
   }
 
   for x = 0 to 5 {
-
-
-
-
-
-
-
     d[x] = c[(x + 1) % 5];
     _, _, d[x] = #ROL_64(d[x], 1);
     d[x] ^= c[(x + 4) % 5];
@@ -503,6 +504,8 @@ inline fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[
 
  reg u64 u;
 
+
+
  s = KeccakF1600_StatePermute(s);
 
  for i = 0 to (SHAKE128_RATE / 8) {
@@ -534,6 +537,9 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
  }
 
  s = keccak_absorb_128_32(s, input);
+
+
+
 
  t, s = keccak_squeezeblocks_128_128(t, s);
 
@@ -599,13 +605,12 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
  output, s = keccak_squeezeblocks_128_KK13N8(output, s);
 
- if (remainder > 0) {
-  t, s = keccak_squeezeblocks_128_128(t, s);
 
-  for i = 0 to remainder {
-   t8 = t[i];
-   output[handled + i] = t8;
-  }
+ t, s = keccak_squeezeblocks_128_128(t, s);
+
+ for i = 0 to remainder {
+  t8 = t[i];
+  output[handled + i] = t8;
  }
 
  return output;
@@ -665,13 +670,12 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
  output, s = keccak_squeezeblocks_128_MUNK8(output, s);
 
- if (remainder > 0) {
-  t, s = keccak_squeezeblocks_128_128(t, s);
 
-  for i = 0 to remainder {
-   t8 = t[i];
-   output[handled + i] = t8;
-  }
+ t, s = keccak_squeezeblocks_128_128(t, s);
+
+ for i = 0 to remainder {
+  t8 = t[i];
+  output[handled + i] = t8;
  }
 
  return output;
@@ -681,6 +685,8 @@ inline fn keccak_squeezeblocks_256_256(reg ptr u8[SHA3_256_RATE] h, reg ptr u64[
  inline int i;
 
  reg u64 u;
+
+
 
  s = KeccakF1600_StatePermute(s);
 
@@ -709,7 +715,7 @@ inline fn sha3_256_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8
  stack u64[25] s;
 
  for i = 0 to 25 {
-  s[i] =0;
+  s[i] = 0;
  }
 
  s = keccak_absorb_256_32(s, input);
@@ -742,7 +748,7 @@ fn sha3_256_64(reg ptr u8[32] output, reg ptr u8[64] input) -> reg ptr u8[32]
  stack u64[25] s;
 
  for i = 0 to 25 {
-  s[i] =0;
+  s[i] = 0;
  }
 
  s = keccak_absorb_256_64(s, input);
@@ -827,6 +833,8 @@ inline fn keccak_squeezeblocks_512_512(reg ptr u8[SHA3_512_RATE] h, reg ptr u64[
  inline int i;
 
  reg u64 u;
+
+
 
  s = KeccakF1600_StatePermute(s);
 

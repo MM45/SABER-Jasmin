@@ -23,6 +23,9 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
 
 	s = keccak_absorb_128_32(s, input);
 
+	/** No initial call to keccak_squeezeblocks, as nblocks = outlen / rate = 0 here **/
+
+	/** No if-statement required, because outlen > 0 always holds at this point in this function **/
 	t, s = keccak_squeezeblocks_128_128(t, s);
 
 	for i = 0 to 32 {

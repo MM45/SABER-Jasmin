@@ -15,7 +15,6 @@ fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
 	for i = 0 to SABER_K {
 		for j = 0 to (SABER_N / 4) {
-
 			// data[i][offset_data + 0]= ( bytes[ offset_byte + 0 ] & (0xff)) |  ((bytes[ offset_byte + 1 ] & 0x03)<<8);
 			b1 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j];
 			b2 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 1];

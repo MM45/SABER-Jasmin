@@ -125,6 +125,8 @@ fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 
  stack u8[200] t;
 
+
+
  for i = 0 to SHAKE128_RATE {
   t[i] = 0;
  }
@@ -168,6 +170,7 @@ inline fn ROL64(reg u64 x, inline int c) -> reg u64 {
   return y;
 }
 
+
 inline fn theta(reg ptr u64[25] a) -> reg ptr u64[25] {
   inline int x, y;
   reg u64[5] c, d;
@@ -180,13 +183,6 @@ inline fn theta(reg ptr u64[25] a) -> reg ptr u64[25] {
   }
 
   for x = 0 to 5 {
-
-
-
-
-
-
-
     d[x] = c[(x + 1) % 5];
     _, _, d[x] = #ROL_64(d[x], 1);
     d[x] ^= c[(x + 4) % 5];
@@ -331,6 +327,8 @@ inline fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[
 
  reg u64 u;
 
+
+
  s = KeccakF1600_StatePermute(s);
 
  for i = 0 to (SHAKE128_RATE / 8) {
@@ -356,6 +354,9 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
  }
 
  s = keccak_absorb_128_32(s, input);
+
+
+
 
  t, s = keccak_squeezeblocks_128_128(t, s);
 
@@ -427,13 +428,12 @@ inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) ->
 
  output, s = keccak_squeezeblocks_128_KK13N8(output, s);
 
- if (remainder > 0) {
-  t, s = keccak_squeezeblocks_128_128(t, s);
 
-  for i = 0 to remainder {
-   t8 = t[i];
-   output[handled + i] = t8;
-  }
+ t, s = keccak_squeezeblocks_128_128(t, s);
+
+ for i = 0 to remainder {
+  t8 = t[i];
+  output[handled + i] = t8;
  }
 
  return output;
@@ -452,7 +452,6 @@ fn BS2POL(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg p
  reg u16 b1;
  reg u16 b2;
  reg u16 b3;
-
 
  for j = 0 to (SABER_N / 8) {
 
@@ -643,16 +642,15 @@ fn karatsuba_simple(reg ptr u16[N_SB] a_1, reg ptr u16[N_SB] b_1, reg ptr u16[N_
   d01[i] = 0;
   d0123[i] = 0;
   d23[i] = 0;
-  result_d01[i] = 0;
-  result_final[i] = 0;
  }
 
- for i = (N / 2 - 1) to (N - 1) {
+
+ for i = 0 to (N - 1) {
   result_d01[i] = 0;
-  result_final[i] = 0;
  }
 
- for i = (N - 1) to (2 * N - 1) {
+
+ for i = 0 to (2 * N - 1) {
   result_final[i] = 0;
  }
 
@@ -1136,6 +1134,8 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 
      res[i * SABER_N + k] += t;
      res[i * SABER_N + k] &= (SABER_Q - 1);
+
+     acc[k] = 0;
     }
    }
   }
@@ -1157,6 +1157,8 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 
      res[i * SABER_N + k] += t;
      res[i * SABER_N + k] &= (SABER_Q - 1);
+
+     acc[k] = 0;
     }
    }
   }
@@ -1225,13 +1227,12 @@ inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> r
 
  output, s = keccak_squeezeblocks_128_MUNK8(output, s);
 
- if (remainder > 0) {
-  t, s = keccak_squeezeblocks_128_128(t, s);
 
-  for i = 0 to remainder {
-   t8 = t[i];
-   output[handled + i] = t8;
-  }
+ t, s = keccak_squeezeblocks_128_128(t, s);
+
+ for i = 0 to remainder {
+  t8 = t[i];
+  output[handled + i] = t8;
  }
 
  return output;
@@ -1409,8 +1410,6 @@ inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN]
 
  for i = 0 to SABER_K {
   for j = 0 to (SABER_N / 8) {
-
-
 
    d1 = data[i * SABER_N + 8 * j];
    d1 &= 0xff;
@@ -1681,6 +1680,8 @@ inline fn keccak_squeezeblocks_256_256(reg ptr u8[SHA3_256_RATE] h, reg ptr u64[
 
  reg u64 u;
 
+
+
  s = KeccakF1600_StatePermute(s);
 
  for i = 0 to (SHA3_256_RATE / 8) {
@@ -1761,6 +1762,8 @@ inline fn keccak_absorb_256_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u
 
  stack u8[200] t;
 
+
+
  for i = 0 to SHA3_256_RATE {
   t[i] = 0;
  }
@@ -1793,7 +1796,7 @@ inline fn sha3_256_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8
  stack u64[25] s;
 
  for i = 0 to 25 {
-  s[i] =0;
+  s[i] = 0;
  }
 
  s = keccak_absorb_256_32(s, input);
@@ -1822,6 +1825,8 @@ inline fn keccak_absorb_256_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u
  reg u64 t64;
 
  stack u8[200] t;
+
+
 
  for i = 0 to SHA3_256_RATE {
   t[i] = 0;
@@ -1855,7 +1860,7 @@ fn sha3_256_64(reg ptr u8[32] output, reg ptr u8[64] input) -> reg ptr u8[32]
  stack u64[25] s;
 
  for i = 0 to 25 {
-  s[i] =0;
+  s[i] = 0;
  }
 
  s = keccak_absorb_256_64(s, input);
@@ -1958,7 +1963,6 @@ fn sha3_256_CCADEC(reg ptr u8[32] output, reg ptr u8[SABER_BYTES_CCA_DEC] input)
 inline fn keccak_absorb_512_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u64[25]
 {
  inline int i;
- inline int j;
 
  reg u8 t8;
 
@@ -1966,6 +1970,8 @@ inline fn keccak_absorb_512_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u
  reg u64 tt;
 
  stack u8[200] t;
+
+
 
  for i = 0 to SHA3_512_RATE {
   t[i] = 0;
@@ -1991,6 +1997,8 @@ inline fn keccak_squeezeblocks_512_512(reg ptr u8[SHA3_512_RATE] h, reg ptr u64[
  inline int i;
 
  reg u64 u;
+
+
 
  s = KeccakF1600_StatePermute(s);
 
@@ -2045,7 +2053,6 @@ fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 
  for i = 0 to SABER_K {
   for j = 0 to (SABER_N / 4) {
-
 
    b1 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j];
    b2 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 1];
@@ -2106,8 +2113,8 @@ inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SA
  for j = 0 to (SABER_N / 2) {
 
   d1 = data[2 * j];
-  d2 = data[2* j + 1];
   d1 &= 0x0f;
+  d2 = data[2* j + 1];
   d2 &= 0x0f;
   d2 <<= 4;
   d1 |= d2;
@@ -2184,6 +2191,8 @@ inline fn InnerProd(reg ptr u16[SABER_KN] pkcl, reg ptr u16[SABER_KN] skpv, reg 
 
    res[k] += t;
    res[k] &= (SABER_P - 1);
+
+   acc[k] = 0;
   }
  }
 
@@ -2345,8 +2354,6 @@ inline fn BS2POLVECq(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN]
  for i = 0 to SABER_K {
   for j = 0 to (SABER_N / 8) {
 
-
-
    b1 = (16u) bytes[i * (SABER_N * 13) / 8 + 13 * j];
    b1 &= 0xff;
    b2 = (16u) bytes[i * (SABER_N * 13) / 8 + 13 * j + 1];
@@ -2490,7 +2497,6 @@ inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYT
 
  reg u16 t16;
 
-
  for j = 0 to SABER_KEYBYTES {
   message_dec[j] = 0;
 
@@ -2504,7 +2510,6 @@ inline fn POL2MSG(stack u16[SABER_N] message_dec_unpacked, stack u8[SABER_KEYBYT
 
  return message_dec;
 }
-
 
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
@@ -2575,9 +2580,7 @@ inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b)
 
  reg u64 t64;
 
- t64 = (64u) b;
- t64 *= -1;
- b = (8u) t64;
+ _, _, _, _, _, b = #NEG_8(b);
 
  for i = 0 to SABER_KEYBYTES {
 

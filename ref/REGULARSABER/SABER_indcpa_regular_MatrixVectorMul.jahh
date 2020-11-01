@@ -38,6 +38,8 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 
 					res[i * SABER_N + k] += t;
 					res[i * SABER_N + k] &= (SABER_Q - 1);
+
+					acc[k] = 0;
 				}
 			}
 		}
@@ -59,6 +61,8 @@ inline fn MatrixVectorMul(reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] skpv, 
 
 					res[i * SABER_N + k] += t;
 					res[i * SABER_N + k] &= (SABER_Q - 1);
+
+					acc[k] = 0;
 				}
 			}
 		}

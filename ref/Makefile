@@ -1,5 +1,5 @@
 CC = /usr/bin/gcc
-CFLAGS = -Wall -Wextra -g -O3 -fomit-frame-pointer
+CFLAGS = -Wall -Wextra -g
 LDFLAGS = -lssl -lcrypto
 JASMIN = ../compiler/jasminc
 JFLAGS = -lea -pasm ${JADDFLAGS}
@@ -121,7 +121,7 @@ ${REGULARDIRECTORY}/test/test_cbd_regular_%: ${REGULARDIRECTORY}/test/test_cbd_r
 ${REGULARDIRECTORY}/test/test_poly_mul_regular_%: ${REGULARDIRECTORY}/test/test_poly_mul_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s
 	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} $${REGULARDIRECTORY}/jSABER_indcpa_regular.s
+${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s
 	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_fips202_regular_%: ${REGULARDIRECTORY}/test/test_fips202_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s

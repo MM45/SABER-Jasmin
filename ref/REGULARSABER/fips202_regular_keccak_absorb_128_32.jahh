@@ -16,6 +16,8 @@ fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
 
 	stack u8[200] t;
 
+	/** No initial loop as mlen < rate **/
+
 	for i = 0 to SHAKE128_RATE {
 		t[i] = 0;
 	}

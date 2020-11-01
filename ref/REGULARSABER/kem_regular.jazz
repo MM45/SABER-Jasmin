@@ -1,4 +1,4 @@
-/*** kem_regular.jazz: File containing the Jasmin wrappers of the functions in the kem_regular*.jahh files, only used for unit testing ***/
+/*** kem_regular.jazz: File containing the Jasmin wrappers of the functions in the kem_regular_*.jahh files, only used for unit testing ***/
 
 #include "SABER_params.jahh"
 #include "kem_regular_crypto_kem_keypair_randominc.jahh"

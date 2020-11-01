@@ -18,7 +18,7 @@ inline fn sha3_256_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8
 	stack u64[25] s;
 
 	for i = 0 to 25 {
-		s[i] =0;
+		s[i] = 0;
 	}
 
 	s = keccak_absorb_256_32(s, input);

@@ -16,6 +16,7 @@ inline fn ROL64(reg u64 x, inline int c) -> reg u64 {
   return y;
 }
 
+
 inline fn theta(reg ptr u64[25] a) -> reg ptr u64[25] {
   inline int x, y;
   reg u64[5] c, d;
@@ -28,13 +29,6 @@ inline fn theta(reg ptr u64[25] a) -> reg ptr u64[25] {
   }
 
   for x = 0 to 5 {
-    /* d[x] = ROL64(c[(x + 1) % 5], 1); */
-    /* extraction fails */
-
-    /*    _, _, d[x] = #ROL_64(c[(x + 1) % 5], 1);*/
-    /*    d[x] ^= c[(x + 4) % 5];*/
-    /* does not compile */
-
     d[x] = c[(x + 1) % 5];
     _, _, d[x] = #ROL_64(d[x], 1);
     d[x] ^= c[(x + 4) % 5];

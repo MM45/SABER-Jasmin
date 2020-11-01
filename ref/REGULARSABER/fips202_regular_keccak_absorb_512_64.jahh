@@ -9,7 +9,6 @@
 inline fn keccak_absorb_512_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u64[25]
 {
 	inline int i;
-	inline int j;
 
 	reg u8 t8;
 
@@ -17,6 +16,8 @@ inline fn keccak_absorb_512_64(reg ptr u64[25] s, reg ptr u8[64] m) -> reg ptr u
 	reg u64 tt;
 
 	stack u8[200] t;
+
+	/** No initial loop as mlen < rate **/
 
 	for i = 0 to SHA3_512_RATE {
 		t[i] = 0;

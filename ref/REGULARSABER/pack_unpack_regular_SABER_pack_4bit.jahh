@@ -15,8 +15,8 @@ inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SA
 	for j = 0 to (SABER_N / 2) {
 		// bytes[j]= (data[offset_data] & 0x0f) | ( (data[offset_data + 1] & 0x0f)<<4 );
 		d1 = data[2 * j];
-		d2 = data[2* j + 1];
 		d1 &= 0x0f;
+		d2 = data[2* j + 1];
 		d2 &= 0x0f;
 		d2 <<= 4;
 		d1 |= d2;
