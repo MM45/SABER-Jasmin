@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #include "SABER_params.h"
-#include "../../GENERAL/pack_unpack.h"
+#include "pack_unpack.h"
 #include "randomtestdata.h"
 
 int main() 

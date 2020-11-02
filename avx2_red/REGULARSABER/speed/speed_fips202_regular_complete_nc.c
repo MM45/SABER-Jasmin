@@ -1,4 +1,4 @@
-/*** speed_fips202_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the fips202.c file ***/
+/*** speed_fips202_regular_complete_nc.c: File containing speed tests for the (regular) SABER implementations of the functions in the fips202.c file, without functionality checks ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -161,12 +161,6 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_keccakf1600_jazz[i]= CLOCK2 - CLOCK1;
 
-		for (j = 0; j < 25; ++j) {
-			if (state_c[j] != state_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tKeccakF1600_StatePermute.\nReason:\tstate_c[%ld] != state_jazz[%ld] ==> %ld != %ld\n", j, j, state_c[j], state_jazz[j]);
-			}
-		}
-
 		//keccak_absorb_128_32; Reference_C
 	    CLOCK1 = cpucycles();	
 	    keccak_absorb(s_absorb_c, SHAKE128_RATE, m_absorb_c, 32, 0x1F);
@@ -178,12 +172,6 @@ int test_fips202()
 	   	keccak_absorb_128_32_jazz(s_absorb_jazz, m_absorb_jazz);
 	    CLOCK2 = cpucycles();
 	    t_absorb12832_jazz[i]= CLOCK2 - CLOCK1;
-
-		for (j = 0; j < 25; ++j) {
-			if (s_absorb_c[j] != s_absorb_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tkeccak_absorb_128_32.\nReason:\tstate_c[%ld] != state_jazz[%ld] ==> %ld != %ld\n", j, j, s_absorb_c[j], s_absorb_jazz[j]);
-			}
-		}
 
 		//keccak_squeezeblocks_128_128; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -197,18 +185,6 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_squeeze128128_jazz[i]= CLOCK2 - CLOCK1;
 
-		for (j = 0; j < SHAKE128_RATE; ++j) {
-			if (h_squeeze_c[j] != h_squeeze_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tkeccak_squeezeblocks_128_128.\nReason:\th_c[%ld] != h_jazz[%ld] ==> %d != %d\n", j, j, h_squeeze_c[j], h_squeeze_jazz[j]);
-			}
-		}
-
-		for (j = 0; j < 25; ++j) {
-			if (s_squeeze_c[j] != s_squeeze_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tkeccak_squeezeblocks_128_128.\nReason:\tstate_c[%ld] != state_jazz[%ld] ==> %ld != %ld\n", j, j, s_squeeze_c[j], s_squeeze_jazz[j]);
-			}
-		}
-
 		//shake128_32_32; Reference_C
 	    CLOCK1 = cpucycles();	
 	    shake128(output_shake32_c, 32, input_shake_c, 32);
@@ -220,12 +196,6 @@ int test_fips202()
 	   	shake128_32_32_jazz(output_shake32_jazz, input_shake_jazz);
 	    CLOCK2 = cpucycles();
 	    t_shake32_jazz[i]= CLOCK2 - CLOCK1;
-		
-		for (j = 0; j < 32; ++j) {
-			if (output_shake32_c[j] != output_shake32_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tshake128_32_32.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_shake32_c[j], output_shake32_jazz[j]);
-			}
-		}
 
 		//shake128_MUNK8_32; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -238,13 +208,6 @@ int test_fips202()
 	   	shake128_MUNK8_32_jazz(output_shakemunk8_jazz, input_shake_jazz);
 	    CLOCK2 = cpucycles();
 	    t_shakemunk8_jazz[i]= CLOCK2 - CLOCK1;
-		
-		for (j = 0; j < MUNK8; ++j) {
-			if (output_shakemunk8_c[j] != output_shakemunk8_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tshake128_MUNK8_32.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_shakemunk8_c[j], output_shakemunk8_jazz[j]);
-			}
-		}
-
 
 		//shake128_KK13N8_32; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -257,12 +220,6 @@ int test_fips202()
 	   	shake128_KK13N8_32_jazz(output_shakekk13n8_jazz, input_shake_jazz);
 	    CLOCK2 = cpucycles();
 	    t_shakekk13n8_jazz[i]= CLOCK2 - CLOCK1;
-		
-		for (j = 0; j < KK13N8; ++j) {
-			if (output_shakekk13n8_c[j] != output_shakekk13n8_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tshake128_KK13N8_32.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_shakekk13n8_c[j], output_shakekk13n8_jazz[j]);
-			}
-		}
 
 		//sha3_256_32; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -276,12 +233,6 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_sha325632_jazz[i]= CLOCK2 - CLOCK1;
 		
-		for (j = 0; j < 32; ++j) {
-			if (output_sha3256_c[j] != output_sha3256_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tsha3_256_32.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_sha3256_c[j], output_sha3256_jazz[j]);
-			}
-		}
-
 		//sha3_256_64; Reference_C
 	    CLOCK1 = cpucycles();	
 	    sha3_256(output_sha3256_c, input_sha325664_c, 64);
@@ -293,12 +244,6 @@ int test_fips202()
 	   	sha3_256_64_jazz(output_sha3256_jazz, input_sha325664_jazz);
 	    CLOCK2 = cpucycles();
 	    t_sha325664_jazz[i]= CLOCK2 - CLOCK1;
-		
-		for (j = 0; j < 32; ++j) {
-			if (output_sha3256_c[j] != output_sha3256_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tsha3_256_64.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_sha3256_c[j], output_sha3256_jazz[j]);
-			}
-		}
 
 		//sha3_256_CCADEC; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -311,12 +256,6 @@ int test_fips202()
 	   	sha3_256_CCADEC_jazz(output_sha3256_jazz, input_sha3256ccadec_jazz);
 	    CLOCK2 = cpucycles();
 	    t_sha3256ccadec_jazz[i]= CLOCK2 - CLOCK1;
-		
-		for (j = 0; j < 32; ++j) {
-			if (output_sha3256_c[j] != output_sha3256_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tsha3_256_CCADEC.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_sha3256_c[j], output_sha3256_jazz[j]);
-			}
-		}
 
 		//sha3_256_PUBKEYBYTES; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -329,12 +268,6 @@ int test_fips202()
 	   	sha3_256_PUBKEYBYTES_jazz(output_sha3256_jazz, input_sha3256pubkey_jazz);
 	    CLOCK2 = cpucycles();
 	    t_sha3256pubkey_jazz[i]= CLOCK2 - CLOCK1;
-		
-		for (j = 0; j < 32; ++j) {
-			if (output_sha3256_c[j] != output_sha3256_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tsha3_256_PUBKEY.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_sha3256_c[j], output_sha3256_jazz[j]);
-			}
-		}
 
 		//sha3_512_64; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -347,12 +280,6 @@ int test_fips202()
 	   	sha3_512_64_jazz(output_sha3512_jazz, input_sha351264_jazz);
 	    CLOCK2 = cpucycles();
 	    t_sha351264_jazz[i]= CLOCK2 - CLOCK1;
-		
-		for (j = 0; j < 64; ++j) {
-			if (output_sha3512_c[j] != output_sha3512_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tsha3_512_64.\nReason:\toutput_c[%ld] != output_jazz[%ld] ==> %d != %d\n", j, j, output_sha3512_c[j], output_sha3512_jazz[j]);
-			}
-		}
 	}
 
 	print_results("KeccakF1600_StatePermute_c: ", t_keccakf1600_c, NRUNS);

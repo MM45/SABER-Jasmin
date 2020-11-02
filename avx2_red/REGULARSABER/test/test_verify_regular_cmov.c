@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-#include "SABER_params.h"
+#include "../../GENERAL/SABER_params.h"
 #include "../../GENERAL/verify.h"
 #include "randomtestdata.h"
 
