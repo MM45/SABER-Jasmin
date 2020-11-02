@@ -77,28 +77,28 @@ JHEADERSREGULAR = $(wildcard ${REGULARDIRECTORY}/*.jahh)
 
 
 ${REGULARDIRECTORY}/test/test_pack_unpack_regular_%: ${REGULARDIRECTORY}/test/test_pack_unpack_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_verify_regular_%: ${REGULARDIRECTORY}/test/test_verify_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jverify_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jverify_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jverify_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_cbd_regular_%: ${REGULARDIRECTORY}/test/test_cbd_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_poly_mul_regular_%: ${REGULARDIRECTORY}/test/test_poly_mul_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_fips202_regular_%: ${REGULARDIRECTORY}/test/test_fips202_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_poly_regular_%: ${REGULARDIRECTORY}/test/test_poly_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_regular.s $< ${LDFLAGS}
 
 ${REGULARDIRECTORY}/test/test_kem_regular_%: ${REGULARDIRECTORY}/test/test_kem_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
+	${CC} ${CFLAGS} -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
 
 
 ${REGULARDIRECTORY}/pack_unpack_regular.japp: ${REGULARDIRECTORY}/pack_unpack_regular.jazz ${JHEADERSREGULAR}

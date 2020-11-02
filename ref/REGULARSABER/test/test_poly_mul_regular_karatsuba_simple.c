@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "SABER_params.h"
+#include "../../GENERAL/SABER_params.h"
 #include "../../GENERAL/poly_mul.h"
 #include "randomtestdata.h"
 

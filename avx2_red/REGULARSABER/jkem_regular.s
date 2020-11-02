@@ -19,147 +19,34 @@ crypto_kem_dec_jazz:
 	movq	%r14, 21752(%rsp)
 	movq	%r15, 21760(%rsp)
 	movq	$0, %rax
-	jmp 	Lcrypto_kem_dec_jazz$20
-Lcrypto_kem_dec_jazz$21:
+	jmp 	Lcrypto_kem_dec_jazz$18
+Lcrypto_kem_dec_jazz$19:
 	movb	(%rsi,%rax), %cl
 	movb	%cl, 19536(%rsp,%rax)
 	leaq	1(%rax), %rax
-Lcrypto_kem_dec_jazz$20:
+Lcrypto_kem_dec_jazz$18:
 	cmpq	$1088, %rax
-	jb  	Lcrypto_kem_dec_jazz$21
+	jb  	Lcrypto_kem_dec_jazz$19
 	movq	$0, %rax
-	jmp 	Lcrypto_kem_dec_jazz$18
-Lcrypto_kem_dec_jazz$19:
+	jmp 	Lcrypto_kem_dec_jazz$16
+Lcrypto_kem_dec_jazz$17:
 	movb	(%rdx,%rax), %cl
 	movb	%cl, 8000(%rsp,%rax)
 	leaq	1(%rax), %rax
-Lcrypto_kem_dec_jazz$18:
+Lcrypto_kem_dec_jazz$16:
 	cmpq	$2304, %rax
-	jb  	Lcrypto_kem_dec_jazz$19
+	jb  	Lcrypto_kem_dec_jazz$17
 	movq	%rdi, 19520(%rsp)
 	leaq	8000(%rsp), %rax
 	leaq	1856(%rsp), %rcx
-	movq	$0, %rdx
-	movq	$0, %rsi
-	movq	$0, %rdi
-	jmp 	Lcrypto_kem_dec_jazz$14
+	leaq	Lcrypto_kem_dec_jazz$15(%rip), 	%r11
+	jmp 	LBS2POLVECq$1
 Lcrypto_kem_dec_jazz$15:
-	movq	$0, %r8
-	jmp 	Lcrypto_kem_dec_jazz$16
-Lcrypto_kem_dec_jazz$17:
-	movzbw	(%rax,%rsi), %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$31, %r10w
-	shlw	$8, %r10w
-	orw 	%r10w, %r9w
-	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$5, %r9w
-	andw	$7, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$255, %r10w
-	shlw	$3, %r10w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r11w
-	andw	$3, %r11w
-	shlw	$11, %r11w
-	orw 	%r11w, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$2, %r9w
-	andw	$63, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$127, %r10w
-	shlw	$6, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$7, %r9w
-	andw	$1, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$255, %r10w
-	shlw	$1, %r10w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r11w
-	andw	$15, %r11w
-	shlw	$9, %r11w
-	orw 	%r11w, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$4, %r9w
-	andw	$15, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$255, %r10w
-	shlw	$4, %r10w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r11w
-	andw	$1, %r11w
-	shlw	$12, %r11w
-	orw 	%r11w, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$1, %r9w
-	andw	$127, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$63, %r10w
-	shlw	$7, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$6, %r9w
-	andw	$3, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$255, %r10w
-	shlw	$2, %r10w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r11w
-	andw	$7, %r11w
-	shlw	$10, %r11w
-	orw 	%r11w, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$3, %r9w
-	andw	$31, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$255, %r10w
-	shlw	$5, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	leaq	1(%r8), %r8
-	leaq	1(%rsi), %rsi
-	leaq	1(%rdi), %rdi
-Lcrypto_kem_dec_jazz$16:
-	cmpq	$32, %r8
-	jb  	Lcrypto_kem_dec_jazz$17
-	leaq	1(%rdx), %rdx
-Lcrypto_kem_dec_jazz$14:
-	cmpq	$3, %rdx
-	jb  	Lcrypto_kem_dec_jazz$15
 	leaq	19536(%rsp), %rax
 	leaq	3392(%rsp), %rcx
-	leaq	Lcrypto_kem_dec_jazz$13(%rip), 	%r11
+	leaq	Lcrypto_kem_dec_jazz$14(%rip), 	%r10
 	jmp 	LBS2POLVECp$1
-Lcrypto_kem_dec_jazz$13:
+Lcrypto_kem_dec_jazz$14:
 	vmovdqu	1856(%rsp), %ymm0
 	vmovdqu	%ymm0, 4928(%rsp)
 	vmovdqu	3392(%rsp), %ymm0
@@ -885,9 +772,23 @@ Lcrypto_kem_dec_jazz$13:
 	movb	%al, 319(%rsp)
 	leaq	192(%rsp), %rax
 	leaq	320(%rsp), %rcx
-	leaq	Lcrypto_kem_dec_jazz$12(%rip), 	%r8
-	jmp 	LSABER_un_pack4bit$1
+	movq	$0, %rdx
+	movq	$0, %rsi
+	movq	$1, %rdi
+	jmp 	Lcrypto_kem_dec_jazz$12
+Lcrypto_kem_dec_jazz$13:
+	movzbl	(%rax,%rdx), %r8d
+	andl	$15, %r8d
+	movw	%r8w, (%rcx,%rsi,2)
+	movzbl	(%rax,%rdx), %r8d
+	shrl	$4, %r8d
+	movw	%r8w, (%rcx,%rdi,2)
+	leaq	1(%rdx), %rdx
+	leaq	2(%rsi), %rsi
+	leaq	2(%rdi), %rdi
 Lcrypto_kem_dec_jazz$12:
+	cmpq	$256, %rsi
+	jb  	Lcrypto_kem_dec_jazz$13
 	movw	320(%rsp), %ax
 	shlw	$6, %ax
 	addw	$228, 832(%rsp)
@@ -2424,806 +2325,744 @@ Lcrypto_kem_dec_jazz$12:
 	subw	%ax, 1342(%rsp)
 	andw	$1023, 1342(%rsp)
 	shrw	$9, 1342(%rsp)
-	movb	$0, 64(%rsp)
-	movw	832(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 64(%rsp)
-	movw	834(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 64(%rsp)
-	movw	836(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 64(%rsp)
-	movw	838(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 64(%rsp)
-	movw	840(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 64(%rsp)
-	movw	842(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 64(%rsp)
-	movw	844(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 64(%rsp)
-	movw	846(%rsp), %ax
+	leaq	832(%rsp), %rax
+	leaq	64(%rsp), %rcx
+	movw	(%rax), %dx
+	movb	%dl, (%rcx)
+	movw	2(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, (%rcx)
+	movw	4(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, (%rcx)
+	movw	6(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, (%rcx)
+	movw	8(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, (%rcx)
+	movw	10(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, (%rcx)
+	movw	12(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, (%rcx)
+	movw	14(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, (%rcx)
+	movw	16(%rax), %dx
+	movb	%dl, 1(%rcx)
+	movw	18(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 1(%rcx)
+	movw	20(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 1(%rcx)
+	movw	22(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 1(%rcx)
+	movw	24(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 1(%rcx)
+	movw	26(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 1(%rcx)
+	movw	28(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 1(%rcx)
+	movw	30(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 1(%rcx)
+	movw	32(%rax), %dx
+	movb	%dl, 2(%rcx)
+	movw	34(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 2(%rcx)
+	movw	36(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 2(%rcx)
+	movw	38(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 2(%rcx)
+	movw	40(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 2(%rcx)
+	movw	42(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 2(%rcx)
+	movw	44(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 2(%rcx)
+	movw	46(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 2(%rcx)
+	movw	48(%rax), %dx
+	movb	%dl, 3(%rcx)
+	movw	50(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 3(%rcx)
+	movw	52(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 3(%rcx)
+	movw	54(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 3(%rcx)
+	movw	56(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 3(%rcx)
+	movw	58(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 3(%rcx)
+	movw	60(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 3(%rcx)
+	movw	62(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 3(%rcx)
+	movw	64(%rax), %dx
+	movb	%dl, 4(%rcx)
+	movw	66(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 4(%rcx)
+	movw	68(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 4(%rcx)
+	movw	70(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 4(%rcx)
+	movw	72(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 4(%rcx)
+	movw	74(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 4(%rcx)
+	movw	76(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 4(%rcx)
+	movw	78(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 4(%rcx)
+	movw	80(%rax), %dx
+	movb	%dl, 5(%rcx)
+	movw	82(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 5(%rcx)
+	movw	84(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 5(%rcx)
+	movw	86(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 5(%rcx)
+	movw	88(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 5(%rcx)
+	movw	90(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 5(%rcx)
+	movw	92(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 5(%rcx)
+	movw	94(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 5(%rcx)
+	movw	96(%rax), %dx
+	movb	%dl, 6(%rcx)
+	movw	98(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 6(%rcx)
+	movw	100(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 6(%rcx)
+	movw	102(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 6(%rcx)
+	movw	104(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 6(%rcx)
+	movw	106(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 6(%rcx)
+	movw	108(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 6(%rcx)
+	movw	110(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 6(%rcx)
+	movw	112(%rax), %dx
+	movb	%dl, 7(%rcx)
+	movw	114(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 7(%rcx)
+	movw	116(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 7(%rcx)
+	movw	118(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 7(%rcx)
+	movw	120(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 7(%rcx)
+	movw	122(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 7(%rcx)
+	movw	124(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 7(%rcx)
+	movw	126(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 7(%rcx)
+	movw	128(%rax), %dx
+	movb	%dl, 8(%rcx)
+	movw	130(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 8(%rcx)
+	movw	132(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 8(%rcx)
+	movw	134(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 8(%rcx)
+	movw	136(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 8(%rcx)
+	movw	138(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 8(%rcx)
+	movw	140(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 8(%rcx)
+	movw	142(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 8(%rcx)
+	movw	144(%rax), %dx
+	movb	%dl, 9(%rcx)
+	movw	146(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 9(%rcx)
+	movw	148(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 9(%rcx)
+	movw	150(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 9(%rcx)
+	movw	152(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 9(%rcx)
+	movw	154(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 9(%rcx)
+	movw	156(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 9(%rcx)
+	movw	158(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 9(%rcx)
+	movw	160(%rax), %dx
+	movb	%dl, 10(%rcx)
+	movw	162(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 10(%rcx)
+	movw	164(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 10(%rcx)
+	movw	166(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 10(%rcx)
+	movw	168(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 10(%rcx)
+	movw	170(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 10(%rcx)
+	movw	172(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 10(%rcx)
+	movw	174(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 10(%rcx)
+	movw	176(%rax), %dx
+	movb	%dl, 11(%rcx)
+	movw	178(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 11(%rcx)
+	movw	180(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 11(%rcx)
+	movw	182(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 11(%rcx)
+	movw	184(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 11(%rcx)
+	movw	186(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 11(%rcx)
+	movw	188(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 11(%rcx)
+	movw	190(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 11(%rcx)
+	movw	192(%rax), %dx
+	movb	%dl, 12(%rcx)
+	movw	194(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 12(%rcx)
+	movw	196(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 12(%rcx)
+	movw	198(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 12(%rcx)
+	movw	200(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 12(%rcx)
+	movw	202(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 12(%rcx)
+	movw	204(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 12(%rcx)
+	movw	206(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 12(%rcx)
+	movw	208(%rax), %dx
+	movb	%dl, 13(%rcx)
+	movw	210(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 13(%rcx)
+	movw	212(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 13(%rcx)
+	movw	214(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 13(%rcx)
+	movw	216(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 13(%rcx)
+	movw	218(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 13(%rcx)
+	movw	220(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 13(%rcx)
+	movw	222(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 13(%rcx)
+	movw	224(%rax), %dx
+	movb	%dl, 14(%rcx)
+	movw	226(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 14(%rcx)
+	movw	228(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 14(%rcx)
+	movw	230(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 14(%rcx)
+	movw	232(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 14(%rcx)
+	movw	234(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 14(%rcx)
+	movw	236(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 14(%rcx)
+	movw	238(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 14(%rcx)
+	movw	240(%rax), %dx
+	movb	%dl, 15(%rcx)
+	movw	242(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 15(%rcx)
+	movw	244(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 15(%rcx)
+	movw	246(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 15(%rcx)
+	movw	248(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 15(%rcx)
+	movw	250(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 15(%rcx)
+	movw	252(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 15(%rcx)
+	movw	254(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 15(%rcx)
+	movw	256(%rax), %dx
+	movb	%dl, 16(%rcx)
+	movw	258(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 16(%rcx)
+	movw	260(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 16(%rcx)
+	movw	262(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 16(%rcx)
+	movw	264(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 16(%rcx)
+	movw	266(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 16(%rcx)
+	movw	268(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 16(%rcx)
+	movw	270(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 16(%rcx)
+	movw	272(%rax), %dx
+	movb	%dl, 17(%rcx)
+	movw	274(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 17(%rcx)
+	movw	276(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 17(%rcx)
+	movw	278(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 17(%rcx)
+	movw	280(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 17(%rcx)
+	movw	282(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 17(%rcx)
+	movw	284(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 17(%rcx)
+	movw	286(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 17(%rcx)
+	movw	288(%rax), %dx
+	movb	%dl, 18(%rcx)
+	movw	290(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 18(%rcx)
+	movw	292(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 18(%rcx)
+	movw	294(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 18(%rcx)
+	movw	296(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 18(%rcx)
+	movw	298(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 18(%rcx)
+	movw	300(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 18(%rcx)
+	movw	302(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 18(%rcx)
+	movw	304(%rax), %dx
+	movb	%dl, 19(%rcx)
+	movw	306(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 19(%rcx)
+	movw	308(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 19(%rcx)
+	movw	310(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 19(%rcx)
+	movw	312(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 19(%rcx)
+	movw	314(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 19(%rcx)
+	movw	316(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 19(%rcx)
+	movw	318(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 19(%rcx)
+	movw	320(%rax), %dx
+	movb	%dl, 20(%rcx)
+	movw	322(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 20(%rcx)
+	movw	324(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 20(%rcx)
+	movw	326(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 20(%rcx)
+	movw	328(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 20(%rcx)
+	movw	330(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 20(%rcx)
+	movw	332(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 20(%rcx)
+	movw	334(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 20(%rcx)
+	movw	336(%rax), %dx
+	movb	%dl, 21(%rcx)
+	movw	338(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 21(%rcx)
+	movw	340(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 21(%rcx)
+	movw	342(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 21(%rcx)
+	movw	344(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 21(%rcx)
+	movw	346(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 21(%rcx)
+	movw	348(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 21(%rcx)
+	movw	350(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 21(%rcx)
+	movw	352(%rax), %dx
+	movb	%dl, 22(%rcx)
+	movw	354(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 22(%rcx)
+	movw	356(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 22(%rcx)
+	movw	358(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 22(%rcx)
+	movw	360(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 22(%rcx)
+	movw	362(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 22(%rcx)
+	movw	364(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 22(%rcx)
+	movw	366(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 22(%rcx)
+	movw	368(%rax), %dx
+	movb	%dl, 23(%rcx)
+	movw	370(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 23(%rcx)
+	movw	372(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 23(%rcx)
+	movw	374(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 23(%rcx)
+	movw	376(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 23(%rcx)
+	movw	378(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 23(%rcx)
+	movw	380(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 23(%rcx)
+	movw	382(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 23(%rcx)
+	movw	384(%rax), %dx
+	movb	%dl, 24(%rcx)
+	movw	386(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 24(%rcx)
+	movw	388(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 24(%rcx)
+	movw	390(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 24(%rcx)
+	movw	392(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 24(%rcx)
+	movw	394(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 24(%rcx)
+	movw	396(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 24(%rcx)
+	movw	398(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 24(%rcx)
+	movw	400(%rax), %dx
+	movb	%dl, 25(%rcx)
+	movw	402(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 25(%rcx)
+	movw	404(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 25(%rcx)
+	movw	406(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 25(%rcx)
+	movw	408(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 25(%rcx)
+	movw	410(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 25(%rcx)
+	movw	412(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 25(%rcx)
+	movw	414(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 25(%rcx)
+	movw	416(%rax), %dx
+	movb	%dl, 26(%rcx)
+	movw	418(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 26(%rcx)
+	movw	420(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 26(%rcx)
+	movw	422(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 26(%rcx)
+	movw	424(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 26(%rcx)
+	movw	426(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 26(%rcx)
+	movw	428(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 26(%rcx)
+	movw	430(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 26(%rcx)
+	movw	432(%rax), %dx
+	movb	%dl, 27(%rcx)
+	movw	434(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 27(%rcx)
+	movw	436(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 27(%rcx)
+	movw	438(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 27(%rcx)
+	movw	440(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 27(%rcx)
+	movw	442(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 27(%rcx)
+	movw	444(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 27(%rcx)
+	movw	446(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 27(%rcx)
+	movw	448(%rax), %dx
+	movb	%dl, 28(%rcx)
+	movw	450(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 28(%rcx)
+	movw	452(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 28(%rcx)
+	movw	454(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 28(%rcx)
+	movw	456(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 28(%rcx)
+	movw	458(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 28(%rcx)
+	movw	460(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 28(%rcx)
+	movw	462(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 28(%rcx)
+	movw	464(%rax), %dx
+	movb	%dl, 29(%rcx)
+	movw	466(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 29(%rcx)
+	movw	468(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 29(%rcx)
+	movw	470(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 29(%rcx)
+	movw	472(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 29(%rcx)
+	movw	474(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 29(%rcx)
+	movw	476(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 29(%rcx)
+	movw	478(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 29(%rcx)
+	movw	480(%rax), %dx
+	movb	%dl, 30(%rcx)
+	movw	482(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 30(%rcx)
+	movw	484(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 30(%rcx)
+	movw	486(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 30(%rcx)
+	movw	488(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 30(%rcx)
+	movw	490(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 30(%rcx)
+	movw	492(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 30(%rcx)
+	movw	494(%rax), %dx
+	shlw	$7, %dx
+	orb 	%dl, 30(%rcx)
+	movw	496(%rax), %dx
+	movb	%dl, 31(%rcx)
+	movw	498(%rax), %dx
+	shlw	$1, %dx
+	orb 	%dl, 31(%rcx)
+	movw	500(%rax), %dx
+	shlw	$2, %dx
+	orb 	%dl, 31(%rcx)
+	movw	502(%rax), %dx
+	shlw	$3, %dx
+	orb 	%dl, 31(%rcx)
+	movw	504(%rax), %dx
+	shlw	$4, %dx
+	orb 	%dl, 31(%rcx)
+	movw	506(%rax), %dx
+	shlw	$5, %dx
+	orb 	%dl, 31(%rcx)
+	movw	508(%rax), %dx
+	shlw	$6, %dx
+	orb 	%dl, 31(%rcx)
+	movw	510(%rax), %ax
 	shlw	$7, %ax
-	orb 	%al, 64(%rsp)
-	movb	$0, 65(%rsp)
-	movw	848(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 65(%rsp)
-	movw	850(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 65(%rsp)
-	movw	852(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 65(%rsp)
-	movw	854(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 65(%rsp)
-	movw	856(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 65(%rsp)
-	movw	858(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 65(%rsp)
-	movw	860(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 65(%rsp)
-	movw	862(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 65(%rsp)
-	movb	$0, 66(%rsp)
-	movw	864(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 66(%rsp)
-	movw	866(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 66(%rsp)
-	movw	868(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 66(%rsp)
-	movw	870(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 66(%rsp)
-	movw	872(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 66(%rsp)
-	movw	874(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 66(%rsp)
-	movw	876(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 66(%rsp)
-	movw	878(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 66(%rsp)
-	movb	$0, 67(%rsp)
-	movw	880(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 67(%rsp)
-	movw	882(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 67(%rsp)
-	movw	884(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 67(%rsp)
-	movw	886(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 67(%rsp)
-	movw	888(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 67(%rsp)
-	movw	890(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 67(%rsp)
-	movw	892(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 67(%rsp)
-	movw	894(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 67(%rsp)
-	movb	$0, 68(%rsp)
-	movw	896(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 68(%rsp)
-	movw	898(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 68(%rsp)
-	movw	900(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 68(%rsp)
-	movw	902(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 68(%rsp)
-	movw	904(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 68(%rsp)
-	movw	906(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 68(%rsp)
-	movw	908(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 68(%rsp)
-	movw	910(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 68(%rsp)
-	movb	$0, 69(%rsp)
-	movw	912(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 69(%rsp)
-	movw	914(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 69(%rsp)
-	movw	916(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 69(%rsp)
-	movw	918(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 69(%rsp)
-	movw	920(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 69(%rsp)
-	movw	922(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 69(%rsp)
-	movw	924(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 69(%rsp)
-	movw	926(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 69(%rsp)
-	movb	$0, 70(%rsp)
-	movw	928(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 70(%rsp)
-	movw	930(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 70(%rsp)
-	movw	932(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 70(%rsp)
-	movw	934(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 70(%rsp)
-	movw	936(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 70(%rsp)
-	movw	938(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 70(%rsp)
-	movw	940(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 70(%rsp)
-	movw	942(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 70(%rsp)
-	movb	$0, 71(%rsp)
-	movw	944(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 71(%rsp)
-	movw	946(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 71(%rsp)
-	movw	948(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 71(%rsp)
-	movw	950(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 71(%rsp)
-	movw	952(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 71(%rsp)
-	movw	954(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 71(%rsp)
-	movw	956(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 71(%rsp)
-	movw	958(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 71(%rsp)
-	movb	$0, 72(%rsp)
-	movw	960(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 72(%rsp)
-	movw	962(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 72(%rsp)
-	movw	964(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 72(%rsp)
-	movw	966(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 72(%rsp)
-	movw	968(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 72(%rsp)
-	movw	970(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 72(%rsp)
-	movw	972(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 72(%rsp)
-	movw	974(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 72(%rsp)
-	movb	$0, 73(%rsp)
-	movw	976(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 73(%rsp)
-	movw	978(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 73(%rsp)
-	movw	980(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 73(%rsp)
-	movw	982(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 73(%rsp)
-	movw	984(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 73(%rsp)
-	movw	986(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 73(%rsp)
-	movw	988(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 73(%rsp)
-	movw	990(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 73(%rsp)
-	movb	$0, 74(%rsp)
-	movw	992(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 74(%rsp)
-	movw	994(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 74(%rsp)
-	movw	996(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 74(%rsp)
-	movw	998(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 74(%rsp)
-	movw	1000(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 74(%rsp)
-	movw	1002(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 74(%rsp)
-	movw	1004(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 74(%rsp)
-	movw	1006(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 74(%rsp)
-	movb	$0, 75(%rsp)
-	movw	1008(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 75(%rsp)
-	movw	1010(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 75(%rsp)
-	movw	1012(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 75(%rsp)
-	movw	1014(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 75(%rsp)
-	movw	1016(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 75(%rsp)
-	movw	1018(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 75(%rsp)
-	movw	1020(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 75(%rsp)
-	movw	1022(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 75(%rsp)
-	movb	$0, 76(%rsp)
-	movw	1024(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 76(%rsp)
-	movw	1026(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 76(%rsp)
-	movw	1028(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 76(%rsp)
-	movw	1030(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 76(%rsp)
-	movw	1032(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 76(%rsp)
-	movw	1034(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 76(%rsp)
-	movw	1036(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 76(%rsp)
-	movw	1038(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 76(%rsp)
-	movb	$0, 77(%rsp)
-	movw	1040(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 77(%rsp)
-	movw	1042(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 77(%rsp)
-	movw	1044(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 77(%rsp)
-	movw	1046(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 77(%rsp)
-	movw	1048(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 77(%rsp)
-	movw	1050(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 77(%rsp)
-	movw	1052(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 77(%rsp)
-	movw	1054(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 77(%rsp)
-	movb	$0, 78(%rsp)
-	movw	1056(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 78(%rsp)
-	movw	1058(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 78(%rsp)
-	movw	1060(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 78(%rsp)
-	movw	1062(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 78(%rsp)
-	movw	1064(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 78(%rsp)
-	movw	1066(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 78(%rsp)
-	movw	1068(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 78(%rsp)
-	movw	1070(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 78(%rsp)
-	movb	$0, 79(%rsp)
-	movw	1072(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 79(%rsp)
-	movw	1074(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 79(%rsp)
-	movw	1076(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 79(%rsp)
-	movw	1078(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 79(%rsp)
-	movw	1080(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 79(%rsp)
-	movw	1082(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 79(%rsp)
-	movw	1084(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 79(%rsp)
-	movw	1086(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 79(%rsp)
-	movb	$0, 80(%rsp)
-	movw	1088(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 80(%rsp)
-	movw	1090(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 80(%rsp)
-	movw	1092(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 80(%rsp)
-	movw	1094(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 80(%rsp)
-	movw	1096(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 80(%rsp)
-	movw	1098(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 80(%rsp)
-	movw	1100(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 80(%rsp)
-	movw	1102(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 80(%rsp)
-	movb	$0, 81(%rsp)
-	movw	1104(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 81(%rsp)
-	movw	1106(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 81(%rsp)
-	movw	1108(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 81(%rsp)
-	movw	1110(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 81(%rsp)
-	movw	1112(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 81(%rsp)
-	movw	1114(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 81(%rsp)
-	movw	1116(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 81(%rsp)
-	movw	1118(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 81(%rsp)
-	movb	$0, 82(%rsp)
-	movw	1120(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 82(%rsp)
-	movw	1122(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 82(%rsp)
-	movw	1124(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 82(%rsp)
-	movw	1126(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 82(%rsp)
-	movw	1128(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 82(%rsp)
-	movw	1130(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 82(%rsp)
-	movw	1132(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 82(%rsp)
-	movw	1134(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 82(%rsp)
-	movb	$0, 83(%rsp)
-	movw	1136(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 83(%rsp)
-	movw	1138(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 83(%rsp)
-	movw	1140(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 83(%rsp)
-	movw	1142(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 83(%rsp)
-	movw	1144(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 83(%rsp)
-	movw	1146(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 83(%rsp)
-	movw	1148(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 83(%rsp)
-	movw	1150(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 83(%rsp)
-	movb	$0, 84(%rsp)
-	movw	1152(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 84(%rsp)
-	movw	1154(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 84(%rsp)
-	movw	1156(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 84(%rsp)
-	movw	1158(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 84(%rsp)
-	movw	1160(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 84(%rsp)
-	movw	1162(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 84(%rsp)
-	movw	1164(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 84(%rsp)
-	movw	1166(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 84(%rsp)
-	movb	$0, 85(%rsp)
-	movw	1168(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 85(%rsp)
-	movw	1170(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 85(%rsp)
-	movw	1172(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 85(%rsp)
-	movw	1174(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 85(%rsp)
-	movw	1176(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 85(%rsp)
-	movw	1178(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 85(%rsp)
-	movw	1180(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 85(%rsp)
-	movw	1182(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 85(%rsp)
-	movb	$0, 86(%rsp)
-	movw	1184(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 86(%rsp)
-	movw	1186(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 86(%rsp)
-	movw	1188(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 86(%rsp)
-	movw	1190(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 86(%rsp)
-	movw	1192(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 86(%rsp)
-	movw	1194(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 86(%rsp)
-	movw	1196(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 86(%rsp)
-	movw	1198(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 86(%rsp)
-	movb	$0, 87(%rsp)
-	movw	1200(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 87(%rsp)
-	movw	1202(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 87(%rsp)
-	movw	1204(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 87(%rsp)
-	movw	1206(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 87(%rsp)
-	movw	1208(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 87(%rsp)
-	movw	1210(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 87(%rsp)
-	movw	1212(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 87(%rsp)
-	movw	1214(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 87(%rsp)
-	movb	$0, 88(%rsp)
-	movw	1216(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 88(%rsp)
-	movw	1218(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 88(%rsp)
-	movw	1220(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 88(%rsp)
-	movw	1222(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 88(%rsp)
-	movw	1224(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 88(%rsp)
-	movw	1226(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 88(%rsp)
-	movw	1228(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 88(%rsp)
-	movw	1230(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 88(%rsp)
-	movb	$0, 89(%rsp)
-	movw	1232(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 89(%rsp)
-	movw	1234(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 89(%rsp)
-	movw	1236(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 89(%rsp)
-	movw	1238(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 89(%rsp)
-	movw	1240(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 89(%rsp)
-	movw	1242(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 89(%rsp)
-	movw	1244(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 89(%rsp)
-	movw	1246(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 89(%rsp)
-	movb	$0, 90(%rsp)
-	movw	1248(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 90(%rsp)
-	movw	1250(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 90(%rsp)
-	movw	1252(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 90(%rsp)
-	movw	1254(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 90(%rsp)
-	movw	1256(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 90(%rsp)
-	movw	1258(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 90(%rsp)
-	movw	1260(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 90(%rsp)
-	movw	1262(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 90(%rsp)
-	movb	$0, 91(%rsp)
-	movw	1264(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 91(%rsp)
-	movw	1266(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 91(%rsp)
-	movw	1268(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 91(%rsp)
-	movw	1270(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 91(%rsp)
-	movw	1272(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 91(%rsp)
-	movw	1274(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 91(%rsp)
-	movw	1276(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 91(%rsp)
-	movw	1278(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 91(%rsp)
-	movb	$0, 92(%rsp)
-	movw	1280(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 92(%rsp)
-	movw	1282(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 92(%rsp)
-	movw	1284(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 92(%rsp)
-	movw	1286(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 92(%rsp)
-	movw	1288(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 92(%rsp)
-	movw	1290(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 92(%rsp)
-	movw	1292(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 92(%rsp)
-	movw	1294(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 92(%rsp)
-	movb	$0, 93(%rsp)
-	movw	1296(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 93(%rsp)
-	movw	1298(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 93(%rsp)
-	movw	1300(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 93(%rsp)
-	movw	1302(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 93(%rsp)
-	movw	1304(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 93(%rsp)
-	movw	1306(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 93(%rsp)
-	movw	1308(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 93(%rsp)
-	movw	1310(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 93(%rsp)
-	movb	$0, 94(%rsp)
-	movw	1312(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 94(%rsp)
-	movw	1314(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 94(%rsp)
-	movw	1316(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 94(%rsp)
-	movw	1318(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 94(%rsp)
-	movw	1320(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 94(%rsp)
-	movw	1322(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 94(%rsp)
-	movw	1324(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 94(%rsp)
-	movw	1326(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 94(%rsp)
-	movb	$0, 95(%rsp)
-	movw	1328(%rsp), %ax
-	shlw	$0, %ax
-	orb 	%al, 95(%rsp)
-	movw	1330(%rsp), %ax
-	shlw	$1, %ax
-	orb 	%al, 95(%rsp)
-	movw	1332(%rsp), %ax
-	shlw	$2, %ax
-	orb 	%al, 95(%rsp)
-	movw	1334(%rsp), %ax
-	shlw	$3, %ax
-	orb 	%al, 95(%rsp)
-	movw	1336(%rsp), %ax
-	shlw	$4, %ax
-	orb 	%al, 95(%rsp)
-	movw	1338(%rsp), %ax
-	shlw	$5, %ax
-	orb 	%al, 95(%rsp)
-	movw	1340(%rsp), %ax
-	shlw	$6, %ax
-	orb 	%al, 95(%rsp)
-	movw	1342(%rsp), %ax
-	shlw	$7, %ax
-	orb 	%al, 95(%rsp)
+	orb 	%al, 31(%rcx)
 	movb	10240(%rsp), %al
 	movb	%al, 96(%rsp)
 	movb	10241(%rsp), %al
@@ -4773,12 +4612,12 @@ Lcrypto_kem_dec_jazz$9:
 	vmovdqu	%ymm0, 7968(%rsp)
 	leaq	20624(%rsp), %rax
 	leaq	6464(%rsp), %rcx
-	leaq	Lcrypto_kem_dec_jazz$8(%rip), 	%r11
+	leaq	Lcrypto_kem_dec_jazz$8(%rip), 	%r10
 	jmp 	LPOLVECp2BS$1
 Lcrypto_kem_dec_jazz$8:
 	leaq	9248(%rsp), %rax
 	leaq	4928(%rsp), %rcx
-	leaq	Lcrypto_kem_dec_jazz$7(%rip), 	%r11
+	leaq	Lcrypto_kem_dec_jazz$7(%rip), 	%r10
 	jmp 	LBS2POLVECp$1
 Lcrypto_kem_dec_jazz$7:
 	vmovdqu	4928(%rsp), %ymm0
@@ -6432,17 +6271,17 @@ Lcrypto_kem_dec_jazz$7:
 	vpinsrw	$7, 94(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 126(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm8
-	vinserti128	$1, %xmm1, %ymm8, %ymm8
-	vinserti128	$0, %xmm2, %ymm9, %ymm9
-	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$0, %xmm4, %ymm10, %ymm10
-	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$0, %xmm2, %ymm9, %ymm9
 	vinserti128	$0, %xmm6, %ymm11, %ymm11
+	vinserti128	$1, %xmm1, %ymm8, %ymm8
+	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$1, %xmm7, %ymm11, %ymm11
-	vpand	%ymm12, %ymm8, %ymm8
 	vpand	%ymm12, %ymm10, %ymm10
-	vpand	%ymm12, %ymm9, %ymm9
 	vpand	%ymm12, %ymm11, %ymm11
+	vpand	%ymm12, %ymm8, %ymm8
+	vpand	%ymm12, %ymm9, %ymm9
 	vpsllw	$4, %ymm10, %ymm10
 	vpsllw	$4, %ymm11, %ymm11
 	vpackuswb	%ymm9, %ymm8, %ymm13
@@ -6516,17 +6355,17 @@ Lcrypto_kem_dec_jazz$7:
 	vpinsrw	$7, 222(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 254(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm8
-	vinserti128	$1, %xmm1, %ymm8, %ymm8
-	vinserti128	$0, %xmm2, %ymm9, %ymm9
-	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$0, %xmm4, %ymm10, %ymm10
-	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$0, %xmm2, %ymm9, %ymm9
 	vinserti128	$0, %xmm6, %ymm11, %ymm11
+	vinserti128	$1, %xmm1, %ymm8, %ymm8
+	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$1, %xmm7, %ymm11, %ymm11
-	vpand	%ymm12, %ymm8, %ymm8
 	vpand	%ymm12, %ymm10, %ymm10
-	vpand	%ymm12, %ymm9, %ymm9
 	vpand	%ymm12, %ymm11, %ymm11
+	vpand	%ymm12, %ymm8, %ymm8
+	vpand	%ymm12, %ymm9, %ymm9
 	vpsllw	$4, %ymm10, %ymm10
 	vpsllw	$4, %ymm11, %ymm11
 	vpackuswb	%ymm9, %ymm8, %ymm13
@@ -6600,17 +6439,17 @@ Lcrypto_kem_dec_jazz$7:
 	vpinsrw	$7, 350(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 382(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm8
-	vinserti128	$1, %xmm1, %ymm8, %ymm8
-	vinserti128	$0, %xmm2, %ymm9, %ymm9
-	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$0, %xmm4, %ymm10, %ymm10
-	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$0, %xmm2, %ymm9, %ymm9
 	vinserti128	$0, %xmm6, %ymm11, %ymm11
+	vinserti128	$1, %xmm1, %ymm8, %ymm8
+	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$1, %xmm7, %ymm11, %ymm11
-	vpand	%ymm12, %ymm8, %ymm8
 	vpand	%ymm12, %ymm10, %ymm10
-	vpand	%ymm12, %ymm9, %ymm9
 	vpand	%ymm12, %ymm11, %ymm11
+	vpand	%ymm12, %ymm8, %ymm8
+	vpand	%ymm12, %ymm9, %ymm9
 	vpsllw	$4, %ymm10, %ymm10
 	vpsllw	$4, %ymm11, %ymm11
 	vpackuswb	%ymm9, %ymm8, %ymm13
@@ -6684,21 +6523,21 @@ Lcrypto_kem_dec_jazz$7:
 	vpinsrw	$7, 478(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 510(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm0
+	vinserti128	$0, %xmm4, %ymm10, %ymm4
+	vinserti128	$0, %xmm2, %ymm9, %ymm2
+	vinserti128	$0, %xmm6, %ymm11, %ymm6
 	vinserti128	$1, %xmm1, %ymm0, %ymm0
-	vinserti128	$0, %xmm2, %ymm9, %ymm1
-	vinserti128	$1, %xmm3, %ymm1, %ymm1
-	vinserti128	$0, %xmm4, %ymm10, %ymm2
-	vinserti128	$1, %xmm5, %ymm2, %ymm2
-	vinserti128	$0, %xmm6, %ymm11, %ymm3
-	vinserti128	$1, %xmm7, %ymm3, %ymm3
-	vpand	%ymm12, %ymm0, %ymm0
-	vpand	%ymm12, %ymm2, %ymm2
+	vinserti128	$1, %xmm5, %ymm4, %ymm1
+	vinserti128	$1, %xmm3, %ymm2, %ymm2
+	vinserti128	$1, %xmm7, %ymm6, %ymm3
 	vpand	%ymm12, %ymm1, %ymm1
 	vpand	%ymm12, %ymm3, %ymm3
-	vpsllw	$4, %ymm2, %ymm2
+	vpand	%ymm12, %ymm0, %ymm0
+	vpand	%ymm12, %ymm2, %ymm2
+	vpsllw	$4, %ymm1, %ymm1
 	vpsllw	$4, %ymm3, %ymm3
-	vpackuswb	%ymm1, %ymm0, %ymm0
-	vpackuswb	%ymm3, %ymm2, %ymm1
+	vpackuswb	%ymm2, %ymm0, %ymm0
+	vpackuswb	%ymm3, %ymm1, %ymm1
 	vpermq	$-40, %ymm0, %ymm0
 	vpermq	$-40, %ymm1, %ymm1
 	vpor	%ymm1, %ymm0, %ymm0
@@ -8630,12 +8469,12 @@ Lcrypto_kem_enc_randominc_jazz$9:
 	vmovdqu	%ymm0, 5120(%rsp)
 	leaq	18448(%rsp), %rax
 	leaq	3616(%rsp), %rcx
-	leaq	Lcrypto_kem_enc_randominc_jazz$8(%rip), 	%r11
+	leaq	Lcrypto_kem_enc_randominc_jazz$8(%rip), 	%r10
 	jmp 	LPOLVECp2BS$1
 Lcrypto_kem_enc_randominc_jazz$8:
 	leaq	17456(%rsp), %rax
 	leaq	2080(%rsp), %rcx
-	leaq	Lcrypto_kem_enc_randominc_jazz$7(%rip), 	%r11
+	leaq	Lcrypto_kem_enc_randominc_jazz$7(%rip), 	%r10
 	jmp 	LBS2POLVECp$1
 Lcrypto_kem_enc_randominc_jazz$7:
 	vmovdqu	2080(%rsp), %ymm0
@@ -10289,17 +10128,17 @@ Lcrypto_kem_enc_randominc_jazz$7:
 	vpinsrw	$7, 94(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 126(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm8
-	vinserti128	$1, %xmm1, %ymm8, %ymm8
-	vinserti128	$0, %xmm2, %ymm9, %ymm9
-	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$0, %xmm4, %ymm10, %ymm10
-	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$0, %xmm2, %ymm9, %ymm9
 	vinserti128	$0, %xmm6, %ymm11, %ymm11
+	vinserti128	$1, %xmm1, %ymm8, %ymm8
+	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$1, %xmm7, %ymm11, %ymm11
-	vpand	%ymm12, %ymm8, %ymm8
 	vpand	%ymm12, %ymm10, %ymm10
-	vpand	%ymm12, %ymm9, %ymm9
 	vpand	%ymm12, %ymm11, %ymm11
+	vpand	%ymm12, %ymm8, %ymm8
+	vpand	%ymm12, %ymm9, %ymm9
 	vpsllw	$4, %ymm10, %ymm10
 	vpsllw	$4, %ymm11, %ymm11
 	vpackuswb	%ymm9, %ymm8, %ymm13
@@ -10373,17 +10212,17 @@ Lcrypto_kem_enc_randominc_jazz$7:
 	vpinsrw	$7, 222(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 254(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm8
-	vinserti128	$1, %xmm1, %ymm8, %ymm8
-	vinserti128	$0, %xmm2, %ymm9, %ymm9
-	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$0, %xmm4, %ymm10, %ymm10
-	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$0, %xmm2, %ymm9, %ymm9
 	vinserti128	$0, %xmm6, %ymm11, %ymm11
+	vinserti128	$1, %xmm1, %ymm8, %ymm8
+	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$1, %xmm7, %ymm11, %ymm11
-	vpand	%ymm12, %ymm8, %ymm8
 	vpand	%ymm12, %ymm10, %ymm10
-	vpand	%ymm12, %ymm9, %ymm9
 	vpand	%ymm12, %ymm11, %ymm11
+	vpand	%ymm12, %ymm8, %ymm8
+	vpand	%ymm12, %ymm9, %ymm9
 	vpsllw	$4, %ymm10, %ymm10
 	vpsllw	$4, %ymm11, %ymm11
 	vpackuswb	%ymm9, %ymm8, %ymm13
@@ -10457,17 +10296,17 @@ Lcrypto_kem_enc_randominc_jazz$7:
 	vpinsrw	$7, 350(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 382(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm8
-	vinserti128	$1, %xmm1, %ymm8, %ymm8
-	vinserti128	$0, %xmm2, %ymm9, %ymm9
-	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$0, %xmm4, %ymm10, %ymm10
-	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$0, %xmm2, %ymm9, %ymm9
 	vinserti128	$0, %xmm6, %ymm11, %ymm11
+	vinserti128	$1, %xmm1, %ymm8, %ymm8
+	vinserti128	$1, %xmm5, %ymm10, %ymm10
+	vinserti128	$1, %xmm3, %ymm9, %ymm9
 	vinserti128	$1, %xmm7, %ymm11, %ymm11
-	vpand	%ymm12, %ymm8, %ymm8
 	vpand	%ymm12, %ymm10, %ymm10
-	vpand	%ymm12, %ymm9, %ymm9
 	vpand	%ymm12, %ymm11, %ymm11
+	vpand	%ymm12, %ymm8, %ymm8
+	vpand	%ymm12, %ymm9, %ymm9
 	vpsllw	$4, %ymm10, %ymm10
 	vpsllw	$4, %ymm11, %ymm11
 	vpackuswb	%ymm9, %ymm8, %ymm13
@@ -10541,21 +10380,21 @@ Lcrypto_kem_enc_randominc_jazz$7:
 	vpinsrw	$7, 478(%rcx), %xmm6, %xmm6
 	vpinsrw	$7, 510(%rcx), %xmm7, %xmm7
 	vinserti128	$0, %xmm0, %ymm8, %ymm0
+	vinserti128	$0, %xmm4, %ymm10, %ymm4
+	vinserti128	$0, %xmm2, %ymm9, %ymm2
+	vinserti128	$0, %xmm6, %ymm11, %ymm6
 	vinserti128	$1, %xmm1, %ymm0, %ymm0
-	vinserti128	$0, %xmm2, %ymm9, %ymm1
-	vinserti128	$1, %xmm3, %ymm1, %ymm1
-	vinserti128	$0, %xmm4, %ymm10, %ymm2
-	vinserti128	$1, %xmm5, %ymm2, %ymm2
-	vinserti128	$0, %xmm6, %ymm11, %ymm3
-	vinserti128	$1, %xmm7, %ymm3, %ymm3
-	vpand	%ymm12, %ymm0, %ymm0
-	vpand	%ymm12, %ymm2, %ymm2
+	vinserti128	$1, %xmm5, %ymm4, %ymm1
+	vinserti128	$1, %xmm3, %ymm2, %ymm2
+	vinserti128	$1, %xmm7, %ymm6, %ymm3
 	vpand	%ymm12, %ymm1, %ymm1
 	vpand	%ymm12, %ymm3, %ymm3
-	vpsllw	$4, %ymm2, %ymm2
+	vpand	%ymm12, %ymm0, %ymm0
+	vpand	%ymm12, %ymm2, %ymm2
+	vpsllw	$4, %ymm1, %ymm1
 	vpsllw	$4, %ymm3, %ymm3
-	vpackuswb	%ymm1, %ymm0, %ymm0
-	vpackuswb	%ymm3, %ymm2, %ymm1
+	vpackuswb	%ymm2, %ymm0, %ymm0
+	vpackuswb	%ymm3, %ymm1, %ymm1
 	vpermq	$-40, %ymm0, %ymm0
 	vpermq	$-40, %ymm1, %ymm1
 	vpor	%ymm1, %ymm0, %ymm0
@@ -10871,19 +10710,10 @@ crypto_kem_keypair_randominc_jazz:
 	movq	%r14, 17496(%rsp)
 	movq	%r15, 17504(%rsp)
 	movq	$0, %rax
-	jmp 	Lcrypto_kem_keypair_randominc_jazz$21
-Lcrypto_kem_keypair_randominc_jazz$22:
-	movb	(%rdx,%rax), %r9b
-	movb	%r9b, 17424(%rsp,%rax)
-	leaq	1(%rax), %rax
-Lcrypto_kem_keypair_randominc_jazz$21:
-	cmpq	$32, %rax
-	jb  	Lcrypto_kem_keypair_randominc_jazz$22
-	movq	$0, %rax
 	jmp 	Lcrypto_kem_keypair_randominc_jazz$19
 Lcrypto_kem_keypair_randominc_jazz$20:
-	movb	(%rcx,%rax), %dl
-	movb	%dl, (%rsp,%rax)
+	movb	(%rdx,%rax), %r9b
+	movb	%r9b, 17424(%rsp,%rax)
 	leaq	1(%rax), %rax
 Lcrypto_kem_keypair_randominc_jazz$19:
 	cmpq	$32, %rax
@@ -10891,12 +10721,21 @@ Lcrypto_kem_keypair_randominc_jazz$19:
 	movq	$0, %rax
 	jmp 	Lcrypto_kem_keypair_randominc_jazz$17
 Lcrypto_kem_keypair_randominc_jazz$18:
-	movb	(%r8,%rax), %cl
-	movb	%cl, 32(%rsp,%rax)
+	movb	(%rcx,%rax), %dl
+	movb	%dl, (%rsp,%rax)
 	leaq	1(%rax), %rax
 Lcrypto_kem_keypair_randominc_jazz$17:
 	cmpq	$32, %rax
 	jb  	Lcrypto_kem_keypair_randominc_jazz$18
+	movq	$0, %rax
+	jmp 	Lcrypto_kem_keypair_randominc_jazz$15
+Lcrypto_kem_keypair_randominc_jazz$16:
+	movb	(%r8,%rax), %cl
+	movb	%cl, 32(%rsp,%rax)
+	leaq	1(%rax), %rax
+Lcrypto_kem_keypair_randominc_jazz$15:
+	cmpq	$32, %rax
+	jb  	Lcrypto_kem_keypair_randominc_jazz$16
 	movq	%rdi, 16416(%rsp)
 	movq	%rsi, 16424(%rsp)
 	vmovdqu	glob_data + 288(%rip), %ymm0
@@ -11008,30 +10847,30 @@ Lcrypto_kem_keypair_randominc_jazz$17:
 	vmovdqu	%ymm2, 224(%rsp)
 	movq	$0, 256(%rsp)
 	leaq	64(%rsp), %rcx
-	leaq	Lcrypto_kem_keypair_randominc_jazz$16(%rip), 	%rsi
+	leaq	Lcrypto_kem_keypair_randominc_jazz$14(%rip), 	%rsi
 	jmp 	Lkeccak_absorb_128_32$1
-Lcrypto_kem_keypair_randominc_jazz$16:
+Lcrypto_kem_keypair_randominc_jazz$14:
 	leaq	64(%rsp), %rdi
 	leaq	-216(%rsp), %rsp
-	leaq	Lcrypto_kem_keypair_randominc_jazz$15(%rip), 	%r14
+	leaq	Lcrypto_kem_keypair_randominc_jazz$13(%rip), 	%r14
 	jmp 	LKeccakF1600_StatePermute$1
-Lcrypto_kem_keypair_randominc_jazz$15:
+Lcrypto_kem_keypair_randominc_jazz$13:
 	leaq	216(%rsp), %rsp
 	vmovdqu	64(%rsp), %ymm2
 	vmovdqu	%ymm2, (%rax)
 	leaq	7200(%rsp), %rax
 	movq	%rsp, %rdx
 	leaq	-3968(%rsp), %rsp
-	leaq	Lcrypto_kem_keypair_randominc_jazz$14(%rip), 	%r13
+	leaq	Lcrypto_kem_keypair_randominc_jazz$12(%rip), 	%r13
 	jmp 	LGenMatrix$1
-Lcrypto_kem_keypair_randominc_jazz$14:
+Lcrypto_kem_keypair_randominc_jazz$12:
 	leaq	3968(%rsp), %rsp
 	leaq	1824(%rsp), %rax
 	leaq	32(%rsp), %rdx
 	leaq	-1024(%rsp), %rsp
-	leaq	Lcrypto_kem_keypair_randominc_jazz$13(%rip), 	%r13
+	leaq	Lcrypto_kem_keypair_randominc_jazz$11(%rip), 	%r13
 	jmp 	LGenSecret$1
-Lcrypto_kem_keypair_randominc_jazz$13:
+Lcrypto_kem_keypair_randominc_jazz$11:
 	leaq	1024(%rsp), %rsp
 	vmovdqu	1824(%rsp), %ymm2
 	vmovdqu	%ymm2, 3360(%rsp)
@@ -12240,119 +12079,185 @@ Lcrypto_kem_keypair_randominc_jazz$13:
 	leaq	1824(%rsp), %rcx
 	movq	$0, %rdx
 	movq	$0, %rsi
-	movq	$0, %rdi
+	movq	$1, %rdi
 	jmp 	Lcrypto_kem_keypair_randominc_jazz$9
 Lcrypto_kem_keypair_randominc_jazz$10:
-	movq	$0, %r8
-	jmp 	Lcrypto_kem_keypair_randominc_jazz$11
-Lcrypto_kem_keypair_randominc_jazz$12:
-	movw	(%rcx,%rdi,2), %r9w
-	andw	$255, %r9w
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$8, %r9w
-	andw	$31, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$7, %r10w
-	shlw	$5, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$3, %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$11, %r9w
-	andw	$3, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$63, %r10w
-	shlw	$2, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$6, %r9w
-	andw	$127, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$1, %r10w
-	shlw	$7, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$1, %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$9, %r9w
-	andw	$15, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$15, %r10w
-	shlw	$4, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$4, %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$12, %r9w
-	andw	$1, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$127, %r10w
-	shlw	$1, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$7, %r9w
-	andw	$63, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$3, %r10w
-	shlw	$6, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$2, %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$10, %r9w
-	andw	$7, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$31, %r10w
-	shlw	$3, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$5, %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	leaq	1(%r8), %r8
-	leaq	1(%rsi), %rsi
-	leaq	1(%rdi), %rdi
-Lcrypto_kem_keypair_randominc_jazz$11:
-	cmpq	$32, %r8
-	jb  	Lcrypto_kem_keypair_randominc_jazz$12
+	movzwl	(%rcx,%rsi,2), %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$8, %r8d
+	shll	$5, %r9d
+	andl	$31, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$3, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$11, %r8d
+	shll	$2, %r9d
+	andl	$3, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$6, %r8d
+	shll	$7, %r9d
+	andl	$127, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$1, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$9, %r8d
+	shll	$4, %r9d
+	andl	$15, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$4, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$12, %r8d
+	shll	$1, %r9d
+	andl	$1, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$7, %r8d
+	shll	$6, %r9d
+	andl	$63, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$2, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	shrl	$10, %r8d
+	shll	$3, %r9d
+	andl	$7, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	leaq	2(%rsi), %rsi
+	leaq	2(%rdi), %rdi
+	shrl	$5, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$8, %r8d
+	shll	$5, %r9d
+	andl	$31, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$3, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$11, %r8d
+	shll	$2, %r9d
+	andl	$3, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$6, %r8d
+	shll	$7, %r9d
+	andl	$127, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$1, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$9, %r8d
+	shll	$4, %r9d
+	andl	$15, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$4, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$12, %r8d
+	shll	$1, %r9d
+	andl	$1, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$7, %r8d
+	shll	$6, %r9d
+	andl	$63, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$2, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	shrl	$10, %r8d
+	shll	$3, %r9d
+	andl	$7, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	leaq	2(%rsi), %rsi
+	leaq	2(%rdi), %rdi
+	shrl	$5, %r8d
+	movb	%r8b, (%rax,%rdx)
 	leaq	1(%rdx), %rdx
 Lcrypto_kem_keypair_randominc_jazz$9:
-	cmpq	$3, %rdx
+	cmpq	$768, %rsi
 	jb  	Lcrypto_kem_keypair_randominc_jazz$10
 	vmovdqu	288(%rsp), %ymm0
 	vmovdqu	%ymm0, 1824(%rsp)
@@ -12452,7 +12357,7 @@ Lcrypto_kem_keypair_randominc_jazz$9:
 	vmovdqu	%ymm0, 3328(%rsp)
 	leaq	16432(%rsp), %rax
 	leaq	1824(%rsp), %rcx
-	leaq	Lcrypto_kem_keypair_randominc_jazz$8(%rip), 	%r11
+	leaq	Lcrypto_kem_keypair_randominc_jazz$8(%rip), 	%r10
 	jmp 	LPOLVECp2BS$1
 Lcrypto_kem_keypair_randominc_jazz$8:
 	movb	(%rsp), %al
@@ -12629,83 +12534,149 @@ Lcrypto_kem_keypair_randominc_jazz$1:
 	movq	17504(%rsp), %r15
 	movq	17456(%rsp), %rsp
 	ret 
-LSABER_un_pack4bit$1:
+LBS2POLVECq$1:
 	movq	$0, %rdx
-	movq	$0, %rsi
-	jmp 	LSABER_un_pack4bit$2
-LSABER_un_pack4bit$3:
-	movzbw	(%rax,%rdx), %di
-	andw	$15, %di
-	movw	%di, (%rcx,%rsi,2)
-	movzbw	(%rax,%rdx), %di
-	shrw	$4, %di
-	andw	$15, %di
-	leaq	1(%rsi), %rsi
-	movw	%di, (%rcx,%rsi,2)
+	movq	$1, %rsi
+	movq	$2, %rdi
+	movq	$0, %r8
+	jmp 	LBS2POLVECq$2
+LBS2POLVECq$3:
+	movzbl	(%rax,%rsi), %r9d
+	movzbl	(%rax,%rdx), %r10d
+	leaq	3(%rdx), %rdx
+	shll	$8, %r9d
+	andl	$7936, %r9d
+	orl 	%r9d, %r10d
+	movw	%r10w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+	movzbl	(%rax,%rsi), %r9d
+	movzbl	(%rax,%rdi), %r10d
+	leaq	3(%rsi), %rsi
+	leaq	3(%rdi), %rdi
+	shrl	$5, %r9d
+	shll	$3, %r10d
+	orl 	%r10d, %r9d
+	movzbl	(%rax,%rdx), %r10d
+	shll	$11, %r10d
+	andl	$6144, %r10d
+	orl 	%r10d, %r9d
+	movw	%r9w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+	movzbl	(%rax,%rsi), %r9d
+	movzbl	(%rax,%rdx), %r10d
+	leaq	3(%rdx), %rdx
+	shll	$6, %r9d
+	shrl	$2, %r10d
+	andl	$8128, %r9d
+	orl 	%r9d, %r10d
+	movw	%r10w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+	movzbl	(%rax,%rsi), %r9d
+	movzbl	(%rax,%rdi), %r10d
+	leaq	3(%rsi), %rsi
+	leaq	3(%rdi), %rdi
+	shrl	$7, %r9d
+	leal	(%r10,%r10), %r10d
+	orl 	%r10d, %r9d
+	movzbl	(%rax,%rdx), %r10d
+	shll	$9, %r10d
+	andl	$7680, %r10d
+	orl 	%r10d, %r9d
+	movw	%r9w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+	movzbl	(%rax,%rdx), %r9d
+	movzbl	(%rax,%rsi), %r10d
+	leaq	3(%rdx), %rdx
+	leaq	3(%rsi), %rsi
+	shrl	$4, %r9d
+	shll	$4, %r10d
+	orl 	%r10d, %r9d
+	movzbl	(%rax,%rdi), %r10d
+	shll	$12, %r10d
+	andl	$4096, %r10d
+	orl 	%r10d, %r9d
+	movw	%r9w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+	movzbl	(%rax,%rdx), %r9d
+	movzbl	(%rax,%rdi), %r10d
+	leaq	3(%rdi), %rdi
+	shll	$7, %r9d
+	shrl	$1, %r10d
+	andl	$8064, %r9d
+	orl 	%r9d, %r10d
+	movw	%r10w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+	movzbl	(%rax,%rdx), %r9d
+	movzbl	(%rax,%rsi), %r10d
+	leaq	3(%rdx), %rdx
+	shrl	$6, %r9d
+	shll	$2, %r10d
+	orl 	%r10d, %r9d
+	movzbl	(%rax,%rdi), %r10d
+	shll	$10, %r10d
+	andl	$7168, %r10d
+	orl 	%r10d, %r9d
+	movw	%r9w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+	movzbl	(%rax,%rdi), %r9d
+	movzbl	(%rax,%rdx), %r10d
 	leaq	1(%rdx), %rdx
-	leaq	1(%rsi), %rsi
-LSABER_un_pack4bit$2:
-	cmpq	$128, %rdx
-	jb  	LSABER_un_pack4bit$3
-	jmp 	*%r8
+	leaq	4(%rsi), %rsi
+	leaq	4(%rdi), %rdi
+	shrl	$3, %r9d
+	shll	$5, %r10d
+	orl 	%r10d, %r9d
+	movw	%r9w, (%rcx,%r8,2)
+	leaq	1(%r8), %r8
+LBS2POLVECq$2:
+	cmpq	$768, %r8
+	jb  	LBS2POLVECq$3
+	jmp 	*%r11
 LBS2POLVECp$1:
 	movq	$0, %rdx
-	movq	$0, %rsi
+	movq	$1, %rsi
 	movq	$0, %rdi
 	jmp 	LBS2POLVECp$2
 LBS2POLVECp$3:
-	movq	$0, %r8
-	jmp 	LBS2POLVECp$4
-LBS2POLVECp$5:
-	movzbw	(%rax,%rsi), %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$3, %r10w
-	shlw	$8, %r10w
-	orw 	%r10w, %r9w
+	movzbl	(%rax,%rsi), %r8d
+	movzbl	(%rax,%rdx), %r9d
+	leaq	2(%rdx), %rdx
+	andl	$3, %r8d
+	shll	$8, %r8d
+	orl 	%r8d, %r9d
 	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$2, %r9w
-	andw	$63, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$15, %r10w
-	shlw	$6, %r10w
-	orw 	%r10w, %r9w
 	leaq	1(%rdi), %rdi
+	movzbl	(%rax,%rdx), %r8d
+	movzbl	(%rax,%rsi), %r9d
+	leaq	2(%rsi), %rsi
+	andl	$15, %r8d
+	shrl	$2, %r9d
+	shll	$6, %r8d
+	orl 	%r8d, %r9d
 	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$4, %r9w
-	andw	$15, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$63, %r10w
-	shlw	$4, %r10w
-	orw 	%r10w, %r9w
 	leaq	1(%rdi), %rdi
+	movzbl	(%rax,%rsi), %r8d
+	movzbl	(%rax,%rdx), %r9d
+	leaq	2(%rdx), %rdx
+	andl	$63, %r8d
+	shrl	$4, %r9d
+	shll	$4, %r8d
+	orl 	%r8d, %r9d
 	movw	%r9w, (%rcx,%rdi,2)
-	movzbw	(%rax,%rsi), %r9w
-	shrw	$6, %r9w
-	andw	$3, %r9w
-	leaq	1(%rsi), %rsi
-	movzbw	(%rax,%rsi), %r10w
-	andw	$255, %r10w
-	shlw	$2, %r10w
-	orw 	%r10w, %r9w
 	leaq	1(%rdi), %rdi
-	movw	%r9w, (%rcx,%rdi,2)
-	leaq	1(%r8), %r8
-	leaq	1(%rsi), %rsi
-	leaq	1(%rdi), %rdi
-LBS2POLVECp$4:
-	cmpq	$64, %r8
-	jb  	LBS2POLVECp$5
+	movzbl	(%rax,%rdx), %r8d
+	movzbl	(%rax,%rsi), %r9d
 	leaq	1(%rdx), %rdx
+	leaq	3(%rsi), %rsi
+	shll	$2, %r8d
+	shrl	$6, %r9d
+	orl 	%r8d, %r9d
+	movw	%r9w, (%rcx,%rdi,2)
+	leaq	1(%rdi), %rdi
 LBS2POLVECp$2:
-	cmpq	$3, %rdx
+	cmpq	$768, %rdi
 	jb  	LBS2POLVECp$3
-	jmp 	*%r11
+	jmp 	*%r10
 Lsha3_512_64$1:
 	vmovdqu	glob_data + 288(%rip), %ymm0
 	vmovdqu	%ymm0, (%rsp)
@@ -12933,61 +12904,83 @@ Lkeccak_absorb_256_single$2:
 LPOLVECp2BS$1:
 	movq	$0, %rdx
 	movq	$0, %rsi
-	movq	$0, %rdi
+	movq	$1, %rdi
 	jmp 	LPOLVECp2BS$2
 LPOLVECp2BS$3:
-	movq	$0, %r8
-	jmp 	LPOLVECp2BS$4
-LPOLVECp2BS$5:
-	movw	(%rcx,%rdi,2), %r9w
-	andw	$255, %r9w
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$8, %r9w
-	andw	$3, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$63, %r10w
-	shlw	$2, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$6, %r9w
-	andw	$15, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$15, %r10w
-	shlw	$4, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$4, %r9w
-	andw	$63, %r9w
-	leaq	1(%rdi), %rdi
-	movw	(%rcx,%rdi,2), %r10w
-	andw	$3, %r10w
-	shlw	$6, %r10w
-	orw 	%r10w, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	movw	(%rcx,%rdi,2), %r9w
-	shrw	$2, %r9w
-	andw	$255, %r9w
-	leaq	1(%rsi), %rsi
-	movb	%r9b, (%rax,%rsi)
-	leaq	1(%r8), %r8
-	leaq	1(%rsi), %rsi
-	leaq	1(%rdi), %rdi
-LPOLVECp2BS$4:
-	cmpq	$64, %r8
-	jb  	LPOLVECp2BS$5
+	movzwl	(%rcx,%rsi,2), %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$8, %r8d
+	shll	$2, %r9d
+	andl	$3, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$6, %r8d
+	shll	$4, %r9d
+	andl	$15, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	shrl	$4, %r8d
+	shll	$6, %r9d
+	andl	$63, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	leaq	2(%rsi), %rsi
+	leaq	2(%rdi), %rdi
+	shrl	$2, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$8, %r8d
+	shll	$2, %r9d
+	andl	$3, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$6, %r8d
+	shll	$4, %r9d
+	andl	$15, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	shrl	$4, %r8d
+	shll	$6, %r9d
+	andl	$63, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	leaq	2(%rsi), %rsi
+	leaq	2(%rdi), %rdi
+	shrl	$2, %r8d
+	movb	%r8b, (%rax,%rdx)
 	leaq	1(%rdx), %rdx
 LPOLVECp2BS$2:
-	cmpq	$3, %rdx
+	cmpq	$768, %rsi
 	jb  	LPOLVECp2BS$3
-	jmp 	*%r11
+	jmp 	*%r10
 LGenSecret$1:
 	movq	%rax, 992(%rsp)
 	leaq	224(%rsp), %rax

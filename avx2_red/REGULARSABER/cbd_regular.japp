@@ -269,16 +269,16 @@ export fn cbd_jazz(reg u64 rp, reg u64 bufp)
  stack u8[SABER_N] buf;
  stack u16[SABER_N] r;
 
-
-
-
-
+ for i = 0 to SABER_N {
+  tbuf = (u8) [bufp + i];
+  buf[i] = tbuf;
+ }
 
  r = cbd(r, buf);
 
-
-
-
-
+ for i = 0 to SABER_N {
+  tr = r[i];
+  (u16) [rp + 2 * i] = tr;
+ }
 
 }
