@@ -11,7 +11,6 @@
 
 #include "SABER_indcpa_regular_dummy_vv_mul.jahh" // TODO: REMOVE DUMMY MUL ONCE REAL MUL IS HERE
 
-
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
 	inline int i;

@@ -5,8 +5,6 @@
 
 #include "SABER_params.jahh"
 
-u256 fourbit_mask_glob_256 = 0x000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f;
-
 inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
 {	
 	inline int i;
@@ -18,7 +16,7 @@ inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[
 	reg u256[2] t256;
 	reg u256[2] r256;
 
-	fourbit_mask = fourbit_mask_glob_256;
+	fourbit_mask = fourbit_mask_16u16;
 
 	for i = 0 to SABER_N / 32 {
 		b128[0] = bytes[u128 i]; // ar[0]ar[2]..ar[28]ar[30] (8-bit)

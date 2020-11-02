@@ -5,12 +5,10 @@
 
 #include "SABER_params.jahh"
 
-u256 fourbit_mask_glob = 0x000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f;
-
 inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] data) -> reg ptr u8[SABER_SCALEBYTES_KEM]
 {
-
-	inline int i, j;
+	inline int i;
+	inline int j;
 
 	reg u128[4] zero_offset128;
 	reg u128[4] one_offset128;
@@ -34,7 +32,7 @@ inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SA
 	zero_offset256[1] = zero_u256;
 	one_offset256[0] = zero_u256;
 	one_offset256[1] = zero_u256;
-	fourbit_mask = fourbit_mask_glob;
+	fourbit_mask = fourbit_mask_16u16;
 
 	for i = 0 to SABER_N / 64 {
 		for j = 0 to 8 {

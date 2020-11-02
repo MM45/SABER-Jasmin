@@ -5,10 +5,6 @@
 
 #include "SABER_params.jahh"
 
-u256 twobit_mask_glob = 0x0003000300030003000300030003000300030003000300030003000300030003;
-u256 fourbit_mask_glob = 0x000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f;
-u256 sixbit_mask_glob = 0x003f003f003f003f003f003f003f003f003f003f003f003f003f003f003f003f;
-
 fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
 {
 	inline int i;
@@ -40,9 +36,9 @@ fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 	three_offset128 = zero_u128;
 	four_offset128 = zero_u128;
 
-	twobit_mask = twobit_mask_glob;
-	fourbit_mask = fourbit_mask_glob;
-	sixbit_mask = sixbit_mask_glob;
+	twobit_mask = twobit_mask_16u16;
+	fourbit_mask = fourbit_mask_16u16;
+	sixbit_mask = sixbit_mask_16u16;
 
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_N / 64 {
