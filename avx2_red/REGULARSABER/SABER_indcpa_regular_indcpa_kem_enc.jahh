@@ -47,6 +47,9 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 	stack u256[SABER_N / 16] message_avx;
 	//stack u256[SABER_K * 64] b_bucket;
 
+	stack u256 sH1;
+	stack u256 smodp;
+
 	// TODO: remove once multiplication is implemented
 	for i = 0 to SABER_KN / 16 {
 		t256 = zero_u256;
@@ -101,10 +104,16 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 		}
 	}
 
+	sH1 = H1_avx;
+	smodp = modp;
+
 	ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], temp);
 
 	pkcl = BS2POLVECp(pk[0:SABER_POLYVECCOMPRESSEDBYTES], pkcl);
 
+	H1_avx = sH1;
+	modp = smodp;
+	
 	for i = 0 to SABER_K {
 		for j = 0 to SABER_N / 16 {
 			t256 = pkcl[u256 i * SABER_N / 16 + j]; //load_16u16(pkcl[i * SABER_N + j * 16:16]);

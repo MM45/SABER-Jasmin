@@ -190,14 +190,17 @@ let classes_alignment (onfun : funname -> param_info option list) gtbl alias c =
     let tbl = if scope = E.Sglob then gtbl else ltbl in
     Hv.modify_def U8 x (fun ws' -> if wsize_lt ws' ws then ws else ws') tbl in
 
-  let add_ggvar x ws i = 
+  let add_ggvar x ws i =
     let x' = L.unloc x.gv in
     if is_gkvar x then
       begin
         let c = Alias.normalize_var alias x' in
         set c.in_var c.scope ws;
         if (fst c.range + i) land (size_of_ws ws - 1) <> 0 then
-          hierror "bad range alignment"
+            hierror "Varalloc.classes_alignment: at line %a: bad range alignment for %a[%d]/%s in %a"
+              L.pp_loc (L.loc x.gv)
+              pp_var x' i (string_of_ws ws)
+              Alias.pp_slice c
       end
     else set x' E.Sglob ws in
 
@@ -493,7 +496,7 @@ let extend_sao sao extra =
   let align, slots, size = alloc_local_stack sao.sao_size extra tbl in
   let align = if wsize_lt align sao.sao_align then sao.sao_align else align in
   let slots = List.map (fun (x,_,pos) -> (x,pos)) slots in
-  size, align, slots
+  size - sao.sao_size, align, slots
 
 
   

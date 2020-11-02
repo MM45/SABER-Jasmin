@@ -5,32 +5,39 @@
 
 #include "SABER_params.jahh"
 
+u256 fourbit_mask_glob_256 = 0x000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f;
+
 inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
-{
-	reg u32 b1;
+{	
+	inline int i;
 
-	reg u64 address_bytes;
-	reg u64[2] address_ar;
+	reg u128[2] b128;
 
-	address_bytes = 0;
+	reg u256 fourbit_mask;
+	reg u256[2] b256;
+	reg u256[2] t256;
+	reg u256[2] r256;
 
-	address_ar[0] = 0;
-	address_ar[1] = 1;
+	fourbit_mask = fourbit_mask_glob_256;
 
-	while (address_ar[0] < SABER_N) {
-		// ar[offset_data] = bytes[j] & 0x0f;
-		b1 = (32u) bytes[(int) address_bytes];
-		b1 &= 0x0f;
-		ar[(int) address_ar[0]] = (16u) b1;
+	for i = 0 to SABER_N / 32 {
+		b128[0] = bytes[u128 i]; // ar[0]ar[2]..ar[28]ar[30] (8-bit)
+		b128[1] = bytes[u128 i]; // ar[1]ar[3]..ar[29]ar[31] (8-bit)
 
-		// ar[offset_data+1] = (bytes[j]>>4) & 0x0f;
-		b1 = (32u) bytes[(int) address_bytes];
-		b1 >>= 4;
-		ar[(int) address_ar[1]] = (16u) b1;
+		b256[0] = #VPMOVZX_16u8_16u16(b128[0]); // ar[0]ar[2]..ar[28]ar[30] (16-bit)
+		b256[1] = #VPMOVZX_16u8_16u16(b128[1]); // ar[1]ar[3]..ar[29]ar[31] (16-bit)
 
-		address_bytes += 1;
-		address_ar[0] += 2;
-		address_ar[1] += 2;
+		b256[0] &= fourbit_mask;
+		b256[1] >>16u16= 4;
+
+		t256[0] = #VPUNPCKL_16u16(b256[0], b256[1]); // ar[0]ar[1]..a[7]a[16]..a[22]a[23] (16-bit)
+		t256[1] = #VPUNPCKH_16u16(b256[0], b256[1]); // ar[8]ar[9]..a[15]a[24]..ar[30]ar[31] (16-bit)
+
+		r256[0] = #VPERM2I128(t256[0], t256[1], (8u1) [0, 0, 1, 0, 0, 0, 0, 0]);
+		r256[1] = #VPERM2I128(t256[0], t256[1], (8u1) [0, 0, 1, 1, 0, 0, 0, 1]);
+
+		ar[u256 2 * i] = r256[0];
+		ar[u256 2 * i + 1] = r256[1];
 	}
 
 	return ar;
