@@ -36,9 +36,8 @@ inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk,
 		res_avx[i] = t256;
 	}
 
-	mod = #VPBROADCAST_16u16(modq_u16);
-	H1_avx = #VPBROADCAST_16u16(h1_u16);
-
+	mod = modq_16u16;
+	H1_avx = h1_16u16;
 
 	seed = shake128_32_32(seed, seed);
 

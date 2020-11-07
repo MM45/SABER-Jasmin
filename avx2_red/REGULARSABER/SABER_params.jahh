@@ -69,12 +69,7 @@ param int h1 = 4; // (SABER_EQ - SABER_EP - 1) * (SABER_EQ - SABER_EP - 1)
 param int h2 = 228; //( (1<<(SABER_EP-2)) - (1<<(SABER_EP-SABER_ET-1)) + (1<<(SABER_EQ-SABER_EP-1)) )
 
 
-/* AVX constants */
-
-u16 h1_u16 = h1;
-u16 h2_u16 = h2;
-u16 modp_u16 = SABER_P - 1;
-u16 modq_u16 = SABER_Q - 1;
+/* AVX2 constants */
 
 u128 zero_u128 = 0;
 
