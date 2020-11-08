@@ -1039,10 +1039,10 @@ Lcbd_jazz$1:
 	movq	%r8, %rsp
 	ret 
 Lcbd$1:
-	vmovdqu	glob_data + 96(%rip), %ymm0
+	vmovdqu	glob_data + 0(%rip), %ymm0
 	vmovdqu	glob_data + 64(%rip), %ymm1
-	vmovdqu	glob_data + 32(%rip), %ymm2
-	vmovdqu	glob_data + 0(%rip), %ymm3
+	vmovdqu	glob_data + 96(%rip), %ymm2
+	vmovdqu	glob_data + 32(%rip), %ymm3
 	vmovdqu	(%rcx), %ymm4
 	vmovdqu	32(%rcx), %ymm5
 	vpand	%ymm0, %ymm4, %ymm6
@@ -1426,6 +1426,38 @@ Lcbd$1:
 	.p2align	5
 _glob_data:
 glob_data:
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
+      .byte 17
       .byte -1
       .byte -1
       .byte 0
@@ -1456,38 +1488,6 @@ glob_data:
       .byte 0
       .byte -1
       .byte -1
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
-      .byte 0
-      .byte 0
-      .byte -1
-      .byte 31
       .byte 0
       .byte 0
       .byte 15
@@ -1522,91 +1522,307 @@ glob_data:
       .byte 0
       .byte 0
       .byte 0
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
-      .byte 17
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte -1
+      .byte 31
       .byte 0
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 63
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 15
       .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte 3
+      .byte 0
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
+      .byte -1
+      .byte 31
       .byte -1
       .byte 31
       .byte -1
       .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -1
+      .byte 3
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
+      .byte -28
+      .byte 0
       .byte -28
       .byte 0
       .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 4
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
+      .byte 0
       .byte 0

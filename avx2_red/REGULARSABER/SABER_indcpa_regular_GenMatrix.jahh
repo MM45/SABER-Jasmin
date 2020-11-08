@@ -7,8 +7,6 @@
 #include "fips202_regular_shake128_KK13N8_32.jahh"
 #include "SABER_indcpa_regular_BS2POLq.jahh"
 
-u256 qmod_glob = 0x1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff;
-
 fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
 
@@ -24,7 +22,7 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
 	stack ptr u16[SABER_KKN] sa;
 
-	qmod = qmod_glob;
+	qmod = modq_16u16;
 	
 	sa = a;
 

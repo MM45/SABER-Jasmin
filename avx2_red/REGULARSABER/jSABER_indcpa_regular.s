@@ -5428,7 +5428,7 @@ Lindcpa_kem_dec_jazz$1:
 	movb	%al, 7295(%rsp)
 	leaq	7168(%rsp), %rax
 	movq	%rsp, %rcx
-	vmovdqu	glob_data + 192(%rip), %ymm0
+	vmovdqu	glob_data + 160(%rip), %ymm0
 	vmovdqu	(%rax), %xmm1
 	vmovdqu	(%rax), %xmm2
 	vpmovzxbw	%xmm1, %ymm1
@@ -9991,105 +9991,105 @@ indcpa_kem_enc_jazz:
 	movb	991(%rdx), %al
 	movb	%al, 18119(%rsp)
 	movq	%rcx, 17088(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1728(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1760(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1792(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1824(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1856(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1888(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1920(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1952(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1984(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2016(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2048(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2080(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2112(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2144(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2176(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2208(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2240(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2272(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2304(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2336(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2368(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2400(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2432(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2464(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2496(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2528(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2560(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2592(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2624(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2656(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2688(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2720(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2752(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2784(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2816(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2848(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2880(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2912(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2944(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 2976(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3008(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3040(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3072(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3104(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3136(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3168(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3200(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 3232(%rsp)
-	vmovdqu	glob_data + 256(%rip), %ymm0
-	vmovdqu	glob_data + 288(%rip), %ymm1
-	vmovdqu	glob_data + 352(%rip), %ymm2
+	vmovdqu	glob_data + 224(%rip), %ymm0
+	vmovdqu	glob_data + 256(%rip), %ymm1
+	vmovdqu	glob_data + 320(%rip), %ymm2
 	movb	18088(%rsp), %al
 	movb	%al, 32(%rsp)
 	movb	18089(%rsp), %al
@@ -13054,19 +13054,19 @@ Lindcpa_kem_enc_jazz$1:
 	vmovdqu	%ymm0, 3744(%rsp)
 	leaq	64(%rsp), %rax
 	leaq	3264(%rsp), %rcx
-	vmovdqu	glob_data + 416(%rip), %xmm0
-	vmovdqu	glob_data + 416(%rip), %xmm1
-	vmovdqu	glob_data + 416(%rip), %xmm2
-	vmovdqu	glob_data + 416(%rip), %xmm3
-	vmovdqu	glob_data + 416(%rip), %xmm4
-	vmovdqu	glob_data + 416(%rip), %xmm5
-	vmovdqu	glob_data + 416(%rip), %xmm6
-	vmovdqu	glob_data + 416(%rip), %xmm7
-	vmovdqu	glob_data + 384(%rip), %ymm8
-	vmovdqu	glob_data + 384(%rip), %ymm9
-	vmovdqu	glob_data + 384(%rip), %ymm10
-	vmovdqu	glob_data + 384(%rip), %ymm11
-	vmovdqu	glob_data + 192(%rip), %ymm12
+	vmovdqu	glob_data + 384(%rip), %xmm0
+	vmovdqu	glob_data + 384(%rip), %xmm1
+	vmovdqu	glob_data + 384(%rip), %xmm2
+	vmovdqu	glob_data + 384(%rip), %xmm3
+	vmovdqu	glob_data + 384(%rip), %xmm4
+	vmovdqu	glob_data + 384(%rip), %xmm5
+	vmovdqu	glob_data + 384(%rip), %xmm6
+	vmovdqu	glob_data + 384(%rip), %xmm7
+	vmovdqu	glob_data + 352(%rip), %ymm8
+	vmovdqu	glob_data + 352(%rip), %ymm9
+	vmovdqu	glob_data + 352(%rip), %ymm10
+	vmovdqu	glob_data + 352(%rip), %ymm11
+	vmovdqu	glob_data + 160(%rip), %ymm12
 	vpinsrw	$0, (%rcx), %xmm0, %xmm0
 	vpinsrw	$0, 32(%rcx), %xmm1, %xmm1
 	vpinsrw	$0, 64(%rcx), %xmm2, %xmm2
@@ -15986,107 +15986,107 @@ indcpa_kem_keypair_randominc_jazz:
 	movb	%al, 63(%rsp)
 	movq	%rdi, 14112(%rsp)
 	movq	%rsi, 14120(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 288(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 320(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 352(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 384(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 416(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 448(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 480(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 512(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 544(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 576(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 608(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 640(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 672(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 704(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 736(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 768(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 800(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 832(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 864(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 896(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 928(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 960(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 992(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1024(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1056(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1088(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1120(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1152(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1184(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1216(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1248(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1280(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1312(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1344(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1376(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1408(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1440(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1472(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1504(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1536(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1568(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1600(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1632(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1664(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1696(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1728(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1760(%rsp)
-	vmovdqu	glob_data + 384(%rip), %ymm0
+	vmovdqu	glob_data + 352(%rip), %ymm0
 	vmovdqu	%ymm0, 1792(%rsp)
-	vmovdqu	glob_data + 256(%rip), %ymm0
-	vmovdqu	glob_data + 352(%rip), %ymm1
+	vmovdqu	glob_data + 224(%rip), %ymm0
+	vmovdqu	glob_data + 320(%rip), %ymm1
 	movq	%rsp, %rax
 	movq	%rsp, %rdx
-	vmovdqu	glob_data + 384(%rip), %ymm2
+	vmovdqu	glob_data + 352(%rip), %ymm2
 	vmovdqu	%ymm2, 64(%rsp)
 	vmovdqu	%ymm2, 96(%rsp)
 	vmovdqu	%ymm2, 128(%rsp)
@@ -31273,14 +31273,14 @@ LBS2POLVECq$2:
 	jb  	LBS2POLVECq$3
 	jmp 	*%r11
 LBS2POLVECp$1:
-	vmovdqu	glob_data + 416(%rip), %xmm0
-	vmovdqu	glob_data + 416(%rip), %xmm1
-	vmovdqu	glob_data + 416(%rip), %xmm2
-	vmovdqu	glob_data + 416(%rip), %xmm3
-	vmovdqu	glob_data + 416(%rip), %xmm4
-	vmovdqu	glob_data + 224(%rip), %ymm5
-	vmovdqu	glob_data + 192(%rip), %ymm6
-	vmovdqu	glob_data + 160(%rip), %ymm7
+	vmovdqu	glob_data + 384(%rip), %xmm0
+	vmovdqu	glob_data + 384(%rip), %xmm1
+	vmovdqu	glob_data + 384(%rip), %xmm2
+	vmovdqu	glob_data + 384(%rip), %xmm3
+	vmovdqu	glob_data + 384(%rip), %xmm4
+	vmovdqu	glob_data + 192(%rip), %ymm5
+	vmovdqu	glob_data + 160(%rip), %ymm6
+	vmovdqu	glob_data + 128(%rip), %ymm7
 	vpinsrb	$0, (%rax), %xmm0, %xmm0
 	vpinsrb	$0, 1(%rax), %xmm1, %xmm1
 	vpinsrb	$0, 2(%rax), %xmm2, %xmm2
@@ -32817,7 +32817,7 @@ LPOLVECp2BS$2:
 LGenSecret$1:
 	movq	%rax, 992(%rsp)
 	leaq	224(%rsp), %rax
-	vmovdqu	glob_data + 384(%rip), %ymm3
+	vmovdqu	glob_data + 352(%rip), %ymm3
 	vmovdqu	%ymm3, (%rsp)
 	vmovdqu	%ymm3, 32(%rsp)
 	vmovdqu	%ymm3, 64(%rsp)
@@ -33261,10 +33261,10 @@ Lcbd$1:
 	vmovdqu	%ymm3, 480(%rcx)
 	jmp 	*%rsi
 LGenMatrix$1:
-	vmovdqu	glob_data + 128(%rip), %ymm3
+	vmovdqu	glob_data + 224(%rip), %ymm3
 	movq	%rax, 3952(%rsp)
 	leaq	208(%rsp), %rax
-	vmovdqu	glob_data + 384(%rip), %ymm4
+	vmovdqu	glob_data + 352(%rip), %ymm4
 	vmovdqu	%ymm4, (%rsp)
 	vmovdqu	%ymm4, 32(%rsp)
 	vmovdqu	%ymm4, 64(%rsp)
@@ -33889,6 +33889,946 @@ Lkeccak_absorb_128_32$1:
 	xorb	$-128, 167(%rcx)
 	jmp 	*%rsi
 LKeccakF1600_StatePermute$1:
+	movq	(%rdx), %rsi
+	movq	8(%rdx), %rdi
+	movq	16(%rdx), %r8
+	movq	24(%rdx), %r9
+	movq	32(%rdx), %r10
+	xorq	40(%rdx), %rsi
+	xorq	48(%rdx), %rdi
+	xorq	56(%rdx), %r8
+	xorq	64(%rdx), %r9
+	xorq	72(%rdx), %r10
+	xorq	80(%rdx), %rsi
+	xorq	88(%rdx), %rdi
+	xorq	96(%rdx), %r8
+	xorq	104(%rdx), %r9
+	xorq	112(%rdx), %r10
+	xorq	120(%rdx), %rsi
+	xorq	128(%rdx), %rdi
+	xorq	136(%rdx), %r8
+	xorq	144(%rdx), %r9
+	xorq	152(%rdx), %r10
+	xorq	160(%rdx), %rsi
+	xorq	168(%rdx), %rdi
+	xorq	176(%rdx), %r8
+	xorq	184(%rdx), %r9
+	xorq	192(%rdx), %r10
+	movq	%rdi, %r11
+	movq	%r8, %rbp
+	movq	%r9, %rbx
+	movq	%r10, (%rsp)
+	movq	%rsi, 8(%rsp)
+	rolq	$1, %r11
+	rolq	$1, %rbp
+	rolq	$1, %rbx
+	rolq	$1, (%rsp)
+	rolq	$1, 8(%rsp)
+	xorq	%r10, %r11
+	xorq	%rsi, %rbp
+	xorq	%rdi, %rbx
+	xorq	%r8, (%rsp)
+	xorq	%r9, 8(%rsp)
+	movq	(%rdx), %rsi
+	movq	48(%rdx), %rdi
+	movq	96(%rdx), %r8
+	movq	144(%rdx), %r9
+	movq	192(%rdx), %r10
+	xorq	%r11, %rsi
+	xorq	%rbp, %rdi
+	xorq	%rbx, %r8
+	xorq	(%rsp), %r9
+	xorq	8(%rsp), %r10
+	rolq	$44, %rdi
+	rolq	$43, %r8
+	rolq	$21, %r9
+	rolq	$14, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	xorq	glob_data + 400(%rip), %r12
+	movq	%r12, 16(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 24(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 32(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 40(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 48(%rsp)
+	movq	24(%rdx), %rsi
+	movq	72(%rdx), %rdi
+	movq	80(%rdx), %r8
+	movq	128(%rdx), %r9
+	movq	176(%rdx), %r10
+	xorq	(%rsp), %rsi
+	xorq	8(%rsp), %rdi
+	xorq	%r11, %r8
+	xorq	%rbp, %r9
+	xorq	%rbx, %r10
+	rolq	$28, %rsi
+	rolq	$20, %rdi
+	rolq	$3, %r8
+	rolq	$45, %r9
+	rolq	$61, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 56(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 64(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 72(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 80(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 88(%rsp)
+	movq	8(%rdx), %rsi
+	movq	56(%rdx), %rdi
+	movq	104(%rdx), %r8
+	movq	152(%rdx), %r9
+	movq	160(%rdx), %r10
+	xorq	%rbp, %rsi
+	xorq	%rbx, %rdi
+	xorq	(%rsp), %r8
+	xorq	8(%rsp), %r9
+	xorq	%r11, %r10
+	rolq	$1, %rsi
+	rolq	$6, %rdi
+	rolq	$25, %r8
+	rolq	$8, %r9
+	rolq	$18, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 96(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 104(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 112(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 120(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 128(%rsp)
+	movq	32(%rdx), %rsi
+	movq	40(%rdx), %rdi
+	movq	88(%rdx), %r8
+	movq	136(%rdx), %r9
+	movq	184(%rdx), %r10
+	xorq	8(%rsp), %rsi
+	xorq	%r11, %rdi
+	xorq	%rbp, %r8
+	xorq	%rbx, %r9
+	xorq	(%rsp), %r10
+	rolq	$27, %rsi
+	rolq	$36, %rdi
+	rolq	$10, %r8
+	rolq	$15, %r9
+	rolq	$56, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 136(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 144(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 152(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 160(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 168(%rsp)
+	movq	16(%rdx), %rsi
+	movq	64(%rdx), %rdi
+	movq	112(%rdx), %r8
+	movq	120(%rdx), %r9
+	movq	168(%rdx), %r10
+	xorq	%rbx, %rsi
+	xorq	(%rsp), %rdi
+	xorq	8(%rsp), %r8
+	xorq	%r11, %r9
+	xorq	%rbp, %r10
+	rolq	$62, %rsi
+	rolq	$55, %rdi
+	rolq	$39, %r8
+	rolq	$41, %r9
+	rolq	$2, %r10
+	movq	%rdi, %r11
+	notq	%r11
+	andq	%r8, %r11
+	xorq	%rsi, %r11
+	movq	%r11, 176(%rsp)
+	movq	%r8, %r11
+	notq	%r11
+	andq	%r9, %r11
+	xorq	%rdi, %r11
+	movq	%r11, 184(%rsp)
+	movq	%r9, %r11
+	notq	%r11
+	andq	%r10, %r11
+	xorq	%r8, %r11
+	movq	%r11, 192(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 200(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 208(%rsp)
+	movq	16(%rsp), %rsi
+	movq	24(%rsp), %rdi
+	movq	32(%rsp), %r8
+	movq	40(%rsp), %r9
+	movq	48(%rsp), %r10
+	xorq	56(%rsp), %rsi
+	xorq	64(%rsp), %rdi
+	xorq	72(%rsp), %r8
+	xorq	80(%rsp), %r9
+	xorq	88(%rsp), %r10
+	xorq	96(%rsp), %rsi
+	xorq	104(%rsp), %rdi
+	xorq	112(%rsp), %r8
+	xorq	120(%rsp), %r9
+	xorq	128(%rsp), %r10
+	xorq	136(%rsp), %rsi
+	xorq	144(%rsp), %rdi
+	xorq	152(%rsp), %r8
+	xorq	160(%rsp), %r9
+	xorq	168(%rsp), %r10
+	xorq	176(%rsp), %rsi
+	xorq	184(%rsp), %rdi
+	xorq	192(%rsp), %r8
+	xorq	200(%rsp), %r9
+	xorq	208(%rsp), %r10
+	movq	%rdi, %r11
+	movq	%r8, %rbp
+	movq	%r9, %rbx
+	movq	%r10, 8(%rsp)
+	movq	%rsi, (%rsp)
+	rolq	$1, %r11
+	rolq	$1, %rbp
+	rolq	$1, %rbx
+	rolq	$1, 8(%rsp)
+	rolq	$1, (%rsp)
+	xorq	%r10, %r11
+	xorq	%rsi, %rbp
+	xorq	%rdi, %rbx
+	xorq	%r8, 8(%rsp)
+	xorq	%r9, (%rsp)
+	movq	16(%rsp), %rsi
+	movq	64(%rsp), %rdi
+	movq	112(%rsp), %r8
+	movq	160(%rsp), %r9
+	movq	208(%rsp), %r10
+	xorq	%r11, %rsi
+	xorq	%rbp, %rdi
+	xorq	%rbx, %r8
+	xorq	8(%rsp), %r9
+	xorq	(%rsp), %r10
+	rolq	$44, %rdi
+	rolq	$43, %r8
+	rolq	$21, %r9
+	rolq	$14, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	xorq	glob_data + 408(%rip), %r12
+	movq	%r12, (%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 8(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 16(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 24(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 32(%rdx)
+	movq	40(%rsp), %rsi
+	movq	88(%rsp), %rdi
+	movq	96(%rsp), %r8
+	movq	144(%rsp), %r9
+	movq	192(%rsp), %r10
+	xorq	8(%rsp), %rsi
+	xorq	(%rsp), %rdi
+	xorq	%r11, %r8
+	xorq	%rbp, %r9
+	xorq	%rbx, %r10
+	rolq	$28, %rsi
+	rolq	$20, %rdi
+	rolq	$3, %r8
+	rolq	$45, %r9
+	rolq	$61, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 40(%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 48(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 56(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 64(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 72(%rdx)
+	movq	24(%rsp), %rsi
+	movq	72(%rsp), %rdi
+	movq	120(%rsp), %r8
+	movq	168(%rsp), %r9
+	movq	176(%rsp), %r10
+	xorq	%rbp, %rsi
+	xorq	%rbx, %rdi
+	xorq	8(%rsp), %r8
+	xorq	(%rsp), %r9
+	xorq	%r11, %r10
+	rolq	$1, %rsi
+	rolq	$6, %rdi
+	rolq	$25, %r8
+	rolq	$8, %r9
+	rolq	$18, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 80(%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 88(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 96(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 104(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 112(%rdx)
+	movq	48(%rsp), %rsi
+	movq	56(%rsp), %rdi
+	movq	104(%rsp), %r8
+	movq	152(%rsp), %r9
+	movq	200(%rsp), %r10
+	xorq	(%rsp), %rsi
+	xorq	%r11, %rdi
+	xorq	%rbp, %r8
+	xorq	%rbx, %r9
+	xorq	8(%rsp), %r10
+	rolq	$27, %rsi
+	rolq	$36, %rdi
+	rolq	$10, %r8
+	rolq	$15, %r9
+	rolq	$56, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 120(%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 128(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 136(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 144(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 152(%rdx)
+	movq	32(%rsp), %rsi
+	movq	80(%rsp), %rdi
+	movq	128(%rsp), %r8
+	movq	136(%rsp), %r9
+	movq	184(%rsp), %r10
+	xorq	%rbx, %rsi
+	xorq	8(%rsp), %rdi
+	xorq	(%rsp), %r8
+	xorq	%r11, %r9
+	xorq	%rbp, %r10
+	rolq	$62, %rsi
+	rolq	$55, %rdi
+	rolq	$39, %r8
+	rolq	$41, %r9
+	rolq	$2, %r10
+	movq	%rdi, %r11
+	notq	%r11
+	andq	%r8, %r11
+	xorq	%rsi, %r11
+	movq	%r11, 160(%rdx)
+	movq	%r8, %r11
+	notq	%r11
+	andq	%r9, %r11
+	xorq	%rdi, %r11
+	movq	%r11, 168(%rdx)
+	movq	%r9, %r11
+	notq	%r11
+	andq	%r10, %r11
+	xorq	%r8, %r11
+	movq	%r11, 176(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 184(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 192(%rdx)
+	movq	(%rdx), %rsi
+	movq	8(%rdx), %rdi
+	movq	16(%rdx), %r8
+	movq	24(%rdx), %r9
+	movq	32(%rdx), %r10
+	xorq	40(%rdx), %rsi
+	xorq	48(%rdx), %rdi
+	xorq	56(%rdx), %r8
+	xorq	64(%rdx), %r9
+	xorq	72(%rdx), %r10
+	xorq	80(%rdx), %rsi
+	xorq	88(%rdx), %rdi
+	xorq	96(%rdx), %r8
+	xorq	104(%rdx), %r9
+	xorq	112(%rdx), %r10
+	xorq	120(%rdx), %rsi
+	xorq	128(%rdx), %rdi
+	xorq	136(%rdx), %r8
+	xorq	144(%rdx), %r9
+	xorq	152(%rdx), %r10
+	xorq	160(%rdx), %rsi
+	xorq	168(%rdx), %rdi
+	xorq	176(%rdx), %r8
+	xorq	184(%rdx), %r9
+	xorq	192(%rdx), %r10
+	movq	%rdi, %r11
+	movq	%r8, %rbp
+	movq	%r9, %rbx
+	movq	%r10, (%rsp)
+	movq	%rsi, 8(%rsp)
+	rolq	$1, %r11
+	rolq	$1, %rbp
+	rolq	$1, %rbx
+	rolq	$1, (%rsp)
+	rolq	$1, 8(%rsp)
+	xorq	%r10, %r11
+	xorq	%rsi, %rbp
+	xorq	%rdi, %rbx
+	xorq	%r8, (%rsp)
+	xorq	%r9, 8(%rsp)
+	movq	(%rdx), %rsi
+	movq	48(%rdx), %rdi
+	movq	96(%rdx), %r8
+	movq	144(%rdx), %r9
+	movq	192(%rdx), %r10
+	xorq	%r11, %rsi
+	xorq	%rbp, %rdi
+	xorq	%rbx, %r8
+	xorq	(%rsp), %r9
+	xorq	8(%rsp), %r10
+	rolq	$44, %rdi
+	rolq	$43, %r8
+	rolq	$21, %r9
+	rolq	$14, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	xorq	glob_data + 416(%rip), %r12
+	movq	%r12, 16(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 24(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 32(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 40(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 48(%rsp)
+	movq	24(%rdx), %rsi
+	movq	72(%rdx), %rdi
+	movq	80(%rdx), %r8
+	movq	128(%rdx), %r9
+	movq	176(%rdx), %r10
+	xorq	(%rsp), %rsi
+	xorq	8(%rsp), %rdi
+	xorq	%r11, %r8
+	xorq	%rbp, %r9
+	xorq	%rbx, %r10
+	rolq	$28, %rsi
+	rolq	$20, %rdi
+	rolq	$3, %r8
+	rolq	$45, %r9
+	rolq	$61, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 56(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 64(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 72(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 80(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 88(%rsp)
+	movq	8(%rdx), %rsi
+	movq	56(%rdx), %rdi
+	movq	104(%rdx), %r8
+	movq	152(%rdx), %r9
+	movq	160(%rdx), %r10
+	xorq	%rbp, %rsi
+	xorq	%rbx, %rdi
+	xorq	(%rsp), %r8
+	xorq	8(%rsp), %r9
+	xorq	%r11, %r10
+	rolq	$1, %rsi
+	rolq	$6, %rdi
+	rolq	$25, %r8
+	rolq	$8, %r9
+	rolq	$18, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 96(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 104(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 112(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 120(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 128(%rsp)
+	movq	32(%rdx), %rsi
+	movq	40(%rdx), %rdi
+	movq	88(%rdx), %r8
+	movq	136(%rdx), %r9
+	movq	184(%rdx), %r10
+	xorq	8(%rsp), %rsi
+	xorq	%r11, %rdi
+	xorq	%rbp, %r8
+	xorq	%rbx, %r9
+	xorq	(%rsp), %r10
+	rolq	$27, %rsi
+	rolq	$36, %rdi
+	rolq	$10, %r8
+	rolq	$15, %r9
+	rolq	$56, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 136(%rsp)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 144(%rsp)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 152(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 160(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 168(%rsp)
+	movq	16(%rdx), %rsi
+	movq	64(%rdx), %rdi
+	movq	112(%rdx), %r8
+	movq	120(%rdx), %r9
+	movq	168(%rdx), %r10
+	xorq	%rbx, %rsi
+	xorq	(%rsp), %rdi
+	xorq	8(%rsp), %r8
+	xorq	%r11, %r9
+	xorq	%rbp, %r10
+	rolq	$62, %rsi
+	rolq	$55, %rdi
+	rolq	$39, %r8
+	rolq	$41, %r9
+	rolq	$2, %r10
+	movq	%rdi, %r11
+	notq	%r11
+	andq	%r8, %r11
+	xorq	%rsi, %r11
+	movq	%r11, 176(%rsp)
+	movq	%r8, %r11
+	notq	%r11
+	andq	%r9, %r11
+	xorq	%rdi, %r11
+	movq	%r11, 184(%rsp)
+	movq	%r9, %r11
+	notq	%r11
+	andq	%r10, %r11
+	xorq	%r8, %r11
+	movq	%r11, 192(%rsp)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 200(%rsp)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 208(%rsp)
+	movq	16(%rsp), %rsi
+	movq	24(%rsp), %rdi
+	movq	32(%rsp), %r8
+	movq	40(%rsp), %r9
+	movq	48(%rsp), %r10
+	xorq	56(%rsp), %rsi
+	xorq	64(%rsp), %rdi
+	xorq	72(%rsp), %r8
+	xorq	80(%rsp), %r9
+	xorq	88(%rsp), %r10
+	xorq	96(%rsp), %rsi
+	xorq	104(%rsp), %rdi
+	xorq	112(%rsp), %r8
+	xorq	120(%rsp), %r9
+	xorq	128(%rsp), %r10
+	xorq	136(%rsp), %rsi
+	xorq	144(%rsp), %rdi
+	xorq	152(%rsp), %r8
+	xorq	160(%rsp), %r9
+	xorq	168(%rsp), %r10
+	xorq	176(%rsp), %rsi
+	xorq	184(%rsp), %rdi
+	xorq	192(%rsp), %r8
+	xorq	200(%rsp), %r9
+	xorq	208(%rsp), %r10
+	movq	%rdi, %r11
+	movq	%r8, %rbp
+	movq	%r9, %rbx
+	movq	%r10, 8(%rsp)
+	movq	%rsi, (%rsp)
+	rolq	$1, %r11
+	rolq	$1, %rbp
+	rolq	$1, %rbx
+	rolq	$1, 8(%rsp)
+	rolq	$1, (%rsp)
+	xorq	%r10, %r11
+	xorq	%rsi, %rbp
+	xorq	%rdi, %rbx
+	xorq	%r8, 8(%rsp)
+	xorq	%r9, (%rsp)
+	movq	16(%rsp), %rsi
+	movq	64(%rsp), %rdi
+	movq	112(%rsp), %r8
+	movq	160(%rsp), %r9
+	movq	208(%rsp), %r10
+	xorq	%r11, %rsi
+	xorq	%rbp, %rdi
+	xorq	%rbx, %r8
+	xorq	8(%rsp), %r9
+	xorq	(%rsp), %r10
+	rolq	$44, %rdi
+	rolq	$43, %r8
+	rolq	$21, %r9
+	rolq	$14, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	xorq	glob_data + 424(%rip), %r12
+	movq	%r12, (%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 8(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 16(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 24(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 32(%rdx)
+	movq	40(%rsp), %rsi
+	movq	88(%rsp), %rdi
+	movq	96(%rsp), %r8
+	movq	144(%rsp), %r9
+	movq	192(%rsp), %r10
+	xorq	8(%rsp), %rsi
+	xorq	(%rsp), %rdi
+	xorq	%r11, %r8
+	xorq	%rbp, %r9
+	xorq	%rbx, %r10
+	rolq	$28, %rsi
+	rolq	$20, %rdi
+	rolq	$3, %r8
+	rolq	$45, %r9
+	rolq	$61, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 40(%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 48(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 56(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 64(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 72(%rdx)
+	movq	24(%rsp), %rsi
+	movq	72(%rsp), %rdi
+	movq	120(%rsp), %r8
+	movq	168(%rsp), %r9
+	movq	176(%rsp), %r10
+	xorq	%rbp, %rsi
+	xorq	%rbx, %rdi
+	xorq	8(%rsp), %r8
+	xorq	(%rsp), %r9
+	xorq	%r11, %r10
+	rolq	$1, %rsi
+	rolq	$6, %rdi
+	rolq	$25, %r8
+	rolq	$8, %r9
+	rolq	$18, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 80(%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 88(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 96(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 104(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 112(%rdx)
+	movq	48(%rsp), %rsi
+	movq	56(%rsp), %rdi
+	movq	104(%rsp), %r8
+	movq	152(%rsp), %r9
+	movq	200(%rsp), %r10
+	xorq	(%rsp), %rsi
+	xorq	%r11, %rdi
+	xorq	%rbp, %r8
+	xorq	%rbx, %r9
+	xorq	8(%rsp), %r10
+	rolq	$27, %rsi
+	rolq	$36, %rdi
+	rolq	$10, %r8
+	rolq	$15, %r9
+	rolq	$56, %r10
+	movq	%rdi, %r12
+	notq	%r12
+	andq	%r8, %r12
+	xorq	%rsi, %r12
+	movq	%r12, 120(%rdx)
+	movq	%r8, %r12
+	notq	%r12
+	andq	%r9, %r12
+	xorq	%rdi, %r12
+	movq	%r12, 128(%rdx)
+	movq	%r9, %r12
+	notq	%r12
+	andq	%r10, %r12
+	xorq	%r8, %r12
+	movq	%r12, 136(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 144(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 152(%rdx)
+	movq	32(%rsp), %rsi
+	movq	80(%rsp), %rdi
+	movq	128(%rsp), %r8
+	movq	136(%rsp), %r9
+	movq	184(%rsp), %r10
+	xorq	%rbx, %rsi
+	xorq	8(%rsp), %rdi
+	xorq	(%rsp), %r8
+	xorq	%r11, %r9
+	xorq	%rbp, %r10
+	rolq	$62, %rsi
+	rolq	$55, %rdi
+	rolq	$39, %r8
+	rolq	$41, %r9
+	rolq	$2, %r10
+	movq	%rdi, %r11
+	notq	%r11
+	andq	%r8, %r11
+	xorq	%rsi, %r11
+	movq	%r11, 160(%rdx)
+	movq	%r8, %r11
+	notq	%r11
+	andq	%r9, %r11
+	xorq	%rdi, %r11
+	movq	%r11, 168(%rdx)
+	movq	%r9, %r11
+	notq	%r11
+	andq	%r10, %r11
+	xorq	%r8, %r11
+	movq	%r11, 176(%rdx)
+	movq	%r10, %r8
+	notq	%r8
+	andq	%rsi, %r8
+	xorq	%r9, %r8
+	movq	%r8, 184(%rdx)
+	notq	%rsi
+	andq	%rdi, %rsi
+	xorq	%r10, %rsi
+	movq	%rsi, 192(%rdx)
 	movq	(%rdx), %rsi
 	movq	8(%rdx), %rdi
 	movq	16(%rdx), %r8
@@ -38589,946 +39529,6 @@ LKeccakF1600_StatePermute$1:
 	andq	%rdi, %rsi
 	xorq	%r10, %rsi
 	movq	%rsi, 192(%rdx)
-	movq	(%rdx), %rsi
-	movq	8(%rdx), %rdi
-	movq	16(%rdx), %r8
-	movq	24(%rdx), %r9
-	movq	32(%rdx), %r10
-	xorq	40(%rdx), %rsi
-	xorq	48(%rdx), %rdi
-	xorq	56(%rdx), %r8
-	xorq	64(%rdx), %r9
-	xorq	72(%rdx), %r10
-	xorq	80(%rdx), %rsi
-	xorq	88(%rdx), %rdi
-	xorq	96(%rdx), %r8
-	xorq	104(%rdx), %r9
-	xorq	112(%rdx), %r10
-	xorq	120(%rdx), %rsi
-	xorq	128(%rdx), %rdi
-	xorq	136(%rdx), %r8
-	xorq	144(%rdx), %r9
-	xorq	152(%rdx), %r10
-	xorq	160(%rdx), %rsi
-	xorq	168(%rdx), %rdi
-	xorq	176(%rdx), %r8
-	xorq	184(%rdx), %r9
-	xorq	192(%rdx), %r10
-	movq	%rdi, %r11
-	movq	%r8, %rbp
-	movq	%r9, %rbx
-	movq	%r10, (%rsp)
-	movq	%rsi, 8(%rsp)
-	rolq	$1, %r11
-	rolq	$1, %rbp
-	rolq	$1, %rbx
-	rolq	$1, (%rsp)
-	rolq	$1, 8(%rsp)
-	xorq	%r10, %r11
-	xorq	%rsi, %rbp
-	xorq	%rdi, %rbx
-	xorq	%r8, (%rsp)
-	xorq	%r9, 8(%rsp)
-	movq	(%rdx), %rsi
-	movq	48(%rdx), %rdi
-	movq	96(%rdx), %r8
-	movq	144(%rdx), %r9
-	movq	192(%rdx), %r10
-	xorq	%r11, %rsi
-	xorq	%rbp, %rdi
-	xorq	%rbx, %r8
-	xorq	(%rsp), %r9
-	xorq	8(%rsp), %r10
-	rolq	$44, %rdi
-	rolq	$43, %r8
-	rolq	$21, %r9
-	rolq	$14, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	xorq	glob_data + 592(%rip), %r12
-	movq	%r12, 16(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 24(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 32(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 40(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 48(%rsp)
-	movq	24(%rdx), %rsi
-	movq	72(%rdx), %rdi
-	movq	80(%rdx), %r8
-	movq	128(%rdx), %r9
-	movq	176(%rdx), %r10
-	xorq	(%rsp), %rsi
-	xorq	8(%rsp), %rdi
-	xorq	%r11, %r8
-	xorq	%rbp, %r9
-	xorq	%rbx, %r10
-	rolq	$28, %rsi
-	rolq	$20, %rdi
-	rolq	$3, %r8
-	rolq	$45, %r9
-	rolq	$61, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 56(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 64(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 72(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 80(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 88(%rsp)
-	movq	8(%rdx), %rsi
-	movq	56(%rdx), %rdi
-	movq	104(%rdx), %r8
-	movq	152(%rdx), %r9
-	movq	160(%rdx), %r10
-	xorq	%rbp, %rsi
-	xorq	%rbx, %rdi
-	xorq	(%rsp), %r8
-	xorq	8(%rsp), %r9
-	xorq	%r11, %r10
-	rolq	$1, %rsi
-	rolq	$6, %rdi
-	rolq	$25, %r8
-	rolq	$8, %r9
-	rolq	$18, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 96(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 104(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 112(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 120(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 128(%rsp)
-	movq	32(%rdx), %rsi
-	movq	40(%rdx), %rdi
-	movq	88(%rdx), %r8
-	movq	136(%rdx), %r9
-	movq	184(%rdx), %r10
-	xorq	8(%rsp), %rsi
-	xorq	%r11, %rdi
-	xorq	%rbp, %r8
-	xorq	%rbx, %r9
-	xorq	(%rsp), %r10
-	rolq	$27, %rsi
-	rolq	$36, %rdi
-	rolq	$10, %r8
-	rolq	$15, %r9
-	rolq	$56, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 136(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 144(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 152(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 160(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 168(%rsp)
-	movq	16(%rdx), %rsi
-	movq	64(%rdx), %rdi
-	movq	112(%rdx), %r8
-	movq	120(%rdx), %r9
-	movq	168(%rdx), %r10
-	xorq	%rbx, %rsi
-	xorq	(%rsp), %rdi
-	xorq	8(%rsp), %r8
-	xorq	%r11, %r9
-	xorq	%rbp, %r10
-	rolq	$62, %rsi
-	rolq	$55, %rdi
-	rolq	$39, %r8
-	rolq	$41, %r9
-	rolq	$2, %r10
-	movq	%rdi, %r11
-	notq	%r11
-	andq	%r8, %r11
-	xorq	%rsi, %r11
-	movq	%r11, 176(%rsp)
-	movq	%r8, %r11
-	notq	%r11
-	andq	%r9, %r11
-	xorq	%rdi, %r11
-	movq	%r11, 184(%rsp)
-	movq	%r9, %r11
-	notq	%r11
-	andq	%r10, %r11
-	xorq	%r8, %r11
-	movq	%r11, 192(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 200(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 208(%rsp)
-	movq	16(%rsp), %rsi
-	movq	24(%rsp), %rdi
-	movq	32(%rsp), %r8
-	movq	40(%rsp), %r9
-	movq	48(%rsp), %r10
-	xorq	56(%rsp), %rsi
-	xorq	64(%rsp), %rdi
-	xorq	72(%rsp), %r8
-	xorq	80(%rsp), %r9
-	xorq	88(%rsp), %r10
-	xorq	96(%rsp), %rsi
-	xorq	104(%rsp), %rdi
-	xorq	112(%rsp), %r8
-	xorq	120(%rsp), %r9
-	xorq	128(%rsp), %r10
-	xorq	136(%rsp), %rsi
-	xorq	144(%rsp), %rdi
-	xorq	152(%rsp), %r8
-	xorq	160(%rsp), %r9
-	xorq	168(%rsp), %r10
-	xorq	176(%rsp), %rsi
-	xorq	184(%rsp), %rdi
-	xorq	192(%rsp), %r8
-	xorq	200(%rsp), %r9
-	xorq	208(%rsp), %r10
-	movq	%rdi, %r11
-	movq	%r8, %rbp
-	movq	%r9, %rbx
-	movq	%r10, 8(%rsp)
-	movq	%rsi, (%rsp)
-	rolq	$1, %r11
-	rolq	$1, %rbp
-	rolq	$1, %rbx
-	rolq	$1, 8(%rsp)
-	rolq	$1, (%rsp)
-	xorq	%r10, %r11
-	xorq	%rsi, %rbp
-	xorq	%rdi, %rbx
-	xorq	%r8, 8(%rsp)
-	xorq	%r9, (%rsp)
-	movq	16(%rsp), %rsi
-	movq	64(%rsp), %rdi
-	movq	112(%rsp), %r8
-	movq	160(%rsp), %r9
-	movq	208(%rsp), %r10
-	xorq	%r11, %rsi
-	xorq	%rbp, %rdi
-	xorq	%rbx, %r8
-	xorq	8(%rsp), %r9
-	xorq	(%rsp), %r10
-	rolq	$44, %rdi
-	rolq	$43, %r8
-	rolq	$21, %r9
-	rolq	$14, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	xorq	glob_data + 600(%rip), %r12
-	movq	%r12, (%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 8(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 16(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 24(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 32(%rdx)
-	movq	40(%rsp), %rsi
-	movq	88(%rsp), %rdi
-	movq	96(%rsp), %r8
-	movq	144(%rsp), %r9
-	movq	192(%rsp), %r10
-	xorq	8(%rsp), %rsi
-	xorq	(%rsp), %rdi
-	xorq	%r11, %r8
-	xorq	%rbp, %r9
-	xorq	%rbx, %r10
-	rolq	$28, %rsi
-	rolq	$20, %rdi
-	rolq	$3, %r8
-	rolq	$45, %r9
-	rolq	$61, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 40(%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 48(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 56(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 64(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 72(%rdx)
-	movq	24(%rsp), %rsi
-	movq	72(%rsp), %rdi
-	movq	120(%rsp), %r8
-	movq	168(%rsp), %r9
-	movq	176(%rsp), %r10
-	xorq	%rbp, %rsi
-	xorq	%rbx, %rdi
-	xorq	8(%rsp), %r8
-	xorq	(%rsp), %r9
-	xorq	%r11, %r10
-	rolq	$1, %rsi
-	rolq	$6, %rdi
-	rolq	$25, %r8
-	rolq	$8, %r9
-	rolq	$18, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 80(%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 88(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 96(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 104(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 112(%rdx)
-	movq	48(%rsp), %rsi
-	movq	56(%rsp), %rdi
-	movq	104(%rsp), %r8
-	movq	152(%rsp), %r9
-	movq	200(%rsp), %r10
-	xorq	(%rsp), %rsi
-	xorq	%r11, %rdi
-	xorq	%rbp, %r8
-	xorq	%rbx, %r9
-	xorq	8(%rsp), %r10
-	rolq	$27, %rsi
-	rolq	$36, %rdi
-	rolq	$10, %r8
-	rolq	$15, %r9
-	rolq	$56, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 120(%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 128(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 136(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 144(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 152(%rdx)
-	movq	32(%rsp), %rsi
-	movq	80(%rsp), %rdi
-	movq	128(%rsp), %r8
-	movq	136(%rsp), %r9
-	movq	184(%rsp), %r10
-	xorq	%rbx, %rsi
-	xorq	8(%rsp), %rdi
-	xorq	(%rsp), %r8
-	xorq	%r11, %r9
-	xorq	%rbp, %r10
-	rolq	$62, %rsi
-	rolq	$55, %rdi
-	rolq	$39, %r8
-	rolq	$41, %r9
-	rolq	$2, %r10
-	movq	%rdi, %r11
-	notq	%r11
-	andq	%r8, %r11
-	xorq	%rsi, %r11
-	movq	%r11, 160(%rdx)
-	movq	%r8, %r11
-	notq	%r11
-	andq	%r9, %r11
-	xorq	%rdi, %r11
-	movq	%r11, 168(%rdx)
-	movq	%r9, %r11
-	notq	%r11
-	andq	%r10, %r11
-	xorq	%r8, %r11
-	movq	%r11, 176(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 184(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 192(%rdx)
-	movq	(%rdx), %rsi
-	movq	8(%rdx), %rdi
-	movq	16(%rdx), %r8
-	movq	24(%rdx), %r9
-	movq	32(%rdx), %r10
-	xorq	40(%rdx), %rsi
-	xorq	48(%rdx), %rdi
-	xorq	56(%rdx), %r8
-	xorq	64(%rdx), %r9
-	xorq	72(%rdx), %r10
-	xorq	80(%rdx), %rsi
-	xorq	88(%rdx), %rdi
-	xorq	96(%rdx), %r8
-	xorq	104(%rdx), %r9
-	xorq	112(%rdx), %r10
-	xorq	120(%rdx), %rsi
-	xorq	128(%rdx), %rdi
-	xorq	136(%rdx), %r8
-	xorq	144(%rdx), %r9
-	xorq	152(%rdx), %r10
-	xorq	160(%rdx), %rsi
-	xorq	168(%rdx), %rdi
-	xorq	176(%rdx), %r8
-	xorq	184(%rdx), %r9
-	xorq	192(%rdx), %r10
-	movq	%rdi, %r11
-	movq	%r8, %rbp
-	movq	%r9, %rbx
-	movq	%r10, (%rsp)
-	movq	%rsi, 8(%rsp)
-	rolq	$1, %r11
-	rolq	$1, %rbp
-	rolq	$1, %rbx
-	rolq	$1, (%rsp)
-	rolq	$1, 8(%rsp)
-	xorq	%r10, %r11
-	xorq	%rsi, %rbp
-	xorq	%rdi, %rbx
-	xorq	%r8, (%rsp)
-	xorq	%r9, 8(%rsp)
-	movq	(%rdx), %rsi
-	movq	48(%rdx), %rdi
-	movq	96(%rdx), %r8
-	movq	144(%rdx), %r9
-	movq	192(%rdx), %r10
-	xorq	%r11, %rsi
-	xorq	%rbp, %rdi
-	xorq	%rbx, %r8
-	xorq	(%rsp), %r9
-	xorq	8(%rsp), %r10
-	rolq	$44, %rdi
-	rolq	$43, %r8
-	rolq	$21, %r9
-	rolq	$14, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	xorq	glob_data + 608(%rip), %r12
-	movq	%r12, 16(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 24(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 32(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 40(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 48(%rsp)
-	movq	24(%rdx), %rsi
-	movq	72(%rdx), %rdi
-	movq	80(%rdx), %r8
-	movq	128(%rdx), %r9
-	movq	176(%rdx), %r10
-	xorq	(%rsp), %rsi
-	xorq	8(%rsp), %rdi
-	xorq	%r11, %r8
-	xorq	%rbp, %r9
-	xorq	%rbx, %r10
-	rolq	$28, %rsi
-	rolq	$20, %rdi
-	rolq	$3, %r8
-	rolq	$45, %r9
-	rolq	$61, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 56(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 64(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 72(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 80(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 88(%rsp)
-	movq	8(%rdx), %rsi
-	movq	56(%rdx), %rdi
-	movq	104(%rdx), %r8
-	movq	152(%rdx), %r9
-	movq	160(%rdx), %r10
-	xorq	%rbp, %rsi
-	xorq	%rbx, %rdi
-	xorq	(%rsp), %r8
-	xorq	8(%rsp), %r9
-	xorq	%r11, %r10
-	rolq	$1, %rsi
-	rolq	$6, %rdi
-	rolq	$25, %r8
-	rolq	$8, %r9
-	rolq	$18, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 96(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 104(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 112(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 120(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 128(%rsp)
-	movq	32(%rdx), %rsi
-	movq	40(%rdx), %rdi
-	movq	88(%rdx), %r8
-	movq	136(%rdx), %r9
-	movq	184(%rdx), %r10
-	xorq	8(%rsp), %rsi
-	xorq	%r11, %rdi
-	xorq	%rbp, %r8
-	xorq	%rbx, %r9
-	xorq	(%rsp), %r10
-	rolq	$27, %rsi
-	rolq	$36, %rdi
-	rolq	$10, %r8
-	rolq	$15, %r9
-	rolq	$56, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 136(%rsp)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 144(%rsp)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 152(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 160(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 168(%rsp)
-	movq	16(%rdx), %rsi
-	movq	64(%rdx), %rdi
-	movq	112(%rdx), %r8
-	movq	120(%rdx), %r9
-	movq	168(%rdx), %r10
-	xorq	%rbx, %rsi
-	xorq	(%rsp), %rdi
-	xorq	8(%rsp), %r8
-	xorq	%r11, %r9
-	xorq	%rbp, %r10
-	rolq	$62, %rsi
-	rolq	$55, %rdi
-	rolq	$39, %r8
-	rolq	$41, %r9
-	rolq	$2, %r10
-	movq	%rdi, %r11
-	notq	%r11
-	andq	%r8, %r11
-	xorq	%rsi, %r11
-	movq	%r11, 176(%rsp)
-	movq	%r8, %r11
-	notq	%r11
-	andq	%r9, %r11
-	xorq	%rdi, %r11
-	movq	%r11, 184(%rsp)
-	movq	%r9, %r11
-	notq	%r11
-	andq	%r10, %r11
-	xorq	%r8, %r11
-	movq	%r11, 192(%rsp)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 200(%rsp)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 208(%rsp)
-	movq	16(%rsp), %rsi
-	movq	24(%rsp), %rdi
-	movq	32(%rsp), %r8
-	movq	40(%rsp), %r9
-	movq	48(%rsp), %r10
-	xorq	56(%rsp), %rsi
-	xorq	64(%rsp), %rdi
-	xorq	72(%rsp), %r8
-	xorq	80(%rsp), %r9
-	xorq	88(%rsp), %r10
-	xorq	96(%rsp), %rsi
-	xorq	104(%rsp), %rdi
-	xorq	112(%rsp), %r8
-	xorq	120(%rsp), %r9
-	xorq	128(%rsp), %r10
-	xorq	136(%rsp), %rsi
-	xorq	144(%rsp), %rdi
-	xorq	152(%rsp), %r8
-	xorq	160(%rsp), %r9
-	xorq	168(%rsp), %r10
-	xorq	176(%rsp), %rsi
-	xorq	184(%rsp), %rdi
-	xorq	192(%rsp), %r8
-	xorq	200(%rsp), %r9
-	xorq	208(%rsp), %r10
-	movq	%rdi, %r11
-	movq	%r8, %rbp
-	movq	%r9, %rbx
-	movq	%r10, 8(%rsp)
-	movq	%rsi, (%rsp)
-	rolq	$1, %r11
-	rolq	$1, %rbp
-	rolq	$1, %rbx
-	rolq	$1, 8(%rsp)
-	rolq	$1, (%rsp)
-	xorq	%r10, %r11
-	xorq	%rsi, %rbp
-	xorq	%rdi, %rbx
-	xorq	%r8, 8(%rsp)
-	xorq	%r9, (%rsp)
-	movq	16(%rsp), %rsi
-	movq	64(%rsp), %rdi
-	movq	112(%rsp), %r8
-	movq	160(%rsp), %r9
-	movq	208(%rsp), %r10
-	xorq	%r11, %rsi
-	xorq	%rbp, %rdi
-	xorq	%rbx, %r8
-	xorq	8(%rsp), %r9
-	xorq	(%rsp), %r10
-	rolq	$44, %rdi
-	rolq	$43, %r8
-	rolq	$21, %r9
-	rolq	$14, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	xorq	glob_data + 616(%rip), %r12
-	movq	%r12, (%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 8(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 16(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 24(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 32(%rdx)
-	movq	40(%rsp), %rsi
-	movq	88(%rsp), %rdi
-	movq	96(%rsp), %r8
-	movq	144(%rsp), %r9
-	movq	192(%rsp), %r10
-	xorq	8(%rsp), %rsi
-	xorq	(%rsp), %rdi
-	xorq	%r11, %r8
-	xorq	%rbp, %r9
-	xorq	%rbx, %r10
-	rolq	$28, %rsi
-	rolq	$20, %rdi
-	rolq	$3, %r8
-	rolq	$45, %r9
-	rolq	$61, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 40(%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 48(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 56(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 64(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 72(%rdx)
-	movq	24(%rsp), %rsi
-	movq	72(%rsp), %rdi
-	movq	120(%rsp), %r8
-	movq	168(%rsp), %r9
-	movq	176(%rsp), %r10
-	xorq	%rbp, %rsi
-	xorq	%rbx, %rdi
-	xorq	8(%rsp), %r8
-	xorq	(%rsp), %r9
-	xorq	%r11, %r10
-	rolq	$1, %rsi
-	rolq	$6, %rdi
-	rolq	$25, %r8
-	rolq	$8, %r9
-	rolq	$18, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 80(%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 88(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 96(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 104(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 112(%rdx)
-	movq	48(%rsp), %rsi
-	movq	56(%rsp), %rdi
-	movq	104(%rsp), %r8
-	movq	152(%rsp), %r9
-	movq	200(%rsp), %r10
-	xorq	(%rsp), %rsi
-	xorq	%r11, %rdi
-	xorq	%rbp, %r8
-	xorq	%rbx, %r9
-	xorq	8(%rsp), %r10
-	rolq	$27, %rsi
-	rolq	$36, %rdi
-	rolq	$10, %r8
-	rolq	$15, %r9
-	rolq	$56, %r10
-	movq	%rdi, %r12
-	notq	%r12
-	andq	%r8, %r12
-	xorq	%rsi, %r12
-	movq	%r12, 120(%rdx)
-	movq	%r8, %r12
-	notq	%r12
-	andq	%r9, %r12
-	xorq	%rdi, %r12
-	movq	%r12, 128(%rdx)
-	movq	%r9, %r12
-	notq	%r12
-	andq	%r10, %r12
-	xorq	%r8, %r12
-	movq	%r12, 136(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 144(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 152(%rdx)
-	movq	32(%rsp), %rsi
-	movq	80(%rsp), %rdi
-	movq	128(%rsp), %r8
-	movq	136(%rsp), %r9
-	movq	184(%rsp), %r10
-	xorq	%rbx, %rsi
-	xorq	8(%rsp), %rdi
-	xorq	(%rsp), %r8
-	xorq	%r11, %r9
-	xorq	%rbp, %r10
-	rolq	$62, %rsi
-	rolq	$55, %rdi
-	rolq	$39, %r8
-	rolq	$41, %r9
-	rolq	$2, %r10
-	movq	%rdi, %r11
-	notq	%r11
-	andq	%r8, %r11
-	xorq	%rsi, %r11
-	movq	%r11, 160(%rdx)
-	movq	%r8, %r11
-	notq	%r11
-	andq	%r9, %r11
-	xorq	%rdi, %r11
-	movq	%r11, 168(%rdx)
-	movq	%r9, %r11
-	notq	%r11
-	andq	%r10, %r11
-	xorq	%r8, %r11
-	movq	%r11, 176(%rdx)
-	movq	%r10, %r8
-	notq	%r8
-	andq	%rsi, %r8
-	xorq	%r9, %r8
-	movq	%r8, 184(%rdx)
-	notq	%rsi
-	andq	%rdi, %rsi
-	xorq	%r10, %rsi
-	movq	%rsi, 192(%rdx)
 	jmp 	*%r14
 	.data
 	.globl	_glob_data
@@ -39664,38 +39664,6 @@ glob_data:
       .byte 17
       .byte 17
       .byte 17
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
-      .byte -1
-      .byte 31
       .byte 63
       .byte 0
       .byte 63

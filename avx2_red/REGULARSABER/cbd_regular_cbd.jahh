@@ -5,18 +5,13 @@
 
 #include "SABER_params.jahh"
 
-u256 one_mask_glob = 0x1111111111111111111111111111111111111111111111111111111111111111;
-u256 f_mask_glob = 0x0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f;
-u256 qmod_mask_glob = 0x00001fff00001fff00001fff00001fff00001fff00001fff00001fff00001fff;
-u256 sixteen_bit_mask_glob = 0x0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff;
-
 fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 {
     inline int i;
 
     reg u256 tt256;
-    reg u256 one_mask;
-    reg u256 f_mask;
+    reg u256 onebit_mask;
+    reg u256 fourbit_mask;
     reg u256 qmod;
     reg u256 sixteen_bit_mask;
 
@@ -27,53 +22,53 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
     reg u256[4] r256;
     reg u256[2] ord256;
 
-    one_mask = one_mask_glob;
-    f_mask = f_mask_glob;
-    qmod = qmod_mask_glob;
-    sixteen_bit_mask = sixteen_bit_mask_glob;
+    onebit_mask = onebit_mask_64u4;
+    fourbit_mask = fourbit_mask_8u32;
+    qmod = modq_8u32;
+    sixteen_bit_mask = sixteenbit_mask_8u32;
 
     for i = 0 to (SABER_N / 64) {
         t256[0] = buf[u256 2 * i];
         t256[1] = buf[u256 2 * i + 1];
 
-        d256[0] = t256[0] & one_mask;
+        d256[0] = t256[0] & onebit_mask;
         
         tt256 = t256[0] >>8u32 1;
-        tt256 &= one_mask;
+        tt256 &= onebit_mask;
         d256[0] +8u32= tt256;
 
         tt256 = t256[0] >>8u32 2;
-        tt256 &= one_mask;
+        tt256 &= onebit_mask;
         d256[0] +8u32= tt256;
 
         tt256 = t256[0] >>8u32 3;
-        tt256 &= one_mask;
+        tt256 &= onebit_mask;
         d256[0] +8u32= tt256;
 
-        d256[1] = t256[1] & one_mask;
+        d256[1] = t256[1] & onebit_mask;
         
         tt256 = t256[1] >>8u32 1;
-        tt256 &= one_mask;
+        tt256 &= onebit_mask;
         d256[1] +8u32= tt256;
 
         tt256 = t256[1] >>8u32 2;
-        tt256 &= one_mask;
+        tt256 &= onebit_mask;
         d256[1] +8u32= tt256;
 
         tt256 = t256[1] >>8u32 3;
-        tt256 &= one_mask;
+        tt256 &= onebit_mask;
         d256[1] +8u32= tt256;
 
         // a[0] - b[0] & Qmod
-        a256[0] = d256[0] & f_mask;
+        a256[0] = d256[0] & fourbit_mask;
         
         b256[0] = d256[0] >>8u32 4;
-        b256[0] &= f_mask;
+        b256[0] &= fourbit_mask;
 
-        a256[1] = d256[1] & f_mask;
+        a256[1] = d256[1] & fourbit_mask;
 
         b256[1] = d256[1] >>8u32 4;
-        b256[1] &= f_mask;
+        b256[1] &= fourbit_mask;
 
         t256[0] = a256[0] -8u32 b256[0]; // r[0]..r[12]r[16]..r[28] (32-bit)
         t256[1] = a256[1] -8u32 b256[1]; // r[32]..r[44]r[48]..r[60] (32-bit)
@@ -87,16 +82,16 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
 
         // a[1] - b[1] & Qmod
         a256[0] = d256[0] >>8u32 8;
-        a256[0] &= f_mask;
+        a256[0] &= fourbit_mask;
         
         b256[0] = d256[0] >>8u32 12;
-        b256[0] &= f_mask;
+        b256[0] &= fourbit_mask;
 
         a256[1] = d256[1] >>8u32 8;
-        a256[1] &= f_mask;
+        a256[1] &= fourbit_mask;
 
         b256[1] = d256[1] >>8u32 12;
-        b256[1] &= f_mask;
+        b256[1] &= fourbit_mask;
 
         t256[0] = a256[0] -8u32 b256[0]; // r[1]..r[13]r[17]..r[29] (32-bit)
         t256[1] = a256[1] -8u32 b256[1]; // r[33]..r[45]r[49]..r[61] (32-bit)
@@ -110,16 +105,16 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         
         // a[2] - b[2] & Qmod
         a256[0] = d256[0] >>8u32 16;
-        a256[0] &= f_mask;
+        a256[0] &= fourbit_mask;
         
         b256[0] = d256[0] >>8u32 20;
-        b256[0] &= f_mask;
+        b256[0] &= fourbit_mask;
 
         a256[1] = d256[1] >>8u32 16;
-        a256[1] &= f_mask;
+        a256[1] &= fourbit_mask;
 
         b256[1] = d256[1] >>8u32 20;
-        b256[1] &= f_mask;
+        b256[1] &= fourbit_mask;
 
         t256[0] = a256[0] -8u32 b256[0]; // r[2]..r[14]r[18]..r[30] (32-bit)
         t256[1] = a256[1] -8u32 b256[1]; // r[34]..r[46]r[50]..r[62] (32-bit)
@@ -133,12 +128,12 @@ fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
         
         // a[3] - b[3] & Qmod
         a256[0] = d256[0] >>8u32 24;
-        a256[0] &= f_mask;
+        a256[0] &= fourbit_mask;
         
         b256[0] = d256[0] >>8u32 28;
 
         a256[1] = d256[1] >>8u32 24;
-        a256[1] &= f_mask;
+        a256[1] &= fourbit_mask;
 
         b256[1] = d256[1] >>8u32 28;
 

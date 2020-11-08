@@ -949,8 +949,6 @@ fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg 
  return data;
 }
 
-u256 qmod_glob = 0x1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff;
-
 fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
 
@@ -966,7 +964,7 @@ fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg 
 
  stack ptr u16[SABER_KKN] sa;
 
- qmod = qmod_glob;
+ qmod = modq_16u16;
 
  sa = a;
 
