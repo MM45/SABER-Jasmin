@@ -1,0 +1,36 @@
+/*** polyvec_ntt_regular_polyvec_iprod.jahh: File containing the Jasmin implementation of polyvec_iprod function from polyvec_ntt.c, with (regular) SABER parameters ***/
+
+#ifndef POLYVEC_IPROD_HH
+#define POLYVEC_IPROD_HH
+
+#include "SABER_params.jahh"
+#include "consts256.jahh"
+#include "polyvec_ntt_regular_polyvec_ntt.jahh"
+#include "polyvec_ntt_regular_polyvec_basemul_acc_montgomery.jahh"
+#include "poly_ntt_regular_poly_invntt_tomont.jahh"
+#include "poly_ntt_regular_poly_crt.jahh"
+
+fn polyvec_iprod(reg ptr u16[SABER_N] r, reg ptr u16[SABER_KN] a, reg ptr u16[SABER_KN] b) -> reg ptr u16[SABER_N]
+{
+	stack u16[SABER_N] t0, t1;
+	stack u16[SABER_N] r0, r1;
+	stack u16[SABER_KN] ahat;
+	stack u16[SABER_KN] bhat;
+
+	ahat = polyvec_ntt_0(ahat, a);
+	bhat = polyvec_ntt_0(bhat, b);
+	t0 = polyvec_basemul_acc_montgomery_0(t0, ahat, bhat);
+
+	bhat = polyvec_ntt_1(bhat, b);
+	ahat = polyvec_ntt_1(ahat, a);
+	t1 = polyvec_basemul_acc_montgomery_1(t1, ahat, bhat);
+
+	r0 = poly_invntt_tomont_0(r0, t0);
+	r1 = poly_invntt_tomont_1(r1, t1);
+	
+	r = poly_crt(r, r0, r1);
+
+	return r;
+}
+
+#endif

@@ -1,0 +1,47 @@
+/*** fips202_regular_shake128_KK13N8_32.jahh: File containing the Jasmin implementation of shake128 function from fips202.c, where outlen == KK13N8, inlen == 32 and with (regular) SABER parameters ***/
+
+#ifndef SHAKE128_KK13N8_32_HH
+#define SHAKE128_KK13N8_32_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_keccak_absorb_128_32.jahh"
+#include "fips202_regular_keccak_squeezeblocks_128_KK13N8.jahh"
+#include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
+
+inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) -> reg ptr u8[KK13N8]
+{
+	inline int i;
+	inline int nblocks;
+	inline int handled;
+	inline int remainder;
+
+	reg u8 t8;
+
+	stack u8[SHAKE128_RATE] t;
+
+	stack u64[25] s;
+	
+	nblocks = KK13N8 / SHAKE128_RATE;
+	handled = nblocks * SHAKE128_RATE;
+	remainder = KK13N8 - handled;
+
+	for i = 0 to 25 {
+		s[i] = 0;
+	}
+
+	s = keccak_absorb_128_32(s, input);
+	
+	output, s = keccak_squeezeblocks_128_KK13N8(output, s);
+
+	/** No if-statement required, because remainder > 0 always holds in this function **/
+	t, s = keccak_squeezeblocks_128_128(t, s);
+
+	for i = 0 to remainder {
+		t8 = t[i];
+		output[handled + i] = t8;
+	}
+
+	return output;
+}
+
+#endif

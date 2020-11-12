@@ -1,0 +1,50 @@
+/*** fips202_regular_shake128_KK13N8_32.jahh: File containing the Jasmin implementation of shake128 function from fips202.c, where outlen == KK13N8, inlen == 32 and with (regular) SABER parameters ***/
+
+#ifndef SHAKE128_KK13N8_32_HH
+#define SHAKE128_KK13N8_32_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+#include "fips202_regular_keccak_absorb_128_32.jahh"
+#include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
+
+inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) -> reg ptr u8[KK13N8]
+{
+	inline int i;
+	inline int nblocks;
+
+	reg u128[3] t128;
+	reg u256 t256;
+
+	stack u64[25] s;
+
+	nblocks = 22; // KK13N8 / SHAKE128_RATE;
+	
+	t256 = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256;
+	}
+	s[24] = 0;
+
+	s = keccak_absorb_128_32(s, input);
+
+	// output, s = keccak_squeezeblocks_128_KK13N8(output, s);
+	for i = 0 to nblocks {
+		output[i * SHAKE128_RATE:SHAKE128_RATE], s = keccak_squeezeblocks_128_128(output[i * SHAKE128_RATE:SHAKE128_RATE], s);
+	}
+
+	s = KeccakF1600_StatePermute(s);
+
+	t128[0] = s[u128 0];
+	t128[1] = s[u128 1];
+	t128[2] = s[u128 2];
+
+	output[u128 231] = t128[0];
+	output[u128 232] = t128[1];
+	output[u128 233] = t128[2];
+
+	return output;
+}
+
+#endif

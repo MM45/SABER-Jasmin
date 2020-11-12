@@ -1,0 +1,265 @@
+/*** poly_mul_regular_karatsuba_simple.jahh: File containing the Jasmin implementation of karatsuba_simple function from poly_mul.c, with (regular) SABER parameters ***/
+
+#ifndef KARATSUBA_SIMPLE_HH
+#define KARATSUBA_SIMPLE_HH
+
+#include "SABER_params.jahh"
+
+fn karatsuba_simple(reg ptr u16[N_SB] a_1, reg ptr u16[N_SB] b_1, reg ptr u16[N_SB_RES] result_final) -> reg ptr u16[N_SB_RES]
+{
+	inline int i;
+	inline int j;
+	inline int N;
+
+	reg u16 acc1;
+	reg u16 acc2;
+	reg u16 acc3;
+	reg u16 acc4;
+	reg u16 acc5;
+	reg u16 acc6;
+	reg u16 acc7;
+	reg u16 acc8;
+	reg u16 acc9;
+	reg u16 acc10;
+	reg u16 t16;
+
+	reg u64 k;
+	reg u64 address;
+
+	stack u16[64 / 2 - 1] d01;
+	stack u16[64 / 2 - 1] d0123;
+	stack u16[64 / 2 - 1] d23;
+	stack u16[64 - 1] result_d01;
+
+	N = 64;
+
+	// memset(memsection, 0, len)
+	k = 0;
+	while (k < (N / 2 - 1)) {
+		d01[(int) k] = 0;
+		d0123[(int) k] = 0;
+		d23[(int) k] = 0;
+		result_d01[(int) k] = 0;
+		result_final[(int) k] = 0;
+		k += 1;
+	}
+
+	while (k < (N - 1)) {
+		result_d01[(int) k] = 0;
+		result_final[(int) k] = 0;
+		k += 1;
+	}
+
+	while (k < (2 * N - 1)) {
+		result_final[(int) k] = 0;
+		k += 1;
+	}
+
+	k = 0;
+	while (k < (N / 4)) {
+		address = k;
+		acc1 = a_1[(int) address];
+
+		address += N / 4;
+		acc2 = a_1[(int) address];
+
+		address += N / 4;
+		acc3 = a_1[(int) address];
+
+		address += N / 4;
+		acc4 = a_1[(int) address];
+
+		for j = 0 to (N / 4) {
+			address = j;
+			acc5 = b_1[(int) address];
+
+			address += N / 4;
+			acc6 = b_1[(int) address];
+
+			// result_final[i+j+0*N/4]=result_final[i+j+0*N/4]+acc1*acc5;
+			t16 = acc1;
+			t16 *= acc5;
+			address = k;
+			address += j;
+			t16 += result_final[(int) address];
+			result_final[(int) address] = t16;
+
+			// result_final[i+j+2*N/4]=result_final[i+j+2*N/4]+acc2*acc6;
+			t16 = acc2;
+			t16 *= acc6;
+			address += 2 * N / 4;
+			t16 += result_final[(int) address];
+			result_final[(int) address] = t16;
+
+			acc7 = acc5 + acc6;
+			acc8 = acc1 + acc2;
+			
+			// d01[i+j]=d01[i+j] + acc7*acc8;
+			t16 = acc7;
+			t16 *= acc8;
+			address = k;
+			address += j;
+			t16 += d01[(int) address];
+			d01[(int) address] = t16;
+
+			address = j;
+			address += 2 * N / 4;
+			acc7 = b_1[(int) address];
+
+			address += N / 4;
+			acc8 = b_1[(int) address];			
+			
+			// result_final[i+j+4*N/4]=result_final[i+j+4*N/4]+acc7*acc3;
+			t16 = acc7;
+			t16 *= acc3;
+			address = k;
+			address += j;
+			address += 4 * N / 4;
+			t16 += result_final[(int) address];
+			result_final[(int) address] = t16;
+
+			// result_final[i+j+6*N/4]=result_final[i+j+6*N/4]+acc8*acc4;
+			t16 = acc8;
+			t16 *= acc4;
+			address += 2 * N / 4;
+			t16 += result_final[(int) address];
+			result_final[(int) address] = t16;
+
+			acc9 = acc3 + acc4;
+			acc10 = acc7 + acc8;
+
+			// d23[i+j]=d23[i+j] + acc9*acc10;
+			t16 = acc9;
+			t16 *= acc10;
+			address = k;
+			address += j;
+			t16 += d23[(int) address];
+			d23[(int) address] = t16;
+
+			acc5 = acc5 + acc7;
+			acc7 = acc1 + acc3;
+			
+			// result_d01[i+j+0*N/4]=result_d01[i+j+0*N/4]+acc5*acc7;
+			t16 = acc5;
+			t16 *= acc7;
+			t16 += result_d01[(int) address];
+			result_d01[(int) address] = t16;
+
+			acc6 = acc6 + acc8;
+			acc8 = acc2 + acc4;			
+			
+			// result_d01[i+j+ 2*N/4]=result_d01[i+j+ 2*N/4]+acc6*acc8;
+			t16 = acc6;
+			t16 *= acc8;
+			address += 2 * N / 4;
+			t16 += result_d01[(int) address];
+			result_d01[(int) address] = t16;
+
+			acc5 = acc5 + acc6;
+			acc7 = acc7 + acc8;
+			
+			// d0123[i+j]=d0123[i+j] + acc5*acc7;
+			t16 = acc5;
+			t16 *= acc7;
+			address = k;
+			address += j;
+			t16 += d0123[(int) address];
+			d0123[(int) address] = t16;
+		}
+		k += 1;
+	}
+
+	k = 0;
+	while (k < (N / 2 - 1)) {		
+		// d0123[i]=d0123[i]-result_d01[i+0*N/4]-result_d01[i+2*N/4];
+		address = k;
+		t16 = d0123[(int) address];
+		t16 -= result_d01[(int) address];
+
+		address += 2 * N / 4;
+		t16 -= result_d01[(int) address];
+		d0123[(int) k] = t16;
+
+		// d01[i]=d01[i]-result_final[i+0*N/4]-result_final[i+2*N/4];
+		address = k;
+		t16 = d01[(int) address];
+		t16 -= result_final[(int) address];
+
+		address += 2 * N / 4;
+		t16 -= result_final[(int) address];
+		d01[(int) k] = t16;
+
+		// d23[i]=d23[i]-result_final[i+4*N/4]-result_final[i+6*N/4];
+		address = k;
+		t16 = d23[(int) address];
+
+		address += 4 * N / 4;
+		t16 -= result_final[(int) address];
+
+		address += 2 * N / 4;
+		t16 -= result_final[(int) address];
+		d23[(int) k] = t16;
+
+		k += 1;
+	}
+
+	k = 0;
+	while (k < (N / 2 -1)) {
+		//result_d01[i+1*N/4]=result_d01[i+1*N/4]+d0123[i];
+		address = k;
+		t16 = d0123[(int) address];
+
+		address += N / 4;
+		t16 += result_d01[(int) address];
+		result_d01[(int) address] = t16;
+
+		//result_final[i+1*N/4]=result_final[i+1*N/4]+d01[i];
+		address = k;
+		t16 = d01[(int) address];
+
+		address += N / 4;
+		t16 += result_final[(int) address];
+		result_final[(int) address] = t16;
+
+		//result_final[i+5*N/4]=result_final[i+5*N/4]+d23[i];
+		address = k;
+		t16 = d23[(int) address];
+
+		address += 5 * N / 4;
+		t16 += result_final[(int) address];
+		result_final[(int) address] = t16;
+
+		k += 1;
+	}
+
+	k = 0;
+	while (k < (N - 1)) {
+		// result_d01[i]=result_d01[i]-result_final[i]-result_final[i+N];		
+		address = k;
+		t16 = result_d01[(int) address];
+		t16 -= result_final[(int) address];
+
+		address += N;
+		t16 -= result_final[(int) address];
+		result_d01[(int) k] = t16;
+
+		k += 1;
+	}
+
+	k = 0;
+	while (k < (N - 1)) {
+		// result_final[i+1*N/2]=result_final[i+1*N/2]+result_d01[i];
+		address = k;
+		t16 = result_d01[(int) address];
+
+		address += N / 2;
+		t16 += result_final[(int) address];
+		result_final[(int) address] = t16;
+
+		k += 1;
+	}
+
+	return result_final;
+}
+
+#endif

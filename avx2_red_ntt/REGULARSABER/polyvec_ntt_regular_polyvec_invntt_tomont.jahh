@@ -1,0 +1,32 @@
+/*** polyvec_ntt_regular_polyvec_invntt_tomont.jahh: File containing the Jasmin implementation of polyvec_invntt_tomont function from polyvec_ntt.c, with pdata == PDATA0 (polyvec_invntt_tomont_0) and pdata = PDATA1 (polyvec_invntt_tomont_1) and (regular) SABER parameters  ***/
+
+#ifndef POLYVEC_INVNTT_TOMONT_HH
+#define POLYVEC_INVNTT_TOMONT_HH
+
+#include "SABER_params.jahh"
+#include "consts256.jahh"
+#include "poly_ntt_regular_poly_invntt_tomont.jahh"
+
+inline fn polyvec_invntt_tomont_0(reg ptr u16[SABER_KN] r, reg ptr u16[SABER_KN] a) -> reg ptr u16[SABER_KN]
+{
+	inline int i;
+
+	for i = 0 to SABER_K {
+		r[i * SABER_N:SABER_N] = poly_invntt_tomont_0(r[i * SABER_N:SABER_N], a[i * SABER_N:SABER_N]);
+	}
+
+	return r;
+}
+
+inline fn polyvec_invntt_tomont_1(reg ptr u16[SABER_KN] r, reg ptr u16[SABER_KN] a) -> reg ptr u16[SABER_KN]
+{
+	inline int i;
+
+	for i = 0 to SABER_K {
+		r[i * SABER_N:SABER_N] = poly_invntt_tomont_1(r[i * SABER_N:SABER_N], a[i * SABER_N:SABER_N]);
+	}
+
+	return r;
+}
+
+#endif

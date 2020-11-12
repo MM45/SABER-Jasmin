@@ -1,0 +1,72 @@
+/*** pack_unpack_LIGHT_SABER_pack_3bit.jahh: File containing the Jasmin implementation of the SABER_pack_3bit function from pack_unpack.c, with LIGHTSABER parameters ***/
+
+#ifndef SABER_PACK_3BIT_HH
+#define SABER_PACK_3BIT_HH
+
+#include "SABER_params.jahh"
+
+inline fn SABER_pack_3bit(stack u8[SABER_SCALEBYTES_KEM] bytes, stack u16[SABER_N] data) -> stack u8[SABER_SCALEBYTES_KEM]
+{
+	inline int j;
+
+	reg u8 br;
+
+	reg u16 d1;
+	reg u16 d2;
+	reg u16 d3;
+	reg u16 d4;
+
+	for j = 0 to (SABER_N / 8) {
+		// bytes[offset_byte + 0]= (data[offset_data + 0] & 0x7) | ( (data[offset_data + 1] & 0x7)<<3 ) | ((data[offset_data + 2] & 0x3)<<6);
+		d1 = data[8 * j];
+		d1 &= 0x7;
+		d2 = data[8 * j + 1];
+		d2 &= 0x7;
+		d2 <<= 3;
+		d3 = data[8 * j + 2];
+		d3 &= 0x3;
+		d3 <<= 6;
+		d1 |= d2;
+		d1 |= d3;
+		br = (8u) d1;
+		bytes[3 * j] = br;
+
+		// bytes[offset_byte + 1]= ((data[offset_data + 2] >> 2 ) & 0x01)  | ( (data[offset_data + 3] & 0x7)<<1 ) | ( (data[offset_data + 4] & 0x7)<<4 ) | (((data[offset_data + 5]) & 0x01)<<7);
+		d1 = data[8 * j + 2];
+		d1 >>= 2;
+		d1 &= 0x01;
+		d2 = data[8 * j + 3];
+		d2 &= 0x7;
+		d2 <<= 1;
+		d3 = data[8 * j + 4];
+		d3 &= 0x7;
+		d3 <<= 4;
+		d4 = data[8 * j + 5];
+		d4 &= 0x01;
+		d4 <<= 7;
+		d1 |= d2;
+		d1 |= d3;
+		d1 |= d4;
+		br = (8u) d1;
+		bytes[3 * j + 1] = br;
+
+		// bytes[offset_byte + 2]= ((data[offset_data + 5] >> 1 ) & 0x03) | ( (data[offset_data + 6] & 0x7)<<2 ) | ( (data[offset_data + 7] & 0x7)<<5 );
+		d1 = data[8 * j + 5];
+		d1 >>= 1;
+		d1 &= 0x03;
+		d2 = data[8 * j + 6];
+		d2 &= 0x7;
+		d2 <<= 2;
+		d3 = data[8 * j + 7];
+		d3 &= 0x7;
+		d3 <<= 5;
+		d1 |= d2;
+		d1 |= d3;
+		br = (8u) d1;
+		bytes[3 * j + 2] = br;
+	}
+
+	return bytes;
+}
+
+#endif

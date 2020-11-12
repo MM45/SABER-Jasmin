@@ -1,0 +1,14 @@
+/*** shuffle_regular_shuffle8.jahh: File containing the Jasmin implementation of shuffle8 function from shuffle.inc ***/
+
+#ifndef SHUFFLE8_HH
+#define SHUFFLE8_HH
+
+inline fn shuffle8(reg u256 r0, reg u256 r1, reg u256 r2, reg u256 r3) -> reg u256, reg u256
+{
+	r2 = #VPERM2I128(r0, r1, 0x20);
+	r3 = #VPERM2I128(r0, r1, 0x31);
+
+	return r2, r3;
+}
+
+#endif

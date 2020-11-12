@@ -1,0 +1,66 @@
+/*** SABER_indcpa_regular_indcpa_kem_dec.jahh: File containing the Jasmin implementation of the indcpa_kem_dec function from SABER_indcpa.c, with (regular) SABER parameters ***/
+
+#ifndef INDCPA_KEM_DEC_HH
+#define INDCPA_KEM_DEC_HH
+
+#include "SABER_params.jahh"
+#include "pack_unpack_regular_BS2POLVECp.jahh"
+#include "pack_unpack_regular_BS2POLVECq.jahh"
+#include "pack_unpack_regular_SABER_un_pack4bit.jahh"
+#include "SABER_indcpa_regular_POL2MSG.jahh"
+#include "polyvec_ntt_regular_polyvec_iprod.jahh"
+
+inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
+{
+	inline int i;
+	inline int j;
+
+	reg u8 t8;
+
+	reg u16 t16;
+
+	reg u256 H2_avx;
+	reg u256 t256;
+
+	stack u8[SABER_SCALEBYTES_KEM] scale_ar;
+
+	stack u16[SABER_KN] sksv;
+	stack u16[SABER_KN] pksv;
+	stack u16[SABER_KEYBYTES * 8] message_dec_unpacked;
+	stack u16[SABER_N] op;
+	stack u16[SABER_N] v;
+
+	sksv = BS2POLVECq(sk, sksv);
+
+	pksv = BS2POLVECp(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], pksv);
+
+	for i = 0 to SABER_N / 16 {
+		t256 = zero_u256;
+		v[u256 i] = t256;
+	}
+
+	v = polyvec_iprod(v, pksv, sksv);
+
+	for i = 0 to SABER_SCALEBYTES_KEM / 32 {
+		t256 = ciphertext[u256 SABER_CIPHERTEXTBYTES / 32 + i];
+		scale_ar[u256 i] = t256;
+	}
+
+	op = SABER_un_pack4bit(scale_ar, op);
+
+	for i = 0 to SABER_N {
+		// message_dec_unpacked[i]= ( ( message_dec_unpacked[i] + h2 - (op[i]<<(SABER_EP-SABER_ET)) ) & (SABER_P-1) ) >> (SABER_EP-1);
+		t16 = op[i];
+		t16 <<= (SABER_EP-SABER_ET);
+		v[i] += h2;
+		v[i] -= t16;
+		v[i] &= (SABER_P - 1);
+		v[i] >>= (SABER_EP - 1);
+	}
+
+	message_dec = POL2MSG(v, message_dec);
+	
+	return message_dec;
+}
+
+#endif

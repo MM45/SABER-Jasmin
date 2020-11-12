@@ -1,0 +1,54 @@
+/*** poly_ntt_regular_poly_crt.jahh: File containing the Jasmin implementation of poly_crt function from poly.c, with (regular) SABER parameters ***/
+
+#ifndef POLY_CRT_HH
+#define POLY_CRT_HH
+
+#include "SABER_params.jahh"
+#include "consts256.jahh"
+
+inline fn mulmod(reg u256 a, reg u256 b_pinv, reg u256 b, reg u256 p) -> reg u256 {
+	reg u256 t;
+	reg u256 u;
+
+	t = #VPMULL_16u16(a, b_pinv);
+	u = #VPMULH_16u16(a, b);
+	t = #VPMULH_16u16(t, p);
+	t = u -16u16 t;
+
+	return t;
+}
+
+fn poly_crt(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a, reg ptr u16[SABER_N] b) -> reg ptr u16[SABER_N]
+{
+	inline int i;
+
+	reg u256 f0, f1;
+	reg u256 u, u_pinv;
+	reg u256 p0, p1;
+	reg u256 mod;
+	reg u256 mont0, mont0_pinv;
+
+	u_pinv = #VPBROADCAST_16u16(CRT_U_PINV);
+	u = #VPBROADCAST_16u16(CRT_U);
+	p0 = PDATA0[u256 _16XP / 16];
+	p1 = PDATA1[u256 _16XP / 16];
+	mod = modq_16u16;
+	mont0_pinv = PDATA0[u256 _16XMONT_PINV / 16];
+	mont0 = PDATA0[u256 _16XMONT / 16];
+
+	for i = 0 to SABER_N / 16 {
+		f0 = a[u256 i];
+		f1 = b[u256 i];
+		f0 = mulmod(f0, mont0_pinv, mont0, p0);
+		f1 -16u16= f0;
+		f1 = mulmod(f1, u_pinv, u, p1);
+		f1 = #VPMULL_16u16(f1, p0);
+		f0 +16u16= f1;
+		f0 &= mod;
+		r[u256 i] = f0;
+	}
+
+	return r;
+}
+
+#endif

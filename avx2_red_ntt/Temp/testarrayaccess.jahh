@@ -1,0 +1,72 @@
+
+
+param int SABER_K = 3;
+
+param int SABER_N = 256;
+
+param int SHAKE128_RATE = 168;
+
+param int KK13N8 = (SABER_K * SABER_K * (13 * SABER_N / 8));
+
+fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
+
+{
+
+    reg u256 t256;
+
+    t256 = s[u256 0];
+
+    h[u256 0] = t256;
+
+    return h, s;
+
+}
+
+inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) -> reg ptr u8[KK13N8]
+
+{
+
+    stack u64[25] s;
+
+    
+
+    output[19 * SHAKE128_RATE:SHAKE128_RATE], s = keccak_squeezeblocks_128_128(output[21 * SHAKE128_RATE:SHAKE128_RATE], s);
+
+    
+
+    return output;
+
+}
+
+export fn shake128_KK13N8_32_jazz(reg u64 outputp, reg u64 inputp)
+
+{
+
+    inline int i;
+
+    reg u8 t;
+
+    stack u8[KK13N8] output;
+
+    stack u8[32] input;
+
+    for i = 0 to 32 {
+
+        t = (u8) [inputp + i];
+
+        input[i] = t;
+
+    }
+
+    output = shake128_KK13N8_32(output, input);
+
+    for i = 0 to KK13N8 {
+
+        t = output[i];
+
+        (u8) [outputp + i] = t;
+
+    }
+
+}
+

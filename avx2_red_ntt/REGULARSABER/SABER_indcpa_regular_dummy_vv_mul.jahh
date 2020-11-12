@@ -1,0 +1,26 @@
+/*** SABER_indcpa_regular_dummy_vv_mul.jahh: File containing the Jasmin implementation of the dummy_vv_mul function from SABER_indcpa.c, with (regular) SABER parameters ***/
+
+#ifndef DUMMY_VV_MUL_HH
+#define DUMMY_VV_MUL_HH
+
+#include "SABER_params.jahh"
+
+inline fn dummy_vv_mul(reg ptr u256[SABER_KN / 16] a_avx, reg ptr u256[SABER_KN / 16] b_avx, reg ptr u256[SABER_N / 16] res_avx) -> reg ptr u256[SABER_N / 16]
+{
+	inline int i j;
+
+	reg u256 t256;
+
+	for i = 0 to SABER_K {
+		for j = 0 to SABER_N / 16 {
+			t256 = a_avx[i * SABER_N / 16 + j];
+			t256 ^= b_avx[i * SABER_N / 16 + j];
+			t256 ^= res_avx[j];
+			res_avx[j] = t256;
+		}
+	}
+
+	return res_avx;
+}
+
+#endif

@@ -1,0 +1,46 @@
+/*** SABER_indcpa_regular_InnerProd.jahh: File containing the Jasmin implementation of the InnerProd function from SABER_indcpa.c, with (regular) SABER parameters ***/
+
+#ifndef INNERPROD_HH
+#define INNERPROD_HH
+
+#include "SABER_params.jahh"
+#include "poly_mul_regular_pol_mul_p.jahh"
+
+inline fn InnerProd(reg ptr u16[SABER_KN] pkcl, reg ptr u16[SABER_KN] skpv, reg ptr u16[SABER_N] res) -> reg ptr u16[SABER_N]
+{
+	inline int j;
+	inline int k;
+
+	reg u16 t;
+
+	stack u16[SABER_N] acc;
+
+	stack ptr u16[SABER_KN] spkcl;
+	stack ptr u16[SABER_KN] sskpv;
+	stack ptr u16[SABER_N] sres;
+
+	for j  = 0 to SABER_K {
+		spkcl = pkcl;
+		sskpv = skpv;
+		sres = res;
+
+		acc = pol_mul_p(pkcl[j * SABER_N:SABER_N], skpv[j * SABER_N:SABER_N], acc);
+
+		pkcl = spkcl;
+		skpv = sskpv;
+		res = sres;
+		
+		for k = 0 to SABER_N {
+			t = acc[k];
+
+			res[k] += t;
+			res[k] &= (SABER_P - 1);
+
+			acc[k] = 0;
+		}
+	}
+
+	return res;
+}
+
+#endif

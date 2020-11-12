@@ -1,0 +1,470 @@
+/*** poly_ntt_regular_poly_ntt.jahh: File containing the Jasmin implementation of poly_ntt function from ntt.S, with pdata == PDATA0 (poly_ntt_0) and pdata = PDATA1 (poly_ntt_1) and (regular) SABER parameters ***/
+
+#ifndef POLY_NTT_HH
+#define POLY_NTT_HH
+
+#include "SABER_params.jahh"
+#include "consts256.jahh"
+#include "shuffle_regular_shuffle8.jahh"
+#include "shuffle_regular_shuffle4.jahh"
+#include "shuffle_regular_shuffle2.jahh"
+#include "shuffle_regular_shuffle1.jahh"
+#include "fq_regular_fqmulprecomp.jahh"
+#include "fq_regular_fqmulprecomp1.jahh"
+
+// flag == 0
+inline fn update_0(reg u256 rln, reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+	rln = rl0 +16u16 rh0;
+	rh0 = rl0 -16u16 rh0;
+
+	rl0 = rl1 +16u16 rh1;
+	rh1 = rl1 -16u16 rh1;
+
+	rl1 = rl2 +16u16 rh2;
+	rh2 = rl2 -16u16 rh2;
+
+	rl2 = rl3 +16u16 rh3;
+	rh3 = rl3 -16u16 rh3;
+
+	return rln, rl0, rl1, rl2, rh0, rh1, rh2, rh3;
+}
+
+// flag == 1
+inline fn update_1(reg u256 rln, reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+	rln = rl0 +16u16 rh0;
+	rh0 = rl0 -16u16 rh0;
+
+	rl0 = rl1 +16u16 rh1;
+	rh1 = rl1 -16u16 rh1;
+
+	rl1 = rl2 +16u16 rh2;
+	rh2 = rl2 -16u16 rh2;
+
+	rl2 = rl3 +16u16 rh3;
+	rh3 = rl3 -16u16 rh3;
+
+	rln -16u16= ymm12;
+	rh0 +16u16= ymm12;
+
+	rl0 -16u16= ymm13;
+	rh1 +16u16= ymm13;
+
+	rl1 -16u16= ymm14;
+	rh2 +16u16= ymm14;
+
+	rl2 -16u16= ymm15;
+	rh3 +16u16= ymm15;
+
+	return rln, rl0, rl1, rl2, rh0, rh1, rh2, rh3;
+}
+
+// flag == 0
+inline fn reduce_0(reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 ymm0, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+	ymm12 = #VPMULH_16u16(ymm0, ymm12);
+	ymm13 = #VPMULH_16u16(ymm0, ymm13);
+
+	ymm14 = #VPMULH_16u16(ymm0, ymm14);
+	ymm15 = #VPMULH_16u16(ymm0, ymm15);
+
+	rh0 -16u16= ymm12;
+	rh1 -16u16= ymm13;
+	rh2 -16u16= ymm14;
+	rh3 -16u16= ymm15;
+
+	return rh0, rh1, rh2, rh3, ymm12, ymm13, ymm14, ymm15;
+}
+
+// flag == 1
+inline fn reduce_1(reg u256 ymm0, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15) -> reg u256, reg u256, reg u256, reg u256
+{
+	ymm12 = #VPMULH_16u16(ymm0, ymm12);
+	ymm13 = #VPMULH_16u16(ymm0, ymm13);
+
+	ymm14 = #VPMULH_16u16(ymm0, ymm14);
+	ymm15 = #VPMULH_16u16(ymm0, ymm15);
+
+	return ymm12, ymm13, ymm14, ymm15;
+}
+
+inline fn mul(reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 zl0, reg u256 zl1, reg u256 zh0, reg u256 zh1) 
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+	reg u256 ymm12, ymm13, ymm14, ymm15;
+
+	ymm12 = #VPMULL_16u16(zl0, rh0);
+	ymm13 = #VPMULL_16u16(zl0, rh1);
+
+	ymm14 = #VPMULL_16u16(zl1, rh2);
+	ymm15 = #VPMULL_16u16(zl1, rh3);
+
+	rh0 = #VPMULH_16u16(zh0, rh0);
+	rh1 = #VPMULH_16u16(zh0, rh1);
+
+	rh2 = #VPMULH_16u16(zh1, rh2);
+	rh3 = #VPMULH_16u16(zh1, rh3);	
+
+	return rh0, rh1, rh2, rh3, ymm12, ymm13, ymm14, ymm15;
+}
+
+inline fn level0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a, inline int off, reg u256 ymm0, reg u256 ymm1, reg u256 ymm2) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+
+	ymm8 = a[u256 (64 * off + 128) * 2 / 32];
+	ymm9 = a[u256 (64 * off + 144) * 2 / 32];
+	ymm10 = a[u256 (64 * off + 160) * 2 / 32];
+	ymm11 = a[u256 (64 * off + 176) * 2 / 32];
+
+	// mul		8,9,10,11,1,1,2,2
+	ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15 = mul(ymm8, ymm9, ymm10, ymm11, ymm1, ymm1, ymm2, ymm2);
+
+	ymm4 = a[u256 (64 * off + 0) * 2 / 32];
+	ymm5 = a[u256 (64 * off + 16) * 2 / 32];
+	ymm6 = a[u256 (64 * off + 32) * 2 / 32];
+	ymm7 = a[u256 (64 * off + 48) * 2 / 32];
+
+	// reduce		8,9,10,11
+	ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	// update		3,4,5,6,7,8,9,10,11
+	ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
+
+	r[u256 (64 * off + 0) * 2 / 32] = ymm3;
+	r[u256 (64 * off + 16) * 2 / 32] = ymm4;
+	r[u256 (64 * off + 32) * 2 / 32] = ymm5;
+	r[u256 (64 * off + 48) * 2 / 32] = ymm6;
+
+	r[u256 (64 * off + 128) * 2 / 32] = ymm8;
+	r[u256 (64 * off + 144) * 2 / 32] = ymm9;
+	r[u256 (64 * off + 160) * 2 / 32] = ymm10;
+	r[u256 (64 * off + 176) * 2 / 32] = ymm11;
+
+	return r;
+}
+
+inline fn levels1t7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int off, reg u256 ymm0, reg u256 ymm1, reg u256 ymm2) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+	
+	/** level 1 **/
+	ymm15 = pdata[u256 (_ZETAS + 64 * off + 32) * 2 / 32];
+	
+	ymm8 = r[u256 (128 * off + 64) * 2 / 32];
+	ymm9 = r[u256 (128 * off + 80) * 2 / 32];
+	ymm10 = r[u256 (128 * off + 96) * 2 / 32];
+	ymm11 = r[u256 (128 * off + 112) * 2 / 32];
+
+	ymm3 = pdata[u256 (_ZETAS + 64 * off + 48) * 2 / 32];
+
+	// mul		8,9,10,11,15,15,3,3
+	ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15 = mul(ymm8, ymm9, ymm10, ymm11, ymm15, ymm15, ymm3, ymm3);
+
+	ymm4 = r[u256 (128 * off + 0) * 2 / 32];
+	ymm5 = r[u256 (128 * off + 16) * 2 / 32];
+	ymm6 = r[u256 (128 * off + 32) * 2 / 32];
+	ymm7 = r[u256 (128 * off + 48) * 2 / 32];
+
+	// reduce		8,9,10,11
+	ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	// update 		3,4,5,6,7,8,9,10,11
+	ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
+
+	/** level 2 **/
+	// shuffle8		5,10,7,10
+	ymm7, ymm10 = shuffle8(ymm5, ymm10, ymm7, ymm10);
+
+	// shuffle8		6,11,5,11
+	ymm5, ymm11 = shuffle8(ymm6, ymm11, ymm5, ymm11);
+
+	ymm15 = pdata[u256 (_ZETAS + 64 * off + 64) * 2 / 32];
+	ymm6 = pdata[u256 (_ZETAS + 64 * off + 80) * 2 / 32];
+
+	// mul		7,10,5,11,15,15,6,6
+	ymm7, ymm10, ymm5, ymm11, ymm12, ymm13, ymm14, ymm15 = mul(ymm7, ymm10, ymm5, ymm11, ymm15, ymm15, ymm6, ymm6);
+
+	// shuffle8		3,8,6,8
+	ymm6, ymm8 = shuffle8(ymm3, ymm8, ymm6, ymm8);
+
+	// shuffle8		4,9,3,9
+	ymm3, ymm9 = shuffle8(ymm4, ymm9, ymm3, ymm9);
+
+	// reduce		7,10,5,11
+	ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	// update		4,6,8,3,9,7,10,5,11
+	ymm4, ymm6, ymm8, ymm3, ymm7, ymm10, ymm5, ymm11 = update_1(ymm4, ymm6, ymm8, ymm3, ymm9, ymm7, ymm10, ymm5, ymm11, ymm12, ymm13, ymm14, ymm15);
+
+	/** level 3 **/
+	// shuffle4		4,7,9,7
+	ymm9, ymm7 = shuffle4(ymm4, ymm7, ymm9, ymm7);
+
+	// shuffle4		6,10,4,10
+	ymm4, ymm10 = shuffle4(ymm6, ymm10, ymm4, ymm10);
+
+	// shuffle4		8,5,6,5
+	ymm6, ymm5 = shuffle4(ymm8, ymm5, ymm6, ymm5);
+
+	// shuffle4		3,11,8,11
+	ymm8, ymm11 = shuffle4(ymm3, ymm11, ymm8, ymm11);
+
+	ymm12 = #VPMULL_16u16(ymm9, pdata[u256 (_TWIST32 + 256 * off + 0) * 2 / 32]);
+	ymm13 = #VPMULL_16u16(ymm7, pdata[u256 (_TWIST32 + 256 * off + 32) * 2 / 32]);
+	ymm14 = #VPMULL_16u16(ymm4, pdata[u256 (_TWIST32 + 256 * off + 64) * 2 / 32]);
+	ymm15 = #VPMULL_16u16(ymm10, pdata[u256 (_TWIST32 + 256 * off + 96) * 2 / 32]);
+
+	ymm9 = #VPMULH_16u16(ymm9, pdata[u256 (_TWIST32 + 256 * off + 16) * 2 / 32]);
+	ymm7 = #VPMULH_16u16(ymm7, pdata[u256 (_TWIST32 + 256 * off + 48) * 2 / 32]);
+	ymm4 = #VPMULH_16u16(ymm4, pdata[u256 (_TWIST32 + 256 * off + 80) * 2 / 32]);
+	ymm10 = #VPMULH_16u16(ymm10, pdata[u256 (_TWIST32 + 256 * off + 112) * 2 / 32]);
+
+	// reduce		9,7,4,10,0
+	ymm9, ymm7, ymm4, ymm10, ymm12, ymm13, ymm14, ymm15 = reduce_0(ymm9, ymm7, ymm4, ymm10, ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	ymm12 = #VPMULL_16u16(ymm6, pdata[u256 (_TWIST32 + 256 * off + 128) * 2 / 32]);
+	ymm13 = #VPMULL_16u16(ymm5, pdata[u256 (_TWIST32 + 256 * off + 160) * 2 / 32]);
+	ymm14 = #VPMULL_16u16(ymm8, pdata[u256 (_TWIST32 + 256 * off + 192) * 2 / 32]);
+	ymm15 = #VPMULL_16u16(ymm11, pdata[u256 (_TWIST32 + 256 * off + 224) * 2 / 32]);
+
+	ymm6 = #VPMULH_16u16(ymm6, pdata[u256 (_TWIST32 + 256 * off + 144) * 2 / 32]);
+	ymm5 = #VPMULH_16u16(ymm5, pdata[u256 (_TWIST32 + 256 * off + 176) * 2 / 32]);
+	ymm8 = #VPMULH_16u16(ymm8, pdata[u256 (_TWIST32 + 256 * off + 208) * 2 / 32]);
+	ymm11 = #VPMULH_16u16(ymm11, pdata[u256 (_TWIST32 + 256 * off + 240) * 2 / 32]);
+
+	// reduce		6,5,8,11,0
+	ymm6, ymm5, ymm8, ymm11, ymm12, ymm13, ymm14, ymm15 = reduce_0(ymm6, ymm5, ymm8, ymm11, ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	// update		3,9,7,4,10,6,5,8,11,0
+	ymm3, ymm9, ymm7, ymm4, ymm6, ymm5, ymm8, ymm11 = update_0(ymm3, ymm9, ymm7, ymm4, ymm10, ymm6, ymm5, ymm8, ymm11);
+
+	/** level 4 **/
+	ymm14 = pdata[u256 (_16XMONT_PINV) * 2 / 32];
+	ymm15 = pdata[u256 (_16XMONT) * 2 / 32];
+
+	// fqmulprecomp		14,15,7,x=13
+	ymm7, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm7, ymm13, ymm0);
+	
+	// fqmulprecomp		14,15,4,x=13
+	ymm4, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm4, ymm13, ymm0);
+
+	ymm12 = #VPMULL_16u16(ymm8, ymm1);
+	ymm13 = #VPMULL_16u16(ymm11, ymm1);
+
+	ymm8 = #VPMULH_16u16(ymm8, ymm2);
+	ymm11 = #VPMULH_16u16(ymm11, ymm2);
+
+	ymm10 = ymm3 +16u16 ymm7;
+	ymm7 = ymm3 -16u16 ymm7;
+	
+	ymm3 = ymm9 +16u16 ymm4;
+	ymm4 = ymm9 -16u16 ymm4;
+
+	ymm12 = #VPMULH_16u16(ymm12, ymm0);
+	ymm13 = #VPMULH_16u16(ymm13, ymm0);
+
+	ymm9 = ymm6 +16u16 ymm8;
+	ymm8 = ymm6 -16u16 ymm8;
+	
+	ymm6 = ymm5 +16u16 ymm11;
+	ymm11 = ymm5 -16u16 ymm11;
+
+	ymm9 = ymm9 -16u16 ymm12;
+	ymm8 = ymm8 +16u16 ymm12;
+
+	ymm6 = ymm6 -16u16 ymm13;
+	ymm11 = ymm11 +16u16 ymm13;
+
+	/** level 5 **/
+	// fqmulprecomp	14,15,3,x=13
+	ymm3, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm3, ymm13, ymm0);
+
+	ymm12 = #VPMULL_16u16(ymm4, ymm1);
+	ymm13 = #VPMULL_16u16(ymm6, pdata[u256 (_ZETAS + 32) * 2 / 32]);
+	ymm14 = #VPMULL_16u16(ymm11, pdata[u256 (_ZETAS + 96) * 2 / 32]);
+
+	ymm4 = #VPMULH_16u16(ymm4, ymm2);
+	ymm6 = #VPMULH_16u16(ymm6, pdata[u256 (_ZETAS + 48) * 2 / 32]);
+	ymm11 = #VPMULH_16u16(ymm11, pdata[u256 (_ZETAS + 112) * 2 / 32]);
+
+	ymm5 = ymm10 +16u16 ymm3;
+	ymm3 = ymm10 -16u16 ymm3;
+
+	ymm12 = #VPMULH_16u16(ymm12, ymm0);
+	ymm13 = #VPMULH_16u16(ymm13, ymm0);
+	ymm14 = #VPMULH_16u16(ymm14, ymm0);
+
+	ymm10 = ymm7 +16u16 ymm4;
+	ymm4 = ymm7 -16u16 ymm4;
+
+	ymm7 = ymm9 +16u16 ymm6;
+	ymm6 = ymm9 -16u16 ymm6;
+
+	ymm9 = ymm8 +16u16 ymm11;
+	ymm11 = ymm8 -16u16 ymm11;
+
+	ymm10 = ymm10 -16u16 ymm12;
+	ymm4 = ymm4 +16u16 ymm12;
+
+	ymm7 = ymm7 -16u16 ymm13;
+	ymm6 = ymm6 +16u16 ymm13;
+
+	ymm9 = ymm9 -16u16 ymm14;
+	ymm11 = ymm11 +16u16 ymm14;
+
+	/** level 6 **/
+	// fqmulprecomp1	(_16XMONT_PINV),5,x=12
+	ymm5, ymm12 = fqmulprecomp1(_16XMONT_PINV, ymm5, ymm12, ymm0, pdata);
+
+	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 8) * 2 / 8]);
+	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 12) * 2 / 8]);
+
+	// fqmulprecomp		12,13,3,x=12
+	ymm3, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm3, ymm12, ymm0);
+
+	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 16) * 2 / 8]);
+	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 20) * 2 / 8]);
+
+	// fqmulprecomp		12,13,10,x=12
+	ymm10, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm10, ymm12, ymm0);
+
+	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 24) * 2 / 8]);
+	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 28) * 2 / 8]);
+
+	// fqmulprecomp		12,13,4,x=12
+	ymm4, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm4, ymm12, ymm0);
+
+	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 32) * 2 / 8]);
+	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 36) * 2 / 8]);
+
+	// fqmulprecomp		12,13,7,x=12
+	ymm7, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm7, ymm12, ymm0);
+
+	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 40) * 2 / 8]);
+	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 44) * 2 / 8]);
+
+	// fqmulprecomp		12,13,6,x=12
+	ymm6, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm6, ymm12, ymm0);
+
+	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 48) * 2 / 8]);
+	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 52) * 2 / 8]);
+
+	// fqmulprecomp		12,13,9,x=12
+	ymm9, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm9, ymm12, ymm0);
+
+	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 56) * 2 / 8]);
+	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 60) * 2 / 8]);
+
+	// fqmulprecomp		12,13,11,x=12
+	ymm11, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm11, ymm12, ymm0);
+
+	// shuffle2		5,7,8,7
+	ymm5, ymm8, ymm7 = shuffle2(ymm5, ymm7, ymm8, ymm7);
+
+	// shuffle2		3,6,5,6
+	ymm3, ymm5, ymm6 = shuffle2(ymm3, ymm6, ymm5, ymm6);
+
+	// shuffle2		10,9,3,9
+	ymm10, ymm3, ymm9 = shuffle2(ymm10, ymm9, ymm3, ymm9);
+
+	// shuffle2		4,11,10,11
+	ymm4, ymm10, ymm11 = shuffle2(ymm4, ymm11, ymm10, ymm11);
+
+	// shuffle1		8,3,4,3
+	ymm8, ymm4, ymm3 = shuffle1(ymm8, ymm3, ymm4, ymm3);
+
+	// shuffle1		7,9,8,9
+	ymm7, ymm8, ymm9 = shuffle1(ymm7, ymm9, ymm8, ymm9);
+	
+	// shuffle1		5,10,7,10
+	ymm5, ymm7, ymm10 = shuffle1(ymm5, ymm10, ymm7, ymm10);
+	
+	// shuffle1		6,11,5,11
+	ymm6, ymm5, ymm11 = shuffle1(ymm6, ymm11, ymm5, ymm11);
+
+	// update		6,4,3,7,10,8,9,5,11,0
+	ymm6, ymm4, ymm3, ymm7, ymm8, ymm9, ymm5, ymm11 = update_0(ymm6, ymm4, ymm3, ymm7, ymm10, ymm8, ymm9, ymm5, ymm11);
+
+	/** level 7 **/
+	ymm12 = #VPMULL_16u16(ymm9, ymm1);
+	ymm13 = #VPMULL_16u16(ymm11, ymm1);
+
+	ymm9 = #VPMULH_16u16(ymm9, ymm2);
+	ymm11 = #VPMULH_16u16(ymm11, ymm2);
+
+	ymm10 = ymm6 +16u16 ymm4;
+	ymm4 = ymm6 -16u16 ymm4;
+
+	ymm6 = ymm3 +16u16 ymm7;
+	ymm7 = ymm3 -16u16 ymm7;
+
+	ymm12 = #VPMULH_16u16(ymm12, ymm0);
+	ymm13 = #VPMULH_16u16(ymm13, ymm0);
+
+	ymm3 = ymm8 +16u16 ymm9;
+	ymm9 = ymm8 -16u16 ymm9;
+
+	ymm8 = ymm5 +16u16 ymm11;
+	ymm11 = ymm5 -16u16 ymm11;	
+
+	ymm3 = ymm3 -16u16 ymm12;
+	ymm9 = ymm9 +16u16 ymm12;
+
+	ymm8 = ymm8 -16u16 ymm13;
+	ymm11 = ymm11 +16u16 ymm13;
+
+	r[u256 (128 * off + 0) * 2 / 32] = ymm10;
+	r[u256 (128 * off + 16) * 2 / 32] = ymm4;
+	r[u256 (128 * off + 32) * 2 / 32] = ymm3;
+	r[u256 (128 * off + 48) * 2 / 32] = ymm9;
+	r[u256 (128 * off + 64) * 2 / 32] = ymm6;
+	r[u256 (128 * off + 80) * 2 / 32] = ymm7;
+	r[u256 (128 * off + 96) * 2 / 32] = ymm8;
+	r[u256 (128 * off + 112) * 2 / 32] = ymm11;
+
+	return r;
+}
+
+// pdata == PDATA0
+fn poly_ntt_0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm0, ymm1, ymm2;
+
+	ymm0 = PDATA0[u256 _16XP * 2 / 32];
+	ymm1 = PDATA0[u256 (_ZETAS + 0) * 2 / 32];
+	ymm2 = PDATA0[u256 (_ZETAS + 16) * 2 / 32];
+
+	r = level0(r, a, 0, ymm0, ymm1, ymm2);
+	r = level0(r, a, 1, ymm0, ymm1, ymm2);
+
+	r = levels1t7(r, PDATA0, 0, ymm0, ymm1, ymm2);
+	r = levels1t7(r, PDATA0, 1, ymm0, ymm1, ymm2);
+
+	return r;
+}
+
+
+// pdata == PDATA1
+fn poly_ntt_1(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm0, ymm1, ymm2;
+
+	ymm0 = PDATA1[u256 _16XP * 2 / 32];
+	ymm1 = PDATA1[u256 (_ZETAS + 0) * 2 / 32];
+	ymm2 = PDATA1[u256 (_ZETAS + 16) * 2 / 32];
+
+	r = level0(r, a, 0, ymm0, ymm1, ymm2);
+	r = level0(r, a, 1, ymm0, ymm1, ymm2);
+
+	r = levels1t7(r, PDATA1, 0, ymm0, ymm1, ymm2);
+	r = levels1t7(r, PDATA1, 1, ymm0, ymm1, ymm2);
+
+	return r;
+}
+
+#endif

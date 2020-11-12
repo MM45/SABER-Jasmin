@@ -1,0 +1,28 @@
+/*** fq_regular_fqmulprecomp.jahh: File containing the Jasmin implementation of fqmulprecomp macro from fq.inc, with neg == 0 (fqmulprecomp_0) and neg == 1 (fqmulprecomp_1) ***/
+
+#ifndef FQMULPRECOMP_HH
+#define FQMULPRECOMP_HH
+
+inline fn fqmulprecomp_0(reg u256 al, reg u256 ah, reg u256 b, reg u256 x, reg u256 ymm0) -> reg u256, reg u256
+{
+	x = #VPMULL_16u16(b, al);
+	b = #VPMULH_16u16(b, ah);
+	x = #VPMULH_16u16(x, ymm0);
+
+	b -16u16= x;
+	 
+	return b, x;
+}
+
+inline fn fqmulprecomp_1(reg u256 al, reg u256 ah, reg u256 b, reg u256 x, reg u256 ymm0) -> reg u256, reg u256
+{
+	x = #VPMULL_16u16(b, al);
+	b = #VPMULH_16u16(b, ah);
+	x = #VPMULH_16u16(x, ymm0);
+
+	b = x -16u16 b;
+	 
+	return b, x;
+}
+
+#endif

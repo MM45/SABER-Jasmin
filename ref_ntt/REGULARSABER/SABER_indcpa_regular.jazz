@@ -1,0 +1,262 @@
+/*** SABER_indcpa_regular.jazz: File containing the Jasmin wrappers of the functions in the SABER_indcpa_regular*.jahh files, only used for unit testing ***/
+
+#include "SABER_params.jahh"
+#include "SABER_indcpa_regular_MatrixVectorMul.jahh"
+#include "SABER_indcpa_regular_InnerProd.jahh"
+#include "SABER_indcpa_regular_POL2MSG.jahh"
+#include "SABER_indcpa_regular_GenMatrix.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_keypair_randominc.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_enc.jahh"
+#include "SABER_indcpa_regular_indcpa_kem_dec.jahh"
+
+export fn MatrixVectorMul_jazz(reg u64 ap, reg u64 skpvp, reg u64 resp, reg u16 transpose)
+{
+	inline int i;
+
+	reg u16 t;
+
+	stack u16[SABER_KKN] a;
+	stack u16[SABER_KN] skpv;
+	stack u16[SABER_KN] res;
+
+	stack u64 sresp;
+
+	for i = 0 to SABER_KKN {
+		t = (u16) [ap + 2 * i];
+		a[i] = t;
+	}
+
+	for i = 0 to SABER_KN {
+		t = (u16) [skpvp + 2 * i];
+		skpv[i] = t;
+	}
+
+	for i = 0 to SABER_KN {
+		t = (u16) [resp + 2 * i];
+		res[i] = t;
+	}
+
+	sresp = resp;
+
+	res = MatrixVectorMul(a, skpv, res, transpose);
+
+	resp = sresp;
+
+	for i = 0 to SABER_KN {
+		t = res[i];
+		(u16) [resp + 2 * i] = t;
+	}
+
+}
+
+export fn InnerProd_jazz(reg u64 pkclp, reg u64 skpvp, reg u64 resp)
+{
+	inline int i;
+
+	reg u16 t;
+
+	stack u16[SABER_KN] pkcl;
+	stack u16[SABER_KN] skpv;
+	stack u16[SABER_N] res;
+
+	stack u64 sresp;
+
+	for i = 0 to SABER_KN {
+		t = (u16) [pkclp + 2 * i];
+		pkcl[i] = t;
+	}
+
+	for i = 0 to SABER_KN {
+		t = (u16) [skpvp + 2 * i];
+		skpv[i] = t;
+	}
+
+	for i = 0 to SABER_N {
+		t = (u16) [resp + 2 * i];
+		res[i] = t;
+	}
+
+	sresp = resp;
+
+	res = InnerProd(pkcl, skpv, res);
+
+	resp = sresp;
+
+	for i = 0 to SABER_KN {
+		t = res[i];
+		(u16) [resp + 2 * i] = t;
+	}
+}
+
+export fn POL2MSG_jazz(reg u64 message_dec_unpackedp, reg u64 message_decp) 
+{
+	inline int i;
+	
+	reg u8 tmd;
+
+	reg u16 tmdu;
+
+	stack u8[SABER_KEYBYTES] message_dec;
+	stack u16[SABER_N] message_dec_unpacked;
+
+	for i = 0 to SABER_N {
+		tmdu = (u16) [message_dec_unpackedp + 2 * i];
+		message_dec_unpacked[i] = tmdu;
+	}
+
+	message_dec = POL2MSG(message_dec_unpacked, message_dec);
+
+	for i = 0 to SABER_KEYBYTES {
+		tmd = message_dec[i];
+		(u8) [message_decp + i] = tmd;
+	}
+}
+
+export fn GenMatrix_jazz(reg u64 ap, reg u64 seedp)
+{
+	inline int i;
+
+	reg u8 t8;
+
+	reg u16 t16;
+
+	stack u8[SABER_SEEDBYTES] seed;
+
+	stack u16[SABER_KKN] a;
+
+	stack u64 sap;
+
+	for i = 0 to SABER_SEEDBYTES {
+		t8 = (u8) [seedp + i];
+		seed[i] = t8;
+	}
+
+	sap = ap;
+
+	a = GenMatrix(a, seed);
+
+	ap = sap;
+	
+	for i = 0 to SABER_KKN {
+		t16 = a[i];
+		(u16) [ap + 2 * i] = t16;
+	}
+}
+
+export fn indcpa_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 seedp, reg u64 noiseseedp)
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk;
+	stack u8[SABER_INDCPA_SECRETKEYBYTES] sk;
+	stack u8[SABER_SEEDBYTES] seed;
+	stack u8[SABER_COINBYTES] noiseseed;
+
+	stack u64 spkp;
+	stack u64 sskp;
+
+	for i = 0 to SABER_SEEDBYTES {
+		t8 = (u8) [seedp + i];
+		seed[i] = t8;
+	}
+
+	for i = 0 to SABER_COINBYTES {
+		t8 = (u8) [noiseseedp + i];
+		noiseseed[i] = t8;
+	}
+
+	spkp = pkp;
+	sskp = skp;
+
+	pk, sk = indcpa_kem_keypair_randominc(pk, sk, seed, noiseseed);
+
+	pkp = spkp;
+	skp = sskp;
+
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		t8 = pk[i];
+		(u8) [pkp + i] = t8;
+	}
+
+	for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
+		t8 = sk[i];
+		(u8) [skp + i] = t8;
+	}
+}
+
+
+export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg u64 pkp, reg u64 ciphertextp)
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SABER_KEYBYTES] message_received;
+	stack u8[SABER_COINBYTES] noiseseed;
+	stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk;
+	stack u8[SABER_BYTES_CCA_DEC] ciphertext;
+
+	stack u64 sciphertextp;
+
+	for i = 0 to SABER_KEYBYTES {
+		t8 = (u8) [message_receivedp + i];
+		message_received[i] = t8;
+	}
+
+	for i = 0 to SABER_COINBYTES {
+		t8 = (u8) [noiseseedp + i];
+		noiseseed[i] = t8;
+	}
+
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		t8 = (u8) [pkp + i];
+		pk[i] = t8;
+	}
+
+	sciphertextp = ciphertextp;
+
+	ciphertext = indcpa_kem_enc(message_received, noiseseed, pk, ciphertext);
+
+	ciphertextp = sciphertextp;
+
+	for i = 0 to SABER_BYTES_CCA_DEC {
+		t8 = ciphertext[i];
+		(u8) [ciphertextp + i] = t8;
+	}
+}
+
+export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_decp)
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SABER_INDCPA_SECRETKEYBYTES] sk;
+	stack u8[SABER_BYTES_CCA_DEC] ciphertext;
+	stack u8[SABER_KEYBYTES] message_dec;
+
+	stack u64 smessage_decp;
+
+	for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
+		t8 = (u8) [skp + i];
+		sk[i] = t8;
+	}
+
+	for i = 0 to SABER_BYTES_CCA_DEC {
+		t8 = (u8) [ciphertextp + i];
+		ciphertext[i] = t8;
+	}
+
+	smessage_decp = message_decp;
+
+	message_dec = indcpa_kem_dec(sk, ciphertext, message_dec);
+
+	message_decp = smessage_decp;
+
+	for i = 0 to SABER_KEYBYTES {
+		t8 = message_dec[i];
+		(u8) [message_decp + i] = t8;
+	}
+}

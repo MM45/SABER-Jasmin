@@ -1,0 +1,135 @@
+/*** kem_regular.jazz: File containing the Jasmin wrappers of the functions in the kem_regular_*.jahh files, only used for unit testing ***/
+
+#include "SABER_params.jahh"
+#include "kem_regular_crypto_kem_keypair_randominc.jahh"
+#include "kem_regular_crypto_kem_enc_randominc.jahh"
+#include "kem_regular_crypto_kem_dec.jahh"
+
+
+export fn crypto_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 random_bytes_cryptop, reg u64 indcpa_seedp, reg u64 indcpa_noiseseedp)
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SABER_PUBLICKEYBYTES] pk;
+	stack u8[SABER_SECRETKEYBYTES] sk;
+	stack u8[SABER_KEYBYTES] random_bytes_crypto;
+	stack u8[SABER_SEEDBYTES] indcpa_seed;
+	stack u8[SABER_COINBYTES] indcpa_noiseseed;
+
+	stack u64 spkp;
+	stack u64 sskp;
+
+	for i = 0 to SABER_KEYBYTES {
+		t8 = (u8) [random_bytes_cryptop + i];
+		random_bytes_crypto[i] = t8;
+	}
+
+	for i = 0 to SABER_SEEDBYTES {
+		t8 = (u8) [indcpa_seedp + i];
+		indcpa_seed[i] = t8;
+	}
+
+	for i = 0 to SABER_COINBYTES {
+		t8 = (u8) [indcpa_noiseseedp + i];
+		indcpa_noiseseed[i] = t8;
+	}
+
+	spkp = pkp;
+	sskp = skp;
+
+	pk, sk = crypto_kem_keypair_randominc(pk, sk, random_bytes_crypto, indcpa_seed, indcpa_noiseseed);
+
+	pkp = spkp;
+	skp = sskp;
+	
+	for i = 0 to SABER_PUBLICKEYBYTES {
+		t8 = pk[i] ;
+		(u8) [pkp + i] = t8;
+	}
+
+	for i = 0 to SABER_SECRETKEYBYTES {
+		t8 = sk[i];
+		(u8) [skp + i] = t8;
+	}
+}
+
+
+export fn crypto_kem_enc_randominc_jazz(reg u64 cp, reg u64 kp, reg u64 pkp, reg u64 random_bytes_cryptop)
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SABER_BYTES_CCA_DEC] c;
+	stack u8[SABER_HASHBYTES] k;
+	stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk;
+	stack u8[32] random_bytes_crypto;
+
+	stack u64 scp;
+	stack u64 skp;
+
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
+		t8 = (u8) [pkp + i];
+		pk[i] = t8;
+	}
+
+	for i = 0 to 32 {
+		t8 = (u8) [random_bytes_cryptop + i];
+		random_bytes_crypto[i] = t8;
+	}
+
+	scp = cp;
+	skp = kp;
+
+	c, k = crypto_kem_enc_randominc(c, k, pk, random_bytes_crypto);
+
+	cp = scp;
+	kp = skp;
+
+	for i = 0 to SABER_BYTES_CCA_DEC {
+		t8 = c[i] ;
+		(u8) [cp + i] = t8;
+	}
+
+	for i = 0 to SABER_HASHBYTES {
+		t8 = k[i];
+		(u8) [kp + i] = t8;
+	}
+}
+
+
+export fn crypto_kem_dec_jazz(reg u64 kp, reg u64 cp, reg u64 skp)
+{
+	inline int i;
+
+	reg u8 t8;
+
+	stack u8[SABER_HASHBYTES] k;
+	stack u8[SABER_BYTES_CCA_DEC] c;
+	stack u8[SABER_SECRETKEYBYTES] sk;
+
+	stack u64 stkp;
+
+	for i = 0 to SABER_BYTES_CCA_DEC {
+		t8 = (u8) [cp + i];
+		c[i] = t8;
+	}
+
+	for i = 0 to SABER_SECRETKEYBYTES {
+		t8 = (u8) [skp + i];
+		sk[i] = t8;
+	}
+
+	stkp = kp;
+
+	k = crypto_kem_dec(k, c, sk);
+	
+	kp = stkp;
+
+	for i = 0 to SABER_HASHBYTES {
+		t8 = k[i];
+		(u8) [kp + i] = t8;
+	}
+}

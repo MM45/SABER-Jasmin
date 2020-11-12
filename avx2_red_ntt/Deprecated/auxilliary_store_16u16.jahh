@@ -1,0 +1,24 @@
+/*** store_16u16.jahh: File containing an auxilliary Jasmin function, used to store a single u256 integer into 16 u16 integers ***/
+
+#ifndef STORE_16U16_HH
+#define STORE_16U16_HH
+
+inline fn store_16u16(reg u256 r, stack u16[16] buf) -> stack u16[16]
+{
+	inline int i;
+
+	reg u128 x;
+	reg u128 y;
+
+	x = #VEXTRACTI128(r, 0);
+	y = #VEXTRACTI128(r, 1);
+
+	buf[0] = #VPEXTR_16(x, 0);
+	buf[4] = #VPEXTR_16(x, 1);
+	buf[8] = #VPEXTR_16(y, 0);
+	buf[12] = #VPEXTR_16(y, 1);
+
+	return buf;
+}
+
+#endif

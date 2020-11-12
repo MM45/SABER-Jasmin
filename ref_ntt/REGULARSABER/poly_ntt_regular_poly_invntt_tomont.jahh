@@ -1,0 +1,427 @@
+/*** poly_ntt_regular_poly_invntt_tomont.jahh: File containing the Jasmin implementation of poly_invntt_tomont function from ntt.S, with pdata == PDATA0 (poly_invntt_tomont_0) and pdata = PDATA1 (poly_invntt_tomont_1) and (regular) SABER parameters ***/
+
+#ifndef POLY_INVNTT_TOMONT_HH
+#define POLY_INVNTT_TOMONT_HH
+
+#include "SABER_params.jahh"
+#include "consts256.jahh"
+#include "shuffle_regular_shuffle8.jahh"
+#include "shuffle_regular_shuffle4.jahh"
+#include "shuffle_regular_shuffle2.jahh"
+#include "shuffle_regular_shuffle1.jahh"
+#include "fq_regular_fqmulprecomp.jahh"
+#include "fq_regular_fqmulprecomp1.jahh"
+
+inline fn butterfly(
+reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 zl0, reg u256 zl1, reg u256 zh0, reg u256 zh1, reg u256 ymm0, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+	ymm12 = rh0 -16u16 rl0;
+	
+	rl0 +16u16= rh0;
+	ymm13 = rh1 -16u16 rl1;
+	rh0 = #VPMULL_16u16(ymm12, zl0);
+
+	rl1 +16u16= rh1;
+	ymm14 = rh2 -16u16 rl2;
+	rh1 = #VPMULL_16u16(ymm13, zl0);
+
+	rl2 +16u16= rh2;
+	ymm15 = rh3 -16u16 rl3;
+	rh2 = #VPMULL_16u16(ymm14, zl1);
+
+	rl3 +16u16= rh3;
+	rh3	= #VPMULL_16u16(ymm15, zl1);
+
+	ymm12 = #VPMULH_16u16(ymm12, zh0);
+	ymm13 = #VPMULH_16u16(ymm13, zh0);
+
+	ymm14 = #VPMULH_16u16(ymm14, zh1);
+	ymm15 = #VPMULH_16u16(ymm15, zh1);
+
+	rh0 = #VPMULH_16u16(rh0, ymm0);
+	rh1 = #VPMULH_16u16(rh1, ymm0);
+	rh2 = #VPMULH_16u16(rh2, ymm0);
+	rh3 = #VPMULH_16u16(rh3, ymm0);
+
+	rh0 = ymm12 -16u16 rh0;
+	rh1 = ymm13 -16u16 rh1;
+	rh2 = ymm14 -16u16 rh2;
+	rh3 = ymm15 -16u16 rh3;
+
+	return rl0, rl1, rl2, rl3, rh0, rh1, rh2, rh3, ymm12, ymm13, ymm14, ymm15;
+}
+
+inline fn intt_levels0t6(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a, reg ptr u16[864] pdata, inline int off, reg u256 ymm0) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm1, ymm2, ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+	
+	/** level0 **/
+	ymm6 = a[u256 (128 * off + 32) * 2 / 32];
+	ymm7 = a[u256 (128 * off + 48) * 2 / 32];
+	ymm10 = a[u256 (128 * off + 96) * 2 / 32];
+	ymm11 = a[u256 (128 * off + 112) * 2 / 32];
+	
+	ymm1 = pdata[u256 (_ZETAS + 0) * 2 /32];
+
+	ymm12 = ymm7 -16u16 ymm6;
+	ymm6 +16u16= ymm7;
+	ymm7 = #VPMULL_16u16(ymm12, ymm1);
+
+	ymm13 = ymm11 -16u16 ymm10;
+	ymm10 +16u16= ymm11;
+	ymm11 = #VPMULL_16u16(ymm13, ymm1);	
+
+	ymm4 = a[u256 (128 * off + 0) * 2 / 32];
+	ymm5 = a[u256 (128 * off + 16) * 2 / 32];
+	ymm8 = a[u256 (128 * off + 64) * 2 / 32];
+	ymm9 = a[u256 (128 * off + 80) * 2 / 32];
+	
+	ymm2 = pdata[u256 (_ZETAS + 16) * 2 /32];
+
+	ymm12 = #VPMULH_16u16(ymm12, ymm2);
+	ymm13 = #VPMULH_16u16(ymm13, ymm2);
+	ymm7 = #VPMULH_16u16(ymm7, ymm0);
+	ymm11 = #VPMULH_16u16(ymm11, ymm0);
+
+	ymm14 = ymm4 +16u16 ymm5;
+	ymm5 = ymm4 -16u16 ymm5;
+
+	ymm15 = ymm8 +16u16 ymm9;
+	ymm9 = ymm8 -16u16 ymm9;
+
+	ymm7 = ymm12 -16u16 ymm7;
+	ymm11 = ymm13 -16u16 ymm11; 
+
+	/** level1 **/
+
+	ymm4 = ymm14 +16u16 ymm6;
+	ymm6 = ymm14 -16u16 ymm6;
+
+	ymm12 = ymm5 +16u16 ymm7;
+	ymm7 = ymm5 -16u16 ymm7;
+
+	ymm8 = ymm15 +16u16 ymm10;
+	ymm10 = ymm15 -16u16 ymm10;
+
+	ymm13 = ymm9 +16u16 ymm11;
+	ymm11 = ymm9 -16u16 ymm11;
+
+
+	// shuffle1		4,12,14,15
+	ymm4, ymm14, ymm15 = shuffle1(ymm4, ymm12, ymm14, ymm15);
+
+	// shuffle1		6,7,5,9
+	ymm6, ymm5, ymm9 = shuffle1(ymm6, ymm7, ymm5, ymm9);
+	
+	// shuffle1		8,13,6,12
+	ymm8, ymm6, ymm12 = shuffle1(ymm8, ymm13, ymm6, ymm12);
+	
+	// shuffle1		10,11,7,11
+	ymm10, ymm7, ymm11 = shuffle1(ymm10, ymm11, ymm7, ymm11);
+
+	// shuffle2		14,5,4,8
+	ymm14, ymm4, ymm8 = shuffle2(ymm14, ymm5, ymm4, ymm8);
+
+	// shuffle2		6,7,5,13
+	ymm6, ymm5, ymm13 = shuffle2(ymm6, ymm7, ymm5, ymm13);
+
+	// shuffle2		15,9,6,10
+	ymm15, ymm6, ymm10 = shuffle2(ymm15, ymm9, ymm6, ymm10);
+
+	// shuffle2		12,11,7,11
+	ymm12, ymm7, ymm11 = shuffle2(ymm12, ymm11, ymm7, ymm11);
+
+	// fqmulprecomp1	(_16XMONT_PINV),4,x=14
+	ymm4, ymm14 = fqmulprecomp1(_16XMONT_PINV, ymm4, ymm14, ymm0, pdata);
+
+	ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 0) * 2 / 8]);
+	ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 4) * 2 / 8]);
+
+	// fqmulprecomp		14,15,5,x=14
+	ymm5, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm5, ymm14, ymm0);
+
+	ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 24) * 2 / 8]);
+	ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 28) * 2 / 8]);
+
+	// fqmulprecomp		14,15,6,x=14
+	ymm6, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm6, ymm14, ymm0);
+
+	ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 16) * 2 / 8]);
+	ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 20) * 2 / 8]);
+
+	// fqmulprecomp		14,15,7,x=14
+	ymm7, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm7, ymm14, ymm0);
+
+	ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 56) * 2 / 8]);
+	ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 60) * 2 / 8]);
+
+	// fqmulprecomp		14,15,8,x=14
+	ymm8, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm8, ymm14, ymm0);
+
+	ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 48) * 2 / 8]);
+	ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 52) * 2 / 8]);
+
+	// fqmulprecomp		14,15,13,x=14
+	ymm13, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm13, ymm14, ymm0);
+	
+	ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 40) * 2 / 8]);
+	ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 44) * 2 / 8]);
+
+	// fqmulprecomp		14,15,10,x=14
+	ymm10, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm10, ymm14, ymm0);
+
+	ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 32) * 2 / 8]);
+	ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 36) * 2 / 8]);
+
+	// fqmulprecomp		14,15,11,x=14
+	ymm11, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm11, ymm14, ymm0);
+
+	/** level2 **/
+	ymm12 = ymm7 -16u16 ymm6;
+	ymm6 +16u16= ymm7;
+	ymm7 = #VPMULL_16u16(ymm12, ymm1);
+
+	ymm9 = ymm13 -16u16 ymm8;
+	ymm8 +16u16= ymm13;
+	ymm13 = #VPMULL_16u16(ymm9, pdata[u256 (_ZETAS + 96) * 2 / 32]);
+
+	ymm14 = ymm11 -16u16 ymm10;
+	ymm10 +16u16= ymm11;
+	ymm11 = #VPMULL_16u16(ymm14, pdata[u256 (_ZETAS + 32) * 2 / 32]);
+
+	ymm12 = #VPMULH_16u16(ymm12, ymm2);
+	ymm9 = #VPMULH_16u16(ymm9, pdata[u256 (_ZETAS + 112) * 2 / 32]);
+	ymm14 = #VPMULH_16u16(ymm14, pdata[u256 (_ZETAS + 48) * 2 / 32]);
+
+	ymm7 = #VPMULH_16u16(ymm7, ymm0);
+	ymm13 = #VPMULH_16u16(ymm13, ymm0);
+	ymm11 = #VPMULH_16u16(ymm11, ymm0);
+
+	ymm15 = ymm4 +16u16 ymm5;
+	ymm5 = ymm4 -16u16 ymm5;
+
+	ymm7 = ymm12 -16u16 ymm7;
+	ymm9 -16u16= ymm13;
+	ymm11 = ymm14 -16u16 ymm11; 
+
+	/** level3 **/
+	ymm12 = ymm10 -16u16 ymm8;
+	ymm8 +16u16= ymm10;
+	ymm10 = #VPMULL_16u16(ymm12, ymm1);
+
+	ymm13 = ymm11 -16u16 ymm9;
+	ymm9 +16u16= ymm11;
+	ymm11 = #VPMULL_16u16(ymm13, ymm1);
+
+	ymm12 = #VPMULH_16u16(ymm12, ymm2);
+	ymm13 = #VPMULH_16u16(ymm13, ymm2);
+
+	ymm10 = #VPMULH_16u16(ymm10, ymm0);
+	ymm11 = #VPMULH_16u16(ymm11, ymm0);
+
+	ymm4 = ymm15 +16u16 ymm6;
+	ymm6 = ymm15 -16u16 ymm6;
+
+	ymm15 = ymm5 +16u16 ymm7;
+	ymm7 = ymm5 -16u16 ymm7;
+
+	ymm10 = ymm12 -16u16 ymm10;
+	ymm11 = ymm13 -16u16 ymm11;
+
+	/** level4 **/
+	ymm13 = pdata[u256 (_16XMONT_PINV) * 2 / 32];
+	ymm14 = pdata[u256 (_16XMONT) * 2 / 32];
+
+	// fqmulprecomp		13,14,4,x=12
+	ymm4, ymm12 = fqmulprecomp_0(ymm13, ymm14, ymm4, ymm12, ymm0);
+	
+	// fqmulprecomp		13,14,9,x=12
+	//ymm9, ymm12 = fqmulprecomp_0(ymm13, ymm14, ymm9, ymm12, ymm0);
+
+	ymm12 = ymm4 +16u16 ymm8;
+	ymm8 = ymm4 -16u16 ymm8;
+
+	ymm5 = ymm15 +16u16 ymm9;
+	ymm9 = ymm15 -16u16 ymm9;
+
+	ymm13 = ymm6 +16u16 ymm10;
+	ymm10 = ymm6 -16u16 ymm10;
+
+	ymm14 = ymm7 +16u16 ymm11;
+	ymm11 = ymm7 -16u16 ymm11;
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 0) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 16) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,12,x=7
+	ymm12, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm12, ymm7, ymm0);
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 32) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 48) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,5,x=7
+	ymm5, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm5, ymm7, ymm0);
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 64) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 80) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,13,x=7
+	ymm13, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm13, ymm7, ymm0);
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 96) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 112) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,14,x=7
+	ymm14, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm14, ymm7, ymm0);
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 128) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 144) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,8,x=7
+	ymm8, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm8, ymm7, ymm0);
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 160) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 176) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,9,x=7
+	ymm9, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm9, ymm7, ymm0);
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 192) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 208) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,10,x=7
+	ymm10, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm10, ymm7, ymm0);
+
+	ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 224) * 2 / 32], 0x1B);
+	ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 240) * 2 / 32], 0x1B);
+
+	// fqmulprecomp	7,15,11,x=7
+	ymm11, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm11, ymm7, ymm0);
+
+	// shuffle4		12,5,3,4
+	ymm3, ymm4 = shuffle4(ymm12, ymm5, ymm3, ymm4);
+
+	// shuffle4		13,14,5,6
+	ymm5, ymm6 = shuffle4(ymm13, ymm14, ymm3, ymm4);
+
+	// shuffle4		8,9,7,8
+	ymm7, ymm8 = shuffle4(ymm8, ymm9, ymm7, ymm8);
+
+	// shuffle4		10,11,9,10
+	ymm9, ymm10 = shuffle4(ymm10, ymm11, ymm9, ymm10);
+
+	/** level5 **/
+	ymm2 = #VPERMQ(pdata[u256 (_ZETAS + (1 - off) * 64 + 64) * 2 / 32], 0x4E);
+	ymm11 = #VPERMQ(pdata[u256 (_ZETAS + (1 - off) * 64 + 80) * 2 / 32], 0x4E);
+
+	// butterfly	3,5,7,9,4,6,8,10,2,2,11,11
+	ymm3, ymm5, ymm7, ymm9, ymm4, ymm6, ymm8, ymm10, ymm12, ymm13, ymm14, ymm15 = butterfly(ymm3, ymm5, ymm7, ymm9, ymm4, ymm6, ymm8, ymm10, ymm2, ymm2, ymm11, ymm11, ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	// shuffle8		3,5,11,5
+	ymm11, ymm5 = shuffle8(ymm3, ymm5, ymm11, ymm5);
+
+	// shuffle8		7,9,3,9
+	ymm3, ymm9 = shuffle8(ymm7, ymm9, ymm3, ymm9);
+
+	// shuffle8		4,6,7,6
+	ymm7, ymm6 = shuffle8(ymm4, ymm6, ymm7, ymm6);
+
+	// shuffle8		8,10,4,10
+	ymm4, ymm10 = shuffle8(ymm8, ymm10, ymm4, ymm10);
+
+	/** level6 **/
+	ymm2 = pdata[u256 (_ZETAS + (1 - off) * 64 + 32) * 2 / 32];
+	ymm8 = pdata[u256 (_ZETAS + (1 - off) * 64 + 48) * 2 / 32];
+
+	// butterfly	11,3,7,4,5,9,6,10,2,2,8,8
+	ymm11, ymm3, ymm7, ymm4, ymm5, ymm9, ymm6, ymm10, ymm12, ymm13, ymm14, ymm15 = butterfly(ymm11, ymm3, ymm7, ymm4, ymm5, ymm9, ymm6, ymm10, ymm2, ymm2, ymm8, ymm8, ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	ymm14 = pdata[u256 (_16XMONT_PINV) * 2 / 32];
+	ymm15 = pdata[u256 (_16XMONT) * 2 / 32];
+
+	// fqmulprecomp		14,15,11,x=13
+	ymm11, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm11, ymm13, ymm0);
+
+	// fqmulprecomp		14,15,3,x=13
+	ymm3, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm3, ymm13, ymm0);
+	
+	r[u256 (128 * off + 0) * 2 / 32] = ymm11; 
+	r[u256 (128 * off + 16) * 2 / 32] = ymm3; 
+	r[u256 (128 * off + 32) * 2 / 32] = ymm7; 
+	r[u256 (128 * off + 48) * 2 / 32] = ymm4; 
+	r[u256 (128 * off + 64) * 2 / 32] = ymm5; 
+	r[u256 (128 * off + 80) * 2 / 32] = ymm9; 
+	r[u256 (128 * off + 96) * 2 / 32] = ymm6; 
+	r[u256 (128 * off + 112) * 2 / 32] = ymm10;
+
+	return r;
+}
+
+inline fn intt_level7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int off, reg u256 ymm0) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm1, ymm2, ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+
+	ymm4 = r[u256 (64 * off + 0) * 2 / 32];
+	ymm8 = r[u256 (64 * off + 128) * 2 / 32];
+	ymm5 = r[u256 (64 * off + 16) * 2 / 32];
+	ymm9 = r[u256 (64 * off + 144) * 2 / 32];
+
+	ymm1 = pdata[u256 (_ZETAS + 0) * 2 / 32];
+
+	ymm6 = r[u256 (64 * off + 32) * 2 / 32];
+	ymm10 = r[u256 (64 * off + 160) * 2 / 32];
+	ymm7 = r[u256 (64 * off + 48) * 2 / 32];
+	ymm11 = r[u256 (64 * off + 176) * 2 / 32];
+
+	ymm2 = pdata[u256 (_ZETAS + 16) * 2 / 32];
+
+	// butterfly	4,5,6,7,8,9,10,11,1,1,2,2
+	ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15 = butterfly(ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm1, ymm1, ymm2, ymm2, ymm0, ymm12, ymm13, ymm14, ymm15);
+
+	r[u256 (64 * off + 0) * 2 / 32] = ymm4;
+	r[u256 (64 * off + 16) * 2 / 32] = ymm5;
+	r[u256 (64 * off + 32) * 2 / 32] = ymm6;
+	r[u256 (64 * off + 48) * 2 / 32] = ymm7;
+	r[u256 (64 * off + 128) * 2 / 32] = ymm8;
+	r[u256 (64 * off + 144) * 2 / 32] = ymm9;
+	r[u256 (64 * off + 160) * 2 / 32] = ymm10;
+	r[u256 (64 * off + 176) * 2 / 32] = ymm11;
+
+	return r;
+}
+
+// pdata == PDATA0
+fn poly_invntt_tomont_0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm0;
+
+	ymm0 = PDATA0[u256 _16XP * 2 / 32];
+
+	r = intt_levels0t6(r, a, PDATA0, 0, ymm0);
+	r = intt_levels0t6(r, a, PDATA0, 1, ymm0);
+
+	r = intt_level7(r, PDATA0, 0, ymm0);
+	r = intt_level7(r, PDATA0, 1, ymm0);
+
+	return r;
+}
+
+
+// pdata == PDATA1
+fn poly_invntt_tomont_1(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+	reg u256 ymm0;
+
+	ymm0 = PDATA1[u256 _16XP * 2 / 32];
+
+	r = intt_levels0t6(r, a, PDATA1, 0, ymm0);
+	r = intt_levels0t6(r, a, PDATA1, 1, ymm0);
+
+	r = intt_level7(r, PDATA1, 0, ymm0);
+	r = intt_level7(r, PDATA1, 1, ymm0);
+
+	return r;
+}
+
+#endif

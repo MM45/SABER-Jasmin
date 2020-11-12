@@ -1,0 +1,56 @@
+/*** polyvec_ntt_regular_polyvec_matrix_vector_mul.jahh: File containing the Jasmin implementation of polyvec_matrix_vector_mul function from polyvec_ntt.c, with (regular) SABER parameters ***/
+
+#ifndef POLYVEC_MATRIX_VECTOR_MUL_HH
+#define POLYVEC_MATRIX_VECTOR_MUL_HH
+
+#include "SABER_params.jahh"
+#include "consts256.jahh"
+#include "poly_ntt_regular_poly_ntt.jahh"
+#include "polyvec_ntt_regular_polyvec_ntt.jahh"
+#include "polyvec_ntt_regular_polyvec_basemul_acc_montgomery.jahh"
+#include "polyvec_ntt_regular_polyvec_invntt_tomont.jahh"
+#include "polyvec_ntt_regular_polyvec_crt.jahh"
+
+fn polyvec_matrix_vector_mul(reg ptr u16[SABER_KN] t, reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] s, reg u64 transpose) -> reg ptr u16[SABER_KN]
+{
+	inline int i;
+	inline int j;
+
+	stack u16[SABER_KN] ahat;
+	stack u16[SABER_KN] shat;
+	stack u16[SABER_KN] t0, t1;
+	stack u16[SABER_KN] t00, t11;
+
+	shat = polyvec_ntt_0(shat, s);
+	for i = 0 to SABER_K {
+		for j = 0 to SABER_K {
+			if (transpose != 0) {
+				ahat[j * SABER_N:SABER_N] = poly_ntt_0(ahat[j * SABER_N:SABER_N], a[j * SABER_KN + i * SABER_N:SABER_N]);
+			} else {
+				ahat[j * SABER_N:SABER_N] = poly_ntt_0(ahat[j * SABER_N:SABER_N], a[i * SABER_KN + j * SABER_N:SABER_N]);
+			}
+		}
+		t00[i * SABER_N:SABER_N] = polyvec_basemul_acc_montgomery_0(t00[i * SABER_N:SABER_N], ahat, shat);
+	}
+
+	shat = polyvec_ntt_1(shat, s);
+	for i = 0 to SABER_K {
+		for j = 0 to SABER_K {
+			if (transpose != 0) {
+				ahat[j * SABER_N:SABER_N] = poly_ntt_1(ahat[j * SABER_N:SABER_N], a[j * SABER_KN + i * SABER_N:SABER_N]);
+			} else {
+				ahat[j * SABER_N:SABER_N] = poly_ntt_1(ahat[j * SABER_N:SABER_N], a[i * SABER_KN + j * SABER_N:SABER_N]);
+			}
+		}
+		t11[i * SABER_N:SABER_N] = polyvec_basemul_acc_montgomery_1(t11[i * SABER_N:SABER_N], ahat, shat);
+	}
+
+	t0 = polyvec_invntt_tomont_0(t0, t00);
+	t1 = polyvec_invntt_tomont_1(t1, t11);
+	
+	t = polyvec_crt(t, t0, t1);
+
+	return t;
+}
+
+#endif

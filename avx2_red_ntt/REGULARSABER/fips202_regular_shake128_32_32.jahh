@@ -1,0 +1,37 @@
+/*** fips202_regular_shake128_32_32.jahh: File containing the Jasmin implementation of shake128 function from fips202.c, where outlen == 32, inlen == 32 and with (regular) SABER parameters ***/
+
+#ifndef SHAKE128_32_32_HH
+#define SHAKE128_32_32_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+#include "fips202_regular_keccak_absorb_128_32.jahh"
+
+inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8[32]
+{
+	inline int i;
+	
+	reg u8 t8;
+	
+	reg u256 t256;
+
+	stack u64[25] s;
+
+	t256 = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256;
+	}
+	s[24] = 0;
+
+	s = keccak_absorb_128_32(s, input);
+
+	s = KeccakF1600_StatePermute(s);
+
+	t256 = s[u256 0];
+	output[u256 0] = t256;
+
+	return output;
+}
+
+#endif

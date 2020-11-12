@@ -9,7 +9,6 @@
 
 fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
 {
-
 	inline int i;
 	inline int k;
 

@@ -1,0 +1,16 @@
+/*** shuffle_regular_shuffle2.jahh: File containing the Jasmin implementation of shuffle2 function from shuffle.inc ***/
+
+#ifndef SHUFFLE2_HH
+#define SHUFFLE2_HH
+
+inline fn shuffle2(reg u256 r0, reg u256 r1, reg u256 r2, reg u256 r3) -> reg u256, reg u256, reg u256
+{
+	r2 = #VMOVSLDUP_8u32(r1);
+	r2 = #VPBLEND_8u32(r0, r2, 0xAA);
+	r0 >>4u64= 32;
+	r3 = #VPBLEND_8u32(r0, r1, 0xAA);
+	
+	return r0, r2, r3;
+}
+
+#endif

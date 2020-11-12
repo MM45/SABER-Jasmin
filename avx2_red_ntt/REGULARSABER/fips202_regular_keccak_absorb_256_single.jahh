@@ -1,0 +1,25 @@
+/*** fips202_regular_keccak_absorb_256_single.jahh: File containing the Jasmin implementation of a single iteration of the while loop in keccak_absorb function from fips202.c, where rate == SHA3_256_RATE and with (regular) SABER parameters ***/
+
+#ifndef KECCAK_ABSORB_256_SINGLE_HH
+#define KECCAK_ABSORB_256_SINGLE_HH
+
+#include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+
+fn keccak_absorb_256_single(reg ptr u64[25] s, reg ptr u8[SHA3_256_RATE] m) -> reg ptr u64[25]
+{
+	inline int j;
+
+	reg u64 t64;
+
+	for j = 0 to SHA3_256_RATE / 8 {
+		t64 = m[u64 j];
+		s[u64 j] ^= t64;
+	}
+
+	s = KeccakF1600_StatePermute(s);
+
+	return s;
+}
+
+#endif
