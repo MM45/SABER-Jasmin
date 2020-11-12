@@ -12,22 +12,21 @@ export fn SABER_pack_4bit_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
 
-	reg u8 tb;
-	reg u16 td;
+	reg u256 t256;
 
 	stack u8[SABER_SCALEBYTES_KEM] bytes;
 	stack u16[SABER_N] data;
 
-	for i = 0 to SABER_N {
-		td = (u16) [datap + 2 * i];
-		data[i] = td;
+	for i = 0 to SABER_N / 16 {
+		t256 = (u256) [datap + 32 * i];
+		data[u256 i] = t256;
 	}
 
 	bytes = SABER_pack_4bit(bytes, data);
 
-	for i = 0 to SABER_SCALEBYTES_KEM {
-		tb = bytes[i];
-		(u8) [bytesp + i] = tb;
+	for i = 0 to SABER_SCALEBYTES_KEM / 32 {
+		t256 = bytes[u256 i];
+		(u256) [bytesp + 32 * i] = t256;
 	}
 
 }
@@ -37,22 +36,21 @@ export fn SABER_un_pack4bit_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
 
-	reg u8 tb;
-	reg u16 td;
+	reg u256 t256;
 
 	stack u8[SABER_SCALEBYTES_KEM] bytes;
 	stack u16[SABER_N] data;
 
-	for i = 0 to SABER_SCALEBYTES_KEM {
-		tb = (u8) [bytesp + i];
-		bytes[i] = tb;
+	for i = 0 to SABER_SCALEBYTES_KEM / 32 {
+		t256 = (u256) [bytesp + 32 * i];
+		bytes[u256 i] = t256;
 	}
 
 	data = SABER_un_pack4bit(bytes, data);
 
-	for i = 0 to SABER_N {
-		td = data[i];
-		(u16) [datap + 2 * i] = td;
+	for i = 0 to SABER_N / 16 {
+		t256 = data[u256 i];
+		(u256) [datap + 32 * i] = t256;
 	}
 
 }
@@ -61,22 +59,21 @@ export fn POLVECp2BS_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
 
-	reg u8 tb;
-	reg u16 td;
+	reg u256 t256;
 
 	stack u8[SABER_POLYVECCOMPRESSEDBYTES] bytes;
 	stack u16[SABER_KN] data;
 
-	for i = 0 to SABER_KN {
-		td = (u16) [datap + 2 * i];
-		data[i] = td;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [datap + 32 * i];
+		data[u256 i] = t256;
 	}
 
 	bytes = POLVECp2BS(bytes, data);
 
-	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-		tb = bytes[i];
-		(u8) [bytesp + i] = tb;
+	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES / 32 {
+		t256 = bytes[u256 i];
+		(u256) [bytesp + 32 * i] = t256;
 	}
 
 }
@@ -85,22 +82,21 @@ export fn POLVECq2BS_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
 
-	reg u8 tb;
-	reg u16 td;
+	reg u256 t256;
 
 	stack u8[SABER_POLYVECBYTES] bytes;
 	stack u16[SABER_KN] data;
 
-	for i = 0 to SABER_KN {
-		td = (u16) [datap + 2 * i];
-		data[i] = td;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [datap + 32 * i];
+		data[u256 i] = t256;
 	}
 
 	bytes = POLVECq2BS(bytes, data);
 
-	for i = 0 to SABER_POLYVECBYTES {
-		tb = bytes[i];
-		(u8) [bytesp + i] = tb;
+	for i = 0 to SABER_POLYVECBYTES / 32 {
+		t256 = bytes[u256 i];
+		(u256) [bytesp + 32 * i] = t256;
 	}
 }
 
@@ -108,23 +104,22 @@ export fn BS2POLVECp_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
 
-	reg u8 tb;
-	reg u16 td;
+	reg u256 t256;
 
 	stack u8[SABER_POLYVECCOMPRESSEDBYTES] bytes;
 	stack u16[SABER_KN] data;
 
 	
-	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES {
-		tb = (u8) [bytesp + i];
-		bytes[i] = tb;
+	for i = 0 to SABER_POLYVECCOMPRESSEDBYTES / 32 {
+		t256 = (u256) [bytesp + 32 * i];
+		bytes[u256 i] = t256;
 	}
 
 	data = BS2POLVECp(bytes, data);
 
-	for i = 0 to SABER_KN {
-		td = data[i];
-		(u16) [datap + 2 * i] = td;
+	for i = 0 to SABER_KN / 16 {
+		t256 = data[u256 i];
+		(u256) [datap + 32 * i] = t256;
 	}
 }
 
@@ -132,21 +127,20 @@ export fn BS2POLVECq_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
 
-	reg u8 tb;
-	reg u16 td;
+	reg u256 t256;
 
 	stack u8[SABER_POLYVECBYTES] bytes;
 	stack u16[SABER_KN] data;
 
-	for i = 0 to SABER_POLYVECBYTES {
-		tb = (u8) [bytesp + i];
-		bytes[i] = tb;
+	for i = 0 to SABER_POLYVECBYTES / 32 {
+		t256 = (u256) [bytesp + 32 * i];
+		bytes[u256 i] = t256;
 	}
 
 	data = BS2POLVECq(bytes, data);
 
-	for i = 0 to SABER_KN {
-		td = data[i];
-		(u16) [datap + 2 * i] = td;
+	for i = 0 to SABER_KN / 16 {
+		t256 = data[u256 i];
+		(u256) [datap + 32 * i] = t256;
 	}
 }

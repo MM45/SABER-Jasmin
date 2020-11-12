@@ -10,6 +10,7 @@
 #include "rng.h"
 #include "fips202.h"
 
+/*
 int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
 {
   //uint64_t CLOCK1, CLOCK2;
@@ -33,6 +34,7 @@ int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
 
   return(0);	
 }
+*/
 
 int crypto_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned char random_bytes_crypto[SABER_KEYBYTES], unsigned char indcpa_seed[SABER_SEEDBYTES], unsigned char indcpa_noiseseed[SABER_COINBYTES])
 {
@@ -91,6 +93,7 @@ int crypto_kem_enc_randominc(unsigned char *c, unsigned char *k, const unsigned 
   return(0);  
 }
 
+/*
 int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
 {
   //uint64_t CLOCK1, CLOCK2;
@@ -116,7 +119,7 @@ int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
   sha3_256(k, kr, 64);                          					// hash concatenation of pre-k and h(c) to k 
   return(0);	
 }
-
+*/
 
 int crypto_kem_dec(unsigned char *k, const unsigned char *c, const unsigned char *sk)
 {

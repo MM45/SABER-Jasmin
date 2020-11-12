@@ -42,30 +42,6 @@ __m256i floor_round;
 __m256i H1_avx;	
 __m256i H2_avx;
 
-void dummy_mv_mul(__m256i a_avx[SABER_K][SABER_K][SABER_N / 16], __m256i b_avx[SABER_K][SABER_N / 16], __m256i res_avx[SABER_K][SABER_N / 16])
-{
-	int32_t i, j, k;
-
-	for(i = 0; i < SABER_K; ++i) {
-		for(j = 0; j < SABER_K; ++j) {
-			for(k = 0; k < SABER_N / 16; ++k) {
-				res_avx[j][k] ^= a_avx[i][j][k] ^ b_avx[j][k];
-			}
-		}
-	}
-}
-
-void dummy_vv_mul(__m256i a_avx[SABER_K][SABER_N / 16], __m256i b_avx[SABER_K][SABER_N / 16], __m256i res_avx[SABER_N / 16])
-{
-	int32_t i, j;
-
-	for(i = 0; i < SABER_K; ++i) {
-		for(j = 0; j < SABER_N / 16; ++j) {
-			res_avx[j] ^= a_avx[i][j] ^ b_avx[i][j];
-		}
-	}
-}
-
 /*--------------------------------------------------------------------------------------
 	This routine loads the constant values for Toom-Cook multiplication 
 ----------------------------------------------------------------------------------------*/
@@ -209,7 +185,7 @@ void indcpa_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned
 	
   __m256i sk_avx[SABER_K][SABER_N/16];
   __m256i mod;
-  __m256i res_avx[SABER_K][SABER_N/16]; // TODO: remove initialization once multiplication is implemented.
+  __m256i res_avx[SABER_K][SABER_N/16];
   __m256i a_avx[SABER_K][SABER_K][SABER_N/16];
   //__m256i acc[2*SABER_N/16];
 
@@ -296,10 +272,8 @@ void indcpa_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned
 
 }
 
+/*
 void indcpa_kem_keypair(unsigned char *pk, unsigned char *sk)
-{
-}
-/* 
   polyvec a[SABER_K];
 
   uint16_t skpv1[SABER_K][SABER_N];

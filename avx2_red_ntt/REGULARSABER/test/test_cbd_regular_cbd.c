@@ -28,8 +28,7 @@ int main()
 	
 
 	for (i = 0; i < SABER_N; ++i) {
-		if (r_c[i] != r_jazz[i]) {
-			if (r_c[i] != (uint16_t) (r_jazz[i] + SABER_Q)) {
+		if ((r_c[i] - r_jazz[i]) % SABER_Q) { {
 				printf("[!] Unit test failed.\nFunction:\tcbd.\nReason:\tr_c[%d] != r_jazz[%d] ==> %d != %d\n", i, i, r_c[i], r_jazz[i]);
 			}
 		}

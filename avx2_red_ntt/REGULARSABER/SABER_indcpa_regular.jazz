@@ -1,4 +1,4 @@
-/*** SABER_indcpa_regular.jazz: File containing the Jasmin wrappers of the functions in the SABER_indcpa_regular*.jahh files, only used for unit testing ***/
+/*** SABER_indcpa_regular.jazz: File containing the Jasmin wrappers of the functions in the SABER_indcpa_regular_*.jahh files, only used for testing ***/
 
 #include "SABER_params.jahh"
 #include "SABER_indcpa_regular_POL2MSG.jahh"
@@ -14,22 +14,21 @@ export fn BS2POLq_jazz(reg u64 bytesp, reg u64 datap)
 {
 	inline int i;
 
-	reg u8 tb;
-	reg u16 td;
+	reg u256 t256;
 
 	stack u8[SABER_POLYBYTES] bytes;
 	stack u16[SABER_N] data;
 
-	for i = 0 to SABER_POLYBYTES {
-		tb = (u8) [bytesp + i];
-		bytes[i] = tb;
+	for i = 0 to SABER_POLYBYTES / 32 {
+		t256 = (u256) [bytesp + 32 * i];
+		bytes[u256 i] = t256;
 	}
 
 	data = BS2POLq(bytes, data);
 
-	for i = 0 to SABER_N {
-		td = data[i];
-		(u16) [datap + 2 * i] = td;
+	for i = 0 to SABER_N / 16 {
+		t256 = data[u256 i];
+		(u256) [datap + 32 * i] = t256;
 	}
 
 }
@@ -38,9 +37,7 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
 {
 	inline int i;
 
-	reg u8 ts;
-
-	reg u16 tr;
+	reg u256 t256;
 
 	stack u8[SABER_COINBYTES] seed;
 
@@ -48,9 +45,9 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
 
 	stack u64 srp;
 
-	for i = 0 to SABER_COINBYTES {
-		ts = (u8) [seedp + i];
-		seed[i] = ts;
+	for i = 0 to SABER_COINBYTES / 32 {
+		t256 = (u256) [seedp + 32 * i];
+		seed[u256 i] = t256;
 	}
 
 	srp = rp;
@@ -59,9 +56,9 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
 
 	rp = srp;
 	
-	for i = 0 to SABER_KN {
-		tr = r[i];
-		(u16) [rp + 2 * i] = tr;
+	for i = 0 to SABER_KN / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 
 }
@@ -69,24 +66,22 @@ export fn GenSecret_jazz(reg u64 rp, reg u64 seedp)
 export fn POL2MSG_jazz(reg u64 message_dec_unpackedp, reg u64 message_decp) 
 {
 	inline int i;
-	
-	reg u8 tmd;
 
-	reg u16 tmdu;
+	reg u256 t256;
 
 	stack u8[SABER_KEYBYTES] message_dec;
 	stack u16[SABER_N] message_dec_unpacked;
 
-	for i = 0 to SABER_N {
-		tmdu = (u16) [message_dec_unpackedp + 2 * i];
-		message_dec_unpacked[i] = tmdu;
+	for i = 0 to SABER_N / 16 {
+		t256 = (u256) [message_dec_unpackedp + 32 * i];
+		message_dec_unpacked[u256 i] = t256;
 	}
 
 	message_dec = POL2MSG(message_dec_unpacked, message_dec);
 
-	for i = 0 to SABER_KEYBYTES {
-		tmd = message_dec[i];
-		(u8) [message_decp + i] = tmd;
+	for i = 0 to SABER_KEYBYTES / 32 {
+		t256 = message_dec[u256 i];
+		(u256) [message_decp + 32 * i] = t256;
 	}
 
 }
@@ -95,9 +90,7 @@ export fn GenMatrix_jazz(reg u64 ap, reg u64 seedp)
 {
 	inline int i;
 
-	reg u8 t8;
-
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u8[SABER_SEEDBYTES] seed;
 
@@ -105,9 +98,9 @@ export fn GenMatrix_jazz(reg u64 ap, reg u64 seedp)
 
 	stack u64 sap;
 
-	for i = 0 to SABER_SEEDBYTES {
-		t8 = (u8) [seedp + i];
-		seed[i] = t8;
+	for i = 0 to SABER_SEEDBYTES / 32 {
+		t256 = (u256) [seedp + 32 * i];
+		seed[u256 i] = t256;
 	}
 
 	sap = ap;
@@ -116,9 +109,9 @@ export fn GenMatrix_jazz(reg u64 ap, reg u64 seedp)
 
 	ap = sap;
 	
-	for i = 0 to SABER_KKN {
-		t16 = a[i];
-		(u16) [ap + 2 * i] = t16;
+	for i = 0 to SABER_KKN / 16 {
+		t256 = a[u256 i];
+		(u256) [ap + 32 * i] = t256;
 	}
 }
 
@@ -127,7 +120,7 @@ export fn indcpa_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 se
 {
 	inline int i;
 
-	reg u8 t8;
+	reg u256 t256;
 
 	stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk;
 	stack u8[SABER_INDCPA_SECRETKEYBYTES] sk;
@@ -137,14 +130,14 @@ export fn indcpa_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 se
 	stack u64 spkp;
 	stack u64 sskp;
 
-	for i = 0 to SABER_SEEDBYTES {
-		t8 = (u8) [seedp + i];
-		seed[i] = t8;
+	for i = 0 to SABER_SEEDBYTES / 32 {
+		t256 = (u256) [seedp + 32 * i];
+		seed[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_COINBYTES {
-		t8 = (u8) [noiseseedp + i];
-		noiseseed[i] = t8;
+	for i = 0 to SABER_COINBYTES / 32 {
+		t256 = (u256) [noiseseedp + 32 * i];
+		noiseseed[u256 i] = t256;
 	}
 
 	spkp = pkp;
@@ -155,14 +148,14 @@ export fn indcpa_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 se
 	pkp = spkp;
 	skp = sskp;
 
-	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
-		t8 = pk[i];
-		(u8) [pkp + i] = t8;
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES / 32 {
+		t256 = pk[u256 i];
+		(u256) [pkp + 32 * i] = t256;
 	}
 
-	for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
-		t8 = sk[i];
-		(u8) [skp + i] = t8;
+	for i = 0 to SABER_INDCPA_SECRETKEYBYTES / 32 {
+		t256 = sk[u256 i];
+		(u256) [skp + 32 * i] = t256;
 	}
 }
 
@@ -170,7 +163,7 @@ export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg
 {
 	inline int i;
 
-	reg u8 t8;
+	reg u256 t256;
 
 	stack u8[SABER_KEYBYTES] message_received;
 	stack u8[SABER_COINBYTES] noiseseed;
@@ -179,19 +172,19 @@ export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg
 
 	stack u64 sciphertextp;
 
-	for i = 0 to SABER_KEYBYTES {
-		t8 = (u8) [message_receivedp + i];
-		message_received[i] = t8;
+	for i = 0 to SABER_KEYBYTES / 32 {
+		t256 = (u256) [message_receivedp + 32 * i];
+		message_received[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_COINBYTES {
-		t8 = (u8) [noiseseedp + i];
-		noiseseed[i] = t8;
+	for i = 0 to SABER_COINBYTES / 32 {
+		t256 = (u256) [noiseseedp + 32 * i];
+		noiseseed[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES {
-		t8 = (u8) [pkp + i];
-		pk[i] = t8;
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES / 32 {
+		t256 = (u256) [pkp + 32 * i];
+		pk[u256 i] = t256;
 	}
 
 	sciphertextp = ciphertextp;
@@ -200,9 +193,9 @@ export fn indcpa_kem_enc_jazz(reg u64 message_receivedp, reg u64 noiseseedp, reg
 
 	ciphertextp = sciphertextp;
 
-	for i = 0 to SABER_BYTES_CCA_DEC {
-		t8 = ciphertext[i];
-		(u8) [ciphertextp + i] = t8;
+	for i = 0 to SABER_BYTES_CCA_DEC / 32 {
+		t256 = ciphertext[u256 i];
+		(u256) [ciphertextp + 32 * i] = t256;
 	}
 }
 
@@ -210,7 +203,7 @@ export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_
 {
 	inline int i;
 
-	reg u8 t8;
+	reg u256 t256;
 
 	stack u8[SABER_INDCPA_SECRETKEYBYTES] sk;
 	stack u8[SABER_BYTES_CCA_DEC] ciphertext;
@@ -218,14 +211,14 @@ export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_
 
 	stack u64 smessage_decp;
 
-	for i = 0 to SABER_INDCPA_SECRETKEYBYTES {
-		t8 = (u8) [skp + i];
-		sk[i] = t8;
+	for i = 0 to SABER_INDCPA_SECRETKEYBYTES / 32 {
+		t256 = (u256) [skp + 32 * i];
+		sk[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_BYTES_CCA_DEC {
-		t8 = (u8) [ciphertextp + i];
-		ciphertext[i] = t8;
+	for i = 0 to SABER_BYTES_CCA_DEC / 32 {
+		t256 = (u256) [ciphertextp + 32 * i];
+		ciphertext[u256 i] = t256;
 	}
 
 	smessage_decp = message_decp;
@@ -234,9 +227,9 @@ export fn indcpa_kem_dec_jazz(reg u64 skp, reg u64 ciphertextp, reg u64 message_
 
 	message_decp = smessage_decp;
 
-	for i = 0 to SABER_KEYBYTES {
-		t8 = message_dec[i];
-		(u8) [message_decp + i] = t8;
+	for i = 0 to SABER_KEYBYTES / 32 {
+		t256 = message_dec[u256 i];
+		(u256) [message_decp + 32 * i] = t256;
 	}
 }
 

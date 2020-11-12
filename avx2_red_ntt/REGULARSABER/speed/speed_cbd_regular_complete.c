@@ -1,4 +1,4 @@
-/*** speed_cbd_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the cbd.c file ***/
+/*** speed_cbd_regular_complete_nc.c: File containing speed tests for the (regular) SABER implementations of the functions in the cbd.c file ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,12 +48,6 @@ int test_cbd()
 	   	cbd_jazz(r_jazz, buf_jazz);
 	    CLOCK2 = cpucycles();
 	    t_cbd_jazz[i]= CLOCK2 - CLOCK1;
-
-		for (j = 0; j < SABER_N; ++j) {
-			if (r_c[j] != r_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tcbd.\nReason:\tr_c[%ld] != r_jazz[%ld] ==> %d != %d\n", j, j, r_c[j], r_jazz[j]);
-			}
-		}
 	}
 
 	print_results("cbd_c: ", t_cbd_c, NRUNS);

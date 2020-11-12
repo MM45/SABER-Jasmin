@@ -1,4 +1,4 @@
-/*** speed_pack_unpack_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the pack_unpack.c file ***/
+/*** speed_pack_unpack_regular_complete_nc.c: File containing speed tests for the (regular) SABER implementations of the functions in the pack_unpack.c file, without functionality checks ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@
 
 int test_pack_unpack()
 {
-	uint64_t i, j, k;
+	uint64_t i, j;
 
 	uint64_t t_bs2polvecp_c[NRUNS];
 	uint64_t t_bs2polvecp_jazz[NRUNS];
@@ -89,14 +89,6 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_bs2polvecp_jazz[i]= CLOCK2 - CLOCK1;
 
-	    for (j = 0; j < SABER_K; ++j) {
-			for (k = 0; k < SABER_N; ++k) {
-				if (data_bs2polvecp_c[j][k] != data_bs2polvecp_jazz[j][k]) {
-					printf("[!] Functional test failed.\nFunction:\tBS2POLVECp.\nReason:\tdata_c[%ld][%ld] != data_jazz[%ld][%ld] ==> %d != %d\n", j, k, j, k, data_bs2polvecp_c[j][k], data_bs2polvecp_jazz[j][k]);
-				}
-			}
-		}
-
 		//BS2POLVECq; Reference_C
 	    CLOCK1 = cpucycles();	
 	    BS2POLVECq(bytes_bs2polvecq, data_bs2polvecq_c);
@@ -108,14 +100,6 @@ int test_pack_unpack()
 	    BS2POLVECq_jazz(bytes_bs2polvecq, data_bs2polvecq_jazz);
 	    CLOCK2 = cpucycles();	
 	    t_bs2polvecq_jazz[i]= CLOCK2 - CLOCK1;
-
-	    for (j = 0; j < SABER_K; ++j) {
-			for (k = 0; k < SABER_N; ++k) {
-				if (data_bs2polvecq_c[j][k] != data_bs2polvecq_jazz[j][k]) {
-					printf("[!] Functional test failed.\nFunction:\tBS2POLVECq.\nReason:\tdata_c[%ld][%ld] != data_jazz[%ld][%ld] ==> %d != %d\n", j, k, j, k, data_bs2polvecq_c[j][k], data_bs2polvecq_jazz[j][k]);
-				}
-			}
-		}
 
 		//POLVECp2BS; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -129,12 +113,6 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_polvecp2bs_jazz[i]= CLOCK2 - CLOCK1;
 
-		for (j = 0; j < SABER_POLYVECCOMPRESSEDBYTES; ++j) {
-			if (bytes_polvecp2bs_c[j] != bytes_polvecp2bs_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tPOLVECp2BS.\nReason:\tbytes_c[%ld] != bytes_jazz[%ld] ==> %d != %d\n", j, j, bytes_polvecp2bs_c[j], bytes_polvecp2bs_jazz[j]);
-			}
-		}
-
 		//POLVECq2BS; Reference_C
 	    CLOCK1 = cpucycles();	
 	    POLVECq2BS(bytes_polvecq2bs_c, data_polvecq2bs);
@@ -146,12 +124,6 @@ int test_pack_unpack()
 	    POLVECq2BS_jazz(bytes_polvecq2bs_jazz, data_polvecq2bs);
 	    CLOCK2 = cpucycles();	
 	    t_polvecq2bs_jazz[i]= CLOCK2 - CLOCK1;
-
-		for (j = 0; j < SABER_POLYVECBYTES; ++j) {
-			if (bytes_polvecq2bs_c[j] != bytes_polvecq2bs_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tPOLVECq2BS.\nReason:\tbytes_c[%ld] != bytes_jazz[%ld] ==> %d != %d\n", j, j, bytes_polvecq2bs_c[j], bytes_polvecq2bs_jazz[j]);
-			}
-		}
 
 		//SABER_pack_4bit; Reference_C
 	    CLOCK1 = cpucycles();	
@@ -165,12 +137,6 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_pack4_jazz[i]= CLOCK2 - CLOCK1;
 
-		for (j = 0; j < SABER_SCALEBYTES_KEM; ++j) {
-			if (bytes_pack4_c[j] != bytes_pack4_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tSABER_pack_4bit.\nReason:\tbytes_c[%ld] != bytes_jazz[%ld] ==> %d != %d\n", j, j, bytes_pack4_c[j], bytes_pack4_jazz[j]);
-			}
-		}
-
 		//SABER_un_pack4bit; Reference_C
 	    CLOCK1 = cpucycles();	
 	    SABER_un_pack4bit(bytes_unpack4, data_unpack4_c);
@@ -182,12 +148,6 @@ int test_pack_unpack()
 	    SABER_un_pack4bit_jazz(bytes_unpack4, data_unpack4_jazz);
 	    CLOCK2 = cpucycles();	
 	    t_unpack4_jazz[i]= CLOCK2 - CLOCK1;
-
-	    for (j = 0; j < SABER_N; ++j) {
-			if (data_unpack4_c[j] != data_unpack4_jazz[j]) {
-				printf("[!] Functional test failed.\nFunction:\tSABER_un_pack4bit.\nReason:\tdata_c[%ld] != data_jazz[%ld] ==> %d != %d\n", j, j, data_unpack4_c[j], data_unpack4_jazz[j]);
-			}
-		}
 
 	}
 

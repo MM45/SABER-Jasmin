@@ -6,13 +6,11 @@ JFLAGS = -lea -pasm ${JADDFLAGS}
 
 
 GENERALDIRECTORY = GENERAL
-LIGHTDIRECTORY = LIGHTSABER
 REGULARDIRECTORY = REGULARSABER
-FIREDIRECTORY = FIRESABER
 
 
 
-.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jcbd_regular.s rm REGULARSABER/jverify_regular.s
+.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jcbd_regular.s REGULARSABER/jverify_regular.s
 
 
 default: test_regular speed_regular
@@ -50,15 +48,10 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem \
 
 speed_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular_complete \
-				${REGULARDIRECTORY}/speed/speed_kem_regular_complete_nc \
 				${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete \
-				${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete_nc \
 				${REGULARDIRECTORY}/speed/speed_fips202_regular_complete \
-				${REGULARDIRECTORY}/speed/speed_fips202_regular_complete_nc \
 				${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete \
-				${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete_nc \
 				${REGULARDIRECTORY}/speed/speed_cbd_regular_complete \
-				${REGULARDIRECTORY}/speed/speed_cbd_regular_complete_nc \
 
 
 ##### GENERAL #####
@@ -185,13 +178,8 @@ clean:
 	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_enc_randominc
 	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_dec
 	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem
-	-rm	${REGULARDIRECTORY}/speed/speed_kem_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_kem_regular_complete_nc 
+	-rm	${REGULARDIRECTORY}/speed/speed_kem_regular_complete
 	-rm	${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete_nc 
 	-rm	${REGULARDIRECTORY}/speed/speed_fips202_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_fips202_regular_complete_nc 
 	-rm	${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete_nc 
 	-rm	${REGULARDIRECTORY}/speed/speed_cbd_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_cbd_regular_complete_nc 

@@ -13,6 +13,11 @@ int main()
 	int i;
 
 	// Declare variables for test
+	unsigned char seed[SABER_SEEDBYTES];
+	unsigned char noiseseed[SABER_COINBYTES];
+	unsigned char pk[SABER_INDCPA_PUBLICKEYBYTES];
+	unsigned char message_rec[32];
+
 	unsigned char sk_c[SABER_INDCPA_SECRETKEYBYTES];
 	unsigned char sk_jazz[SABER_INDCPA_SECRETKEYBYTES];
 	unsigned char ciphertext_c[SABER_BYTES_CCA_DEC];
@@ -21,9 +26,18 @@ int main()
 	unsigned char message_dec_jazz[SABER_KEYBYTES];
 
 	// Initialize variables for test
-	random_test_bytes(sk_c, SABER_INDCPA_SECRETKEYBYTES);
-	random_test_bytes(ciphertext_c, SABER_BYTES_CCA_DEC);
+
+	//random_test_bytes(sk_c, SABER_INDCPA_SECRETKEYBYTES);
+	random_test_bytes(seed, SABER_SEEDBYTES);
+	random_test_bytes(noiseseed, SABER_COINBYTES);
+	random_test_bytes(message_rec, 32);
 	
+	indcpa_kem_keypair_randominc(pk, sk_c, seed, noiseseed);
+
+	random_test_bytes(noiseseed, SABER_COINBYTES);
+
+	indcpa_kem_enc(message_rec, noiseseed, pk, ciphertext_c);
+
 	for (i = 0; i < SABER_INDCPA_SECRETKEYBYTES; ++i) {
 		sk_jazz[i] = sk_c[i];
 	}
