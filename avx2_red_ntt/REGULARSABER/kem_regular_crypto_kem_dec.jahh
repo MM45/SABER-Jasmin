@@ -14,11 +14,11 @@
 
 inline fn crypto_kem_dec(stack u8[SABER_HASHBYTES] k, stack u8[SABER_BYTES_CCA_DEC] c, stack u8[SABER_SECRETKEYBYTES] sk) -> stack u8[SABER_HASHBYTES]
 {
-	inline int i;
-
 	reg u8 t8;
 
 	reg u64 fail;
+
+	reg u256 t256;
 
 	stack u8[SABER_BYTES_CCA_DEC] cmp;
 	stack u8[64] buf;
@@ -28,10 +28,8 @@ inline fn crypto_kem_dec(stack u8[SABER_HASHBYTES] k, stack u8[SABER_BYTES_CCA_D
 
 	buf[0:SABER_KEYBYTES] = indcpa_kem_dec(sk[0:SABER_INDCPA_SECRETKEYBYTES], c, buf[0:SABER_KEYBYTES]);
 
-	for i = 0 to 32 {
-		t8 = sk[SABER_SECRETKEYBYTES - 64 + i];
-		buf[32 + i] = t8;
-	}
+	t256 = sk[u256 (SABER_SECRETKEYBYTES - 64) / 32];
+	buf[u256 1] = t256;
 
 	kr = sha3_512_64(kr, buf);
 

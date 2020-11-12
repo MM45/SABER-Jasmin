@@ -13,17 +13,13 @@
 
 inline fn crypto_kem_enc_randominc(stack u8[SABER_BYTES_CCA_DEC] c, stack u8[SABER_HASHBYTES] k, stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[32] random_bytes_crypto) -> stack u8[SABER_BYTES_CCA_DEC], stack u8[SABER_HASHBYTES]
 {
-	inline int i;
-
-	reg u8 t8;
+	reg u256 t256;
 
 	stack u8[64] kr;
 	stack u8[64] buf;
 
-	for i = 0 to 32 {
-		t8 = random_bytes_crypto[i];
-		buf[i] = t8;
-	}
+	t256 = random_bytes_crypto[u256 0];
+	buf[u256 0] = t256;
 
 	buf[0:32] = sha3_256_32(buf[0:32], buf[0:32]);
 

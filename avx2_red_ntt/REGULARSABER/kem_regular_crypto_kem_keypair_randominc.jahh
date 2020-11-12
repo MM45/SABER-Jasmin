@@ -9,30 +9,22 @@
 
 inline fn crypto_kem_keypair_randominc(stack u8[SABER_PUBLICKEYBYTES] pk, stack u8[SABER_SECRETKEYBYTES] sk, stack u8[SABER_KEYBYTES] random_bytes_crypto, stack u8[SABER_SEEDBYTES] indcpa_seed, stack u8[SABER_COINBYTES] indcpa_noiseseed) -> stack u8[SABER_PUBLICKEYBYTES], stack u8[SABER_SECRETKEYBYTES]
 {
-	inline int j;
+	inline int i;
 
-	reg u8 t8;
-
-	reg u64 i;
-	reg u64 address;
+	reg u256 t256;
 
 	pk, sk[0:SABER_INDCPA_SECRETKEYBYTES] = indcpa_kem_keypair_randominc(pk, sk[0:SABER_INDCPA_SECRETKEYBYTES], indcpa_seed, indcpa_noiseseed);
 
-	i = 0;
-	address = SABER_INDCPA_SECRETKEYBYTES;
-	while (i < SABER_INDCPA_PUBLICKEYBYTES) {
-		t8 = pk[(int) i];
-		sk[(int) address] = t8;
-
-		i += 1;
-		address += 1;
+	for i = 0 to SABER_INDCPA_PUBLICKEYBYTES / 32 {
+		t256 = pk[u256 i];
+		sk[u256 SABER_INDCPA_SECRETKEYBYTES / 32 + i] = t256;
 	}
 
 	sk[SABER_SECRETKEYBYTES - 64:SABER_HASHBYTES] = sha3_256_PUBKEYBYTES(sk[SABER_SECRETKEYBYTES - 64:SABER_HASHBYTES], pk);
 
-	for j = 0 to SABER_KEYBYTES {
-		t8 = random_bytes_crypto[j];
-		sk[SABER_SECRETKEYBYTES - SABER_KEYBYTES + j] = t8;
+	for i = 0 to SABER_KEYBYTES / 32 {
+		t256 = random_bytes_crypto[u256 i];
+		sk[u256 (SABER_SECRETKEYBYTES - SABER_KEYBYTES) / 32 + i] = t256;
 	}
 
 	return pk, sk;

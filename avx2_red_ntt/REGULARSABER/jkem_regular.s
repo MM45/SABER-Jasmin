@@ -2468,70 +2468,8 @@ Lcrypto_kem_dec_jazz$14:
 	movw	510(%rax), %ax
 	shlw	$7, %ax
 	orb 	%al, 31(%rcx)
-	movb	8864(%rsp), %al
-	movb	%al, 128(%rsp)
-	movb	8865(%rsp), %al
-	movb	%al, 129(%rsp)
-	movb	8866(%rsp), %al
-	movb	%al, 130(%rsp)
-	movb	8867(%rsp), %al
-	movb	%al, 131(%rsp)
-	movb	8868(%rsp), %al
-	movb	%al, 132(%rsp)
-	movb	8869(%rsp), %al
-	movb	%al, 133(%rsp)
-	movb	8870(%rsp), %al
-	movb	%al, 134(%rsp)
-	movb	8871(%rsp), %al
-	movb	%al, 135(%rsp)
-	movb	8872(%rsp), %al
-	movb	%al, 136(%rsp)
-	movb	8873(%rsp), %al
-	movb	%al, 137(%rsp)
-	movb	8874(%rsp), %al
-	movb	%al, 138(%rsp)
-	movb	8875(%rsp), %al
-	movb	%al, 139(%rsp)
-	movb	8876(%rsp), %al
-	movb	%al, 140(%rsp)
-	movb	8877(%rsp), %al
-	movb	%al, 141(%rsp)
-	movb	8878(%rsp), %al
-	movb	%al, 142(%rsp)
-	movb	8879(%rsp), %al
-	movb	%al, 143(%rsp)
-	movb	8880(%rsp), %al
-	movb	%al, 144(%rsp)
-	movb	8881(%rsp), %al
-	movb	%al, 145(%rsp)
-	movb	8882(%rsp), %al
-	movb	%al, 146(%rsp)
-	movb	8883(%rsp), %al
-	movb	%al, 147(%rsp)
-	movb	8884(%rsp), %al
-	movb	%al, 148(%rsp)
-	movb	8885(%rsp), %al
-	movb	%al, 149(%rsp)
-	movb	8886(%rsp), %al
-	movb	%al, 150(%rsp)
-	movb	8887(%rsp), %al
-	movb	%al, 151(%rsp)
-	movb	8888(%rsp), %al
-	movb	%al, 152(%rsp)
-	movb	8889(%rsp), %al
-	movb	%al, 153(%rsp)
-	movb	8890(%rsp), %al
-	movb	%al, 154(%rsp)
-	movb	8891(%rsp), %al
-	movb	%al, 155(%rsp)
-	movb	8892(%rsp), %al
-	movb	%al, 156(%rsp)
-	movb	8893(%rsp), %al
-	movb	%al, 157(%rsp)
-	movb	8894(%rsp), %al
-	movb	%al, 158(%rsp)
-	movb	8895(%rsp), %al
-	movb	%al, 159(%rsp)
+	vmovdqu	8864(%rsp), %ymm0
+	vmovdqu	%ymm0, 128(%rsp)
 	leaq	160(%rsp), %rax
 	leaq	96(%rsp), %rcx
 	leaq	-224(%rsp), %rsp
@@ -4447,70 +4385,8 @@ Lcrypto_kem_enc_randominc_jazz$16:
 	jb  	Lcrypto_kem_enc_randominc_jazz$17
 	movq	%rdi, 11360(%rsp)
 	movq	%rsi, 11368(%rsp)
-	movb	(%rsp), %al
-	movb	%al, 96(%rsp)
-	movb	1(%rsp), %al
-	movb	%al, 97(%rsp)
-	movb	2(%rsp), %al
-	movb	%al, 98(%rsp)
-	movb	3(%rsp), %al
-	movb	%al, 99(%rsp)
-	movb	4(%rsp), %al
-	movb	%al, 100(%rsp)
-	movb	5(%rsp), %al
-	movb	%al, 101(%rsp)
-	movb	6(%rsp), %al
-	movb	%al, 102(%rsp)
-	movb	7(%rsp), %al
-	movb	%al, 103(%rsp)
-	movb	8(%rsp), %al
-	movb	%al, 104(%rsp)
-	movb	9(%rsp), %al
-	movb	%al, 105(%rsp)
-	movb	10(%rsp), %al
-	movb	%al, 106(%rsp)
-	movb	11(%rsp), %al
-	movb	%al, 107(%rsp)
-	movb	12(%rsp), %al
-	movb	%al, 108(%rsp)
-	movb	13(%rsp), %al
-	movb	%al, 109(%rsp)
-	movb	14(%rsp), %al
-	movb	%al, 110(%rsp)
-	movb	15(%rsp), %al
-	movb	%al, 111(%rsp)
-	movb	16(%rsp), %al
-	movb	%al, 112(%rsp)
-	movb	17(%rsp), %al
-	movb	%al, 113(%rsp)
-	movb	18(%rsp), %al
-	movb	%al, 114(%rsp)
-	movb	19(%rsp), %al
-	movb	%al, 115(%rsp)
-	movb	20(%rsp), %al
-	movb	%al, 116(%rsp)
-	movb	21(%rsp), %al
-	movb	%al, 117(%rsp)
-	movb	22(%rsp), %al
-	movb	%al, 118(%rsp)
-	movb	23(%rsp), %al
-	movb	%al, 119(%rsp)
-	movb	24(%rsp), %al
-	movb	%al, 120(%rsp)
-	movb	25(%rsp), %al
-	movb	%al, 121(%rsp)
-	movb	26(%rsp), %al
-	movb	%al, 122(%rsp)
-	movb	27(%rsp), %al
-	movb	%al, 123(%rsp)
-	movb	28(%rsp), %al
-	movb	%al, 124(%rsp)
-	movb	29(%rsp), %al
-	movb	%al, 125(%rsp)
-	movb	30(%rsp), %al
-	movb	%al, 126(%rsp)
-	movb	31(%rsp), %al
-	movb	%al, 127(%rsp)
+	vmovdqu	(%rsp), %ymm0
+	vmovdqu	%ymm0, 96(%rsp)
 	leaq	96(%rsp), %rax
 	leaq	96(%rsp), %rcx
 	vmovdqu	glob_data + 3808(%rip), %ymm0
@@ -6421,19 +6297,10 @@ crypto_kem_keypair_randominc_jazz:
 	movq	%r14, 11352(%rsp)
 	movq	%r15, 11360(%rsp)
 	movq	$0, %rax
-	jmp 	Lcrypto_kem_keypair_randominc_jazz$20
-Lcrypto_kem_keypair_randominc_jazz$21:
-	movb	(%rdx,%rax), %r9b
-	movb	%r9b, 11280(%rsp,%rax)
-	leaq	1(%rax), %rax
-Lcrypto_kem_keypair_randominc_jazz$20:
-	cmpq	$32, %rax
-	jb  	Lcrypto_kem_keypair_randominc_jazz$21
-	movq	$0, %rax
 	jmp 	Lcrypto_kem_keypair_randominc_jazz$18
 Lcrypto_kem_keypair_randominc_jazz$19:
-	movb	(%rcx,%rax), %dl
-	movb	%dl, (%rsp,%rax)
+	movb	(%rdx,%rax), %r9b
+	movb	%r9b, (%rsp,%rax)
 	leaq	1(%rax), %rax
 Lcrypto_kem_keypair_randominc_jazz$18:
 	cmpq	$32, %rax
@@ -6441,66 +6308,70 @@ Lcrypto_kem_keypair_randominc_jazz$18:
 	movq	$0, %rax
 	jmp 	Lcrypto_kem_keypair_randominc_jazz$16
 Lcrypto_kem_keypair_randominc_jazz$17:
-	movb	(%r8,%rax), %cl
-	movb	%cl, 32(%rsp,%rax)
+	movb	(%rcx,%rax), %dl
+	movb	%dl, 32(%rsp,%rax)
 	leaq	1(%rax), %rax
 Lcrypto_kem_keypair_randominc_jazz$16:
 	cmpq	$32, %rax
 	jb  	Lcrypto_kem_keypair_randominc_jazz$17
-	movq	%rdi, 11264(%rsp)
-	movq	%rsi, 11272(%rsp)
-	movq	%rsp, %rax
-	movq	%rsp, %rdx
+	movq	$0, %rax
+	jmp 	Lcrypto_kem_keypair_randominc_jazz$14
+Lcrypto_kem_keypair_randominc_jazz$15:
+	movb	(%r8,%rax), %cl
+	movb	%cl, 64(%rsp,%rax)
+	leaq	1(%rax), %rax
+Lcrypto_kem_keypair_randominc_jazz$14:
+	cmpq	$32, %rax
+	jb  	Lcrypto_kem_keypair_randominc_jazz$15
+	movq	%rdi, 11296(%rsp)
+	movq	%rsi, 11304(%rsp)
+	leaq	32(%rsp), %rax
+	leaq	32(%rsp), %rdx
 	vmovdqu	glob_data + 3808(%rip), %ymm0
-	vmovdqu	%ymm0, 64(%rsp)
 	vmovdqu	%ymm0, 96(%rsp)
 	vmovdqu	%ymm0, 128(%rsp)
 	vmovdqu	%ymm0, 160(%rsp)
 	vmovdqu	%ymm0, 192(%rsp)
 	vmovdqu	%ymm0, 224(%rsp)
-	movq	$0, 256(%rsp)
-	leaq	64(%rsp), %rcx
-	leaq	Lcrypto_kem_keypair_randominc_jazz$15(%rip), 	%rsi
+	vmovdqu	%ymm0, 256(%rsp)
+	movq	$0, 288(%rsp)
+	leaq	96(%rsp), %rcx
+	leaq	Lcrypto_kem_keypair_randominc_jazz$13(%rip), 	%rsi
 	jmp 	Lkeccak_absorb_128_32$1
-Lcrypto_kem_keypair_randominc_jazz$15:
-	leaq	64(%rsp), %rdi
-	leaq	-216(%rsp), %rsp
-	leaq	Lcrypto_kem_keypair_randominc_jazz$14(%rip), 	%r14
-	jmp 	LKeccakF1600_StatePermute$1
-Lcrypto_kem_keypair_randominc_jazz$14:
-	leaq	216(%rsp), %rsp
-	vmovdqu	64(%rsp), %ymm0
-	vmovdqu	%ymm0, (%rax)
-	leaq	6656(%rsp), %rax
-	movq	%rsp, %rdx
-	leaq	-3968(%rsp), %rsp
-	leaq	Lcrypto_kem_keypair_randominc_jazz$13(%rip), 	%r13
-	jmp 	LGenMatrix$1
 Lcrypto_kem_keypair_randominc_jazz$13:
-	leaq	3968(%rsp), %rsp
-	leaq	1280(%rsp), %rax
-	leaq	32(%rsp), %rdx
-	leaq	-1024(%rsp), %rsp
-	leaq	Lcrypto_kem_keypair_randominc_jazz$12(%rip), 	%r13
-	jmp 	LGenSecret$1
+	leaq	96(%rsp), %rdi
+	leaq	-216(%rsp), %rsp
+	leaq	Lcrypto_kem_keypair_randominc_jazz$12(%rip), 	%r14
+	jmp 	LKeccakF1600_StatePermute$1
 Lcrypto_kem_keypair_randominc_jazz$12:
+	leaq	216(%rsp), %rsp
+	vmovdqu	96(%rsp), %ymm0
+	vmovdqu	%ymm0, (%rax)
+	leaq	6688(%rsp), %rax
+	leaq	32(%rsp), %rdx
+	leaq	-3968(%rsp), %rsp
+	leaq	Lcrypto_kem_keypair_randominc_jazz$11(%rip), 	%r13
+	jmp 	LGenMatrix$1
+Lcrypto_kem_keypair_randominc_jazz$11:
+	leaq	3968(%rsp), %rsp
+	leaq	1312(%rsp), %rax
+	leaq	64(%rsp), %rdx
+	leaq	-1024(%rsp), %rsp
+	leaq	Lcrypto_kem_keypair_randominc_jazz$10(%rip), 	%r13
+	jmp 	LGenSecret$1
+Lcrypto_kem_keypair_randominc_jazz$10:
 	leaq	1024(%rsp), %rsp
 	movq	$1, %rax
-	leaq	2816(%rsp), %rcx
-	leaq	6656(%rsp), %rdx
-	leaq	1280(%rsp), %rsi
+	leaq	2848(%rsp), %rcx
+	leaq	6688(%rsp), %rdx
+	leaq	1312(%rsp), %rsi
 	leaq	-6144(%rsp), %rsp
-	leaq	Lcrypto_kem_keypair_randominc_jazz$11(%rip), 	%r13
+	leaq	Lcrypto_kem_keypair_randominc_jazz$9(%rip), 	%r13
 	jmp 	Lpolyvec_matrix_vector_mul$1
-Lcrypto_kem_keypair_randominc_jazz$11:
+Lcrypto_kem_keypair_randominc_jazz$9:
 	leaq	6144(%rsp), %rsp
 	vmovdqu	glob_data + 3680(%rip), %ymm0
 	vmovdqu	glob_data + 3776(%rip), %ymm1
-	vmovdqu	2816(%rsp), %ymm2
-	vpaddw	%ymm1, %ymm2, %ymm2
-	vpsrlw	$3, %ymm2, %ymm2
-	vpand	%ymm0, %ymm2, %ymm2
-	vmovdqu	%ymm2, 2816(%rsp)
 	vmovdqu	2848(%rsp), %ymm2
 	vpaddw	%ymm1, %ymm2, %ymm2
 	vpsrlw	$3, %ymm2, %ymm2
@@ -6732,289 +6603,283 @@ Lcrypto_kem_keypair_randominc_jazz$11:
 	vpand	%ymm0, %ymm2, %ymm2
 	vmovdqu	%ymm2, 4288(%rsp)
 	vmovdqu	4320(%rsp), %ymm2
+	vpaddw	%ymm1, %ymm2, %ymm2
+	vpsrlw	$3, %ymm2, %ymm2
+	vpand	%ymm0, %ymm2, %ymm2
+	vmovdqu	%ymm2, 4320(%rsp)
+	vmovdqu	4352(%rsp), %ymm2
 	vpaddw	%ymm1, %ymm2, %ymm1
 	vpsrlw	$3, %ymm1, %ymm1
 	vpand	%ymm0, %ymm1, %ymm0
-	vmovdqu	%ymm0, 4320(%rsp)
-	leaq	4352(%rsp), %rax
-	leaq	1280(%rsp), %rcx
+	vmovdqu	%ymm0, 4352(%rsp)
+	leaq	4384(%rsp), %rax
+	leaq	1312(%rsp), %rcx
 	movq	$0, %rdx
 	movq	$0, %rsi
 	movq	$1, %rdi
-	jmp 	Lcrypto_kem_keypair_randominc_jazz$9
-Lcrypto_kem_keypair_randominc_jazz$10:
-	movzwl	(%rcx,%rsi,2), %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	leaq	2(%rsi), %rsi
-	shrl	$8, %r8d
-	shll	$5, %r9d
-	andl	$31, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	shrl	$3, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	movzwl	(%rcx,%rsi,2), %r9d
-	leaq	2(%rdi), %rdi
-	shrl	$11, %r8d
-	shll	$2, %r9d
-	andl	$3, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	leaq	2(%rsi), %rsi
-	shrl	$6, %r8d
-	shll	$7, %r9d
-	andl	$127, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	shrl	$1, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	movzwl	(%rcx,%rsi,2), %r9d
-	leaq	2(%rdi), %rdi
-	shrl	$9, %r8d
-	shll	$4, %r9d
-	andl	$15, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	shrl	$4, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	leaq	2(%rsi), %rsi
-	shrl	$12, %r8d
-	shll	$1, %r9d
-	andl	$1, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	movzwl	(%rcx,%rsi,2), %r9d
-	leaq	2(%rdi), %rdi
-	shrl	$7, %r8d
-	shll	$6, %r9d
-	andl	$63, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	shrl	$2, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	shrl	$10, %r8d
-	shll	$3, %r9d
-	andl	$7, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	leaq	2(%rsi), %rsi
-	leaq	2(%rdi), %rdi
-	shrl	$5, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	leaq	2(%rsi), %rsi
-	shrl	$8, %r8d
-	shll	$5, %r9d
-	andl	$31, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	shrl	$3, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	movzwl	(%rcx,%rsi,2), %r9d
-	leaq	2(%rdi), %rdi
-	shrl	$11, %r8d
-	shll	$2, %r9d
-	andl	$3, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	leaq	2(%rsi), %rsi
-	shrl	$6, %r8d
-	shll	$7, %r9d
-	andl	$127, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	shrl	$1, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	movzwl	(%rcx,%rsi,2), %r9d
-	leaq	2(%rdi), %rdi
-	shrl	$9, %r8d
-	shll	$4, %r9d
-	andl	$15, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	shrl	$4, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	leaq	2(%rsi), %rsi
-	shrl	$12, %r8d
-	shll	$1, %r9d
-	andl	$1, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	movzwl	(%rcx,%rsi,2), %r9d
-	leaq	2(%rdi), %rdi
-	shrl	$7, %r8d
-	shll	$6, %r9d
-	andl	$63, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	shrl	$2, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rsi,2), %r8d
-	movzwl	(%rcx,%rdi,2), %r9d
-	shrl	$10, %r8d
-	shll	$3, %r9d
-	andl	$7, %r8d
-	orl 	%r9d, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-	movzwl	(%rcx,%rdi,2), %r8d
-	leaq	2(%rsi), %rsi
-	leaq	2(%rdi), %rdi
-	shrl	$5, %r8d
-	movb	%r8b, (%rax,%rdx)
-	leaq	1(%rdx), %rdx
-Lcrypto_kem_keypair_randominc_jazz$9:
-	cmpq	$768, %rsi
-	jb  	Lcrypto_kem_keypair_randominc_jazz$10
-	leaq	288(%rsp), %rax
-	leaq	2816(%rsp), %rcx
-	leaq	Lcrypto_kem_keypair_randominc_jazz$8(%rip), 	%r10
-	jmp 	LPOLVECp2BS$1
+	jmp 	Lcrypto_kem_keypair_randominc_jazz$7
 Lcrypto_kem_keypair_randominc_jazz$8:
-	vmovdqu	(%rsp), %ymm0
-	vmovdqu	%ymm0, 1248(%rsp)
-	movq	$0, %rax
-	movq	$1248, %rcx
-	jmp 	Lcrypto_kem_keypair_randominc_jazz$6
+	movzwl	(%rcx,%rsi,2), %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$8, %r8d
+	shll	$5, %r9d
+	andl	$31, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$3, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$11, %r8d
+	shll	$2, %r9d
+	andl	$3, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$6, %r8d
+	shll	$7, %r9d
+	andl	$127, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$1, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$9, %r8d
+	shll	$4, %r9d
+	andl	$15, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$4, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$12, %r8d
+	shll	$1, %r9d
+	andl	$1, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$7, %r8d
+	shll	$6, %r9d
+	andl	$63, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$2, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	shrl	$10, %r8d
+	shll	$3, %r9d
+	andl	$7, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	leaq	2(%rsi), %rsi
+	leaq	2(%rdi), %rdi
+	shrl	$5, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$8, %r8d
+	shll	$5, %r9d
+	andl	$31, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$3, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$11, %r8d
+	shll	$2, %r9d
+	andl	$3, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$6, %r8d
+	shll	$7, %r9d
+	andl	$127, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	shrl	$1, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$9, %r8d
+	shll	$4, %r9d
+	andl	$15, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$4, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	leaq	2(%rsi), %rsi
+	shrl	$12, %r8d
+	shll	$1, %r9d
+	andl	$1, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	movzwl	(%rcx,%rsi,2), %r9d
+	leaq	2(%rdi), %rdi
+	shrl	$7, %r8d
+	shll	$6, %r9d
+	andl	$63, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	shrl	$2, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rsi,2), %r8d
+	movzwl	(%rcx,%rdi,2), %r9d
+	shrl	$10, %r8d
+	shll	$3, %r9d
+	andl	$7, %r8d
+	orl 	%r9d, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
+	movzwl	(%rcx,%rdi,2), %r8d
+	leaq	2(%rsi), %rsi
+	leaq	2(%rdi), %rdi
+	shrl	$5, %r8d
+	movb	%r8b, (%rax,%rdx)
+	leaq	1(%rdx), %rdx
 Lcrypto_kem_keypair_randominc_jazz$7:
-	movb	288(%rsp,%rax), %dl
-	movb	%dl, 4352(%rsp,%rcx)
-	leaq	1(%rax), %rax
-	leaq	1(%rcx), %rcx
+	cmpq	$768, %rsi
+	jb  	Lcrypto_kem_keypair_randominc_jazz$8
+	leaq	320(%rsp), %rax
+	leaq	2848(%rsp), %rcx
+	leaq	Lcrypto_kem_keypair_randominc_jazz$6(%rip), 	%r10
+	jmp 	LPOLVECp2BS$1
 Lcrypto_kem_keypair_randominc_jazz$6:
-	cmpq	$992, %rax
-	jb  	Lcrypto_kem_keypair_randominc_jazz$7
-	leaq	6592(%rsp), %rax
-	leaq	288(%rsp), %rcx
+	vmovdqu	32(%rsp), %ymm0
+	vmovdqu	%ymm0, 1280(%rsp)
+	vmovdqu	320(%rsp), %ymm0
+	vmovdqu	%ymm0, 5632(%rsp)
+	vmovdqu	352(%rsp), %ymm0
+	vmovdqu	%ymm0, 5664(%rsp)
+	vmovdqu	384(%rsp), %ymm0
+	vmovdqu	%ymm0, 5696(%rsp)
+	vmovdqu	416(%rsp), %ymm0
+	vmovdqu	%ymm0, 5728(%rsp)
+	vmovdqu	448(%rsp), %ymm0
+	vmovdqu	%ymm0, 5760(%rsp)
+	vmovdqu	480(%rsp), %ymm0
+	vmovdqu	%ymm0, 5792(%rsp)
+	vmovdqu	512(%rsp), %ymm0
+	vmovdqu	%ymm0, 5824(%rsp)
+	vmovdqu	544(%rsp), %ymm0
+	vmovdqu	%ymm0, 5856(%rsp)
+	vmovdqu	576(%rsp), %ymm0
+	vmovdqu	%ymm0, 5888(%rsp)
+	vmovdqu	608(%rsp), %ymm0
+	vmovdqu	%ymm0, 5920(%rsp)
+	vmovdqu	640(%rsp), %ymm0
+	vmovdqu	%ymm0, 5952(%rsp)
+	vmovdqu	672(%rsp), %ymm0
+	vmovdqu	%ymm0, 5984(%rsp)
+	vmovdqu	704(%rsp), %ymm0
+	vmovdqu	%ymm0, 6016(%rsp)
+	vmovdqu	736(%rsp), %ymm0
+	vmovdqu	%ymm0, 6048(%rsp)
+	vmovdqu	768(%rsp), %ymm0
+	vmovdqu	%ymm0, 6080(%rsp)
+	vmovdqu	800(%rsp), %ymm0
+	vmovdqu	%ymm0, 6112(%rsp)
+	vmovdqu	832(%rsp), %ymm0
+	vmovdqu	%ymm0, 6144(%rsp)
+	vmovdqu	864(%rsp), %ymm0
+	vmovdqu	%ymm0, 6176(%rsp)
+	vmovdqu	896(%rsp), %ymm0
+	vmovdqu	%ymm0, 6208(%rsp)
+	vmovdqu	928(%rsp), %ymm0
+	vmovdqu	%ymm0, 6240(%rsp)
+	vmovdqu	960(%rsp), %ymm0
+	vmovdqu	%ymm0, 6272(%rsp)
+	vmovdqu	992(%rsp), %ymm0
+	vmovdqu	%ymm0, 6304(%rsp)
+	vmovdqu	1024(%rsp), %ymm0
+	vmovdqu	%ymm0, 6336(%rsp)
+	vmovdqu	1056(%rsp), %ymm0
+	vmovdqu	%ymm0, 6368(%rsp)
+	vmovdqu	1088(%rsp), %ymm0
+	vmovdqu	%ymm0, 6400(%rsp)
+	vmovdqu	1120(%rsp), %ymm0
+	vmovdqu	%ymm0, 6432(%rsp)
+	vmovdqu	1152(%rsp), %ymm0
+	vmovdqu	%ymm0, 6464(%rsp)
+	vmovdqu	1184(%rsp), %ymm0
+	vmovdqu	%ymm0, 6496(%rsp)
+	vmovdqu	1216(%rsp), %ymm0
+	vmovdqu	%ymm0, 6528(%rsp)
+	vmovdqu	1248(%rsp), %ymm0
+	vmovdqu	%ymm0, 6560(%rsp)
+	vmovdqu	1280(%rsp), %ymm0
+	vmovdqu	%ymm0, 6592(%rsp)
+	leaq	6624(%rsp), %rax
+	leaq	320(%rsp), %rcx
 	leaq	-224(%rsp), %rsp
 	leaq	Lcrypto_kem_keypair_randominc_jazz$5(%rip), 	%r13
 	jmp 	Lsha3_256_PUBKEYBYTES$1
 Lcrypto_kem_keypair_randominc_jazz$5:
 	leaq	224(%rsp), %rsp
-	movb	11280(%rsp), %al
-	movb	%al, 6624(%rsp)
-	movb	11281(%rsp), %al
-	movb	%al, 6625(%rsp)
-	movb	11282(%rsp), %al
-	movb	%al, 6626(%rsp)
-	movb	11283(%rsp), %al
-	movb	%al, 6627(%rsp)
-	movb	11284(%rsp), %al
-	movb	%al, 6628(%rsp)
-	movb	11285(%rsp), %al
-	movb	%al, 6629(%rsp)
-	movb	11286(%rsp), %al
-	movb	%al, 6630(%rsp)
-	movb	11287(%rsp), %al
-	movb	%al, 6631(%rsp)
-	movb	11288(%rsp), %al
-	movb	%al, 6632(%rsp)
-	movb	11289(%rsp), %al
-	movb	%al, 6633(%rsp)
-	movb	11290(%rsp), %al
-	movb	%al, 6634(%rsp)
-	movb	11291(%rsp), %al
-	movb	%al, 6635(%rsp)
-	movb	11292(%rsp), %al
-	movb	%al, 6636(%rsp)
-	movb	11293(%rsp), %al
-	movb	%al, 6637(%rsp)
-	movb	11294(%rsp), %al
-	movb	%al, 6638(%rsp)
-	movb	11295(%rsp), %al
-	movb	%al, 6639(%rsp)
-	movb	11296(%rsp), %al
-	movb	%al, 6640(%rsp)
-	movb	11297(%rsp), %al
-	movb	%al, 6641(%rsp)
-	movb	11298(%rsp), %al
-	movb	%al, 6642(%rsp)
-	movb	11299(%rsp), %al
-	movb	%al, 6643(%rsp)
-	movb	11300(%rsp), %al
-	movb	%al, 6644(%rsp)
-	movb	11301(%rsp), %al
-	movb	%al, 6645(%rsp)
-	movb	11302(%rsp), %al
-	movb	%al, 6646(%rsp)
-	movb	11303(%rsp), %al
-	movb	%al, 6647(%rsp)
-	movb	11304(%rsp), %al
-	movb	%al, 6648(%rsp)
-	movb	11305(%rsp), %al
-	movb	%al, 6649(%rsp)
-	movb	11306(%rsp), %al
-	movb	%al, 6650(%rsp)
-	movb	11307(%rsp), %al
-	movb	%al, 6651(%rsp)
-	movb	11308(%rsp), %al
-	movb	%al, 6652(%rsp)
-	movb	11309(%rsp), %al
-	movb	%al, 6653(%rsp)
-	movb	11310(%rsp), %al
-	movb	%al, 6654(%rsp)
-	movb	11311(%rsp), %al
-	movb	%al, 6655(%rsp)
-	movq	11264(%rsp), %rax
-	movq	11272(%rsp), %rcx
+	vmovdqu	(%rsp), %ymm0
+	vmovdqu	%ymm0, 6656(%rsp)
+	movq	11296(%rsp), %rax
+	movq	11304(%rsp), %rcx
 	movq	$0, %rdx
 	jmp 	Lcrypto_kem_keypair_randominc_jazz$3
 Lcrypto_kem_keypair_randominc_jazz$4:
-	movb	288(%rsp,%rdx), %sil
+	movb	320(%rsp,%rdx), %sil
 	movb	%sil, (%rax,%rdx)
 	leaq	1(%rdx), %rdx
 Lcrypto_kem_keypair_randominc_jazz$3:
@@ -7023,7 +6888,7 @@ Lcrypto_kem_keypair_randominc_jazz$3:
 	movq	$0, %rax
 	jmp 	Lcrypto_kem_keypair_randominc_jazz$1
 Lcrypto_kem_keypair_randominc_jazz$2:
-	movb	4352(%rsp,%rax), %dl
+	movb	4384(%rsp,%rax), %dl
 	movb	%dl, (%rcx,%rax)
 	leaq	1(%rax), %rax
 Lcrypto_kem_keypair_randominc_jazz$1:
