@@ -1,0 +1,87 @@
+#include <stdint.h>
+#include <assert.h>
+#include "params_ntt.h"
+#include "poly_ntt.h"
+#include "polyvec_ntt.h"
+#include "consts256.h"
+
+/*
+void polyvec_uniform(polyvec *r, const uint8_t seed[POLYMUL_SYMBYTES], uint16_t nonce) {
+  unsigned int i;
+  for(i=0;i<KEM_K;i++)
+    poly_uniform(&r->vec[i], seed, (nonce << 8) + i);
+}
+
+void polyvec_noise(polyvec *r, const uint8_t seed[POLYMUL_SYMBYTES], uint16_t nonce) {
+  unsigned int i;
+  for(i=0;i<KEM_K;i++)
+    poly_noise(&r->vec[i], seed, (nonce << 8) + i);
+}
+*/
+
+void polyvec_ntt(polyvec *r, const polyvec *a, const int16_t *pdata) {
+  unsigned int i;
+  for(i=0;i<KEM_K;i++)
+    poly_ntt(&r->vec[i], &a->vec[i], pdata);
+}
+
+void polyvec_invntt_tomont(polyvec *r, const polyvec *a, const int16_t *pdata) {
+  unsigned int i;
+  for(i=0;i<KEM_K;i++)
+    poly_invntt_tomont(&r->vec[i], &a->vec[i], pdata);
+}
+
+void polyvec_crt(polyvec *r, const polyvec *a, const polyvec *b) {
+  unsigned int i;
+  for(i=0;i<KEM_K;i++)
+    poly_crt(&r->vec[i], &a->vec[i], &b->vec[i]);
+}
+
+void polyvec_matrix_vector_mul(polyvec *t, const polyvec a[KEM_K], const polyvec *s, int transpose) {
+  unsigned int i, j;
+  polyvec shat, ahat, t0, t1;
+
+  polyvec_ntt(&shat,s,PDATA0);
+  for(i=0;i<KEM_K;i++) {
+    for(j=0;j<KEM_K;j++) {
+      if(transpose)
+        poly_ntt(&ahat.vec[j],&a[j].vec[i],PDATA0);
+      else
+        poly_ntt(&ahat.vec[j],&a[i].vec[j],PDATA0);
+    }
+    polyvec_basemul_acc_montgomery(&t0.vec[i],&ahat,&shat,PDATA0);
+  }
+
+  polyvec_ntt(&shat,s,PDATA1);
+  for(i=0;i<KEM_K;i++) {
+    for(j=0;j<KEM_K;j++) {
+      if(transpose)
+        poly_ntt(&ahat.vec[j],&a[j].vec[i],PDATA1);
+      else
+        poly_ntt(&ahat.vec[j],&a[i].vec[j],PDATA1);
+    }
+    polyvec_basemul_acc_montgomery(&t1.vec[i],&ahat,&shat,PDATA1);
+  }
+
+  polyvec_invntt_tomont(&t0,&t0,PDATA0);
+  polyvec_invntt_tomont(&t1,&t1,PDATA1);
+  polyvec_crt(t,&t0,&t1);
+}
+
+void polyvec_iprod(poly *r, const polyvec *a, const polyvec *b) {
+  poly r0, r1;
+  polyvec ahat;
+  polyvec bhat;
+
+  polyvec_ntt(&ahat,a,PDATA0);
+  polyvec_ntt(&bhat,b,PDATA0);
+  polyvec_basemul_acc_montgomery(&r0,&ahat,&bhat,PDATA0);
+
+  polyvec_ntt(&ahat,a,PDATA1);
+  polyvec_ntt(&bhat,b,PDATA1);
+  polyvec_basemul_acc_montgomery(&r1,&ahat,&bhat,PDATA1);
+
+  poly_invntt_tomont(&r0,&r0,PDATA0);
+  poly_invntt_tomont(&r1,&r1,PDATA1);
+  poly_crt(r,&r0,&r1);
+}

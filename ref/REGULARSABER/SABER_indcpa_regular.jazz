@@ -82,7 +82,7 @@ export fn InnerProd_jazz(reg u64 pkclp, reg u64 skpvp, reg u64 resp)
 
 	resp = sresp;
 
-	for i = 0 to SABER_KN {
+	for i = 0 to SABER_N {
 		t = res[i];
 		(u16) [resp + 2 * i] = t;
 	}

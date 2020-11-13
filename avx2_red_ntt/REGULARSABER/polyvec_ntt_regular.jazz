@@ -12,33 +12,27 @@ export fn polyvec_crt_jazz(reg u64 rp, reg u64 ap, reg u64 bp)
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] b;
 	stack u16[SABER_KN] r;
 
-	// TODO: technically not necessary to copy, as r is only used as output
-	for i = 0 to SABER_KN {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [bp + 2 * i];
-		b[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [bp + 32 * i];
+		b[u256 i] = t256;
 	}
 
 	r = polyvec_crt(r, a, b);
 
-	for i = 0 to SABER_KN {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }
 
@@ -46,27 +40,21 @@ export fn polyvec_ntt_0_jazz(reg u64 rp, reg u64 ap)
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] r;
 
-	// TODO: technically not necessary to copy, as r is only used as output
-	for i = 0 to SABER_KN {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
 	r = polyvec_ntt_0(r, a);
 
-	for i = 0 to SABER_KN {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }
 
@@ -74,27 +62,21 @@ export fn polyvec_ntt_1_jazz(reg u64 rp, reg u64 ap)
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] r;
 
-	// TODO: technically not necessary to copy, as r is only used as output
-	for i = 0 to SABER_KN {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
 	r = polyvec_ntt_1(r, a);
 
-	for i = 0 to SABER_KN {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }
 
@@ -102,27 +84,21 @@ export fn polyvec_invntt_tomont_0_jazz(reg u64 rp, reg u64 ap)
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] r;
 
-	// TODO: technically not necessary to copy, as r is only used as output
-	for i = 0 to SABER_KN {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
 	r = polyvec_invntt_tomont_0(r, a);
 
-	for i = 0 to SABER_KN {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }
 
@@ -130,27 +106,21 @@ export fn polyvec_invntt_tomont_1_jazz(reg u64 rp, reg u64 ap)
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] r;
 
-	// TODO: technically not necessary to copy, as r is only used as output
-	for i = 0 to SABER_KN {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
 	r = polyvec_invntt_tomont_1(r, a);
 
-	for i = 0 to SABER_KN {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }
 
@@ -159,33 +129,27 @@ export fn polyvec_basemul_acc_montgomery_0_jazz(reg u64 rp, reg u64 ap, reg u64 
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] b;
 	stack u16[SABER_N] r;
 
-	// TODO: technically not necessary to copy, as r is only used as output
-	for i = 0 to SABER_N {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [bp + 2 * i];
-		b[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [bp + 32 * i];
+		b[u256 i] = t256;
 	}
 
 	r = polyvec_basemul_acc_montgomery_0(r, a, b);
 
-	for i = 0 to SABER_N {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_N / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }
 
@@ -193,33 +157,27 @@ export fn polyvec_basemul_acc_montgomery_1_jazz(reg u64 rp, reg u64 ap, reg u64 
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] b;
 	stack u16[SABER_N] r;
 
-	// TODO: technically not necessary to copy, as r is only used as output
-	for i = 0 to SABER_N {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [bp + 2 * i];
-		b[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [bp + 32 * i];
+		b[u256 i] = t256;
 	}
 
 	r = polyvec_basemul_acc_montgomery_1(r, a, b);
 
-	for i = 0 to SABER_N {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_N / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }
 
@@ -228,33 +186,27 @@ export fn polyvec_matrix_vector_mul_jazz(reg u64 tp, reg u64 ap, reg u64 sp, reg
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KKN] a;
 	stack u16[SABER_KN] s;
 	stack u16[SABER_KN] t;
 
-	// TODO: technically not necessary to copy, as t is only used as output
-	for i = 0 to SABER_KN {
-		t16 = (u16) [tp + 2 * i];
-		t[i] = t16;
+	for i = 0 to SABER_KKN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_KKN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [sp + 2 * i];
-		s[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [sp + 32 * i];
+		s[u256 i] = t256;
 	}
 
 	t = polyvec_matrix_vector_mul(t, a, s, transpose);
 
-	for i = 0 to SABER_KN {
-		t16 = t[i];
-		(u16) [tp + 2 * i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = t[u256 i];
+		(u256) [tp + 32 * i] = t256;
 	}
 }
 
@@ -263,32 +215,26 @@ export fn polyvec_iprod_jazz(reg u64 rp, reg u64 ap, reg u64 bp)
 {
 	inline int i;
 
-	reg u16 t16;
+	reg u256 t256;
 
 	stack u16[SABER_KN] a;
 	stack u16[SABER_KN] b;
 	stack u16[SABER_N] r;
 
-	// TODO: technically not necessary to copy, as t is only used as output
-	for i = 0 to SABER_N {
-		t16 = (u16) [rp + 2 * i];
-		r[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
 
-	for i = 0 to SABER_KN {
-		t16 = (u16) [ap + 2 * i];
-		a[i] = t16;
-	}
-
-	for i = 0 to SABER_KN {
-		t16 = (u16) [bp + 2 * i];
-		b[i] = t16;
+	for i = 0 to SABER_KN / 16 {
+		t256 = (u256) [bp + 32 * i];
+		b[u256 i] = t256;
 	}
 
 	r = polyvec_iprod(r, a, b);
 
-	for i = 0 to SABER_N {
-		t16 = r[i];
-		(u16) [rp + 2 * i] = t16;
+	for i = 0 to SABER_N / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }

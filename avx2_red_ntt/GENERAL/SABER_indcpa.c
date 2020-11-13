@@ -10,7 +10,7 @@
 //#include "./polymul/toom_cook_4/toom-cook_4way.c"
 #include "./polymul/toom-cook_4way.c"
 #include "fips202.h"
-#include "fips202x4.h"
+//#include "fips202x4.h"
 
 #define h1 4 //2^(EQ-EP-1)
 
@@ -33,7 +33,6 @@
 
 // The dimension of a vector. i.e vector has NUM_POLY elements and Matrix has NUM_POLY X NUM_POLY elements
 #define NUM_POLY SABER_K
-//int NUM_POLY=2; 
 
 
 uint64_t mask_ar[4]={~(0UL)};

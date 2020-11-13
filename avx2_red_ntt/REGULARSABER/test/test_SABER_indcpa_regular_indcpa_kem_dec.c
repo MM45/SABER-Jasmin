@@ -26,8 +26,6 @@ int main()
 	unsigned char message_dec_jazz[SABER_KEYBYTES];
 
 	// Initialize variables for test
-
-	//random_test_bytes(sk_c, SABER_INDCPA_SECRETKEYBYTES);
 	random_test_bytes(seed, SABER_SEEDBYTES);
 	random_test_bytes(noiseseed, SABER_COINBYTES);
 	random_test_bytes(message_rec, 32);

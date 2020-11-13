@@ -11,7 +11,11 @@ let ecfile = ref ""
 let ec_list = ref []
 let check_safety = ref false
 let safety_param = ref None
+let safety_config = ref None
 let stop_after = ref None
+
+let help_intrinsics = ref false
+
 let lea = ref false
 let set0 = ref false
 let model = ref Normal
@@ -58,8 +62,8 @@ let set_constTime () = model := ConstantTime
 let set_safety () = model := Safety
 
 let set_checksafety () = check_safety := true
-
 let set_safetyparam s = safety_param := Some s
+let set_safetyconfig s = safety_config := Some s
 
 let print_strings = function
   | Compiler.Typing                      -> "typing"   , "typing"
@@ -115,10 +119,12 @@ let options = [
      v_1,...,v_n;v_1',...,v_k'\n\
      v_1,...,v_n: list of pointer variables that have to be considered together\n\
      v_1',...,v_k': list of relational variables";
+    "-safetyconfig", Arg.String set_safetyconfig, "[filename]: use filename (JSON) as configuration file for the safety checker";
     "-wlea", Arg.Unit (add_warning UseLea), ": print warning when lea is used";
     "-w_"  , Arg.Unit (add_warning IntroduceNone), ": print warning when extra _ is introduced";
     "-wea", Arg.Unit (add_warning ExtraAssignment), ": print warning when assignment is introduced";
-    "-nowarning", Arg.Unit (nowarning), ": do no print warning"
+    "-nowarning", Arg.Unit (nowarning), ": do no print warning";
+    "--help-intrinsics", Arg.Set help_intrinsics, "List the set of intrinsic operators";
   ] @  List.map print_option poptions @ List.map stop_after_option poptions
 
 let usage_msg = "Usage : jasminc [option] filename"
