@@ -8,10 +8,6 @@
 inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b) -> stack u8[SABER_KEYBYTES]
 {
 	inline int i;
-
-	reg u8 t8;
-
-	reg u64 t64;
 	
 	reg u128 t128;
 

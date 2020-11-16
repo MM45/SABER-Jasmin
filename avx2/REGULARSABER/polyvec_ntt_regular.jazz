@@ -1,4 +1,4 @@
-/*** polyvec_ntt_regular.jazz: File containing the Jasmin wrappers of the functions in the polyvec_ntt_regular_*.jahh files, only used for unit testing ***/
+/*** polyvec_ntt_regular.jazz: File containing the Jasmin wrappers of the functions in the polyvec_ntt_regular_*.jahh files, only used for testing ***/
 
 #include "SABER_params.jahh"
 #include "polyvec_ntt_regular_polyvec_crt.jahh"

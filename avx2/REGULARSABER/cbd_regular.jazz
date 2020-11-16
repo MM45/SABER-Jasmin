@@ -1,4 +1,4 @@
-/*** cbd_regular.jazz: File containing the Jasmin wrappers of the functions in the cbd_regular_*.jahh files, only used for unit testing ***/
+/*** cbd_regular.jazz: File containing the Jasmin wrappers of the functions in the cbd_regular_*.jahh files, only used for testing ***/
 
 #include "SABER_params.jahh"
 #include "cbd_regular_cbd.jahh"
@@ -7,22 +7,20 @@ export fn cbd_jazz(reg u64 rp, reg u64 bufp)
 {
 	inline int i;
 
-	reg u8 tbuf;
-	reg u16 tr;
+	reg u256 t256;
 	
 	stack u8[SABER_N] buf;
 	stack u16[SABER_N] r;
 
-	for i = 0 to SABER_N {
-		tbuf = (u8) [bufp + i];
-		buf[i] = tbuf;
+	for i = 0 to SABER_N / 32 {
+		t256 = (u256) [bufp + 32 * i];
+		buf[u256 i] = t256;
 	}
 
 	r = cbd(r, buf);
 
-	for i = 0 to SABER_N {
-		tr = r[i];
-		(u16) [rp + 2 * i] = tr;
+	for i = 0 to SABER_N / 16 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
-
 }

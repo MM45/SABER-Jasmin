@@ -17,7 +17,7 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 	inline int i;
 	inline int j;
 	
-	reg u16 t16;
+	reg u32 t32;
 
 	reg u64 transpose;
 
@@ -82,15 +82,15 @@ inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32]
 	}
 
 	for j = 0 to SABER_KEYBYTES {
-		t16 = (16u) message_received[j];
-		t16 &= 0x01;
-		message[8 * j] = t16;
+		t32 = (32u) message_received[j];
+		t32 &= 0x01;
+		message[8 * j] = (16u) t32;
 		for i = 1 to 8 {
 			// message[8*j+i] = ((message_received[j]>>i) & 0x01);
-			t16 = (16u) message_received[j];
-			t16 >>= i;
-			t16 &= 0x01;
-			message[8 * j + i] = t16;
+			t32 = (32u) message_received[j];
+			t32 >>= i;
+			t32 &= 0x01;
+			message[8 * j + i] = (16u) t32;
 		}
 	}
 

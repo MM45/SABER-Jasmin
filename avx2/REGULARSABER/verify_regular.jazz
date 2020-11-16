@@ -1,4 +1,4 @@
-/*** verify.jazz: File containing the Jasmin wrappers of the functions in the verify_regular_*.jahh files, only used for unit testing ***/
+/*** verify.jazz: File containing the Jasmin wrappers of the functions in the verify_regular_*.jahh files, only used for testing ***/
 
 #include "SABER_params.jahh"
 #include "verify_regular_verify.jahh"

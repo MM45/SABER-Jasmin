@@ -10,16 +10,16 @@ inline fn POL2MSG(reg ptr u16[SABER_N] message_dec_unpacked, reg ptr u8[SABER_KE
 	inline int i;
 	inline int j;
 
-	reg u16 t16;
+	reg u32 t32;
 
 	for j = 0 to SABER_KEYBYTES {
-		t16 = message_dec_unpacked[j * 8];
-		message_dec[j] = t16;
+		t32 = (32u) message_dec_unpacked[j * 8];
+		message_dec[j] = (8u) t32;
 		
 		for i = 1 to 8 {
-			t16 = message_dec_unpacked[j * 8 + i];
-			t16 <<= i;
-			message_dec[j] |= (8u) t16;
+			t32 = (32u) message_dec_unpacked[j * 8 + i];
+			t32 <<= i;
+			message_dec[j] |= (8u) t32;
 		}
 	}
 

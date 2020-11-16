@@ -37,7 +37,7 @@ fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
 	s[u8 64] ^= 0x06;
 	s[u8 SHA3_512_RATE - 1] ^= 0x80;
 	
-	//t, s = keccak_squeezeblocks_512_512(t, s);
+	// t, s = keccak_squeezeblocks_512_512(t, s);
 	s = KeccakF1600_StatePermute(s);
 
 	t256[0] = s[u256 0];

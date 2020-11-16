@@ -1,4 +1,4 @@
-/*** polyvec_ntt_regular_polyvec_invntt_tomont.jahh: File containing the Jasmin implementation of polyvec_invntt_tomont function from polyvec_ntt.c, with pdata == PDATA0 (polyvec_invntt_tomont_0) and pdata = PDATA1 (polyvec_invntt_tomont_1) and (regular) SABER parameters  ***/
+/*** polyvec_ntt_regular_polyvec_invntt_tomont.jahh: File containing the Jasmin implementation of polyvec_invntt_tomont function from polyvec_ntt.c, with pdata == PDATA0 (polyvec_invntt_tomont_0) and pdata == PDATA1 (polyvec_invntt_tomont_1) and (regular) SABER parameters  ***/
 
 #ifndef POLYVEC_INVNTT_TOMONT_HH
 #define POLYVEC_INVNTT_TOMONT_HH

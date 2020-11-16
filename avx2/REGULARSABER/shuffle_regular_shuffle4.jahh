@@ -1,4 +1,4 @@
-/*** shuffle_regular_shuffle4.jahh: File containing the Jasmin implementation of shuffle4 function from shuffle.inc ***/
+/*** shuffle_regular_shuffle4.jahh: File containing the Jasmin implementation of shuffle4 macro from shuffle.inc ***/
 
 #ifndef SHUFFLE4_HH
 #define SHUFFLE4_HH

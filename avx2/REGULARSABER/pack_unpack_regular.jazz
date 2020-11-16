@@ -1,4 +1,4 @@
-/*** pack_unpack_regular.jazz: File containing the Jasmin wrappers of the functions in the pack_unpack_regular_*.jahh files, only used for unit testing ***/
+/*** pack_unpack_regular.jazz: File containing the Jasmin wrappers of the functions in the pack_unpack_regular_*.jahh files, only used for testing ***/
 
 #include "SABER_params.jahh"
 #include "pack_unpack_regular_SABER_pack_4bit.jahh"
