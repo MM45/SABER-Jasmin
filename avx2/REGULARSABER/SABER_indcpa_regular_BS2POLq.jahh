@@ -20,7 +20,7 @@ fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg 
 	while (address_data < SABER_N) {
 		// data[offset_data + 0]= ( bytes[ offset_byte + 0 ] & (0xff)) | ((bytes[offset_byte + 1] & 0x1f)<<8);
 		b2 = (32u) bytes[(int) (address_bytes + 1)];
-		b1 = (32u) bytes[(int) (address_bytes + 0)];
+		b1 = (32u) bytes[(int) address_bytes];
 		b2 <<= 8;
 		b2 &= 0x1f00;
 		b1 |= b2;
@@ -57,7 +57,7 @@ fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg 
 		b1 |= b2;
 		b3 &= 0x1e00;
 		b1 |= b3;
-		data[(int) (address_data + 3)] = b1;
+		data[(int) (address_data + 3)] = (16u) b1;
 
 		// data[offset_data + 4]= ( bytes[ offset_byte + 6 ]>>4 & (0x0f)) | ((bytes[offset_byte + 7] & 0xff)<<4) | ((bytes[offset_byte + 8] & 0x01)<<12);
 		b1 = (32u) bytes[(int) (address_bytes + 6)];
