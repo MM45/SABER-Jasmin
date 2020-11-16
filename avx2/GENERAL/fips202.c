@@ -106,6 +106,7 @@ void KeccakF1600_StatePermute(uint64_t * state)
         Aso = state[23];
         Asu = state[24];
 
+        round = 0;
         for( round = 0; round < NROUNDS; round += 2 )
         {
             //    prepareTheta
@@ -297,6 +298,7 @@ void KeccakF1600_StatePermute(uint64_t * state)
             Asi =   BCi ^((~BCo)&  BCu );
             Aso =   BCo ^((~BCu)&  BCa );
             Asu =   BCu ^((~BCa)&  BCe );
+
         }
 
         //copyToState(state, A)
@@ -325,7 +327,33 @@ void KeccakF1600_StatePermute(uint64_t * state)
         state[22] = Asi;
         state[23] = Aso;
         state[24] = Asu;
-
+/*
+        state[ 0] = Eba;
+        state[ 1] = Ebe;
+        state[ 2] = Ebi;
+        state[ 3] = Ebo;
+        state[ 4] = Ebu;
+        state[ 5] = Ega;
+        state[ 6] = Ege;
+        state[ 7] = Egi;
+        state[ 8] = Ego;
+        state[ 9] = Egu;
+        state[10] = Eka;
+        state[11] = Eke;
+        state[12] = Eki;
+        state[13] = Eko;
+        state[14] = Eku;
+        state[15] = Ema;
+        state[16] = Eme;
+        state[17] = Emi;
+        state[18] = Emo;
+        state[19] = Emu;
+        state[20] = Esa;
+        state[21] = Ese;
+        state[22] = Esi;
+        state[23] = Eso;
+        state[24] = Esu;
+*/
         #undef    round
 }
 

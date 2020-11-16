@@ -4,32 +4,40 @@
 #define SHA3_256_CCADEC_HH
 
 #include "SABER_params.jahh"
-#include "fips202_regular_keccak_absorb_256_CCADEC.jahh"
-#include "fips202_regular_keccak_squeezeblocks_256_256.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
+#include "fips202_regular_keccak_absorb_256_single.jahh"
 
 fn sha3_256_CCADEC(reg ptr u8[32] output, reg ptr u8[SABER_BYTES_CCA_DEC] input) -> reg ptr u8[32]
 {
 	inline int i;
+	inline int nblocks;
 
-	reg u8 t8;
-
-	stack u8[SHA3_256_RATE] t;
+	reg u256 t256;
 
 	stack u64[25] s;
 
-	for i = 0 to 25 {
-		s[i] = 0;
+	nblocks = 8; // SABER_BYTES_CCA_DEC / SHA3_256_RATE;
+
+	t256 = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256;
+	}
+	s[24] = 0;
+
+	// s = keccak_absorb_256_CCADEC(s, input);
+	for i = 0 to nblocks {
+		s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
 	}
 
-	s = keccak_absorb_256_CCADEC(s, input);
+	s[u8 0] ^= 0x06;
+	s[u8 SHA3_256_RATE - 1] ^= 0x80;
 
-	t, s = keccak_squeezeblocks_256_256(t, s);
+	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to 32 {
-		t8 = t[i];
-		output[i] = t8;
-	}
-
+	t256 = s[u256 0];
+	output[u256 0] = t256;
+	
 	return output;
 }
 

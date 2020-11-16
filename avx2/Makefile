@@ -6,22 +6,14 @@ JFLAGS = -lea -pasm ${JADDFLAGS}
 
 
 GENERALDIRECTORY = GENERAL
-LIGHTDIRECTORY = LIGHTSABER
 REGULARDIRECTORY = REGULARSABER
-FIREDIRECTORY = FIRESABER
 
 
 
-.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jpoly_mul_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jfips202x4_regular.s
+.SECONDARY: REGULARSABER/jpack_unpack_regular.s REGULARSABER/jSABER_indcpa_regular.s REGULARSABER/jfips202_regular.s REGULARSABER/jkem_regular.s REGULARSABER/jcbd_regular.s REGULARSABER/jverify_regular.s REGULARSABER/jpoly_ntt_regular.s REGULARSABER/jpolyvec_ntt_regular.s
 
-default: test_all speed_all
 
-test_all: test_light test_regular test_fire
-
-speed_all: speed_regular
-
-test_light: ${LIGHTDIRECTORY}/test/test_pack_unpack_light_SABER_pack_3bit \
-					${LIGHTDIRECTORY}/test/test_pack_unpack_light_SABER_un_pack3bit \
+default: test_regular speed_regular
 
 test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_verify_regular_cmov \
@@ -31,23 +23,11 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_pack_unpack_regular_POLVECq2BS \
 				${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp \
 				${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECq \
-				${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POL \
 				${REGULARDIRECTORY}/test/test_cbd_regular_cbd \
-				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_MatrixVectorMul \
-				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_InnerProd \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG \
 				${REGULARDIRECTORY}/test/test_fips202_regular_KeccakF1600_StatePermute \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_128_32 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_32 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_64 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_PUBKEYBYTES \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_CCADEC \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_512_64 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_128 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_KK13N8 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_MUNK8 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_256_256 \
-				${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_512_512 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_shake128_32_32 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_shake128_KK13N8_32 \
 				${REGULARDIRECTORY}/test/test_fips202_regular_shake128_MUNK8_32 \
@@ -56,19 +36,6 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_PUBKEYBYTES \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_CCADEC \
 				${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_KeccakF1600_StatePermute4x \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_128_32 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_32 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_64 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_PUBKEYBYTES \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_CCADEC \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_512_64 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_128 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_KK13N8 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_MUNK8 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_256_256 \
-				${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_512_512 \
-				${REGULARDIRECTORY}/test/test_poly_regular_GenSecret \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret \
 				${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_BS2POLq \
@@ -79,76 +46,86 @@ test_regular: ${REGULARDIRECTORY}/test/test_verify_regular_verify \
 				${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_enc_randominc \
 				${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_dec \
 				${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem \
+				${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_crt \
+				${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_invntt_tomont \
+				${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_ntt \
+				${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_basemul_acc_montgomery \
+				${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_crt \
+				${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_iprod \
+				${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_matrix_vector_mul \
+				${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_ntt \
 
-					
-test_fire: ${FIREDIRECTORY}/test/test_pack_unpack_fire_SABER_pack_6bit \
-			${FIREDIRECTORY}/test/test_pack_unpack_fire_SABER_un_pack6bit \
-
-
-speed_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular \
+speed_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular_complete \
+				${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete \
+				${REGULARDIRECTORY}/speed/speed_fips202_regular_complete \
+				${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete \
+				${REGULARDIRECTORY}/speed/speed_cbd_regular_complete \
 
 
 ##### GENERAL #####
-HEADERSGENERAL = $(wildcard ${GENERALDIRECTORY}/*.h)
+SABERHEADERSGENERAL = ${GENERALDIRECTORY}/cbd.h ${GENERALDIRECTORY}/fips202.h ${GENERALDIRECTORY}/kem.h ${GENERALDIRECTORY}/pack_unpack.h ${GENERALDIRECTORY}/poly.h \
+						${GENERALDIRECTORY}/rng.h ${GENERALDIRECTORY}/SABER_indcpa.h ${GENERALDIRECTORY}/SABER_params.h ${GENERALDIRECTORY}/verify.h
 
-SOURCESGENERAL = $(wildcard ${GENERALDIRECTORY}/*.c)
+SABERSOURCESGENERAL = ${GENERALDIRECTORY}/cbd.c ${GENERALDIRECTORY}/fips202.c ${GENERALDIRECTORY}/kem.c ${GENERALDIRECTORY}/pack_unpack.c ${GENERALDIRECTORY}/rng.c \
+						${GENERALDIRECTORY}/SABER_indcpa.c ${GENERALDIRECTORY}/verify.c
 
+NTTHEADERSGENERAL = ${GENERALDIRECTORY}/cbd_ntt.h ${GENERALDIRECTORY}/consts256.h ${GENERALDIRECTORY}/fq.inc ${GENERALDIRECTORY}/params_ntt.h ${GENERALDIRECTORY}/poly_ntt.h \
+						${GENERALDIRECTORY}/polyvec_ntt.h ${GENERALDIRECTORY}/shuffle.inc
 
-
-##### LIGHTSABER #####
-JHEADERSLIGHT = $(wildcard ${LIGHTDIRECTORY}/*.jahh)
-
-
-${LIGHTDIRECTORY}/test/test_pack_unpack_light_%: ${LIGHTDIRECTORY}/test/test_pack_unpack_light_%.c ${SOURCESGENERAL} ${HEADERSGENERAL} ${LIGHTDIRECTORY}/jpack_unpack_light.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${SOURCESLIGHT} ${LIGHTDIRECTORY}/jpack_unpack_light.s $< ${LDFLAGS}
-
-
-${LIGHTDIRECTORY}/pack_unpack_light.japp: ${LIGHTDIRECTORY}/pack_unpack_light.jazz ${JHEADERSLIGHT}
-	cat $< | $(CC) -E -iquote ${LIGHTDIRECTORY}/ - | grep -v ^# > $@
-
-
-${LIGHTDIRECTORY}/j%.s: ${LIGHTDIRECTORY}/%.japp
-	$(JASMIN) $(JFLAGS) $^ > $@
-
+NTTSOURCESGENERAL = ${GENERALDIRECTORY}/basemul256x1.S ${GENERALDIRECTORY}/cbd_ntt.c ${GENERALDIRECTORY}/consts256n7681.c ${GENERALDIRECTORY}/consts256n10753.c ${GENERALDIRECTORY}/invntt256n.S \
+						${GENERALDIRECTORY}/ntt256n.S ${GENERALDIRECTORY}/poly_ntt.c ${GENERALDIRECTORY}/polyvec_ntt.c
 
 
 ##### REGULARSABER #####
 JHEADERSREGULAR = $(wildcard ${REGULARDIRECTORY}/*.jahh)
 
 
-${REGULARDIRECTORY}/test/test_pack_unpack_regular_%: ${REGULARDIRECTORY}/test/test_pack_unpack_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_pack_unpack_regular_%: ${REGULARDIRECTORY}/test/test_pack_unpack_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_verify_regular_%: ${REGULARDIRECTORY}/test/test_verify_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jverify_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jverify_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_verify_regular_%: ${REGULARDIRECTORY}/test/test_verify_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jverify_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jverify_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_cbd_regular_%: ${REGULARDIRECTORY}/test/test_cbd_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_cbd_regular_%: ${REGULARDIRECTORY}/test/test_cbd_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_poly_mul_regular_%: ${REGULARDIRECTORY}/test/test_poly_mul_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_poly_mul_regular_%: ${REGULARDIRECTORY}/test/test_poly_mul_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_mul_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_fips202_regular_%: ${REGULARDIRECTORY}/test/test_fips202_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_fips202_regular_%: ${REGULARDIRECTORY}/test/test_fips202_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_poly_regular_%: ${REGULARDIRECTORY}/test/test_poly_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_poly_regular_%: ${REGULARDIRECTORY}/test/test_poly_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_regular.s $< ${LDFLAGS}
 
-${REGULARDIRECTORY}/test/test_kem_regular_%: ${REGULARDIRECTORY}/test/test_kem_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
-
-${REGULARDIRECTORY}/test/test_auxilliary_%: ${REGULARDIRECTORY}/test/test_auxilliary_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jauxilliary.s
-	${CC} ${CFLAGS} -iquote $${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jauxilliary.s $< ${LDFLAGS}
-
-${REGULARDIRECTORY}/test/test_fips202x4_regular_%: ${REGULARDIRECTORY}/test/test_fips202x4_regular_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202x4_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jfips202x4_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_kem_regular_%: ${REGULARDIRECTORY}/test/test_kem_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
 
 
-${REGULARDIRECTORY}/speed/speed_kem_regular: ${REGULARDIRECTORY}/speed/speed_kem_regular.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
+${REGULARDIRECTORY}/test/test_poly_ntt_regular_%: ${REGULARDIRECTORY}/test/test_poly_ntt_regular_%.c ${NTTHEADERSGENERAL} ${NTTSOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_ntt_regular.s
+	${CC} ${CFLAGS} -I ${GENERALDIRECTORY} -o $@ ${NTTSOURCESGENERAL} ${REGULARDIRECTORY}/jpoly_ntt_regular.s $< ${LDFLAGS}
+
+${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_%: ${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_%.c ${NTTHEADERSGENERAL} ${NTTSOURCESGENERAL} ${REGULARDIRECTORY}/jpolyvec_ntt_regular.s
+	${CC} ${CFLAGS} -I ${GENERALDIRECTORY} -o $@ ${NTTSOURCESGENERAL} ${REGULARDIRECTORY}/jpolyvec_ntt_regular.s $< ${LDFLAGS}
+
+
+${REGULARDIRECTORY}/speed/speed_kem_regular_%: ${REGULARDIRECTORY}/speed/speed_kem_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jkem_regular.s $< ${LDFLAGS}
+
+${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_%: ${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jSABER_indcpa_regular.s $< ${LDFLAGS}
+
+${REGULARDIRECTORY}/speed/speed_fips202_regular_%: ${REGULARDIRECTORY}/speed/speed_fips202_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jfips202_regular.s $< ${LDFLAGS}
+
+${REGULARDIRECTORY}/speed/speed_cbd_regular_%: ${REGULARDIRECTORY}/speed/speed_cbd_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jcbd_regular.s $< ${LDFLAGS}
+
+${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_%: ${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_%.c ${SABERHEADERSGENERAL} ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s
+	${CC} ${CFLAGS} -o $@ ${SABERSOURCESGENERAL} ${REGULARDIRECTORY}/jpack_unpack_regular.s $< ${LDFLAGS}
 
 
 ${REGULARDIRECTORY}/pack_unpack_regular.japp: ${REGULARDIRECTORY}/pack_unpack_regular.jazz ${JHEADERSREGULAR}
@@ -175,10 +152,11 @@ ${REGULARDIRECTORY}/poly_regular.japp: ${REGULARDIRECTORY}/poly_regular.jazz ${J
 ${REGULARDIRECTORY}/kem_regular.japp: ${REGULARDIRECTORY}/kem_regular.jazz ${JHEADERSREGULAR}
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
-${REGULARDIRECTORY}/auxilliary.japp: ${REGULARDIRECTORY}/auxilliary.jazz ${JHEADERSREGULAR}
+
+${REGULARDIRECTORY}/poly_ntt_regular.japp: ${REGULARDIRECTORY}/poly_ntt_regular.jazz ${JHEADERSREGULAR}
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
-${REGULARDIRECTORY}/fips202x4_regular.japp: ${REGULARDIRECTORY}/fips202x4_regular.jazz ${JHEADERSREGULAR}
+${REGULARDIRECTORY}/polyvec_ntt_regular.japp: ${REGULARDIRECTORY}/polyvec_ntt_regular.jazz ${JHEADERSREGULAR}
 	cat $< | $(CC) -E -iquote ${REGULARDIRECTORY}/ - | grep -v ^# > $@
 
 
@@ -187,65 +165,24 @@ ${REGULARDIRECTORY}/j%.s: ${REGULARDIRECTORY}/%.japp
 
 
 
-##### FIRESABER #####
-JHEADERSFIRE = $(wildcard ${FIREDIRECTORY}/*.jahh)
-
-
-${FIREDIRECTORY}/test/test_pack_unpack_fire_%: ${FIREDIRECTORY}/test/test_pack_unpack_fire_%.c ${HEADERSGENERAL} ${SOURCESGENERAL} ${FIREDIRECTORY}/jpack_unpack_fire.s
-	${CC} ${CFLAGS} -iquote ${GENERALDIRECTORY}/ -o $@ ${SOURCESGENERAL} ${FIREDIRECTORY}/jpack_unpack_fire.s $< ${LDFLAGS}
-
-
-${FIREDIRECTORY}/pack_unpack_fire.japp: ${FIREDIRECTORY}/pack_unpack_fire.jazz ${JHEADERSFIRE}
-	cat $< | $(CC) -E -iquote ${FIREDIRECTORY}/ - | grep -v ^# > $@	
-
-
-${FIREDIRECTORY}/j%.s: ${FIREDIRECTORY}/%.japp
-	$(JASMIN) $(JFLAGS) $^ > $@
-
-
-
 .PHONY: clean
 
 clean:
-	-rm ${LIGHTDIRECTORY}/*.s
-	-rm ${LIGHTDIRECTORY}/*.japp	
 	-rm ${REGULARDIRECTORY}/*.s
 	-rm ${REGULARDIRECTORY}/*.japp
-	-rm ${FIREDIRECTORY}/*.s
-	-rm ${FIREDIRECTORY}/*.japp
 	-rm ${REGULARDIRECTORY}/test/test_verify_regular_verify
 	-rm ${REGULARDIRECTORY}/test/test_verify_regular_cmov
-	-rm ${LIGHTDIRECTORY}/test/test_pack_unpack_light_SABER_pack_3bit
-	-rm ${LIGHTDIRECTORY}/test/test_pack_unpack_light_SABER_un_pack3bit
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_SABER_pack_4bit
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_SABER_un_pack4bit 
-	-rm ${FIREDIRECTORY}/test/test_pack_unpack_fire_SABER_pack_6bit
-	-rm ${FIREDIRECTORY}/test/test_pack_unpack_fire_SABER_un_pack6bit
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_POLVECp2BS 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_POLVECq2BS 
 	-rm	${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp 
-	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECq 
-	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POL
+	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECq
 	-rm ${REGULARDIRECTORY}/test/test_cbd_regular_cbd
-	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_karatsuba_simple 
-	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_toom_cook_4way 
-	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_pol_mul_p
-	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_pol_mul_q
-	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_MatrixVectorMul
-	-rm	${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_InnerProd
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_KeccakF1600_StatePermute
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_128_32
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_32
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_64
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_PUBKEYBYTES
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_256_CCADEC
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_512_64
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_128
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_KK13N8
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_128_MUNK8
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_256_256
-	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_squeezeblocks_512_512
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_shake128_32_32 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_shake128_KK13N8_32 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_shake128_MUNK8_32 
@@ -254,20 +191,6 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_PUBKEYBYTES 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_256_CCADEC 
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_sha3_512_64
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_KeccakF1600_StatePermute4x 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_128_32 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_32 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_64 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_PUBKEYBYTES 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_256_CCADEC 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_absorb4x_512_64 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_32 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_128 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_KK13N8 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_128_MUNK8 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_256_256 
-	-rm	${REGULARDIRECTORY}/test/test_fips202x4_regular_keccak_squeezeblocks4x_512_512 
-	-rm ${REGULARDIRECTORY}/test/test_poly_regular_GenSecret 
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenMatrix
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_GenSecret
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_BS2POLq
@@ -278,3 +201,16 @@ clean:
 	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_enc_randominc
 	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_dec
 	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem
+	-rm	${REGULARDIRECTORY}/speed/speed_kem_regular_complete
+	-rm	${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete 
+	-rm	${REGULARDIRECTORY}/speed/speed_fips202_regular_complete 
+	-rm	${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete 
+	-rm	${REGULARDIRECTORY}/speed/speed_cbd_regular_complete
+	-rm	${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_crt 
+	-rm	${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_invntt_tomont 
+	-rm	${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_ntt 
+	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_basemul_acc_montgomery 
+	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_crt 
+	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_iprod 
+	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_matrix_vector_mul 
+	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_ntt 

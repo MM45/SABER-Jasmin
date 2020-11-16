@@ -4,8 +4,8 @@
 #define SHAKE128_32_32_HH
 
 #include "SABER_params.jahh"
+#include "fips202_regular_KeccakF1600_StatePermute.jahh"
 #include "fips202_regular_keccak_absorb_128_32.jahh"
-#include "fips202_regular_keccak_squeezeblocks_128_128.jahh"
 
 inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8[32]
 {
@@ -13,22 +13,23 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
 	
 	reg u8 t8;
 	
-	stack u8[SHAKE128_RATE] t;
+	reg u256 t256;
 
 	stack u64[25] s;
 
-	for i = 0 to 25 {
-		s[i] = 0;
+	t256 = zero_u256;
+	
+	for i = 0 to 6 {
+		s[u256 i] = t256;
 	}
+	s[24] = 0;
 
 	s = keccak_absorb_128_32(s, input);
 
-	t, s = keccak_squeezeblocks_128_128(t, s);
+	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to 32 {
-		t8 = t[i];
-		output[i] = t8;
-	}
+	t256 = s[u256 0];
+	output[u256 0] = t256;
 
 	return output;
 }

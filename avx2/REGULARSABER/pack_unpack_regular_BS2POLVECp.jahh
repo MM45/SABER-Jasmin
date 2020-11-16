@@ -9,51 +9,97 @@ fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_
 {
 	inline int i;
 	inline int j;
+	inline int k;
 
-	reg u16 b1;
-	reg u16 b2;
+	reg u128 zero_offset128;
+	reg u128 one_offset128;
+	reg u128 two_offset128;
+	reg u128 three_offset128;
+	reg u128 four_offset128;
+
+	reg u256 zero_offset256;
+	reg u256[2] one_offset256;
+	reg u256[2] two_offset256;
+	reg u256[2] three_offset256;
+	reg u256 four_offset256;
+	reg u256[4] t256;
+	reg u256[4] r;
+	reg u256[4] ord_r;
+
+	reg u256 twobit_mask;
+	reg u256 fourbit_mask;
+	reg u256 sixbit_mask;
+
+	zero_offset128 = zero_u128;
+	one_offset128 = zero_u128;
+	two_offset128 = zero_u128;
+	three_offset128 = zero_u128;
+	four_offset128 = zero_u128;
+
+	twobit_mask = twobit_mask_16u16;
+	fourbit_mask = fourbit_mask_16u16;
+	sixbit_mask = sixbit_mask_16u16;
 
 	for i = 0 to SABER_K {
-		for j = 0 to (SABER_N / 4) {
+		for j = 0 to SABER_N / 64 {
+			for k = 0 to 16 {
+				zero_offset128 = #VPINSR_16u8(zero_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 5 * k], k);
+				one_offset128 = #VPINSR_16u8(one_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 1 + 5 * k], k);
+				two_offset128 = #VPINSR_16u8(two_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 2 + 5 * k], k);
+				three_offset128 = #VPINSR_16u8(three_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 3 + 5 * k], k);
+				four_offset128 = #VPINSR_16u8(four_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 4 + 5 * k], k);
+			}
 
-			// data[i][offset_data + 0]= ( bytes[ offset_byte + 0 ] & (0xff)) |  ((bytes[ offset_byte + 1 ] & 0x03)<<8);
-			b1 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j];
-			b1 &= 0xff;
-			b2 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 1];
-			b2 &= 0x03;
-			b2 <<= 8;
-			b1 |= b2;
-			data[i * SABER_N + 4 * j] = b1;
-			
-			// data[i][offset_data + 1]= ( (bytes[ offset_byte + 1 ]>>2) & (0x3f)) |  ((bytes[ offset_byte + 2 ] & 0x0f)<<6);		
-			b1 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 1];
-			b1 >>= 2;
-			b1 &= 0x3f;
-			b2 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 2];
-			b2 &= 0x0f;
-			b2 <<= 6;
-			b1 |= b2;
-			data[i * SABER_N + 4 * j + 1] = b1;
+			zero_offset256 = #VPMOVZX_16u8_16u16(zero_offset128);
+			one_offset256[0] = #VPMOVZX_16u8_16u16(one_offset128);
+			one_offset256[1] = #VPMOVZX_16u8_16u16(one_offset128);
+			two_offset256[0] = #VPMOVZX_16u8_16u16(two_offset128);
+			two_offset256[1] = #VPMOVZX_16u8_16u16(two_offset128);
+			three_offset256[0] = #VPMOVZX_16u8_16u16(three_offset128);
+			three_offset256[1] = #VPMOVZX_16u8_16u16(three_offset128);
+			four_offset256 = #VPMOVZX_16u8_16u16(four_offset128);
 
-			// data[i][offset_data + 2]= ( (bytes[ offset_byte + 2 ]>>4) & (0x0f)) |  ((bytes[ offset_byte + 3 ] & 0x3f)<<4);
-			b1 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 2];
-			b1 >>= 4;
-			b1 &= 0x0f;
-			b2 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 3];
-			b2 &= 0x3f;
-			b2 <<= 4;
-			b1 |= b2;
-			data[i * SABER_N + 4 * j + 2] = b1;
+			one_offset256[0] &= twobit_mask;
+			two_offset256[0] &= fourbit_mask;
+			three_offset256[0] &= sixbit_mask;
 
-			// data[i][offset_data + 3]= ( (bytes[ offset_byte + 3 ]>>6) & (0x03)) |  ((bytes[ offset_byte + 4 ] & 0xff)<<2);
-			b1 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 3];
-			b1 >>= 6;
-			b1 &= 0x03;
-			b2 = (16u) bytes[i * (SABER_N * 10) / 8 + 5 * j + 4];
-			b2 &= 0xff;
-			b2 <<= 2;
-			b1 |= b2;
-			data[i * SABER_N + 4 * j + 3] = b1;
+			one_offset256[1] >>16u16= 2;
+			two_offset256[1] >>16u16= 4;
+			three_offset256[1] >>16u16= 6;			
+
+			one_offset256[0] <<16u16= 8;
+			two_offset256[0] <<16u16= 6;
+			three_offset256[0] <<16u16= 4;
+			four_offset256 <<16u16= 2;
+
+			one_offset256[1] &= sixbit_mask;
+			two_offset256[1] &= fourbit_mask;
+			three_offset256[1] &= twobit_mask;
+
+			t256[0] = zero_offset256 | one_offset256[0]; // d[0]d[4]..d[56]d[60]
+			t256[1] = one_offset256[1] | two_offset256[0];  // d[1]d[5]..d[57]d[61]
+			t256[2] = two_offset256[1] | three_offset256[0]; // d[2]d[6]..d[58]d[62]
+			t256[3] = three_offset256[1] | four_offset256;  // d[3]d[7]..d[59]d[63]
+
+			r[0] = #VPUNPCKL_16u16(t256[0], t256[2]); // d[0]d[2]..d[14]d[32]..d[44]d[46]
+			r[1] = #VPUNPCKL_16u16(t256[1], t256[3]); // d[1]d[3]..d[15]d[33]..d[45]d[47]
+			r[2] = #VPUNPCKH_16u16(t256[0], t256[2]); // d[16]d[18]..d[30]d[48]..d[60]d[62]
+			r[3] = #VPUNPCKH_16u16(t256[1], t256[3]); // d[17]d[19]..d[31]d[49]..d[61]d[63]
+
+			r[0] = #VPERMQ(r[0], 216); // d[0]..d[6]d[32]..d[38]d[8]..d[14]d[40]..d[46]
+			r[1] = #VPERMQ(r[1], 216); // d[1]..d[7]d[33]..d[39]d[9]..d[15]d[41]..d[47]
+			r[2] = #VPERMQ(r[2], 216); // d[16]..d[22]d[48]..d[54]d[24]..d[30]d[56]..d[62]
+			r[3] = #VPERMQ(r[3], 216); // d[17]..d[23]d[49]..d[55]d[25]..d[31]d[57]..d[63]
+
+			ord_r[0] = #VPUNPCKL_16u16(r[0], r[1]); // d[0]d[1]..d[14]d[15]
+			ord_r[1] = #VPUNPCKL_16u16(r[2], r[3]); // d[16]d[17]..d[30]d[31]
+			ord_r[2] = #VPUNPCKH_16u16(r[0], r[1]); // d[32]d[33]..d[46]d[47]
+			ord_r[3] = #VPUNPCKH_16u16(r[2], r[3]); // d[48]d[49]..d[62]d[63]
+
+			data[u256 (i * SABER_N + j * 64) / 16] = ord_r[0];
+			data[u256 (i * SABER_N + j * 64) / 16 + 1] = ord_r[1];
+			data[u256 (i * SABER_N + j * 64) / 16 + 2] = ord_r[2];
+			data[u256 (i * SABER_N + j * 64) / 16 + 3] = ord_r[3];
 		}
 	}
 

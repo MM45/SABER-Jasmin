@@ -8,6 +8,7 @@
 #include "pack_unpack_regular_BS2POLVECq.jahh"
 #include "pack_unpack_regular_SABER_un_pack4bit.jahh"
 #include "SABER_indcpa_regular_POL2MSG.jahh"
+#include "polyvec_ntt_regular_polyvec_iprod.jahh"
 
 inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
 {
@@ -25,45 +26,24 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 
 	stack u16[SABER_KN] sksv;
 	stack u16[SABER_KN] pksv;
-	stack u16[SABER_KEYBYTES*8] message_dec_unpacked;
+	stack u16[SABER_KEYBYTES * 8] message_dec_unpacked;
 	stack u16[SABER_N] op;
-
-	stack u256[SABER_N / 16] v_avx;
-	stack u256[SABER_KN / 16] sksv_avx;
-	stack u256[SABER_KN / 16] pksv_avx;
-	//stack u256[SABER_K * 64] b_bucket;
-
+	stack u16[SABER_N] v;
 
 	sksv = BS2POLVECq(sk, sksv);
 
 	pksv = BS2POLVECp(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], pksv);
 
-	for i = 0 to SABER_K {
-		for j = 0 to SABER_N / 16 {
-			t256 = sksv[u256 i * SABER_N / 16 + j]; //load_16u16(sksv[i * SABER_N + j * 16:16]);
-			sksv_avx[i * SABER_N / 16 + j] = t256;
-			t256 = pksv[u256 i * SABER_N / 16 + j]; //load_16u16(pksv[i * SABER_N + j * 16:16]);
-			pksv_avx[i * SABER_N / 16 + j] = t256;
-		}
-	}
-
 	for i = 0 to SABER_N / 16 {
-		t256 = v_avx[i];
-		t256 ^16u16= t256;
-		v_avx[i] = t256; 
+		t256 = zero_u256;
+		v[u256 i] = t256;
 	}
 
-	//v = InnerProd(pksv, sksv, v);
+	v = polyvec_iprod(v, pksv, sksv);
 
-	for i = 0 to SABER_N / 16 {
-		t256 = v_avx[i];
-		message_dec_unpacked[u256 i] = t256; //store_16u16(t256, message_dec_unpacked[i * 16:16]);
-	}
-
-	
-	for i = 0 to SABER_SCALEBYTES_KEM {
-		t8 = ciphertext[SABER_CIPHERTEXTBYTES + i];
-		scale_ar[i] = t8;
+	for i = 0 to SABER_SCALEBYTES_KEM / 32 {
+		t256 = ciphertext[u256 SABER_CIPHERTEXTBYTES / 32 + i];
+		scale_ar[u256 i] = t256;
 	}
 
 	op = SABER_un_pack4bit(scale_ar, op);
@@ -72,14 +52,13 @@ inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABE
 		// message_dec_unpacked[i]= ( ( message_dec_unpacked[i] + h2 - (op[i]<<(SABER_EP-SABER_ET)) ) & (SABER_P-1) ) >> (SABER_EP-1);
 		t16 = op[i];
 		t16 <<= (SABER_EP-SABER_ET);
-		message_dec_unpacked[i] += h2;
-		message_dec_unpacked[i] -= t16;
-		message_dec_unpacked[i] &= (SABER_P - 1);
-		message_dec_unpacked[i] >>= (SABER_EP - 1);
+		v[i] += h2;
+		v[i] -= t16;
+		v[i] &= (SABER_P - 1);
+		v[i] >>= (SABER_EP - 1);
 	}
 
-
-	message_dec = POL2MSG(message_dec_unpacked, message_dec);
+	message_dec = POL2MSG(v, message_dec);
 	
 	return message_dec;
 }

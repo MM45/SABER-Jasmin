@@ -5,19 +5,20 @@
 
 #include "SABER_params.jahh"
 #include "fips202_regular_KeccakF1600_StatePermute.jahh"
-#include "fips202_regular_store64.jahh"
 
-inline fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
+fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
 {
 	inline int i;
 
-	reg u64 u;
+	reg u64 t64;
 
+	reg u128 t128;
+	
 	s = KeccakF1600_StatePermute(s);
 
-	for i = 0 to (SHAKE128_RATE / 8) {
-		u = s[i];
-		h[8 * i:8] = store64(h[8 * i:8], u);
+	for i = 0 to SHAKE128_RATE / 8 {
+		t64 = s[u64 i];
+		h[u64 i] = t64;
 	}
 
 	return h, s;

@@ -7,7 +7,7 @@
 void random_test_bytes(uint8_t* r, size_t count)
 {
 	FILE* urandom = fopen("/dev/urandom", "r");
-	fread(r, 1, count, urandom);
+	if (fread(r, 1, count, urandom) != count) perror("Error in function random_test_bytes");
 	fclose(urandom);
 }
 
@@ -15,7 +15,7 @@ void random_test_bytes(uint8_t* r, size_t count)
 void random_test_16bit_blocks(uint16_t* r, size_t count)
 {
 	FILE* urandom = fopen("/dev/urandom", "r");
-	fread(r, 2, count, urandom);
+	if (fread(r, 2, count, urandom) != count) perror("Error in function random_test_16bit_blocks");
 	fclose(urandom);
 }
 
@@ -23,6 +23,6 @@ void random_test_16bit_blocks(uint16_t* r, size_t count)
 void random_test_64bit_blocks(uint64_t* r, size_t count)
 {
 	FILE* urandom = fopen("/dev/urandom", "r");
-	fread(r, 8, count, urandom);
+	if (fread(r, 8, count, urandom) != count) perror("Error in function random_test_64bit_blocks");
 	fclose(urandom);
 }

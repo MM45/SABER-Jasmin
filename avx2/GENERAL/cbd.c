@@ -6,7 +6,7 @@ by : Joppe Bos, Leo Ducas, Eike Kiltz, Tancrede Lepoint,
 Vadim Lyubashevsky, John M. Schanck, Peter Schwabe & Damien stehle
 ----------------------------------------------------------------------*/
 
-#include <stdint.h>
+#include<stdint.h>
 #include "SABER_params.h"
 
 static uint64_t load_littleendian(const unsigned char *x, int bytes)

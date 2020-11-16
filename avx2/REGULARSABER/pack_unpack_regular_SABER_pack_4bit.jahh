@@ -7,20 +7,72 @@
 
 inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] data) -> reg ptr u8[SABER_SCALEBYTES_KEM]
 {
+	inline int i;
 	inline int j;
 
-	reg u16 d1;
-	reg u16 d2;
+	reg u128[4] zero_offset128;
+	reg u128[4] one_offset128;
 
-	for j = 0 to (SABER_N / 2) {
-		// bytes[j]= (data[offset_data] & 0x0f) | ( (data[offset_data + 1] & 0x0f)<<4 );
-		d1 = data[2 * j];
-		d1 &= 0x0f;
-		d2 = data[2* j + 1];
-		d2 &= 0x0f;
-		d2 <<= 4;
-		d1 |= d2;
-		bytes[j] = (8u) d1;
+	reg u256[2] zero_offset256;
+	reg u256[2] one_offset256;
+	reg u256[2] t256;
+	reg u256 b256;
+	reg u256 fourbit_mask;
+
+	zero_offset128[0] = zero_u128;
+	zero_offset128[1] = zero_u128;
+	zero_offset128[2] = zero_u128;
+	zero_offset128[3] = zero_u128;
+	one_offset128[0] = zero_u128;
+	one_offset128[1] = zero_u128;
+	one_offset128[2] = zero_u128;
+	one_offset128[3] = zero_u128;
+
+	zero_offset256[0] = zero_u256;
+	zero_offset256[1] = zero_u256;
+	one_offset256[0] = zero_u256;
+	one_offset256[1] = zero_u256;
+	fourbit_mask = fourbit_mask_16u16;
+
+	for i = 0 to SABER_N / 64 {
+		for j = 0 to 8 {
+			zero_offset128[0] = #VPINSR_16u16(zero_offset128[0], data[i * 64 + 2 * j], j);
+			zero_offset128[1] = #VPINSR_16u16(zero_offset128[1], data[16 + i * 64 + 2 * j], j);
+			zero_offset128[2] = #VPINSR_16u16(zero_offset128[2], data[32 + i * 64 + 2 * j], j);
+			zero_offset128[3] = #VPINSR_16u16(zero_offset128[3], data[48 + i * 64 + 2 * j], j);
+			one_offset128[0] = #VPINSR_16u16(one_offset128[0], data[1 + i * 64 + 2 * j], j);
+			one_offset128[1] = #VPINSR_16u16(one_offset128[1], data[16 + 1 + i * 64 + 2 * j], j);
+			one_offset128[2] = #VPINSR_16u16(one_offset128[2], data[32 + 1 + i * 64 + 2 * j], j);
+			one_offset128[3] = #VPINSR_16u16(one_offset128[3], data[48 + 1 + i * 64 + 2 * j], j);
+		}
+
+		zero_offset256[0] = #VINSERTI128(zero_offset256[0], zero_offset128[0], 0);
+		one_offset256[0] = #VINSERTI128(one_offset256[0], one_offset128[0], 0);
+		zero_offset256[1] = #VINSERTI128(zero_offset256[1], zero_offset128[2], 0);
+		one_offset256[1] = #VINSERTI128(one_offset256[1], one_offset128[2], 0);
+		zero_offset256[0] = #VINSERTI128(zero_offset256[0], zero_offset128[1], 1);
+		one_offset256[0] = #VINSERTI128(one_offset256[0], one_offset128[1], 1);
+		zero_offset256[1] = #VINSERTI128(zero_offset256[1], zero_offset128[3], 1);
+		one_offset256[1] = #VINSERTI128(one_offset256[1], one_offset128[3], 1);
+
+		one_offset256[0] &= fourbit_mask;
+		one_offset256[1] &= fourbit_mask;
+
+		zero_offset256[0] &= fourbit_mask;
+		zero_offset256[1] &= fourbit_mask;
+		
+		one_offset256[0] <<16u16= 4;
+		one_offset256[1] <<16u16= 4;
+
+		t256[0] = #VPACKUS_16u16(zero_offset256[0], zero_offset256[1]);
+		t256[1] = #VPACKUS_16u16(one_offset256[0], one_offset256[1]);
+
+		t256[0] = #VPERMQ(t256[0], 216);
+		t256[1] = #VPERMQ(t256[1], 216);
+
+		b256 = t256[0] | t256[1];
+
+		bytes[u256 i] = b256;
 	}
 
 	return bytes;

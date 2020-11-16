@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "SABER_params.h"
+#include "../../GENERAL/SABER_params.h"
 #include "../../GENERAL/cbd.h"
 #include "randomtestdata.h"
 
@@ -28,11 +28,11 @@ int main()
 	
 
 	for (i = 0; i < SABER_N; ++i) {
-		if (r_c[i] != r_jazz[i]) {
-			printf("[!] Unit test failed.\nFunction:\tcbd.\nReason:\tr_c[%d] != r_jazz[%d] ==> %d != %d\n", i, i, r_c[i], r_jazz[i]);
+		if ((r_c[i] - r_jazz[i]) % SABER_Q) { {
+				printf("[!] Unit test failed.\nFunction:\tcbd.\nReason:\tr_c[%d] != r_jazz[%d] ==> %d != %d\n", i, i, r_c[i], r_jazz[i]);
+			}
 		}
 	}
-
 
 	return 0;
 }

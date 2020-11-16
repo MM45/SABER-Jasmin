@@ -1,49 +1,58 @@
 /*** verify.jazz: File containing the Jasmin wrappers of the functions in the verify_regular_*.jahh files, only used for unit testing ***/
 
 #include "SABER_params.jahh"
-//#include "verify_regular_verify.jahh"
+#include "verify_regular_verify.jahh"
 #include "verify_regular_cmov.jahh"
 
-/*
 export fn verify_jazz(reg u64 ap, reg u64 bp) -> reg u64
 {
 	inline int i;
 
 	reg u64 r;
 
+	reg u256 t256;
+
 	stack u8[SABER_BYTES_CCA_DEC] a;
 	stack u8[SABER_BYTES_CCA_DEC] b;
 
-
-	for i = 0 to SABER_BYTES_CCA_DEC {
-		a[i] = (u8) [ap + i];
-		b[i] = (u8) [bp + i];
+	for i = 0 to SABER_BYTES_CCA_DEC / 32 {
+		t256 = (u256) [ap + 32 * i];
+		a[u256 i] = t256;
 	}
+
+	for i = 0 to SABER_BYTES_CCA_DEC / 32 {
+		t256 = (u256) [bp + 32 * i];
+		b[u256 i] = t256;
+	}	
 
 	r = verify(a, b);
 
 	return r;
 }
-*/
+
 export fn cmov_jazz(reg u64 rp, reg u64 xp, reg u8 b)
 {
 	inline int i;
 	
-	reg u8 t;
+	reg u256 t256;
 	
 	stack u8[SABER_KEYBYTES] r;
 	stack u8[SABER_KEYBYTES] x;
-	
 
-	for i = 0 to SABER_KEYBYTES {
-		r[i] = (u8) [rp + i];
-		x[i] = (u8) [xp + i];
+	for i = 0 to SABER_KEYBYTES / 32 {
+		t256 = (u256) [rp + 32 * i];
+		r[u256 i] = t256;
 	}
 
+	for i = 0 to SABER_KEYBYTES / 32 {
+		t256 = (u256) [xp + 32 * i];
+		x[u256 i] = t256;
+	}
+			
 	r = cmov(r, x, b);
 
-	for i = 0 to SABER_KEYBYTES {
-		t = r[i];
-		(u8) [rp + i] = t;
+	for i = 0 to SABER_KEYBYTES / 32 {
+		t256 = r[u256 i];
+		(u256) [rp + 32 * i] = t256;
 	}
 }

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "SABER_params.h"
+#include "../../GENERAL/SABER_params.h"
 #include "../../GENERAL/SABER_indcpa.h"
 #include "randomtestdata.h"
 
@@ -27,7 +27,7 @@ int main()
 
 	for (i = 0; i < SABER_K; ++i) {
 		for (j = 0; j < SABER_N; ++j) {
-			if (r_c[i][j] != r_jazz[i][j]) {
+			if ((r_c[i][j] - r_jazz[i][j]) % SABER_Q) {
 				printf("[!] Unit test failed.\nFunction:\t GenSecret.\nReason:\tr_c[%d][%d] != r_jazz[%d][%d] ==> %d != %d\n", i, j, i, j, r_c[i][j], r_jazz[i][j]);
 			}
 		}

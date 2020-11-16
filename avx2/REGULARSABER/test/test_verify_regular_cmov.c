@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-#include "SABER_params.h"
+#include "../../GENERAL/SABER_params.h"
 #include "../../GENERAL/verify.h"
 #include "randomtestdata.h"
 
@@ -39,16 +39,6 @@ int main()
 		}
 	}
 
-	for (i = 0; i < SABER_KEYBYTES; ++i) {
-		printf("r_c_0[%d] -- r_jazz_0[%d] (b == 0) ==> %d -- %d\n", i, i, r_c_0[i], r_jazz_0[i]);
-	}
-
-	for (i = 0; i < SABER_KEYBYTES; ++i) {
-		printf("x_0[%d] -- x_0[%d] (b == 0) ==> %d -- %d\n", i, i, x_0[i], x_0[i]);
-	}
-
-
-
 	// Declare variables for test with b == 1
 	unsigned char r_c_1[SABER_KEYBYTES];
 	unsigned char r_jazz_1[SABER_KEYBYTES];
@@ -69,15 +59,6 @@ int main()
 			printf("[!] Unit test failed.\nFunction:\tcmov.\nReason:\tr_c_1[%d] != r_jazz_1[%d] (b == 1) ==> %d != %d\n", i, i, r_c_1[i], r_jazz_1[i]);
 		}
 	}
-
-	for (i = 0; i < SABER_KEYBYTES; ++i) {
-		printf("r_c_1[%d] -- r_jazz_1[%d] (b == 0) ==> %d -- %d\n", i, i, r_c_1[i], r_jazz_1[i]);
-	}
-
-	for (i = 0; i < SABER_KEYBYTES; ++i) {
-		printf("x_1[%d] -- x_1[%d] (b == 0) ==> %d -- %d\n", i, i, x_1[i], x_1[i]);
-	}
-
 
 	return 0;
 }

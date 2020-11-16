@@ -7,23 +7,25 @@
 
 inline fn verify(stack u8[SABER_BYTES_CCA_DEC] a, stack u8[SABER_BYTES_CCA_DEC] b) -> reg u64
 {
-	inline int i;
+	reg u32 t32;
+	reg u32 r32;
 
-	reg u8 t8;
-	reg u8 tr;
-
+	reg u64 i;
 	reg u64 r;
 
-	tr = 0;
-	for i = 0 to SABER_BYTES_CCA_DEC {
+	r32 = 0;
+	i = 0;
+	while (i < SABER_BYTES_CCA_DEC / 4) {
 		// r |= a[i] ^ b[i];
-		t8 = a[i];
-		t8 ^= b[i];
-		tr |= t8;
+		t32 = a[u32 (int) i];
+		t32 ^= b[u32 (int) i];
+		r32 |= t32;
+
+		i += 1;
 	}
 
 	// r = (-r) >> 63
-	r = (64u) tr;
+	r = (64u) r32;
 	r *= -1;
 	r >>= 63;
 
