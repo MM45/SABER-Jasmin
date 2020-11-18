@@ -29,9 +29,9 @@ In order to create all binaries at once, change the working directory to `ref/` 
 \
 Alternatively, one can create individual binaries by issuing:\
 \
-`make REGULARSABER/test/<test_file_name>.c`\
+`make REGULARSABER/test/<test_source_name>.c`\
 \
-Here, <test_file_name> is to be replaced with the name of the test's C source file.\
+Here, <test_source_name> is to be replaced with the name of the test's C source file.\
 Subsequently, one can run all tests at once with:\
 \
 `./test.sh`\
@@ -65,7 +65,7 @@ Alternatively, one can run individual functional correctness tests using:\
 \
 Here, `<test_binary_name>` is to be replaced with the name of the test's binary.\
 For speed tests, no shell script is included that executes all tests at once.\
-Instead, one can run them individually in a similar way as the functional correctness tests:\
+Instead, one can execute them individually in a similar way as the functional correctness tests:\
 \
 `make REGULARSABER/speed/<test_binary_name>`\
 \
