@@ -38,7 +38,7 @@ Files with the `.jazz` extension contain `export` functions used as a wrapper ar
 \
 Here, `<original_file_name>` and `<saber_version>` have the same interpretation as above. The only difference is that, for the `<original_file_name>`, the `.jazz` file does not contain any Jasmin implementations of functions in that file; rather, the `.jazz` file contains the wrappers for all Jasmin implementations of the functions in that original implementation's file.\
 \
-Upon creating the test binaries by means of the Makefile, a similarly named `.japp` file is generated for each `.jazz` file. These `.japp` files result from passing the `.jazz` files to the GCC preprocessor. This allows to use GCC preprocessing directives in the `.jazz` and `.jahh` files. In the end, these `.japp` files are the files given to the Jasmin compiler for compilation.
+Upon creating the test binaries by means of the Makefile, a similarly named `.japp` file is generated for each `.jazz` file. These `.japp` files result from passing the `.jazz` files to the GCC preprocessor. This allows to use GCC preprocessing directives in the `.jazz` and `.jahh` files. In the end, these `.japp` files are given to the Jasmin compiler for compilation.
 
 ## Making and Testing
 For the reference implementation, one can use the Makefile to create binaries for each individual functional correctness test.\
