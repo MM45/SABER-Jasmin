@@ -90,4 +90,4 @@ Instead, one can execute them individually in a similar way as the functional co
 \
 Again, `<test_binary_name>` is to be replaced with the name of the test's binary.\
 \
-Finally, note that the `MISCELLANEOUS` directories do not contain a Makefile, even though they include all elements to build tests for the Jasmin functions inside them.
+Finally, note that the `MISCELLANEOUS` directories do not contain a Makefile, nor do the other Makefiles create tests for the Jasmin implementations in these directories. The reason for this is that the functions in these directories are currently not used in the two Jasmin implementations of Saber. Nevertheless, these files are still included in the `MISCELLANEOUS` directories because they could still be useful for future work or other projects.
