@@ -9,8 +9,8 @@ The repository structure is as follows:
   * `GENERAL/`: C files of original AVX2 implementation of Saber.
   * `MISCELLANEOUS/`: Miscellaneous Jasmin and C files, contains Keccak4x implementation.
   * `REGULARSABER/`: Jasmin files of Jasmin AVX2 implementation of Saber, with (regular) Saber parameters.
-    * speed/: C files for testing speed of AVX2 implementations of Saber.
-    * test/: C files for testing functional correctness of Jasmin AVX2 implementation of Saber.
+    * `speed/`: C files for testing speed of AVX2 implementations of Saber.
+    * `test/`: C files for testing functional correctness of Jasmin AVX2 implementation of Saber.
 * `compiler/`: Jasmin compiler.
 * `ref/`: All files concerning the reference implementation of Saber.
   * `GENERAL/`: C files of original reference implementation of Saber.
