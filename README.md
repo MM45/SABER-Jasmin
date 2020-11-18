@@ -40,7 +40,7 @@ Alternatively, one can run each test separately by simply executing each test, a
 \
 `REGULARSABER/test/<test_binary_name>`\
 \
-Here, `<test_binary_name>` is to be replaced with the name of the test's binary. Note that the binaries have the same name as the C source file from which they were created (excluding the `.c` extension).\
+Here, `<test_binary_name>` is to be replaced with the name of the test's binary. Note that the binaries have the same name as the C source file from which they were created (of course, without the `.c` extension).\
 \
 For the AVX2 implementation, one can create binaries for two different types of tests: functional correctness and speed tests.\
 To create all binaries at once, change the working directory to `avx2/` and issue the following command:\
