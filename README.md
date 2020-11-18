@@ -59,7 +59,7 @@ Once again, one can run all functional correctness tests at once with:\
 \
 `./test.sh`\
 \
-Alternative, one can run individual functional correctness tests using:\
+Alternatively, one can run individual functional correctness tests using:\
 \
 `make REGULARSABER/test/<test_binary_name>`\
 \
