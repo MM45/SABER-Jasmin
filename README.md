@@ -50,7 +50,7 @@ Alternatively, one can create individual binaries by issuing:\
 \
 `make REGULARSABER/test/<test_source_name>.c`\
 \
-Here, <test_source_name> is to be replaced with the name of the test's C source file.\
+Here, `<test_source_name>` is to be replaced with the name of the test's C source file.\
 Subsequently, one can run all tests at once with:\
 \
 `./test.sh`\
