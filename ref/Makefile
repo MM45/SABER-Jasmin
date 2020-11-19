@@ -142,7 +142,7 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_SABER_un_pack4bit 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_POLVECp2BS 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_POLVECq2BS 
-	-rm	${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp 
+	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECq 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POL
 	-rm ${REGULARDIRECTORY}/test/test_cbd_regular_cbd
@@ -151,7 +151,7 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_pol_mul_p
 	-rm ${REGULARDIRECTORY}/test/test_poly_mul_regular_pol_mul_q
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_MatrixVectorMul
-	-rm	${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_InnerProd
+	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_InnerProd
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_KeccakF1600_StatePermute
 	-rm ${REGULARDIRECTORY}/test/test_fips202_regular_keccak_absorb_128_32
@@ -181,6 +181,6 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_enc
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_dec
 	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_keypair_randominc
-	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_enc_randominc
-	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_dec
-	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem
+	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_enc_randominc
+	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_dec
+	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem

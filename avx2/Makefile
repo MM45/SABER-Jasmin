@@ -176,7 +176,7 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_SABER_un_pack4bit 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_POLVECp2BS 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_POLVECq2BS 
-	-rm	${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp 
+	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECp 
 	-rm ${REGULARDIRECTORY}/test/test_pack_unpack_regular_BS2POLVECq
 	-rm ${REGULARDIRECTORY}/test/test_cbd_regular_cbd
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_POL2MSG
@@ -198,19 +198,19 @@ clean:
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_enc
 	-rm ${REGULARDIRECTORY}/test/test_SABER_indcpa_regular_indcpa_kem_dec
 	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_keypair_randominc
-	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_enc_randominc
-	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_dec
-	-rm	${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem
-	-rm	${REGULARDIRECTORY}/speed/speed_kem_regular_complete
-	-rm	${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_fips202_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete 
-	-rm	${REGULARDIRECTORY}/speed/speed_cbd_regular_complete
-	-rm	${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_crt 
-	-rm	${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_invntt_tomont 
-	-rm	${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_ntt 
-	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_basemul_acc_montgomery 
-	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_crt 
-	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_iprod 
-	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_matrix_vector_mul 
-	-rm	${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_ntt 
+	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_enc_randominc
+	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem_dec
+	-rm ${REGULARDIRECTORY}/test/test_kem_regular_crypto_kem
+	-rm ${REGULARDIRECTORY}/speed/speed_kem_regular_complete
+	-rm ${REGULARDIRECTORY}/speed/speed_SABER_indcpa_regular_complete 
+	-rm ${REGULARDIRECTORY}/speed/speed_fips202_regular_complete 
+	-rm ${REGULARDIRECTORY}/speed/speed_pack_unpack_regular_complete 
+	-rm ${REGULARDIRECTORY}/speed/speed_cbd_regular_complete
+	-rm ${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_crt 
+	-rm ${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_invntt_tomont 
+	-rm ${REGULARDIRECTORY}/test/test_poly_ntt_regular_poly_ntt 
+	-rm ${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_basemul_acc_montgomery 
+	-rm ${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_crt 
+	-rm ${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_iprod 
+	-rm ${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_matrix_vector_mul 
+	-rm ${REGULARDIRECTORY}/test/test_polyvec_ntt_regular_polyvec_ntt 

@@ -1,4 +1,4 @@
-/*** SABER_indcpa_regular_POL2MSG.jahh: File containing the Jasmin implementation of the MatrixVectorMul function from SABER_indcpa.c, with (regular) SABER parameters ***/
+/*** SABER_indcpa_regular_POL2MSG.jahh: File containing the Jasmin implementation of the POL2MSG function from SABER_indcpa.c, with (regular) SABER parameters ***/
 
 #ifndef POL2MSG_HH
 #define POL2MSG_HH

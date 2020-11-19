@@ -1,4 +1,4 @@
-/*** fips202_regular_keccak_absorb_512_64.jahh: File containing the Jasmin implementation of keccak_absorb function from fips202.c, where rate == SHA3512RATE, mlen == 64 and with (regular) SABER parameters ***/
+/*** fips202_regular_keccak_absorb_512_64.jahh: File containing the Jasmin implementation of keccak_absorb function from fips202.c, where rate == SHA3_512_RATE, mlen == 64 and with (regular) SABER parameters ***/
 
 #ifndef KECCAK_ABSORB_512_64_HH
 #define KECCAK_ABSORB_512_64_HH

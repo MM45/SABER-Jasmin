@@ -1,4 +1,4 @@
-/*** poly_regular.jazz: File containing the Jasmin wrappers of the functions in the poly_regular*.jahh files, only used for unit testing ***/
+/*** poly_regular.jazz: File containing the Jasmin wrappers of the functions in the poly_regular_*.jahh files, only used for unit testing ***/
 
 #include "SABER_params.jahh"
 #include "poly_regular_GenSecret.jahh"

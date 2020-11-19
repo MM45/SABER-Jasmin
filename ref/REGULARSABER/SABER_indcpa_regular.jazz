@@ -1,4 +1,4 @@
-/*** SABER_indcpa_regular.jazz: File containing the Jasmin wrappers of the functions in the SABER_indcpa_regular*.jahh files, only used for unit testing ***/
+/*** SABER_indcpa_regular.jazz: File containing the Jasmin wrappers of the functions in the SABER_indcpa_regular_*.jahh files, only used for unit testing ***/
 
 #include "SABER_params.jahh"
 #include "SABER_indcpa_regular_MatrixVectorMul.jahh"

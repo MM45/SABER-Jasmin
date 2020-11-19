@@ -1,4 +1,4 @@
-/*** test_kem_regular_crypto_kem.c: File containing the unit test for the crypto_kem functions, with (regular) SABER parameters ***/
+/*** test_kem_regular_crypto_kem.c: File containing the test of the KEM's regular method of operation (i.e., calling the crypto_kem_* functions in sequence, using each other's output), with (regular) SABER parameters ***/
 
 #include <stdio.h>
 #include <stdint.h>

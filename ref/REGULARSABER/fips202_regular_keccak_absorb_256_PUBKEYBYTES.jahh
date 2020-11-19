@@ -1,4 +1,4 @@
-/*** fips202_regular_keccak_absorb_256_PUBKEYBYTES.jahh: File containing the Jasmin implementation of keccak_absorb function from fips202.c, where rate == SHA3256RATE, mlen == SABER_INDCPA_PUBLICKEYBYTES and with (regular) SABER parameters ***/
+/*** fips202_regular_keccak_absorb_256_PUBKEYBYTES.jahh: File containing the Jasmin implementation of keccak_absorb function from fips202.c, where rate == SHA3_256_RATE, mlen == SABER_INDCPA_PUBLICKEYBYTES and with (regular) SABER parameters ***/
 
 #ifndef KECCAK_ABSORB_256_PUBKEYBYTES_HH
 #define KECCAK_ABSORB_256_PUBKEYBYTES_HH
