@@ -1,4 +1,4 @@
-/*** speed_pack_unpack_regular_complete_nc.c: File containing speed tests for the (regular) SABER implementations of the functions in the pack_unpack.c file, without functionality checks ***/
+/*** speed_pack_unpack_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the pack_unpack.c file ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -77,7 +77,7 @@ int test_pack_unpack()
 		random_test_bytes(bytes_unpack4, SABER_SCALEBYTES_KEM);
 
 
-		//BS2POLVECp; Reference_C
+		//BS2POLVECp; C
 	    CLOCK1 = cpucycles();	
 	    BS2POLVECp(bytes_bs2polvecp, data_bs2polvecp_c);
 	    CLOCK2 = cpucycles();	
@@ -89,7 +89,7 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_bs2polvecp_jazz[i]= CLOCK2 - CLOCK1;
 
-		//BS2POLVECq; Reference_C
+		//BS2POLVECq; C
 	    CLOCK1 = cpucycles();	
 	    BS2POLVECq(bytes_bs2polvecq, data_bs2polvecq_c);
 	    CLOCK2 = cpucycles();	
@@ -101,7 +101,7 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_bs2polvecq_jazz[i]= CLOCK2 - CLOCK1;
 
-		//POLVECp2BS; Reference_C
+		//POLVECp2BS; C
 	    CLOCK1 = cpucycles();	
 	    POLVECp2BS(bytes_polvecp2bs_c, data_polvecp2bs);
 	    CLOCK2 = cpucycles();	
@@ -113,7 +113,7 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_polvecp2bs_jazz[i]= CLOCK2 - CLOCK1;
 
-		//POLVECq2BS; Reference_C
+		//POLVECq2BS; C
 	    CLOCK1 = cpucycles();	
 	    POLVECq2BS(bytes_polvecq2bs_c, data_polvecq2bs);
 	    CLOCK2 = cpucycles();	
@@ -125,7 +125,7 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_polvecq2bs_jazz[i]= CLOCK2 - CLOCK1;
 
-		//SABER_pack_4bit; Reference_C
+		//SABER_pack_4bit; C
 	    CLOCK1 = cpucycles();	
 	    SABER_pack_4bit(bytes_pack4_c, data_pack4);
 	    CLOCK2 = cpucycles();	
@@ -137,7 +137,7 @@ int test_pack_unpack()
 	    CLOCK2 = cpucycles();	
 	    t_pack4_jazz[i]= CLOCK2 - CLOCK1;
 
-		//SABER_un_pack4bit; Reference_C
+		//SABER_un_pack4bit; C
 	    CLOCK1 = cpucycles();	
 	    SABER_un_pack4bit(bytes_unpack4, data_unpack4_c);
 	    CLOCK2 = cpucycles();	

@@ -1,4 +1,4 @@
-/*** test_poly_regular_GenSecret.c: File containing the unit test for the GenSecret function, with (regular) SABER parameters ***/
+/*** test_SABER_indcpa_regular_GenSecret.c: File containing the unit test for the GenSecret function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 #include <stdint.h>

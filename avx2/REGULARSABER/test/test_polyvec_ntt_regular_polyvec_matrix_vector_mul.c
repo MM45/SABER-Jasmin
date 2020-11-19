@@ -41,7 +41,7 @@ int main()
 	for (i = 0; i < SABER_K; ++i) {
 		for (j = 0; j < SABER_N; ++j) {
 			if (t_c_0.vec[i].coeffs[j] != t_jazz_0.vec[i].coeffs[j]) {
-				printf("[!] Unit test failed.\nFunction:\tpolyvec_matrix_vector_mul (ntt).\nReason:\tt_c.vec[%d].coeffs[%d] != t_jazz.vec[%d].coeffs[%d] ==> %d != %d\n", i, j, i, j, t_c_0.vec[i].coeffs[j], t_jazz_0.vec[i].coeffs[j]);
+				printf("[!] Unit test failed.\nFunction:\tpolyvec_matrix_vector_mul (ntt, transpose == 0).\nReason:\tt_c_0.vec[%d].coeffs[%d] != t_jazz_0.vec[%d].coeffs[%d] ==> %d != %d\n", i, j, i, j, t_c_0.vec[i].coeffs[j], t_jazz_0.vec[i].coeffs[j]);
 			}
 		}
 	}
@@ -54,7 +54,7 @@ int main()
 	for (i = 0; i < SABER_K; ++i) {
 		for (j = 0; j < SABER_N; ++j) {
 			if (t_c_1.vec[i].coeffs[j] != t_jazz_1.vec[i].coeffs[j]) {
-				printf("[!] Unit test failed.\nFunction:\tpolyvec_matrix_vector_mul (ntt).\nReason:\tt_c.vec[%d].coeffs[%d] != t_jazz.vec[%d].coeffs[%d] ==> %d != %d\n", i, j, i, j, t_c_1.vec[i].coeffs[j], t_jazz_1.vec[i].coeffs[j]);
+				printf("[!] Unit test failed.\nFunction:\tpolyvec_matrix_vector_mul (ntt, transpose == 1).\nReason:\tt_c_1.vec[%d].coeffs[%d] != t_jazz_1.vec[%d].coeffs[%d] ==> %d != %d\n", i, j, i, j, t_c_1.vec[i].coeffs[j], t_jazz_1.vec[i].coeffs[j]);
 			}
 		}
 	}

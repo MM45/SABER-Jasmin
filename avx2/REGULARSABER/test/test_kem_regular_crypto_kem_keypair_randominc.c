@@ -1,4 +1,4 @@
-/*** test_kem_regular_crypto_kem_keypair_randominc.c: File containing the unit test for the crypto_kem_keypair function, with (regular) SABER parameters ***/
+/*** test_kem_regular_crypto_kem_keypair_randominc.c: File containing the unit test for the crypto_kem_keypair_randominc function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 #include <stdint.h>

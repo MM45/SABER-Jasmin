@@ -1,4 +1,4 @@
-/*** speed_fips202_regular_complete_nc.c: File containing speed tests for the (regular) SABER implementations of the functions in the fips202.c file ***/
+/*** speed_fips202_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the fips202.c file ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -149,7 +149,7 @@ int test_fips202()
 			input_sha351264_jazz[j] = input_sha351264_c[j];
 		}
 
-		//Keccak state permute; Reference_C
+		//Keccak state permute; C
 	    CLOCK1 = cpucycles();	
 	    KeccakF1600_StatePermute(state_c);
 	    CLOCK2 = cpucycles();	
@@ -161,7 +161,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_keccakf1600_jazz[i]= CLOCK2 - CLOCK1;
 
-		//keccak_absorb_128_32; Reference_C
+		//keccak_absorb_128_32; C
 	    CLOCK1 = cpucycles();	
 	    keccak_absorb(s_absorb_c, SHAKE128_RATE, m_absorb_c, 32, 0x1F);
 	    CLOCK2 = cpucycles();	
@@ -173,7 +173,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_absorb12832_jazz[i]= CLOCK2 - CLOCK1;
 
-		//keccak_squeezeblocks_128_128; Reference_C
+		//keccak_squeezeblocks_128_128; C
 	    CLOCK1 = cpucycles();	
 	    keccak_squeezeblocks(h_squeeze_c, 1, s_squeeze_c, SHAKE128_RATE);
 	    CLOCK2 = cpucycles();	
@@ -185,7 +185,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_squeeze128128_jazz[i]= CLOCK2 - CLOCK1;
 
-		//shake128_32_32; Reference_C
+		//shake128_32_32; C
 	    CLOCK1 = cpucycles();	
 	    shake128(output_shake32_c, 32, input_shake_c, 32);
 	    CLOCK2 = cpucycles();	
@@ -197,7 +197,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_shake32_jazz[i]= CLOCK2 - CLOCK1;
 
-		//shake128_MUNK8_32; Reference_C
+		//shake128_MUNK8_32; C
 	    CLOCK1 = cpucycles();	
 	    shake128(output_shakemunk8_c, MUNK8, input_shake_c, 32);
 	    CLOCK2 = cpucycles();	
@@ -209,7 +209,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_shakemunk8_jazz[i]= CLOCK2 - CLOCK1;
 
-		//shake128_KK13N8_32; Reference_C
+		//shake128_KK13N8_32; C
 	    CLOCK1 = cpucycles();	
 	    shake128(output_shakekk13n8_c, KK13N8, input_shake_c, 32);
 	    CLOCK2 = cpucycles();	
@@ -221,7 +221,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_shakekk13n8_jazz[i]= CLOCK2 - CLOCK1;
 
-		//sha3_256_32; Reference_C
+		//sha3_256_32; C
 	    CLOCK1 = cpucycles();	
 	    sha3_256(output_sha3256_c, input_sha325632_c, 32);
 	    CLOCK2 = cpucycles();	
@@ -233,7 +233,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_sha325632_jazz[i]= CLOCK2 - CLOCK1;
 		
-		//sha3_256_64; Reference_C
+		//sha3_256_64; C
 	    CLOCK1 = cpucycles();	
 	    sha3_256(output_sha3256_c, input_sha325664_c, 64);
 	    CLOCK2 = cpucycles();	
@@ -245,7 +245,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_sha325664_jazz[i]= CLOCK2 - CLOCK1;
 
-		//sha3_256_CCADEC; Reference_C
+		//sha3_256_CCADEC; C
 	    CLOCK1 = cpucycles();	
 	    sha3_256(output_sha3256_c, input_sha3256ccadec_c, SABER_BYTES_CCA_DEC);
 	    CLOCK2 = cpucycles();	
@@ -257,7 +257,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_sha3256ccadec_jazz[i]= CLOCK2 - CLOCK1;
 
-		//sha3_256_PUBKEYBYTES; Reference_C
+		//sha3_256_PUBKEYBYTES; C
 	    CLOCK1 = cpucycles();	
 	    sha3_256(output_sha3256_c, input_sha3256pubkey_c, SABER_INDCPA_PUBLICKEYBYTES);
 	    CLOCK2 = cpucycles();	
@@ -269,7 +269,7 @@ int test_fips202()
 	    CLOCK2 = cpucycles();
 	    t_sha3256pubkey_jazz[i]= CLOCK2 - CLOCK1;
 
-		//sha3_512_64; Reference_C
+		//sha3_512_64; C
 	    CLOCK1 = cpucycles();	
 	    sha3_512(output_sha3512_c, input_sha351264_c, 64);
 	    CLOCK2 = cpucycles();	

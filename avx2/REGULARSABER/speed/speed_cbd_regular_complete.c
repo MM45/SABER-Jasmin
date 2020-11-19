@@ -1,4 +1,4 @@
-/*** speed_cbd_regular_complete_nc.c: File containing speed tests for the (regular) SABER implementations of the functions in the cbd.c file ***/
+/*** speed_cbd_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the cbd.c file ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,7 +37,7 @@ int test_cbd()
 			buf_jazz[j] = buf_c[j];
 		}
 
-		//cbd; Reference_C
+		//cbd; C
 	    CLOCK1 = cpucycles();	
 	    cbd(r_c, buf_c);
 	    CLOCK2 = cpucycles();	

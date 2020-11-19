@@ -1,4 +1,4 @@
-/*** speed_kem_regular_nc.c: File containing speed tests for the (regular) SABER implementations ***/
+/*** speed_kem_regular.c: File containing speed tests for the (regular) SABER implementations of the functions in the kem.c file, using the KEM's regular method of operation ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,7 +62,7 @@ int test_kem_cca()
    			indcpa_noiseseed_jazz[j] = indcpa_noiseseed_c[j];
    		}
 
-   		//Generation of secret key sk and public key pk pair; Reference_C
+   		//Generation of secret key sk and public key pk pair; C
 	    CLOCK1 = cpucycles();	
 	    crypto_kem_keypair_randominc(pk_c, sk_c, random_bytes_crypto_kp, indcpa_seed_c, indcpa_noiseseed_c);
 	    CLOCK2 = cpucycles();	
@@ -74,7 +74,7 @@ int test_kem_cca()
 	    CLOCK2 = cpucycles();	
 	    t_kp_jazz[i]= CLOCK2 - CLOCK1;
 
-	    //Key-Encapsulation call; input: pk; output: ciphertext c, shared-secret k_a; Reference_C
+	    //Key-Encapsulation call; input: pk; output: ciphertext c, shared-secret k_a; C
 	    CLOCK1 = cpucycles();
 	    crypto_kem_enc_randominc(c_c, k_a_c, pk_c, random_bytes_crypto_enc);
 	    CLOCK2 = cpucycles();	
@@ -86,7 +86,7 @@ int test_kem_cca()
 	    CLOCK2 = cpucycles();	
 	    t_enc_jazz[i] = CLOCK2 - CLOCK1;
 
-	  	//Key-Decapsulation call; input: sk, c; output: shared-secret k_b; Reference_C
+	  	//Key-Decapsulation call; input: sk, c; output: shared-secret k_b; C
 	    CLOCK1 = cpucycles();
 	    crypto_kem_dec(k_b_c, c_c, sk_c);
 	    CLOCK2 = cpucycles();	

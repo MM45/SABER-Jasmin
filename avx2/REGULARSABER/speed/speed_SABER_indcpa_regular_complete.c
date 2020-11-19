@@ -1,4 +1,4 @@
-/*** speed_SABER_indcpa_regular_complete_nc.c: File containing speed tests for the (regular) SABER implementations of the functions in the SABER_indcpa.c file, without checks for correctness ***/
+/*** speed_SABER_indcpa_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the SABER_indcpa.c file ***/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -124,7 +124,7 @@ int test_indcpa()
    		}
 
    		
-   		//Generation of matrix; Reference_C
+   		//Generation of matrix; C
 	    CLOCK1 = cpucycles();	
 	    GenMatrix(a_c, matrix_seed_c);
 	    CLOCK2 = cpucycles();	
@@ -137,7 +137,7 @@ int test_indcpa()
 	    t_mat_jazz[i]= CLOCK2 - CLOCK1;
 
 
-   		//Generation of secret; Reference_C
+   		//Generation of secret; C
 	    CLOCK1 = cpucycles();	
 	    GenSecret(r_c, secret_seed_c);
 	    CLOCK2 = cpucycles();	
@@ -150,7 +150,7 @@ int test_indcpa()
 	    t_sec_jazz[i]= CLOCK2 - CLOCK1;
 	
    		
-   		//Bytes to poly; Reference_C
+   		//Bytes to poly; C
 	    CLOCK1 = cpucycles();	
 	    BS2POLq(bytes_c, data_c);
 	    CLOCK2 = cpucycles();	
@@ -163,7 +163,7 @@ int test_indcpa()
 	    t_bs2polq_jazz[i]= CLOCK2 - CLOCK1;
 
    		
-   		//Generation of secret; Reference_C
+   		//Generation of secret; C
 	    CLOCK1 = cpucycles();	
 	    POL2MSG(message_dec_unpacked_c, message_dec_packed_c);
 	    CLOCK2 = cpucycles();	
@@ -176,7 +176,7 @@ int test_indcpa()
 	    t_pol2msg_jazz[i]= CLOCK2 - CLOCK1;	
    	
 
-   		//Generation of secret key sk and public key pk pair; Reference_C
+   		//Generation of secret key sk and public key pk pair; C
 	    CLOCK1 = cpucycles();	
 	    indcpa_kem_keypair_randominc(pk_c, sk_c, kp_seed_c, kp_noiseseed_c);
 	    CLOCK2 = cpucycles();	
@@ -189,7 +189,7 @@ int test_indcpa()
 	    t_kp_jazz[i]= CLOCK2 - CLOCK1;
 
 
-	    //Key-Encapsulation call; Reference_C
+	    //Key-Encapsulation call; C
 	    CLOCK1 = cpucycles();
 	    indcpa_kem_enc(message_c, enc_noiseseed_c, pk_c, c_c);
 	    CLOCK2 = cpucycles();	
@@ -202,7 +202,7 @@ int test_indcpa()
 	    t_enc_jazz[i] = CLOCK2 - CLOCK1;
 
 
-	  	//Key-Decapsulation call; Reference_C
+	  	//Key-Decapsulation call; C
 	    CLOCK1 = cpucycles();
 	    indcpa_kem_dec(sk_c, c_c, message_dec_c);
 	    CLOCK2 = cpucycles();	
