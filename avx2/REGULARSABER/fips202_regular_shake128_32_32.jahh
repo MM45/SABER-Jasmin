@@ -11,8 +11,6 @@ inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr
 {
 	inline int i;
 	
-	reg u8 t8;
-	
 	reg u256 t256;
 
 	stack u64[25] s;

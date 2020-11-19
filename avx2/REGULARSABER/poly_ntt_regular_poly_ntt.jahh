@@ -1,4 +1,4 @@
-/*** poly_ntt_regular_poly_ntt.jahh: File containing the Jasmin implementation of poly_ntt function from ntt.S, with pdata == PDATA0 (poly_ntt_0) and pdata == PDATA1 (poly_ntt_1) and (regular) SABER parameters ***/
+/*** poly_ntt_regular_poly_ntt.jahh: File containing the Jasmin implementation of poly_ntt function from ntt256n.S, with pdata == PDATA0 (poly_ntt_0) and pdata == PDATA1 (poly_ntt_1) and (regular) SABER parameters ***/
 
 #ifndef POLY_NTT_HH
 #define POLY_NTT_HH

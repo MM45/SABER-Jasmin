@@ -1,4 +1,4 @@
-/*** poly_ntt_regular.jazz: File containing the Jasmin wrappers of the functions in the poly_ntt_regular*.jahh files, only used for testing ***/
+/*** poly_ntt_regular.jazz: File containing the Jasmin wrappers of the functions in the poly_ntt_regular_*.jahh files, only used for testing ***/
 
 #include "SABER_params.jahh"
 #include "poly_ntt_regular_poly_crt.jahh"

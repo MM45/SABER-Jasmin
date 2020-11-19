@@ -1,4 +1,4 @@
-/*** polyvec_ntt_regular_polyvec_basemul_acc_montgomery.jahh: File containing the Jasmin implementation of polyvec_basemul_acc_montgomery function from pointwise.S, with pdata == PDATA0 (polyvec_basemul_acc_montgomery_0) and pdata == PDATA1 (polyvec_basemul_acc_montgomery_1) and (regular) SABER parameters ***/
+/*** polyvec_ntt_regular_polyvec_basemul_acc_montgomery.jahh: File containing the Jasmin implementation of polyvec_basemul_acc_montgomery function from basemul256x1.S, with pdata == PDATA0 (polyvec_basemul_acc_montgomery_0) and pdata == PDATA1 (polyvec_basemul_acc_montgomery_1) and (regular) SABER parameters ***/
 
 #ifndef POLYVEC_BASEMUL_ACC_MONTGOMERY_HH
 #define POLYVEC_BASEMUL_ACC_MONTGOMERY_HH

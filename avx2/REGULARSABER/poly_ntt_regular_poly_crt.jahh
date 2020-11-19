@@ -1,4 +1,4 @@
-/*** poly_ntt_regular_poly_crt.jahh: File containing the Jasmin implementation of poly_crt function from poly.c, with (regular) SABER parameters ***/
+/*** poly_ntt_regular_poly_crt.jahh: File containing the Jasmin implementation of poly_crt function from poly_ntt.c, with (regular) SABER parameters ***/
 
 #ifndef POLY_CRT_HH
 #define POLY_CRT_HH

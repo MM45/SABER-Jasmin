@@ -4,37 +4,37 @@
 #define CONSTS256_HH
 
 /* qdata */
-param int _16XP 			=	0;
-param int _16XPINV        	=	16;
-param int _16XV           	=	32;
-param int _16XSHIFT       	=	48;
-param int _16XMONT_PINV   	=	64;
-param int _16XMONT        	=	80;
-param int _16XF_PINV      	=	96;
-param int _16XF           	=	112;
-param int _ZETAS          	=	128;
-param int _TWIST32        	=	288;
-param int _TWIST4         	=	800;
+param int _16XP             = 0;
+param int _16XPINV        	= 16;
+param int _16XV           	= 32;
+param int _16XSHIFT       	= 48;
+param int _16XMONT_PINV   	= 64;
+param int _16XMONT        	= 80;
+param int _16XF_PINV      	= 96;
+param int _16XF           	= 112;
+param int _ZETAS          	= 128;
+param int _TWIST32        	= 288;
+param int _TWIST4         	= 800;
 
 /* idx */
-param int _REVIDXW        	=	0;
-param int _REVIDXD        	=	32;
-param int _SIGNMSKW		  	=	64;
+param int _REVIDXW        	= 0;
+param int _REVIDXD        	= 32;
+param int _SIGNMSKW         = 64;
 
-u16 P0 			 			=	7681;
-u16 P1 						=	10753;
-u16 CRT_U_PINV 				=	32747;
-u16 CRT_U 					=	3563;
+u16 P0                      = 7681;
+u16 P1                      = 10753;
+u16 CRT_U_PINV              = 32747;
+u16 CRT_U                   = 3563;
 
 /* consts256n7681 */
-param int P_0 				=	7681;
-param int PINV_0 			=	-7679; // p^-1 mod 2^16
-param int MONT_0 			=	-3593; // 2^16 mod p
-param int MONT_PINV_0 		=	-9;
-param int V_0				=	17474; // floor(2^27/p + 0.5)
-param int SHIFT_0 			=	16;
-param int F_0 				=	1912; // mont^2/256
-param int F_PINV_0 			=	-2184; // PINV*F
+param int P_0               = 7681;
+param int PINV_0            = -7679; // p^-1 mod 2^16
+param int MONT_0            = -3593; // 2^16 mod p
+param int MONT_PINV_0       = -9;
+param int V_0               = 17474; // floor(2^27/p + 0.5)
+param int SHIFT_0           = 16;
+param int F_0               = 1912; // mont^2/256
+param int F_PINV_0          = -2184; // PINV*F
 
 u16[864] PDATA0 = {
 	// _16XP
@@ -167,14 +167,14 @@ u16[864] PDATA0 = {
 
 
 /* consts256n10753 */
-param int P_1 				=	 10753;
-param int MONT_1 			=	1018; // 2^16 mod p
-param int MONT_PINV_1 		=	-6;
-param int PINV_1 			=	-10751; // p^-1 mod 2^16
-param int V_1 				=	12482; // floor(2^27/p + 0.5)
-param int SHIFT_1 			=	16;
-param int F_1 				=	2536; // mont^2/256
-param int F_PINV_1 			=	-1560; // PINV*F
+param int P_1               = 10753;
+param int MONT_1            = 1018; // 2^16 mod p
+param int MONT_PINV_1       = -6;
+param int PINV_1            = -10751; // p^-1 mod 2^16
+param int V_1               = 12482; // floor(2^27/p + 0.5)
+param int SHIFT_1           = 16;
+param int F_1               = 2536; // mont^2/256
+param int F_PINV_1          = -1560; // PINV*F
 
 
 u16[864] PDATA1 = {
