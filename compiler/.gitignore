@@ -5,5 +5,3 @@ _c_build
 *.exe
 lib*.a
 report.log
-/jasmin.mlpack
-/jasminc
