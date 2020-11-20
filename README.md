@@ -26,7 +26,7 @@ For the most part, the Jasmin implementations follow the code structure and name
 `<original_file_name>_<saber_version>_<function_name>.jahh`\
 \
 Here, we have:
-* `<original_file_name>`: Name of the file from the original Saber implementation that contains the C function corresponding to the Jasmin function implemented in this file.
+* `<original_file_name>`: Name of the file from the original Saber implementation that contains the C function declaration corresponding to the Jasmin function implemented in this file.
 * `<saber_version>`: Name of the version of Saber that is used (i.e., one from: light, regular or fire).
 * `<function_name>`: Name of the function that is implemented in this file.
 
