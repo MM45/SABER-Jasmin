@@ -1,7 +1,1 @@
-_build
-_c_build
-*.native
-*.byte
-*.exe
-lib*.a
 report.log
