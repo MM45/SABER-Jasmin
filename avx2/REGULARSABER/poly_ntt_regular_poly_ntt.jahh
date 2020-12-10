@@ -13,9 +13,11 @@
 #include "fq_regular_fqmulprecomp1.jahh"
 
 // flag == 0
-inline fn update_0(reg u256 rln, reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3)
+inline fn update_0(reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3)
 -> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
 {
+	reg u256 rln;
+
 	rln = rl0 +16u16 rh0;
 	rh0 = rl0 -16u16 rh0;
 
@@ -32,9 +34,11 @@ inline fn update_0(reg u256 rln, reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u
 }
 
 // flag == 1
-inline fn update_1(reg u256 rln, reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15)
+inline fn update_1(reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15)
 -> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
 {
+	reg u256 rln;
+
 	rln = rl0 +16u16 rh0;
 	rh0 = rl0 -16u16 rh0;
 
@@ -133,7 +137,7 @@ inline fn level0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a, inline int off,
 	ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
 
 	// update		3,4,5,6,7,8,9,10,11
-	ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
+	ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
 
 	r[u256 (64 * off + 0) * 2 / 32] = ymm3;
 	r[u256 (64 * off + 16) * 2 / 32] = ymm4;
@@ -174,14 +178,14 @@ inline fn levels1t7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int o
 	ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
 
 	// update 		3,4,5,6,7,8,9,10,11
-	ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
+	ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
 
 	/** level 2 **/
 	// shuffle8		5,10,7,10
-	ymm7, ymm10 = shuffle8(ymm5, ymm10, ymm7, ymm10);
+	ymm7, ymm10 = shuffle8(ymm5, ymm10);
 
 	// shuffle8		6,11,5,11
-	ymm5, ymm11 = shuffle8(ymm6, ymm11, ymm5, ymm11);
+	ymm5, ymm11 = shuffle8(ymm6, ymm11);
 
 	ymm15 = pdata[u256 (_ZETAS + 64 * off + 64) * 2 / 32];
 	ymm6 = pdata[u256 (_ZETAS + 64 * off + 80) * 2 / 32];
@@ -190,29 +194,29 @@ inline fn levels1t7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int o
 	ymm7, ymm10, ymm5, ymm11, ymm12, ymm13, ymm14, ymm15 = mul(ymm7, ymm10, ymm5, ymm11, ymm15, ymm15, ymm6, ymm6);
 
 	// shuffle8		3,8,6,8
-	ymm6, ymm8 = shuffle8(ymm3, ymm8, ymm6, ymm8);
+	ymm6, ymm8 = shuffle8(ymm3, ymm8);
 
 	// shuffle8		4,9,3,9
-	ymm3, ymm9 = shuffle8(ymm4, ymm9, ymm3, ymm9);
+	ymm3, ymm9 = shuffle8(ymm4, ymm9);
 
 	// reduce		7,10,5,11
 	ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
 
 	// update		4,6,8,3,9,7,10,5,11
-	ymm4, ymm6, ymm8, ymm3, ymm7, ymm10, ymm5, ymm11 = update_1(ymm4, ymm6, ymm8, ymm3, ymm9, ymm7, ymm10, ymm5, ymm11, ymm12, ymm13, ymm14, ymm15);
+	ymm4, ymm6, ymm8, ymm3, ymm7, ymm10, ymm5, ymm11 = update_1(ymm6, ymm8, ymm3, ymm9, ymm7, ymm10, ymm5, ymm11, ymm12, ymm13, ymm14, ymm15);
 
 	/** level 3 **/
 	// shuffle4		4,7,9,7
-	ymm9, ymm7 = shuffle4(ymm4, ymm7, ymm9, ymm7);
+	ymm9, ymm7 = shuffle4(ymm4, ymm7);
 
 	// shuffle4		6,10,4,10
-	ymm4, ymm10 = shuffle4(ymm6, ymm10, ymm4, ymm10);
+	ymm4, ymm10 = shuffle4(ymm6, ymm10);
 
 	// shuffle4		8,5,6,5
-	ymm6, ymm5 = shuffle4(ymm8, ymm5, ymm6, ymm5);
+	ymm6, ymm5 = shuffle4(ymm8, ymm5);
 
 	// shuffle4		3,11,8,11
-	ymm8, ymm11 = shuffle4(ymm3, ymm11, ymm8, ymm11);
+	ymm8, ymm11 = shuffle4(ymm3, ymm11);
 
 	ymm12 = #VPMULL_16u16(ymm9, pdata[u256 (_TWIST32 + 256 * off + 0) * 2 / 32]);
 	ymm13 = #VPMULL_16u16(ymm7, pdata[u256 (_TWIST32 + 256 * off + 32) * 2 / 32]);
@@ -241,7 +245,7 @@ inline fn levels1t7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int o
 	ymm6, ymm5, ymm8, ymm11, ymm12, ymm13, ymm14, ymm15 = reduce_0(ymm6, ymm5, ymm8, ymm11, ymm0, ymm12, ymm13, ymm14, ymm15);
 
 	// update		3,9,7,4,10,6,5,8,11,0
-	ymm3, ymm9, ymm7, ymm4, ymm6, ymm5, ymm8, ymm11 = update_0(ymm3, ymm9, ymm7, ymm4, ymm10, ymm6, ymm5, ymm8, ymm11);
+	ymm3, ymm9, ymm7, ymm4, ymm6, ymm5, ymm8, ymm11 = update_0(ymm9, ymm7, ymm4, ymm10, ymm6, ymm5, ymm8, ymm11);
 
 	/** level 4 **/
 	ymm14 = pdata[u256 (_16XMONT_PINV) * 2 / 32];
@@ -319,7 +323,7 @@ inline fn levels1t7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int o
 
 	/** level 6 **/
 	// fqmulprecomp1	(_16XMONT_PINV),5,x=12
-	ymm5, ymm12 = fqmulprecomp1(_16XMONT_PINV, ymm5, ymm12, ymm0, pdata);
+	ymm5, ymm12 = fqmulprecomp1(_16XMONT_PINV, ymm5, ymm0, pdata);
 
 	ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 8) * 2 / 8]);
 	ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 12) * 2 / 8]);
@@ -364,31 +368,31 @@ inline fn levels1t7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int o
 	ymm11, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm11, ymm12, ymm0);
 
 	// shuffle2		5,7,8,7
-	ymm5, ymm8, ymm7 = shuffle2(ymm5, ymm7, ymm8, ymm7);
+	ymm5, ymm8, ymm7 = shuffle2(ymm5, ymm7);
 
 	// shuffle2		3,6,5,6
-	ymm3, ymm5, ymm6 = shuffle2(ymm3, ymm6, ymm5, ymm6);
+	ymm3, ymm5, ymm6 = shuffle2(ymm3, ymm6);
 
 	// shuffle2		10,9,3,9
-	ymm10, ymm3, ymm9 = shuffle2(ymm10, ymm9, ymm3, ymm9);
+	ymm10, ymm3, ymm9 = shuffle2(ymm10, ymm9);
 
 	// shuffle2		4,11,10,11
-	ymm4, ymm10, ymm11 = shuffle2(ymm4, ymm11, ymm10, ymm11);
+	ymm4, ymm10, ymm11 = shuffle2(ymm4, ymm11);
 
 	// shuffle1		8,3,4,3
-	ymm8, ymm4, ymm3 = shuffle1(ymm8, ymm3, ymm4, ymm3);
+	ymm8, ymm4, ymm3 = shuffle1(ymm8, ymm3);
 
 	// shuffle1		7,9,8,9
-	ymm7, ymm8, ymm9 = shuffle1(ymm7, ymm9, ymm8, ymm9);
+	ymm7, ymm8, ymm9 = shuffle1(ymm7, ymm9);
 	
 	// shuffle1		5,10,7,10
-	ymm5, ymm7, ymm10 = shuffle1(ymm5, ymm10, ymm7, ymm10);
+	ymm5, ymm7, ymm10 = shuffle1(ymm5, ymm10);
 	
 	// shuffle1		6,11,5,11
-	ymm6, ymm5, ymm11 = shuffle1(ymm6, ymm11, ymm5, ymm11);
+	ymm6, ymm5, ymm11 = shuffle1(ymm6, ymm11);
 
 	// update		6,4,3,7,10,8,9,5,11,0
-	ymm6, ymm4, ymm3, ymm7, ymm8, ymm9, ymm5, ymm11 = update_0(ymm6, ymm4, ymm3, ymm7, ymm10, ymm8, ymm9, ymm5, ymm11);
+	ymm6, ymm4, ymm3, ymm7, ymm8, ymm9, ymm5, ymm11 = update_0(ymm4, ymm3, ymm7, ymm10, ymm8, ymm9, ymm5, ymm11);
 
 	/** level 7 **/
 	ymm12 = #VPMULL_16u16(ymm9, ymm1);

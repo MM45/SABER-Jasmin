@@ -3,8 +3,10 @@
 #ifndef FQMULPRECOMP1_HH
 #define FQMULPRECOMP1_HH
 
-inline fn fqmulprecomp1(inline int off, reg u256 b, reg u256 x, reg u256 ymm0, reg ptr u16[864] pdata) -> reg u256, reg u256
+inline fn fqmulprecomp1(inline int off, reg u256 b, reg u256 ymm0, reg ptr u16[864] pdata) -> reg u256, reg u256
 {
+	reg u256 x;
+
 	x = #VPMULL_16u16(b, pdata[u256 off * 2 / 32]);
 	b = #VPMULH_16u16(b, pdata[u256 (off + 16) * 2 / 32]);
 	x = #VPMULH_16u16(x, ymm0);

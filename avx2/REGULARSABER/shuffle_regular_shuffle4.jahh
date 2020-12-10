@@ -3,8 +3,10 @@
 #ifndef SHUFFLE4_HH
 #define SHUFFLE4_HH
 
-inline fn shuffle4(reg u256 r0, reg u256 r1, reg u256 r2, reg u256 r3) -> reg u256, reg u256
+inline fn shuffle4(reg u256 r0, reg u256 r1) -> reg u256, reg u256
 {
+	reg u256 r2, r3;
+
 	r2 = #VPUNPCKL_4u64(r0, r1);
 	r3 = #VPUNPCKH_4u64(r0, r1);
 

@@ -3,8 +3,10 @@
 #ifndef SHUFFLE1_HH
 #define SHUFFLE1_HH
 
-inline fn shuffle1(reg u256 r0, reg u256 r1, reg u256 r2, reg u256 r3) -> reg u256, reg u256, reg u256
+inline fn shuffle1(reg u256 r0, reg u256 r1) -> reg u256, reg u256, reg u256
 {
+	reg u256 r2, r3;
+
 	r2 = #VPSLL_8u32(r1, 16);
 	r2 = #VPBLEND_16u16(r0, r2, 0xAA);
 	r0 = #VPSRL_8u32(r0, 16);
