@@ -91,3 +91,24 @@ Instead, one can execute them individually in a similar way as the functional co
 Again, `<test_binary_name>` is to be replaced with the name of the test's binary.\
 \
 Finally, note that the `MISCELLANEOUS` directories do not contain a Makefile, nor do the other Makefiles create tests for the Jasmin implementations in these directories. The reason for this is that the functions in these directories are currently not used in the two Jasmin implementations of Saber. Nevertheless, these files are still included in the `MISCELLANEOUS` directories because they could still be useful for future work or other projects.
+
+# License
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+  <a rel="license"
+     href="http://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0" />
+  </a>
+  <br />
+  To the extent possible under law,
+  <a rel="dct:publisher"
+     href="https://github.com/MM45/SABER-Jasmin">
+    <span property="dct:title">M.C.F.H.P. Meijers</span></a>
+  has waived all copyright and related or neighboring rights to
+  <span property="dct:title">A High-Assurance and High-Speed Implementation of Saber in Jasmin</span>.
+This work is published from:
+<span property="vcard:Country" datatype="dct:ISO3166"
+      content="NL" about="https://github.com/MM45/SABER-Jasmin">
+  Netherlands</span>.
+</p>
+
+Refer to the LICENSE.txt file in this repository for the legal code corresponding to this license.
