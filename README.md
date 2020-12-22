@@ -104,11 +104,13 @@ Finally, note that the `MISCELLANEOUS` directories do not contain a Makefile, no
      href="https://github.com/MM45/SABER-Jasmin">
     <span property="dct:title">M.C.F.H.P. Meijers</span></a>
   has waived all copyright and related or neighboring rights to the code of
-  <span property="dct:title">A High-Assurance and High-Speed Implementation of Saber in Jasmin</span>.
+  <span property="dct:title">A High-Assurance and High-Speed Implementation of Saber in Jasmin</span>. 
 This work is published from:
 <span property="vcard:Country" datatype="dct:ISO3166"
       content="NL" about="https://github.com/MM45/SABER-Jasmin">
   Netherlands</span>.
 </p>
 
+Note that this license only applies to content directly produced by the author, M.C.F.H.P. Meijers; hence, this license does not apply to any third party content included in this repository. Specifically, all data in the `compiler/` directory, all data in the `avx2/GENERAL/` directory, and all data in the `ref/GENERAL/` directory is considered third party content.\
+\
 Refer to the LICENSE.txt file in this repository for the legal code corresponding to this license.
