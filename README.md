@@ -103,7 +103,7 @@ Finally, note that the `MISCELLANEOUS` directories do not contain a Makefile, no
   <a rel="dct:publisher"
      href="https://github.com/MM45/SABER-Jasmin">
     <span property="dct:title">M.C.F.H.P. Meijers</span></a>
-  has waived all copyright and related or neighboring rights to code of
+  has waived all copyright and related or neighboring rights to the code of
   <span property="dct:title">A High-Assurance and High-Speed Implementation of Saber in Jasmin</span>.
 This work is published from:
 <span property="vcard:Country" datatype="dct:ISO3166"
