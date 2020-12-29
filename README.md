@@ -111,6 +111,6 @@ This work is published from:
   Netherlands</span>.
 </p>
 
-Note that this waiver only applies to content directly produced by the author, M.C.F.H.P. Meijers; hence, this license does not apply to any third party content included in this repository. Specifically, all data in the `compiler/` directory, all data in the `avx2/GENERAL/` directory, and all data in the `ref/GENERAL/` directory is considered third party content.\
+Note that this waiver only applies to content directly produced by the author, M.C.F.H.P. Meijers; hence, this waiver does not apply to any third party content included in this repository. Specifically, all data in the `compiler/` directory, all data in the `avx2/GENERAL/` directory, and all data in the `ref/GENERAL/` directory is considered third party content.\
 \
 Refer to the LICENSE.txt file in this repository for the legal code corresponding to this license.
