@@ -70,23 +70,36 @@ To only create all binaries for the functional correctness tests, issue:\
 \
 `make test_regular`\
 \
+Alternatively, one can create individual binaries for functional correctness tests by issuing:\
+\
+`make REGULARSABER/test/<test_source_name>.c`\
+\
+Here, `<test_source_name>` is to be replaced with the name of the test's C source file.\
+\
 To only create all binaries for the speed tests, issue:\
 \
 `make speed_regular`\
+\
+Alternatively, one can create individual binaries for speed tests by issuing:\
+\
+`make REGULARSABER/speed/<test_source_name>.c`\
+\
+Here, `<test_source_name>` is to be replaced with the name of the test's C source file.\
 \
 Once again, one can run all functional correctness tests at once with:\
 \
 `./test.sh`\
 \
-Alternatively, one can run individual functional correctness tests using:\
+Alternatively, one can run individual functional correctness tests by using:\
 \
-`make REGULARSABER/test/<test_binary_name>`\
+`REGULARSABER/test/<test_binary_name>`\
 \
 Here, `<test_binary_name>` is to be replaced with the name of the test's binary.\
-For speed tests, no shell script is included that executes all tests at once.\
-Instead, one can execute them individually in a similar way as the functional correctness tests:\
 \
-`make REGULARSABER/speed/<test_binary_name>`\
+For speed tests, no shell script is included that executes all tests at once.\
+Instead, one can execute them individually in a similar way to the functional correctness tests:\
+\
+`REGULARSABER/speed/<test_binary_name>`\
 \
 Again, `<test_binary_name>` is to be replaced with the name of the test's binary.\
 \
