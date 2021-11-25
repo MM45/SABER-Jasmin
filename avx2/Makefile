@@ -1,7 +1,7 @@
 CC = /usr/bin/gcc
 CFLAGS = -Wall -Wextra -g -O3 -fomit-frame-pointer -mavx2
 LDFLAGS = -lssl -lcrypto
-JASMIN = ../compiler/jasminc
+JASMIN = ../../../../../Tools/Jasmin/Source/compiler/jasminc
 JFLAGS = -lea -pasm ${JADDFLAGS}
 
 

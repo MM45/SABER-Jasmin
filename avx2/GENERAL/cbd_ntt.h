@@ -1,5 +1,5 @@
-#ifndef CBD_H
-#define CBD_H
+#ifndef CBD_NTT_H
+#define CBD_NTT_H
 
 #include <stdint.h>
 #include "params_ntt.h"

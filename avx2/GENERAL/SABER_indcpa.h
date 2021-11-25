@@ -4,7 +4,7 @@
 #include <immintrin.h>
 #include "poly.h"
 
-void indcpa_keypair(unsigned char *pk, unsigned char *sk);
+//void indcpa_keypair(unsigned char *pk, unsigned char *sk);
 
 void GenMatrix(polyvec *a, const unsigned char *seed);
 
@@ -14,9 +14,11 @@ void BS2POLq(const unsigned char *bytes, uint16_t data[SABER_N]); // Only in hea
 
 void POL2MSG(uint16_t *message_dec_unpacked, unsigned char *message_dec); // Only in header for unit test purposes
 
+/*
 void indcpa_client(unsigned char *pk, unsigned char *b_prime, unsigned char *c, unsigned char *key);
 
 void indcpa_server(unsigned char *pk, unsigned char *b_prime, unsigned char *c, unsigned char *key);
+*/
 
 void indcpa_kem_keypair(unsigned char *pk, unsigned char *sk);
 void indcpa_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned char seed[SABER_SEEDBYTES], unsigned char noiseseed[SABER_COINBYTES]); // Randomness included instead of via randombytes
@@ -43,9 +45,9 @@ void BS2POLq_jazz(const unsigned char *bytes, uint16_t data[SABER_N]);
 
 //uint64_t clock1,clock2;
 
-uint64_t clock_kp_kex, clock_enc_kex, clock_dec_kex;
+//uint64_t clock_kp_kex, clock_enc_kex, clock_dec_kex;
 
-uint64_t clock_kp_temp;
+//uint64_t clock_kp_temp;
 
 __m256i mask,inv3_avx,inv9_avx,inv15_avx,int45_avx,int30_avx,int0_avx;
 

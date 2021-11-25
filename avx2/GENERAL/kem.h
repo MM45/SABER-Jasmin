@@ -1,8 +1,10 @@
-#ifndef INDCPA_H
-#define INDCPA_H
-#include<stdint.h>
+#ifndef KEM_H
+#define KEM_H
+
+#include <stdint.h>
 #include "SABER_params.h"
 
+/*
 void indcpa_keypair(uint8_t *pk, uint8_t *sk);
 
 void indcpa_client(uint8_t *pk, uint8_t *b_prime, uint8_t *c, uint8_t *key);
@@ -12,6 +14,7 @@ void indcpa_server(uint8_t *pk, uint8_t *b_prime, uint8_t *c, uint8_t *key);
 void indcpa_kem_keypair(uint8_t *pk, uint8_t *sk);
 void indcpa_kem_enc(uint8_t *message, uint8_t *noiseseed, uint8_t *pk,  uint8_t *ciphertext);
 void indcpa_kem_dec(uint8_t *sk, uint8_t *ciphertext, uint8_t message_dec[]);
+*/
 
 int crypto_kem_keypair_randominc(unsigned char *pk, unsigned char *sk, unsigned char random_bytes_crypto[SABER_KEYBYTES], unsigned char indcpa_seed[SABER_SEEDBYTES], unsigned char indcpa_noiseseed[SABER_COINBYTES]); // Randomness included instead of via randombytes
 int crypto_kem_keypair(unsigned char *pk, unsigned char *sk);

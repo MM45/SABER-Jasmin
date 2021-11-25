@@ -1,9 +1,0 @@
-export
-fn test_imm(reg u64 x) -> reg u64 {
-  reg u64 y;
-  global u64 g;
-  g = 42;
-  y = x;
-  y += g;
-  return y;
-}

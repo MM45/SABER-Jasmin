@@ -12,11 +12,13 @@ Vadim Lyubashevsky, John M. Schanck, Peter Schwabe & Damien stehle
 #include <stdint.h>
 #include "SABER_params.h"
 
+/*
 uint64_t clock_mul, clock_matrix, clock_secret, count_mul;
 
 uint64_t clock_mv_vv_mul;
 
 uint64_t count_enc;
+*/
 
 typedef struct
 {
@@ -27,9 +29,10 @@ typedef struct{
   poly vec[SABER_K];
 } polyvec;
 
+/*
 void poly_getnoise(uint16_t *r,const unsigned char *seed, unsigned char nonce);
 
 void poly_getnoise4x(uint16_t *r0, uint16_t *r1, uint16_t *r2, const unsigned char *seed, unsigned char nonce0, unsigned char nonce1, unsigned char nonce2, unsigned char nonce3);
-
+*/
 
 #endif

@@ -1,2 +1,0 @@
-src/parser.ml: Bigint Lexing List Location Syntax Warray_
-src/parser.mli: Bigint Lexing Syntax

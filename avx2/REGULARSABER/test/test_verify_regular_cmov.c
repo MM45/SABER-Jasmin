@@ -25,9 +25,9 @@ int main()
 	unsigned char b_0 = 0;
 
 	// Initialize variables for test with b == 0
-	//random_test_bytes(r_c_0, SABER_KEYBYTES);
+	random_test_bytes(r_c_0, SABER_KEYBYTES);
 	random_test_bytes(x_0, SABER_KEYBYTES);
-	//copy_uchar_array(r_jazz_0, r_c_0, SABER_KEYBYTES);
+	copy_uchar_array(r_jazz_0, r_c_0, SABER_KEYBYTES);
 
 	// Test b == 0
 	cmov(r_c_0, x_0, SABER_KEYBYTES, b_0);

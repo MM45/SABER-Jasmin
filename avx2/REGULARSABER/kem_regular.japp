@@ -1,0 +1,3962 @@
+
+
+
+
+
+
+
+
+
+param int CRYPTO_SECRETKEYBYTES = 2304;
+param int CRYPTO_PUBLICKEYBYTES = (3 * 320 + 32);
+param int CRYPTO_BYTES = 32;
+param int CRYPTO_CIPHERTEXTBYTES = 1088;
+param int Saber_type = 2;
+
+param int SABER_K = 3;
+param int SABER_MU = 8;
+param int SABER_ET = 4;
+
+param int SABER_EQ = 13;
+param int SABER_EP = 10;
+
+param int SABER_N = 256;
+param int SABER_Q = 8192;
+param int SABER_P = 1024;
+
+param int SABER_SEEDBYTES = 32;
+param int SABER_NOISESEEDBYTES = 32;
+param int SABER_COINBYTES = 32;
+param int SABER_KEYBYTES = 32;
+
+param int SABER_HASHBYTES = 32;
+
+param int SABER_POLYBYTES = 416;
+
+param int SABER_POLYVECBYTES = (SABER_K * SABER_POLYBYTES);
+
+param int SABER_POLYVECCOMPRESSEDBYTES = (SABER_K * 320);
+
+param int SABER_CIPHERTEXTBYTES = (SABER_POLYVECCOMPRESSEDBYTES);
+
+
+
+param int SABER_SCALEBYTES_KEM = (SABER_ET * SABER_N / 8);
+
+param int SABER_INDCPA_PUBLICKEYBYTES = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SEEDBYTES);
+param int SABER_INDCPA_SECRETKEYBYTES = (SABER_POLYVECBYTES);
+
+param int SABER_PUBLICKEYBYTES = (SABER_INDCPA_PUBLICKEYBYTES);
+
+param int SABER_SECRETKEYBYTES = (SABER_INDCPA_SECRETKEYBYTES + SABER_INDCPA_PUBLICKEYBYTES + SABER_HASHBYTES + SABER_KEYBYTES);
+
+param int SABER_BYTES_CCA_DEC = (SABER_POLYVECCOMPRESSEDBYTES + SABER_SCALEBYTES_KEM);
+
+
+
+param int SABER_KN = (SABER_K * SABER_N);
+param int SABER_KKN = (SABER_K * SABER_K * SABER_N);
+param int N_SB = (SABER_N / 4);
+param int N_SB_RES = (2 * N_SB - 1);
+
+param int SHAKE128_RATE = 168;
+param int SHAKE256_RATE = 136;
+param int SHA3_256_RATE = 136;
+param int SHA3_512_RATE = 72;
+
+param int KK13N8 = (SABER_K * SABER_K * (13 * SABER_N / 8));
+param int MUNK8 = (SABER_MU * SABER_N * SABER_K / 8);
+
+param int h1 = 4;
+param int h2 = 228;
+
+
+
+
+u128 zero_u128 = 0;
+
+u256 zero_u256 = 0;
+
+u256 h1_16u16 = 0x0004000400040004000400040004000400040004000400040004000400040004;
+u256 h2_16u16 = 0x00e400e400e400e400e400e400e400e400e400e400e400e400e400e400e400e4;
+u256 modp_16u16 = 0x03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff;
+u256 modq_16u16 = 0x1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff;
+
+u256 twobit_mask_16u16 = 0x0003000300030003000300030003000300030003000300030003000300030003;
+u256 fourbit_mask_16u16 = 0x000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f000f;
+u256 sixbit_mask_16u16 = 0x003f003f003f003f003f003f003f003f003f003f003f003f003f003f003f003f;
+
+u256 modq_8u32 = 0x00001fff00001fff00001fff00001fff00001fff00001fff00001fff00001fff;
+
+u256 fourbit_mask_8u32 = 0x0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f;
+u256 sixteenbit_mask_8u32 = 0x0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff;
+
+u256 onebit_mask_64u4 = 0x1111111111111111111111111111111111111111111111111111111111111111;
+
+u256 five_mask_64u4 = 0x5555555555555555555555555555555555555555555555555555555555555555;
+u256 three_mask_64u4 = 0x3333333333333333333333333333333333333333333333333333333333333333;
+u256 fourbit_mask_32u8 = 0x0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+u64[24] KeccakF_RoundConstants = {0x0000000000000001, 0x0000000000008082, 0x800000000000808a, 0x8000000080008000,
+                                    0x000000000000808b, 0x0000000080000001, 0x8000000080008081, 0x8000000000008009,
+                                    0x000000000000008a, 0x0000000000000088, 0x0000000080008009, 0x000000008000000a,
+                                    0x000000008000808b, 0x800000000000008b, 0x8000000000008089, 0x8000000000008003,
+                                    0x8000000000008002, 0x8000000000000080, 0x000000000000800a, 0x800000008000000a,
+                                    0x8000000080008081, 0x8000000000008080, 0x0000000080000001, 0x8000000080008008};
+
+fn KeccakF1600_StatePermute(reg ptr u64[25] state) -> reg ptr u64[25]
+{
+
+  inline int round;
+
+  reg u64 Da, De, Di;
+
+  reg u64[5] C;
+  reg u64[5] T;
+
+  stack u64 Do, Du;
+
+  stack u64[25] E;
+
+  for round = 0 to 12 {
+
+
+    C[0] = state[0];
+    C[1] = state[1];
+    C[2] = state[2];
+    C[3] = state[3];
+    C[4] = state[4];
+
+    C[0] ^= state[5];
+    C[1] ^= state[6];
+    C[2] ^= state[7];
+    C[3] ^= state[8];
+    C[4] ^= state[9];
+
+    C[0] ^= state[10];
+    C[1] ^= state[11];
+    C[2] ^= state[12];
+    C[3] ^= state[13];
+    C[4] ^= state[14];
+
+    C[0] ^= state[15];
+    C[1] ^= state[16];
+    C[2] ^= state[17];
+    C[3] ^= state[18];
+    C[4] ^= state[19];
+
+    C[0] ^= state[20];
+    C[1] ^= state[21];
+    C[2] ^= state[22];
+    C[3] ^= state[23];
+    C[4] ^= state[24];
+
+    Da = C[1];
+    De = C[2];
+    Di = C[3];
+    Do = C[4];
+    Du = C[0];
+
+    _, _, Da = #ROL_64(Da, 1);
+    _, _, De = #ROL_64(De, 1);
+    _, _, Di = #ROL_64(Di, 1);
+    _, _, Do = #ROL_64(Do, 1);
+    _, _, Du = #ROL_64(Du, 1);
+
+    Da ^= C[4];
+    De ^= C[0];
+    Di ^= C[1];
+    Do ^= C[2];
+    Du ^= C[3];
+
+
+    C[0] = state[0];
+    C[1] = state[6];
+    C[2] = state[12];
+    C[3] = state[18];
+    C[4] = state[24];
+
+    C[0] ^= Da;
+    C[1] ^= De;
+    C[2] ^= Di;
+    C[3] ^= Do;
+    C[4] ^= Du;
+
+    _, _, C[1] = #ROL_64(C[1], 44);
+    _, _, C[2] = #ROL_64(C[2], 43);
+    _, _, C[3] = #ROL_64(C[3], 21);
+    _, _, C[4] = #ROL_64(C[4], 14);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    T[0] ^= KeccakF_RoundConstants[2 * round];
+    E[0] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    E[1] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    E[2] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    E[3] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    E[4] = T[4];
+
+
+    C[0] = state[3];
+    C[1] = state[9];
+    C[2] = state[10];
+    C[3] = state[16];
+    C[4] = state[22];
+
+    C[0] ^= Do;
+    C[1] ^= Du;
+    C[2] ^= Da;
+    C[3] ^= De;
+    C[4] ^= Di;
+
+    _, _, C[0] = #ROL_64(C[0], 28);
+    _, _, C[1] = #ROL_64(C[1], 20);
+    _, _, C[2] = #ROL_64(C[2], 3);
+    _, _, C[3] = #ROL_64(C[3], 45);
+    _, _, C[4] = #ROL_64(C[4], 61);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    E[5] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    E[6] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    E[7] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    E[8] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    E[9] = T[4];
+
+
+    C[0] = state[1];
+    C[1] = state[7];
+    C[2] = state[13];
+    C[3] = state[19];
+    C[4] = state[20];
+
+    C[0] ^= De;
+    C[1] ^= Di;
+    C[2] ^= Do;
+    C[3] ^= Du;
+    C[4] ^= Da;
+
+    _, _, C[0] = #ROL_64(C[0], 1);
+    _, _, C[1] = #ROL_64(C[1], 6);
+    _, _, C[2] = #ROL_64(C[2], 25);
+    _, _, C[3] = #ROL_64(C[3], 8);
+    _, _, C[4] = #ROL_64(C[4], 18);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    E[10] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    E[11] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    E[12] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    E[13] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    E[14] = T[4];
+
+
+    C[0] = state[4];
+    C[1] = state[5];
+    C[2] = state[11];
+    C[3] = state[17];
+    C[4] = state[23];
+
+    C[0] ^= Du;
+    C[1] ^= Da;
+    C[2] ^= De;
+    C[3] ^= Di;
+    C[4] ^= Do;
+
+    _, _, C[0] = #ROL_64(C[0], 27);
+    _, _, C[1] = #ROL_64(C[1], 36);
+    _, _, C[2] = #ROL_64(C[2], 10);
+    _, _, C[3] = #ROL_64(C[3], 15);
+    _, _, C[4] = #ROL_64(C[4], 56);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    E[15] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    E[16] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    E[17] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    E[18] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    E[19] = T[4];
+
+
+    C[0] = state[2];
+    C[1] = state[8];
+    C[2] = state[14];
+    C[3] = state[15];
+    C[4] = state[21];
+
+    C[0] ^= Di;
+    C[1] ^= Do;
+    C[2] ^= Du;
+    C[3] ^= Da;
+    C[4] ^= De;
+
+    _, _, C[0] = #ROL_64(C[0], 62);
+    _, _, C[1] = #ROL_64(C[1], 55);
+    _, _, C[2] = #ROL_64(C[2], 39);
+    _, _, C[3] = #ROL_64(C[3], 41);
+    _, _, C[4] = #ROL_64(C[4], 2);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    E[20] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    E[21] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    E[22] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    E[23] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    E[24] = T[4];
+
+
+
+
+    C[0] = E[0];
+    C[1] = E[1];
+    C[2] = E[2];
+    C[3] = E[3];
+    C[4] = E[4];
+
+    C[0] ^= E[5];
+    C[1] ^= E[6];
+    C[2] ^= E[7];
+    C[3] ^= E[8];
+    C[4] ^= E[9];
+
+    C[0] ^= E[10];
+    C[1] ^= E[11];
+    C[2] ^= E[12];
+    C[3] ^= E[13];
+    C[4] ^= E[14];
+
+    C[0] ^= E[15];
+    C[1] ^= E[16];
+    C[2] ^= E[17];
+    C[3] ^= E[18];
+    C[4] ^= E[19];
+
+    C[0] ^= E[20];
+    C[1] ^= E[21];
+    C[2] ^= E[22];
+    C[3] ^= E[23];
+    C[4] ^= E[24];
+
+    Da = C[1];
+    De = C[2];
+    Di = C[3];
+    Do = C[4];
+    Du = C[0];
+
+    _, _, Da = #ROL_64(Da, 1);
+    _, _, De = #ROL_64(De, 1);
+    _, _, Di = #ROL_64(Di, 1);
+    _, _, Do = #ROL_64(Do, 1);
+    _, _, Du = #ROL_64(Du, 1);
+
+    Da ^= C[4];
+    De ^= C[0];
+    Di ^= C[1];
+    Do ^= C[2];
+    Du ^= C[3];
+
+
+    C[0] = E[0];
+    C[1] = E[6];
+    C[2] = E[12];
+    C[3] = E[18];
+    C[4] = E[24];
+
+    C[0] ^= Da;
+    C[1] ^= De;
+    C[2] ^= Di;
+    C[3] ^= Do;
+    C[4] ^= Du;
+
+    _, _, C[1] = #ROL_64(C[1], 44);
+    _, _, C[2] = #ROL_64(C[2], 43);
+    _, _, C[3] = #ROL_64(C[3], 21);
+    _, _, C[4] = #ROL_64(C[4], 14);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    T[0] ^= KeccakF_RoundConstants[2 * round + 1];
+    state[0] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    state[1] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    state[2] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    state[3] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    state[4] = T[4];
+
+
+    C[0] = E[3];
+    C[1] = E[9];
+    C[2] = E[10];
+    C[3] = E[16];
+    C[4] = E[22];
+
+    C[0] ^= Do;
+    C[1] ^= Du;
+    C[2] ^= Da;
+    C[3] ^= De;
+    C[4] ^= Di;
+
+    _, _, C[0] = #ROL_64(C[0], 28);
+    _, _, C[1] = #ROL_64(C[1], 20);
+    _, _, C[2] = #ROL_64(C[2], 3);
+    _, _, C[3] = #ROL_64(C[3], 45);
+    _, _, C[4] = #ROL_64(C[4], 61);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    state[5] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    state[6] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    state[7] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    state[8] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    state[9] = T[4];
+
+
+    C[0] = E[1];
+    C[1] = E[7];
+    C[2] = E[13];
+    C[3] = E[19];
+    C[4] = E[20];
+
+    C[0] ^= De;
+    C[1] ^= Di;
+    C[2] ^= Do;
+    C[3] ^= Du;
+    C[4] ^= Da;
+
+    _, _, C[0] = #ROL_64(C[0], 1);
+    _, _, C[1] = #ROL_64(C[1], 6);
+    _, _, C[2] = #ROL_64(C[2], 25);
+    _, _, C[3] = #ROL_64(C[3], 8);
+    _, _, C[4] = #ROL_64(C[4], 18);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    state[10] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    state[11] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    state[12] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    state[13] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    state[14] = T[4];
+
+
+    C[0] = E[4];
+    C[1] = E[5];
+    C[2] = E[11];
+    C[3] = E[17];
+    C[4] = E[23];
+
+    C[0] ^= Du;
+    C[1] ^= Da;
+    C[2] ^= De;
+    C[3] ^= Di;
+    C[4] ^= Do;
+
+    _, _, C[0] = #ROL_64(C[0], 27);
+    _, _, C[1] = #ROL_64(C[1], 36);
+    _, _, C[2] = #ROL_64(C[2], 10);
+    _, _, C[3] = #ROL_64(C[3], 15);
+    _, _, C[4] = #ROL_64(C[4], 56);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    state[15] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    state[16] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    state[17] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    state[18] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    state[19] = T[4];
+
+
+    C[0] = E[2];
+    C[1] = E[8];
+    C[2] = E[14];
+    C[3] = E[15];
+    C[4] = E[21];
+
+    C[0] ^= Di;
+    C[1] ^= Do;
+    C[2] ^= Du;
+    C[3] ^= Da;
+    C[4] ^= De;
+
+    _, _, C[0] = #ROL_64(C[0], 62);
+    _, _, C[1] = #ROL_64(C[1], 55);
+    _, _, C[2] = #ROL_64(C[2], 39);
+    _, _, C[3] = #ROL_64(C[3], 41);
+    _, _, C[4] = #ROL_64(C[4], 2);
+
+    T[0] = C[1];
+    T[0] = #NOT_64(T[0]);
+    T[0] &= C[2];
+    T[0] ^= C[0];
+    state[20] = T[0];
+
+    T[1] = C[2];
+    T[1] = #NOT_64(T[1]);
+    T[1] &= C[3];
+    T[1] ^= C[1];
+    state[21] = T[1];
+
+    T[2] = C[3];
+    T[2] = #NOT_64(T[2]);
+    T[2] &= C[4];
+    T[2] ^= C[2];
+    state[22] = T[2];
+
+    T[3] = C[4];
+    T[3] = #NOT_64(T[3]);
+    T[3] &= C[0];
+    T[3] ^= C[3];
+    state[23] = T[3];
+
+    T[4] = C[0];
+    T[4] = #NOT_64(T[4]);
+    T[4] &= C[1];
+    T[4] ^= C[4];
+    state[24] = T[4];
+  }
+
+  return state;
+}
+
+
+
+
+
+
+
+fn keccak_absorb_128_32(reg ptr u64[25] s, reg ptr u8[32] m) -> reg ptr u64[25]
+{
+ inline int i;
+
+ reg u256 m256;
+ reg u256 s256;
+
+ s256 = s[u256 0];
+ m256 = m[u256 0];
+ s256 ^= m256;
+ s[u256 0] = s256;
+
+ s[u8 32] ^= 0x1F;
+ s[u8 SHAKE128_RATE - 1] ^= 0x80;
+
+ return s;
+}
+
+inline fn shake128_32_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8[32]
+{
+ inline int i;
+
+ reg u256 t256;
+
+ stack u64[25] s;
+
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
+ }
+ s[24] = 0;
+
+ s = keccak_absorb_128_32(s, input);
+
+ s = KeccakF1600_StatePermute(s);
+
+ t256 = s[u256 0];
+ output[u256 0] = t256;
+
+ return output;
+}
+
+
+
+
+
+
+fn keccak_squeezeblocks_128_128(reg ptr u8[SHAKE128_RATE] h, reg ptr u64[25] s) -> reg ptr u8[SHAKE128_RATE], reg ptr u64[25]
+{
+ inline int i;
+
+ reg u64 t64;
+
+ reg u128 t128;
+
+ s = KeccakF1600_StatePermute(s);
+
+ for i = 0 to SHAKE128_RATE / 8 {
+  t64 = s[u64 i];
+  h[u64 i] = t64;
+ }
+
+ return h, s;
+}
+
+inline fn shake128_KK13N8_32(reg ptr u8[KK13N8] output, reg ptr u8[32] input) -> reg ptr u8[KK13N8]
+{
+ inline int i;
+ inline int nblocks;
+
+ reg u128[3] t128;
+ reg u256 t256;
+
+ stack u64[25] s;
+
+ nblocks = 22;
+
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
+ }
+ s[24] = 0;
+
+ s = keccak_absorb_128_32(s, input);
+
+
+ for i = 0 to nblocks {
+  output[i * SHAKE128_RATE:SHAKE128_RATE], s = keccak_squeezeblocks_128_128(output[i * SHAKE128_RATE:SHAKE128_RATE], s);
+ }
+
+ s = KeccakF1600_StatePermute(s);
+
+ t128[0] = s[u128 0];
+ t128[1] = s[u128 1];
+ t128[2] = s[u128 2];
+
+ output[u128 231] = t128[0];
+ output[u128 232] = t128[1];
+ output[u128 233] = t128[2];
+
+ return output;
+}
+
+
+
+
+
+
+
+fn BS2POLq(reg ptr u8[SABER_POLYBYTES] bytes, reg ptr u16[SABER_N] data) -> reg ptr u16[SABER_N]
+{
+ reg u32 b1;
+ reg u32 b2;
+ reg u32 b3;
+
+ reg u64 address_bytes;
+ reg u64 address_data;
+
+ address_bytes = 0;
+ address_data = 0;
+
+ while (address_data < SABER_N) {
+
+  b2 = (32u) bytes[(int) (address_bytes + 1)];
+  b1 = (32u) bytes[(int) address_bytes];
+  b2 <<= 8;
+  b2 &= 0x1f00;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 1)];
+  b2 = (32u) bytes[(int) (address_bytes + 2)];
+  b3 = (32u) bytes[(int) (address_bytes + 3)];
+  b1 >>= 5;
+  b2 <<= 3;
+  b3 <<= 11;
+  b1 |= b2;
+  b3 &= 0x1800;
+  b1 |= b3;
+  data[(int) (address_data + 1)] = (16u) b1;
+
+
+  b2 = (32u) bytes[(int) (address_bytes + 4)];
+  b1 = (32u) bytes[(int) (address_bytes + 3)];
+  b2 <<= 6;
+  b1 >>= 2;
+  b2 &= 0x1fc0;
+  b1 |= b2;
+  data[(int) (address_data + 2)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 4)];
+  b2 = (32u) bytes[(int) (address_bytes + 5)];
+  b3 = (32u) bytes[(int) (address_bytes + 6)];
+  b1 >>= 7;
+  b2 += b2;
+  b3 <<= 9;
+  b1 |= b2;
+  b3 &= 0x1e00;
+  b1 |= b3;
+  data[(int) (address_data + 3)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 6)];
+  b2 = (32u) bytes[(int) (address_bytes + 7)];
+  b3 = (32u) bytes[(int) (address_bytes + 8)];
+  b1 >>= 4;
+  b2 <<= 4;
+  b3 <<= 12;
+  b1 |= b2;
+  b3 &= 0x1000;
+  b1 |= b3;
+  data[(int) (address_data + 4)] = (16u) b1;
+
+
+  b2 = (32u) bytes[(int) (address_bytes + 9)];
+  b1 = (32u) bytes[(int) (address_bytes + 8)];
+  b2 <<= 7;
+  b1 >>= 1;
+  b2 &= 0x1f80;
+  b1 |= b2;
+  data[(int) (address_data + 5)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 9)];
+  b2 = (32u) bytes[(int) (address_bytes + 10)];
+  b3 = (32u) bytes[(int) (address_bytes + 11)];
+  b1 >>= 6;
+  b2 <<= 2;
+  b3 <<= 10;
+  b1 |= b2;
+  b3 &= 0x1c00;
+  b1 |= b3;
+  data[(int) (address_data + 6)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 11)];
+  b2 = (32u) bytes[(int) (address_bytes + 12)];
+  b1 >>= 3;
+  b2 <<= 5;
+  b1 |= b2;
+  data[(int) (address_data + 7)] = (16u) b1;
+
+  address_bytes += 13;
+  address_data += 8;
+ }
+
+ return data;
+}
+
+fn GenMatrix(reg ptr u16[SABER_KKN] a, reg ptr u8[SABER_SEEDBYTES] seed) -> reg ptr u16[SABER_KKN]
+{
+ inline int i;
+ inline int k;
+
+ reg u256 qmod;
+ reg u256 t256;
+
+ stack u8[KK13N8] buf;
+
+ stack ptr u16[SABER_KKN] sa;
+
+ qmod = modq_16u16;
+
+ sa = a;
+
+ buf = shake128_KK13N8_32(buf, seed);
+
+ a = sa;
+
+ for i = 0 to SABER_K * SABER_K {
+  a[i * SABER_N:SABER_N] = BS2POLq(buf[i * (13 * SABER_N / 8):SABER_POLYBYTES], a[i * SABER_N:SABER_N]);
+ }
+
+
+ for k = 0 to SABER_KKN / 16 {
+  t256 = qmod & a[u256 k];
+  a[u256 k] = t256;
+ }
+ return a;
+}
+
+
+
+
+
+
+inline fn shake128_MUNK8_32(reg ptr u8[MUNK8] output, reg ptr u8[32] input) -> reg ptr u8[MUNK8]
+{
+ inline int i;
+ inline int nblocks;
+
+ reg u256[3] t256;
+
+ stack u64[25] s;
+
+ nblocks = 4;
+
+ t256[0] = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256[0];
+ }
+ s[24] = 0;
+
+ s = keccak_absorb_128_32(s, input);
+
+
+ for i = 0 to nblocks {
+  output[i * SHAKE128_RATE:SHAKE128_RATE], s = keccak_squeezeblocks_128_128(output[i * SHAKE128_RATE:SHAKE128_RATE], s);
+ }
+
+ s = KeccakF1600_StatePermute(s);
+
+ t256[0] = s[u256 0];
+ t256[1] = s[u256 1];
+ t256[2] = s[u256 2];
+
+ output[u256 21] = t256[0];
+ output[u256 22] = t256[1];
+ output[u256 23] = t256[2];
+
+ return output;
+}
+
+
+
+
+
+
+
+fn cbd(reg ptr u16[SABER_N] r, reg ptr u8[SABER_N] buf) -> reg ptr u16[SABER_N]
+{
+    inline int i;
+
+    reg u128 t0, t1;
+
+    reg u256 three_mask;
+    reg u256 five_mask;
+    reg u256 fourbit_mask;
+
+    reg u256 f0, f1;
+
+    three_mask = three_mask_64u4;
+    five_mask = five_mask_64u4;
+    fourbit_mask = fourbit_mask_32u8;
+
+    for i = 0 to SABER_N / 32 {
+        f0 = buf[u256 i];
+
+        f1 = f0 >>8u32 1;
+        f0 &= five_mask;
+        f1 &= five_mask;
+        f0 +8u32= f1;
+
+        f1 = f0 >>8u32 2;
+        f0 &= three_mask;
+        f1 &= three_mask;
+        f0 +8u32= f1;
+
+        f1 = f0 >>8u32 4;
+        f0 &= fourbit_mask;
+        f1 &= fourbit_mask;
+        f1 = f0 -32u8 f1;
+
+        t0 = #VEXTRACTI128(f1, 0);
+        t1 = #VEXTRACTI128(f1, 1);
+
+        f0 = #VPMOVSX_16u8_16u16(t0);
+        f1 = #VPMOVSX_16u8_16u16(t1);
+
+        r[u256 2 * i] = f0;
+        r[u256 2 * i + 1] = f1;
+    }
+
+ return r;
+}
+
+fn GenSecret(reg ptr u16[SABER_KN] r, reg ptr u8[SABER_COINBYTES] seed) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+
+ stack u8[MUNK8] buf;
+
+ stack ptr u16[SABER_KN] sr;
+
+ sr = r;
+
+ buf = shake128_MUNK8_32(buf, seed);
+
+ r = sr;
+
+ for i = 0 to SABER_K {
+  r[i * SABER_N:SABER_N] = cbd(r[i * SABER_N:SABER_N], buf[i * SABER_MU * SABER_N / 8:SABER_N]);
+ }
+
+ return r;
+}
+
+
+
+
+
+
+
+inline fn POLVECq2BS(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u8[SABER_POLYVECBYTES]
+{
+ reg u32 d1;
+ reg u32 d2;
+
+ reg u64 address_bytes;
+ reg u64 address_data;
+
+ address_bytes = 0;
+ address_data = 0;
+
+ while (address_data < SABER_KN) {
+
+  d1 = (32u) data[(int) address_data];
+  bytes[(int) address_bytes] = (8u) d1;
+
+
+  d1 = (32u) data[(int) address_data];
+  d2 = (32u) data[(int) (address_data + 1)];
+  d1 >>= 8;
+  d2 <<= 5;
+  d1 &= 0x1f;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 1)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 1)];
+  d1 >>= 3;
+  bytes[(int) (address_bytes + 2)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 1)];
+  d2 = (32u) data[(int) (address_data + 2)];
+  d1 >>= 11;
+  d2 <<= 2;
+  d1 &= 0x03;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 3)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 2)];
+  d2 = (32u) data[(int) (address_data + 3)];
+  d1 >>= 6;
+  d2 <<= 7;
+  d1 &= 0x7f;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 4)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 3)];
+  d1 >>= 1;
+  bytes[(int) (address_bytes + 5)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 3)];
+  d2 = (32u) data[(int) (address_data + 4)];
+  d1 >>= 9;
+  d2 <<= 4;
+  d1 &= 0x0f;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 6)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 4)];
+  d1 >>= 4;
+  bytes[(int) (address_bytes + 7)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 4)];
+  d2 = (32u) data[(int) (address_data + 5)];
+  d1 >>= 12;
+  d2 <<= 1;
+  d1 &= 0x01;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 8)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 5)];
+  d2 = (32u) data[(int) (address_data + 6)];
+  d1 >>= 7;
+  d2 <<= 6;
+  d1 &= 0x3f;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 9)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 6)];
+  d1 >>= 2;
+  bytes[(int) (address_bytes + 10)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 6)];
+  d2 = (32u) data[(int) (address_data + 7)];
+  d1 >>= 10;
+  d2 <<= 3;
+  d1 &= 0x07;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 11)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 7)];
+  d1 >>= 5;
+  bytes[(int) (address_bytes + 12)] = (8u) d1;
+
+  address_data += 8;
+  address_bytes += 13;
+ }
+
+ return bytes;
+}
+
+
+
+
+
+
+
+fn POLVECp2BS(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES]
+{
+ reg u32 d1;
+ reg u32 d2;
+
+ reg u64 address_bytes;
+ reg u64 address_data;
+
+ address_bytes = 0;
+ address_data = 0;
+
+ while (address_data < SABER_KN) {
+
+  d1 = (32u) data[(int) address_data];
+  bytes[(int) address_bytes] = (8u) d1;
+
+
+  d1 = (32u) data[(int) address_data];
+  d2 = (32u) data[(int) (address_data + 1)];
+  d1 >>= 8;
+  d2 <<= 2;
+  d1 &= 0x03;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 1)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 1)];
+  d2 = (32u) data[(int) (address_data + 2)];
+  d1 >>= 6;
+  d2 <<= 4;
+  d1 &= 0x0f;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 2)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 2)];
+  d2 = (32u) data[(int) (address_data + 3)];
+  d1 >>= 4;
+  d2 <<= 6;
+  d1 &= 0x3f;
+  d1 |= d2;
+  bytes[(int) (address_bytes + 3)] = (8u) d1;
+
+
+  d1 = (32u) data[(int) (address_data + 3)];
+  d1 >>= 2;
+  bytes[(int) (address_bytes + 4)] = (8u) d1;
+
+  address_bytes += 5;
+  address_data += 4;
+ }
+
+ return bytes;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+param int _16XP = 0;
+param int _16XPINV = 16;
+param int _16XV = 32;
+param int _16XSHIFT = 48;
+param int _16XMONT_PINV = 64;
+param int _16XMONT = 80;
+param int _16XF_PINV = 96;
+param int _16XF = 112;
+param int _ZETAS = 128;
+param int _TWIST32 = 288;
+param int _TWIST4 = 800;
+
+
+param int _REVIDXW = 0;
+param int _REVIDXD = 32;
+param int _SIGNMSKW = 64;
+
+u16 P0 = 7681;
+u16 P1 = 10753;
+u16 CRT_U_PINV = 32747;
+u16 CRT_U = 3563;
+
+
+param int P_0 = 7681;
+param int PINV_0 = -7679;
+param int MONT_0 = -3593;
+param int MONT_PINV_0 = -9;
+param int V_0 = 17474;
+param int SHIFT_0 = 16;
+param int F_0 = 1912;
+param int F_PINV_0 = -2184;
+
+u16[864] PDATA0 = {
+
+ P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0, P_0,
+
+
+ PINV_0, PINV_0, PINV_0, PINV_0, PINV_0, PINV_0, PINV_0, PINV_0,
+ PINV_0, PINV_0, PINV_0, PINV_0, PINV_0, PINV_0, PINV_0, PINV_0,
+
+
+ V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0, V_0,
+
+
+ SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0,
+ SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0, SHIFT_0,
+
+
+ MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0,
+ MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0, MONT_PINV_0,
+
+
+ MONT_0, MONT_0, MONT_0, MONT_0, MONT_0, MONT_0, MONT_0, MONT_0,
+ MONT_0, MONT_0, MONT_0, MONT_0, MONT_0, MONT_0, MONT_0, MONT_0,
+
+
+ F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0,
+ F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0, F_PINV_0,
+
+
+ F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0, F_0,
+
+
+   28865, 28865, 28865, 28865, 28865, 28865, 28865, 28865,
+   28865, 28865, 28865, 28865, 28865, 28865, 28865, 28865,
+    3777, 3777, 3777, 3777, 3777, 3777, 3777, 3777,
+    3777, 3777, 3777, 3777, 3777, 3777, 3777, 3777,
+  -10350, -10350, -10350, -10350, -10350, -10350, -10350, -10350,
+  -10350, -10350, -10350, -10350, -10350, -10350, -10350, -10350,
+   -3182, -3182, -3182, -3182, -3182, -3182, -3182, -3182,
+   -3182, -3182, -3182, -3182, -3182, -3182, -3182, -3182,
+    4496, 4496, 4496, 4496, 4496, 4496, 4496, 4496,
+   -7244, -7244, -7244, -7244, -7244, -7244, -7244, -7244,
+   -3696, -3696, -3696, -3696, -3696, -3696, -3696, -3696,
+   -1100, -1100, -1100, -1100, -1100, -1100, -1100, -1100,
+   16425, 16425, 16425, 16425, 16425, 16425, 16425, 16425,
+   16425, 16425, 16425, 16425, 16425, 16425, 16425, 16425,
+    3625, 3625, 3625, 3625, 3625, 3625, 3625, 3625,
+    3625, 3625, 3625, 3625, 3625, 3625, 3625, 3625,
+   14744, 14744, 14744, 14744, 14744, 14744, 14744, 14744,
+   -4974, -4974, -4974, -4974, -4974, -4974, -4974, -4974,
+    2456, 2456, 2456, 2456, 2456, 2456, 2456, 2456,
+    2194, 2194, 2194, 2194, 2194, 2194, 2194, 2194,
+
+
+      -9, -529, 32738, -1851, -9, 29394, -7508, -20435,
+      -9, 26288, 9855, -19215, -9, 16006, -12611, -964,
+   -3593, -17, -1054, 3781, -3593, 3794, 2732, -2515,
+   -3593, 1712, 2175, -3343, -3593, -3450, -2883, 1084,
+   16279, 26288, -8558, -6297, 11783, -25648, 14351, -25733,
+   21066, -23882, -17440, -7304, -26279, 16791, 22124, -20435,
+   -3689, 1712, -1390, -1689, 7, -1072, -1521, 1403,
+    -438, -2378, -1056, -3208, 1881, -3177, -404, -2515,
+    2816, -22039, 9855, 21168, -19394, 30255, -27132, 17013,
+   23489, -18506, 1869, 10145, -3114, 9650, -15358, -24232,
+    2816, -2071, 2175, -3408, -1986, -2001, 3588, -1931,
+   -1599, 2998, 3405, 1441, 2006, 434, 2, -3752,
+    1724, -24214, 6032, -19215, -21467, 29453, -16655, 32124,
+    4505, 13686, -25946, -12790, -23668, -31518, 14351, 12449,
+    3772, 3434, -2160, -3343, 549, -1779, -783, 1404,
+    -103, 2422, 3750, -1526, 2956, 226, -1521, 3745,
+  -11655, -1715, 24743, 26766, 23754, 22943, -2722, 4880,
+   18242, 26621, -32329, -10333, -22593, -16715, 30426, 2858,
+     121, -179, -3417, 3214, 2250, -1121, -1698, -3312,
+     834, 3581, -3145, -3677, 2495, -2891, 730, -2262,
+   21066, -4624, -24573, -16186, 29667, -30597, 23225, 10333,
+  -15998, 6510, -3558, 17491, 11792, 30255, -4693, 21723,
+    -438, 3568, -1533, -2874, 3555, -3461, 2233, 3677,
+    -638, -658, -486, -429, 3600, -2001, -2133, -293,
+  -20469, -23882, 26663, 14718, -9488, -16885, -26220, 17636,
+  -19351, -17082, 2722, 2807, 10972, -5990, 29871, -5299,
+   -1525, -2378, -1497, -642, -1296, 2059, -3692, -796,
+     617, -3770, 1698, -777, -3364, -2918, -2385, -3763,
+   -4983, 18745, -17440, -32695, -4505, -12261, -32252, 23933,
+    2073, -30938, 30136, 16083, -21467, -32414, -8908, -947,
+   -1399, -2247, -1056, 3657, 103, -1509, -1532, 893,
+   -2535, -1242, 1464, -1837, 549, -670, -2764, 589,
+      -9, -1851, -8558, -22039, -9, 4573, -26441, 16791,
+      -9, -6297, 6032, -4624, -9, -9513, 9360, 16006,
+   -3593, 3781, -1390, -2071, -3593, -2083, 2743, -3177,
+   -3593, -1689, -2160, 3568, -3593, 3287, 1168, -3450,
+    1724, -19215, 24743, -4624, -21766, 1007, -15358, -25648,
+   -4983, -7304, -16092, -13711, 21399, 4573, -12611, 29394,
+    3772, -3343, -3417, 3568, -2310, 1519, 2, -1072,
+   -1399, -3208, -1756, 2161, 1431, -2083, -2883, 3794,
+  -20469, 14718, -17440, 16638, -15307, 12449, 12269, -22764,
+  -26382, -5452, -25946, -11996, 5759, -964, -26441, 9087,
+   -1525, -642, -1056, 1278, -1483, 3745, -2579, -236,
+   -2830, 692, 3750, 2340, -1921, 1084, 2743, 1407,
+    5930, -23933, -16092, -18506, 11792, -28805, -27132, -5990,
+   -5913, 27243, -13933, 6510, -26279, -6766, -7508, 16791,
+     810, -893, -1756, 2998, 3600, -1669, 3588, -2918,
+   -1305, -2965, 915, -658, 1881, 402, 2732, -3177,
+  -18191, -15221, -26262, 2739, -828, -15145, -8908, -9633,
+   20315, -15111, -10478, 802, -20870, -4565, 22124, 26783,
+   -2319, 3723, 1386, 1203, -2876, -2345, -2764, -929,
+   -1701, -3335, -3310, -222, -1414, -2005, -404, 2719,
+    4505, -5452, -3456, -28958, -14121, 32124, 17602, 2526,
+    2073, 22790, -24052, 9633, -21766, -20435, 21868, 3524,
+    -103, 692, -3456, 2786, -1321, 1404, 194, 3550,
+   -2535, 3334, 2572, 929, -2310, -2515, -660, 1476,
+    7491, -12790, -22875, 16885, 22568, 27858, 10478, 20119,
+   31177, 5299, -21860, -10495, -3114, 1007, 8472, 9650,
+   -2237, -1526, -859, -2059, 2088, 2258, 3310, 151,
+    1993, 3763, -3428, -2815, 2006, 1519, -3816, 434,
+   -5913, 27636, -32329, -2952, 29667, 23984, -10409, 8831,
+  -11792, 14138, 13541, 31518, 11783, 30844, -15358, -19274,
+   -1305, 1012, -3145, 1144, 3555, -592, 2391, 1151,
+   -3600, 826, 2789, -226, 7, 124, 2, 2230,
+
+
+      -9, -16425, -28865, 10350, -3593, -3625, -3777, 3182,
+      -9, -10350, 28865, 16425, -3593, -3182, 3777, 3625,
+      -9, 4496, -10350, 14744, -3593, -3696, -3182, 2456,
+      -9, 4974, -16425, 7244, -3593, -2194, -3625, 1100,
+      -9, -11655, 4496, -18191, -3593, 121, -3696, -2319,
+      -9, -22593, 7244, -20315, -3593, 2495, 1100, 1701,
+      -9, -18191, 14744, -23754, -3593, -2319, 2456, -2250,
+      -9, -20870, 4974, -22593, -3593, -1414, -2194, 2495
+};
+
+
+
+param int P_1 = 10753;
+param int MONT_1 = 1018;
+param int MONT_PINV_1 = -6;
+param int PINV_1 = -10751;
+param int V_1 = 12482;
+param int SHIFT_1 = 16;
+param int F_1 = 2536;
+param int F_PINV_1 = -1560;
+
+
+u16[864] PDATA1 = {
+
+ P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1, P_1,
+
+
+ PINV_1, PINV_1, PINV_1, PINV_1, PINV_1, PINV_1, PINV_1, PINV_1,
+ PINV_1, PINV_1, PINV_1, PINV_1, PINV_1, PINV_1, PINV_1, PINV_1,
+
+
+ V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1, V_1,
+
+
+ SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1,
+ SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1, SHIFT_1,
+
+
+ MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1,
+ MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1, MONT_PINV_1,
+
+
+ MONT_1, MONT_1, MONT_1, MONT_1, MONT_1, MONT_1, MONT_1, MONT_1,
+ MONT_1, MONT_1, MONT_1, MONT_1, MONT_1, MONT_1, MONT_1, MONT_1,
+
+
+ F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1,
+ F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1, F_PINV_1,
+
+
+ F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1, F_1,
+
+
+   27359, 27359, 27359, 27359, 27359, 27359, 27359, 27359,
+   27359, 27359, 27359, 27359, 27359, 27359, 27359, 27359,
+     223, 223, 223, 223, 223, 223, 223, 223,
+     223, 223, 223, 223, 223, 223, 223, 223,
+   -1956, -1956, -1956, -1956, -1956, -1956, -1956, -1956,
+   -1956, -1956, -1956, -1956, -1956, -1956, -1956, -1956,
+    4188, 4188, 4188, 4188, 4188, 4188, 4188, 4188,
+    4188, 4188, 4188, 4188, 4188, 4188, 4188, 4188,
+   10093, 10093, 10093, 10093, 10093, 10093, 10093, 10093,
+  -21094, -21094, -21094, -21094, -21094, -21094, -21094, -21094,
+    2413, 2413, 2413, 2413, 2413, 2413, 2413, 2413,
+   -3686, -3686, -3686, -3686, -3686, -3686, -3686, -3686,
+     408, 408, 408, 408, 408, 408, 408, 408,
+     408, 408, 408, 408, 408, 408, 408, 408,
+   -3688, -3688, -3688, -3688, -3688, -3688, -3688, -3688,
+   -3688, -3688, -3688, -3688, -3688, -3688, -3688, -3688,
+   28517, 28517, 28517, 28517, 28517, 28517, 28517, 28517,
+  -20856, -20856, -20856, -20856, -20856, -20856, -20856, -20856,
+     357, 357, 357, 357, 357, 357, 357, 357,
+    -376, -376, -376, -376, -376, -376, -376, -376,
+
+
+      -6, -61, -609, -6095, -6, 14237, -31235, 23836,
+      -6, -19643, -2017, -13811, -6, 27329, 11300, -7722,
+    1018, -573, 5023, -3535, 1018, -1635, 2045, -2788,
+    1018, 1349, 3615, -5107, 1018, 5313, 5156, -554,
+    4589, -19643, 177, 1767, 24098, 1725, -31418, -7801,
+  -12378, 16236, 31558, 232, 22209, 29644, -18845, 23836,
+   -3091, 1349, 2737, -4889, -3550, 2237, 326, 1927,
+    2982, -2196, -2234, 4328, 193, -5172, -2973, -2788,
+   17675, -19863, -2017, -20173, 4547, -4083, -29364, -21593,
+   25543, 11123, 512, 11623, 7429, -21161, -11555, -24129,
+    4875, -5015, 3615, 3891, 4035, 4621, 1356, 4519,
+    2503, 2419, 512, 4967, -4347, -3241, 5341, -2113,
+   -5126, 14280, 11726, -13811, -20490, 24025, -24037, -13024,
+  -27152, -19564, -8801, 12415, -6381, -26286, -31418, -23952,
+   -4102, 1992, -1586, -5107, 3062, -2087, 4123, 3360,
+   -2576, -1132, -3169, 1663, 1299, 3410, 326, 624,
+   -7033, -4797, 17571, -20899, 16090, 31583, 16614, -13164,
+  -29449, -19454, 17096, -16809, -12476, -26292, -4090, -12653,
+    2695, -5309, 675, -4003, 730, 4447, -794, 5268,
+    4855, 2050, 4808, 1111, -2236, 4428, -5114, -4973,
+  -12378, 7289, 7356, 8027, 15864, -31467, -24976, 16809,
+   22532, 6747, -13012, 4967, -20198, -4083, 25555, -31497,
+    2982, -2439, -2884, 3419, -4616, -2283, -400, -1111,
+       4, 2139, 1324, -1689, -2790, 4621, 467, 2807,
+   14731, 16236, 31290, -14780, -10001, 32351, -7795, -9691,
+   18363, 5729, -16614, -4248, 3639, 3346, 4394, 22483,
+    1931, -2196, -454, -4540, 3823, 5215, 909, -5083,
+   -2629, 97, 794, -152, 5175, 274, -2774, -2605,
+  -16724, 29370, 31558, -12098, 27152, 12336, 19844, -22215,
+    5766, -29827, 7856, 23093, -20490, -3035, -21892, -8935,
+   -2388, -2374, -2234, -834, 2576, 4144, -2684, 825,
+    4742, 3453, -336, 3125, 3062, 1573, 636, -2279,
+      -6, -6095, 177, -19863, -6, -18077, -7326, 29644,
+      -6, 1767, 11726, 7289, -6, -19661, 11141, 27329,
+    1018, -3535, 2737, -5015, 1018, -2205, -2206, -5172,
+    1018, -4889, -1586, -2439, 1018, 4403, -635, 5313,
+   -5126, -13811, 17571, 7289, -23781, -18918, -11555, 1725,
+  -16724, 232, -1627, 13158, 15840, -18077, 11300, 14237,
+   -4102, -5107, 675, -2439, 4379, -1510, 5341, 2237,
+   -2388, 4328, 2981, -4250, -544, -2205, 5156, -1635,
+   14731, -14780, 31558, -30144, 3925, -23952, -780, -20070,
+  -14847, -19856, -8801, -3699, -11683, -7722, -7326, 25482,
+    1931, -4540, -2234, 2624, 341, 624, 1268, -2662,
+   -4095, 4720, -3169, 5005, 5213, -554, -2206, 1930,
+    2316, 22215, -1627, 11123, -20198, -6594, -29364, 3346,
+   24269, -25652, -31887, 6747, 22209, 15328, -31235, 29644,
+     268, -825, 2981, 2419, -2790, 4670, 1356, 274,
+     205, 5068, 3441, 2139, 193, -1056, 2045, -5172,
+  -18345, 5120, 7716, -17394, 28224, 24165, -21892, 14329,
+    9508, -4717, -8246, 32070, 16072, 8161, -18845, 24330,
+    -425, 5120, 1572, 2062, -4544, -3995, 636, 4601,
+    3364, 2963, 970, -1722, 3784, 2529, -2973, 778,
+  -27152, -19856, 969, -13987, 31217, -13024, -29407, 7880,
+    5766, 31924, -17352, -14329, -23781, 23836, 22044, 8758,
+   -2576, 4720, -567, 2909, 1009, 3360, -2271, -4408,
+    4742, 1204, -5064, -4601, 4379, -2788, -4580, -458,
+  -28103, 12415, 28541, -32351, -23056, -30467, 8246, 12976,
+   26518, -22483, 32076, 3998, 7429, -18918, -14999, -21161,
+   -5063, 1663, -3715, -5215, 1520, 2813, -970, 4784,
+     918, 2605, -2740, -1122, -4347, -1510, -151, -3241,
+   24269, 20661, 17096, -9343, 15864, -951, -1932, -28712,
+   20198, -24641, 2395, 26286, 24098, 15517, -11555, 11952,
+     205, 693, 4808, 1409, -4616, -2487, 116, -40,
+    2790, -2625, -2213, -3410, -3550, -355, 5341, 3760,
+
+
+      -6, -408, -27359, 1956, 1018, 3688, -223, -4188,
+      -6, -1956, 27359, 408, 1018, 4188, 223, -3688,
+      -6, 10093, -1956, 28517, 1018, 2413, 4188, 357,
+      -6, 20856, -408, 21094, 1018, 376, 3688, 3686,
+      -6, -7033, 10093, -18345, 1018, 2695, 2413, -425,
+      -6, -12476, 21094, -9508, 1018, -2236, 3686, -3364,
+      -6, -18345, 28517, -16090, 1018, -425, 357, -730,
+      -6, 16072, 20856, -12476, 1018, 3784, 376, -2236
+};
+
+
+
+
+
+
+
+
+
+
+
+
+inline fn shuffle8(reg u256 r0, reg u256 r1) -> reg u256, reg u256
+{
+ reg u256 r2, r3;
+
+ r2 = #VPERM2I128(r0, r1, 0x20);
+ r3 = #VPERM2I128(r0, r1, 0x31);
+
+ return r2, r3;
+}
+
+
+
+
+
+inline fn shuffle4(reg u256 r0, reg u256 r1) -> reg u256, reg u256
+{
+ reg u256 r2, r3;
+
+ r2 = #VPUNPCKL_4u64(r0, r1);
+ r3 = #VPUNPCKH_4u64(r0, r1);
+
+ return r2, r3;
+}
+
+
+
+
+
+inline fn shuffle2(reg u256 r0, reg u256 r1) -> reg u256, reg u256, reg u256
+{
+ reg u256 r2, r3;
+
+ r2 = #VMOVSLDUP_8u32(r1);
+ r2 = #VPBLEND_8u32(r0, r2, 0xAA);
+ r0 >>4u64= 32;
+ r3 = #VPBLEND_8u32(r0, r1, 0xAA);
+
+ return r0, r2, r3;
+}
+
+
+
+
+
+inline fn shuffle1(reg u256 r0, reg u256 r1) -> reg u256, reg u256, reg u256
+{
+ reg u256 r2, r3;
+
+ r2 = #VPSLL_8u32(r1, 16);
+ r2 = #VPBLEND_16u16(r0, r2, 0xAA);
+ r0 = #VPSRL_8u32(r0, 16);
+ r3 = #VPBLEND_16u16(r0, r1, 0xAA);
+
+ return r0, r2, r3;
+}
+
+
+
+
+
+inline fn fqmulprecomp_0(reg u256 al, reg u256 ah, reg u256 b, reg u256 x, reg u256 ymm0) -> reg u256, reg u256
+{
+ x = #VPMULL_16u16(b, al);
+ b = #VPMULH_16u16(b, ah);
+ x = #VPMULH_16u16(x, ymm0);
+
+ b -16u16= x;
+
+ return b, x;
+}
+
+inline fn fqmulprecomp_1(reg u256 al, reg u256 ah, reg u256 b, reg u256 x, reg u256 ymm0) -> reg u256, reg u256
+{
+ x = #VPMULL_16u16(b, al);
+ b = #VPMULH_16u16(b, ah);
+ x = #VPMULH_16u16(x, ymm0);
+
+ b = x -16u16 b;
+
+ return b, x;
+}
+
+
+
+
+
+inline fn fqmulprecomp1(inline int off, reg u256 b, reg u256 ymm0, reg ptr u16[864] pdata) -> reg u256, reg u256
+{
+ reg u256 x;
+
+ x = #VPMULL_16u16(b, pdata[u256 off * 2 / 32]);
+ b = #VPMULH_16u16(b, pdata[u256 (off + 16) * 2 / 32]);
+ x = #VPMULH_16u16(x, ymm0);
+
+ b -16u16= x;
+
+ return b, x;
+}
+
+
+inline fn update_0(reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+ reg u256 rln;
+
+ rln = rl0 +16u16 rh0;
+ rh0 = rl0 -16u16 rh0;
+
+ rl0 = rl1 +16u16 rh1;
+ rh1 = rl1 -16u16 rh1;
+
+ rl1 = rl2 +16u16 rh2;
+ rh2 = rl2 -16u16 rh2;
+
+ rl2 = rl3 +16u16 rh3;
+ rh3 = rl3 -16u16 rh3;
+
+ return rln, rl0, rl1, rl2, rh0, rh1, rh2, rh3;
+}
+
+
+inline fn update_1(reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+ reg u256 rln;
+
+ rln = rl0 +16u16 rh0;
+ rh0 = rl0 -16u16 rh0;
+
+ rl0 = rl1 +16u16 rh1;
+ rh1 = rl1 -16u16 rh1;
+
+ rl1 = rl2 +16u16 rh2;
+ rh2 = rl2 -16u16 rh2;
+
+ rl2 = rl3 +16u16 rh3;
+ rh3 = rl3 -16u16 rh3;
+
+ rln -16u16= ymm12;
+ rh0 +16u16= ymm12;
+
+ rl0 -16u16= ymm13;
+ rh1 +16u16= ymm13;
+
+ rl1 -16u16= ymm14;
+ rh2 +16u16= ymm14;
+
+ rl2 -16u16= ymm15;
+ rh3 +16u16= ymm15;
+
+ return rln, rl0, rl1, rl2, rh0, rh1, rh2, rh3;
+}
+
+
+inline fn reduce_0(reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 ymm0, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+ ymm12 = #VPMULH_16u16(ymm0, ymm12);
+ ymm13 = #VPMULH_16u16(ymm0, ymm13);
+
+ ymm14 = #VPMULH_16u16(ymm0, ymm14);
+ ymm15 = #VPMULH_16u16(ymm0, ymm15);
+
+ rh0 -16u16= ymm12;
+ rh1 -16u16= ymm13;
+ rh2 -16u16= ymm14;
+ rh3 -16u16= ymm15;
+
+ return rh0, rh1, rh2, rh3, ymm12, ymm13, ymm14, ymm15;
+}
+
+
+inline fn reduce_1(reg u256 ymm0, reg u256 ymm12, reg u256 ymm13, reg u256 ymm14, reg u256 ymm15) -> reg u256, reg u256, reg u256, reg u256
+{
+ ymm12 = #VPMULH_16u16(ymm0, ymm12);
+ ymm13 = #VPMULH_16u16(ymm0, ymm13);
+
+ ymm14 = #VPMULH_16u16(ymm0, ymm14);
+ ymm15 = #VPMULH_16u16(ymm0, ymm15);
+
+ return ymm12, ymm13, ymm14, ymm15;
+}
+
+inline fn mul(reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 zl0, reg u256 zl1, reg u256 zh0, reg u256 zh1)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+ reg u256 ymm12, ymm13, ymm14, ymm15;
+
+ ymm12 = #VPMULL_16u16(zl0, rh0);
+ ymm13 = #VPMULL_16u16(zl0, rh1);
+
+ ymm14 = #VPMULL_16u16(zl1, rh2);
+ ymm15 = #VPMULL_16u16(zl1, rh3);
+
+ rh0 = #VPMULH_16u16(zh0, rh0);
+ rh1 = #VPMULH_16u16(zh0, rh1);
+
+ rh2 = #VPMULH_16u16(zh1, rh2);
+ rh3 = #VPMULH_16u16(zh1, rh3);
+
+ return rh0, rh1, rh2, rh3, ymm12, ymm13, ymm14, ymm15;
+}
+
+inline fn level0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a, inline int off, reg u256 ymm0, reg u256 ymm1, reg u256 ymm2) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+
+ ymm8 = a[u256 (64 * off + 128) * 2 / 32];
+ ymm9 = a[u256 (64 * off + 144) * 2 / 32];
+ ymm10 = a[u256 (64 * off + 160) * 2 / 32];
+ ymm11 = a[u256 (64 * off + 176) * 2 / 32];
+
+
+ ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15 = mul(ymm8, ymm9, ymm10, ymm11, ymm1, ymm1, ymm2, ymm2);
+
+ ymm4 = a[u256 (64 * off + 0) * 2 / 32];
+ ymm5 = a[u256 (64 * off + 16) * 2 / 32];
+ ymm6 = a[u256 (64 * off + 32) * 2 / 32];
+ ymm7 = a[u256 (64 * off + 48) * 2 / 32];
+
+
+ ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
+
+
+ ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
+
+ r[u256 (64 * off + 0) * 2 / 32] = ymm3;
+ r[u256 (64 * off + 16) * 2 / 32] = ymm4;
+ r[u256 (64 * off + 32) * 2 / 32] = ymm5;
+ r[u256 (64 * off + 48) * 2 / 32] = ymm6;
+
+ r[u256 (64 * off + 128) * 2 / 32] = ymm8;
+ r[u256 (64 * off + 144) * 2 / 32] = ymm9;
+ r[u256 (64 * off + 160) * 2 / 32] = ymm10;
+ r[u256 (64 * off + 176) * 2 / 32] = ymm11;
+
+ return r;
+}
+
+inline fn levels1t7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int off, reg u256 ymm0, reg u256 ymm1, reg u256 ymm2) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+
+
+ ymm15 = pdata[u256 (_ZETAS + 64 * off + 32) * 2 / 32];
+
+ ymm8 = r[u256 (128 * off + 64) * 2 / 32];
+ ymm9 = r[u256 (128 * off + 80) * 2 / 32];
+ ymm10 = r[u256 (128 * off + 96) * 2 / 32];
+ ymm11 = r[u256 (128 * off + 112) * 2 / 32];
+
+ ymm3 = pdata[u256 (_ZETAS + 64 * off + 48) * 2 / 32];
+
+
+ ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15 = mul(ymm8, ymm9, ymm10, ymm11, ymm15, ymm15, ymm3, ymm3);
+
+ ymm4 = r[u256 (128 * off + 0) * 2 / 32];
+ ymm5 = r[u256 (128 * off + 16) * 2 / 32];
+ ymm6 = r[u256 (128 * off + 32) * 2 / 32];
+ ymm7 = r[u256 (128 * off + 48) * 2 / 32];
+
+
+ ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
+
+
+ ymm3, ymm4, ymm5, ymm6, ymm8, ymm9, ymm10, ymm11 = update_1(ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15);
+
+
+
+ ymm7, ymm10 = shuffle8(ymm5, ymm10);
+
+
+ ymm5, ymm11 = shuffle8(ymm6, ymm11);
+
+ ymm15 = pdata[u256 (_ZETAS + 64 * off + 64) * 2 / 32];
+ ymm6 = pdata[u256 (_ZETAS + 64 * off + 80) * 2 / 32];
+
+
+ ymm7, ymm10, ymm5, ymm11, ymm12, ymm13, ymm14, ymm15 = mul(ymm7, ymm10, ymm5, ymm11, ymm15, ymm15, ymm6, ymm6);
+
+
+ ymm6, ymm8 = shuffle8(ymm3, ymm8);
+
+
+ ymm3, ymm9 = shuffle8(ymm4, ymm9);
+
+
+ ymm12, ymm13, ymm14, ymm15 = reduce_1(ymm0, ymm12, ymm13, ymm14, ymm15);
+
+
+ ymm4, ymm6, ymm8, ymm3, ymm7, ymm10, ymm5, ymm11 = update_1(ymm6, ymm8, ymm3, ymm9, ymm7, ymm10, ymm5, ymm11, ymm12, ymm13, ymm14, ymm15);
+
+
+
+ ymm9, ymm7 = shuffle4(ymm4, ymm7);
+
+
+ ymm4, ymm10 = shuffle4(ymm6, ymm10);
+
+
+ ymm6, ymm5 = shuffle4(ymm8, ymm5);
+
+
+ ymm8, ymm11 = shuffle4(ymm3, ymm11);
+
+ ymm12 = #VPMULL_16u16(ymm9, pdata[u256 (_TWIST32 + 256 * off + 0) * 2 / 32]);
+ ymm13 = #VPMULL_16u16(ymm7, pdata[u256 (_TWIST32 + 256 * off + 32) * 2 / 32]);
+ ymm14 = #VPMULL_16u16(ymm4, pdata[u256 (_TWIST32 + 256 * off + 64) * 2 / 32]);
+ ymm15 = #VPMULL_16u16(ymm10, pdata[u256 (_TWIST32 + 256 * off + 96) * 2 / 32]);
+
+ ymm9 = #VPMULH_16u16(ymm9, pdata[u256 (_TWIST32 + 256 * off + 16) * 2 / 32]);
+ ymm7 = #VPMULH_16u16(ymm7, pdata[u256 (_TWIST32 + 256 * off + 48) * 2 / 32]);
+ ymm4 = #VPMULH_16u16(ymm4, pdata[u256 (_TWIST32 + 256 * off + 80) * 2 / 32]);
+ ymm10 = #VPMULH_16u16(ymm10, pdata[u256 (_TWIST32 + 256 * off + 112) * 2 / 32]);
+
+
+ ymm9, ymm7, ymm4, ymm10, ymm12, ymm13, ymm14, ymm15 = reduce_0(ymm9, ymm7, ymm4, ymm10, ymm0, ymm12, ymm13, ymm14, ymm15);
+
+ ymm12 = #VPMULL_16u16(ymm6, pdata[u256 (_TWIST32 + 256 * off + 128) * 2 / 32]);
+ ymm13 = #VPMULL_16u16(ymm5, pdata[u256 (_TWIST32 + 256 * off + 160) * 2 / 32]);
+ ymm14 = #VPMULL_16u16(ymm8, pdata[u256 (_TWIST32 + 256 * off + 192) * 2 / 32]);
+ ymm15 = #VPMULL_16u16(ymm11, pdata[u256 (_TWIST32 + 256 * off + 224) * 2 / 32]);
+
+ ymm6 = #VPMULH_16u16(ymm6, pdata[u256 (_TWIST32 + 256 * off + 144) * 2 / 32]);
+ ymm5 = #VPMULH_16u16(ymm5, pdata[u256 (_TWIST32 + 256 * off + 176) * 2 / 32]);
+ ymm8 = #VPMULH_16u16(ymm8, pdata[u256 (_TWIST32 + 256 * off + 208) * 2 / 32]);
+ ymm11 = #VPMULH_16u16(ymm11, pdata[u256 (_TWIST32 + 256 * off + 240) * 2 / 32]);
+
+
+ ymm6, ymm5, ymm8, ymm11, ymm12, ymm13, ymm14, ymm15 = reduce_0(ymm6, ymm5, ymm8, ymm11, ymm0, ymm12, ymm13, ymm14, ymm15);
+
+
+ ymm3, ymm9, ymm7, ymm4, ymm6, ymm5, ymm8, ymm11 = update_0(ymm9, ymm7, ymm4, ymm10, ymm6, ymm5, ymm8, ymm11);
+
+
+ ymm14 = pdata[u256 (_16XMONT_PINV) * 2 / 32];
+ ymm15 = pdata[u256 (_16XMONT) * 2 / 32];
+
+
+ ymm7, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm7, ymm13, ymm0);
+
+
+ ymm4, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm4, ymm13, ymm0);
+
+ ymm12 = #VPMULL_16u16(ymm8, ymm1);
+ ymm13 = #VPMULL_16u16(ymm11, ymm1);
+
+ ymm8 = #VPMULH_16u16(ymm8, ymm2);
+ ymm11 = #VPMULH_16u16(ymm11, ymm2);
+
+ ymm10 = ymm3 +16u16 ymm7;
+ ymm7 = ymm3 -16u16 ymm7;
+
+ ymm3 = ymm9 +16u16 ymm4;
+ ymm4 = ymm9 -16u16 ymm4;
+
+ ymm12 = #VPMULH_16u16(ymm12, ymm0);
+ ymm13 = #VPMULH_16u16(ymm13, ymm0);
+
+ ymm9 = ymm6 +16u16 ymm8;
+ ymm8 = ymm6 -16u16 ymm8;
+
+ ymm6 = ymm5 +16u16 ymm11;
+ ymm11 = ymm5 -16u16 ymm11;
+
+ ymm9 = ymm9 -16u16 ymm12;
+ ymm8 = ymm8 +16u16 ymm12;
+
+ ymm6 = ymm6 -16u16 ymm13;
+ ymm11 = ymm11 +16u16 ymm13;
+
+
+
+ ymm3, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm3, ymm13, ymm0);
+
+ ymm12 = #VPMULL_16u16(ymm4, ymm1);
+ ymm13 = #VPMULL_16u16(ymm6, pdata[u256 (_ZETAS + 32) * 2 / 32]);
+ ymm14 = #VPMULL_16u16(ymm11, pdata[u256 (_ZETAS + 96) * 2 / 32]);
+
+ ymm4 = #VPMULH_16u16(ymm4, ymm2);
+ ymm6 = #VPMULH_16u16(ymm6, pdata[u256 (_ZETAS + 48) * 2 / 32]);
+ ymm11 = #VPMULH_16u16(ymm11, pdata[u256 (_ZETAS + 112) * 2 / 32]);
+
+ ymm5 = ymm10 +16u16 ymm3;
+ ymm3 = ymm10 -16u16 ymm3;
+
+ ymm12 = #VPMULH_16u16(ymm12, ymm0);
+ ymm13 = #VPMULH_16u16(ymm13, ymm0);
+ ymm14 = #VPMULH_16u16(ymm14, ymm0);
+
+ ymm10 = ymm7 +16u16 ymm4;
+ ymm4 = ymm7 -16u16 ymm4;
+
+ ymm7 = ymm9 +16u16 ymm6;
+ ymm6 = ymm9 -16u16 ymm6;
+
+ ymm9 = ymm8 +16u16 ymm11;
+ ymm11 = ymm8 -16u16 ymm11;
+
+ ymm10 = ymm10 -16u16 ymm12;
+ ymm4 = ymm4 +16u16 ymm12;
+
+ ymm7 = ymm7 -16u16 ymm13;
+ ymm6 = ymm6 +16u16 ymm13;
+
+ ymm9 = ymm9 -16u16 ymm14;
+ ymm11 = ymm11 +16u16 ymm14;
+
+
+
+ ymm5, ymm12 = fqmulprecomp1(_16XMONT_PINV, ymm5, ymm0, pdata);
+
+ ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 8) * 2 / 8]);
+ ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 12) * 2 / 8]);
+
+
+ ymm3, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm3, ymm12, ymm0);
+
+ ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 16) * 2 / 8]);
+ ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 20) * 2 / 8]);
+
+
+ ymm10, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm10, ymm12, ymm0);
+
+ ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 24) * 2 / 8]);
+ ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 28) * 2 / 8]);
+
+
+ ymm4, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm4, ymm12, ymm0);
+
+ ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 32) * 2 / 8]);
+ ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 36) * 2 / 8]);
+
+
+ ymm7, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm7, ymm12, ymm0);
+
+ ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 40) * 2 / 8]);
+ ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 44) * 2 / 8]);
+
+
+ ymm6, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm6, ymm12, ymm0);
+
+ ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 48) * 2 / 8]);
+ ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 52) * 2 / 8]);
+
+
+ ymm9, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm9, ymm12, ymm0);
+
+ ymm12 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 56) * 2 / 8]);
+ ymm13 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 60) * 2 / 8]);
+
+
+ ymm11, ymm12 = fqmulprecomp_0(ymm12, ymm13, ymm11, ymm12, ymm0);
+
+
+ ymm5, ymm8, ymm7 = shuffle2(ymm5, ymm7);
+
+
+ ymm3, ymm5, ymm6 = shuffle2(ymm3, ymm6);
+
+
+ ymm10, ymm3, ymm9 = shuffle2(ymm10, ymm9);
+
+
+ ymm4, ymm10, ymm11 = shuffle2(ymm4, ymm11);
+
+
+ ymm8, ymm4, ymm3 = shuffle1(ymm8, ymm3);
+
+
+ ymm7, ymm8, ymm9 = shuffle1(ymm7, ymm9);
+
+
+ ymm5, ymm7, ymm10 = shuffle1(ymm5, ymm10);
+
+
+ ymm6, ymm5, ymm11 = shuffle1(ymm6, ymm11);
+
+
+ ymm6, ymm4, ymm3, ymm7, ymm8, ymm9, ymm5, ymm11 = update_0(ymm4, ymm3, ymm7, ymm10, ymm8, ymm9, ymm5, ymm11);
+
+
+ ymm12 = #VPMULL_16u16(ymm9, ymm1);
+ ymm13 = #VPMULL_16u16(ymm11, ymm1);
+
+ ymm9 = #VPMULH_16u16(ymm9, ymm2);
+ ymm11 = #VPMULH_16u16(ymm11, ymm2);
+
+ ymm10 = ymm6 +16u16 ymm4;
+ ymm4 = ymm6 -16u16 ymm4;
+
+ ymm6 = ymm3 +16u16 ymm7;
+ ymm7 = ymm3 -16u16 ymm7;
+
+ ymm12 = #VPMULH_16u16(ymm12, ymm0);
+ ymm13 = #VPMULH_16u16(ymm13, ymm0);
+
+ ymm3 = ymm8 +16u16 ymm9;
+ ymm9 = ymm8 -16u16 ymm9;
+
+ ymm8 = ymm5 +16u16 ymm11;
+ ymm11 = ymm5 -16u16 ymm11;
+
+ ymm3 = ymm3 -16u16 ymm12;
+ ymm9 = ymm9 +16u16 ymm12;
+
+ ymm8 = ymm8 -16u16 ymm13;
+ ymm11 = ymm11 +16u16 ymm13;
+
+ r[u256 (128 * off + 0) * 2 / 32] = ymm10;
+ r[u256 (128 * off + 16) * 2 / 32] = ymm4;
+ r[u256 (128 * off + 32) * 2 / 32] = ymm3;
+ r[u256 (128 * off + 48) * 2 / 32] = ymm9;
+ r[u256 (128 * off + 64) * 2 / 32] = ymm6;
+ r[u256 (128 * off + 80) * 2 / 32] = ymm7;
+ r[u256 (128 * off + 96) * 2 / 32] = ymm8;
+ r[u256 (128 * off + 112) * 2 / 32] = ymm11;
+
+ return r;
+}
+
+
+fn poly_ntt_0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm0, ymm1, ymm2;
+
+ ymm0 = PDATA0[u256 _16XP * 2 / 32];
+ ymm1 = PDATA0[u256 (_ZETAS + 0) * 2 / 32];
+ ymm2 = PDATA0[u256 (_ZETAS + 16) * 2 / 32];
+
+ r = level0(r, a, 0, ymm0, ymm1, ymm2);
+ r = level0(r, a, 1, ymm0, ymm1, ymm2);
+
+ r = levels1t7(r, PDATA0, 0, ymm0, ymm1, ymm2);
+ r = levels1t7(r, PDATA0, 1, ymm0, ymm1, ymm2);
+
+ return r;
+}
+
+
+
+fn poly_ntt_1(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm0, ymm1, ymm2;
+
+ ymm0 = PDATA1[u256 _16XP * 2 / 32];
+ ymm1 = PDATA1[u256 (_ZETAS + 0) * 2 / 32];
+ ymm2 = PDATA1[u256 (_ZETAS + 16) * 2 / 32];
+
+ r = level0(r, a, 0, ymm0, ymm1, ymm2);
+ r = level0(r, a, 1, ymm0, ymm1, ymm2);
+
+ r = levels1t7(r, PDATA1, 0, ymm0, ymm1, ymm2);
+ r = levels1t7(r, PDATA1, 1, ymm0, ymm1, ymm2);
+
+ return r;
+}
+inline fn polyvec_ntt_0(reg ptr u16[SABER_KN] r, reg ptr u16[SABER_KN] a) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+
+ for i = 0 to SABER_K {
+  r[i * SABER_N:SABER_N] = poly_ntt_0(r[i * SABER_N:SABER_N], a[i * SABER_N:SABER_N]);
+ }
+
+ return r;
+}
+
+inline fn polyvec_ntt_1(reg ptr u16[SABER_KN] r, reg ptr u16[SABER_KN] a) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+
+ for i = 0 to SABER_K {
+  r[i * SABER_N:SABER_N] = poly_ntt_1(r[i * SABER_N:SABER_N], a[i * SABER_N:SABER_N]);
+ }
+
+ return r;
+}
+inline fn pointwise32(reg ptr u16[SABER_N] r, reg ptr u16[SABER_KN] a, reg ptr u16[SABER_KN] b, reg ptr u16[864] pdata, inline int off, reg u256 ymm0, reg u256 ymm1) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+
+ ymm4 = a[u256 (0 + 32 * off + 0) * 2 / 32];
+ ymm5 = b[u256 (0 + 32 * off + 0) * 2 / 32];
+
+ ymm6 = a[u256 (0 + 32 * off + 16) * 2 / 32];
+ ymm7 = b[u256 (0 + 32 * off + 16) * 2 / 32];
+
+ ymm8 = a[u256 (256 + 32 * off + 0) * 2 / 32];
+ ymm9 = b[u256 (256 + 32 * off + 0) * 2 / 32];
+
+ ymm3 = #VPMULL_16u16(ymm4, ymm5);
+ ymm4 = #VPMULH_16u16(ymm4, ymm5);
+
+ ymm10 = a[u256 (256 + 32 * off + 16) * 2 / 32];
+ ymm11 = b[u256 (256 + 32 * off + 16) * 2 / 32];
+
+ ymm5 = #VPMULL_16u16(ymm6, ymm7);
+ ymm6 = #VPMULH_16u16(ymm6, ymm7);
+
+ ymm12 = a[u256 (512 + 32 * off + 0) * 2 / 32];
+ ymm13 = b[u256 (512 + 32 * off + 0) * 2 / 32];
+
+ ymm7 = #VPMULL_16u16(ymm8, ymm9);
+ ymm8 = #VPMULH_16u16(ymm8, ymm9);
+
+ ymm14 = a[u256 (512 + 32 * off + 16) * 2 / 32];
+ ymm15 = b[u256 (512 + 32 * off + 16) * 2 / 32];
+
+ ymm9 = #VPMULL_16u16(ymm10, ymm11);
+ ymm10 = #VPMULH_16u16(ymm10, ymm11);
+
+ ymm11 = #VPMULL_16u16(ymm12, ymm13);
+ ymm12 = #VPMULH_16u16(ymm12, ymm13);
+
+ ymm13 = #VPMULL_16u16(ymm14, ymm15);
+ ymm14 = #VPMULH_16u16(ymm14, ymm15);
+
+ ymm3 = #VPMULL_16u16(ymm3, ymm1);
+ ymm5 = #VPMULL_16u16(ymm5, ymm1);
+ ymm7 = #VPMULL_16u16(ymm7, ymm1);
+ ymm9 = #VPMULL_16u16(ymm9, ymm1);
+ ymm11 = #VPMULL_16u16(ymm11, ymm1);
+ ymm13 = #VPMULL_16u16(ymm13, ymm1);
+
+ ymm3 = #VPMULH_16u16(ymm3, ymm0);
+ ymm5 = #VPMULH_16u16(ymm5, ymm0);
+ ymm7 = #VPMULH_16u16(ymm7, ymm0);
+ ymm9 = #VPMULH_16u16(ymm9, ymm0);
+ ymm11 = #VPMULH_16u16(ymm11, ymm0);
+ ymm13 = #VPMULH_16u16(ymm13, ymm0);
+
+ ymm4 +16u16= ymm8;
+ ymm6 +16u16= ymm10;
+ ymm4 +16u16= ymm12;
+ ymm6 +16u16= ymm14;
+
+ ymm3 = ymm4 -16u16 ymm3;
+ ymm4 = ymm6 -16u16 ymm5;
+ ymm3 = ymm3 -16u16 ymm7;
+ ymm4 = ymm4 -16u16 ymm9;
+ ymm3 = ymm3 -16u16 ymm11;
+ ymm4 = ymm4 -16u16 ymm13;
+
+
+
+
+
+
+
+ ymm14 = pdata[u256 _16XF_PINV * 2 / 32];
+ ymm15 = pdata[u256 _16XF * 2 / 32];
+
+
+ ymm3, ymm5 = fqmulprecomp_0(ymm14, ymm15, ymm3, ymm5, ymm0);
+
+
+ ymm4, ymm5 = fqmulprecomp_0(ymm14, ymm15, ymm4, ymm5, ymm0);
+
+ r[u256 (32 * off + 0) * 2 / 32] = ymm3;
+ r[u256 (32 * off + 16) * 2 / 32] = ymm4;
+
+ return r;
+}
+
+fn polyvec_basemul_acc_montgomery_0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_KN] a, reg ptr u16[SABER_KN] b) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm0, ymm1, ymm2;
+
+ ymm0 = PDATA0[u256 _16XP * 2 / 32];
+ ymm1 = PDATA0[u256 _16XPINV * 2 / 32];
+
+ r = pointwise32(r, a, b, PDATA0, 0, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA0, 1, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA0, 2, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA0, 3, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA0, 4, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA0, 5, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA0, 6, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA0, 7, ymm0, ymm1);
+
+ return r;
+}
+
+fn polyvec_basemul_acc_montgomery_1(reg ptr u16[SABER_N] r, reg ptr u16[SABER_KN] a, reg ptr u16[SABER_KN] b) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm0, ymm1, ymm2;
+
+ ymm0 = PDATA1[u256 _16XP * 2 / 32];
+ ymm1 = PDATA1[u256 _16XPINV * 2 / 32];
+
+ r = pointwise32(r, a, b, PDATA1, 0, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA1, 1, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA1, 2, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA1, 3, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA1, 4, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA1, 5, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA1, 6, ymm0, ymm1);
+ r = pointwise32(r, a, b, PDATA1, 7, ymm0, ymm1);
+
+ return r;
+}
+
+
+
+
+
+
+
+inline fn butterfly(
+reg u256 rl0, reg u256 rl1, reg u256 rl2, reg u256 rl3, reg u256 rh0, reg u256 rh1, reg u256 rh2, reg u256 rh3, reg u256 zl0, reg u256 zl1, reg u256 zh0, reg u256 zh1, reg u256 ymm0)
+-> reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256, reg u256
+{
+ reg u256 ymm12, ymm13, ymm14, ymm15;
+
+ ymm12 = rh0 -16u16 rl0;
+
+ rl0 +16u16= rh0;
+ ymm13 = rh1 -16u16 rl1;
+ rh0 = #VPMULL_16u16(ymm12, zl0);
+
+ rl1 +16u16= rh1;
+ ymm14 = rh2 -16u16 rl2;
+ rh1 = #VPMULL_16u16(ymm13, zl0);
+
+ rl2 +16u16= rh2;
+ ymm15 = rh3 -16u16 rl3;
+ rh2 = #VPMULL_16u16(ymm14, zl1);
+
+ rl3 +16u16= rh3;
+ rh3 = #VPMULL_16u16(ymm15, zl1);
+
+ ymm12 = #VPMULH_16u16(ymm12, zh0);
+ ymm13 = #VPMULH_16u16(ymm13, zh0);
+
+ ymm14 = #VPMULH_16u16(ymm14, zh1);
+ ymm15 = #VPMULH_16u16(ymm15, zh1);
+
+ rh0 = #VPMULH_16u16(rh0, ymm0);
+ rh1 = #VPMULH_16u16(rh1, ymm0);
+ rh2 = #VPMULH_16u16(rh2, ymm0);
+ rh3 = #VPMULH_16u16(rh3, ymm0);
+
+ rh0 = ymm12 -16u16 rh0;
+ rh1 = ymm13 -16u16 rh1;
+ rh2 = ymm14 -16u16 rh2;
+ rh3 = ymm15 -16u16 rh3;
+
+ return rl0, rl1, rl2, rl3, rh0, rh1, rh2, rh3, ymm12, ymm13, ymm14, ymm15;
+}
+
+inline fn intt_levels0t6(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a, reg ptr u16[864] pdata, inline int off, reg u256 ymm0) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm1, ymm2, ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+
+
+ ymm6 = a[u256 (128 * off + 32) * 2 / 32];
+ ymm7 = a[u256 (128 * off + 48) * 2 / 32];
+ ymm10 = a[u256 (128 * off + 96) * 2 / 32];
+ ymm11 = a[u256 (128 * off + 112) * 2 / 32];
+
+ ymm1 = pdata[u256 (_ZETAS + 0) * 2 /32];
+
+ ymm12 = ymm7 -16u16 ymm6;
+ ymm6 +16u16= ymm7;
+ ymm7 = #VPMULL_16u16(ymm12, ymm1);
+
+ ymm13 = ymm11 -16u16 ymm10;
+ ymm10 +16u16= ymm11;
+ ymm11 = #VPMULL_16u16(ymm13, ymm1);
+
+ ymm4 = a[u256 (128 * off + 0) * 2 / 32];
+ ymm5 = a[u256 (128 * off + 16) * 2 / 32];
+ ymm8 = a[u256 (128 * off + 64) * 2 / 32];
+ ymm9 = a[u256 (128 * off + 80) * 2 / 32];
+
+ ymm2 = pdata[u256 (_ZETAS + 16) * 2 /32];
+
+ ymm12 = #VPMULH_16u16(ymm12, ymm2);
+ ymm13 = #VPMULH_16u16(ymm13, ymm2);
+ ymm7 = #VPMULH_16u16(ymm7, ymm0);
+ ymm11 = #VPMULH_16u16(ymm11, ymm0);
+
+ ymm14 = ymm4 +16u16 ymm5;
+ ymm5 = ymm4 -16u16 ymm5;
+
+ ymm15 = ymm8 +16u16 ymm9;
+ ymm9 = ymm8 -16u16 ymm9;
+
+ ymm7 = ymm12 -16u16 ymm7;
+ ymm11 = ymm13 -16u16 ymm11;
+
+
+
+ ymm4 = ymm14 +16u16 ymm6;
+ ymm6 = ymm14 -16u16 ymm6;
+
+ ymm12 = ymm5 +16u16 ymm7;
+ ymm7 = ymm5 -16u16 ymm7;
+
+ ymm8 = ymm15 +16u16 ymm10;
+ ymm10 = ymm15 -16u16 ymm10;
+
+ ymm13 = ymm9 +16u16 ymm11;
+ ymm11 = ymm9 -16u16 ymm11;
+
+
+
+ ymm4, ymm14, ymm15 = shuffle1(ymm4, ymm12);
+
+
+ ymm6, ymm5, ymm9 = shuffle1(ymm6, ymm7);
+
+
+ ymm8, ymm6, ymm12 = shuffle1(ymm8, ymm13);
+
+
+ ymm10, ymm7, ymm11 = shuffle1(ymm10, ymm11);
+
+
+ ymm14, ymm4, ymm8 = shuffle2(ymm14, ymm5);
+
+
+ ymm6, ymm5, ymm13 = shuffle2(ymm6, ymm7);
+
+
+ ymm15, ymm6, ymm10 = shuffle2(ymm15, ymm9);
+
+
+ ymm12, ymm7, ymm11 = shuffle2(ymm12, ymm11);
+
+
+ ymm4, ymm14 = fqmulprecomp1(_16XMONT_PINV, ymm4, ymm0, pdata);
+
+ ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 0) * 2 / 8]);
+ ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 4) * 2 / 8]);
+
+
+ ymm5, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm5, ymm14, ymm0);
+
+ ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 24) * 2 / 8]);
+ ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 28) * 2 / 8]);
+
+
+ ymm6, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm6, ymm14, ymm0);
+
+ ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 16) * 2 / 8]);
+ ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 20) * 2 / 8]);
+
+
+ ymm7, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm7, ymm14, ymm0);
+
+ ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 56) * 2 / 8]);
+ ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 60) * 2 / 8]);
+
+
+ ymm8, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm8, ymm14, ymm0);
+
+ ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 48) * 2 / 8]);
+ ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 52) * 2 / 8]);
+
+
+ ymm13, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm13, ymm14, ymm0);
+
+ ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 40) * 2 / 8]);
+ ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 44) * 2 / 8]);
+
+
+ ymm10, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm10, ymm14, ymm0);
+
+ ymm14 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 32) * 2 / 8]);
+ ymm15 = #VPBROADCAST_4u64(pdata[u64 (_TWIST4 + 36) * 2 / 8]);
+
+
+ ymm11, ymm14 = fqmulprecomp_0(ymm14, ymm15, ymm11, ymm14, ymm0);
+
+
+ ymm12 = ymm7 -16u16 ymm6;
+ ymm6 +16u16= ymm7;
+ ymm7 = #VPMULL_16u16(ymm12, ymm1);
+
+ ymm9 = ymm13 -16u16 ymm8;
+ ymm8 +16u16= ymm13;
+ ymm13 = #VPMULL_16u16(ymm9, pdata[u256 (_ZETAS + 96) * 2 / 32]);
+
+ ymm14 = ymm11 -16u16 ymm10;
+ ymm10 +16u16= ymm11;
+ ymm11 = #VPMULL_16u16(ymm14, pdata[u256 (_ZETAS + 32) * 2 / 32]);
+
+ ymm12 = #VPMULH_16u16(ymm12, ymm2);
+ ymm9 = #VPMULH_16u16(ymm9, pdata[u256 (_ZETAS + 112) * 2 / 32]);
+ ymm14 = #VPMULH_16u16(ymm14, pdata[u256 (_ZETAS + 48) * 2 / 32]);
+
+ ymm7 = #VPMULH_16u16(ymm7, ymm0);
+ ymm13 = #VPMULH_16u16(ymm13, ymm0);
+ ymm11 = #VPMULH_16u16(ymm11, ymm0);
+
+ ymm15 = ymm4 +16u16 ymm5;
+ ymm5 = ymm4 -16u16 ymm5;
+
+ ymm7 = ymm12 -16u16 ymm7;
+ ymm9 -16u16= ymm13;
+ ymm11 = ymm14 -16u16 ymm11;
+
+
+ ymm12 = ymm10 -16u16 ymm8;
+ ymm8 +16u16= ymm10;
+ ymm10 = #VPMULL_16u16(ymm12, ymm1);
+
+ ymm13 = ymm11 -16u16 ymm9;
+ ymm9 +16u16= ymm11;
+ ymm11 = #VPMULL_16u16(ymm13, ymm1);
+
+ ymm12 = #VPMULH_16u16(ymm12, ymm2);
+ ymm13 = #VPMULH_16u16(ymm13, ymm2);
+
+ ymm10 = #VPMULH_16u16(ymm10, ymm0);
+ ymm11 = #VPMULH_16u16(ymm11, ymm0);
+
+ ymm4 = ymm15 +16u16 ymm6;
+ ymm6 = ymm15 -16u16 ymm6;
+
+ ymm15 = ymm5 +16u16 ymm7;
+ ymm7 = ymm5 -16u16 ymm7;
+
+ ymm10 = ymm12 -16u16 ymm10;
+ ymm11 = ymm13 -16u16 ymm11;
+
+
+ ymm13 = pdata[u256 (_16XMONT_PINV) * 2 / 32];
+ ymm14 = pdata[u256 (_16XMONT) * 2 / 32];
+
+
+ ymm4, ymm12 = fqmulprecomp_0(ymm13, ymm14, ymm4, ymm12, ymm0);
+
+
+
+
+ ymm12 = ymm4 +16u16 ymm8;
+ ymm8 = ymm4 -16u16 ymm8;
+
+ ymm5 = ymm15 +16u16 ymm9;
+ ymm9 = ymm15 -16u16 ymm9;
+
+ ymm13 = ymm6 +16u16 ymm10;
+ ymm10 = ymm6 -16u16 ymm10;
+
+ ymm14 = ymm7 +16u16 ymm11;
+ ymm11 = ymm7 -16u16 ymm11;
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 0) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 16) * 2 / 32], 0x1B);
+
+
+ ymm12, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm12, ymm7, ymm0);
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 32) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 48) * 2 / 32], 0x1B);
+
+
+ ymm5, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm5, ymm7, ymm0);
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 64) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 80) * 2 / 32], 0x1B);
+
+
+ ymm13, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm13, ymm7, ymm0);
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 96) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 112) * 2 / 32], 0x1B);
+
+
+ ymm14, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm14, ymm7, ymm0);
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 128) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 144) * 2 / 32], 0x1B);
+
+
+ ymm8, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm8, ymm7, ymm0);
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 160) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 176) * 2 / 32], 0x1B);
+
+
+ ymm9, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm9, ymm7, ymm0);
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 192) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 208) * 2 / 32], 0x1B);
+
+
+ ymm10, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm10, ymm7, ymm0);
+
+ ymm7 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 224) * 2 / 32], 0x1B);
+ ymm15 = #VPERMQ(pdata[u256 (_TWIST32 + 256 * (1 - off) + 240) * 2 / 32], 0x1B);
+
+
+ ymm11, ymm7 = fqmulprecomp_0(ymm7, ymm15, ymm11, ymm7, ymm0);
+
+
+ ymm3, ymm4 = shuffle4(ymm12, ymm5);
+
+
+ ymm5, ymm6 = shuffle4(ymm13, ymm14);
+
+
+ ymm7, ymm8 = shuffle4(ymm8, ymm9);
+
+
+ ymm9, ymm10 = shuffle4(ymm10, ymm11);
+
+
+ ymm2 = #VPERMQ(pdata[u256 (_ZETAS + (1 - off) * 64 + 64) * 2 / 32], 0x4E);
+ ymm11 = #VPERMQ(pdata[u256 (_ZETAS + (1 - off) * 64 + 80) * 2 / 32], 0x4E);
+
+
+ ymm3, ymm5, ymm7, ymm9, ymm4, ymm6, ymm8, ymm10, ymm12, ymm13, ymm14, ymm15 = butterfly(ymm3, ymm5, ymm7, ymm9, ymm4, ymm6, ymm8, ymm10, ymm2, ymm2, ymm11, ymm11, ymm0);
+
+
+ ymm11, ymm5 = shuffle8(ymm3, ymm5);
+
+
+ ymm3, ymm9 = shuffle8(ymm7, ymm9);
+
+
+ ymm7, ymm6 = shuffle8(ymm4, ymm6);
+
+
+ ymm4, ymm10 = shuffle8(ymm8, ymm10);
+
+
+ ymm2 = pdata[u256 (_ZETAS + (1 - off) * 64 + 32) * 2 / 32];
+ ymm8 = pdata[u256 (_ZETAS + (1 - off) * 64 + 48) * 2 / 32];
+
+
+ ymm11, ymm3, ymm7, ymm4, ymm5, ymm9, ymm6, ymm10, ymm12, ymm13, ymm14, ymm15 = butterfly(ymm11, ymm3, ymm7, ymm4, ymm5, ymm9, ymm6, ymm10, ymm2, ymm2, ymm8, ymm8, ymm0);
+
+ ymm14 = pdata[u256 (_16XMONT_PINV) * 2 / 32];
+ ymm15 = pdata[u256 (_16XMONT) * 2 / 32];
+
+
+ ymm11, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm11, ymm13, ymm0);
+
+
+ ymm3, ymm13 = fqmulprecomp_0(ymm14, ymm15, ymm3, ymm13, ymm0);
+
+ r[u256 (128 * off + 0) * 2 / 32] = ymm11;
+ r[u256 (128 * off + 16) * 2 / 32] = ymm3;
+ r[u256 (128 * off + 32) * 2 / 32] = ymm7;
+ r[u256 (128 * off + 48) * 2 / 32] = ymm4;
+ r[u256 (128 * off + 64) * 2 / 32] = ymm5;
+ r[u256 (128 * off + 80) * 2 / 32] = ymm9;
+ r[u256 (128 * off + 96) * 2 / 32] = ymm6;
+ r[u256 (128 * off + 112) * 2 / 32] = ymm10;
+
+ return r;
+}
+
+inline fn intt_level7(reg ptr u16[SABER_N] r, reg ptr u16[864] pdata, inline int off, reg u256 ymm0) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm1, ymm2, ymm3, ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15;
+
+ ymm4 = r[u256 (64 * off + 0) * 2 / 32];
+ ymm8 = r[u256 (64 * off + 128) * 2 / 32];
+ ymm5 = r[u256 (64 * off + 16) * 2 / 32];
+ ymm9 = r[u256 (64 * off + 144) * 2 / 32];
+
+ ymm1 = pdata[u256 (_ZETAS + 0) * 2 / 32];
+
+ ymm6 = r[u256 (64 * off + 32) * 2 / 32];
+ ymm10 = r[u256 (64 * off + 160) * 2 / 32];
+ ymm7 = r[u256 (64 * off + 48) * 2 / 32];
+ ymm11 = r[u256 (64 * off + 176) * 2 / 32];
+
+ ymm2 = pdata[u256 (_ZETAS + 16) * 2 / 32];
+
+
+ ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm12, ymm13, ymm14, ymm15 = butterfly(ymm4, ymm5, ymm6, ymm7, ymm8, ymm9, ymm10, ymm11, ymm1, ymm1, ymm2, ymm2, ymm0);
+
+ r[u256 (64 * off + 0) * 2 / 32] = ymm4;
+ r[u256 (64 * off + 16) * 2 / 32] = ymm5;
+ r[u256 (64 * off + 32) * 2 / 32] = ymm6;
+ r[u256 (64 * off + 48) * 2 / 32] = ymm7;
+ r[u256 (64 * off + 128) * 2 / 32] = ymm8;
+ r[u256 (64 * off + 144) * 2 / 32] = ymm9;
+ r[u256 (64 * off + 160) * 2 / 32] = ymm10;
+ r[u256 (64 * off + 176) * 2 / 32] = ymm11;
+
+ return r;
+}
+
+
+fn poly_invntt_tomont_0(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm0;
+
+ ymm0 = PDATA0[u256 _16XP * 2 / 32];
+
+ r = intt_levels0t6(r, a, PDATA0, 0, ymm0);
+ r = intt_levels0t6(r, a, PDATA0, 1, ymm0);
+
+ r = intt_level7(r, PDATA0, 0, ymm0);
+ r = intt_level7(r, PDATA0, 1, ymm0);
+
+ return r;
+}
+
+
+
+fn poly_invntt_tomont_1(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a) -> reg ptr u16[SABER_N]
+{
+ reg u256 ymm0;
+
+ ymm0 = PDATA1[u256 _16XP * 2 / 32];
+
+ r = intt_levels0t6(r, a, PDATA1, 0, ymm0);
+ r = intt_levels0t6(r, a, PDATA1, 1, ymm0);
+
+ r = intt_level7(r, PDATA1, 0, ymm0);
+ r = intt_level7(r, PDATA1, 1, ymm0);
+
+ return r;
+}
+
+inline fn polyvec_invntt_tomont_0(reg ptr u16[SABER_KN] r, reg ptr u16[SABER_KN] a) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+
+ for i = 0 to SABER_K {
+  r[i * SABER_N:SABER_N] = poly_invntt_tomont_0(r[i * SABER_N:SABER_N], a[i * SABER_N:SABER_N]);
+ }
+
+ return r;
+}
+
+inline fn polyvec_invntt_tomont_1(reg ptr u16[SABER_KN] r, reg ptr u16[SABER_KN] a) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+
+ for i = 0 to SABER_K {
+  r[i * SABER_N:SABER_N] = poly_invntt_tomont_1(r[i * SABER_N:SABER_N], a[i * SABER_N:SABER_N]);
+ }
+
+ return r;
+}
+
+
+
+
+
+
+
+inline fn mulmod(reg u256 a, reg u256 b_pinv, reg u256 b, reg u256 p) -> reg u256 {
+ reg u256 t;
+ reg u256 u;
+
+ t = #VPMULL_16u16(a, b_pinv);
+ u = #VPMULH_16u16(a, b);
+ t = #VPMULH_16u16(t, p);
+ t = u -16u16 t;
+
+ return t;
+}
+
+fn poly_crt(reg ptr u16[SABER_N] r, reg ptr u16[SABER_N] a, reg ptr u16[SABER_N] b) -> reg ptr u16[SABER_N]
+{
+ inline int i;
+
+ reg u256 f0, f1;
+ reg u256 u, u_pinv;
+ reg u256 p0, p1;
+ reg u256 mod;
+ reg u256 mont0, mont0_pinv;
+
+ u_pinv = #VPBROADCAST_16u16(CRT_U_PINV);
+ u = #VPBROADCAST_16u16(CRT_U);
+ p0 = PDATA0[u256 _16XP / 16];
+ p1 = PDATA1[u256 _16XP / 16];
+ mod = modq_16u16;
+ mont0_pinv = PDATA0[u256 _16XMONT_PINV / 16];
+ mont0 = PDATA0[u256 _16XMONT / 16];
+
+ for i = 0 to SABER_N / 16 {
+  f0 = a[u256 i];
+  f1 = b[u256 i];
+  f0 = mulmod(f0, mont0_pinv, mont0, p0);
+  f1 -16u16= f0;
+  f1 = mulmod(f1, u_pinv, u, p1);
+  f1 = #VPMULL_16u16(f1, p0);
+  f0 +16u16= f1;
+  f0 &= mod;
+  r[u256 i] = f0;
+ }
+
+ return r;
+}
+
+inline fn polyvec_crt(reg ptr u16[SABER_KN] r, reg ptr u16[SABER_KN] a, reg ptr u16[SABER_KN] b) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+
+ for i = 0 to SABER_K {
+  r[i * SABER_N:SABER_N] = poly_crt(r[i * SABER_N:SABER_N], a[i * SABER_N:SABER_N], b[i * SABER_N:SABER_N]);
+ }
+
+ return r;
+}
+
+fn polyvec_matrix_vector_mul(reg ptr u16[SABER_KN] t, reg ptr u16[SABER_KKN] a, reg ptr u16[SABER_KN] s, reg u64 transpose) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+ inline int j;
+
+ stack u16[SABER_KN] ahat;
+ stack u16[SABER_KN] shat;
+ stack u16[SABER_KN] t0, t1;
+ stack u16[SABER_KN] t00, t11;
+
+ shat = polyvec_ntt_0(shat, s);
+ for i = 0 to SABER_K {
+  for j = 0 to SABER_K {
+   if (transpose != 0) {
+    ahat[j * SABER_N:SABER_N] = poly_ntt_0(ahat[j * SABER_N:SABER_N], a[j * SABER_KN + i * SABER_N:SABER_N]);
+   } else {
+    ahat[j * SABER_N:SABER_N] = poly_ntt_0(ahat[j * SABER_N:SABER_N], a[i * SABER_KN + j * SABER_N:SABER_N]);
+   }
+  }
+  t00[i * SABER_N:SABER_N] = polyvec_basemul_acc_montgomery_0(t00[i * SABER_N:SABER_N], ahat, shat);
+ }
+
+ shat = polyvec_ntt_1(shat, s);
+ for i = 0 to SABER_K {
+  for j = 0 to SABER_K {
+   if (transpose != 0) {
+    ahat[j * SABER_N:SABER_N] = poly_ntt_1(ahat[j * SABER_N:SABER_N], a[j * SABER_KN + i * SABER_N:SABER_N]);
+   } else {
+    ahat[j * SABER_N:SABER_N] = poly_ntt_1(ahat[j * SABER_N:SABER_N], a[i * SABER_KN + j * SABER_N:SABER_N]);
+   }
+  }
+  t11[i * SABER_N:SABER_N] = polyvec_basemul_acc_montgomery_1(t11[i * SABER_N:SABER_N], ahat, shat);
+ }
+
+ t0 = polyvec_invntt_tomont_0(t0, t00);
+ t1 = polyvec_invntt_tomont_1(t1, t11);
+
+ t = polyvec_crt(t, t0, t1);
+
+ return t;
+}
+
+
+inline fn indcpa_kem_keypair_randominc(stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_SEEDBYTES] seed, stack u8[SABER_COINBYTES] noiseseed) -> stack u8[SABER_INDCPA_PUBLICKEYBYTES], stack u8[SABER_INDCPA_SECRETKEYBYTES]
+{
+ inline int i;
+
+ reg u64 transpose;
+
+ reg u256 t256;
+ reg u256 mod;
+ reg u256 H1_avx;
+
+ stack u16[SABER_KKN] a;
+ stack u16[SABER_KN] skpv1;
+ stack u16[SABER_KN] res;
+
+ seed = shake128_32_32(seed, seed);
+
+ a = GenMatrix(a, seed);
+
+ skpv1 = GenSecret(skpv1, noiseseed);
+
+ transpose = 1;
+ res = polyvec_matrix_vector_mul(res, a, skpv1, transpose);
+
+ mod = modq_16u16;
+ H1_avx = h1_16u16;
+
+ for i = 0 to SABER_KN / 16 {
+  t256 = res[u256 i];
+  t256 +16u16= H1_avx;
+  t256 >>16u16= (SABER_EQ - SABER_EP);
+  t256 &16u16= mod;
+  res[u256 i] = t256;
+ }
+
+ sk = POLVECq2BS(sk, skpv1);
+
+ pk[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(pk[0:SABER_POLYVECCOMPRESSEDBYTES], res);
+
+ for i = 0 to SABER_SEEDBYTES / 32 {
+  t256 = seed[u256 i];
+  pk[u256 SABER_POLYVECCOMPRESSEDBYTES / 32 + i] = t256;
+ }
+
+ return pk, sk;
+}
+
+
+
+
+
+
+
+fn keccak_absorb_256_single(reg ptr u64[25] s, reg ptr u8[SHA3_256_RATE] m) -> reg ptr u64[25]
+{
+ inline int j;
+
+ reg u64 t64;
+
+ for j = 0 to SHA3_256_RATE / 8 {
+  t64 = m[u64 j];
+  s[u64 j] ^= t64;
+ }
+
+ s = KeccakF1600_StatePermute(s);
+
+ return s;
+}
+
+fn sha3_256_PUBKEYBYTES(reg ptr u8[32] output, reg ptr u8[SABER_INDCPA_PUBLICKEYBYTES] input) -> reg ptr u8[32]
+{
+ inline int i;
+ inline int nblocks;
+
+ reg u64 t64;
+
+ reg u256 t256;
+
+ stack u64[25] s;
+
+ nblocks = 7;
+
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
+ }
+ s[24] = 0;
+
+
+ for i = 0 to nblocks {
+  s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
+ }
+
+ for i = 0 to 5 {
+  t64 = input[u64 119 + i];
+  s[u64 i] ^= t64;
+ }
+
+ s[u8 40] ^= 0x06;
+ s[u8 SHA3_256_RATE - 1] ^= 0x80;
+
+ s = KeccakF1600_StatePermute(s);
+
+ t256 = s[u256 0];
+ output[u256 0] = t256;
+
+ return output;
+}
+
+inline fn crypto_kem_keypair_randominc(stack u8[SABER_PUBLICKEYBYTES] pk, stack u8[SABER_SECRETKEYBYTES] sk, stack u8[SABER_KEYBYTES] random_bytes_crypto, stack u8[SABER_SEEDBYTES] indcpa_seed, stack u8[SABER_COINBYTES] indcpa_noiseseed) -> stack u8[SABER_PUBLICKEYBYTES], stack u8[SABER_SECRETKEYBYTES]
+{
+ inline int i;
+
+ reg u256 t256;
+
+ pk, sk[0:SABER_INDCPA_SECRETKEYBYTES] = indcpa_kem_keypair_randominc(pk, sk[0:SABER_INDCPA_SECRETKEYBYTES], indcpa_seed, indcpa_noiseseed);
+
+ for i = 0 to SABER_INDCPA_PUBLICKEYBYTES / 32 {
+  t256 = pk[u256 i];
+  sk[u256 SABER_INDCPA_SECRETKEYBYTES / 32 + i] = t256;
+ }
+
+ sk[SABER_SECRETKEYBYTES - 64:SABER_HASHBYTES] = sha3_256_PUBKEYBYTES(sk[SABER_SECRETKEYBYTES - 64:SABER_HASHBYTES], pk);
+
+ for i = 0 to SABER_KEYBYTES / 32 {
+  t256 = random_bytes_crypto[u256 i];
+  sk[u256 (SABER_SECRETKEYBYTES - SABER_KEYBYTES) / 32 + i] = t256;
+ }
+
+ return pk, sk;
+}
+
+
+
+
+
+
+inline fn sha3_256_32(reg ptr u8[32] output, reg ptr u8[32] input) -> reg ptr u8[32]
+{
+ inline int i;
+
+ reg u256 t256;
+ reg u256 s256;
+
+ stack u64[25] s;
+
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
+ }
+ s[24] = 0;
+
+
+ t256 = input[u256 0];
+ s256 = s[u256 0];
+ s256 ^= t256;
+ s[u256 0] = s256;
+
+ s[u8 32] ^= 0x06;
+ s[u8 SHA3_256_RATE - 1] ^= 0x80;
+
+
+ s = KeccakF1600_StatePermute(s);
+
+ t256 = s[u256 0];
+ output[u256 0] = t256;
+
+ return output;
+}
+fn sha3_256_64(reg ptr u8[32] output, reg ptr u8[64] input) -> reg ptr u8[32]
+{
+ inline int i;
+
+ reg u256[2] t256;
+ reg u256[2] s256;
+
+ stack u64[25] s;
+
+ t256[0] = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256[0];
+ }
+ s[24] = 0;
+
+
+ t256[0] = input[u256 0];
+ s256[0] = s[u256 0];
+ t256[1] = input[u256 1];
+ s256[1] = s[u256 1];
+
+ s256[0] ^= t256[0];
+ s256[1] ^= t256[1];
+
+ s[u256 0] = s256[0];
+ s[u256 1] = s256[1];
+
+ s[u8 64] ^= 0x06;
+ s[u8 SHA3_256_RATE - 1] ^= 0x80;
+
+
+ s = KeccakF1600_StatePermute(s);
+
+ t256[0] = s[u256 0];
+ output[u256 0] = t256[0];
+
+ return output;
+}
+
+fn sha3_256_CCADEC(reg ptr u8[32] output, reg ptr u8[SABER_BYTES_CCA_DEC] input) -> reg ptr u8[32]
+{
+ inline int i;
+ inline int nblocks;
+
+ reg u256 t256;
+
+ stack u64[25] s;
+
+ nblocks = 8;
+
+ t256 = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256;
+ }
+ s[24] = 0;
+
+
+ for i = 0 to nblocks {
+  s = keccak_absorb_256_single(s, input[i * SHA3_256_RATE:SHA3_256_RATE]);
+ }
+
+ s[u8 0] ^= 0x06;
+ s[u8 SHA3_256_RATE - 1] ^= 0x80;
+
+ s = KeccakF1600_StatePermute(s);
+
+ t256 = s[u256 0];
+ output[u256 0] = t256;
+
+ return output;
+}
+fn sha3_512_64(reg ptr u8[64] output, reg ptr u8[64] input) -> reg ptr u8[64]
+{
+ inline int i;
+
+ reg u256[2] t256;
+ reg u256[2] s256;
+
+ stack u64[25] s;
+
+ t256[0] = zero_u256;
+
+ for i = 0 to 6 {
+  s[u256 i] = t256[0];
+ }
+ s[24] = 0;
+
+ t256[0] = input[u256 0];
+ t256[1] = input[u256 1];
+
+ s256[0] = s[u256 0];
+ s256[1] = s[u256 1];
+
+ s256[0] ^= t256[0];
+ s256[1] ^= t256[1];
+
+ s[u256 0] = s256[0];
+ s[u256 1] = s256[1];
+
+ s[u8 64] ^= 0x06;
+ s[u8 SHA3_512_RATE - 1] ^= 0x80;
+
+
+ s = KeccakF1600_StatePermute(s);
+
+ t256[0] = s[u256 0];
+ t256[1] = s[u256 1];
+
+ output[u256 0] = t256[0];
+ output[u256 1] = t256[1];
+
+ return output;
+}
+
+
+
+
+
+
+
+fn BS2POLVECp(reg ptr u8[SABER_POLYVECCOMPRESSEDBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
+{
+ inline int i;
+ inline int j;
+ inline int k;
+
+ reg u128 zero_offset128;
+ reg u128 one_offset128;
+ reg u128 two_offset128;
+ reg u128 three_offset128;
+ reg u128 four_offset128;
+
+ reg u256 zero_offset256;
+ reg u256[2] one_offset256;
+ reg u256[2] two_offset256;
+ reg u256[2] three_offset256;
+ reg u256 four_offset256;
+ reg u256[4] t256;
+ reg u256[4] r;
+ reg u256[4] ord_r;
+
+ reg u256 twobit_mask;
+ reg u256 fourbit_mask;
+ reg u256 sixbit_mask;
+
+ zero_offset128 = zero_u128;
+ one_offset128 = zero_u128;
+ two_offset128 = zero_u128;
+ three_offset128 = zero_u128;
+ four_offset128 = zero_u128;
+
+ twobit_mask = twobit_mask_16u16;
+ fourbit_mask = fourbit_mask_16u16;
+ sixbit_mask = sixbit_mask_16u16;
+
+ for i = 0 to SABER_K {
+  for j = 0 to SABER_N / 64 {
+   for k = 0 to 16 {
+    zero_offset128 = #VPINSR_16u8(zero_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 5 * k], k);
+    one_offset128 = #VPINSR_16u8(one_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 1 + 5 * k], k);
+    two_offset128 = #VPINSR_16u8(two_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 2 + 5 * k], k);
+    three_offset128 = #VPINSR_16u8(three_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 3 + 5 * k], k);
+    four_offset128 = #VPINSR_16u8(four_offset128, bytes[i * (80 * SABER_N / 64) + j * 80 + 4 + 5 * k], k);
+   }
+
+   zero_offset256 = #VPMOVZX_16u8_16u16(zero_offset128);
+   one_offset256[0] = #VPMOVZX_16u8_16u16(one_offset128);
+   one_offset256[1] = #VPMOVZX_16u8_16u16(one_offset128);
+   two_offset256[0] = #VPMOVZX_16u8_16u16(two_offset128);
+   two_offset256[1] = #VPMOVZX_16u8_16u16(two_offset128);
+   three_offset256[0] = #VPMOVZX_16u8_16u16(three_offset128);
+   three_offset256[1] = #VPMOVZX_16u8_16u16(three_offset128);
+   four_offset256 = #VPMOVZX_16u8_16u16(four_offset128);
+
+   one_offset256[0] &= twobit_mask;
+   two_offset256[0] &= fourbit_mask;
+   three_offset256[0] &= sixbit_mask;
+
+   one_offset256[1] >>16u16= 2;
+   two_offset256[1] >>16u16= 4;
+   three_offset256[1] >>16u16= 6;
+
+   one_offset256[0] <<16u16= 8;
+   two_offset256[0] <<16u16= 6;
+   three_offset256[0] <<16u16= 4;
+   four_offset256 <<16u16= 2;
+
+   one_offset256[1] &= sixbit_mask;
+   two_offset256[1] &= fourbit_mask;
+   three_offset256[1] &= twobit_mask;
+
+   t256[0] = zero_offset256 | one_offset256[0];
+   t256[1] = one_offset256[1] | two_offset256[0];
+   t256[2] = two_offset256[1] | three_offset256[0];
+   t256[3] = three_offset256[1] | four_offset256;
+
+   r[0] = #VPUNPCKL_16u16(t256[0], t256[2]);
+   r[1] = #VPUNPCKL_16u16(t256[1], t256[3]);
+   r[2] = #VPUNPCKH_16u16(t256[0], t256[2]);
+   r[3] = #VPUNPCKH_16u16(t256[1], t256[3]);
+
+   r[0] = #VPERMQ(r[0], 216);
+   r[1] = #VPERMQ(r[1], 216);
+   r[2] = #VPERMQ(r[2], 216);
+   r[3] = #VPERMQ(r[3], 216);
+
+   ord_r[0] = #VPUNPCKL_16u16(r[0], r[1]);
+   ord_r[1] = #VPUNPCKL_16u16(r[2], r[3]);
+   ord_r[2] = #VPUNPCKH_16u16(r[0], r[1]);
+   ord_r[3] = #VPUNPCKH_16u16(r[2], r[3]);
+
+   data[u256 (i * SABER_N + j * 64) / 16] = ord_r[0];
+   data[u256 (i * SABER_N + j * 64) / 16 + 1] = ord_r[1];
+   data[u256 (i * SABER_N + j * 64) / 16 + 2] = ord_r[2];
+   data[u256 (i * SABER_N + j * 64) / 16 + 3] = ord_r[3];
+  }
+ }
+
+ return data;
+}
+
+
+
+
+
+
+
+inline fn SABER_pack_4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] data) -> reg ptr u8[SABER_SCALEBYTES_KEM]
+{
+ inline int i;
+ inline int j;
+
+ reg u128[4] zero_offset128;
+ reg u128[4] one_offset128;
+
+ reg u256[2] zero_offset256;
+ reg u256[2] one_offset256;
+ reg u256[2] t256;
+ reg u256 b256;
+ reg u256 fourbit_mask;
+
+ zero_offset128[0] = zero_u128;
+ zero_offset128[1] = zero_u128;
+ zero_offset128[2] = zero_u128;
+ zero_offset128[3] = zero_u128;
+ one_offset128[0] = zero_u128;
+ one_offset128[1] = zero_u128;
+ one_offset128[2] = zero_u128;
+ one_offset128[3] = zero_u128;
+
+ zero_offset256[0] = zero_u256;
+ zero_offset256[1] = zero_u256;
+ one_offset256[0] = zero_u256;
+ one_offset256[1] = zero_u256;
+ fourbit_mask = fourbit_mask_16u16;
+
+ for i = 0 to SABER_N / 64 {
+  for j = 0 to 8 {
+   zero_offset128[0] = #VPINSR_16u16(zero_offset128[0], data[i * 64 + 2 * j], j);
+   zero_offset128[1] = #VPINSR_16u16(zero_offset128[1], data[16 + i * 64 + 2 * j], j);
+   zero_offset128[2] = #VPINSR_16u16(zero_offset128[2], data[32 + i * 64 + 2 * j], j);
+   zero_offset128[3] = #VPINSR_16u16(zero_offset128[3], data[48 + i * 64 + 2 * j], j);
+   one_offset128[0] = #VPINSR_16u16(one_offset128[0], data[1 + i * 64 + 2 * j], j);
+   one_offset128[1] = #VPINSR_16u16(one_offset128[1], data[16 + 1 + i * 64 + 2 * j], j);
+   one_offset128[2] = #VPINSR_16u16(one_offset128[2], data[32 + 1 + i * 64 + 2 * j], j);
+   one_offset128[3] = #VPINSR_16u16(one_offset128[3], data[48 + 1 + i * 64 + 2 * j], j);
+  }
+
+  zero_offset256[0] = #VINSERTI128(zero_offset256[0], zero_offset128[0], 0);
+  one_offset256[0] = #VINSERTI128(one_offset256[0], one_offset128[0], 0);
+  zero_offset256[1] = #VINSERTI128(zero_offset256[1], zero_offset128[2], 0);
+  one_offset256[1] = #VINSERTI128(one_offset256[1], one_offset128[2], 0);
+  zero_offset256[0] = #VINSERTI128(zero_offset256[0], zero_offset128[1], 1);
+  one_offset256[0] = #VINSERTI128(one_offset256[0], one_offset128[1], 1);
+  zero_offset256[1] = #VINSERTI128(zero_offset256[1], zero_offset128[3], 1);
+  one_offset256[1] = #VINSERTI128(one_offset256[1], one_offset128[3], 1);
+
+  one_offset256[0] &= fourbit_mask;
+  one_offset256[1] &= fourbit_mask;
+
+  zero_offset256[0] &= fourbit_mask;
+  zero_offset256[1] &= fourbit_mask;
+
+  one_offset256[0] <<16u16= 4;
+  one_offset256[1] <<16u16= 4;
+
+  t256[0] = #VPACKUS_16u16(zero_offset256[0], zero_offset256[1]);
+  t256[1] = #VPACKUS_16u16(one_offset256[0], one_offset256[1]);
+
+  t256[0] = #VPERMQ(t256[0], 216);
+  t256[1] = #VPERMQ(t256[1], 216);
+
+  b256 = t256[0] | t256[1];
+
+  bytes[u256 i] = b256;
+ }
+
+ return bytes;
+}
+fn polyvec_iprod(reg ptr u16[SABER_N] r, reg ptr u16[SABER_KN] a, reg ptr u16[SABER_KN] b) -> reg ptr u16[SABER_N]
+{
+ stack u16[SABER_N] t0, t1;
+ stack u16[SABER_N] r0, r1;
+ stack u16[SABER_KN] ahat;
+ stack u16[SABER_KN] bhat;
+
+ ahat = polyvec_ntt_0(ahat, a);
+ bhat = polyvec_ntt_0(bhat, b);
+ t0 = polyvec_basemul_acc_montgomery_0(t0, ahat, bhat);
+
+ bhat = polyvec_ntt_1(bhat, b);
+ ahat = polyvec_ntt_1(ahat, a);
+ t1 = polyvec_basemul_acc_montgomery_1(t1, ahat, bhat);
+
+ r0 = poly_invntt_tomont_0(r0, t0);
+ r1 = poly_invntt_tomont_1(r1, t1);
+
+ r = poly_crt(r, r0, r1);
+
+ return r;
+}
+
+
+inline fn indcpa_kem_enc(stack u8[SABER_KEYBYTES] message_received, stack u8[32] noiseseed, stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[SABER_BYTES_CCA_DEC] ciphertext) -> stack u8[SABER_BYTES_CCA_DEC]
+{
+ inline int i;
+ inline int j;
+
+ reg u32 t32;
+
+ reg u64 transpose;
+
+ reg u256 mod;
+ reg u256 modp;
+ reg u256 H1_avx;
+ reg u256 t256;
+
+ stack u8[SABER_SEEDBYTES] seed;
+ stack u8[SABER_SCALEBYTES_KEM] msk_c;
+
+ stack u16[SABER_KKN] a;
+ stack u16[SABER_KN] pkcl;
+ stack u16[SABER_KN] skpv1;
+ stack u16[SABER_KN] res;
+ stack u16[SABER_N] vprime;
+ stack u16[SABER_KEYBYTES * 8] message;
+
+ stack u256 sH1_avx;
+ stack u256 smodp;
+
+ for i = 0 to SABER_SEEDBYTES / 32 {
+  t256 = pk[u256 SABER_POLYVECCOMPRESSEDBYTES / 32 + i];
+  seed[u256 i] = t256;
+ }
+
+ a = GenMatrix(a, seed);
+
+ skpv1 = GenSecret(skpv1, noiseseed);
+
+ transpose = 0;
+ res = polyvec_matrix_vector_mul(res, a , skpv1, transpose);
+
+ mod = modq_16u16;
+ modp = modp_16u16;
+ H1_avx = h1_16u16;
+
+ for i = 0 to SABER_KN / 16 {
+  t256 = res[u256 i];
+  t256 +16u16= H1_avx;
+  t256 >>16u16= (SABER_EQ - SABER_EP);
+  t256 &16u16= mod;
+  res[u256 i] = t256;
+ }
+
+ sH1_avx = H1_avx;
+ smodp = modp;
+
+ ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES] = POLVECp2BS(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], res);
+
+ pkcl = BS2POLVECp(pk[0:SABER_POLYVECCOMPRESSEDBYTES], pkcl);
+
+ vprime = polyvec_iprod(vprime, pkcl, skpv1);
+
+ H1_avx = sH1_avx;
+ modp = smodp;
+
+ for i = 0 to SABER_N / 16 {
+  t256 = vprime[u256 i];
+  t256 +16u16= H1_avx;
+  vprime[u256 i] = t256;
+ }
+
+ for j = 0 to SABER_KEYBYTES {
+  t32 = (32u) message_received[j];
+  t32 &= 0x01;
+  message[8 * j] = (16u) t32;
+  for i = 1 to 8 {
+
+   t32 = (32u) message_received[j];
+   t32 >>= i;
+   t32 &= 0x01;
+   message[8 * j + i] = (16u) t32;
+  }
+ }
+
+ for i = 0 to SABER_N / 16 {
+  t256 = message[u256 i];
+  t256 <<16u16= (SABER_EP - 1);
+  message[u256 i] = t256;
+ }
+
+ for i = 0 to SABER_N / 16 {
+  t256 = vprime[u256 i];
+  t256 -16u16= message[u256 i];
+  t256 &16u16= modp;
+  t256 >>16u16= (SABER_EP-SABER_ET);
+  vprime[u256 i] = t256;
+ }
+
+ msk_c = SABER_pack_4bit(msk_c, vprime);
+
+ for j = 0 to SABER_SCALEBYTES_KEM / 32 {
+  t256 = msk_c[u256 j];
+  ciphertext[u256 SABER_POLYVECCOMPRESSEDBYTES / 32 + j] = t256;
+ }
+
+ return ciphertext;
+}
+
+inline fn crypto_kem_enc_randominc(stack u8[SABER_BYTES_CCA_DEC] c, stack u8[SABER_HASHBYTES] k, stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk, stack u8[32] random_bytes_crypto) -> stack u8[SABER_BYTES_CCA_DEC], stack u8[SABER_HASHBYTES]
+{
+ reg u256 t256;
+
+ stack u8[64] kr;
+ stack u8[64] buf;
+
+ t256 = random_bytes_crypto[u256 0];
+ buf[u256 0] = t256;
+
+ buf[0:32] = sha3_256_32(buf[0:32], buf[0:32]);
+
+ buf[32:32] = sha3_256_PUBKEYBYTES(buf[32:32], pk);
+
+ kr = sha3_512_64(kr, buf);
+
+ c = indcpa_kem_enc(buf[0:32], kr[32:32], pk, c);
+
+ kr[32:32] = sha3_256_CCADEC(kr[32:32], c);
+
+ k = sha3_256_64(k, kr);
+
+ return c, k;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fn BS2POLVECq(reg ptr u8[SABER_POLYVECBYTES] bytes, reg ptr u16[SABER_KN] data) -> reg ptr u16[SABER_KN]
+{
+ reg u32 b1;
+ reg u32 b2;
+ reg u32 b3;
+
+ reg u64 address_bytes;
+ reg u64 address_data;
+
+ address_bytes = 0;
+ address_data = 0;
+
+ while (address_data < SABER_KN) {
+
+  b2 = (32u) bytes[(int) (address_bytes + 1)];
+  b1 = (32u) bytes[(int) address_bytes];
+  b2 <<= 8;
+  b2 &= 0x1f00;
+  b1 |= b2;
+  data[(int) address_data] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 1)];
+  b2 = (32u) bytes[(int) (address_bytes + 2)];
+  b3 = (32u) bytes[(int) (address_bytes + 3)];
+  b1 >>= 5;
+  b2 <<= 3;
+  b3 <<= 11;
+  b1 |= b2;
+  b3 &= 0x1800;
+  b1 |= b3;
+  data[(int) (address_data + 1)] = (16u) b1;
+
+
+  b2 = (32u) bytes[(int) (address_bytes + 4)];
+  b1 = (32u) bytes[(int) (address_bytes + 3)];
+  b2 <<= 6;
+  b1 >>= 2;
+  b2 &= 0x1fc0;
+  b1 |= b2;
+  data[(int) (address_data + 2)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 4)];
+  b2 = (32u) bytes[(int) (address_bytes + 5)];
+  b3 = (32u) bytes[(int) (address_bytes + 6)];
+  b1 >>= 7;
+  b2 += b2;
+  b3 <<= 9;
+  b1 |= b2;
+  b3 &= 0x1e00;
+  b1 |= b3;
+  data[(int) (address_data + 3)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 6)];
+  b2 = (32u) bytes[(int) (address_bytes + 7)];
+  b3 = (32u) bytes[(int) (address_bytes + 8)];
+  b1 >>= 4;
+  b2 <<= 4;
+  b3 <<= 12;
+  b1 |= b2;
+  b3 &= 0x1000;
+  b1 |= b3;
+  data[(int) (address_data + 4)] = (16u) b1;
+
+
+  b2 = (32u) bytes[(int) (address_bytes + 9)];
+  b1 = (32u) bytes[(int) (address_bytes + 8)];
+  b2 <<= 7;
+  b1 >>= 1;
+  b2 &= 0x1f80;
+  b1 |= b2;
+  data[(int) (address_data + 5)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 9)];
+  b2 = (32u) bytes[(int) (address_bytes + 10)];
+  b3 = (32u) bytes[(int) (address_bytes + 11)];
+  b1 >>= 6;
+  b2 <<= 2;
+  b3 <<= 10;
+  b1 |= b2;
+  b3 &= 0x1c00;
+  b1 |= b3;
+  data[(int) (address_data + 6)] = (16u) b1;
+
+
+  b1 = (32u) bytes[(int) (address_bytes + 11)];
+  b2 = (32u) bytes[(int) (address_bytes + 12)];
+  b1 >>= 3;
+  b2 <<= 5;
+  b1 |= b2;
+  data[(int) (address_data + 7)] = (16u) b1;
+
+  address_data += 8;
+  address_bytes += 13;
+ }
+
+ return data;
+}
+
+
+
+
+
+
+
+inline fn SABER_un_pack4bit(reg ptr u8[SABER_SCALEBYTES_KEM] bytes, reg ptr u16[SABER_N] ar) -> reg ptr u16[SABER_N]
+{
+ inline int i;
+
+ reg u128[2] b128;
+
+ reg u256 fourbit_mask;
+ reg u256[2] b256;
+ reg u256[2] t256;
+ reg u256[2] r256;
+
+ fourbit_mask = fourbit_mask_16u16;
+
+ for i = 0 to SABER_N / 32 {
+  b128[0] = bytes[u128 i];
+  b128[1] = bytes[u128 i];
+
+  b256[0] = #VPMOVZX_16u8_16u16(b128[0]);
+  b256[1] = #VPMOVZX_16u8_16u16(b128[1]);
+
+  b256[0] &= fourbit_mask;
+  b256[1] >>16u16= 4;
+
+  t256[0] = #VPUNPCKL_16u16(b256[0], b256[1]);
+  t256[1] = #VPUNPCKH_16u16(b256[0], b256[1]);
+
+  r256[0] = #VPERM2I128(t256[0], t256[1], (8u1) [0, 0, 1, 0, 0, 0, 0, 0]);
+  r256[1] = #VPERM2I128(t256[0], t256[1], (8u1) [0, 0, 1, 1, 0, 0, 0, 1]);
+
+  ar[u256 2 * i] = r256[0];
+  ar[u256 2 * i + 1] = r256[1];
+ }
+
+ return ar;
+}
+
+
+
+
+
+
+
+inline fn POL2MSG(reg ptr u16[SABER_N] message_dec_unpacked, reg ptr u8[SABER_KEYBYTES] message_dec) -> reg ptr u8[SABER_KEYBYTES]
+{
+ inline int i;
+ inline int j;
+
+ reg u32 t32;
+
+ for j = 0 to SABER_KEYBYTES {
+  t32 = (32u) message_dec_unpacked[j * 8];
+  message_dec[j] = (8u) t32;
+
+  for i = 1 to 8 {
+   t32 = (32u) message_dec_unpacked[j * 8 + i];
+   t32 <<= i;
+   message_dec[j] |= (8u) t32;
+  }
+ }
+
+ return message_dec;
+}
+
+
+inline fn indcpa_kem_dec(stack u8[SABER_INDCPA_SECRETKEYBYTES] sk, stack u8[SABER_BYTES_CCA_DEC] ciphertext, stack u8[SABER_KEYBYTES] message_dec) -> stack u8[SABER_KEYBYTES]
+{
+ inline int i;
+ inline int j;
+
+ reg u256 H2_avx;
+ reg u256 modp;
+ reg u256 t256;
+ reg u256 v256;
+
+ stack u8[SABER_SCALEBYTES_KEM] scale_ar;
+
+ stack u16[SABER_KN] sksv;
+ stack u16[SABER_KN] pksv;
+ stack u16[SABER_KEYBYTES * 8] message_dec_unpacked;
+ stack u16[SABER_N] op;
+ stack u16[SABER_N] v;
+
+ sksv = BS2POLVECq(sk, sksv);
+
+ pksv = BS2POLVECp(ciphertext[0:SABER_POLYVECCOMPRESSEDBYTES], pksv);
+
+ for i = 0 to SABER_N / 16 {
+  t256 = zero_u256;
+  v[u256 i] = t256;
+ }
+
+ v = polyvec_iprod(v, pksv, sksv);
+
+ for i = 0 to SABER_SCALEBYTES_KEM / 32 {
+  t256 = ciphertext[u256 SABER_CIPHERTEXTBYTES / 32 + i];
+  scale_ar[u256 i] = t256;
+ }
+
+ op = SABER_un_pack4bit(scale_ar, op);
+
+ H2_avx = h2_16u16;
+ modp = modp_16u16;
+
+ for i = 0 to SABER_N / 16 {
+
+  t256 = op[u256 i];
+  t256 <<16u16= (SABER_EP-SABER_ET);
+  v256 = H2_avx +16u16 v[u256 i];
+  v256 -16u16= t256;
+  v256 &= modp;
+  v256 >>16u16= (SABER_EP - 1);
+  v[u256 i] = v256;
+ }
+
+ message_dec = POL2MSG(v, message_dec);
+
+ return message_dec;
+}
+
+
+
+
+
+
+
+
+
+
+
+inline fn cmov(stack u8[SABER_KEYBYTES] r, stack u8[SABER_KEYBYTES] x, reg u8 b) -> stack u8[SABER_KEYBYTES]
+{
+ inline int i;
+
+ reg u128 t128;
+
+ reg u256 b256;
+ reg u256 r256;
+ reg u256 x256;
+
+ _, _, _, _, _, b = #NEG_8(b);
+
+ t128 = zero_u128;
+ t128 = #VPINSR_16u8(t128, b, 0);
+
+ b256 = #VPBROADCAST_32u8(t128);
+ r256 = r[u256 0];
+ x256 = x[u256 0];
+
+ x256 ^= r256;
+
+ x256 &= b256;
+
+ r256 ^= x256;
+
+ r[u256 0] = r256;
+
+ return r;
+}
+
+
+
+
+
+
+
+inline fn verify(stack u8[SABER_BYTES_CCA_DEC] a, stack u8[SABER_BYTES_CCA_DEC] b) -> reg u64
+{
+ reg u32 t32;
+ reg u32 r32;
+
+ reg u64 i;
+ reg u64 r;
+
+ r32 = 0;
+ i = 0;
+ while (i < SABER_BYTES_CCA_DEC / 4) {
+
+  t32 = a[u32 (int) i];
+  t32 ^= b[u32 (int) i];
+  r32 |= t32;
+
+  i += 1;
+ }
+
+
+ r = (64u) r32;
+ r *= -1;
+ r >>= 63;
+
+ return r;
+}
+
+inline fn crypto_kem_dec(stack u8[SABER_HASHBYTES] k, stack u8[SABER_BYTES_CCA_DEC] c, stack u8[SABER_SECRETKEYBYTES] sk) -> stack u8[SABER_HASHBYTES]
+{
+ reg u8 t8;
+
+ reg u64 fail;
+
+ reg u256 t256;
+
+ stack u8[SABER_BYTES_CCA_DEC] cmp;
+ stack u8[64] buf;
+ stack u8[64] kr;
+
+ stack u64 sfail;
+
+ buf[0:SABER_KEYBYTES] = indcpa_kem_dec(sk[0:SABER_INDCPA_SECRETKEYBYTES], c, buf[0:SABER_KEYBYTES]);
+
+ t256 = sk[u256 (SABER_SECRETKEYBYTES - 64) / 32];
+ buf[u256 1] = t256;
+
+ kr = sha3_512_64(kr, buf);
+
+ cmp = indcpa_kem_enc(buf[0:SABER_KEYBYTES], kr[32:32], sk[SABER_INDCPA_SECRETKEYBYTES:SABER_INDCPA_PUBLICKEYBYTES], cmp);
+
+ fail = verify(c, cmp);
+
+ sfail = fail;
+
+ kr[32:32] = sha3_256_CCADEC(kr[32:32], c);
+
+ fail = sfail;
+
+ t8 = (8u) fail;
+
+ kr[0:SABER_KEYBYTES] = cmov(kr[0:SABER_KEYBYTES], sk[(SABER_SECRETKEYBYTES - SABER_KEYBYTES):SABER_KEYBYTES], t8);
+
+ k = sha3_256_64(k, kr);
+
+ return k;
+}
+
+
+export fn crypto_kem_keypair_randominc_jazz(reg u64 pkp, reg u64 skp, reg u64 random_bytes_cryptop, reg u64 indcpa_seedp, reg u64 indcpa_noiseseedp)
+{
+ inline int i;
+
+ reg u256 t256;
+
+ stack u8[SABER_PUBLICKEYBYTES] pk;
+ stack u8[SABER_SECRETKEYBYTES] sk;
+ stack u8[SABER_KEYBYTES] random_bytes_crypto;
+ stack u8[SABER_SEEDBYTES] indcpa_seed;
+ stack u8[SABER_COINBYTES] indcpa_noiseseed;
+
+ stack u64 spkp;
+ stack u64 sskp;
+
+ for i = 0 to SABER_KEYBYTES / 32 {
+  t256 = (u256) [random_bytes_cryptop + 32 * i];
+  random_bytes_crypto[u256 i] = t256;
+ }
+
+ for i = 0 to SABER_SEEDBYTES / 32 {
+  t256 = (u256) [indcpa_seedp + 32 * i];
+  indcpa_seed[u256 i] = t256;
+ }
+
+ for i = 0 to SABER_COINBYTES / 32 {
+  t256 = (u256) [indcpa_noiseseedp + 32 * i];
+  indcpa_noiseseed[u256 i] = t256;
+ }
+
+ spkp = pkp;
+ sskp = skp;
+
+ pk, sk = crypto_kem_keypair_randominc(pk, sk, random_bytes_crypto, indcpa_seed, indcpa_noiseseed);
+
+ pkp = spkp;
+ skp = sskp;
+
+ for i = 0 to SABER_PUBLICKEYBYTES / 32 {
+  t256 = pk[u256 i];
+  (u256) [pkp + 32 * i] = t256;
+ }
+
+ for i = 0 to SABER_SECRETKEYBYTES / 32 {
+  t256 = sk[u256 i];
+  (u256) [skp + 32 * i] = t256;
+ }
+}
+
+
+export fn crypto_kem_enc_randominc_jazz(reg u64 cp, reg u64 kp, reg u64 pkp, reg u64 random_bytes_cryptop)
+{
+ inline int i;
+
+ reg u256 t256;
+
+ stack u8[SABER_BYTES_CCA_DEC] c;
+ stack u8[SABER_HASHBYTES] k;
+ stack u8[SABER_INDCPA_PUBLICKEYBYTES] pk;
+ stack u8[32] random_bytes_crypto;
+
+ stack u64 scp;
+ stack u64 skp;
+
+ for i = 0 to SABER_INDCPA_PUBLICKEYBYTES / 32 {
+  t256 = (u256) [pkp + 32 * i];
+  pk[u256 i] = t256;
+ }
+
+ t256 = (u256) [random_bytes_cryptop];
+ random_bytes_crypto[u256 0] = t256;
+
+ scp = cp;
+ skp = kp;
+
+ c, k = crypto_kem_enc_randominc(c, k, pk, random_bytes_crypto);
+
+ cp = scp;
+ kp = skp;
+
+ for i = 0 to SABER_BYTES_CCA_DEC / 32 {
+  t256 = c[u256 i];
+  (u256) [cp + 32 * i] = t256;
+ }
+
+ for i = 0 to SABER_HASHBYTES / 32 {
+  t256 = k[u256 i];
+  (u256) [kp + 32 * i] = t256;
+ }
+}
+
+export fn crypto_kem_dec_jazz(reg u64 kp, reg u64 cp, reg u64 skp)
+{
+ inline int i;
+
+ reg u256 t256;
+
+ stack u8[SABER_HASHBYTES] k;
+ stack u8[SABER_BYTES_CCA_DEC] c;
+ stack u8[SABER_SECRETKEYBYTES] sk;
+
+ stack u64 stkp;
+
+ for i = 0 to SABER_BYTES_CCA_DEC / 32 {
+  t256 = (u256) [cp + 32 * i];
+  c[u256 i] = t256;
+ }
+
+ for i = 0 to SABER_SECRETKEYBYTES / 32 {
+  t256 = (u256) [skp + 32 * i];
+  sk[u256 i] = t256;
+ }
+
+ stkp = kp;
+
+ k = crypto_kem_dec(k, c, sk);
+
+ kp = stkp;
+
+ for i = 0 to SABER_HASHBYTES / 32 {
+  t256 = k[u256 i];
+  (u256) [kp + 32 * i] = t256;
+ }
+}

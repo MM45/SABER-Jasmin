@@ -41,8 +41,8 @@ void POL2MSG_jazz(uint16_t *message_dec_unpacked, unsigned char *message_dec);
 void GenMatrix_jazz(polyvec *a, const unsigned char *seed);
 
 
-uint64_t clock1,clock2;
-uint64_t clock_kp_mv,clock_cl_mv, clock_kp_sm, clock_cl_sm;
+//uint64_t clock1,clock2;
+//uint64_t clock_kp_mv,clock_cl_mv, clock_kp_sm, clock_cl_sm;
 
 
 #endif

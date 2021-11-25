@@ -1,5 +1,5 @@
-#ifndef POLY_H
-#define POLY_H
+#ifndef POLY_NTT_H
+#define POLY_NTT_H
 
 #include <stdint.h>
 #include "params_ntt.h"
@@ -14,10 +14,12 @@ typedef struct{
   int16_t coeffs[NTT_N];
 } nttpoly;
 
+/*
 #define poly_uniform POLYMUL_NAMESPACE(_poly_uniform)
 void poly_uniform(poly *r, const uint8_t seed[POLYMUL_SYMBYTES], uint16_t nonce);
 #define poly_noise POLYMUL_NAMESPACE(_poly_noise)
 void poly_noise(poly *r, const uint8_t seed[POLYMUL_SYMBYTES], uint16_t nonce);
+*/
 
 #define poly_ntt POLYMUL_NAMESPACE(_poly_ntt)
 void poly_ntt(poly *r, const poly *a, const int16_t *pdata);
@@ -38,6 +40,7 @@ void poly_mul(poly *r, const poly *a, const poly *b);
 #define polysmall_mul POLYMUL_NAMESPACE(_polysmall_mul)
 void polysmall_mul(uint8_t *r, const uint8_t *a, const int8_t *b);
 
+/*
 #if defined(NTRUHRSS701)
 #define orig_poly_mul ntruhrss701_poly_mul
 #elif defined(NTRUHPS509)
@@ -54,7 +57,7 @@ void ntruhps509_poly_mul(poly *r, const poly *a, const poly *b);
 void ntruhps677_poly_mul(poly *r, const poly *a, const poly *b);
 void ntruhps821_poly_mul(poly *r, const poly *a, const poly *b);
 void lac_poly_mul(poly *r, const poly *a, const poly *b);
-
+*/
 
 /** C wrappers for Jasmin functions equivalent to above C functions, only used for unit testing **/
 void poly_ntt_0_jazz(poly *r, const poly *a);
