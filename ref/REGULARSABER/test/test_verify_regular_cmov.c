@@ -1,4 +1,4 @@
-/*** test_verify_cmov.c: File containing the unit test for the cmov function ***/
+/*** test_verify_regular_cmov.c: File containing the unit test for the cmov function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 
@@ -25,7 +25,7 @@ int main()
 	unsigned char b_0 = 0;
 
 	// Initialize variables for test with b == 0
-	//random_test_bytes(r_c_0, SABER_KEYBYTES);
+	random_test_bytes(r_c_0, SABER_KEYBYTES);
 	random_test_bytes(x_0, SABER_KEYBYTES);
 	copy_uchar_array(r_jazz_0, r_c_0, SABER_KEYBYTES);
 

@@ -1,4 +1,4 @@
-/*** test_verify_verify.c: File containing the unit test for the verify function ***/
+/*** test_verify_regular_verify.c: File containing the unit test for the verify function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 

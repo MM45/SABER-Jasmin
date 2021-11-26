@@ -1,4 +1,4 @@
-/*** test_poly_mul_regular_pol_mul_p.c: File containing the unit test for the pol_mul function, with p == SABER_P and(regular) SABER parameters ***/
+/*** test_poly_mul_regular_pol_mul_p.c: File containing the unit test for the pol_mul function, with p == SABER_P and (regular) SABER parameters ***/
 
 #include <stdio.h>
 #include <stdint.h>

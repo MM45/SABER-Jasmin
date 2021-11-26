@@ -1,4 +1,4 @@
-/*** test_polyvec_ntt_regular_polyvec_basemul_acc_montgomery.c: File containing the unit test for the  polyvec_basemul_acc_montgomery function, with (regular) SABER parameters ***/
+/*** test_polyvec_ntt_regular_polyvec_basemul_acc_montgomery.c: File containing the unit test for the polyvec_basemul_acc_montgomery function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 #include <stdint.h>

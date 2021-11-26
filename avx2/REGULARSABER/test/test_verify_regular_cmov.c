@@ -1,4 +1,4 @@
-/*** test_verify_cmov.c: File containing the unit test for the cmov function ***/
+/*** test_verify_regular_cmov.c: File containing the unit test for the cmov function, with (regular) SABER parameters ***/
 
 #include <stdio.h>
 

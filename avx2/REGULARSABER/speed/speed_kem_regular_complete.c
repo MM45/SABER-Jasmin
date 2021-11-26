@@ -1,4 +1,4 @@
-/*** speed_kem_regular.c: File containing speed tests for the (regular) SABER implementations of the functions in the kem.c file, using the KEM's regular method of operation ***/
+/*** speed_kem_regular_complete.c: File containing speed tests for the (regular) SABER implementations of the functions in the kem.c file, using the KEM's regular method of operation ***/
 
 #include <stdio.h>
 #include <stdlib.h>

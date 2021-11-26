@@ -1,4 +1,4 @@
-/*** test_pack_unpack_SABER_pack_4bit.c: File containing the unit test for the SABER_pack_4bit function, with (regular) SABER parameters  ***/
+/*** test_pack_unpack_regular_SABER_pack_4bit.c: File containing the unit test for the SABER_pack_4bit function, with (regular) SABER parameters  ***/
 
 #include <stdio.h>
 #include <stdint.h>
