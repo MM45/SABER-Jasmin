@@ -11,7 +11,6 @@ The repository structure is as follows:
   * `REGULARSABER/`: Jasmin files of Jasmin AVX2 implementation of Saber, with (regular) Saber parameters.
     * `speed/`: C files for testing the speed of AVX2 implementations of Saber.
     * `test/`: C files for testing functional correctness of Jasmin AVX2 implementation of Saber.
-* `compiler/`: Jasmin compiler.
 * `ref/`: All files concerning the reference implementation of Saber.
   * `GENERAL/`: C files of original reference implementation of Saber.
   * `MISCELLANEOUS/`: Miscellaneous Jasmin and C files, contains implementation and tests of functions exclusive to LightSaber and FireSaber.
@@ -21,7 +20,7 @@ The repository structure is as follows:
 ## Jasmin File Names and Extensions
 The Jasmin file names have a specific format; moreover, the extensions indicate the type of content in the file.\
 \
-For the most part, the Jasmin implementations follow the code structure and name conventions from the corresponding original C implementations of Saber. Moreover, most files only contain a single Jasmin function, not considering any potential auxiliary functions. The name of a Jasmin file indicates the particular code block/function it implements from the original Saber implementation. Specifically, for `.jahh` files, the format is as follows:\
+For the most part, the Jasmin implementations follow the code structure and name conventions from the corresponding original C implementations of Saber. Additionally, most files only contain a single Jasmin function, not considering any potential auxiliary functions. The name of a Jasmin file indicates the particular code block/function it implements from the original Saber implementation. Specifically, for `.jahh` files, the format is as follows:\
 \
 `<original_file_name>_<saber_version>_<function_name>.jahh`\
 \
@@ -41,6 +40,8 @@ Here, `<original_file_name>` and `<saber_version>` have the same interpretation 
 Upon creating the test binaries by means of the Makefile, a similarly named `.japp` file is generated for each `.jazz` file. These `.japp` files result from passing the `.jazz` files to the GCC preprocessor. This allows to use GCC preprocessing directives in the `.jazz` and `.jahh` files. In the end, these `.japp` files are given to the Jasmin compiler for compilation.
 
 ## Making and Testing
+Foremost, ensure that, from the directories containing the Makefiles (i.e., `ref/` and `avx2/`), your system runs the jasmin compiler with the `jasminc` command. Alternatively, set the `JASMIN` variable in the Makefiles to the path that points towards the Jasmin compiler on your system.\
+\
 For the reference implementation, one can use the Makefile to create binaries for each individual functional correctness test.\
 In order to create all binaries at once, change the working directory to `ref/` and issue the following command:\
 \
