@@ -1,7 +1,7 @@
 CC = /usr/bin/gcc
 CFLAGS = -Wall -Wextra -g
 LDFLAGS = -lssl -lcrypto
-JASMIN = /home/mm/bin/jasminc
+JASMIN = jasminc
 JFLAGS = -lea -pasm ${JADDFLAGS}
 
 
