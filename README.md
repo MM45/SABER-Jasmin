@@ -40,9 +40,9 @@ Here, `<original_file_name>` and `<saber_version>` have the same interpretation 
 Upon creating the test binaries by means of the Makefile, a similarly named `.japp` file is generated for each `.jazz` file. These `.japp` files result from passing the `.jazz` files to the GCC preprocessor. This allows to use GCC preprocessing directives in the `.jazz` and `.jahh` files. In the end, these `.japp` files are given to the Jasmin compiler for compilation.
 
 ## Making and Testing
-Foremost, ensure that, from the directories containing the Makefiles (i.e., `ref/` and `avx2/`), your system runs the jasmin compiler with the `jasminc` command. Alternatively, set the `JASMIN` variable in the Makefiles to the path that points towards the Jasmin compiler on your system.\
+Foremost, ensure that, from the directories containing the Makefiles (i.e., `ref/` and `avx2/`), the `jasminc` command runs the jasmin compiler. Alternatively, set the `JASMIN` variable in the Makefiles to the path that points towards the Jasmin compiler on your system.\
 \
-For the reference implementation, one can use the Makefile to create binaries for each individual functional correctness test.\
+For the reference implementation, one can use the Makefile to create binaries for each individual functional correctness test.
 In order to create all binaries at once, change the working directory to `ref/` and issue the following command:\
 \
 `make`\
